@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First Search Marketing | Be the business your customers find first</title>
+<meta name="description" content="First Search Marketing builds the marketing system that puts local businesses first on search, on social, and in every recommendation in between. Family-owned in Exeter, NH.">
+<meta name="theme-color" content="#26275B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+
+<!--
+  ELEMENTOR BUILD NOTES
+  - Built to Elementor Pro defaults: boxed content width 1240px, breakpoints tablet ≤1024px, mobile ≤767px.
+  - Every section = one top-level Flex Container. Comments above each section name the widgets to use.
+  - Global colors (Site Settings → Global Colors):
+      Primary  #26275B (navy)     Secondary #4E98D8 (blue)    Text #221C1B
+      Accent   #7CD2D3 (teal)     Royal #2E4DA5               Background #F8F7F7
+  - Global fonts: Primary/Secondary/Accent = Poppins, Text = Poppins. Nav + footer lists = Inter.
+  - Brand gradient (buttons, stripe, stats band, card borders): linear 90° #7CD2D3 → #528FC0 → #2E4DA5.
+  - Gradient-border cards = outer container with the gradient background + padding (border width),
+    inner container white with a smaller radius. No custom CSS needed for that.
+  - Custom pieces that need an HTML widget: hero search demo, framework wheel. Everything else is native.
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What exactly does the FirstSearch Guarantee cover?", "acceptedAnswer": { "@type": "Answer", "text": "Placeholder: plain-English summary of the guarantee, covering what's guaranteed, how it's measured, and what happens if it's missed." } },
+    { "@type": "Question", "name": "Why a six-month commitment?", "acceptedAnswer": { "@type": "Answer", "text": "Real marketing compounds. SEO, brand recognition, reviews and automation take time to build momentum, and the first months lay the foundation for everything after. Six months is enough time to show real, measurable results, and short enough that you're never locked in for years." } },
+    { "@type": "Question", "name": "How much does a partnership cost?", "acceptedAnswer": { "@type": "Answer", "text": "Every partnership is a fixed monthly retainer, so you'll never get a surprise invoice. Partnerships start at $X,XXX/month, and your exact investment is set in your roadmap based on your goals." } },
+    { "@type": "Question", "name": "What kinds of businesses do you work with?", "acceptedAnswer": { "@type": "Answer", "text": "We work with established local and service businesses that are ready to invest in long-term growth." } },
+    { "@type": "Question", "name": "Do I need to be in New Hampshire?", "acceptedAnswer": { "@type": "Answer", "text": "We're based in Exeter and love working with NH businesses, but we partner with businesses across [region]." } },
+    { "@type": "Question", "name": "Why do you only work with 25 businesses?", "acceptedAnswer": { "@type": "Answer", "text": "Because quality doesn't scale infinitely. Capping our partner list means every client gets real strategy and senior attention, not a junior account manager juggling forty accounts." } },
+    { "@type": "Question", "name": "How will I know if it's working?", "acceptedAnswer": { "@type": "Answer", "text": "You'll get monthly reporting in plain English, tied to the numbers that matter: leads, calls, bookings and revenue. No vanity metrics and no black boxes." } },
+    { "@type": "Question", "name": "Who owns my accounts, website and content?", "acceptedAnswer": { "@type": "Answer", "text": "You do. Your website, ad accounts, content and data belong to your business, always." } },
+    { "@type": "Question", "name": "What if I'm not ready to hire an agency?", "acceptedAnswer": { "@type": "Answer", "text": "Start with our DIY options. The FirstSearch Blueprint, online course and coaching program give you the same framework we use with our partners. Or take the Framework Quiz to see where your marketing stands today." } }
+  ]
+}
+</script>
+
+<style>
+/* ==========================================================================
+   Global tokens (= Elementor Site Settings)
+   ========================================================================== */
+:root {
+  --navy: #26275B;
+  --navy-deep: #1D1E4A;
+  --blue: #4E98D8;
+  --blue-ink: #2F78BA;   /* blue for small text on light backgrounds (AA) */
+  --teal: #7CD2D3;
+  --mid: #528FC0;
+  --royal: #2E4DA5;
+  --ink: #221C1B;
+  --body: #3A3650;
+  --muted: #6A6880;
+  --bg: #F8F7F7;
+  --white: #FFFFFF;
+  --line: #E3E2EA;
+  --star: #F4B400;
+  --ph: #FFE45C;
+
+  --grad: linear-gradient(90deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%);
+  --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%);
+
+  --font: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-ui: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  --content: 1240px;
+  --pad-x: 24px;
+  --shadow-card: 0 18px 40px -18px rgba(38, 39, 91, .28);
+  --shadow-btn: 0 14px 30px -12px rgba(46, 77, 165, .55);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--font); font-size: 18px; line-height: 1.6; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font); color: var(--navy); line-height: 1.1; letter-spacing: -0.015em; }
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+.on-dark :focus-visible { outline-color: var(--white); }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.icon { width: 24px; height: 24px; flex: none; }
+
+/* Elementor boxed container */
+.e-con { width: 100%; max-width: calc(var(--content) + var(--pad-x) * 2); margin-inline: auto; padding-inline: var(--pad-x); }
+
+/* Section backgrounds */
+.bg-geo { background: var(--bg) url("assets/img/design/bg-geometric.jpg") center / cover no-repeat; }
+
+.eyebrow { display: block; margin-bottom: 14px; font-weight: 600; font-size: 17px; color: var(--blue-ink); letter-spacing: 0; }
+.h2 { font-weight: 700; font-size: clamp(34px, 3.9vw, 56px); line-height: 1.08; }
+
+/* ==========================================================================
+   Buttons (Elementor Button widget: gradient background, radius 10)
+   ========================================================================== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 28px; border: 0; border-radius: 10px; cursor: pointer;
+  font-family: var(--font); font-weight: 500; font-size: 20px; line-height: 1.2; text-decoration: none; text-align: center;
+  color: var(--white); background: var(--grad); background-size: 140% 100%; background-position: 0% 0;
+  box-shadow: var(--shadow-btn); text-shadow: 0 1px 2px rgba(20, 30, 80, .35);
+  transition: background-position .35s ease, transform .2s ease, box-shadow .2s ease;
+}
+.btn:hover { background-position: 100% 0; transform: translateY(-2px); box-shadow: 0 18px 34px -12px rgba(46, 77, 165, .65); }
+.btn--lg { padding: 18px 40px; font-size: clamp(24px, 2.6vw, 38px); border-radius: 14px; }
+.btn--white { background: var(--white); color: var(--navy); text-shadow: none; box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .45); }
+.btn--white:hover { background: var(--white); color: var(--royal); }
+.btn--navy { background: var(--navy); text-shadow: none; }
+
+.link-u {
+  font-weight: 500; font-style: italic; font-size: 20px; color: var(--navy);
+  text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 3px; text-underline-offset: 6px;
+  background: none; border: 0; padding: 0; cursor: pointer;
+}
+.link-u:hover { color: var(--royal); text-decoration-color: var(--royal); }
+.on-dark .link-u { color: var(--white); }
+
+/* Overlapping CTA (sits across the edge of a navy section) */
+.cta-overlap { position: relative; z-index: 3; display: flex; justify-content: center; margin-top: -46px; margin-bottom: -46px; padding-inline: var(--pad-x); }
+
+/* ==========================================================================
+   Gradient-border card (outer gradient container + inner white container)
+   ========================================================================== */
+.gcard { --bw: 8px; --r: 40px; padding: var(--bw); border-radius: var(--r); background: var(--grad-diag); box-shadow: var(--shadow-card); }
+.gcard__in { height: 100%; background: var(--white); border-radius: calc(var(--r) - var(--bw)); }
+
+/* ==========================================================================
+   Placeholder convention (review aid; not part of the Elementor build)
+   ========================================================================== */
+.ph { border-radius: 3px; transition: background-color .2s ease, box-shadow .2s ease; }
+.ph-note { display: none; }
+.show-ph .ph { background: var(--ph); color: var(--ink) !important; box-shadow: 0 0 0 2px var(--ph); }
+.show-ph .ph-box { outline: 3px dashed #E0B300; outline-offset: 4px; }
+.show-ph .ph-note { display: block; margin-top: 10px; padding: 8px 12px; border-radius: 8px; background: var(--ph); color: var(--ink); font-size: 13.5px; font-weight: 500; text-align: left; font-style: normal; }
+.ph-toggle {
+  position: fixed; left: 14px; bottom: 14px; z-index: 250; display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25);
+  background: rgba(29, 30, 74, .9); color: #fff; font: 600 13px/1 var(--font-ui); cursor: pointer; box-shadow: 0 8px 20px -8px rgba(0,0,0,.4);
+}
+.ph-toggle .dot { width: 9px; height: 9px; border-radius: 50%; background: #8A86A0; }
+.ph-toggle[aria-pressed="true"] { background: var(--ph); color: var(--ink); }
+.ph-toggle[aria-pressed="true"] .dot { background: var(--ink); }
+.menu-open .ph-toggle { display: none; }
+.toast { position: fixed; left: 50%; bottom: 22px; z-index: 260; transform: translate(-50%, 16px); max-width: min(420px, calc(100% - 32px)); padding: 12px 18px; border-radius: 12px; background: var(--navy-deep); color: #fff; font: 500 14.5px/1.4 var(--font-ui); opacity: 0; pointer-events: none; transition: .2s ease; }
+.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+/* ==========================================================================
+   Header (Elementor Pro Theme Builder → Header, sticky)
+   ========================================================================== */
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--white); transition: box-shadow .25s ease; }
+.site-header.is-scrolled { box-shadow: 0 10px 30px -18px rgba(38, 39, 91, .45); }
+.header-row { display: flex; align-items: center; gap: 32px; height: 112px; transition: height .25s ease; }
+.site-header.is-scrolled .header-row { height: 86px; }
+.logo img { height: 62px; width: auto; transition: height .25s ease; }
+.site-header.is-scrolled .logo img { height: 50px; }
+.nav { margin-left: auto; }
+.nav ul { display: flex; gap: clamp(20px, 2.6vw, 40px); }
+.nav a { font-family: var(--font-ui); font-size: 22px; color: var(--navy); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; transition: border-color .15s ease, color .15s ease; }
+.nav a:hover { color: var(--royal); border-bottom-color: var(--teal); }
+.header-cta { font-size: 22px; padding: 12px 30px; }
+.stripe { height: 14px; background: var(--grad); }
+.menu-btn { display: none; margin-left: auto; width: 48px; height: 48px; border-radius: 12px; border: 1px solid var(--line); background: var(--white); color: var(--navy); cursor: pointer; place-items: center; }
+.mobile-nav {
+  position: fixed; inset: 0; top: var(--mh, 88px); z-index: 99; display: flex; flex-direction: column; padding: 16px 24px 28px;
+  background: var(--white); visibility: hidden; opacity: 0; transform: translateY(-8px); transition: .2s ease;
+}
+.mobile-nav.is-open { visibility: visible; opacity: 1; transform: none; }
+.mobile-nav a.m { padding: 18px 0; border-bottom: 1px solid var(--line); font-weight: 600; font-size: 22px; color: var(--navy); text-decoration: none; }
+.mobile-nav .btn { margin-top: auto; width: 100%; }
+
+/* ==========================================================================
+   1. Hero
+   ========================================================================== */
+.hero { padding-block: clamp(64px, 8vw, 120px) clamp(72px, 9vw, 140px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 500px; gap: clamp(32px, 6vw, 96px); align-items: center; }
+.hero .eyebrow { font-size: clamp(18px, 1.8vw, 25px); margin-bottom: 18px; }
+.hero h1 { font-weight: 700; font-size: clamp(44px, 5.4vw, 80px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 26px; }
+.hero h1 span { color: var(--blue); }
+.hero-lead { font-size: clamp(19px, 2vw, 29px); line-height: 1.32; color: var(--ink); max-width: 30ch; margin-bottom: 44px; }
+.hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 34px; }
+.hero-ctas .btn { font-size: 22px; padding: 14px 26px; }
+
+/* Phone card + search demo (HTML widget) */
+.phone { --bw: 16px; --r: 64px; height: 690px; }
+.phone .gcard__in { padding: 36px 18px 24px; overflow: hidden; }
+.sbar { display: flex; align-items: center; gap: 12px; height: 58px; padding: 0 20px; border: 1.5px solid var(--line); border-radius: 999px; margin-bottom: 18px; font-family: var(--font-ui); }
+.sbar .icon { width: 20px; height: 20px; color: var(--muted); }
+.squery { min-width: 0; white-space: nowrap; overflow: hidden; font-size: 17px; color: var(--ink); }
+.caret { width: 2px; height: 22px; margin-left: -8px; background: var(--blue); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.results { display: grid; gap: 12px; font-family: var(--font-ui); }
+.results > * { min-width: 0; }
+.res { border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; opacity: 0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; }
+.res.is-in { opacity: 1; transform: none; }
+.res-kind { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; font-size: 13px; font-weight: 500; color: var(--muted); }
+.res-kind .icon { width: 15px; height: 15px; }
+.mp { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 12px; align-items: center; }
+.mp svg { width: 90px; height: 90px; border-radius: 10px; }
+.mp > div { min-width: 0; }
+.mp-row { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 8px; font-size: 14.5px; color: var(--muted); }
+.mp-row b { flex: 1; min-width: 0; font-weight: 500; color: #46435a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mp-row .rk { width: 20px; height: 20px; flex: none; border-radius: 50%; display: grid; place-items: center; font-size: 11.5px; font-weight: 600; background: #ECEBF2; }
+.mp-row .st { flex: none; font-size: 12px; letter-spacing: 1px; color: var(--star); }
+.mp-row.you { background: #EAF4FB; box-shadow: inset 3px 0 0 var(--blue); }
+.mp-row.you b { color: var(--navy); font-weight: 600; }
+.mp-row.you .rk { background: var(--royal); color: #fff; }
+.ai { font-size: 15px; line-height: 1.5; color: var(--body); margin-bottom: 10px; }
+.yb { color: var(--blue-ink); font-weight: 600; }
+.src { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 999px; background: #EAF4FB; font-size: 13px; font-weight: 600; color: var(--navy); }
+.src::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+.rv { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 10px; }
+.av { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff; font-weight: 600; font-size: 14px; }
+.rv .meta { font-size: 13.5px; color: var(--muted); }
+.rv .meta b { color: var(--ink); font-weight: 600; }
+.rv p { margin: 3px 0 0; font-size: 14.5px; line-height: 1.45; color: var(--body); }
+.stars { color: var(--star); letter-spacing: 1.5px; }
+
+/* ==========================================================================
+   2. Trust band
+   ========================================================================== */
+.trust {
+  position: relative; overflow: hidden; color: var(--white);
+  background:
+    radial-gradient(260px 220px at 0% 40%, rgba(78, 152, 216, .85), transparent 70%),
+    radial-gradient(260px 220px at 100% 40%, rgba(78, 152, 216, .85), transparent 70%),
+    var(--navy);
+  border-bottom: 3px solid var(--mid);
+}
+.trust-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-block: 52px 56px; text-align: center; }
+.trust-num { font-weight: 700; font-size: clamp(56px, 6vw, 92px); line-height: 1; letter-spacing: -0.03em; text-shadow: 0 0 22px rgba(255, 255, 255, .55), 0 0 4px rgba(255, 255, 255, .4); }
+.trust-num small { font-size: .55em; vertical-align: .55em; margin-left: 4px; color: var(--star); text-shadow: none; }
+.trust-label { margin-top: 14px; font-size: clamp(18px, 2vw, 30px); line-height: 1.2; }
+
+/* ==========================================================================
+   3. The problem
+   ========================================================================== */
+.problem { padding-block: clamp(80px, 10vw, 150px); }
+.problem-grid { display: grid; grid-template-columns: 530px minmax(0, 1fr); gap: clamp(32px, 4vw, 56px); align-items: center; }
+.problem-art { --bw: 8px; --r: 46px; align-self: stretch; }
+.problem-art .gcard__in { display: grid; place-items: center; padding: 40px 28px; min-height: 560px; }
+.problem h2 { margin-bottom: 36px; }
+.pcards { display: grid; gap: 30px; }
+.pcard { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 26px; align-items: center; padding: 26px; background: var(--white); border-radius: 24px; box-shadow: var(--shadow-card); }
+.ptile { width: 120px; height: 118px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(160deg, #2c2e6a, var(--navy)); color: var(--white); }
+.ptile .icon { width: 64px; height: 64px; }
+.pcard h3 { font-weight: 700; font-size: clamp(21px, 2vw, 28px); margin-bottom: 8px; }
+.pcard p { font-size: clamp(16px, 1.4vw, 20px); line-height: 1.4; color: var(--ink); }
+.problem-close { margin-top: 34px; font-weight: 600; font-size: clamp(20px, 1.9vw, 26px); line-height: 1.3; color: var(--navy); }
+.problem-close span { color: var(--blue-ink); }
+
+/* ==========================================================================
+   4. Framework (navy rounded block + HTML widget)
+   ========================================================================== */
+.framework { position: relative; padding-inline: 0; }
+.fw-block {
+  position: relative; overflow: hidden; color: var(--white); border-radius: clamp(40px, 9vw, 130px);
+  padding: clamp(56px, 6vw, 72px) 0 clamp(96px, 9vw, 140px);
+  background: radial-gradient(640px 520px at 6% 82%, rgba(91, 186, 232, .9), rgba(78, 152, 216, .35) 45%, transparent 72%), var(--navy);
+}
+.fw-head { max-width: 760px; margin: 0 auto 64px; text-align: center; }
+.fw-head .eyebrow { color: var(--blue); }
+.fw-head h2 { color: var(--white); margin-bottom: 18px; }
+.fw-head p { font-size: clamp(17px, 1.6vw, 22px); line-height: 1.4; color: rgba(255, 255, 255, .92); }
+.fw-head .identity { margin-top: 18px; font-style: italic; font-size: 17px; color: var(--teal); }
+.fw-grid { display: grid; grid-template-columns: minmax(0, 1fr) 500px; gap: clamp(32px, 5vw, 80px); align-items: center; }
+.wheel { position: relative; width: 100%; max-width: 540px; margin-inline: auto; }
+.wheel img { width: 100%; border-radius: 50%; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .45); }
+.wheel svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.wz { cursor: pointer; fill: transparent; outline: none; }
+.wz:focus-visible { stroke: var(--white); stroke-width: 10; }
+.wdim { fill: rgba(29, 30, 74, .4); pointer-events: none; transition: d .3s ease; }
+.wring { fill: none; stroke: var(--white); stroke-width: 9; pointer-events: none; filter: drop-shadow(0 0 14px rgba(124, 210, 211, .95)); }
+.pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.pill { padding: 10px 18px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, .35); background: rgba(255, 255, 255, .06); color: var(--white); font-size: 15.5px; cursor: pointer; transition: .2s ease; }
+.pill b { font-weight: 700; }
+.pill:hover { border-color: var(--teal); }
+.pill[aria-selected="true"] { background: var(--white); color: var(--navy); border-color: var(--white); }
+.fw-card { --bw: 16px; --r: 56px; color: var(--ink); }
+.fw-card .gcard__in { padding: 40px 38px 44px; min-height: 600px; }
+.fw-content { transition: opacity .2s ease; }
+.fw-content.is-fading { opacity: 0; }
+.ptag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 22px; padding: 6px 14px 6px 6px; border-radius: 999px; background: #EAF4FB; font-size: 14.5px; color: var(--navy); }
+.ptag i { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--royal); color: var(--white); }
+.ptag i .icon { width: 16px; height: 16px; }
+.ptag b { margin-left: -8px; font-weight: 700; }
+.fw-card h3 { font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); margin-bottom: 16px; }
+.fw-desc { font-size: 16.5px; color: var(--body); margin-bottom: 20px; }
+.inc-label { font-weight: 600; font-size: 14.5px; color: var(--muted); margin-bottom: 8px; }
+.checks li { display: flex; gap: 10px; padding: 5px 0; font-size: 16px; }
+.checks .icon { width: 19px; height: 19px; margin-top: 3px; color: var(--blue-ink); }
+.quizbox { margin-top: 22px; padding: 14px 16px; border-radius: 12px; background: #F4F3F7; font-size: 15.5px; }
+.quizbox b { font-weight: 600; color: var(--navy); }
+.quizbox a, .svc-link { color: var(--blue-ink); font-weight: 500; text-underline-offset: 3px; }
+.svc-link { display: inline-block; margin-top: 22px; font-size: 16px; }
+
+/* ==========================================================================
+   5. Guarantee
+   ========================================================================== */
+.guarantee { padding-top: clamp(110px, 11vw, 150px); }
+.g-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); gap: 32px; align-items: end; }
+.g-copy { padding-bottom: clamp(56px, 7vw, 100px); }
+.g-title { display: flex; align-items: center; gap: 32px; margin-bottom: 26px; }
+.g-title img { width: clamp(130px, 14vw, 200px); flex: none; }
+.g-title h2 { font-size: clamp(40px, 4.8vw, 68px); line-height: 1.04; }
+.g-lead { font-size: clamp(18px, 1.7vw, 22px); line-height: 1.55; color: var(--navy); max-width: 44ch; margin-bottom: 30px; }
+.terms { display: grid; gap: 16px; max-width: 520px; margin-bottom: 26px; }
+.term { padding: 16px 30px; border-radius: 10px; background: var(--navy); color: var(--white); font-style: italic; font-weight: 400; font-size: 18px; line-height: 1.35; box-shadow: 0 16px 28px -14px rgba(46, 77, 165, .6); }
+.term b { font-weight: 600; }
+.g-photo { position: relative; align-self: end; }
+.g-photo img { width: 100%; max-height: 780px; object-fit: contain; object-position: bottom; }
+.quote-chip { position: absolute; left: -30px; bottom: 44px; max-width: 330px; padding: 16px 18px; border-radius: 16px; background: rgba(255, 255, 255, .95); box-shadow: var(--shadow-card); font-size: 14.5px; line-height: 1.45; color: var(--body); }
+.quote-chip cite { display: block; margin-top: 6px; font-style: normal; font-weight: 600; font-size: 13.5px; color: var(--navy); }
+
+/* Stats band (Elementor Counter widgets) */
+.stats { background: var(--grad); color: var(--white); }
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); padding-block: 62px 70px; }
+.stat { padding: 6px clamp(14px, 2.6vw, 40px); border-left: 2px solid rgba(255, 255, 255, .9); }
+.stat:first-child { border-left: 0; padding-left: 0; }
+.stat-num { font-weight: 700; font-size: clamp(46px, 5.6vw, 82px); line-height: 1; letter-spacing: -0.03em; }
+.stat-label { margin-top: 14px; font-size: clamp(15px, 1.4vw, 20px); line-height: 1.25; max-width: 16ch; }
+
+/* ==========================================================================
+   6. Case study + testimonials
+   ========================================================================== */
+.cases { padding-block: clamp(90px, 10vw, 150px); }
+.case-grid { display: grid; grid-template-columns: minmax(0, 740px) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
+.case { position: relative; margin-top: 130px; padding: 0 24px 48px; border-radius: 40px; background: var(--navy); color: var(--white); }
+.case-photo { margin-top: -130px; margin-bottom: 26px; }
+.case-body { padding-inline: 22px; }
+.case-client { font-weight: 600; font-size: clamp(18px, 1.9vw, 26px); color: var(--blue); margin-bottom: 14px; }
+.case h3 { color: var(--white); font-weight: 700; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.2; margin-bottom: 40px; }
+.metrics { display: flex; flex-wrap: wrap; gap: 20px 0; }
+.metric { padding: 0 30px; border-left: 2px solid rgba(255, 255, 255, .85); }
+.metric:first-child { padding-left: 0; border-left: 0; }
+.metric-num { display: flex; align-items: center; gap: 8px; font-size: clamp(30px, 3vw, 40px); line-height: 1; }
+.metric-num .ar { width: 22px; height: 22px; color: var(--blue); }
+.metric-label { margin-top: 8px; font-size: 16px; }
+.case-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; margin-top: 40px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, .16); }
+.case-quote { margin: 0; font-style: italic; font-size: 17px; color: rgba(255, 255, 255, .9); max-width: 40ch; }
+
+.reviews { display: grid; gap: 30px; }
+.review { --bw: 6px; --r: 38px; }
+.review .gcard__in { padding: 34px 32px 30px; }
+.review .stars { font-size: 20px; margin-bottom: 12px; }
+.review blockquote { margin: 0 0 18px; font-size: 16.5px; line-height: 1.55; color: var(--body); }
+.review-by { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 14.5px; color: var(--muted); font-family: var(--font-ui); }
+.review-by b { white-space: nowrap; font-family: var(--font); font-weight: 600; font-size: 16px; color: var(--navy); }
+.review-by .icon { width: 18px; height: 18px; }
+.reviews .link-u { justify-self: start; font-size: 18px; }
+
+/* ==========================================================================
+   7. How it works
+   ========================================================================== */
+.how {
+  position: relative; overflow: hidden; color: var(--white); padding-top: clamp(80px, 8vw, 110px); padding-bottom: clamp(110px, 10vw, 150px);
+  background: radial-gradient(520px 480px at 100% 20%, rgba(78, 152, 216, .75), transparent 70%), var(--navy);
+}
+.how h2 { color: var(--white); text-align: center; margin-bottom: 12px; }
+.how-sub { text-align: center; font-size: clamp(17px, 1.6vw, 21px); color: rgba(255, 255, 255, .85); margin-bottom: 110px; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(28px, 4vw, 56px); }
+.step { position: relative; --bw: 6px; --r: 32px; opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+.steps.is-on .step { opacity: 1; transform: none; }
+.steps.is-on .step:nth-child(2) { transition-delay: .35s; }
+.steps.is-on .step:nth-child(3) { transition-delay: .7s; }
+.steps.is-on .step:nth-child(4) { transition-delay: 1.05s; }
+.step .gcard__in { position: relative; padding: 64px 28px 32px; color: var(--ink); }
+.step-num {
+  position: absolute; top: -92px; left: 50%; transform: translateX(-50%); z-index: 2;
+  font-weight: 800; font-size: 120px; line-height: 1; letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #5FB0E6, var(--blue) 60%, #3B6FC0); -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .25));
+}
+.step-icon { width: 70px; height: 70px; margin-bottom: 18px; }
+.step h3 { font-weight: 700; font-size: 21px; color: var(--ink); margin-bottom: 10px; line-height: 1.2; }
+.step p { font-size: 15.5px; line-height: 1.45; color: var(--ink); }
+.step:not(:last-child)::after {
+  content: ""; position: absolute; top: 130px; left: 100%; width: clamp(28px, 4vw, 56px); height: 0;
+  border-top: 3px dashed rgba(255, 255, 255, .9); transform: scaleX(0); transform-origin: left; transition: transform .35s ease;
+}
+.steps.is-on .step:nth-child(1)::after { transform: scaleX(1); transition-delay: .25s; }
+.steps.is-on .step:nth-child(2)::after { transform: scaleX(1); transition-delay: .6s; }
+.steps.is-on .step:nth-child(3)::after { transform: scaleX(1); transition-delay: .95s; }
+.step--hl .gcard__in { background: var(--grad-diag); color: var(--white); }
+.step--hl h3, .step--hl p { color: var(--white); }
+.step--hl .step-icon { filter: brightness(0) invert(1); }
+
+/* ==========================================================================
+   8. Two ways
+   ========================================================================== */
+.ways { padding-block: clamp(110px, 11vw, 160px) clamp(80px, 9vw, 130px); }
+.ways-head { margin-bottom: 18px; }
+.ways-sub { font-size: clamp(17px, 1.6vw, 21px); color: var(--body); margin-bottom: 120px; }
+.ways-grid { display: grid; grid-template-columns: minmax(0, 576px) minmax(0, 1fr); gap: 32px; align-items: start; }
+.partner { position: relative; border-radius: 60px; background: var(--navy); color: var(--white); padding: 0 36px 48px; }
+.partner-team { position: relative; height: 230px; margin: 0 -36px 34px; border-bottom: 2px solid rgba(255, 255, 255, .85); }
+.partner-team img { position: absolute; left: 50%; bottom: 0; width: 108%; max-width: none; transform: translateX(-50%); }
+.partner-kicker { font-weight: 600; font-size: 16px; color: var(--teal); margin-bottom: 8px; }
+.partner h3 { color: var(--white); font-weight: 700; font-size: clamp(28px, 2.6vw, 36px); line-height: 1.15; margin-bottom: 18px; }
+.partner-body { font-size: 15.5px; line-height: 1.6; color: rgba(255, 255, 255, .9); margin-bottom: 26px; }
+.spots-bar { display: grid; grid-template-columns: repeat(25, 1fr); gap: 4px; margin-bottom: 10px; }
+.spots-bar span { height: 10px; border-radius: 3px; background: rgba(255, 255, 255, .14); }
+.spots-bar span.on { background: #8BCBEF; }
+.spots-label { font-size: 14px; font-weight: 600; margin-bottom: 24px; }
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, .15); margin-bottom: 30px; }
+.fit h4 { color: var(--white); font-weight: 600; font-size: 15.5px; margin-bottom: 12px; }
+.fit li { display: flex; gap: 9px; padding: 4px 0; font-size: 14px; line-height: 1.45; color: rgba(255, 255, 255, .88); }
+.fit .icon { width: 17px; height: 17px; margin-top: 2px; }
+.fit .y .icon { color: #8BCBEF; }
+.fit .n .icon { color: #B7B3D3; }
+.invest { font-size: 14.5px; color: rgba(255, 255, 255, .75); margin-bottom: 22px; }
+
+.diy-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 24px 56px; margin: -8px 0 26px 20px; }
+.diy-logos img { height: 78px; width: auto; }
+.diy { --bw: 6px; --r: 44px; }
+.diy .gcard__in { padding: 30px 32px 30px 20px; }
+.prod { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 20px; align-items: center; padding: 22px 0; border-bottom: 1.5px solid var(--navy); }
+.prod:last-of-type { border-bottom: 0; }
+.prod-img { display: grid; place-items: center; height: 190px; }
+.prod-img img { max-height: 190px; width: auto; max-width: 100%; object-fit: contain; }
+.prod-img--coach img { max-height: 220px; margin-bottom: -30px; }
+.prod h4 { font-weight: 700; font-size: clamp(22px, 2vw, 28px); margin-bottom: 8px; }
+.prod p { font-size: 16.5px; line-height: 1.45; color: var(--ink); margin-bottom: 10px; }
+.prod .price { font-weight: 600; color: var(--navy); }
+.prod .link-u { font-size: 19px; }
+.diy-more { margin: 6px 0 0 20px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 15px; color: var(--body); }
+.diy-more a { color: var(--blue-ink); font-weight: 500; }
+
+/* ==========================================================================
+   9. FAQ (Elementor Accordion widget)
+   ========================================================================== */
+.faq { padding-block: clamp(80px, 9vw, 120px) clamp(170px, 16vw, 230px); }
+.faq-head { text-align: center; margin-bottom: 56px; }
+.faq-list { display: grid; gap: 28px; max-width: 846px; margin-inline: auto; }
+.qa { background: var(--white); border: 2px solid var(--teal); border-radius: 26px; box-shadow: 0 10px 24px -16px rgba(38, 39, 91, .35); }
+.qa-q { width: 100%; display: flex; align-items: center; gap: 30px; padding: 24px 40px; background: none; border: 0; text-align: left; cursor: pointer; font-weight: 700; font-size: clamp(18px, 1.8vw, 25px); line-height: 1.25; color: var(--ink); }
+.qa-q:hover { color: var(--royal); }
+.plus { position: relative; flex: none; width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid var(--teal); }
+.plus::before, .plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 22px; height: 3px; margin: -1.5px 0 0 -11px; border-radius: 2px; background: var(--grad); transition: transform .25s ease; }
+.plus::after { transform: rotate(90deg); }
+.qa-q[aria-expanded="true"] .plus::after { transform: rotate(0); }
+.qa-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.qa-a > div { overflow: hidden; }
+.qa-a p { padding: 0 48px 30px 126px; font-size: clamp(16px, 1.6vw, 21px); line-height: 1.6; color: var(--navy); }
+.qa.is-open .qa-a { grid-template-rows: 1fr; }
+
+/* ==========================================================================
+   10. Final CTA banner + 11. Footer (Theme Builder → Footer)
+   ========================================================================== */
+.footer {
+  position: relative; color: var(--white);
+  background: radial-gradient(760px 420px at 50% 100%, rgba(78, 152, 216, .85), rgba(78, 152, 216, .25) 50%, transparent 75%), var(--navy);
+}
+.final { position: relative; top: -110px; margin-bottom: -110px; }
+.final-in { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 26px; padding: 56px clamp(28px, 6vw, 96px); border-radius: 40px; background: var(--grad); box-shadow: 0 30px 60px -30px rgba(29, 30, 74, .6); }
+.final h2 { color: var(--white); font-weight: 700; font-size: clamp(36px, 5vw, 76px); line-height: 1.02; letter-spacing: -0.03em; text-shadow: 0 2px 10px rgba(20, 30, 80, .25); }
+.final p { margin-top: 10px; font-size: 18px; color: rgba(255, 255, 255, .95); }
+.final .btn { font-size: 22px; padding: 16px 34px; }
+.foot-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; padding-block: 120px 96px; }
+.foot-brand img { height: 64px; width: auto; margin-bottom: 18px; }
+.foot-brand p { font-family: var(--font-ui); font-size: 17px; color: rgba(255, 255, 255, .8); max-width: 30ch; }
+.footer h3 { color: var(--white); font-family: var(--font-ui); font-weight: 500; font-size: 30px; margin-bottom: 28px; }
+.foot-links li, .foot-contact li { margin-bottom: 10px; }
+.footer a:not(.btn) { color: var(--white); text-decoration: none; }
+.footer a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--teal); }
+.foot-links a, .foot-contact { font-family: var(--font-ui); font-size: 20px; line-height: 1.4; }
+.socials { display: flex; gap: 10px; margin-top: 22px; }
+.socials a { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(255, 255, 255, .1); }
+.socials a:hover { background: rgba(255, 255, 255, .2); }
+.socials .icon { width: 20px; height: 20px; }
+.foot-bottom { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; padding-block: 0 26px; font-family: var(--font-ui); font-size: 14px; color: rgba(255, 255, 255, .75); }
+.foot-bottom nav { display: flex; gap: 20px; }
+.foot-bar { height: 12px; background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 50%, var(--navy) 100%); }
+
+/* Modal (Elementor Pro Popup) */
+.modal { position: fixed; inset: 0; z-index: 400; display: none; align-items: center; justify-content: center; padding: 16px; }
+.modal.is-open { display: flex; }
+.modal-bg { position: absolute; inset: 0; background: rgba(29, 30, 74, .65); }
+.modal-box { position: relative; width: min(640px, 100%); max-height: calc(100vh - 32px); overflow-y: auto; padding: clamp(28px, 4vw, 44px); border-radius: 24px; background: var(--white); box-shadow: 0 30px 60px -20px rgba(0,0,0,.5); }
+.modal-box h2 { font-size: 28px; margin-bottom: 16px; padding-right: 44px; }
+.modal-box ul { list-style: disc; padding-left: 20px; margin-bottom: 20px; color: var(--body); }
+.modal-x { position: absolute; right: 16px; top: 16px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: #F1F0F5; color: var(--navy); cursor: pointer; display: grid; place-items: center; }
+
+/* ==========================================================================
+   Tablet (Elementor ≤1024)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .nav, .header-cta { display: none; }
+  .menu-btn { display: grid; }
+  .header-row { height: 88px; }
+  .logo img { height: 52px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-lead { max-width: 40ch; }
+  .phone { max-width: 500px; width: 100%; margin-inline: auto; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .problem-art { order: 2; }
+  .problem-art .gcard__in { min-height: 0; }
+  .fw-grid { grid-template-columns: 1fr; }
+  .fw-card { max-width: 620px; width: 100%; margin-inline: auto; }
+  .fw-card .gcard__in { min-height: 0; }
+  .g-grid { grid-template-columns: 1fr; }
+  .g-copy { padding-bottom: 0; }
+  .g-photo { max-width: 480px; margin-inline: auto; }
+  .quote-chip { left: 0; }
+  .stats-row { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+  .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+  .case-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; row-gap: 120px; }
+  .step:nth-child(2)::after { display: none; }
+  .ways-grid { grid-template-columns: 1fr; }
+  .partner { max-width: 620px; width: 100%; margin-inline: auto; }
+  .ways-right { max-width: 760px; width: 100%; margin-inline: auto; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .foot-brand { grid-column: 1 / -1; }
+}
+
+/* ==========================================================================
+   Mobile (Elementor ≤767)
+   ========================================================================== */
+@media (max-width: 767px) {
+  :root { --pad-x: 16px; }
+  body { font-size: 16.5px; }
+  .header-row { height: 76px; }
+  .logo img { height: 44px; }
+  .stripe { height: 8px; }
+  .hero-ctas .btn { width: 100%; }
+  .phone { --bw: 10px; --r: 44px; height: auto; }
+  .phone .results { min-height: 470px; align-content: start; }
+  .mp-row { font-size: 13.5px; gap: 6px; padding: 5px 6px; }
+  .mp-row .st { font-size: 10.5px; letter-spacing: 0; }
+  .phone .gcard__in { padding: 22px 12px; }
+  .mp { grid-template-columns: 56px minmax(0, 1fr); gap: 8px; }
+  .mp svg { width: 56px; height: 56px; }
+  .trust-row { grid-template-columns: 1fr; gap: 30px; padding-block: 40px; }
+  .pcard { grid-template-columns: 72px minmax(0, 1fr); gap: 16px; padding: 18px; }
+  .ptile { width: 72px; height: 72px; }
+  .ptile .icon { width: 38px; height: 38px; }
+  .fw-block { border-radius: 36px; }
+  .fw-card { --bw: 10px; --r: 40px; }
+  .fw-card .gcard__in { padding: 28px 22px 30px; }
+  .cta-overlap .btn { width: 100%; }
+  .g-title { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .quote-chip { position: static; max-width: none; margin-top: -10px; }
+  .stats-row { grid-template-columns: 1fr; }
+  .stat { border-left: 0; padding-left: 0; padding-block: 18px; border-top: 2px solid rgba(255, 255, 255, .5); }
+  .stat:first-child { border-top: 0; }
+  .case { padding-inline: 12px; margin-top: 70px; }
+  .case-photo { margin-top: -70px; }
+  .case-body { padding-inline: 12px; }
+  .metric { padding: 0 16px; }
+  .steps { grid-template-columns: 1fr; row-gap: 110px; }
+  .step::after { display: none; }
+  .ways-sub { margin-bottom: 90px; }
+  .partner { padding: 0 22px 36px; border-radius: 36px; }
+  .partner-team { height: 160px; margin: 0 -22px 28px; }
+  .fit { grid-template-columns: 1fr; }
+  .partner .btn { width: 100%; }
+  .diy-logos { margin-left: 0; gap: 18px 28px; }
+  .diy-logos img { height: 54px; }
+  .diy .gcard__in { padding: 18px 20px; }
+  .prod { grid-template-columns: 1fr; text-align: left; }
+  .prod-img { height: 160px; }
+  .prod-img img { max-height: 160px; }
+  .prod-img--coach img { margin-bottom: 0; }
+  .diy-more { margin-left: 0; }
+  .qa-q { padding: 18px 20px; gap: 16px; }
+  .plus { width: 42px; height: 42px; }
+  .plus::before, .plus::after { width: 16px; margin-left: -8px; }
+  .qa-a p { padding: 0 20px 22px 78px; }
+  .final-in { padding: 36px 24px; }
+  .final .btn { width: 100%; }
+  .foot-grid { grid-template-columns: 1fr; padding-block: 100px 56px; gap: 36px; }
+  .footer h3 { font-size: 24px; margin-bottom: 16px; }
+  .foot-links a, .foot-contact { font-size: 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+  .caret { display: none; }
+}
+</style>
+</head>
+
+<body>
+<!-- Icon sprite (in Elementor: upload these as SVG icons / use the Icon widget) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7CD2D3"/><stop offset=".5" stop-color="#528FC0"/><stop offset="1" stop-color="#2E4DA5"/></linearGradient>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7Z"/><path d="M19 15.5c.2 1.6 1 2.3 2.5 2.5-1.5.2-2.3.9-2.5 2.5-.2-1.6-1-2.3-2.5-2.5 1.5-.2 2.3-.9 2.5-2.5Z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.5 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.6A8 8 0 1 1 20.5 11.5Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-web" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 8.5h19M6.5 12.5h6M6.5 15.5h4"/><rect x="14.5" y="11.5" width="4" height="5" rx="1"/></symbol>
+    <symbol id="i-magnet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5v8a6 6 0 0 0 12 0v-8"/><path d="M6 3.5h3.5v8a2.5 2.5 0 0 0 5 0v-8H18M6 7.5h3.5M14.5 7.5H18"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9Z"/></symbol>
+    <!-- problem icons (white line on navy tile) -->
+    <symbol id="i-report" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="8" width="44" height="48" rx="5"/><path d="M19 44V34M28 44V26M37 44V31M46 44V22"/><circle cx="46" cy="16" r="0" /><path d="M17 18h14"/><circle cx="48" cy="48" r="9" fill="#26275B"/><path d="M45.5 45.5a3 3 0 1 1 3.5 3c-.6.2-1 .7-1 1.3v.7M48 53.5v.2"/></symbol>
+    <symbol id="i-puzzle" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="10" width="18" height="18" rx="4"/><rect x="38" y="8" width="18" height="18" rx="4" transform="rotate(8 47 17)"/><rect x="10" y="38" width="18" height="18" rx="4" transform="rotate(-6 19 47)"/><rect x="38" y="38" width="18" height="18" rx="4"/><path d="M29 19h3M34 19h2M47 30v3M47 35v1M30 47h3M19 30v2" stroke-dasharray="2 4"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24l10-8 9 4"/><path d="M60 24l-10-8-12 3-11 9a3.4 3.4 0 0 0 4.6 5l7-5"/><path d="M14 16l-6 22 6 4M50 16l6 22-8 6"/><path d="M14 42l6 5a3 3 0 0 0 4.3-4.2M24.3 42.8l3.4 3a3 3 0 0 0 4.2-4.3M31.9 41.5l2.8 2.4a3 3 0 0 0 4.2-4.3l-5.3-4.6M38.9 39.6l2.3 2a3 3 0 0 0 4.2-4.2L37.5 30"/><path d="M27 6l-3 6M34 4v7M41 6l-3 6" stroke="#7CD2D3"/></symbol>
+    <!-- step icons -->
+    <symbol id="i-call" viewBox="0 0 64 64" fill="none" stroke="url(#g-brand)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="52" height="44" rx="6"/><path d="M6 22h52M18 6v8M46 6v8"/><path d="M25 32.5c0 6.5 5 11.5 11.5 11.5l3-3.5-4.2-2.6-2 1.6a8 8 0 0 1-4.8-4.8l1.6-2-2.6-4.2Z"/></symbol>
+    <symbol id="i-roadmap" viewBox="0 0 64 64" fill="none" stroke="url(#g-brand)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 52c10 0 10-14 22-14s14-10 24-10"/><circle cx="12" cy="52" r="4"/><path d="M50 8c-4.4 0-8 3.5-8 7.8C42 22 50 30 50 30s8-8 8-14.2C58 11.5 54.4 8 50 8Z"/><circle cx="50" cy="16" r="2.6"/><path d="M22 20h10M22 26h6" opacity=".7"/></symbol>
+    <symbol id="i-build" viewBox="0 0 64 64" fill="none" stroke="url(#g-brand)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="9"/><path d="M32 6v7M32 51v7M6 32h7M51 32h7M13.6 13.6l5 5M45.4 45.4l5 5M13.6 50.4l5-5M45.4 18.6l5-5"/><path d="m28 32 3 3 5.5-6"/></symbol>
+    <symbol id="i-results" viewBox="0 0 64 64" fill="none" stroke="url(#g-brand)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 56h52"/><rect x="11" y="38" width="9" height="13" rx="2"/><rect x="27.5" y="28" width="9" height="23" rx="2"/><rect x="44" y="18" width="9" height="33" rx="2"/><path d="m10 28 14-10 9 6 18-14"/><path d="M44 10h7v7"/></symbol>
+    <symbol id="i-google" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5Z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7Z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2A11.9 11.9 0 0 1 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44Z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3a12 12 0 0 1-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5Z"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1a3.8 3.8 0 0 1 3.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.3ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5Z"/></symbol>
+  </defs>
+</svg>
+
+<!-- =========================================================================
+     HEADER  ·  Theme Builder Header (sticky, shrink on scroll)
+     Container (boxed) → Image (logo) · Nav Menu · Button "Let's Talk!"
+     ========================================================================= -->
+<header class="site-header" id="site-header">
+  <div class="e-con header-row">
+    <a class="logo" href="#top" aria-label="First Search Marketing home"><img src="assets/img/logo.png" alt="First Search Marketing" width="576" height="196"></a>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="#" data-ph-link="About page">About</a></li>
+        <li><a href="#" data-ph-link="Services page">Services</a></li>
+        <li><a href="#why-us" >Why Choose Us</a></li>
+        <li><a href="#" data-ph-link="Contact page">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn header-cta" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </div>
+  <div class="stripe" aria-hidden="true"></div>
+</header>
+<div class="mobile-nav" id="mobile-nav">
+  <a class="m" href="#" data-ph-link="About page">About</a>
+  <a class="m" href="#" data-ph-link="Services page">Services</a>
+  <a class="m" href="#why-us">Why Choose Us</a>
+  <a class="m" href="#" data-ph-link="Contact page">Contact</a>
+  <a class="btn" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+</div>
+
+<main id="top">
+
+<!-- =========================================================================
+     1. HERO  ·  Container (bg image: geometric, 2 columns)
+     Left: Heading (eyebrow) · Heading H1 · Text Editor · Button + Button (link style)
+     Right: Container (gradient bg, padding 16, radius 64) → Container (white, radius 50) → HTML widget (search demo)
+     ========================================================================= -->
+<section class="hero bg-geo" aria-labelledby="hero-title">
+  <div class="e-con hero-grid">
+    <div>
+      <span class="eyebrow">Digital Marketing Agency Services</span>
+      <h1 id="hero-title">Be the business your <span>customers find first.</span></h1>
+      <p class="hero-lead">Invest your time and efforts on running your business. Leave the other stuff to a digital marketing agency like us.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+        <a class="link-u" href="#framework">Explore the Framework</a>
+      </div>
+    </div>
+
+    <div class="gcard phone">
+      <div class="gcard__in" role="img" aria-label="Illustration: a local search where Your Business is the first result in the map pack, the AI answer and community recommendations.">
+        <div class="sbar" aria-hidden="true"><svg class="icon"><use href="#i-search"/></svg><span class="squery" id="sq"></span><span class="caret"></span></div>
+        <div class="results" aria-hidden="true">
+          <div class="res">
+            <div class="res-kind"><svg class="icon"><use href="#i-map"/></svg>Map results</div>
+            <div class="mp">
+              <svg viewBox="0 0 90 90"><rect width="90" height="90" fill="#EAF4FB"/><path d="M0 32h90M0 66h90M26 0v90M62 0v90" stroke="#fff" stroke-width="7"/><circle cx="66" cy="22" r="4" fill="#B9B6CC"/><circle cx="16" cy="72" r="4" fill="#B9B6CC"/><path d="M43 26c-6.5 0-11 4.8-11 10.7 0 8.1 11 18.3 11 18.3s11-10.2 11-18.3C54 30.8 49.5 26 43 26Z" fill="#4E98D8"/><circle cx="43" cy="37" r="4" fill="#fff"/></svg>
+              <div>
+                <div class="mp-row you"><span class="rk">1</span><b>Your Business</b><span class="st">★★★★★</span></div>
+                <div class="mp-row"><span class="rk">2</span><b data-f="c1">Seacoast Family Dental</b><span class="st">★★★★</span></div>
+                <div class="mp-row"><span class="rk">3</span><b data-f="c2">Harbor Smiles</b><span class="st">★★★★</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="res">
+            <div class="res-kind"><svg class="icon"><use href="#i-sparkle"/></svg>AI answer</div>
+            <p class="ai"><span class="yb">Your Business</span> <span data-f="ai">is the top-rated dentist near you, with hundreds of five-star reviews and new patient openings this week.</span></p>
+            <span class="src">Your Business</span>
+          </div>
+          <div class="res">
+            <div class="res-kind"><svg class="icon"><use href="#i-chat"/></svg>Community recommendations</div>
+            <div class="rv"><span class="av" data-f="ini">M</span><div><div class="meta"><b data-f="who">Megan R.</b> · <span class="stars">★★★★★</span></div><p data-f="rv">Booked a cleaning with <span class="yb">Your Business</span> and got in the same week. Best dental visit I've had.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     2. TRUST BAND  ·  Container (navy + radial glows) → 3 × (Heading + Text), text-shadow glow
+     ========================================================================= -->
+<section class="trust on-dark" aria-label="Why owners trust us">
+  <div class="e-con trust-row">
+    <div><div class="trust-num"><span class="ph">4.9</span><small aria-hidden="true">★</small></div><div class="trust-label">on Google · <span class="ph">XX</span> reviews</div></div>
+    <div><div class="trust-num"><span class="ph">10+</span></div><div class="trust-label">years in digital marketing</div></div>
+    <div><div class="trust-num">NH</div><div class="trust-label">Family-owned in Exeter</div></div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     3. THE PROBLEM  ·  Container (bg geometric, 2 columns)
+     Left: gradient-border card → Image/SVG illustration
+     Right: Heading (eyebrow) · Heading H2 · 3 × Icon Box (icon in navy square, horizontal) · Text
+     ========================================================================= -->
+<section class="problem bg-geo" aria-labelledby="problem-title">
+  <div class="e-con problem-grid">
+    <div class="gcard problem-art ph-box">
+      <div class="gcard__in">
+        <svg viewBox="0 0 480 460" width="100%" role="img" aria-label="Illustration: search, social, ads, email, reviews and website floating apart with broken connections between them.">
+          <g fill="none" stroke="#7CD2D3" stroke-width="2.5" stroke-dasharray="3 9" stroke-linecap="round">
+            <path d="M128 118 C160 146 180 156 196 176"/><path d="M318 100 C300 124 290 134 280 152"/><path d="M352 280 C330 302 310 312 290 330"/><path d="M120 312 C150 308 168 312 186 324"/><path d="M392 164 C396 188 400 204 398 222"/>
+          </g>
+          <g stroke="#C9C6DA" stroke-width="2.5" stroke-linecap="round"><path d="M207 183l9 9M216 183l-9 9"/><path d="M276 156l9 9M285 156l-9 9"/><path d="M193 328l9 9M202 328l-9 9"/></g>
+          <g transform="translate(58 46) rotate(-9 40 40)"><rect width="80" height="80" rx="16" fill="#26275B"/><use href="#i-search" x="20" y="20" width="40" height="40" color="#fff"/></g>
+          <g transform="translate(300 28) rotate(7 40 40)"><rect width="80" height="80" rx="16" fill="#26275B"/><use href="#i-chat" x="20" y="20" width="40" height="40" color="#fff"/></g>
+          <g transform="translate(180 178) rotate(-4 54 54)"><rect width="108" height="108" rx="20" fill="url(#g-brand)"/><use href="#i-web" x="26" y="26" width="56" height="56" color="#fff"/></g>
+          <g transform="translate(362 226) rotate(-11 40 40)"><rect width="80" height="80" rx="16" fill="#26275B"/><use href="#i-magnet" x="20" y="20" width="40" height="40" color="#fff"/></g>
+          <g transform="translate(44 272) rotate(10 40 40)"><rect width="80" height="80" rx="16" fill="#26275B"/><use href="#i-star" x="20" y="20" width="40" height="40" color="#fff"/></g>
+          <g transform="translate(232 346) rotate(5 40 40)"><rect width="80" height="80" rx="16" fill="#26275B"/><use href="#i-sparkle" x="20" y="20" width="40" height="40" color="#fff"/></g>
+        </svg>
+        <p class="ph-note">Placeholder illustration: disconnected channels. Final art from creative.</p>
+      </div>
+    </div>
+
+    <div>
+      <span class="eyebrow">Sound familiar?</span>
+      <h2 class="h2" id="problem-title">You're spending on marketing. You just can't tell what it's doing.</h2>
+      <div class="pcards">
+        <div class="pcard">
+          <span class="ptile"><svg class="icon" aria-hidden="true"><use href="#i-report"/></svg></span>
+          <div><h3>You don't know what's working.</h3><p>Reports full of impressions and clicks, but no clear line to calls, leads or revenue. You're paying for activity, not answers.</p></div>
+        </div>
+        <div class="pcard">
+          <span class="ptile"><svg class="icon" aria-hidden="true"><use href="#i-puzzle"/></svg></span>
+          <div><h3>You have tactics, not a strategy.</h3><p>A few posts here, an ad there, a website that hasn't changed in years. Nothing connects, so nothing compounds.</p></div>
+        </div>
+        <div class="pcard">
+          <span class="ptile"><svg class="icon" aria-hidden="true"><use href="#i-handshake"/></svg></span>
+          <div><h3>You've been burned before.</h3><p>Long contracts, vague promises, and an agency that went quiet the moment the invoice cleared. Trusting the next one feels like a risk.</p></div>
+        </div>
+      </div>
+      <p class="problem-close">None of that is a you problem. <span>It's a system problem.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     4. FRAMEWORK  ·  Container (navy, radius 130, radial glow bottom-left)
+     Heading block (centered) → 2 columns: HTML widget (wheel + pills) | gradient-border card (panel content)
+     Then Button "Let's Talk!" overlapping the bottom edge (negative margin)
+     ========================================================================= -->
+<section class="framework" id="framework" aria-labelledby="fw-title">
+  <div class="fw-block on-dark">
+    <div class="e-con">
+      <div class="fw-head">
+        <span class="eyebrow">The FirstSearch Framework</span>
+        <h2 class="h2" id="fw-title">Marketing isn't a pile of tactics. It's a system.</h2>
+        <p>The businesses that win aren't the ones with the biggest budgets. They're the ones that show up at every stage, from the first time someone hears their name to the day that customer sends a friend their way. We call the owners who build that way FirstSearchers.</p>
+        <p class="identity">Done with hacks and trends. Focused on building a brand that lasts. If that sounds like you, you're already one of us.</p>
+      </div>
+
+      <div class="fw-grid">
+        <div>
+          <div class="wheel">
+            <img src="assets/img/framework-wheel.webp" alt="The FirstSearch Framework wheel: firstbrand at the centre, surrounded by firstthought (attract), firstchoice (engage) and firstreferral (delight)." width="1100" height="1100">
+            <svg viewBox="0 0 1100 1100" id="wheel-svg">
+              <path class="wdim" id="wdim" fill-rule="evenodd" d=""/>
+              <path class="wring" id="wring" d=""/>
+              <path class="wz" data-i="1" tabindex="-1" role="tab" aria-label="FirstThought" d=""/>
+              <path class="wz" data-i="2" tabindex="-1" role="tab" aria-label="FirstChoice" d=""/>
+              <path class="wz" data-i="3" tabindex="-1" role="tab" aria-label="FirstReferral" d=""/>
+              <path class="wz" data-i="0" tabindex="-1" role="tab" aria-label="FirstBrand" d=""/>
+            </svg>
+          </div>
+          <div class="pills" role="tablist" aria-label="Framework stages">
+            <button class="pill" type="button" role="tab" data-i="0" id="tab-0" aria-controls="fw-panel" aria-selected="true">First<b>Brand</b></button>
+            <button class="pill" type="button" role="tab" data-i="1" id="tab-1" aria-controls="fw-panel" aria-selected="false" tabindex="-1">First<b>Thought</b></button>
+            <button class="pill" type="button" role="tab" data-i="2" id="tab-2" aria-controls="fw-panel" aria-selected="false" tabindex="-1">First<b>Choice</b></button>
+            <button class="pill" type="button" role="tab" data-i="3" id="tab-3" aria-controls="fw-panel" aria-selected="false" tabindex="-1">First<b>Referral</b></button>
+          </div>
+        </div>
+
+        <div class="gcard fw-card">
+          <div class="gcard__in" id="fw-panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0">
+            <div class="fw-content" id="fw-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-overlap"><a class="btn btn--lg" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a></div>
+</section>
+
+<!-- =========================================================================
+     5. GUARANTEE  ·  Container (bg geometric, 2 columns, align bottom)
+     Left: Image (seal) + Heading · Text · 3 × Button (navy, italic) · Button (link) → Popup
+     Right: Image (Chris cutout, flush to bottom)
+     Then STATS: Container (gradient bg) → 4 × Counter widget, dividers
+     ========================================================================= -->
+<section class="guarantee bg-geo" id="why-us" aria-labelledby="g-title">
+  <div class="e-con g-grid">
+    <div class="g-copy">
+      <div class="g-title">
+        <img src="assets/img/design/guarantee-seal.webp" alt="FirstSearch Guarantee: results in writing" width="481" height="479">
+        <h2 id="g-title">Results, guaranteed. In writing.</h2>
+      </div>
+      <p class="g-lead">You've heard big promises from agencies before. Here's ours: if we don't deliver <span class="ph">the lead growth we commit to in your roadmap</span>, <span class="ph">we keep working at no cost until we do</span>.</p>
+      <ul class="terms">
+        <li class="term"><b>Fixed monthly retainer.</b> No surprise invoices.</li>
+        <li class="term"><b>Six-month partnership.</b> Enough time to build something that compounds.</li>
+        <li class="term"><b>Guaranteed results.</b> Defined up front, measured monthly.</li>
+      </ul>
+      <button class="link-u" type="button" id="open-terms" aria-haspopup="dialog">Read the full guarantee terms.</button>
+    </div>
+    <div class="g-photo">
+      <img src="assets/img/design/chris-cutout.webp" alt="Chris Mitchell, Owner and Digital Partner" width="765" height="867">
+      <blockquote class="quote-chip"><span class="ph">"I put our guarantee in writing because our clients deserve to know we're as invested in their results as they are."</span><cite>Chris Mitchell, Owner &amp; Digital Partner</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="stats on-dark" aria-label="Results by the numbers" id="stats">
+  <div class="e-con stats-row">
+    <div class="stat"><div class="stat-num ph"><span data-count="47">47</span>%</div><div class="stat-label">average increase in leads</div></div>
+    <div class="stat"><div class="stat-num ph"><span data-count="1200" data-sep="1">1,200</span></div><div class="stat-label">five-star reviews generated for partners</div></div>
+    <div class="stat"><div class="stat-num ph"><span data-count="94">94</span>%</div><div class="stat-label">partner retention rate</div></div>
+    <div class="stat"><div class="stat-num ph"><span data-count="10">10</span>+</div><div class="stat-label">years building marketing systems</div></div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     6. CASE STUDY + REVIEWS  ·  Container (bg geometric, 2 columns)
+     Left: Container (navy, radius 40) → Image (photo breaks out above via negative margin) · Headings · 3 × Counter/Text
+     Right: 2 × gradient-border card → Testimonial / Text Editor (or Reviews widget)
+     ========================================================================= -->
+<section class="cases bg-geo" aria-labelledby="case-title">
+  <div class="e-con case-grid">
+    <article class="case on-dark">
+      <div class="case-photo"><img src="assets/img/design/case-dental.webp" alt="A dentist treating a patient, with the practice's 4.9-star Google profile overlaid" width="1400" height="830"></div>
+      <div class="case-body">
+        <p class="case-client"><span class="ph">Client name</span> · <span class="ph">Industry, NH town</span></p>
+        <h3 id="case-title"><span class="ph">From invisible on Google to booked out three weeks ahead</span></h3>
+        <div class="metrics">
+          <div class="metric"><div class="metric-num"><span class="ph">12</span><svg class="ar" aria-label="to"><use href="#i-arrow"/></svg><span class="ph">41</span></div><div class="metric-label">Monthly leads</div></div>
+          <div class="metric"><div class="metric-num"><span class="ph">#9</span><svg class="ar" aria-label="to"><use href="#i-arrow"/></svg><span class="ph">#1</span></div><div class="metric-label">Map pack position</div></div>
+          <div class="metric"><div class="metric-num"><span class="ph">18</span><svg class="ar" aria-label="to"><use href="#i-arrow"/></svg><span class="ph">112</span></div><div class="metric-label">Google reviews</div></div>
+        </div>
+        <div class="case-foot">
+          <blockquote class="case-quote"><span class="ph">"We stopped wondering where the next job was coming from."</span></blockquote>
+          <a class="link-u" href="#" data-ph-link="case study page">Read the full story</a>
+        </div>
+      </div>
+    </article>
+
+    <div class="reviews">
+      <figure class="gcard review"><div class="gcard__in">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>"We contacted Chris at First Search after a bad experience with a national brand company. He was able to fix our website and get our Google profile up and running. Chris and his team are very professional and always did what was right for our success."</blockquote>
+        <figcaption class="review-by"><b>Steven McGibbon</b> · <svg class="icon" aria-hidden="true"><use href="#i-google"/></svg>Posted on Google</figcaption>
+        <p class="ph-note">Light edit: original says "bar experience". Get client OK or quote verbatim.</p>
+      </div></figure>
+      <figure class="gcard review"><div class="gcard__in">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>"My business partner and I have been working with First Search for about six months and we were starting pretty much from ground zero with our marketing. We didn't really even know where to start but the whole process has been easy and approachable and we couldn't be happier with the results thus far."</blockquote>
+        <figcaption class="review-by"><b>Patrick Wilson</b> · <svg class="icon" aria-hidden="true"><use href="#i-google"/></svg>Posted on Google</figcaption>
+      </div></figure>
+      <a class="link-u" href="#" data-ph-link="Google reviews">Read all <span class="ph">XX</span> Google reviews</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     7. HOW IT WORKS  ·  Container (navy + radial glow) → Heading · 4 × gradient-border card
+     (number = Heading with gradient text, icon = Image/Icon, dashed connector = Divider)
+     Motion: Entrance animation fadeInUp with staggered delays 0 / 350 / 700 / 1050 ms
+     ========================================================================= -->
+<section class="how on-dark" id="how-it-works" aria-labelledby="how-title">
+  <div class="e-con">
+    <h2 class="h2" id="how-title">How it works</h2>
+    <p class="how-sub">Four steps from "I don't know what's working" to a system you can see.</p>
+    <ol class="steps" id="steps" style="padding:0;margin:0;list-style:none">
+      <li class="gcard step"><span class="step-num" aria-hidden="true">1</span><div class="gcard__in">
+        <svg class="step-icon" aria-hidden="true"><use href="#i-call"/></svg>
+        <h3>Book your strategy call.</h3>
+        <p>A <span class="ph">30-minute</span> conversation about where your marketing is today and where the gaps are. No pitch deck, no pressure.</p>
+      </div></li>
+      <li class="gcard step"><span class="step-num" aria-hidden="true">2</span><div class="gcard__in">
+        <svg class="step-icon" aria-hidden="true"><use href="#i-roadmap"/></svg>
+        <h3>Get your roadmap.</h3>
+        <p>We map your business against the FirstSearch Framework and lay out exactly what we'll do, in what order, and what results we're committing to.</p>
+      </div></li>
+      <li class="gcard step"><span class="step-num" aria-hidden="true">3</span><div class="gcard__in">
+        <svg class="step-icon" aria-hidden="true"><use href="#i-build"/></svg>
+        <h3>We build and run it.</h3>
+        <p>Our team executes across every channel in your plan, from brand and website to ads, SEO, automation and reviews.</p>
+      </div></li>
+      <li class="gcard step step--hl"><span class="step-num" aria-hidden="true">4</span><div class="gcard__in">
+        <svg class="step-icon" aria-hidden="true"><use href="#i-results"/></svg>
+        <h3>See the results.</h3>
+        <p>Monthly reporting in plain English, tied to leads and revenue, not vanity metrics. You'll always know what's working.</p>
+      </div></li>
+    </ol>
+  </div>
+</section>
+<div class="cta-overlap"><a class="btn btn--lg" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a></div>
+
+<!-- =========================================================================
+     8. TWO WAYS  ·  Container (bg geometric) → Heading block (left) → 2 columns
+     Left: Container (navy, radius 60) → Image (team, overflows top) · Headings · Progress-style bar (HTML) · 2 × Icon List · Button
+     Right: 2 × Image (sub-brand logos) → gradient-border card → 3 × Container (Image | Heading + Text + Button link)
+     ========================================================================= -->
+<section class="ways bg-geo" id="work-with-us" aria-labelledby="ways-title">
+  <div class="e-con">
+    <div class="ways-head">
+      <span class="eyebrow">Work with us</span>
+      <h2 class="h2" id="ways-title">Two ways to become a FirstSearcher</h2>
+    </div>
+    <p class="ways-sub">Work with our team, or take our system and run it yourself.</p>
+
+    <div class="ways-grid">
+      <div class="partner on-dark">
+        <div class="partner-team"><img src="assets/img/design/team-group.webp" alt="The First Search Marketing team" width="1300" height="645"></div>
+        <p class="partner-kicker">Partner with our team</p>
+        <h3>We work with 25 businesses. That's it.</h3>
+        <p class="partner-body">Capping our partner list means every client gets senior attention, real strategy and a team that knows their business. When the spots are full, they're full.</p>
+        <div class="spots-bar" id="spots-bar" data-filled="19" aria-hidden="true"></div>
+        <p class="spots-label"><span class="ph">6</span> of 25 partner spots open.</p>
+        <div class="fit">
+          <div class="y"><h4>A fit if you:</h4><ul>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Have an established business ready to grow</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Want a long-term partner, not a vendor</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Are ready to commit for six months</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Care about leads and revenue, not likes</li>
+          </ul></div>
+          <div class="n"><h4>Not a fit if you:</h4><ul>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Want overnight results</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Are shopping for the cheapest option</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Want marketing done to you, not with you</li>
+          </ul></div>
+        </div>
+        <p class="invest">Partnerships start at <span class="ph">$X,XXX</span>/month.</p>
+        <a class="btn" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+      </div>
+
+      <div class="ways-right">
+        <div class="diy-logos">
+          <img src="assets/img/design/befirst-training.png" alt="BeFirst Marketing Training" width="549" height="222">
+          <img src="assets/img/design/befirst-coaching.png" alt="BeFirst Marketing Coaching" width="498" height="199">
+        </div>
+        <div class="gcard diy"><div class="gcard__in">
+          <div class="prod">
+            <div class="prod-img"><img src="assets/img/design/blueprint-book.webp" alt="The Marketing Blueprint workbook" width="723" height="900"></div>
+            <div>
+              <h4>The FirstSearch Blueprint</h4>
+              <p>The exact SOPs, worksheets and checklists we use with every client. <span class="price"><span class="ph">$8</span></span></p>
+              <a class="link-u" href="#" data-ph-link="Blueprint page">Get the Blueprint</a>
+            </div>
+          </div>
+          <div class="prod">
+            <div class="prod-img"><img src="assets/img/design/course-mockup.webp" alt="BeFirst Online Course lessons on laptop, tablet and phone" width="727" height="421"></div>
+            <div>
+              <h4>BeFirst Online Course</h4>
+              <p>A founder-led video walkthrough of the entire framework, so you can implement with confidence. <span class="price ph">$XX</span></p>
+              <a class="link-u" href="#" data-ph-link="course page">Explore the course</a>
+            </div>
+          </div>
+          <div class="prod">
+            <div class="prod-img prod-img--coach"><img src="assets/img/design/chris-cutout.webp" alt="Chris Mitchell, BeFirst coach" width="765" height="867"></div>
+            <div>
+              <h4>BeFirst Coaching</h4>
+              <p>You implement the framework; we coach you through it with personalized strategy sessions and direct access to our team. <span class="price ph">$XXX</span></p>
+              <a class="link-u" href="#" data-ph-link="coaching page">Learn about coaching</a>
+            </div>
+          </div>
+          <p class="diy-more">Prefer to learn live? <a href="#" data-ph-link="events page">See upcoming BeFirst trainings and webinars</a>.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     9. FAQ  ·  Container (bg geometric) → Heading block → Accordion widget
+     (item: white bg, 2px teal border, radius 26; icon: plus in teal circle, left)
+     ========================================================================= -->
+<section class="faq bg-geo" id="faq" aria-labelledby="faq-title">
+  <div class="e-con">
+    <div class="faq-head"><span class="eyebrow">FAQ</span><h2 class="h2" id="faq-title">Questions owners ask us</h2></div>
+    <div class="faq-list" id="faq-list">
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a1" id="q1"><span class="plus" aria-hidden="true"></span>What exactly does the FirstSearch Guarantee cover?</button></h3><div class="qa-a" id="a1" role="region" aria-labelledby="q1"><div><p><span class="ph">Plain-English summary of the guarantee: what's guaranteed, how it's measured, and what happens if it's missed.</span></p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a2" id="q2"><span class="plus" aria-hidden="true"></span>Why a six-month commitment?</button></h3><div class="qa-a" id="a2" role="region" aria-labelledby="q2"><div><p>Real marketing compounds. SEO, brand recognition, reviews and automation take time to build momentum, and the first months lay the foundation for everything after. Six months is enough time to show real, measurable results, and short enough that you're never locked in for years.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a3" id="q3"><span class="plus" aria-hidden="true"></span>How much does a partnership cost?</button></h3><div class="qa-a" id="a3" role="region" aria-labelledby="q3"><div><p>Every partnership is a fixed monthly retainer, so you'll never get a surprise invoice. Partnerships start at <span class="ph">$X,XXX</span>/month, and your exact investment is set in your roadmap based on your goals.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a4" id="q4"><span class="plus" aria-hidden="true"></span>What kinds of businesses do you work with?</button></h3><div class="qa-a" id="a4" role="region" aria-labelledby="q4"><div><p>We work with established local and service businesses that are ready to invest in long-term growth. <span class="ph">List of core industries.</span></p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a5" id="q5"><span class="plus" aria-hidden="true"></span>Do I need to be in New Hampshire?</button></h3><div class="qa-a" id="a5" role="region" aria-labelledby="q5"><div><p><span class="ph">We're based in Exeter and love working with NH businesses, but we partner with businesses across [region].</span></p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a6" id="q6"><span class="plus" aria-hidden="true"></span>Why do you only work with 25 businesses?</button></h3><div class="qa-a" id="a6" role="region" aria-labelledby="q6"><div><p>Because quality doesn't scale infinitely. Capping our partner list means every client gets real strategy and senior attention, not a junior account manager juggling forty accounts.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a7" id="q7"><span class="plus" aria-hidden="true"></span>How will I know if it's working?</button></h3><div class="qa-a" id="a7" role="region" aria-labelledby="q7"><div><p>You'll get monthly reporting in plain English, tied to the numbers that matter: leads, calls, bookings and revenue. No vanity metrics and no black boxes.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a8" id="q8"><span class="plus" aria-hidden="true"></span>Who owns my accounts, website and content?</button></h3><div class="qa-a" id="a8" role="region" aria-labelledby="q8"><div><p><span class="ph">You do. Your website, ad accounts, content and data belong to your business, always.</span></p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a9" id="q9"><span class="plus" aria-hidden="true"></span>What if I'm not ready to hire an agency?</button></h3><div class="qa-a" id="a9" role="region" aria-labelledby="q9"><div><p>Start with our DIY options. The FirstSearch Blueprint, online course and coaching program give you the same framework we use with our partners. Or take the Framework Quiz to see where your marketing stands today.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================================================================
+     10–11. FINAL CTA BANNER + FOOTER  ·  Theme Builder Footer
+     Banner: Container (gradient, radius 40) pulled up 110px over the FAQ (negative margin)
+     Footer: Container (navy + radial glow bottom) → 3 columns · bottom bar · gradient strip
+     ========================================================================= -->
+<footer class="footer on-dark">
+  <div class="e-con final">
+    <div class="final-in">
+      <div>
+        <h2>Ready to unlock growth?</h2>
+        <p><span class="ph">6</span> of 25 partner spots open. Let's find out if you're a fit.</p>
+      </div>
+      <a class="btn btn--white" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+    </div>
+  </div>
+
+  <div class="e-con foot-grid">
+    <div class="foot-brand">
+      <img src="assets/img/logo-white.png" alt="First Search Marketing" width="576" height="196">
+      <p>Family-owned digital marketing in Exeter, NH.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook" data-ph-link="Facebook profile"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+        <a href="#" aria-label="Instagram" data-ph-link="Instagram profile"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        <a href="#" aria-label="LinkedIn" data-ph-link="LinkedIn profile"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+      </div>
+    </div>
+    <nav aria-labelledby="f-services">
+      <h3 id="f-services">Services</h3>
+      <ul class="foot-links">
+        <li><a href="#" data-ph-link="service page">Digital Advertising</a></li>
+        <li><a href="#" data-ph-link="service page">Digital Analytics</a></li>
+        <li><a href="#" data-ph-link="service page">CRM Setup</a></li>
+        <li><a href="#" data-ph-link="service page">Email Marketing</a></li>
+        <li><a href="#" data-ph-link="service page">Lead Generation</a></li>
+        <li><a href="#" data-ph-link="service page">SEO</a></li>
+        <li><a href="#" data-ph-link="service page">Social Media</a></li>
+        <li><a href="#" data-ph-link="service page">Web Design and Development</a></li>
+        <li><a href="#" data-ph-link="Contact page">Contact</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h3>Contact</h3>
+      <ul class="foot-contact">
+        <li>92 Portsmouth Ave Ste #21,<br>Exeter, NH 03833</li>
+        <li><a href="tel:+16035188090">603-518-8090</a></li>
+        <li><a href="mailto:chris@befirstsearch.com">chris@befirstsearch.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="e-con foot-bottom">
+    <span>© 2026 First Search Marketing LLC.</span>
+    <nav aria-label="Legal"><a href="#" data-ph-link="privacy policy">Privacy policy</a><a href="#" data-ph-link="terms">Terms</a></nav>
+  </div>
+  <div class="foot-bar" aria-hidden="true"></div>
+</footer>
+
+<!-- Guarantee terms  ·  Elementor Pro Popup (trigger: click on "Read the full guarantee terms") -->
+<div class="modal" id="terms-modal" aria-hidden="true">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="terms-title">
+    <button class="modal-x" type="button" aria-label="Close" data-close><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+    <h2 id="terms-title">FirstSearch Guarantee terms</h2>
+    <p><span class="ph">Full guarantee terms, conditions and exclusions go here.</span></p>
+    <ul>
+      <li><span class="ph">What result is guaranteed and how it's defined in your roadmap</span></li>
+      <li><span class="ph">How and when it's measured</span></li>
+      <li><span class="ph">What happens if it's missed</span></li>
+      <li><span class="ph">Conditions and exclusions</span></li>
+    </ul>
+    <button class="btn" type="button" data-close>Got it</button>
+  </div>
+</div>
+
+<button class="ph-toggle" type="button" id="ph-toggle" aria-pressed="false"><span class="dot" aria-hidden="true"></span>Highlight placeholders</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+
+  /* Header shrink on scroll */
+  const header = $('#site-header');
+  const onScroll = () => header.classList.toggle('is-scrolled', scrollY > 30);
+  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+
+  /* Mobile menu */
+  const mBtn = $('.menu-btn'), mNav = $('#mobile-nav');
+  const setMenu = open => {
+    document.documentElement.style.setProperty('--mh', header.offsetHeight + 'px');
+    mNav.classList.toggle('is-open', open);
+    mBtn.setAttribute('aria-expanded', open);
+    mBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    $('use', mBtn).setAttribute('href', open ? '#i-close' : '#i-menu');
+    document.body.classList.toggle('menu-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  mBtn.addEventListener('click', () => setMenu(!mNav.classList.contains('is-open')));
+  $$('a', mNav).forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && mNav.classList.contains('is-open')) { setMenu(false); mBtn.focus(); } });
+  matchMedia('(min-width: 1025px)').addEventListener('change', e => e.matches && setMenu(false));
+
+  /* Placeholder links → toast */
+  const toast = $('#toast'); let tt;
+  const showToast = m => { toast.textContent = m; toast.classList.add('is-visible'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('is-visible'), 2600); };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-ph-link]');
+    if (!a) return;
+    e.preventDefault();
+    showToast('Prototype: this will link to the ' + a.dataset.phLink + '.');
+  });
+
+  /* Placeholder highlight */
+  const phBtn = $('#ph-toggle');
+  phBtn.addEventListener('click', () => phBtn.setAttribute('aria-pressed', document.body.classList.toggle('show-ph')));
+
+  /* 1. Hero search demo */
+  const DEMO = [
+    { q: 'best dentist near me', c1: 'Seacoast Family Dental', c2: 'Harbor Smiles', ai: 'is the top-rated dentist near you, with hundreds of five-star reviews and new patient openings this week.', who: 'Megan R.', rv: 'Booked a cleaning with <span class="yb">Your Business</span> and got in the same week. Best dental visit I\'ve had.' },
+    { q: 'hvac repair near me', c1: 'Granite State Heating', c2: 'North Shore Air', ai: 'is the most-recommended HVAC company in your area, known for same-day service and upfront pricing.', who: 'Dave P.', rv: 'Furnace died on a Sunday. <span class="yb">Your Business</span> had a tech here in two hours. Can\'t recommend them enough.' },
+    { q: 'roofer near me', c1: 'Summit Roofing Co.', c2: 'Coastal Roof Pros', ai: 'is a highly rated local roofer with a 10-year workmanship warranty and free inspections.', who: 'Lisa K.', rv: '<span class="yb">Your Business</span> replaced our roof in two days and left the yard cleaner than they found it.' }
+  ];
+  const sq = $('#sq'), cards = $$('.res');
+  const fill = d => { $('[data-f="c1"]').textContent = d.c1; $('[data-f="c2"]').textContent = d.c2; $('[data-f="ai"]').textContent = d.ai; $('[data-f="who"]').textContent = d.who; $('[data-f="ini"]').textContent = d.who[0]; $('[data-f="rv"]').innerHTML = d.rv; };
+  if (RM) { fill(DEMO[0]); sq.textContent = DEMO[0].q; cards.forEach(c => c.classList.add('is-in')); }
+  else (async () => {
+    let i = 0; await wait(500);
+    for (;;) {
+      const d = DEMO[i++ % DEMO.length]; fill(d);
+      for (let c = 1; c <= d.q.length; c++) { sq.textContent = d.q.slice(0, c); await wait(55 + Math.random() * 45); }
+      await wait(350);
+      for (const c of cards) { c.classList.add('is-in'); await wait(420); }
+      await wait(3600);
+      cards.forEach(c => c.classList.remove('is-in')); await wait(300);
+      for (let c = d.q.length; c >= 0; c--) { sq.textContent = d.q.slice(0, c); await wait(22); }
+      await wait(300);
+    }
+  })();
+
+  /* 4. Framework wheel */
+  const PILLARS = [
+    { name: 'Brand', icon: 'i-web', outcome: 'Build a brand people trust on sight.', desc: 'Your brand is the foundation everything else stands on. We define who you are, what makes you different, and how you show up, then make sure every touchpoint matches.', inc: ['Brand strategy and messaging', 'Logo and visual identity', 'Website design and development', 'Brand video'], quiz: 'How strong is your brand foundation?', link: 'Explore brand and web services' },
+    { name: 'Thought', icon: 'i-search', outcome: 'Get found wherever customers are looking.', desc: 'When someone needs what you sell, your name should be the first one they see on Google, in AI search, on the map, and in their feed.', inc: ['SEO and AI search visibility', 'Local and map pack rankings', 'Paid advertising', 'Social media', 'Community and local partnerships'], quiz: 'Are customers finding you first?', link: 'Explore visibility services' },
+    { name: 'Choice', icon: 'i-magnet', outcome: 'Turn attention into booked business.', desc: 'Getting seen is only half of it. We build the offers, lead magnets and follow-up that turn a visitor into a lead and a lead into a customer.', inc: ['Lead generation and lead magnets', 'Conversion-focused advertising', 'Marketing automation', 'CRM setup'], quiz: 'Is your marketing converting?', link: 'Explore lead generation services' },
+    { name: 'Referral', icon: 'i-star', outcome: 'Make your customers your best marketing channel.', desc: 'Happy customers are the most trusted ad you\'ll ever run. We build the review, referral and loyalty systems that keep them coming back and bringing friends.', inc: ['Review generation', 'Referral programs', 'Loyalty programs', 'Retention email and automation'], quiz: 'Are your customers selling for you?', link: 'Explore loyalty and referral services' }
+  ];
+  // Wheel geometry (image is 1100×1100, centre 550, outer radius 545, core radius 168)
+  const C = 550, RO = 545, RI = 168;
+  const pt = (r, a) => { const t = a * Math.PI / 180; return [(C + r * Math.sin(t)).toFixed(1), (C - r * Math.cos(t)).toFixed(1)]; };
+  const sector = (a0, a1) => { const [x1, y1] = pt(RO, a0), [x2, y2] = pt(RO, a1), [x3, y3] = pt(RI, a1), [x4, y4] = pt(RI, a0); return `M${x1} ${y1}A${RO} ${RO} 0 0 1 ${x2} ${y2}L${x3} ${y3}A${RI} ${RI} 0 0 0 ${x4} ${y4}Z`; };
+  const circle = r => `M${C - r} ${C}a${r} ${r} 0 1 0 ${r * 2} 0a${r} ${r} 0 1 0 ${-r * 2} 0Z`;
+  const SHAPES = [circle(RI), sector(0, 118), sector(118, 240), sector(240, 360)];
+  $$('.wz').forEach(z => z.setAttribute('d', SHAPES[+z.dataset.i]));
+  const wdim = $('#wdim'), wring = $('#wring');
+  const pills = $$('.pill'), panel = $('#fw-panel'), content = $('#fw-content');
+  let locked = 0, shown = -1, timer = null, stopped = RM, ft;
+
+  const html = p => `
+    <div class="ptag"><i><svg class="icon" aria-hidden="true"><use href="#${p.icon}"/></svg></i>First<b>${p.name}</b></div>
+    <h3>${p.outcome}</h3>
+    <p class="fw-desc">${p.desc}</p>
+    <p class="inc-label">What's included</p>
+    <ul class="checks">${p.inc.map(x => `<li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>${x}</li>`).join('')}</ul>
+    <p class="quizbox"><b>${p.quiz}</b> <a href="#" data-ph-link="Framework Quiz">Find out in the quiz.</a></p>
+    <a class="svc-link" href="#" data-ph-link="service page">${p.link}</a>`;
+
+  const show = (i, instant) => {
+    wdim.setAttribute('d', circle(RO) + SHAPES[i]);
+    wring.setAttribute('d', SHAPES[i]);
+    pills.forEach((p, k) => { p.setAttribute('aria-selected', k === i); p.tabIndex = k === i ? 0 : -1; });
+    panel.setAttribute('aria-labelledby', 'tab-' + i);
+    if (i === shown) return; shown = i;
+    clearTimeout(ft);
+    if (instant || RM) { content.innerHTML = html(PILLARS[i]); return; }
+    content.classList.add('is-fading');
+    ft = setTimeout(() => { content.innerHTML = html(PILLARS[i]); content.classList.remove('is-fading'); }, 200);
+  };
+  const stop = () => { stopped = true; clearInterval(timer); };
+  const select = i => { stop(); locked = i; show(i); };
+  show(0, true);
+
+  const hover = matchMedia('(hover: hover) and (pointer: fine)');
+  $$('.wz').forEach(z => {
+    const i = +z.dataset.i;
+    z.addEventListener('click', () => select(i));
+    z.addEventListener('mouseenter', () => { if (hover.matches) { stop(); show(i); } });
+  });
+  $('#wheel-svg').addEventListener('mouseleave', () => hover.matches && show(locked));
+  pills.forEach((p, i) => {
+    p.addEventListener('click', () => select(i));
+    p.addEventListener('focus', stop);
+    p.addEventListener('keydown', e => {
+      let n = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % 4;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i + 3) % 4;
+      if (e.key === 'Home') n = 0;
+      if (e.key === 'End') n = 3;
+      if (n !== null) { e.preventDefault(); select(n); pills[n].focus(); }
+    });
+  });
+  content.addEventListener('click', e => { if (e.target.closest('a')) stop(); });
+  if (!RM && 'IntersectionObserver' in window) {
+    new IntersectionObserver((es, ob) => es.forEach(e => {
+      if (!e.isIntersecting || stopped) return;
+      ob.disconnect();
+      timer = setInterval(() => { if (!stopped) { locked = (locked + 1) % 4; show(locked); } }, 5000);
+    }), { threshold: 0.4 }).observe($('.fw-grid'));
+  }
+
+  /* 5. Guarantee popup */
+  const modal = $('#terms-modal'), box = $('.modal-box', modal), opener = $('#open-terms'); let last;
+  const focusables = () => $$('a[href], button, input, [tabindex]:not([tabindex="-1"])', box);
+  const openM = () => { last = document.activeElement; modal.classList.add('is-open'); modal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; focusables()[0].focus(); };
+  const closeM = () => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; (last || opener).focus(); };
+  opener.addEventListener('click', openM);
+  $$('[data-close]', modal).forEach(b => b.addEventListener('click', closeM));
+  modal.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { e.preventDefault(); closeM(); return; }
+    if (e.key !== 'Tab') return;
+    const f = focusables(), a = f[0], z = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+    else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+  });
+
+  /* Stats count-up (Elementor Counter widget does this natively) */
+  const nums = $$('[data-count]');
+  if (!RM && 'IntersectionObserver' in window) {
+    nums.forEach(n => n.textContent = '0');
+    new IntersectionObserver((es, ob) => es.forEach(e => {
+      if (!e.isIntersecting) return; ob.disconnect();
+      const t0 = performance.now();
+      const tick = now => { const p = Math.min((now - t0) / 1400, 1), k = 1 - Math.pow(1 - p, 3);
+        nums.forEach(n => { const v = Math.round(+n.dataset.count * k); n.textContent = n.dataset.sep ? v.toLocaleString('en-US') : v; });
+        if (p < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    }), { threshold: 0.5 }).observe($('#stats'));
+  }
+
+  /* How it works reveal */
+  const steps = $('#steps');
+  if (RM || !('IntersectionObserver' in window)) steps.classList.add('is-on');
+  else new IntersectionObserver((es, ob) => es.forEach(e => { if (e.isIntersecting) { steps.classList.add('is-on'); ob.disconnect(); } }), { threshold: 0.3 }).observe(steps);
+
+  /* Spots bar */
+  const bar = $('#spots-bar'), filled = +bar.dataset.filled;
+  bar.innerHTML = Array.from({ length: 25 }, (_, i) => `<span${i < filled ? ' class="on"' : ''}></span>`).join('');
+
+  /* FAQ accordion: one open at a time */
+  const qas = $$('.qa');
+  qas.forEach(qa => {
+    const q = $('.qa-q', qa);
+    q.addEventListener('click', () => {
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      qas.forEach(o => { o.classList.remove('is-open'); $('.qa-q', o).setAttribute('aria-expanded', 'false'); });
+      if (open) { qa.classList.add('is-open'); q.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+  // Design shows the first item open
+  $('.qa-q', qas[0]).click();
+})();
+</script>
+</body>
+</html>
