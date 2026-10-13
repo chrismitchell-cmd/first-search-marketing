@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ways to Learn and Grow | First Search Marketing</title>
+<meta name="description" content="The BeFirst Community, coaching, workshops and done-for-you partnerships. One proven system, three ways to put it to work.">
+<meta name="theme-color" content="#26275B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+
+<!--
+  ELEMENTOR BUILD NOTES (Ways to learn)
+  - Same Site Settings, header and footer templates as the homepage, Events and Resources.
+  - Path cards: 3 × gradient-border container (the third is a solid navy container) → Heading, Heading (price), Icon List.
+  - Price toggles (Community billing, coaching cadence): Elementor Pro "Toggle"/Tabs widget with two tabs, or an
+    HTML widget with the small script at the bottom of this file. Checkout buttons → GHL / Stripe payment links.
+  - Workshops strip: Loop Grid pulling the next 3 workshops from the Events post type.
+  - FAQ: Accordion widget (same styling as the homepage). Waitlist: Form widget → GHL webhook.
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Which path is right for me?", "acceptedAnswer": { "@type": "Answer", "text": "It comes down to how much of the work you want to do yourself. If you like to learn and implement, start with the Community. If you want an expert working through your plan with you, choose coaching. If you want it done for you with results guaranteed, book a strategy call. The Framework Quiz will also recommend a path based on your score." } },
+    { "@type": "Question", "name": "Will my Community price go up?", "acceptedAnswer": { "@type": "Answer", "text": "Not while you stay a member. The rate you join at is locked in. The price goes up for new members as the Community grows." } },
+    { "@type": "Question", "name": "Is the Community included with coaching?", "acceptedAnswer": { "@type": "Answer", "text": "No. Coaching is 1:1 time built entirely around your business, so it works on its own. Coaching clients can add the Community at 50% off if they want the course, Blueprint and weekly content too." } },
+    { "@type": "Question", "name": "What is the difference between a webinar and a workshop?", "acceptedAnswer": { "@type": "Answer", "text": "Webinars are live trainings where you watch and learn, and they are included with the Community. Workshops are hands-on: you work on your own business with our team guiding you, and you leave with something finished." } },
+    { "@type": "Question", "name": "Can I switch paths later?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Plenty of owners start in the Community, add coaching when they want more guidance, and move to a partnership when they are ready to hand it off." } }
+  ]
+}
+</script>
+
+<style>
+
+/* ==========================================================================
+   Global tokens (shared with the homepage)
+   ========================================================================== */
+:root {
+  --navy: #26275B; --navy-deep: #1D1E4A; --blue: #4E98D8; --blue-ink: #2F78BA;
+  --teal: #7CD2D3; --mid: #528FC0; --royal: #2E4DA5;
+  --ink: #221C1B; --body: #3A3650; --muted: #6A6880; --bg: #F8F7F7; --white: #FFFFFF;
+  --line: #E3E2EA; --soft: #F1F0F6; --ice: #EAF4FB; --star: #F4B400; --ph: #FFE45C;
+  --grad: linear-gradient(90deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%);
+  --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%);
+  --font: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-ui: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --content: 1240px; --pad-x: 24px;
+  --shadow-card: 0 18px 40px -18px rgba(38, 39, 91, .28);
+  --shadow-btn: 0 14px 30px -12px rgba(46, 77, 165, .55);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--font); font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font); color: var(--navy); line-height: 1.12; letter-spacing: -0.015em; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+.on-dark :focus-visible { outline-color: var(--white); }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[hidden] { display: none !important; }
+.icon { width: 24px; height: 24px; flex: none; }
+.e-con { width: 100%; max-width: calc(var(--content) + var(--pad-x) * 2); margin-inline: auto; padding-inline: var(--pad-x); }
+.bg-geo { background: var(--bg) url("assets/img/design/bg-geometric.jpg") center / cover no-repeat; }
+.eyebrow { display: block; margin-bottom: 14px; font-weight: 600; font-size: 17px; color: var(--blue-ink); }
+.on-dark .eyebrow { color: var(--teal); }
+.h1 { font-weight: 700; font-size: clamp(40px, 5.2vw, 72px); line-height: 1.02; letter-spacing: -0.025em; }
+.h1 span { color: var(--blue); }
+.lede { margin-top: 22px; font-size: clamp(18px, 1.7vw, 23px); line-height: 1.45; color: var(--ink); max-width: 36ch; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px;
+  padding: 12px 24px; border: 0; border-radius: 10px; cursor: pointer;
+  font-family: var(--font); font-weight: 500; font-size: 17px; line-height: 1.2; text-decoration: none; text-align: center;
+  color: var(--white); background: var(--grad); background-size: 140% 100%; background-position: 0 0;
+  box-shadow: var(--shadow-btn); text-shadow: 0 1px 2px rgba(20, 30, 80, .3);
+  transition: background-position .35s ease, transform .2s ease, box-shadow .2s ease;
+}
+.btn:hover { background-position: 100% 0; transform: translateY(-2px); }
+.btn--lg { min-height: 56px; padding: 15px 30px; font-size: 19px; }
+.btn--navy { background: var(--navy); text-shadow: none; box-shadow: 0 14px 28px -14px rgba(38, 39, 91, .7); }
+.btn--navy:hover { background: var(--royal); }
+.btn--white { background: var(--white); color: var(--navy); text-shadow: none; box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .45); }
+.btn--white:hover { color: var(--royal); }
+.btn--ghost { background: var(--white); color: var(--navy); text-shadow: none; box-shadow: inset 0 0 0 2px var(--teal); }
+.btn--ghost:hover { box-shadow: inset 0 0 0 2px var(--royal); color: var(--royal); }
+.link-u {
+  font-weight: 500; font-style: italic; color: var(--navy); background: none; border: 0; padding: 0; cursor: pointer;
+  text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 3px; text-underline-offset: 6px;
+}
+.link-u:hover { color: var(--royal); text-decoration-color: var(--royal); }
+.on-dark .link-u { color: var(--white); }
+
+/* Gradient-border card */
+.gcard { --bw: 6px; --r: 32px; padding: var(--bw); border-radius: var(--r); background: var(--grad-diag); box-shadow: var(--shadow-card); }
+.gcard__in { height: 100%; background: var(--white); border-radius: calc(var(--r) - var(--bw)); }
+
+/* Placeholders + toast (review aids) */
+.ph { border-radius: 3px; transition: background-color .2s ease; }
+.show-ph .ph { background: var(--ph); color: var(--ink) !important; box-shadow: 0 0 0 2px var(--ph); }
+.ph-toggle { position: fixed; left: 14px; bottom: 14px; z-index: 250; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); background: rgba(29, 30, 74, .92); color: #fff; font: 600 13px/1 var(--font-ui); box-shadow: 0 8px 20px -8px rgba(0,0,0,.4); }
+.ph-toggle .dot { width: 9px; height: 9px; background: #8A86A0; }
+.ph-toggle[aria-pressed="true"] { background: var(--ph); color: var(--ink); }
+.ph-toggle[aria-pressed="true"] .dot { background: var(--ink); }
+.menu-open .ph-toggle { display: none; }
+.toast { position: fixed; left: 50%; bottom: 22px; z-index: 260; transform: translate(-50%, 16px); max-width: min(420px, calc(100% - 32px)); padding: 12px 18px; border-radius: 12px; background: var(--navy-deep); color: #fff; font: 500 14.5px/1.4 var(--font-ui); opacity: 0; pointer-events: none; transition: .2s ease; }
+.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+/* Review bar (page switcher, mockup only) */
+.review-bar { background: var(--navy-deep); color: #fff; font-family: var(--font-ui); font-size: 14px; }
+.review-bar .e-con { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding-block: 10px; }
+.review-bar .tabs { display: flex; gap: 6px; }
+.review-bar button { min-height: 38px; padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,.25); background: transparent; color: #DADAF0; font-weight: 600; font-size: 14px; }
+.review-bar button[aria-pressed="true"] { background: var(--white); color: var(--navy); border-color: var(--white); }
+.review-bar .note { color: #A9A8C8; }
+
+/* ==========================================================================
+   Header (same as homepage)
+   ========================================================================== */
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--white); transition: box-shadow .25s ease; }
+.site-header.is-scrolled { box-shadow: 0 10px 30px -18px rgba(38, 39, 91, .45); }
+.header-row { display: flex; align-items: center; gap: 32px; height: 100px; transition: height .25s ease; }
+.site-header.is-scrolled .header-row { height: 80px; }
+.logo img { height: 56px; width: auto; transition: height .25s ease; }
+.site-header.is-scrolled .logo img { height: 46px; }
+.nav { margin-left: auto; }
+.nav ul { display: flex; gap: clamp(18px, 2.2vw, 34px); }
+.nav a { font-family: var(--font-ui); font-size: 19px; color: var(--navy); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; transition: .15s ease; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--royal); border-bottom-color: var(--teal); }
+.nav a[aria-current="page"] { font-weight: 600; }
+.header-cta { font-size: 19px; padding: 11px 26px; }
+.stripe { height: 12px; background: var(--grad); }
+.menu-btn { display: none; margin-left: auto; width: 48px; height: 48px; border-radius: 12px; border: 1px solid var(--line); background: var(--white); color: var(--navy); place-items: center; }
+.mobile-nav { position: fixed; inset: 0; top: var(--mh, 88px); z-index: 99; display: flex; flex-direction: column; padding: 16px 24px 28px; background: var(--white); visibility: hidden; opacity: 0; transform: translateY(-8px); transition: .2s ease; }
+.mobile-nav.is-open { visibility: visible; opacity: 1; transform: none; }
+.mobile-nav a.m { padding: 18px 0; border-bottom: 1px solid var(--line); font-weight: 600; font-size: 22px; color: var(--navy); text-decoration: none; }
+.mobile-nav a.m[aria-current="page"] { color: var(--royal); }
+.mobile-nav .btn { margin-top: auto; width: 100%; }
+
+
+/* ==========================================================================
+   WAYS TO LEARN
+   ========================================================================== */
+.section { padding-block: clamp(72px, 8vw, 120px); }
+.sec-head { max-width: 760px; margin-bottom: 44px; }
+.sec-head .h2 { font-weight: 700; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.08; }
+.sec-head p { margin-top: 14px; font-size: 18px; color: var(--body); }
+.center-head { margin-inline: auto; text-align: center; }
+
+/* Hero */
+.hero { padding-block: clamp(72px, 8vw, 120px) 0; text-align: center; }
+.hero .h1 { max-width: 16ch; margin-inline: auto; }
+.hero .lede { margin-inline: auto; max-width: 44ch; }
+
+/* Three path cards */
+.paths { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; align-items: stretch; padding-block: 64px clamp(80px, 8vw, 110px); }
+.path { --bw: 6px; --r: 40px; }
+.path .gcard__in { padding: 34px 30px 30px; display: flex; flex-direction: column; gap: 22px; }
+.path-step { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.path-step span { font-weight: 600; font-size: 15px; color: var(--blue-ink); }
+.path-step .num { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 18px; color: var(--white); background: var(--grad-diag); }
+.path h2 { font-weight: 700; font-size: 28px; }
+.path-price { font-weight: 700; font-size: 44px; line-height: 1; color: var(--navy); letter-spacing: -0.02em; }
+.path-price small { font-size: 16px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.path-note { margin-top: 8px; font-size: 14.5px; color: var(--muted); }
+.path dl, .path--dark dl { margin: 0; display: grid; gap: 14px; padding-top: 20px; border-top: 1.5px solid var(--navy); font-size: 15.5px; }
+.path dt, .path--dark dt { font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; color: var(--muted); letter-spacing: .02em; text-transform: uppercase; }
+.path dd, .path--dark dd { margin: 2px 0 0; }
+.path dd b, .path--dark dd b { font-weight: 600; }
+.meter { display: flex; gap: 4px; margin-top: 6px; }
+.meter i { width: 26px; height: 8px; border-radius: 4px; background: var(--line); }
+.meter i.on { background: var(--grad); }
+.path .btn { margin-top: auto; width: 100%; }
+.path--dark { position: relative; overflow: hidden; border-radius: 40px; padding: 34px 30px 30px; display: flex; flex-direction: column; gap: 22px; color: var(--white); background: radial-gradient(380px 300px at 100% 100%, rgba(91, 186, 232, .75), transparent 70%), var(--navy); box-shadow: var(--shadow-card); }
+.path--dark h2, .path--dark .path-price { color: var(--white); }
+.path--dark h2 { font-weight: 700; font-size: 28px; }
+.path--dark .btn { margin-top: auto; width: 100%; }
+.path--dark .badge { background: var(--white); color: var(--navy); }
+.path--dark .path-step span { color: var(--teal); }
+.path--dark .path-price small, .path--dark .path-note, .path--dark dt { color: rgba(255, 255, 255, .72); }
+.path--dark dl { border-top-color: rgba(255, 255, 255, .5); }
+.path--dark .meter i { background: rgba(255, 255, 255, .18); }
+.path--dark .meter i.on { background: var(--teal); }
+.badge { padding: 5px 12px; border-radius: 999px; background: var(--grad); font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; color: var(--white); }
+
+/* Quiz band */
+.quiz { color: var(--white); background: radial-gradient(260px 200px at 0% 50%, rgba(78, 152, 216, .75), transparent 70%), radial-gradient(260px 200px at 100% 50%, rgba(78, 152, 216, .75), transparent 70%), var(--navy); border-bottom: 3px solid var(--mid); }
+.quiz .e-con { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px 40px; padding-block: 44px; }
+.quiz h2 { color: var(--white); font-weight: 700; font-size: clamp(26px, 2.6vw, 36px); }
+.quiz p { margin-top: 6px; font-size: 17px; color: rgba(255, 255, 255, .88); max-width: 60ch; }
+
+/* Segmented toggle */
+.seg { display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--soft); align-self: flex-start; }
+.seg button { min-height: 42px; padding: 8px 18px; border: 0; border-radius: 9px; background: transparent; color: var(--body); font-family: var(--font-ui); font-size: 14.5px; font-weight: 600; }
+.seg button[aria-pressed="true"] { background: var(--grad); color: var(--white); box-shadow: 0 6px 14px -8px rgba(46, 77, 165, .7); }
+.seg--dark { background: rgba(255, 255, 255, .1); }
+.seg--dark button { color: rgba(255, 255, 255, .85); }
+.seg .save { margin-left: 6px; padding: 1px 7px; border-radius: 999px; background: rgba(124, 210, 211, .25); font-size: 11.5px; }
+.price-flip { transition: opacity .15s ease; }
+.price-flip.is-flipping { opacity: 0; }
+
+/* Community */
+.comm { --bw: 8px; --r: 48px; }
+.comm .gcard__in { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); overflow: hidden; }
+.comm-l { padding: clamp(30px, 4vw, 52px); display: grid; gap: 24px; align-content: start; }
+.comm-logo { height: 70px; width: auto; }
+.comm-l h3 { font-weight: 700; font-size: clamp(26px, 2.6vw, 34px); }
+.comm-l > div > p { margin-top: 10px; font-size: 17px; color: var(--body); }
+.feat-list { display: grid; gap: 16px; }
+.feat-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: center; font-size: 16.5px; line-height: 1.4; }
+.feat-list .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--navy); color: var(--white); }
+.feat-list .ic .icon { width: 22px; height: 22px; }
+.feat-list b { font-weight: 600; color: var(--navy); }
+.feat-list span span { color: var(--muted); }
+.comm-r { position: relative; overflow: hidden; padding: clamp(30px, 4vw, 52px); display: grid; gap: 22px; align-content: start; color: var(--white); background: radial-gradient(360px 300px at 100% 100%, rgba(91, 186, 232, .8), transparent 70%), var(--navy); }
+.big-price { font-weight: 700; font-size: clamp(56px, 6vw, 80px); line-height: .95; letter-spacing: -0.03em; }
+.big-price small { font-size: 18px; font-weight: 500; letter-spacing: 0; color: rgba(255, 255, 255, .75); }
+.price-note { margin-top: 10px; font-weight: 600; color: var(--teal); }
+.lock { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px; padding: 18px 20px; border-radius: 16px; background: rgba(255, 255, 255, .08); font-size: 15px; line-height: 1.55; color: rgba(255, 255, 255, .85); }
+.lock .icon { color: var(--teal); }
+.lock b { color: var(--white); }
+.comm-r .btn { width: 100%; }
+.fine { font-family: var(--font-ui); font-size: 13px; color: rgba(255, 255, 255, .7); text-align: center; }
+
+.pieces-title { margin: 48px 0 20px; font-weight: 700; font-size: 24px; }
+.pieces { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.pieces > *, .paths > *, .part > *, .ws-grid > *, .comm .gcard__in > *, .coach .gcard__in > *, .piece .gcard__in > * { min-width: 0; }
+.piece { --bw: 4px; --r: 32px; }
+.piece .gcard__in { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; align-items: center; padding: 26px; }
+.piece-img { height: 170px; display: grid; place-items: center; }
+.piece-img img { max-height: 170px; width: auto; object-fit: contain; filter: drop-shadow(0 14px 18px rgba(38, 39, 91, .25)); }
+.book-ph { width: 116px; height: 158px; border-radius: 6px 14px 14px 6px; border-left: 10px solid var(--navy); background: var(--grad-diag); color: var(--white); display: flex; flex-direction: column; justify-content: space-between; padding: 14px 12px; box-shadow: 0 16px 24px -12px rgba(38, 39, 91, .5); font-weight: 700; font-size: 13px; line-height: 1.15; }
+.book-ph small { font-weight: 500; font-size: 10px; opacity: .85; }
+.kicker { font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--blue-ink); }
+.piece h4 { margin-top: 4px; font-weight: 700; font-size: 21px; }
+.piece p { margin-top: 8px; font-size: 15.5px; line-height: 1.55; color: var(--body); }
+.piece-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 14px; }
+.piece-row .amt { font-weight: 700; font-size: 26px; color: var(--navy); }
+.piece .inline-form { justify-content: flex-start; margin-top: 14px; }
+.inline-form { display: flex; flex-wrap: wrap; gap: 10px; width: 100%; }
+.inline-form input { min-width: 0; flex: 1 1 180px; min-height: 52px; padding: 12px 16px; border: 2px solid var(--line); border-radius: 10px; font-size: 16px; background: var(--white); }
+.inline-form input:focus { outline: none; border-color: var(--teal); }
+.piece .inline-form input { min-height: 46px; }
+.piece .inline-form .btn { min-height: 46px; padding: 10px 18px; font-size: 15.5px; }
+.ok { font-weight: 600; color: var(--blue-ink); margin-top: 14px; }
+
+/* Coaching */
+.coach-wrap { background: var(--navy); color: var(--white); border-radius: clamp(40px, 9vw, 130px); overflow: hidden; position: relative; padding-block: clamp(72px, 8vw, 110px) clamp(96px, 9vw, 140px); background: radial-gradient(640px 520px at 96% 10%, rgba(91, 186, 232, .85), rgba(78, 152, 216, .3) 45%, transparent 72%), var(--navy); }
+.coach-wrap .sec-head .h2 { color: var(--white); }
+.coach-wrap .sec-head p { color: rgba(255, 255, 255, .85); }
+.coach { --bw: 10px; --r: 52px; color: var(--ink); }
+.coach .gcard__in { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); overflow: hidden; }
+.coach-img { position: relative; min-height: 420px; background: radial-gradient(360px 300px at 50% 100%, rgba(78, 152, 216, .55), transparent 70%), linear-gradient(180deg, #EEF3FA, #DCE8F5); }
+.coach-img img { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 96%; width: auto; max-width: none; }
+.coach-img .live { position: absolute; left: 22px; top: 22px; display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; background: rgba(255, 255, 255, .92); font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--navy); box-shadow: var(--shadow-card); }
+.coach-img .live i { width: 9px; height: 9px; border-radius: 50%; background: #E5484D; animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+.coach-body { padding: clamp(28px, 4vw, 48px); display: grid; gap: 22px; align-content: start; }
+.coach-logo { height: 60px; width: auto; }
+.coach-body h3 { font-weight: 700; font-size: clamp(26px, 2.6vw, 34px); }
+.coach-body > div > p { margin-top: 10px; font-size: 17px; color: var(--body); }
+.coach-price { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 24px; }
+.coach-body .coach-price .big-price { margin: 0; font-size: clamp(56px, 6vw, 80px); color: var(--navy); }
+.coach-price .big-price small { color: var(--muted); }
+.coach-body .coach-price p:not(.big-price) { margin: 0 0 8px; font-size: 17px; font-weight: 600; color: var(--ink); }
+.checks2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; font-size: 15.5px; }
+.checks2 li { display: flex; gap: 10px; }
+.checks2 .icon { width: 20px; height: 20px; margin-top: 2px; color: var(--blue-ink); }
+.saver { padding: 16px 20px; border-radius: 16px; background: var(--ice); font-size: 15.5px; line-height: 1.55; }
+.saver b { color: var(--navy); font-weight: 600; }
+
+.ws-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px; margin: 64px 0 24px; }
+.ws-head h3 { color: var(--white); font-weight: 700; font-size: clamp(24px, 2.4vw, 32px); }
+.ws-head p { margin-top: 6px; color: rgba(255, 255, 255, .85); }
+.ws-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.ws { --bw: 4px; --r: 28px; color: var(--ink); transition: transform .2s ease; }
+.ws:hover { transform: translateY(-4px); }
+.ws .gcard__in { padding: 24px; display: grid; gap: 12px; align-content: start; }
+.ws-top { display: flex; align-items: center; gap: 14px; }
+.datebox { width: 70px; padding: 8px 0 10px; border-radius: 14px; text-align: center; color: var(--white); background: var(--navy); }
+.datebox .m { font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--teal); }
+.datebox .d { font-weight: 700; font-size: 30px; line-height: 1; margin-top: 2px; }
+.stage { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 13.5px; font-weight: 600; color: var(--body); }
+.ws h4 { font-weight: 600; font-size: 19px; line-height: 1.3; }
+.ws .meta { font-family: var(--font-ui); font-size: 14px; color: var(--muted); }
+.ws .link-u { color: var(--navy); justify-self: start; margin-top: 4px; font-size: 16px; }
+
+/* Partnership */
+.part { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 32px; align-items: stretch; }
+.part-main { position: relative; overflow: hidden; border-radius: 48px; padding: clamp(32px, 4.4vw, 56px); padding-top: 0; color: var(--white); background: var(--navy); }
+.part-team { position: relative; height: 210px; margin: 0 calc(clamp(32px, 4.4vw, 56px) * -1) 30px; border-bottom: 2px solid rgba(255, 255, 255, .85); background: linear-gradient(180deg, rgba(78, 152, 216, .35), transparent); }
+.part-team img { position: absolute; left: 50%; bottom: 0; height: 104%; width: auto; max-width: none; transform: translateX(-50%); }
+.part-main .eyebrow { margin-bottom: 10px; }
+.part-main h2 { color: var(--white); font-weight: 700; font-size: clamp(28px, 3vw, 40px); line-height: 1.12; }
+.part-main > p { margin-top: 16px; font-size: 17px; color: rgba(255, 255, 255, .88); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; background: rgba(255, 255, 255, .1); font-size: 14.5px; font-weight: 500; }
+.chip .icon { width: 17px; height: 17px; color: var(--teal); }
+.part-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 30px; }
+.part-cta p { font-size: 15px; color: rgba(255, 255, 255, .8); }
+.part-side { display: grid; gap: 24px; align-content: stretch; }
+.seal-card { --bw: 6px; --r: 40px; }
+.seal-card .gcard__in { align-content: center; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 20px; align-items: center; padding: 26px; }
+.seal-card img { width: 120px; }
+.seal-card h3 { font-weight: 700; font-size: 24px; line-height: 1.15; }
+.seal-card p { margin-top: 8px; font-size: 15px; color: var(--body); }
+.quote-card { --bw: 6px; --r: 40px; margin: 0; }
+.quote-card .gcard__in { padding: 30px; display: grid; gap: 14px; align-content: center; }
+.quote-card .stars { color: var(--star); font-size: 20px; letter-spacing: 2px; }
+.quote-card blockquote { margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--body); }
+.quote-card figcaption { font-family: var(--font-ui); font-size: 14.5px; color: var(--muted); }
+.quote-card figcaption b { font-family: var(--font); color: var(--navy); }
+
+/* FAQ (homepage accordion) */
+.faq-list { display: grid; gap: 22px; max-width: 846px; margin-inline: auto; }
+.qa { background: var(--white); border: 2px solid var(--teal); border-radius: 26px; box-shadow: 0 10px 24px -16px rgba(38, 39, 91, .35); }
+.qa-q { width: 100%; display: flex; align-items: center; gap: 26px; padding: 22px 36px; background: none; border: 0; text-align: left; font-weight: 700; font-size: clamp(17px, 1.7vw, 22px); line-height: 1.25; color: var(--ink); }
+.qa-q:hover { color: var(--royal); }
+.plus { position: relative; flex: none; width: 50px; height: 50px; border-radius: 50%; border: 1.5px solid var(--teal); }
+.plus::before, .plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 20px; height: 3px; margin: -1.5px 0 0 -10px; border-radius: 2px; background: var(--grad); transition: transform .25s ease; }
+.plus::after { transform: rotate(90deg); }
+.qa-q[aria-expanded="true"] .plus::after { transform: rotate(0); }
+.qa-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.qa-a > div { overflow: hidden; }
+.qa-a p { padding: 0 40px 26px 112px; font-size: clamp(15.5px, 1.4vw, 18px); line-height: 1.6; color: var(--navy); }
+.qa.is-open .qa-a { grid-template-rows: 1fr; }
+
+/* ==========================================================================
+   Footer (same as homepage, with newsletter banner)
+   ========================================================================== */
+.footer { position: relative; color: var(--white); background: radial-gradient(760px 420px at 50% 100%, rgba(78, 152, 216, .85), rgba(78, 152, 216, .25) 50%, transparent 75%), var(--navy); margin-top: 110px; }
+.final { position: relative; top: -110px; margin-bottom: -110px; }
+.final-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); align-items: center; gap: 24px 48px; padding: clamp(32px, 4vw, 56px) clamp(28px, 5vw, 72px); border-radius: 40px; background: var(--grad); box-shadow: 0 30px 60px -30px rgba(29, 30, 74, .6); }
+.final h2 { color: var(--white); font-weight: 700; font-size: clamp(30px, 3.6vw, 52px); line-height: 1.04; letter-spacing: -0.025em; text-shadow: 0 2px 10px rgba(20, 30, 80, .25); }
+.final p { margin-top: 10px; font-size: 17.5px; color: rgba(255, 255, 255, .95); }
+.final .inline-form { justify-content: flex-start; max-width: none; }
+.final .inline-form input { border-color: transparent; }
+.final .ok { color: var(--white); font-size: 19px; }
+.foot-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; padding-block: 96px 80px; }
+.foot-brand img { height: 60px; width: auto; margin-bottom: 18px; }
+.foot-brand p { font-family: var(--font-ui); font-size: 17px; color: rgba(255, 255, 255, .8); max-width: 30ch; }
+.footer h3 { color: var(--white); font-family: var(--font-ui); font-weight: 500; font-size: 28px; margin-bottom: 24px; }
+.foot-links li, .foot-contact li { margin-bottom: 10px; }
+.footer a:not(.btn) { color: var(--white); text-decoration: none; }
+.footer a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--teal); }
+.foot-links a, .foot-contact { font-family: var(--font-ui); font-size: 18px; line-height: 1.4; }
+.socials { display: flex; gap: 10px; margin-top: 22px; }
+.socials a { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(255, 255, 255, .1); }
+.socials .icon { width: 20px; height: 20px; }
+.foot-bottom { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; padding-bottom: 26px; font-family: var(--font-ui); font-size: 14px; color: rgba(255, 255, 255, .75); }
+.foot-bottom nav { display: flex; gap: 20px; }
+.foot-bar { height: 12px; background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 50%, var(--navy) 100%); }
+
+
+.final-in { grid-template-columns: minmax(0, 1fr) auto; }
+.final .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn--outline-w { background: transparent; box-shadow: inset 0 0 0 2px var(--white); text-shadow: none; }
+.btn--outline-w:hover { background: rgba(255, 255, 255, .12); }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .nav, .header-cta { display: none; }
+  .menu-btn { display: grid; }
+  .header-row, .site-header.is-scrolled .header-row { height: 80px; }
+  .logo img, .site-header.is-scrolled .logo img { height: 46px; }
+  .paths { grid-template-columns: 1fr; max-width: 620px; margin-inline: auto; }
+  .comm .gcard__in, .coach .gcard__in { grid-template-columns: 1fr; }
+  .coach-img { min-height: 340px; }
+  .pieces { grid-template-columns: 1fr; }
+  .ws-grid { grid-template-columns: 1fr 1fr; }
+  .part { grid-template-columns: 1fr; }
+  .final-in { grid-template-columns: 1fr; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .foot-brand { grid-column: 1 / -1; }
+}
+/* Mobile */
+@media (max-width: 767px) {
+  :root { --pad-x: 16px; }
+  body { font-size: 16px; }
+  .header-row, .site-header.is-scrolled .header-row { height: 72px; }
+  .logo img, .site-header.is-scrolled .logo img { height: 42px; }
+  .stripe { height: 8px; }
+  .hero { text-align: left; }
+  .hero .h1, .hero .lede { margin-inline: 0; }
+  .path, .comm, .coach { --r: 34px; }
+  .path--dark { border-radius: 34px; }
+  .quiz .btn, .comm-r .btn, .part-cta .btn, .final .btn { width: 100%; }
+  .piece .gcard__in { grid-template-columns: 1fr; }
+  .piece-img { justify-content: start; height: 150px; }
+  .piece-img img { max-height: 150px; }
+  .coach-wrap { border-radius: 36px; }
+  .checks2 { grid-template-columns: 1fr; }
+  .seg { flex-wrap: wrap; }
+  .ws-grid { grid-template-columns: 1fr; }
+  .part-main { border-radius: 34px; }
+  .part-team { height: 150px; }
+  .seal-card .gcard__in { grid-template-columns: 84px minmax(0, 1fr); }
+  .seal-card img { width: 84px; }
+  .qa-q { padding: 18px 20px; gap: 16px; }
+  .plus { width: 40px; height: 40px; }
+  .plus::before, .plus::after { width: 16px; margin-left: -8px; }
+  .qa-a p { padding: 0 20px 22px 76px; }
+  .final-in { padding: 32px 22px; border-radius: 30px; }
+  .final .btns { width: 100%; }
+  .foot-grid { grid-template-columns: 1fr; padding-block: 72px 48px; gap: 34px; }
+  .footer h3 { font-size: 22px; margin-bottom: 14px; }
+  .foot-links a, .foot-contact { font-size: 16.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.8 2.8L16.3 9.5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="13" rx="2"/><path d="M8 21h8"/><path d="m10.5 8.5 4 2.5-4 2.5Z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-live" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.2"/><path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1a3.8 3.8 0 0 1 3.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.3ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5Z"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header" id="site-header">
+  <div class="e-con header-row">
+    <a class="logo" href="#" data-ph-link="homepage" aria-label="First Search Marketing home"><img src="assets/img/logo.png" alt="First Search Marketing" width="576" height="196"></a>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="#" data-ph-link="Services page">Services</a></li>
+        <li><a href="#top" aria-current="page">Ways to learn</a></li>
+        <li><a href="#" data-ph-link="Events page">Events</a></li>
+        <li><a href="#" data-ph-link="Resources page">Resources</a></li>
+        <li><a href="#" data-ph-link="About page">About</a></li>
+      </ul>
+    </nav>
+    <a class="btn header-cta" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </div>
+  <div class="stripe" aria-hidden="true"></div>
+</header>
+<div class="mobile-nav" id="mobile-nav">
+  <a class="m" href="#" data-ph-link="Services page">Services</a>
+  <a class="m" href="#top" aria-current="page">Ways to learn</a>
+  <a class="m" href="#" data-ph-link="Events page">Events</a>
+  <a class="m" href="#" data-ph-link="Resources page">Resources</a>
+  <a class="m" href="#" data-ph-link="About page">About</a>
+  <a class="btn" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+</div>
+
+<main id="top">
+
+<!-- HERO + 3 PATHS -->
+<section class="bg-geo" aria-labelledby="ed-title">
+  <div class="e-con hero">
+    <span class="eyebrow">Ways to learn and grow</span>
+    <h1 class="h1" id="ed-title">One proven system. <span>Three ways to put it to work.</span></h1>
+    <p class="lede">Every option below runs on the FirstSearch Framework, the same system we use with every partner. The only difference is how much of the work you want to do yourself.</p>
+  </div>
+
+  <div class="e-con paths" aria-label="Compare the three paths">
+    <article class="gcard path"><div class="gcard__in">
+      <div class="path-step"><span>You do it</span><b class="num">1</b></div>
+      <h2>Learn it yourself</h2>
+      <div><p class="path-price">$88<small>/month</small></p><p class="path-note">The BeFirst Community. Or start with the $8 Blueprint.</p></div>
+      <dl>
+        <div><dt>Who does the work</dt><dd><b>You do</b></dd></div>
+        <div><dt>Support</dt><dd>Course, Blueprint, live webinars and weekly content. No 1:1 time.</dd></div>
+        <div><dt>Your time</dt><dd>The most<div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></div></dd></div>
+        <div><dt>Best for</dt><dd>Owners who like to learn, then do</dd></div>
+      </dl>
+      <a class="btn btn--ghost" href="#community">See the Community</a>
+    </div></article>
+
+    <article class="gcard path"><div class="gcard__in">
+      <div class="path-step"><span>We do it together</span><b class="num">2</b></div>
+      <h2>Build it with us</h2>
+      <div><p class="path-price">$500<small>/month</small></p><p class="path-note">Monthly coaching. $1,000/month to meet every two weeks.</p></div>
+      <dl>
+        <div><dt>Who does the work</dt><dd><b>You do, with a coach</b></dd></div>
+        <div><dt>Support</dt><dd>1:1 strategy sessions with our team, focused on your business.</dd></div>
+        <div><dt>Your time</dt><dd>Moderate<div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></div></dd></div>
+        <div><dt>Best for</dt><dd>Owners who want an expert sounding board and accountability</dd></div>
+      </dl>
+      <a class="btn btn--ghost" href="#coaching">See coaching</a>
+    </div></article>
+
+    <article class="path--dark on-dark">
+      <div class="path-step"><span>We do it for you</span><span class="badge">Results guaranteed</span></div>
+      <h2>Let us run it</h2>
+      <div><p class="path-price"><span class="ph">[$X,XXX]</span><small>/month</small></p><p class="path-note">Fixed retainer. Six-month partnership.</p></div>
+      <dl>
+        <div><dt>Who does the work</dt><dd><b>Our team does</b></dd></div>
+        <div><dt>Support</dt><dd>A full team running your marketing, with monthly reporting.</dd></div>
+        <div><dt>Your time</dt><dd>The least<div class="meter" aria-hidden="true"><i class="on"></i><i></i><i></i></div></dd></div>
+        <div><dt>Best for</dt><dd>Owners who want it done right, without doing it themselves</dd></div>
+      </dl>
+      <a class="btn btn--white" href="#partnership">See the partnership</a>
+    </article>
+  </div>
+</section>
+
+<!-- QUIZ BAND -->
+<section class="quiz on-dark" aria-labelledby="quiz-title">
+  <div class="e-con">
+    <div>
+      <h2 id="quiz-title">Not sure which path fits?</h2>
+      <p>Take the free Framework Quiz. It scores your marketing across all four stages and recommends the path that fits where you are today.</p>
+    </div>
+    <a class="btn btn--white btn--lg" href="#" data-ph-link="Framework Quiz">Take the Framework Quiz</a>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="section bg-geo" id="community" aria-labelledby="comm-title">
+  <div class="e-con">
+    <div class="sec-head">
+      <span class="eyebrow">1 · Learn it yourself</span>
+      <h2 class="h2" id="comm-title">Everything you need, in one membership.</h2>
+    </div>
+
+    <article class="gcard comm"><div class="gcard__in">
+      <div class="comm-l">
+        <img class="comm-logo" src="assets/img/design/befirst-training.png" alt="BeFirst Marketing Training" width="549" height="222">
+        <div>
+          <h3>The BeFirst Community</h3>
+          <p>The full framework, the tools to apply it, and new content every week, all for one flat monthly rate.</p>
+        </div>
+        <ul class="feat-list">
+          <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span><span><b>The BeFirst online course,</b> <span>with new modules released over time</span></span></li>
+          <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg></span><span><b>The FirstSearch Blueprint,</b> <span>every SOP, worksheet and checklist</span></span></li>
+          <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#i-live"/></svg></span><span><b>Live webinars</b> <span>on every stage of the framework</span></span></li>
+          <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span><span><b>Weekly content,</b> <span>released to members before anyone else</span></span></li>
+          <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span><b>First notice of workshops and events,</b> <span>before seats open to the public</span></span></li>
+        </ul>
+      </div>
+      <div class="comm-r on-dark">
+        <div class="seg seg--dark" role="group" aria-label="Billing">
+          <button type="button" data-group="comm" data-val="monthly" aria-pressed="true">Monthly</button>
+          <button type="button" data-group="comm" data-val="annual" aria-pressed="false">Annual<span class="save">2 months free</span></button>
+        </div>
+        <div class="price-flip" id="comm-flip" aria-live="polite">
+          <p class="big-price"><span id="commPrice">$88</span><small id="commUnit">/month</small></p>
+          <p class="price-note" id="commNote">Founding member rate</p>
+        </div>
+        <div class="lock"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg><p><b>Lock in the founding rate.</b> Join now and keep this price for as long as you stay. The rate goes up as the Community grows.</p></div>
+        <a class="btn btn--white btn--lg" href="#" data-ph-link="Community checkout">Join the Community</a>
+        <p class="fine"><span class="ph">[Cancel anytime. Access ends when your membership does.]</span></p>
+      </div>
+    </div></article>
+
+    <h3 class="pieces-title">Or start with one piece</h3>
+    <div class="pieces">
+      <article class="gcard piece"><div class="gcard__in">
+        <div class="piece-img"><img src="assets/img/design/blueprint-book.webp" alt="The Marketing Blueprint workbook" width="723" height="900"></div>
+        <div>
+          <p class="kicker">Included with the Community</p>
+          <h4>The FirstSearch Blueprint</h4>
+          <p>The exact SOPs, worksheets and checklists we use with every client.</p>
+          <div class="piece-row"><span class="amt">$8</span><a class="btn" href="#" data-ph-link="Blueprint checkout">Get the Blueprint</a></div>
+        </div>
+      </div></article>
+      <article class="gcard piece"><div class="gcard__in">
+        <div class="piece-img"><div class="book-ph" aria-hidden="true"><small>Coming soon</small><span class="ph">[Book title]</span><small>Chris Mitchell</small></div></div>
+        <div>
+          <p class="kicker">Coming soon</p>
+          <h4><span class="ph">[Book title]</span></h4>
+          <p>The FirstSearch Framework, told through real stories. Join the waitlist to hear first.</p>
+          <form class="inline-form" id="wl-form" novalidate>
+            <label for="book-email" class="vh">Email address</label>
+            <input id="book-email" type="email" placeholder="you@business.com" autocomplete="email">
+            <button type="submit" class="btn btn--navy">Join the waitlist</button>
+          </form>
+          <p class="ok" id="wl-done" role="status" hidden>You're on the list. We'll email you when it's out.</p>
+        </div>
+      </div></article>
+    </div>
+  </div>
+</section>
+
+<!-- COACHING + WORKSHOPS -->
+<section class="bg-geo" id="coaching" aria-labelledby="coach-title" style="padding-bottom: clamp(56px, 6vw, 90px)">
+  <div class="coach-wrap on-dark">
+    <div class="e-con">
+      <div class="sec-head">
+        <span class="eyebrow">2 · Build it with us</span>
+        <h2 class="h2" id="coach-title">Your business. Your plan. A coach in your corner.</h2>
+      </div>
+
+      <article class="gcard coach"><div class="gcard__in">
+        <div class="coach-img">
+          <span class="live"><i></i>1:1 strategy session</span>
+          <img src="assets/img/design/chris-cutout.webp" alt="Chris Mitchell, BeFirst coach" width="765" height="867">
+        </div>
+        <div class="coach-body">
+          <img class="coach-logo" src="assets/img/design/befirst-coaching.png" alt="BeFirst Marketing Coaching" width="498" height="199">
+          <div>
+            <h3>BeFirst Coaching</h3>
+            <p>1:1 strategy sessions with our team, built entirely around your business. No course required. Every session works on your numbers, your plan and what's next.</p>
+          </div>
+          <div class="seg" role="group" aria-label="Meeting schedule">
+            <button type="button" data-group="coach" data-val="monthly" aria-pressed="true">Meet monthly</button>
+            <button type="button" data-group="coach" data-val="biweekly" aria-pressed="false">Meet every two weeks</button>
+          </div>
+          <div class="coach-price price-flip" id="coach-flip" aria-live="polite">
+            <p class="big-price"><span id="coachPrice">$500</span><small>/month</small></p>
+            <p id="coachCadence">One 1:1 session a month</p>
+          </div>
+          <ul class="checks2">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><span class="ph">[XX]</span>-minute 1:1 strategy sessions</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>A personalized action plan after each session</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Accountability on what you committed to</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><span class="ph">[Between-session support, e.g. email or chat]</span></span></li>
+          </ul>
+          <p class="saver"><b>Coaching clients save 50% on the Community.</b> Add the course, Blueprint and weekly content for $44/month.</p>
+          <div><a class="btn btn--lg" href="#" data-ph-link="coaching call calendar">Book a coaching call</a></div>
+        </div>
+      </div></article>
+
+      <div class="ws-head">
+        <div>
+          <h3>Hands-on workshops</h3>
+          <p>Work on your own business with our team in the room, online or in Exeter.</p>
+        </div>
+        <a class="link-u" href="#" data-ph-link="Events page">See the full calendar</a>
+      </div>
+      <div class="ws-grid">
+        <article class="gcard ws"><div class="gcard__in">
+          <div class="ws-top"><div class="datebox"><p class="m">Oct</p><p class="d">27</p></div><span class="stage"><span class="dot" style="background:#7CD2D3" aria-hidden="true"></span>FirstBrand</span></div>
+          <h4>Build a brand people trust on sight</h4>
+          <p class="meta">Online · 12:00 to 1:30 PM · <span class="ph">[Price]</span></p>
+          <a class="link-u" href="#" data-ph-link="registration page">Reserve your seat</a>
+        </div></article>
+        <article class="gcard ws"><div class="gcard__in">
+          <div class="ws-top"><div class="datebox"><p class="m">Nov</p><p class="d">12</p></div><span class="stage"><span class="dot" style="background:#26275B;box-shadow:0 0 0 2px #CFCFE3" aria-hidden="true"></span>Full Framework</span></div>
+          <h4>BeFirst Live: the full-day framework workshop</h4>
+          <p class="meta">In person, Exeter · 9:00 AM to 4:00 PM · <span class="ph">[Price]</span></p>
+          <a class="link-u" href="#" data-ph-link="registration page">Reserve your seat</a>
+        </div></article>
+        <article class="gcard ws"><div class="gcard__in">
+          <div class="ws-top"><div class="datebox"><p class="m">Nov</p><p class="d">17</p></div><span class="stage"><span class="dot" style="background:#2E4DA5" aria-hidden="true"></span>FirstChoice</span></div>
+          <h4>Turn your website into a lead machine</h4>
+          <p class="meta">In person, Exeter · 8:30 to 10:30 AM · <span class="ph">[Price]</span></p>
+          <a class="link-u" href="#" data-ph-link="registration page">Reserve your seat</a>
+        </div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIP -->
+<section class="section bg-geo" id="partnership" aria-labelledby="part-title" style="padding-top: clamp(48px, 5vw, 70px)">
+  <div class="e-con">
+    <div class="sec-head">
+      <span class="eyebrow">3 · Let us run it</span>
+      <h2 class="h2">Hand it off. Get results in writing.</h2>
+    </div>
+    <div class="part">
+      <div class="part-main on-dark">
+        <div class="part-team"><img src="assets/img/design/team-group.webp" alt="The First Search Marketing team" width="1300" height="645"></div>
+        <span class="eyebrow">Partner with our team</span>
+        <h2 id="part-title">Your marketing, run by our team. Results guaranteed in writing.</h2>
+        <p>We work with 25 businesses. That's it. Every partner gets real strategy, senior attention and a team that knows their business.</p>
+        <div class="chips">
+          <span class="chip"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Fixed monthly retainer</span>
+          <span class="chip"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Six-month partnership</span>
+          <span class="chip"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Guaranteed results</span>
+        </div>
+        <div class="part-cta">
+          <a class="btn btn--white btn--lg" href="#" data-ph-link="strategy call calendar">Book your strategy call</a>
+          <p>From <span class="ph">[$X,XXX]</span>/month · <span class="ph">[X]</span> of 25 spots open</p>
+        </div>
+      </div>
+      <div class="part-side">
+        <div class="gcard seal-card"><div class="gcard__in">
+          <img src="assets/img/design/guarantee-seal.webp" alt="FirstSearch Guarantee: results in writing" width="481" height="479">
+          <div><h3>The FirstSearch Guarantee</h3><p>If we don't deliver <span class="ph">the lead growth in your roadmap</span>, <span class="ph">we keep working at no cost until we do</span>.</p></div>
+        </div></div>
+        <figure class="gcard quote-card"><div class="gcard__in">
+          <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+          <blockquote>"We contacted Chris at First Search after a bad experience with a national brand company. He was able to fix our website and get our Google profile up and running. Chris and his team are very professional and always did what was right for our success."</blockquote>
+          <figcaption><b>Steven McGibbon</b> · Posted on Google</figcaption>
+        </div></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-geo" aria-labelledby="faq-title" style="padding-top: 0; padding-bottom: clamp(170px, 16vw, 230px)">
+  <div class="e-con">
+    <div class="sec-head center-head"><span class="eyebrow">FAQ</span><h2 class="h2" id="faq-title">Questions before you choose</h2></div>
+    <div class="faq-list">
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a0" id="q0"><span class="plus" aria-hidden="true"></span>Which path is right for me?</button></h3><div class="qa-a" id="a0" role="region" aria-labelledby="q0"><div><p>It comes down to how much of the work you want to do yourself. If you like to learn and implement, start with the Community. If you want an expert working through your plan with you, choose coaching. If you want it done for you with results guaranteed, book a strategy call. The Framework Quiz will also recommend a path based on your score.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a1" id="q1"><span class="plus" aria-hidden="true"></span>What happens if I cancel my Community membership?</button></h3><div class="qa-a" id="a1" role="region" aria-labelledby="q1"><div><p><span class="ph">[CONFIRM]</span> You keep access through the end of your billing period. After that, access to the course, Blueprint and weekly content ends, and if you rejoin later it will be at the current rate, not your founding rate.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a2" id="q2"><span class="plus" aria-hidden="true"></span>Will my Community price go up?</button></h3><div class="qa-a" id="a2" role="region" aria-labelledby="q2"><div><p>Not while you stay a member. The rate you join at is locked in. The price goes up for new members as the Community grows.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a3" id="q3"><span class="plus" aria-hidden="true"></span>Is the Community included with coaching?</button></h3><div class="qa-a" id="a3" role="region" aria-labelledby="q3"><div><p>No. Coaching is 1:1 time built entirely around your business, so it works on its own. Coaching clients can add the Community at 50% off if they want the course, Blueprint and weekly content too.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a4" id="q4"><span class="plus" aria-hidden="true"></span>What is the difference between a webinar and a workshop?</button></h3><div class="qa-a" id="a4" role="region" aria-labelledby="q4"><div><p>Webinars are live trainings where you watch and learn, and they are included with the Community. Workshops are hands-on: you work on your own business with our team guiding you, and you leave with something finished.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a5" id="q5"><span class="plus" aria-hidden="true"></span>Can I switch paths later?</button></h3><div class="qa-a" id="a5" role="region" aria-labelledby="q5"><div><p>Yes. Plenty of owners start in the Community, add coaching when they want more guidance, and move to a partnership when they are ready to hand it off.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a6" id="q6"><span class="plus" aria-hidden="true"></span>What is your refund policy?</button></h3><div class="qa-a" id="a6" role="region" aria-labelledby="q6"><div><p><span class="ph">[PLACEHOLDER: refund terms for the Community, coaching and the Blueprint]</span></p></div></div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer on-dark">
+  <div class="e-con final">
+    <div class="final-in">
+      <div>
+        <h2>Pick your path. Start this week.</h2>
+        <p>Not sure yet? The quiz will point you in the right direction.</p>
+      </div>
+      <div class="btns">
+        <a class="btn btn--white btn--lg" href="#" data-ph-link="Framework Quiz">Take the Framework Quiz</a>
+        <a class="btn btn--outline-w btn--lg" href="#" data-ph-link="strategy call calendar">Book your strategy call</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="e-con foot-grid">
+    <div class="foot-brand">
+      <img src="assets/img/logo-white.png" alt="First Search Marketing" width="576" height="196">
+      <p>Family-owned digital marketing in Exeter, NH.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook" data-ph-link="Facebook profile"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+        <a href="#" aria-label="Instagram" data-ph-link="Instagram profile"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        <a href="#" aria-label="LinkedIn" data-ph-link="LinkedIn profile"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+      </div>
+    </div>
+    <nav aria-labelledby="f-services">
+      <h3 id="f-services">Services</h3>
+      <ul class="foot-links">
+        <li><a href="#" data-ph-link="service page">Digital Advertising</a></li>
+        <li><a href="#" data-ph-link="service page">Digital Analytics</a></li>
+        <li><a href="#" data-ph-link="service page">CRM Setup</a></li>
+        <li><a href="#" data-ph-link="service page">Email Marketing</a></li>
+        <li><a href="#" data-ph-link="service page">Lead Generation</a></li>
+        <li><a href="#" data-ph-link="service page">SEO</a></li>
+        <li><a href="#" data-ph-link="service page">Social Media</a></li>
+        <li><a href="#" data-ph-link="service page">Web Design and Development</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h3>Contact</h3>
+      <ul class="foot-contact">
+        <li>92 Portsmouth Ave Ste #21,<br>Exeter, NH 03833</li>
+        <li><a href="tel:+16035188090">603-518-8090</a></li>
+        <li><a href="mailto:chris@befirstsearch.com">chris@befirstsearch.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="e-con foot-bottom">
+    <span>© 2026 First Search Marketing LLC.</span>
+    <nav aria-label="Legal"><a href="#" data-ph-link="privacy policy">Privacy policy</a><a href="#" data-ph-link="terms">Terms</a></nav>
+  </div>
+  <div class="foot-bar" aria-hidden="true"></div>
+</footer>
+
+<button class="ph-toggle" type="button" id="ph-toggle" aria-pressed="false"><span class="dot" aria-hidden="true"></span>Highlight placeholders</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+
+  /* Shared chrome */
+  const header = $('#site-header');
+  const onScroll = () => header.classList.toggle('is-scrolled', scrollY > 30);
+  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+  const mBtn = $('.menu-btn'), mNav = $('#mobile-nav');
+  const setMenu = open => {
+    document.documentElement.style.setProperty('--mh', header.getBoundingClientRect().bottom + 'px');
+    mNav.classList.toggle('is-open', open);
+    mBtn.setAttribute('aria-expanded', open);
+    mBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    $('use', mBtn).setAttribute('href', open ? '#i-close' : '#i-menu');
+    document.body.classList.toggle('menu-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  mBtn.addEventListener('click', () => setMenu(!mNav.classList.contains('is-open')));
+  $$('a', mNav).forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && mNav.classList.contains('is-open')) { setMenu(false); mBtn.focus(); } });
+  matchMedia('(min-width: 1025px)').addEventListener('change', e => e.matches && setMenu(false));
+  const toast = $('#toast'); let tt;
+  const showToast = m => { toast.textContent = m; toast.classList.add('is-visible'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('is-visible'), 2600); };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-ph-link]'); if (!a) return;
+    e.preventDefault(); setMenu(false);
+    showToast('Prototype: this will link to the ' + a.dataset.phLink + '.');
+  });
+  const phBtn = $('#ph-toggle');
+  phBtn.addEventListener('click', () => phBtn.setAttribute('aria-pressed', document.body.classList.toggle('show-ph')));
+
+  /* Price toggles */
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const flip = (box, fn) => { if (RM) return fn(); box.classList.add('is-flipping'); setTimeout(() => { fn(); box.classList.remove('is-flipping'); }, 150); };
+  const set = (id, t) => { $('#' + id).textContent = t; };
+  $$('.seg button').forEach(b => b.addEventListener('click', () => {
+    const g = b.dataset.group;
+    if (b.getAttribute('aria-pressed') === 'true') return;
+    $$(`.seg button[data-group="${g}"]`).forEach(x => x.setAttribute('aria-pressed', x === b));
+    if (g === 'comm') {
+      const a = b.dataset.val === 'annual';
+      flip($('#comm-flip'), () => { set('commPrice', a ? '$880' : '$88'); set('commUnit', a ? '/year' : '/month'); set('commNote', a ? 'Two months free, billed once a year' : 'Founding member rate'); });
+    } else {
+      const w = b.dataset.val === 'biweekly';
+      flip($('#coach-flip'), () => { set('coachPrice', w ? '$1,000' : '$500'); set('coachCadence', w ? 'Two 1:1 sessions a month' : 'One 1:1 session a month'); });
+    }
+  }));
+
+  /* Book waitlist */
+  $('#wl-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const inp = $('#book-email');
+    if (!inp.value || !inp.checkValidity()) { showToast('Please enter a valid email address.'); inp.focus(); return; }
+    e.target.hidden = true; $('#wl-done').hidden = false;
+  });
+
+  /* FAQ: one open at a time; first open by default */
+  const qas = $$('.qa');
+  qas.forEach(qa => {
+    const q = $('.qa-q', qa);
+    q.addEventListener('click', () => {
+      const open = q.getAttribute('aria-expanded') !== 'true';
+      qas.forEach(o => { o.classList.remove('is-open'); $('.qa-q', o).setAttribute('aria-expanded', 'false'); });
+      if (open) { qa.classList.add('is-open'); q.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+  $('.qa-q', qas[0]).click();
+})();
+</script>
+</body>
+</html>
