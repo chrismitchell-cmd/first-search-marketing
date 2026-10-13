@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Events &amp; Resources | First Search Marketing</title>
+<meta name="description" content="Workshops, live trainings, articles, client stories, podcast episodes and videos from First Search Marketing in Exeter, NH.">
+<meta name="theme-color" content="#26275B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+
+<!--
+  ELEMENTOR BUILD NOTES (Events + Resources)
+  - Same Site Settings as the homepage: Primary #26275B · Secondary #4E98D8 · Text #221C1B · Accent #7CD2D3 · Royal #2E4DA5 · BG #F8F7F7.
+    Brand gradient 90°: #7CD2D3 → #528FC0 → #2E4DA5. Fonts: Poppins (headings/body), Inter (nav, UI labels).
+  - Header + footer = the same Theme Builder templates as the homepage.
+  - Stage colours (match the framework wheel): Full #26275B · Brand #7CD2D3 · Thought #4E98D8 · Choice #2E4DA5 · Referral #9E9AAE.
+  - EVENTS: store workshops as a custom post type (ACF fields: date, time, format, location, price, seats,
+    stage, outcomes) or use The Events Calendar. "Next up" = Loop Item template #1 (featured), the rest =
+    Loop Grid with a list-style Loop Item. Stage/format filters = Elementor Pro Taxonomy Filter widget.
+  - RESOURCES: Posts with a "Format" taxonomy (Blog / Case study / Podcast / Video) and a "Service" taxonomy.
+    Grid = Loop Grid + Taxonomy Filter (format tabs + service tags) + Search widget; "Load more" = Loop Grid
+    pagination type "Load on click". Featured case study = a pinned post shown above the grid.
+  - Newsletter + notify-me forms = Elementor Pro Form widget → GHL webhook.
+-->
+
+<style>
+/* ==========================================================================
+   Global tokens (shared with the homepage)
+   ========================================================================== */
+:root {
+  --navy: #26275B; --navy-deep: #1D1E4A; --blue: #4E98D8; --blue-ink: #2F78BA;
+  --teal: #7CD2D3; --mid: #528FC0; --royal: #2E4DA5;
+  --ink: #221C1B; --body: #3A3650; --muted: #6A6880; --bg: #F8F7F7; --white: #FFFFFF;
+  --line: #E3E2EA; --soft: #F1F0F6; --ice: #EAF4FB; --star: #F4B400; --ph: #FFE45C;
+  --grad: linear-gradient(90deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%);
+  --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%);
+  --font: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-ui: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --content: 1240px; --pad-x: 24px;
+  --shadow-card: 0 18px 40px -18px rgba(38, 39, 91, .28);
+  --shadow-btn: 0 14px 30px -12px rgba(46, 77, 165, .55);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--font); font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font); color: var(--navy); line-height: 1.12; letter-spacing: -0.015em; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+.on-dark :focus-visible { outline-color: var(--white); }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[hidden] { display: none !important; }
+.icon { width: 24px; height: 24px; flex: none; }
+.e-con { width: 100%; max-width: calc(var(--content) + var(--pad-x) * 2); margin-inline: auto; padding-inline: var(--pad-x); }
+.bg-geo { background: var(--bg) url("assets/img/design/bg-geometric.jpg") center / cover no-repeat; }
+.eyebrow { display: block; margin-bottom: 14px; font-weight: 600; font-size: 17px; color: var(--blue-ink); }
+.on-dark .eyebrow { color: var(--teal); }
+.h1 { font-weight: 700; font-size: clamp(40px, 5.2vw, 72px); line-height: 1.02; letter-spacing: -0.025em; }
+.h1 span { color: var(--blue); }
+.lede { margin-top: 22px; font-size: clamp(18px, 1.7vw, 23px); line-height: 1.45; color: var(--ink); max-width: 36ch; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px;
+  padding: 12px 24px; border: 0; border-radius: 10px; cursor: pointer;
+  font-family: var(--font); font-weight: 500; font-size: 17px; line-height: 1.2; text-decoration: none; text-align: center;
+  color: var(--white); background: var(--grad); background-size: 140% 100%; background-position: 0 0;
+  box-shadow: var(--shadow-btn); text-shadow: 0 1px 2px rgba(20, 30, 80, .3);
+  transition: background-position .35s ease, transform .2s ease, box-shadow .2s ease;
+}
+.btn:hover { background-position: 100% 0; transform: translateY(-2px); }
+.btn--lg { min-height: 56px; padding: 15px 30px; font-size: 19px; }
+.btn--navy { background: var(--navy); text-shadow: none; box-shadow: 0 14px 28px -14px rgba(38, 39, 91, .7); }
+.btn--navy:hover { background: var(--royal); }
+.btn--white { background: var(--white); color: var(--navy); text-shadow: none; box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .45); }
+.btn--white:hover { color: var(--royal); }
+.btn--ghost { background: var(--white); color: var(--navy); text-shadow: none; box-shadow: inset 0 0 0 2px var(--teal); }
+.btn--ghost:hover { box-shadow: inset 0 0 0 2px var(--royal); color: var(--royal); }
+.link-u {
+  font-weight: 500; font-style: italic; color: var(--navy); background: none; border: 0; padding: 0; cursor: pointer;
+  text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 3px; text-underline-offset: 6px;
+}
+.link-u:hover { color: var(--royal); text-decoration-color: var(--royal); }
+.on-dark .link-u { color: var(--white); }
+
+/* Gradient-border card */
+.gcard { --bw: 6px; --r: 32px; padding: var(--bw); border-radius: var(--r); background: var(--grad-diag); box-shadow: var(--shadow-card); }
+.gcard__in { height: 100%; background: var(--white); border-radius: calc(var(--r) - var(--bw)); }
+
+/* Placeholders + toast (review aids) */
+.ph { border-radius: 3px; transition: background-color .2s ease; }
+.show-ph .ph { background: var(--ph); color: var(--ink) !important; box-shadow: 0 0 0 2px var(--ph); }
+.ph-toggle { position: fixed; left: 14px; bottom: 14px; z-index: 250; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); background: rgba(29, 30, 74, .92); color: #fff; font: 600 13px/1 var(--font-ui); box-shadow: 0 8px 20px -8px rgba(0,0,0,.4); }
+.ph-toggle .dot { width: 9px; height: 9px; background: #8A86A0; }
+.ph-toggle[aria-pressed="true"] { background: var(--ph); color: var(--ink); }
+.ph-toggle[aria-pressed="true"] .dot { background: var(--ink); }
+.menu-open .ph-toggle { display: none; }
+.toast { position: fixed; left: 50%; bottom: 22px; z-index: 260; transform: translate(-50%, 16px); max-width: min(420px, calc(100% - 32px)); padding: 12px 18px; border-radius: 12px; background: var(--navy-deep); color: #fff; font: 500 14.5px/1.4 var(--font-ui); opacity: 0; pointer-events: none; transition: .2s ease; }
+.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+/* Review bar (page switcher, mockup only) */
+.review-bar { background: var(--navy-deep); color: #fff; font-family: var(--font-ui); font-size: 14px; }
+.review-bar .e-con { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding-block: 10px; }
+.review-bar .tabs { display: flex; gap: 6px; }
+.review-bar button { min-height: 38px; padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,.25); background: transparent; color: #DADAF0; font-weight: 600; font-size: 14px; }
+.review-bar button[aria-pressed="true"] { background: var(--white); color: var(--navy); border-color: var(--white); }
+.review-bar .note { color: #A9A8C8; }
+
+/* ==========================================================================
+   Header (same as homepage)
+   ========================================================================== */
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--white); transition: box-shadow .25s ease; }
+.site-header.is-scrolled { box-shadow: 0 10px 30px -18px rgba(38, 39, 91, .45); }
+.header-row { display: flex; align-items: center; gap: 32px; height: 100px; transition: height .25s ease; }
+.site-header.is-scrolled .header-row { height: 80px; }
+.logo img { height: 56px; width: auto; transition: height .25s ease; }
+.site-header.is-scrolled .logo img { height: 46px; }
+.nav { margin-left: auto; }
+.nav ul { display: flex; gap: clamp(18px, 2.2vw, 34px); }
+.nav a { font-family: var(--font-ui); font-size: 19px; color: var(--navy); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; transition: .15s ease; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--royal); border-bottom-color: var(--teal); }
+.nav a[aria-current="page"] { font-weight: 600; }
+.header-cta { font-size: 19px; padding: 11px 26px; }
+.stripe { height: 12px; background: var(--grad); }
+.menu-btn { display: none; margin-left: auto; width: 48px; height: 48px; border-radius: 12px; border: 1px solid var(--line); background: var(--white); color: var(--navy); place-items: center; }
+.mobile-nav { position: fixed; inset: 0; top: var(--mh, 88px); z-index: 99; display: flex; flex-direction: column; padding: 16px 24px 28px; background: var(--white); visibility: hidden; opacity: 0; transform: translateY(-8px); transition: .2s ease; }
+.mobile-nav.is-open { visibility: visible; opacity: 1; transform: none; }
+.mobile-nav a.m { padding: 18px 0; border-bottom: 1px solid var(--line); font-weight: 600; font-size: 22px; color: var(--navy); text-decoration: none; }
+.mobile-nav a.m[aria-current="page"] { color: var(--royal); }
+.mobile-nav .btn { margin-top: auto; width: 100%; }
+
+/* ==========================================================================
+   EVENTS
+   ========================================================================== */
+.ev-hero { padding-block: clamp(64px, 7vw, 104px) clamp(56px, 6vw, 88px); }
+.ev-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 48px; align-items: end; }
+.ev-count { --bw: 8px; --r: 40px; }
+.ev-count .gcard__in { padding: 34px 32px; display: grid; gap: 8px; }
+.ev-count b { font-weight: 700; font-size: 84px; line-height: .95; letter-spacing: -0.04em; background: var(--grad-diag); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ev-count span { font-size: 19px; line-height: 1.35; color: var(--navy); }
+.ev-count .link-u { margin-top: 10px; justify-self: start; font-size: 17px; }
+
+/* Filter band (navy, like the homepage trust band) */
+.filters { color: var(--white); background: radial-gradient(260px 200px at 0% 50%, rgba(78, 152, 216, .75), transparent 70%), radial-gradient(260px 200px at 100% 50%, rgba(78, 152, 216, .75), transparent 70%), var(--navy); border-bottom: 3px solid var(--mid); position: sticky; top: 80px; z-index: 40; }
+.filters .e-con { display: grid; gap: 16px; padding-block: 24px; }
+.pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.pill { display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 10px 18px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, .35); background: rgba(255, 255, 255, .06); color: var(--white); font-size: 15.5px; font-weight: 500; transition: .2s ease; }
+.pill:hover { border-color: var(--teal); }
+.pill .n { font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: rgba(255, 255, 255, .14); }
+.pill[aria-pressed="true"] { background: var(--white); color: var(--navy); border-color: var(--white); }
+.pill[aria-pressed="true"] .n { background: var(--navy); color: var(--white); }
+.pill .dot { box-shadow: 0 0 0 2px rgba(255, 255, 255, .7); }
+.row-between { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+.seg { display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: rgba(255, 255, 255, .1); }
+.seg button { min-height: 40px; padding: 8px 16px; border: 0; border-radius: 9px; background: transparent; color: rgba(255, 255, 255, .85); font-family: var(--font-ui); font-size: 14.5px; font-weight: 600; }
+.seg button[aria-pressed="true"] { background: var(--grad); color: var(--white); box-shadow: 0 6px 14px -8px rgba(0,0,0,.5); }
+.count-label { font-family: var(--font-ui); font-size: 15px; color: rgba(255, 255, 255, .85); }
+
+.ev-main { display: grid; gap: 64px; padding-block: 64px 100px; }
+
+/* Featured "next up" */
+.feat { --bw: 8px; --r: 48px; }
+.feat .gcard__in { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); overflow: hidden; }
+.feat-l { padding: clamp(28px, 4vw, 48px); display: grid; gap: 22px; align-content: start; }
+.feat-r { position: relative; padding: clamp(28px, 4vw, 48px); background: var(--navy); color: var(--white); display: grid; gap: 18px; align-content: start; overflow: hidden; }
+.feat-r::after { content: ""; position: absolute; right: -120px; bottom: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(78, 152, 216, .7), transparent 70%); pointer-events: none; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 600; background: var(--soft); color: var(--navy); }
+.chip--next { background: var(--grad); color: var(--white); }
+.feat h2 { font-weight: 700; font-size: clamp(28px, 3vw, 40px); line-height: 1.1; }
+.feat .desc { font-size: 17.5px; line-height: 1.6; color: var(--body); max-width: 60ch; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding-block: 20px; border-block: 1.5px solid var(--navy); }
+.facts > div { padding: 0 18px; border-left: 2px solid var(--line); }
+.facts > div:first-child { padding-left: 0; border-left: 0; }
+.facts .k { font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--muted); }
+.facts .v { margin-top: 4px; font-weight: 600; color: var(--navy); }
+.facts .s { margin-top: 2px; font-size: 14.5px; color: var(--body); }
+.bigdate { position: relative; z-index: 1; display: flex; align-items: flex-end; gap: 14px; }
+.bigdate b { font-weight: 800; font-size: 104px; line-height: .85; letter-spacing: -0.05em; background: linear-gradient(180deg, #8ED8F0, var(--blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.bigdate .m { display: block; font-weight: 600; font-size: 22px; }
+.bigdate .w { display: block; font-size: 15px; color: rgba(255, 255, 255, .75); }
+.feat-r h3 { position: relative; z-index: 1; margin-top: 10px; color: var(--teal); font-weight: 600; font-size: 18px; }
+.checks { position: relative; z-index: 1; display: grid; gap: 14px; }
+.checks li { display: flex; gap: 12px; font-size: 16.5px; line-height: 1.45; }
+.checks .icon { width: 22px; height: 22px; color: var(--teal); }
+
+/* List of more workshops */
+.more h2 { font-weight: 700; font-size: clamp(28px, 3vw, 40px); margin-bottom: 26px; }
+.ev-list { display: grid; gap: 18px; }
+.ev-item { background: var(--white); border-radius: 26px; border: 2px solid var(--teal); box-shadow: 0 10px 24px -16px rgba(38, 39, 91, .35); padding: 22px 26px; transition: box-shadow .2s ease; }
+.ev-item:hover { box-shadow: var(--shadow-card); }
+.ev-row { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 26px; align-items: center; }
+.datebox { width: 96px; padding: 12px 0 14px; border-radius: 18px; text-align: center; color: var(--white); background: var(--navy); }
+.datebox .m { font-size: 13.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--teal); }
+.datebox .d { font-weight: 700; font-size: 38px; line-height: 1; margin-top: 2px; }
+.datebox .w { font-size: 12px; color: rgba(255, 255, 255, .75); margin-top: 4px; }
+.ev-info { display: grid; gap: 6px; }
+.stage { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 13.5px; font-weight: 600; color: var(--body); }
+.ev-info h3 { font-weight: 600; font-size: 21px; line-height: 1.25; color: var(--ink); }
+.ev-info .meta { font-family: var(--font-ui); font-size: 14.5px; color: var(--muted); }
+.ev-act { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px; }
+.price { text-align: right; margin-right: 6px; font-family: var(--font-ui); }
+.price b { display: block; font-family: var(--font); font-size: 17px; color: var(--navy); }
+.price span { font-size: 13px; color: var(--muted); }
+.ev-details { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.ev-details > div { overflow: hidden; }
+.ev-item.is-open .ev-details { grid-template-rows: 1fr; }
+.ev-details-in { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px; margin-top: 22px; padding: 24px 28px; border-radius: 18px; background: var(--soft); }
+.ev-details-in p { font-size: 16.5px; line-height: 1.65; color: var(--body); }
+.ev-details-in b { display: block; margin-bottom: 10px; color: var(--navy); }
+.ev-details-in li { display: flex; gap: 10px; padding: 3px 0; font-size: 15.5px; }
+.ev-details-in .icon { width: 19px; height: 19px; margin-top: 3px; color: var(--blue-ink); }
+.ev-item .btn { min-height: 44px; padding: 10px 20px; font-size: 16px; }
+.btn[aria-expanded] .chev { width: 16px; height: 16px; transition: transform .25s ease; }
+.btn[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+/* Empty state */
+.empty { --bw: 6px; --r: 40px; }
+.empty .gcard__in { padding: clamp(36px, 5vw, 64px) 28px; text-align: center; display: grid; justify-items: center; gap: 18px; }
+.empty h2 { font-weight: 700; font-size: clamp(24px, 2.6vw, 34px); max-width: 24ch; }
+.empty p { font-size: 17px; color: var(--body); max-width: 52ch; }
+.inline-form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; width: 100%; max-width: 500px; }
+.final-in > *, .feat .gcard__in > *, .duo-grid > *, .ev-hero-grid > *, .res-hero-grid > * { min-width: 0; }
+.inline-form input { min-width: 0; flex: 1 1 200px; min-height: 52px; padding: 12px 16px; border: 2px solid var(--line); border-radius: 10px; font-size: 16px; background: var(--white); }
+.inline-form input:focus { outline: none; border-color: var(--teal); }
+.ok { font-weight: 600; color: var(--blue-ink); }
+
+/* Two panels (navy + gradient-border) */
+.duo { padding-block: clamp(72px, 8vw, 120px); }
+.duo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: stretch; }
+.panel-dark { position: relative; overflow: hidden; border-radius: 48px; padding: clamp(32px, 4vw, 52px); background: radial-gradient(420px 320px at 0% 100%, rgba(91, 186, 232, .8), transparent 70%), var(--navy); color: var(--white); display: grid; gap: 16px; align-content: start; justify-items: start; }
+.panel-dark h2 { color: var(--white); font-weight: 700; font-size: clamp(26px, 2.6vw, 36px); }
+.panel-dark p { font-size: 17.5px; color: rgba(255, 255, 255, .88); }
+.panel-light { --bw: 8px; --r: 48px; }
+.panel-light .gcard__in { padding: clamp(32px, 4vw, 52px); display: grid; gap: 16px; align-content: start; justify-items: start; }
+.panel-light h2 { font-weight: 700; font-size: clamp(26px, 2.6vw, 36px); }
+.panel-light p { font-size: 17.5px; color: var(--body); }
+.panel-dark .btn, .panel-light .btn { margin-top: 10px; }
+
+/* ==========================================================================
+   RESOURCES
+   ========================================================================== */
+.res-hero { padding-top: clamp(64px, 7vw, 104px); }
+.res-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 48px; align-items: end; padding-bottom: 40px; }
+.search { --bw: 4px; --r: 18px; }
+.search .gcard__in { position: relative; }
+.search .icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+.search input { width: 100%; min-height: 60px; padding: 14px 18px 14px 54px; border: 0; border-radius: 14px; font-size: 17px; background: transparent; }
+.search input:focus { outline: none; }
+.search:focus-within { box-shadow: 0 0 0 4px rgba(124, 210, 211, .45), var(--shadow-card); }
+.cats-band { background: var(--navy); border-bottom: 3px solid var(--mid); position: sticky; top: 80px; z-index: 40; }
+.cats { display: flex; flex-wrap: wrap; gap: 4px; }
+.cat { min-height: 60px; padding: 14px 20px; border: 0; border-bottom: 4px solid transparent; background: transparent; color: rgba(255, 255, 255, .78); font-size: 16.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 10px; }
+.cat:hover { color: var(--white); }
+.cat .n { font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: rgba(255, 255, 255, .14); }
+.cat[aria-pressed="true"] { color: var(--white); border-bottom-color: var(--teal); }
+.cat[aria-pressed="true"] .n { background: var(--grad); }
+
+.res-body { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 44px; align-items: start; padding-block: 56px 100px; }
+.side { --bw: 4px; --r: 28px; position: sticky; top: 168px; }
+.side .gcard__in { padding: 26px 22px; display: grid; gap: 24px; }
+.side-head { display: flex; align-items: center; justify-content: space-between; }
+.side-head h2 { font-weight: 700; font-size: 19px; }
+.textbtn { border: 0; background: transparent; color: var(--blue-ink); font-weight: 600; font-size: 14.5px; text-decoration: underline; text-underline-offset: 3px; min-height: 36px; padding: 0 4px; }
+.res-groups { display: grid; gap: 24px; }
+.side-toggle { display: none; }
+.grp { display: grid; gap: 10px; }
+.grp-label { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--navy); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { min-height: 38px; padding: 7px 13px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--white); color: var(--ink); font-family: var(--font-ui); font-size: 13.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; transition: .15s ease; }
+.tag:hover { border-color: var(--teal); }
+.tag .n { font-size: 11.5px; color: var(--muted); }
+.tag[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.tag[aria-pressed="true"] .n { color: var(--teal); }
+
+.res-main { display: grid; gap: 28px; min-width: 0; }
+.rfeat { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); border-radius: 40px; background: var(--navy); color: var(--white); }
+.rfeat-l { position: relative; padding: 0; min-height: 300px; background: var(--navy-deep); }
+.rfeat-l img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% 0%; }
+.rfeat-l .metric { position: absolute; left: 32px; bottom: 30px; right: 24px; }
+.rfeat-l b { display: block; font-weight: 800; font-size: 76px; line-height: .95; letter-spacing: -0.03em; color: #8ED8F0; }
+.rfeat-l::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(29, 30, 74, .1) 0%, rgba(29, 30, 74, .55) 45%, var(--navy-deep) 82%); }
+.rfeat-l .metric { z-index: 1; }
+.rfeat-l span { display: block; font-size: 17px; }
+.rfeat-l small { display: block; margin-top: 10px; font-size: 14px; color: rgba(255, 255, 255, .78); }
+.rfeat-r { padding: clamp(28px, 3.6vw, 44px); display: grid; gap: 14px; align-content: center; justify-items: start; background: radial-gradient(360px 260px at 100% 100%, rgba(78, 152, 216, .6), transparent 70%); }
+.badge { padding: 6px 14px; border-radius: 999px; background: var(--grad); font-size: 13.5px; font-weight: 600; color: var(--white); }
+.rfeat-r h2 { color: var(--white); font-weight: 700; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.15; }
+.rfeat-r p { font-size: 17px; color: rgba(255, 255, 255, .88); }
+.rfeat-r .btn { margin-top: 8px; }
+
+.res-tools .count-label { color: var(--muted); }
+.sortbox { display: flex; align-items: center; gap: 10px; font-family: var(--font-ui); font-size: 14.5px; color: var(--muted); }
+.sortbox select { min-height: 44px; padding: 8px 14px; border: 2px solid var(--line); border-radius: 10px; font-size: 14.5px; background: var(--white); color: var(--navy); }
+.active { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-family: var(--font-ui); font-size: 14px; color: var(--muted); }
+.achip { min-height: 36px; padding: 6px 12px; border-radius: 999px; border: 0; background: var(--ice); color: var(--navy); font-family: var(--font-ui); font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+.achip .icon { width: 13px; height: 13px; }
+.achip:hover { background: #D7EAF7; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 26px; }
+.card { --bw: 4px; --r: 28px; transition: transform .2s ease, box-shadow .2s ease; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 26px 46px -22px rgba(38, 39, 91, .45); }
+.card .gcard__in { display: flex; flex-direction: column; overflow: hidden; }
+.media { position: relative; height: 172px; overflow: hidden; }
+.m-blog { background: linear-gradient(135deg, var(--ice), #DDEBF7); display: grid; place-items: center; }
+.m-blog .art { display: grid; place-items: center; width: 74px; height: 74px; border-radius: 18px; background: var(--navy); color: var(--white); box-shadow: 0 14px 24px -12px rgba(38, 39, 91, .6); }
+.m-blog .art .icon { width: 36px; height: 36px; }
+.m-blog .lbl { position: absolute; left: 14px; bottom: 10px; font-family: var(--font-ui); font-size: 12px; color: var(--muted); }
+.m-case { background: radial-gradient(260px 180px at 100% 100%, rgba(78, 152, 216, .7), transparent 70%), var(--navy); display: flex; flex-direction: column; justify-content: center; padding: 0 26px; color: var(--white); }
+.m-case b { font-weight: 800; font-size: 48px; line-height: 1; letter-spacing: -0.02em; color: #8ED8F0; }
+.m-case span { margin-top: 6px; font-size: 14.5px; }
+.rfeat-l .metric .ph, .m-case .ph { display: inline; margin: 0; font-size: inherit; }
+.m-pod { background: var(--grad-diag); display: flex; align-items: center; gap: 18px; padding: 0 24px; }
+.m-pod .play, .m-vid .play { flex: none; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: var(--white); color: var(--navy); box-shadow: 0 10px 20px -8px rgba(0,0,0,.45); }
+.m-pod .play .icon, .m-vid .play .icon { width: 22px; height: 22px; margin-left: 3px; }
+.m-vid { background: var(--navy-deep); display: grid; place-items: center; }
+.m-vid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.m-vid .play { position: relative; }
+.m-vid .dur { position: absolute; right: 12px; bottom: 12px; padding: 3px 8px; border-radius: 6px; background: rgba(0, 0, 0, .75); color: var(--white); font-family: var(--font-ui); font-size: 12px; font-weight: 600; }
+.card-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card-type { display: block; font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--navy); }
+.card-type span { color: var(--muted); font-weight: 500; }
+.card h3 { font-weight: 600; font-size: 19px; line-height: 1.3; }
+.card .ex { font-size: 15.5px; line-height: 1.55; color: var(--body); }
+.ctags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
+.ctags span { padding: 4px 10px; border-radius: 999px; background: var(--soft); font-family: var(--font-ui); font-size: 12px; font-weight: 500; color: var(--body); }
+.card .link-u { margin-top: 8px; align-self: flex-start; font-size: 16px; }
+.center { display: flex; justify-content: center; }
+
+/* ==========================================================================
+   Footer (same as homepage, with newsletter banner)
+   ========================================================================== */
+.footer { position: relative; color: var(--white); background: radial-gradient(760px 420px at 50% 100%, rgba(78, 152, 216, .85), rgba(78, 152, 216, .25) 50%, transparent 75%), var(--navy); margin-top: 110px; }
+.final { position: relative; top: -110px; margin-bottom: -110px; }
+.final-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); align-items: center; gap: 24px 48px; padding: clamp(32px, 4vw, 56px) clamp(28px, 5vw, 72px); border-radius: 40px; background: var(--grad); box-shadow: 0 30px 60px -30px rgba(29, 30, 74, .6); }
+.final h2 { color: var(--white); font-weight: 700; font-size: clamp(30px, 3.6vw, 52px); line-height: 1.04; letter-spacing: -0.025em; text-shadow: 0 2px 10px rgba(20, 30, 80, .25); }
+.final p { margin-top: 10px; font-size: 17.5px; color: rgba(255, 255, 255, .95); }
+.final .inline-form { justify-content: flex-start; max-width: none; }
+.final .inline-form input { border-color: transparent; }
+.final .ok { color: var(--white); font-size: 19px; }
+.foot-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; padding-block: 96px 80px; }
+.foot-brand img { height: 60px; width: auto; margin-bottom: 18px; }
+.foot-brand p { font-family: var(--font-ui); font-size: 17px; color: rgba(255, 255, 255, .8); max-width: 30ch; }
+.footer h3 { color: var(--white); font-family: var(--font-ui); font-weight: 500; font-size: 28px; margin-bottom: 24px; }
+.foot-links li, .foot-contact li { margin-bottom: 10px; }
+.footer a:not(.btn) { color: var(--white); text-decoration: none; }
+.footer a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--teal); }
+.foot-links a, .foot-contact { font-family: var(--font-ui); font-size: 18px; line-height: 1.4; }
+.socials { display: flex; gap: 10px; margin-top: 22px; }
+.socials a { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(255, 255, 255, .1); }
+.socials .icon { width: 20px; height: 20px; }
+.foot-bottom { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; padding-bottom: 26px; font-family: var(--font-ui); font-size: 14px; color: rgba(255, 255, 255, .75); }
+.foot-bottom nav { display: flex; gap: 20px; }
+.foot-bar { height: 12px; background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 50%, var(--navy) 100%); }
+
+/* ==========================================================================
+   Tablet ≤1024
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .nav, .header-cta { display: none; }
+  .menu-btn { display: grid; }
+  .header-row, .site-header.is-scrolled .header-row { height: 80px; }
+  .logo img, .site-header.is-scrolled .logo img { height: 46px; }
+  .ev-hero-grid, .res-hero-grid { grid-template-columns: 1fr; }
+  .ev-count { max-width: 420px; }
+  .feat .gcard__in { grid-template-columns: 1fr; }
+  .ev-row { grid-template-columns: 88px minmax(0, 1fr); }
+  .datebox { width: 88px; }
+  .ev-act { grid-column: 1 / -1; justify-content: flex-start; }
+  .price { text-align: left; margin-right: auto; }
+  .duo-grid { grid-template-columns: 1fr; }
+  .res-body { grid-template-columns: 1fr; }
+  .side { position: static; }
+  .side .gcard__in { padding: 8px 18px; gap: 0; }
+  .side-head h2 { display: none; }
+  .side-head { position: absolute; right: 64px; top: 14px; }
+  .side .gcard__in { position: relative; }
+  .side-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 56px; padding: 0; border: 0; background: none; font-weight: 700; font-size: 18px; color: var(--navy); }
+  .side-toggle b { display: inline-grid; place-items: center; min-width: 24px; height: 24px; margin-left: 6px; padding: 0 7px; border-radius: 999px; background: var(--grad); color: #fff; font-size: 13px; }
+  .side-toggle b:empty { display: none; }
+  .side-toggle .icon { transition: transform .25s ease; }
+  .side-toggle[aria-expanded="true"] .icon { transform: rotate(180deg); }
+  .res-groups { display: none; padding: 6px 0 20px; }
+  .side.is-open .res-groups { display: grid; }
+  .final-in { grid-template-columns: 1fr; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .foot-brand { grid-column: 1 / -1; }
+}
+
+/* ==========================================================================
+   Mobile ≤767
+   ========================================================================== */
+@media (max-width: 767px) {
+  :root { --pad-x: 16px; }
+  body { font-size: 16px; }
+  .header-row, .site-header.is-scrolled .header-row { height: 72px; }
+  .logo img, .site-header.is-scrolled .logo img { height: 42px; }
+  .stripe { height: 8px; }
+  .filters, .cats-band { position: static; }
+  .filters .e-con { padding-block: 18px; }
+  .pills { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); scrollbar-width: none; }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill { flex: none; }
+  .feat { --bw: 6px; --r: 34px; }
+  .facts { grid-template-columns: 1fr; gap: 14px; }
+  .facts > div { padding: 0; border-left: 0; }
+  .feat-l .btn { width: 100%; }
+  .bigdate b { font-size: 84px; }
+  .ev-item { padding: 18px; border-radius: 22px; }
+  .ev-row { grid-template-columns: 70px minmax(0, 1fr); gap: 16px; }
+  .datebox { width: 70px; border-radius: 14px; }
+  .datebox .d { font-size: 30px; }
+  .ev-info h3 { font-size: 18px; }
+  .ev-act .btn { flex: 1 1 140px; }
+  .price { flex-basis: 100%; }
+  .ev-details-in { grid-template-columns: 1fr; gap: 18px; padding: 18px; }
+  .panel-dark, .panel-light { --r: 34px; }
+  .panel-dark { border-radius: 34px; }
+  .panel-dark .btn, .panel-light .btn { width: 100%; }
+  .cats { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(var(--pad-x) * -1); padding-inline: var(--pad-x); scrollbar-width: none; }
+  .cats::-webkit-scrollbar { display: none; }
+  .cat { flex: none; padding-inline: 14px; }
+  .rfeat { grid-template-columns: 1fr; border-radius: 30px; }
+  .rfeat-l { min-height: 300px; }
+  .rfeat-l b { font-size: 60px; }
+  .rfeat-r .btn { width: 100%; }
+  .final-in { padding: 32px 22px; border-radius: 30px; }
+  .final .inline-form .btn { width: 100%; }
+  .foot-grid { grid-template-columns: 1fr; padding-block: 72px 48px; gap: 34px; }
+  .footer h3 { font-size: 22px; margin-bottom: 14px; }
+  .foot-links a, .foot-contact { font-size: 16.5px; }
+  .review-bar .note { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.8 2.8L16.3 9.5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1a3.8 3.8 0 0 1 3.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.3ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5Z"/></symbol>
+  </defs>
+</svg>
+
+<!-- Mockup-only page switcher -->
+<div class="review-bar" role="region" aria-label="Mockup review controls">
+  <div class="e-con">
+    <div class="tabs" role="group" aria-label="Choose page">
+      <button type="button" data-page="events" aria-pressed="true">Events page</button>
+      <button type="button" data-page="resources" aria-pressed="false">Resources page</button>
+    </div>
+    <span class="note">Prototype for review · sample content · use "Highlight placeholders" to see what's unconfirmed</span>
+  </div>
+</div>
+
+<header class="site-header" id="site-header">
+  <div class="e-con header-row">
+    <a class="logo" href="#" data-ph-link="homepage" aria-label="First Search Marketing home"><img src="assets/img/logo.png" alt="First Search Marketing" width="576" height="196"></a>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="#" data-ph-link="About page">About</a></li>
+        <li><a href="#" data-ph-link="Services page">Services</a></li>
+        <li><a href="#" data-goto="events">Events</a></li>
+        <li><a href="#" data-goto="resources">Resources</a></li>
+        <li><a href="#" data-ph-link="Contact page">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn header-cta" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </div>
+  <div class="stripe" aria-hidden="true"></div>
+</header>
+<div class="mobile-nav" id="mobile-nav">
+  <a class="m" href="#" data-ph-link="About page">About</a>
+  <a class="m" href="#" data-ph-link="Services page">Services</a>
+  <a class="m" href="#" data-goto="events">Events</a>
+  <a class="m" href="#" data-goto="resources">Resources</a>
+  <a class="m" href="#" data-ph-link="Contact page">Contact</a>
+  <a class="btn" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+</div>
+
+<!-- ======================================================================
+     EVENTS PAGE
+     ====================================================================== -->
+<main id="page-events">
+  <section class="ev-hero bg-geo" aria-labelledby="ev-title">
+    <div class="e-con ev-hero-grid">
+      <div>
+        <span class="eyebrow">Workshops and live trainings</span>
+        <h1 class="h1" id="ev-title">Learn the system. <span>Leave with a plan.</span></h1>
+        <p class="lede">Hands-on workshops, online and in Exeter, built on the same framework we use with every partner. Pick the stage you want to work on, or take on the whole thing in a day.</p>
+      </div>
+      <div class="gcard ev-count">
+        <div class="gcard__in">
+          <b id="ev-total"></b>
+          <span>workshops on the calendar this season</span>
+          <a class="link-u" href="#ev-list-anchor">See the calendar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="filters on-dark" aria-label="Filter workshops" id="ev-list-anchor">
+    <div class="e-con">
+      <div class="pills" id="ev-pills" role="group" aria-label="Framework stage"></div>
+      <div class="row-between">
+        <div class="seg" id="ev-formats" role="group" aria-label="Format"></div>
+        <p class="count-label" id="ev-label" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-geo">
+    <div class="e-con ev-main" id="ev-main"></div>
+  </div>
+
+  <section class="duo" aria-label="More ways to learn">
+    <div class="e-con duo-grid">
+      <div class="panel-dark on-dark">
+        <h2>Want a workshop for your team or group?</h2>
+        <p>We run private sessions for business teams, chambers and networking groups, in person or online.</p>
+        <a class="btn btn--white btn--lg" href="#" data-ph-link="private workshop request form">Request a private workshop</a>
+      </div>
+      <div class="gcard panel-light">
+        <div class="gcard__in">
+          <h2>Not sure which workshop to start with?</h2>
+          <p>Take the Framework Quiz. It scores your marketing across all four stages, so you'll know exactly where to focus first.</p>
+          <a class="btn btn--lg" href="#" data-ph-link="Framework Quiz">Take the Framework Quiz</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======================================================================
+     RESOURCES PAGE
+     ====================================================================== -->
+<main id="page-resources" hidden>
+  <section class="res-hero bg-geo" aria-labelledby="res-title">
+    <div class="e-con res-hero-grid">
+      <div>
+        <span class="eyebrow">Resources</span>
+        <h1 class="h1" id="res-title">Marketing you can <span>actually use.</span></h1>
+        <p class="lede">Articles, client stories, podcast episodes and videos from our team. Filter by format or by the part of your marketing you want to fix.</p>
+      </div>
+      <div class="gcard search">
+        <div class="gcard__in">
+          <label for="res-search" class="vh">Search resources</label>
+          <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+          <input id="res-search" type="search" placeholder="Search by topic, like reviews or Google ads" autocomplete="off">
+        </div>
+      </div>
+    </div>
+    <div class="cats-band on-dark">
+      <div class="e-con"><div class="cats" id="res-cats" role="group" aria-label="Format"></div></div>
+    </div>
+  </section>
+
+  <div class="bg-geo">
+    <div class="e-con res-body">
+      <aside class="gcard side" aria-label="Filter by service">
+        <div class="gcard__in">
+          <div class="side-head"><h2 id="side-title">Filter by service</h2><button type="button" class="textbtn" id="res-cleartags" hidden>Clear</button></div>
+          <button type="button" class="side-toggle" id="side-toggle" aria-expanded="false" aria-controls="res-groups"><span>Filter by service <b id="side-count"></b></span><svg class="icon" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div id="res-groups" class="res-groups"></div>
+        </div>
+      </aside>
+
+      <div class="res-main">
+        <article class="rfeat on-dark" id="res-feat" aria-labelledby="feat-res">
+          <div class="rfeat-l">
+            <img src="assets/img/design/case-dental.webp" alt="">
+            <div class="metric"><b><span class="ph">[XX]%</span></b><span><span class="ph">[Result metric, e.g. more calls from Google]</span></span><small><span class="ph">[Industry]</span> · <span class="ph">[Town]</span>, NH</small></div>
+          </div>
+          <div class="rfeat-r">
+            <span class="badge">Featured case study</span>
+            <h2 id="feat-res"><span class="ph">[Client name]</span>: from page three to the map pack</h2>
+            <p>How a local business went from invisible on Google to the top three map results, and what that did for their phone.</p>
+            <a class="btn btn--white btn--lg" href="#" data-ph-link="case study">Read the case study</a>
+          </div>
+        </article>
+
+        <div class="row-between res-tools">
+          <p class="count-label" id="res-label" aria-live="polite"></p>
+          <div class="sortbox"><label for="res-sort">Sort</label>
+            <select id="res-sort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select>
+          </div>
+        </div>
+        <div class="active" id="res-active" hidden></div>
+        <div class="grid" id="res-grid"></div>
+        <div class="center" id="res-more" hidden><button type="button" class="btn btn--navy btn--lg">Load more resources</button></div>
+        <div class="gcard empty" id="res-empty" hidden>
+          <div class="gcard__in">
+            <h2>Nothing matches those filters yet</h2>
+            <p>Try removing a tag or a word from your search. New resources go up every week.</p>
+            <button type="button" class="btn" data-clear-all>Clear all filters</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ======================================================================
+     FOOTER (Theme Builder footer + newsletter banner)
+     ====================================================================== -->
+<footer class="footer on-dark">
+  <div class="e-con final">
+    <div class="final-in">
+      <div>
+        <h2 id="news-title">One useful marketing idea a week.</h2>
+        <p>Real stories and practical tips from our newsletter. No fluff, unsubscribe any time.</p>
+      </div>
+      <div id="news-box">
+        <form class="inline-form" id="news-form" novalidate>
+          <label for="news-email" class="vh">Email address</label>
+          <input id="news-email" type="email" placeholder="you@business.com" autocomplete="email">
+          <button type="submit" class="btn btn--white">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="e-con foot-grid">
+    <div class="foot-brand">
+      <img src="assets/img/logo-white.png" alt="First Search Marketing" width="576" height="196">
+      <p>Family-owned digital marketing in Exeter, NH.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook" data-ph-link="Facebook profile"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+        <a href="#" aria-label="Instagram" data-ph-link="Instagram profile"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        <a href="#" aria-label="LinkedIn" data-ph-link="LinkedIn profile"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+      </div>
+    </div>
+    <nav aria-labelledby="f-services">
+      <h3 id="f-services">Services</h3>
+      <ul class="foot-links">
+        <li><a href="#" data-ph-link="service page">Digital Advertising</a></li>
+        <li><a href="#" data-ph-link="service page">Digital Analytics</a></li>
+        <li><a href="#" data-ph-link="service page">CRM Setup</a></li>
+        <li><a href="#" data-ph-link="service page">Email Marketing</a></li>
+        <li><a href="#" data-ph-link="service page">Lead Generation</a></li>
+        <li><a href="#" data-ph-link="service page">SEO</a></li>
+        <li><a href="#" data-ph-link="service page">Social Media</a></li>
+        <li><a href="#" data-ph-link="service page">Web Design and Development</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h3>Contact</h3>
+      <ul class="foot-contact">
+        <li>92 Portsmouth Ave Ste #21,<br>Exeter, NH 03833</li>
+        <li><a href="tel:+16035188090">603-518-8090</a></li>
+        <li><a href="mailto:chris@befirstsearch.com">chris@befirstsearch.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="e-con foot-bottom">
+    <span>© 2026 First Search Marketing LLC.</span>
+    <nav aria-label="Legal"><a href="#" data-ph-link="privacy policy">Privacy policy</a><a href="#" data-ph-link="terms">Terms</a></nav>
+  </div>
+  <div class="foot-bar" aria-hidden="true"></div>
+</footer>
+
+<button class="ph-toggle" type="button" id="ph-toggle" aria-pressed="false"><span class="dot" aria-hidden="true"></span>Highlight placeholders</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  // escape, then mark [bracketed] text as a placeholder
+  const ph = s => esc(s).replace(/\[[^\]]+\]/g, m => `<span class="ph">${m}</span>`);
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const LMONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const ico = (id, cls = 'icon') => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
+
+  /* ---------- Shared chrome ---------- */
+  const header = $('#site-header');
+  const onScroll = () => header.classList.toggle('is-scrolled', scrollY > 30);
+  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+
+  const mBtn = $('.menu-btn'), mNav = $('#mobile-nav');
+  const setMenu = open => {
+    document.documentElement.style.setProperty('--mh', header.getBoundingClientRect().bottom + 'px');
+    mNav.classList.toggle('is-open', open);
+    mBtn.setAttribute('aria-expanded', open);
+    mBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    $('use', mBtn).setAttribute('href', open ? '#i-close' : '#i-menu');
+    document.body.classList.toggle('menu-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  mBtn.addEventListener('click', () => setMenu(!mNav.classList.contains('is-open')));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && mNav.classList.contains('is-open')) { setMenu(false); mBtn.focus(); } });
+  matchMedia('(min-width: 1025px)').addEventListener('change', e => e.matches && setMenu(false));
+
+  const toast = $('#toast'); let tt;
+  const showToast = m => { toast.textContent = m; toast.classList.add('is-visible'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('is-visible'), 2600); };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-ph-link]');
+    if (!a) return;
+    e.preventDefault();
+    setMenu(false);
+    showToast('Prototype: this will link to the ' + a.dataset.phLink + '.');
+  });
+  const phBtn = $('#ph-toggle');
+  phBtn.addEventListener('click', () => phBtn.setAttribute('aria-pressed', document.body.classList.toggle('show-ph')));
+
+  /* ---------- Page switcher ---------- */
+  const showPage = page => {
+    $('#page-events').hidden = page !== 'events';
+    $('#page-resources').hidden = page !== 'resources';
+    $$('.review-bar [data-page]').forEach(b => b.setAttribute('aria-pressed', b.dataset.page === page));
+    $$('[data-goto]').forEach(a => a.dataset.goto === page ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+    document.title = (page === 'events' ? 'Workshops & Events' : 'Resources') + ' | First Search Marketing';
+    setMenu(false);
+    scrollTo(0, 0);
+  };
+  $$('[data-page]').forEach(b => b.addEventListener('click', () => showPage(b.dataset.page)));
+  $$('[data-goto]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); showPage(a.dataset.goto); }));
+
+  /* =====================================================================
+     EVENTS
+     ===================================================================== */
+  // Stage colours match the framework wheel
+  const P = {
+    full:     { label: 'Full Framework', color: '#26275B' },
+    brand:    { label: 'FirstBrand',     color: '#7CD2D3' },
+    thought:  { label: 'FirstThought',   color: '#4E98D8' },
+    choice:   { label: 'FirstChoice',    color: '#2E4DA5' },
+    referral: { label: 'FirstReferral',  color: '#9E9AAE' }
+  };
+  const EVENTS = [
+    { id: 'e1', pillar: 'full', date: '2026-10-22', title: 'The FirstSearch Framework in 60 minutes', time: '12:00 to 1:00 PM', format: 'Online', location: 'Live on Zoom', price: 'Free', seats: 'Open registration', desc: 'A fast, founder-led walkthrough of how the four stages fit together, and how to spot which one is holding your business back right now.', outcomes: ['A clear picture of the full framework', 'Your weakest stage, identified', 'Three quick wins to try this week'] },
+    { id: 'e2', pillar: 'brand', date: '2026-10-27', title: 'Build a brand people trust on sight', time: '12:00 to 1:30 PM', format: 'Online', location: 'Live on Zoom', price: '[Price]', seats: '[XX] seats left', desc: 'Define what makes you different, write a value statement you can actually use, and audit every touchpoint for consistency.', outcomes: ['A finished value statement', 'Your core values and competitive edge', 'A brand consistency checklist'] },
+    { id: 'e3', pillar: 'thought', date: '2026-11-04', title: 'Get found first: local SEO and AI search', time: '12:00 to 1:30 PM', format: 'Online', location: 'Live on Zoom', price: '[Price]', seats: '[XX] seats left', desc: 'How Google, the map pack and AI search tools decide who shows up first, and what you can fix in your profile and site this month.', outcomes: ['A Google Business Profile tune-up list', 'Your top local keywords', 'An AI search visibility check'] },
+    { id: 'e4', pillar: 'full', date: '2026-11-12', title: 'BeFirst Live: the full-day framework workshop', time: '9:00 AM to 4:00 PM', format: 'In person', location: '[Venue], Exeter, NH', price: '[Price]', seats: '[XX] of [XX] seats left', desc: 'An immersive day working through every stage of the framework with our team. Bring your laptop and your real numbers. You leave with the plan finished, not homework.', outcomes: ['A completed marketing roadmap', 'Your KPIs for every stage', 'Confidence to execute on Monday'] },
+    { id: 'e5', pillar: 'choice', date: '2026-11-17', title: 'Turn your website into a lead machine', time: '8:30 to 10:30 AM', format: 'In person', location: '[Venue], Exeter, NH', price: '[Price]', seats: '[XX] seats left', desc: 'Lead magnets, offers and follow-up that turn visitors into booked calls. We review real websites in the room, so bring yours.', outcomes: ['A lead magnet idea and outline', 'An offer strategy that closes', 'A follow-up sequence map'] },
+    { id: 'e6', pillar: 'referral', date: '2026-12-02', title: 'Reviews, referrals and loyalty that sell for you', time: '12:00 to 1:30 PM', format: 'Online', location: 'Live on Zoom', price: '[Price]', seats: '[XX] seats left', desc: 'Build the systems that turn happy customers into your best marketing channel, without awkward asks.', outcomes: ['A review request automation', 'A referral reward structure', 'A simple loyalty program outline'] },
+    { id: 'e7', pillar: 'thought', date: '2026-12-08', title: 'Ads that actually pay for themselves', time: '12:00 to 1:30 PM', format: 'Online', location: 'Live on Zoom', price: '[Price]', seats: '[XX] seats left', desc: 'How to plan, launch and measure Google and Meta ads around real leads and cost per acquisition, not impressions.', outcomes: ['A campaign plan for one offer', 'The metrics that matter', 'A budget you can defend'] },
+    { id: 'e8', pillar: 'choice', date: '2027-01-13', title: 'Marketing automation for busy owners', time: '12:00 to 1:30 PM', format: 'Online', location: 'Live on Zoom', price: '[Price]', seats: '[XX] seats left', desc: 'The handful of automations every local business should have running, and how to set them up without a tech team.', outcomes: ['Your first three automations mapped', 'Email list segments to build', 'A welcome journey outline'] }
+  ];
+  let ev = { pillar: 'all', format: 'all', open: null, notified: false };
+  $('#ev-total').textContent = EVENTS.length;
+
+  const dec = e => {
+    const [y, m, d] = e.date.split('-').map(Number);
+    const dt = new Date(y, m - 1, d);
+    return { ...e, month: MONTHS[dt.getMonth()], day: dt.getDate(), weekday: DAYS[dt.getDay()], longDate: `${DAYS[dt.getDay()]}, ${LMONTHS[dt.getMonth()]} ${dt.getDate()}`, P: P[e.pillar] };
+  };
+
+  function renderEvents() {
+    const byFormat = EVENTS.filter(e => ev.format === 'online' ? e.format === 'Online' : ev.format === 'inperson' ? e.format === 'In person' : true);
+    const list = byFormat.filter(e => ev.pillar === 'all' || e.pillar === ev.pillar).map(dec);
+
+    $('#ev-pills').innerHTML = ['all', 'full', 'brand', 'thought', 'choice', 'referral'].map(k => {
+      const on = ev.pillar === k;
+      const n = k === 'all' ? byFormat.length : byFormat.filter(e => e.pillar === k).length;
+      const dot = k === 'all' ? '' : `<span class="dot" aria-hidden="true" style="background:${P[k].color}"></span>`;
+      return `<button type="button" class="pill" data-pillar="${k}" aria-pressed="${on}">${dot}<span>${k === 'all' ? 'All workshops' : P[k].label}</span><span class="n">${n}</span></button>`;
+    }).join('');
+    $('#ev-formats').innerHTML = [['all', 'All formats'], ['online', 'Online'], ['inperson', 'In person']]
+      .map(([k, l]) => `<button type="button" data-format="${k}" aria-pressed="${ev.format === k}">${l}</button>`).join('');
+    $('#ev-label').textContent = `Showing ${list.length} ${list.length === 1 ? 'workshop' : 'workshops'}`;
+
+    let html = '';
+    if (list.length) {
+      const f = list[0];
+      html += `<article class="gcard feat" aria-labelledby="feat-title"><div class="gcard__in">
+        <div class="feat-l">
+          <div class="chips"><span class="chip chip--next">Next up</span><span class="chip"><span class="dot" aria-hidden="true" style="background:${f.P.color}"></span>${f.P.label}</span></div>
+          <h2 id="feat-title">${ph(f.title)}</h2>
+          <p class="desc">${ph(f.desc)}</p>
+          <div class="facts">
+            <div><p class="k">When</p><p class="v">${f.longDate}</p><p class="s">${f.time}</p></div>
+            <div><p class="k">Where</p><p class="v">${f.format}</p><p class="s">${ph(f.location)}</p></div>
+            <div><p class="k">Investment</p><p class="v">${ph(f.price)}</p><p class="s">${ph(f.seats)}</p></div>
+          </div>
+          <div class="chips"><a class="btn btn--lg" href="#" data-ph-link="registration page">Reserve your seat</a><a class="btn btn--ghost btn--lg" href="#" data-ph-link="calendar invite (.ics)">${ico('i-cal')}Add to calendar</a></div>
+        </div>
+        <div class="feat-r on-dark">
+          <div class="bigdate"><b>${f.day}</b><span><span class="m">${f.month}</span><span class="w">${f.weekday}</span></span></div>
+          <h3>You'll leave with</h3>
+          <ul class="checks">${f.outcomes.map(o => `<li>${ico('i-check')}<span>${ph(o)}</span></li>`).join('')}</ul>
+        </div>
+      </div></article>`;
+    }
+    if (list.length > 1) {
+      html += `<section class="more" aria-labelledby="more-title"><h2 id="more-title">More upcoming workshops</h2><ol class="ev-list">` +
+        list.slice(1).map(e => {
+          const open = ev.open === e.id;
+          return `<li class="ev-item${open ? ' is-open' : ''}">
+            <div class="ev-row">
+              <div class="datebox"><p class="m">${e.month}</p><p class="d">${e.day}</p><p class="w">${e.weekday.slice(0, 3)}</p></div>
+              <div class="ev-info"><span class="stage"><span class="dot" aria-hidden="true" style="background:${e.P.color}"></span>${e.P.label}</span><h3>${ph(e.title)}</h3><p class="meta">${e.time} · ${e.format} · ${ph(e.location)}</p></div>
+              <div class="ev-act">
+                <div class="price"><b>${ph(e.price)}</b><span>${ph(e.seats)}</span></div>
+                <button type="button" class="btn btn--ghost" data-toggle="${e.id}" aria-expanded="${open}" aria-controls="det-${e.id}">${open ? 'Hide details' : 'Details'}${ico('i-chev', 'chev')}</button>
+                <a class="btn" href="#" data-ph-link="registration page">Reserve your seat</a>
+              </div>
+            </div>
+            <div class="ev-details" id="det-${e.id}"><div><div class="ev-details-in">
+              <p>${ph(e.desc)}</p>
+              <div><b>You'll leave with</b><ul>${e.outcomes.map(o => `<li>${ico('i-check')}<span>${ph(o)}</span></li>`).join('')}</ul></div>
+            </div></div></div>
+          </li>`;
+        }).join('') + `</ol></section>`;
+    }
+    if (!list.length) {
+      const stage = ev.pillar === 'all' ? '' : P[ev.pillar].label + ' ';
+      const fmt = ev.format === 'online' ? 'online ' : ev.format === 'inperson' ? 'in-person ' : '';
+      html += `<section class="gcard empty" aria-labelledby="empty-title"><div class="gcard__in">
+        <h2 id="empty-title">No ${fmt}${stage}workshops on the calendar right now</h2>
+        <p>Leave your email and we'll let you know the moment the next one opens. Or clear your filters to see everything on the calendar.</p>
+        ${ev.notified ? `<p class="ok" role="status">You're on the list. We'll email you when it opens.</p>` :
+          `<form class="inline-form" data-notify-form novalidate><label for="notify-email" class="vh">Email address</label><input id="notify-email" type="email" placeholder="you@business.com" autocomplete="email"><button type="submit" class="btn btn--lg">Notify me</button></form>`}
+        <button type="button" class="link-u" data-ev-clear>Clear filters</button>
+      </div></section>`;
+    }
+    $('#ev-main').innerHTML = html;
+  }
+
+  const evPage = $('#page-events');
+  evPage.addEventListener('click', e => {
+    const t = e.target.closest('button'); if (!t) return;
+    if (t.dataset.pillar) { ev = { ...ev, pillar: t.dataset.pillar, open: null, notified: false }; renderEvents(); $(`[data-pillar="${t.dataset.pillar}"]`).focus(); }
+    else if (t.dataset.format) { ev = { ...ev, format: t.dataset.format, open: null, notified: false }; renderEvents(); $(`[data-format="${t.dataset.format}"]`).focus(); }
+    else if (t.dataset.toggle) {
+      // toggle in place so the height animates
+      const id = t.dataset.toggle, li = t.closest('.ev-item');
+      $$('.ev-item.is-open', evPage).forEach(o => { if (o !== li) { o.classList.remove('is-open'); const b = $('[data-toggle]', o); b.setAttribute('aria-expanded', 'false'); b.firstChild.textContent = 'Details'; } });
+      const open = !li.classList.contains('is-open');
+      li.classList.toggle('is-open', open);
+      t.setAttribute('aria-expanded', open);
+      t.firstChild.textContent = open ? 'Hide details' : 'Details';
+      ev.open = open ? id : null;
+    }
+    else if (t.hasAttribute('data-ev-clear')) { ev = { pillar: 'all', format: 'all', open: null, notified: false }; renderEvents(); }
+  });
+  evPage.addEventListener('submit', e => {
+    if (!e.target.matches('[data-notify-form]')) return;
+    e.preventDefault();
+    const inp = $('input', e.target);
+    if (!inp.value || !inp.checkValidity()) { inp.focus(); inp.setCustomValidity(''); showToast('Please enter a valid email address.'); return; }
+    ev.notified = true; renderEvents();
+  });
+  renderEvents();
+
+  /* =====================================================================
+     RESOURCES
+     ===================================================================== */
+  const TYPES = {
+    blog:    { label: 'Blog',       plural: 'Blogs',        cta: 'Read the article' },
+    case:    { label: 'Case study', plural: 'Case studies', cta: 'Read the case study' },
+    podcast: { label: 'Podcast',    plural: 'Podcasts',     cta: 'Listen to the episode' },
+    video:   { label: 'Video',      plural: 'Videos',       cta: 'Watch the video' }
+  };
+  const GROUPS = [
+    { label: 'FirstBrand',         color: P.brand.color,    tags: ['Branding & content', 'Website'] },
+    { label: 'FirstThought',       color: P.thought.color,  tags: ['SEO', 'Advertising', 'Social Media', 'Local Ties'] },
+    { label: 'FirstChoice',        color: P.choice.color,   tags: ['Lead Generation', 'Marketing Automation', 'CRM'] },
+    { label: 'FirstReferral',      color: P.referral.color, tags: ['Loyalty', 'Reviews & Referrals'] },
+    { label: 'Across every stage', color: P.full.color,     tags: ['Analytics'] }
+  ];
+  const ITEMS = [
+    { type: 'blog', date: '2026-10-09', title: 'Showing up in AI search: what local businesses need to know', excerpt: 'AI tools are answering "who should I call?" questions. Here is how they decide which businesses to recommend.', tags: ['SEO', 'Branding & content'], meta: '7 min read' },
+    { type: 'video', date: '2026-10-07', title: 'The FirstSearch Framework in 10 minutes', excerpt: 'Chris walks through all four stages and how they connect, with real examples from local businesses.', tags: ['Branding & content', 'Lead Generation', 'Reviews & Referrals'], meta: '10:24' },
+    { type: 'case', date: '2026-10-05', title: '[Client name]: from page three to the map pack', excerpt: 'Rebuilding a Google profile and local SEO from the ground up.', tags: ['SEO', 'Local Ties', 'Website'], metric: '[XX]%', metricLabel: '[More calls from Google]', meta: '[Industry]' },
+    { type: 'blog', date: '2026-10-06', title: 'Why your Google Business Profile matters more than your website', excerpt: 'For most local searches, your profile is the first impression. Most owners have never touched theirs.', tags: ['SEO', 'Local Ties'], meta: '6 min read' },
+    { type: 'podcast', date: '2026-10-02', title: 'Ep. [XX]: Strategy beats size', excerpt: 'Why the smallest business in the market can still be the first one customers find.', tags: ['Branding & content', 'Analytics'], meta: '[XX] min' },
+    { type: 'video', date: '2026-09-30', title: 'Setting up a CRM you will actually use', excerpt: 'The simplest CRM setup for a local business, and the three fields that matter most.', tags: ['CRM', 'Marketing Automation'], meta: '14:02' },
+    { type: 'blog', date: '2026-09-29', title: 'Vanity metrics vs. growth metrics: what to actually track', excerpt: 'Impressions feel good. Leads pay the bills. A plain-English guide to the numbers worth watching.', tags: ['Analytics'], meta: '5 min read' },
+    { type: 'case', date: '2026-09-26', title: '[Client name]: building a referral engine', excerpt: 'Turning a loyal customer base into a steady stream of referrals.', tags: ['Reviews & Referrals', 'Loyalty'], metric: '[XX]', metricLabel: '[New referrals per month]', meta: '[Industry]' },
+    { type: 'podcast', date: '2026-09-25', title: 'Ep. [XX]: Local ties, the marketing that happens offline', excerpt: 'Chambers, networking groups and community partners, and how to make them count.', tags: ['Local Ties', 'Social Media'], meta: '[XX] min' },
+    { type: 'blog', date: '2026-09-22', title: 'The five automations every local business should have running', excerpt: 'Welcome, follow-up, review request, re-engagement and referral. What each one does and when it fires.', tags: ['Marketing Automation', 'CRM'], meta: '8 min read' },
+    { type: 'video', date: '2026-09-18', title: 'Building a Meta ad from scratch', excerpt: 'Offer, audience, creative and tracking, start to finish in one sitting.', tags: ['Advertising', 'Social Media'], meta: '18:40' },
+    { type: 'blog', date: '2026-09-15', title: 'How to ask for reviews without feeling awkward', excerpt: 'Timing, wording and the automation that does the asking for you.', tags: ['Reviews & Referrals'], meta: '4 min read' },
+    { type: 'case', date: '2026-09-12', title: '[Client name]: a rebrand and a new website', excerpt: 'A full brand refresh and a site built to turn visitors into inquiries.', tags: ['Branding & content', 'Website', 'Lead Generation'], metric: '[XX]%', metricLabel: '[More website inquiries]', meta: '[Industry]' },
+    { type: 'podcast', date: '2026-09-11', title: 'Ep. [XX]: Turning customers into your sales team', excerpt: 'Loyalty programs that local businesses can actually run.', tags: ['Loyalty', 'Reviews & Referrals'], meta: '[XX] min' },
+    { type: 'blog', date: '2026-09-08', title: 'Is your website a brochure or a lead machine?', excerpt: 'Five signs your site is just sitting there, and what to change first.', tags: ['Website', 'Lead Generation'], meta: '6 min read' },
+    { type: 'video', date: '2026-09-04', title: 'Social posts that get engagement, not just likes', excerpt: 'The post types that start conversations, and the ones to stop making.', tags: ['Social Media', 'Branding & content'], meta: '11:15' },
+    { type: 'case', date: '2026-08-29', title: '[Client name]: paid ads that pay for themselves', excerpt: 'Restructuring Google Ads around cost per lead instead of clicks.', tags: ['Advertising', 'Lead Generation', 'Analytics'], metric: '[$XX]', metricLabel: '[Cost per lead]', meta: '[Industry]' },
+    { type: 'podcast', date: '2026-08-28', title: 'Ep. [XX]: Why growth is a system', excerpt: 'Improving the whole customer journey beats chasing one big win.', tags: ['Marketing Automation', 'Analytics'], meta: '[XX] min' }
+  ];
+  const PAGE = 9;
+  let rs = { cat: 'all', tags: [], q: '', sort: 'newest', shown: PAGE };
+  const WAVE = '<svg aria-hidden="true" width="150" height="48" viewBox="0 0 150 48" fill="none"><g stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"><path d="M4 20v8M14 12v24M24 18v12M34 6v36M44 16v16M54 10v28M64 20v8M74 14v20M84 4v40M94 16v16M104 10v28M114 20v8M124 14v20M134 18v12M144 22v4"/></g></svg>';
+  const VIDEO_THUMB = 'assets/img/design/chris-cutout.webp';
+
+  function renderRes() {
+    const q = rs.q.trim().toLowerCase();
+    const mQ = r => !q || `${r.title} ${r.excerpt} ${r.tags.join(' ')}`.toLowerCase().includes(q);
+    const mT = r => !rs.tags.length || r.tags.some(t => rs.tags.includes(t));
+    const inCat = r => rs.cat === 'all' || r.type === rs.cat;
+    const base = ITEMS.filter(r => mQ(r) && mT(r));
+    const list = base.filter(inCat).sort((a, b) => rs.sort === 'oldest' ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date));
+    const tagBase = ITEMS.filter(r => mQ(r) && inCat(r));
+
+    $('#res-cats').innerHTML = [['all', 'All'], ['blog', 'Blogs'], ['case', 'Case studies'], ['podcast', 'Podcasts'], ['video', 'Videos']].map(([k, l]) => {
+      const n = k === 'all' ? base.length : base.filter(r => r.type === k).length;
+      return `<button type="button" class="cat" data-cat="${k}" aria-pressed="${rs.cat === k}"><span>${l}</span><span class="n">${n}</span></button>`;
+    }).join('');
+    $('#res-groups').innerHTML = GROUPS.map(g => `<div class="grp"><p class="grp-label"><span class="dot" aria-hidden="true" style="background:${g.color}"></span>${g.label}</p><div class="tags">` +
+      g.tags.map(t => {
+        const on = rs.tags.includes(t), n = tagBase.filter(r => r.tags.includes(t)).length;
+        return `<button type="button" class="tag" data-tag="${esc(t)}" aria-pressed="${on}"><span>${esc(t)}</span><span class="n">${n}</span></button>`;
+      }).join('') + `</div></div>`).join('');
+    $('#res-cleartags').hidden = !rs.tags.length;
+    $('#side-count').textContent = rs.tags.length || '';
+    $('#res-feat').hidden = !(rs.cat === 'all' && !rs.tags.length && !q);
+    const n = list.length;
+    $('#res-label').textContent = `Showing ${Math.min(rs.shown, n)} of ${n} ${n === 1 ? 'resource' : 'resources'}`;
+
+    const act = [];
+    if (rs.cat !== 'all') act.push({ k: 'cat', v: '', label: TYPES[rs.cat].plural });
+    rs.tags.forEach(t => act.push({ k: 'tag', v: t, label: t }));
+    if (q) act.push({ k: 'q', v: '', label: `"${rs.q.trim()}"` });
+    const actEl = $('#res-active');
+    actEl.hidden = !act.length;
+    actEl.innerHTML = act.length ? '<span>Filtered by</span>' + act.map(a =>
+      `<button type="button" class="achip" data-remove="${a.k}" data-val="${esc(a.v)}" aria-label="Remove ${esc(a.label)} filter"><span>${esc(a.label)}</span>${ico('i-x')}</button>`
+    ).join('') + '<button type="button" class="textbtn" data-clear-all>Clear all</button>' : '';
+
+    $('#res-grid').innerHTML = list.slice(0, rs.shown).map(r => {
+      const T = TYPES[r.type], [y, m, d] = r.date.split('-');
+      const dl = `${MONTHS[+m - 1]} ${+d}, ${y}`;
+      const media =
+        r.type === 'blog' ? `<div class="media m-blog"><span class="art">${ico('i-doc')}</span><span class="lbl"><span class="ph">[Article image]</span></span></div>` :
+        r.type === 'case' ? `<div class="media m-case"><b>${ph(r.metric)}</b><span>${ph(r.metricLabel)}</span></div>` :
+        r.type === 'podcast' ? `<div class="media m-pod"><span class="play">${ico('i-play')}</span>${WAVE}</div>` :
+        `<div class="media m-vid"><img src="${VIDEO_THUMB}" alt="" style="object-position:50% 15%"><span class="play">${ico('i-play')}</span><span class="dur">${esc(r.meta)}</span></div>`;
+      const sub = r.type === 'video' ? dl : `${ph(r.meta)} · ${dl}`;
+      return `<article class="gcard card"><div class="gcard__in">${media}<div class="card-body">
+        <p class="card-type">${T.label} · <span>${sub}</span></p>
+        <h3>${ph(r.title)}</h3><p class="ex">${esc(r.excerpt)}</p>
+        <div class="ctags">${r.tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>
+        <a class="link-u" href="#" data-ph-link="${T.label.toLowerCase()} page">${T.cta}</a>
+      </div></div></article>`;
+    }).join('');
+    $('#res-grid').hidden = !n;
+    $('#res-more').hidden = !(n > rs.shown);
+    $('#res-empty').hidden = !!n;
+  }
+
+  const resPage = $('#page-resources');
+  resPage.addEventListener('click', e => {
+    const t = e.target.closest('button'); if (!t) return;
+    if (t.dataset.cat) { rs.cat = t.dataset.cat; rs.shown = PAGE; renderRes(); $(`[data-cat="${t.dataset.cat}"]`).focus(); }
+    else if (t.dataset.tag) {
+      const tg = t.dataset.tag;
+      rs.tags = rs.tags.includes(tg) ? rs.tags.filter(x => x !== tg) : [...rs.tags, tg];
+      rs.shown = PAGE; renderRes();
+      const b = $$('[data-tag]', resPage).find(x => x.dataset.tag === tg); if (b) b.focus();
+    }
+    else if (t.dataset.remove) {
+      if (t.dataset.remove === 'cat') rs.cat = 'all';
+      if (t.dataset.remove === 'tag') rs.tags = rs.tags.filter(x => x !== t.dataset.val);
+      if (t.dataset.remove === 'q') { rs.q = ''; $('#res-search').value = ''; }
+      rs.shown = PAGE; renderRes(); $('#res-search').focus();
+    }
+    else if (t.hasAttribute('data-clear-all')) { rs = { cat: 'all', tags: [], q: '', sort: rs.sort, shown: PAGE }; $('#res-search').value = ''; renderRes(); }
+    else if (t.id === 'res-cleartags') { rs.tags = []; rs.shown = PAGE; renderRes(); }
+    else if (t.closest('#res-more')) {
+      const before = rs.shown; rs.shown += 6; renderRes();
+      const next = $$('#res-grid .card')[before]; if (next) $('a', next).focus({ preventScroll: false });
+    }
+  });
+  $('#side-toggle').addEventListener('click', e => {
+    const side = $('.side'), open = !side.classList.contains('is-open');
+    side.classList.toggle('is-open', open);
+    e.currentTarget.setAttribute('aria-expanded', open);
+  });
+  $('#res-search').addEventListener('input', e => { rs.q = e.target.value; rs.shown = PAGE; renderRes(); });
+  $('#res-sort').addEventListener('change', e => { rs.sort = e.target.value; renderRes(); });
+  renderRes();
+
+  /* Newsletter (footer banner) */
+  $('#news-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const inp = $('#news-email');
+    if (!inp.value || !inp.checkValidity()) { showToast('Please enter a valid email address.'); inp.focus(); return; }
+    $('#news-box').innerHTML = `<p class="ok" role="status">Thanks, you're subscribed.</p>`;
+  });
+
+  // Allow deep-linking: events-resources.html#resources
+  if (location.hash === '#resources') showPage('resources'); else showPage('events');
+})();
+</script>
+</body>
+</html>
