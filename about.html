@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About Us | First Search Marketing</title>
 <meta name="description" content="First Search Marketing is a family-owned digital marketing agency in Exeter, NH. Meet the team and what we believe.">
-<meta name="theme-color" content="#26275B">
+<meta name="theme-color" content="#282060">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
@@ -174,6 +174,66 @@ button { font: inherit; color: inherit; }
 .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 34px; }
 .hero-ctas .btn { font-size: 22px; padding: 14px 26px; }
 
+/* Hero demo scenes: Search · Social · Automation (one HTML widget) */
+.scn-tabs { display: flex; gap: 6px; margin: -14px 0 16px; padding: 4px; border-radius: 999px; background: #F1F0F6; font-family: var(--font-ui); }
+.scn-tabs span { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 4px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; transition: background .25s ease, color .25s ease; }
+.scn-tabs .icon { width: 15px; height: 15px; }
+.scn-tabs span.on { background: var(--white); color: var(--navy); box-shadow: 0 4px 12px -6px rgba(40, 32, 96, .45); }
+.scn { display: none; font-family: var(--font-ui); }
+.scn.is-on { display: block; animation: scnIn .45s ease; }
+@keyframes scnIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.pav { width: 38px; height: 38px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--grad-diag); color: #fff; font-size: 13px; font-weight: 700; }
+.scn .post { position: relative; border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; margin-bottom: 10px; background: #fff; }
+.scn .post-h { display: flex; align-items: center; gap: 10px; }
+.scn .post-h > div { flex: 1; min-width: 0; display: grid; }
+.scn .post-h b { font-size: 14.5px; color: var(--navy); }
+.scn .post-h small { font-size: 12px; color: var(--muted); }
+.fol { padding: 5px 12px; border-radius: 999px; background: var(--navy); color: #fff; font-size: 12px; font-weight: 600; transition: background .25s ease; }
+.fol.on { background: #E7F3FB; color: var(--navy); }
+.post-t { margin: 10px 0; font-size: 14px; line-height: 1.45; color: var(--body); }
+.post-img { display: grid; align-content: end; height: 104px; padding: 14px; border-radius: 12px; color: #fff; background: radial-gradient(160px 120px at 85% 20%, rgba(124, 210, 211, .8), transparent 70%), linear-gradient(135deg, #3299D5, #282060); }
+.post-img span { font-family: var(--font); font-weight: 700; font-size: 20px; line-height: 1.1; }
+.post-img small { font-size: 12px; opacity: .85; }
+.post-a { display: flex; align-items: center; gap: 16px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+.post-a span { display: inline-flex; align-items: center; gap: 5px; }
+.post-a .icon { width: 17px; height: 17px; }
+.post-a .lk.pop .icon { animation: pop .5s ease; }
+@keyframes pop { 40% { transform: scale(1.45); } }
+.tag-o, .tag-p { margin-left: auto; padding: 3px 9px; border-radius: 999px; font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.tag-o { background: #E3F6F6; color: #1D7F80; }
+.tag-p { background: #EDEAFB; color: var(--navy); }
+.ad-row { display: grid; grid-template-columns: 54px minmax(0, 1fr) auto; gap: 10px; align-items: center; margin-top: 10px; }
+.ad-img { width: 54px; height: 54px; border-radius: 10px; background: linear-gradient(135deg, #7CD2D3, #3299D5); }
+.ad-row b { display: block; font-size: 13.5px; color: var(--navy); line-height: 1.3; }
+.ad-row small { font-size: 12px; color: var(--muted); }
+.ad-cta { padding: 8px 12px; border-radius: 10px; background: var(--grad-primary, #282060); color: #fff; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.scn-social { position: relative; }
+.notes { display: grid; gap: 6px; }
+.note { display: flex; align-items: center; gap: 10px; padding: 7px 12px; border-radius: 12px; background: var(--navy); color: #fff; font-size: 13px; box-shadow: 0 12px 24px -12px rgba(16, 12, 48, .7); opacity: 0; transform: translateY(10px); transition: opacity .35s ease, transform .35s ease; }
+.note.is-in { opacity: 1; transform: none; }
+.note .icon { width: 17px; height: 17px; color: #7CD2D3; flex: none; }
+.scn .lead-in { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #F1F0F6; margin-bottom: 14px; }
+.scn .lead-in > div { flex: 1; min-width: 0; display: grid; }
+.scn .lead-in small { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--blue-ink); }
+.scn .lead-in b { font-size: 15px; color: var(--navy); }
+.scn .lead-in span { font-size: 13.5px; color: var(--body); }
+.scn .lead-in em { font-style: normal; font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+.flow { position: relative; display: grid; gap: 12px; margin: 0; padding: 0 0 0 4px; list-style: none; }
+.flow::before { content: ""; position: absolute; left: 22px; top: 10px; bottom: 10px; width: 2px; background: repeating-linear-gradient(180deg, #C9D6EE 0 5px, transparent 5px 10px); }
+.scn .fl { position: relative; display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 12px; padding: 0; border: 0; }
+.scn .fl > i { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(#fff, #fff) padding-box, var(--grad-diag) border-box; border: 2px solid transparent; color: var(--navy); }
+.scn .fl > i .icon { width: 18px; height: 18px; }
+.scn .fl > div { padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.scn .fl small { display: block; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--blue-ink); margin-bottom: 3px; }
+.scn .fl b { font-size: 14px; color: var(--navy); }
+.scn .fl p { margin: 2px 0 0; font-size: 13px; line-height: 1.4; color: var(--body); }
+.bub { display: inline-block; max-width: 92%; padding: 7px 11px !important; border-radius: 14px 14px 14px 4px; background: #F1F0F6; }
+.bub.me { display: block; width: max-content; margin: 6px 0 0 auto !important; border-radius: 14px 14px 4px 14px; background: var(--blue); color: #fff !important; }
+.callst { font-weight: 600; color: var(--blue-ink) !important; }
+.callst.ok { color: #138A5E !important; }
+.scn .booked { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; padding: 12px; border: 0; border-radius: 14px; background: var(--grad-diag); color: #fff; font-weight: 600; font-size: 14.5px; }
+.scn .booked .icon { width: 18px; height: 18px; }
+@media (max-width: 480px) { .scn-tabs span { font-size: 12px; } .scn-tabs .icon { display: none; } .post-img { height: 90px; } }
 /* Phone card + search demo (HTML widget) */
 .phone { --bw: 16px; --r: 64px; height: 690px; }
 .phone .gcard__in { padding: 36px 18px 24px; overflow: hidden; }
@@ -517,7 +577,7 @@ button { font: inherit; color: inherit; }
   .logo img { height: 44px; }
   .stripe { height: 8px; }
   .hero-ctas .btn { width: 100%; }
-  .phone { --bw: 10px; --r: 44px; height: auto; }
+  .phone { --bw: 10px; --r: 44px; height: 660px; }
   .phone .results { min-height: 470px; align-content: start; }
   .mp-row { font-size: 13.5px; gap: 6px; padding: 5px 6px; }
   .mp-row .st { font-size: 10.5px; letter-spacing: 0; }
@@ -572,6 +632,46 @@ button { font: inherit; color: inherit; }
   *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
   .caret { display: none; }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -788,6 +888,37 @@ button { font: inherit; color: inherit; }
   .partner .btn { width: 100%; }
 }
 
+/* Service wheel: the service's own cells are raised, lit and clickable */
+.wheel--cells .wz-dim--cells { fill: rgba(28, 22, 72, .62); }
+.wcell { cursor: pointer; transform: scale(1.06); transition: transform .25s ease, filter .25s ease; filter: drop-shadow(0 10px 14px rgba(10, 8, 40, .55)); outline: none; }
+.wcell .wcell-o { fill: none; stroke: rgba(255, 255, 255, .85); stroke-width: 5; }
+.wcell:hover, .wcell:focus-visible { transform: scale(1.1); }
+.wcell.on { transform: scale(1.12); filter: drop-shadow(0 16px 22px rgba(10, 8, 40, .7)) drop-shadow(0 0 18px rgba(124, 210, 211, .75)); }
+.wcell.on .wcell-o { stroke: #7CD2D3; stroke-width: 9; }
+.wcell:focus-visible .wcell-o { stroke: #fff; stroke-width: 10; }
+/* Numbered wheel badges */
+.wbadge circle { fill: #fff; stroke: rgba(40, 32, 96, .2); stroke-width: 4; }
+.wbadge text { font: 800 48px Poppins, sans-serif; fill: #282060; }
+.wbadge.on circle { fill: #282060; stroke: #7CD2D3; stroke-width: 8; }
+.wbadge.on text { fill: #fff; }
+
+/* Framework panel tag for services: "Social Media in [logo]" */
+.ptag-logo { align-items: center; gap: 10px; flex-wrap: wrap; }
+.ptag-svc { font-family: var(--font-ui); font-weight: 600; font-size: 15px; color: var(--navy); }
+.chips.chips--logo span.plogo-chip { background: var(--white); color: inherit; padding: 7px 14px 8px; }
+/* Included: stage filter + icon tiles that pop */
+.inc-filter { margin: 0; }
+.inc .itile { width: 60px; height: 60px; border-radius: 16px; }
+.inc .itile .icon { width: 30px; height: 30px; }
+.inc .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+/* Works best with: purple band */
+.rel-sec { position: relative; background: radial-gradient(520px 380px at 100% 0%, rgba(50, 153, 213, .45), transparent 70%), radial-gradient(420px 320px at 0% 100%, rgba(124, 210, 211, .2), transparent 70%), var(--navy); }
+.rel-sec .h2 { color: var(--white); }
+.rel-sec .rel .itile { background: var(--grad-diag) !important; border: 0; color: var(--white) !important; box-shadow: 0 14px 26px -12px rgba(50, 153, 213, .8); }
+.rel-sec .rel { box-shadow: 0 30px 50px -28px rgba(0, 0, 0, .6); }
+.wcell[data-stage="brand"] { transform: scale(1.3); }
+.wcell[data-stage="brand"].on { transform: scale(1.42); }
+
 /* ==========================================================================
    ABOUT · WHY CHOOSE US · SERVICES OVERVIEW · CONTACT
    (homepage components first; these are the few page-specific additions)
@@ -995,7 +1126,136 @@ button { font: inherit; color: inherit; }
 
 .slots[hidden], .form[hidden], .sent[hidden], .tm .fun[hidden] { display: none; }
 
+/* About: team on a tinted band (no white-to-white), manifesto text + graphic */
+.team-sec { background: var(--tint); }
+.man-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.man-copy p { margin-top: 16px; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.6; color: rgba(255, 255, 255, .88); }
+.man-copy .h2 { margin-top: 4px; }
+.man-pts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin: 24px 0 0; padding: 0; list-style: none; }
+.man-pts li { display: flex; gap: 10px; font-weight: 600; font-size: 16px; color: var(--white); }
+.man-pts .icon { width: 20px; height: 20px; flex: none; color: #7CD2D3; }
+.man-copy .mf-end { text-align: left; margin-top: 34px; }
+.man-copy .mf-end em { font-size: clamp(28px, 3vw, 42px); }
+.man-art { margin: 0; }
+.man-poster { position: relative; padding: clamp(28px, 3vw, 40px); border-radius: 36px; background: var(--white); color: var(--navy); box-shadow: 0 40px 70px -30px rgba(0, 0, 0, .6); transform: rotate(1.5deg); }
+.man-poster::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 8px; background: var(--grad-diag); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.man-ph { position: absolute; right: 22px; top: -14px; font-size: 13px; }
+.man-k { font-weight: 800; font-size: 26px; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px; }
+.man-poster ol { counter-reset: m; display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.man-poster li { counter-increment: m; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: baseline; font-weight: 600; font-size: 16.5px; line-height: 1.35; }
+.man-poster li::before { content: counter(m); font-weight: 800; font-size: 24px; color: transparent; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; }
+.man-sign { margin-top: 18px; padding-top: 14px; border-top: 2px solid var(--tint); font-weight: 600; font-size: 18px; }
+.man-sign b { color: transparent; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; font-weight: 800; }
+
+/* Why: comparison v2. Rows are separated strips; First Search column last, in brand purple */
+.cmp-sec .sec-head { margin-inline: auto; max-width: 860px; }
+.cmp2-wrap { overflow-x: auto; margin: 0 -8px; padding: 0 8px 8px; }
+.cmp2 { width: 100%; min-width: 900px; border-collapse: separate; border-spacing: 0 10px; font-size: 16px; table-layout: fixed; }
+.cmp2 th, .cmp2 td { padding: 18px 20px; text-align: left; vertical-align: middle; }
+.cmp2 thead th { padding: 0 20px 6px; font-family: var(--font-ui); font-weight: 600; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.cmp2 thead th.k { width: 22%; }
+.cmp2 thead th.us { width: 31%; }
+.cmp2-h { display: inline-flex; align-items: center; min-height: 54px; }
+.cmp2 thead th.us .cmp2-h { width: 100%; justify-content: center; padding: 12px 18px; border-radius: 20px 20px 0 0; background: var(--grad-primary); }
+.cmp2 thead th.us img { height: 34px; width: auto; }
+.cmp2 tbody th, .cmp2 tbody td { background: var(--white); box-shadow: 0 8px 22px -18px rgba(40, 32, 96, .55); }
+.cmp2 tbody th { border-radius: 18px 0 0 18px; font-weight: 700; color: var(--navy); }
+.cmp2 tbody td { color: var(--body); border-left: 1px solid var(--line); }
+.cmp2 tbody td.us { border-radius: 0 18px 18px 0; border-left: 0; background: var(--navy); color: var(--white); font-weight: 600; }
+.cmp2 tbody tr:last-child td.us { border-radius: 0 18px 18px 18px; }
+.cmp2-k { display: flex; align-items: center; gap: 14px; }
+.cmp2-k .ptile { width: 44px; height: 44px; flex: none; border-radius: 12px; display: grid; place-items: center; }
+.cmp2-k .ptile .icon { width: 24px; height: 24px; }
+.cmp2 td { line-height: 1.45; }
+.cmp2 td > span:last-child { display: block; }
+.mk { float: left; width: 24px; height: 24px; margin: 0 12px 6px 0; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; line-height: 1; }
+.mk--yes { background: var(--grad-diag); color: var(--white); }
+.mk--mid { background: #FFF1DD; color: #B86A00; }
+.mk--no { background: #F1F0F6; color: #8C89A3; }
+.cmp2 td.us .mk--yes { background: linear-gradient(135deg, #7CD2D3, #3299D5); }
+.cmp2 td > span:last-child { overflow: hidden; }
+.cmp-note { margin-top: 8px; text-align: center; }
+
+/* Overview: service cards that pop (gradient frame + glow on hover) */
+.gt { color: transparent; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; }
+.sv-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.sv-grid > * { min-width: 0; }
+.sv { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 26px 26px 24px; border-radius: 30px; text-decoration: none; color: inherit;
+  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, #DCE3F3, #DCE3F3) border-box; border: 2px solid transparent; box-shadow: 0 18px 40px -24px rgba(40, 32, 96, .45); transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.sv::before { content: ""; position: absolute; left: 26px; right: 26px; top: -2px; height: 5px; border-radius: 0 0 6px 6px; background: var(--grad); }
+.sv:hover { transform: translateY(-6px); background: linear-gradient(#fff, #fff) padding-box, var(--grad-diag) border-box; box-shadow: 0 30px 50px -24px rgba(40, 32, 96, .55); }
+.sv-top { display: flex; align-items: center; justify-content: space-between; }
+.sv .itile { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; }
+.sv .itile .icon { width: 32px; height: 32px; }
+.sv-go { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--tint); color: var(--navy); transition: background .2s ease, color .2s ease; }
+.sv-go .icon { width: 18px; height: 18px; }
+.sv:hover .sv-go { background: var(--navy); color: var(--white); }
+.sv h3 { margin-top: 6px; font-weight: 700; font-size: 23px; color: var(--navy); }
+.sv p { font-size: 16px; line-height: 1.5; color: var(--body); }
+.sv-pl { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
+.fpill .plogo { font-size: 17px; }
+.fpill[aria-pressed="true"] .plogo { color: #fff; }
+.fpill[aria-pressed="true"] .plogo b { color: #8FD5EE; }
+
+/* Contact: booking + form over a purple-overlay office photo; find-us cards */
+.ct-office { position: relative; background: linear-gradient(180deg, rgba(40, 32, 96, .9), rgba(40, 32, 96, .94)), url("assets/img/design/team-group.webp") center 30% / cover no-repeat, var(--navy); }
+.ct-office-head { text-align: center; margin-bottom: 40px; }
+.ct-office-head .h2 { color: var(--white); }
+.ct-ph { position: absolute; right: 24px; top: 20px; font-size: 13px; }
+.find-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-bottom: 36px; }
+.find-grid > * { min-width: 0; }
+.fcard { display: flex; flex-direction: column; gap: 6px; padding: 26px 24px; border-radius: 28px; background: var(--white); box-shadow: var(--shadow-card); text-decoration: none; color: inherit; transition: transform .2s ease, box-shadow .2s ease; }
+a.fcard:hover { transform: translateY(-4px); box-shadow: 0 28px 48px -24px rgba(40, 32, 96, .55); }
+.fcard .ptile { width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 10px; }
+.fcard .ptile .icon { width: 28px; height: 28px; }
+.fcard .k { font-family: var(--font-ui); font-size: 13px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--blue-ink); }
+.fcard b { font-weight: 700; font-size: clamp(17px, 1.5vw, 20px); line-height: 1.3; color: var(--navy); overflow-wrap: anywhere; }
+.fcard small { font-family: var(--font-ui); font-size: 14px; color: var(--muted); }
+.fcard .go { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 14px; font-weight: 600; font-size: 15px; color: var(--navy); }
+.fcard .go .icon { width: 16px; height: 16px; transition: transform .2s ease; }
+a.fcard:hover .go .icon { transform: translateX(4px); }
+.fcard .go.is-static { color: var(--muted); font-weight: 500; }
+
+/* Logo as card title */
+.rel-logo .plogo { font-size: 30px; }
+
+/* Why: paths v2 */
+.paths2 .sec-head { margin-inline: auto; max-width: 760px; }
+.p2-scale { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; max-width: 900px; margin: 0 auto 26px; font-family: var(--font-ui); font-size: 13.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.p2-scale i { height: 6px; border-radius: 6px; background: linear-gradient(90deg, #7CD2D3, #3299D5, #282060); }
+.p2-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; align-items: stretch; }
+.p2 { display: flex; flex-direction: column; gap: 16px; padding: 30px; border-radius: 36px; background: var(--white); box-shadow: var(--shadow-card); border-top: 8px solid #7CD2D3; }
+.p2--2 { border-top-color: #3299D5; }
+.p2--3 { border-top-color: #7CD2D3; background: radial-gradient(320px 260px at 100% 100%, rgba(50, 153, 213, .7), transparent 70%), var(--navy); color: var(--white); }
+.p2 header { display: flex; align-items: center; gap: 14px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.p2--3 header { border-bottom-color: rgba(255, 255, 255, .18); }
+.p2 header i { width: 46px; height: 46px; flex: none; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-weight: 800; font-size: 20px; color: var(--white); background: var(--grad-diag); }
+.p2 .k { font-family: var(--font-ui); font-weight: 600; font-size: 13.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--blue-ink); }
+.p2--3 .k { color: #8FD5EE; }
+.p2 h3 { font-weight: 700; font-size: 25px; line-height: 1.15; }
+.p2--3 h3 { color: var(--white); }
+.p2 .pr { font-weight: 800; font-size: 38px; line-height: 1; color: var(--navy); }
+.p2--3 .pr { color: var(--white); }
+.p2 .pr small { font-size: 15px; font-weight: 500; color: var(--muted); margin-left: 4px; }
+.p2--3 .pr small { color: rgba(255, 255, 255, .75); }
+.p2 ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.p2 li { position: relative; padding-left: 26px; font-size: 15.5px; color: var(--body); }
+.p2 li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 800; color: var(--white); background: var(--grad-diag); }
+.p2--3 li { color: rgba(255, 255, 255, .9); }
+.p2 .who { margin-top: auto; padding: 12px 14px; border-radius: 14px; background: var(--tint); font-size: 14.5px; color: var(--body); }
+.p2--3 .who { background: rgba(255, 255, 255, .1); color: rgba(255, 255, 255, .9); }
+.p2 .who b { color: var(--navy); }
+.p2--3 .who b { color: var(--white); }
+.p2 .btn { width: 100%; }
+.p2-quiz { margin-top: 28px; text-align: center; font-size: 16px; color: var(--body); }
+.p2-quiz a { color: var(--blue-ink); font-weight: 600; }
+
 @media (max-width: 1024px) {
+  .find-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .p2-grid { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin-inline: auto; }
+  .man-grid { grid-template-columns: minmax(0, 1fr); }
+  .man-art { max-width: 520px; }
   .grid3, .grid4 { grid-template-columns: 1fr 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
   .tm, .tm:nth-child(4) { grid-column: auto; }
@@ -1008,6 +1268,20 @@ button { font: inherit; color: inherit; }
   .info-row > div:nth-child(3) { border-left: 0; padding-left: 0; }
 }
 @media (max-width: 767px) {
+  .find-grid { grid-template-columns: minmax(0, 1fr); }
+  .ct-ph { position: static; display: block; width: max-content; margin: -20px auto 20px; }
+  .sv-grid { grid-template-columns: minmax(0, 1fr); }
+  .cmp2, .cmp2 tbody, .cmp2 tr, .cmp2 th, .cmp2 td { display: block; min-width: 0; width: 100%; }
+  .cmp2 thead { display: none; }
+  .cmp2 tbody tr { margin-bottom: 16px; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow-card); }
+  .cmp2 tbody th, .cmp2 tbody td, .cmp2 tbody td.us, .cmp2 tbody tr:last-child td.us { border-radius: 0; border-left: 0; box-shadow: none; }
+  .cmp2 tbody th { padding: 16px 18px; background: var(--tint); }
+  .cmp2 tbody td { padding: 12px 18px; border-top: 1px solid var(--line); }
+  .cmp2 tbody td::before { content: attr(data-label); display: block; margin-bottom: 4px; font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+  .cmp2 tbody td.us::before { color: #8FD5EE; }
+  .p2-scale { font-size: 11.5px; }
+  .man-pts { grid-template-columns: 1fr; }
+  .man-poster { transform: none; }
   .grid2, .grid3, .grid4, .team-grid { grid-template-columns: 1fr; }
   .hero-photo { --bw: 10px; --r: 44px; }
   .hero-photo .gcard__in { min-height: 300px; }
@@ -1087,13 +1361,272 @@ button { font: inherit; color: inherit; }
 .sn-mcols .sn-svc { display: block; padding: 5px 0; font-family: var(--font-ui); font-size: 15.5px; color: var(--body, #3A3650); text-decoration: none; }
 @media (max-width: 1180px) { .sn .sn-top { font-size: 16.5px; } .sn .sn-list { gap: 16px; } }
 /*/SN-CSS*/
+/*THEME-CSS*/
+/* ==========================================================================
+   SITE THEME (round 2 feedback) — loaded last on every page
+   = Elementor Site Settings: Global Colors, Global Fonts, Buttons, Header/Footer templates
+   ========================================================================== */
+:root {
+  --navy: #282060;            /* brand purple */
+  --navy-deep: #1C1648;
+  --blue: #3299D5;            /* brand light blue */
+  --blue-ink: #1F78B4;        /* light blue for small text on white (AA) */
+  --ink: #2A2546;             /* headings-adjacent dark text, tinted to the purple */
+  --body: #474462;            /* all running text on light backgrounds */
+  --muted: #6C6984;
+  --tint: #EEF0F9;            /* light section background (alternates with white / geometric) */
+  --grad: linear-gradient(90deg, #7CD2D3 0%, #3299D5 50%, #2E4DA5 100%);
+  --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #3299D5 50%, #2E4DA5 100%);
+  --grad-text: linear-gradient(90deg, #3FB4DA 0%, #3299D5 35%, #2E4DA5 75%, #282060 100%);
+  --grad-primary: linear-gradient(120deg, #282060 0%, #2F2C7A 55%, #2E4DA5 100%);
+  --grad-icon: linear-gradient(135deg, #3299D5 0%, #282060 100%);
+  --shadow-btn: 0 14px 30px -12px rgba(40, 32, 96, .55);
+}
+
+/* ---------- Typography: one clear system ----------
+   H1  Poppins 700, purple, highlight phrase = gradient text
+   H2  Poppins 700, purple · H3/H4 Poppins 700, purple
+   Eyebrow Poppins 600 light-blue-ink · Lead/body Poppins 400 --body · Small UI Inter */
+h1, h2, h3, h4 { color: var(--navy); }
+.hero h1 span, h1.h1 span, .h1 span, h1 > span:not(.ph):not(.plogo) {
+  color: transparent; background: var(--grad-text); -webkit-background-clip: text; background-clip: text;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.hero-lead, .lede, .lead, .how-sub, .ways-sub, .fw-desc { color: var(--body); }
+.hero-lead, .lede { color: var(--ink); }
+.on-dark .lead, .on-dark .lede, .on-dark .how-sub, .on-dark .hero-lead { color: rgba(255, 255, 255, .88); }
+.eyebrow { color: var(--blue-ink); font-weight: 600; letter-spacing: .01em; }
+.on-dark .eyebrow, .navy-card .eyebrow, .fw-block .eyebrow { color: #8FD5EE; }
+.stats .eyebrow { color: var(--white); }
+.link-u { color: var(--navy); text-decoration-color: var(--blue); }
+
+/* ---------- Buttons ----------
+   Primary (.btn) = dark purple gradient · Secondary (.btn--sec) = the original light gradient
+   · .btn--white on dark/gradient backgrounds. Same radius, weight and height everywhere. */
+.btn { border-radius: 12px; font-weight: 600; letter-spacing: .005em; color: var(--white); background: var(--grad-primary); background-size: 160% 100%; background-position: 0 0; text-shadow: none; box-shadow: var(--shadow-btn); }
+.btn:hover { background-position: 100% 0; color: var(--white); box-shadow: 0 18px 36px -12px rgba(40, 32, 96, .6); }
+.btn--sec, .header-cta, .final .btn--sec { background: var(--grad); background-size: 140% 100%; text-shadow: 0 1px 2px rgba(20, 30, 80, .3); box-shadow: 0 14px 30px -12px rgba(46, 77, 165, .5); }
+.btn--white, .btn--white:hover { background: var(--white); color: var(--navy); text-shadow: none; }
+.btn--white:hover { color: #2E4DA5; }
+.btn--ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy); }
+.btn--ghost:hover { background: var(--navy); color: var(--white); }
+.on-dark .btn--ghost { color: var(--white); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .7); }
+.btn--lg { border-radius: 16px; }
+
+/* ---------- Header: dark purple, white logo and links ---------- */
+.site-header { background: radial-gradient(520px 160px at 88% 0%, rgba(50, 153, 213, .35), transparent 70%), var(--navy); }
+.site-header.is-scrolled { box-shadow: 0 12px 30px -16px rgba(16, 12, 48, .7); }
+.site-header .sn .sn-top { color: var(--white); }
+.site-header .sn .sn-top:hover, .site-header .sn .sn-top[aria-expanded="true"],
+.site-header .sn .sn-top.is-current, .site-header .sn .sn-top[aria-current="page"] { color: var(--white); border-bottom-color: #7CD2D3; }
+.site-header .sn .sn-top.is-current, .site-header .sn .sn-top[aria-current="page"] { font-weight: 600; }
+.site-header .menu-btn { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .25); color: var(--white); }
+.site-header .header-cta:focus-visible, .site-header a:focus-visible, .site-header button:focus-visible { outline-color: var(--white); }
+.stripe { background: var(--grad); }
+
+/* ---------- Pillar logos (same lockup as the framework graphic) ---------- */
+.plogo { display: inline-flex; align-items: baseline; font-family: var(--font); font-weight: 800; letter-spacing: -0.03em; line-height: 1; text-transform: lowercase; color: #282060; white-space: nowrap; font-size: 1em; }
+.plogo b { font-weight: 800; color: #3299D5; }
+.on-dark .plogo, .plogo--light, .navy-card .plogo, .sn-cta .plogo { color: var(--white); }
+.on-dark .plogo b, .plogo--light b, .navy-card .plogo b, .sn-cta .plogo b { color: #6CC7EE; }
+.on-dark .gcard__in .plogo, .on-dark .plogo-chip .plogo, .on-dark .ptag-logo .plogo { color: #282060; }
+.on-dark .gcard__in .plogo b, .on-dark .plogo-chip .plogo b, .on-dark .ptag-logo .plogo b { color: #3299D5; }
+.plogo-chip { display: inline-flex; align-items: center; padding: 7px 14px 8px; border-radius: 999px; background: var(--white); box-shadow: 0 6px 16px -10px rgba(40, 32, 96, .45), inset 0 0 0 1.5px #DCE3F3; font-size: 15px; }
+.plogo-chip--sm { padding: 4px 10px 5px; font-size: 13px; }
+/* Mega menu: logo where the stage name was */
+.sn .sn-stage .plogo { font-size: 23px; }
+.sn .sn-stage .plogo b, .sn-mcols .sn-stage .plogo b { display: inline; font-size: inherit; font-weight: 800; color: #3299D5; }
+.sn .sn-stage { flex-direction: column; align-items: flex-start; gap: 4px; }
+.sn .sn-stage i { display: none; }
+.sn .sn-stage:hover .plogo { text-decoration: underline; text-decoration-color: #7CD2D3; text-decoration-thickness: 3px; text-underline-offset: 6px; }
+.sn-mcols .sn-stage .plogo { font-size: 19px; }
+
+/* Framework explorer: logos under the wheel and as the panel tag */
+.pills .pill { padding: 10px 18px 12px; }
+.pills .pill .plogo { font-size: 20px; }
+.pill[aria-selected="true"] .plogo { color: #282060; }
+.pill[aria-selected="true"] .plogo b { color: #3299D5; }
+.ptag-logo { display: inline-flex; margin-bottom: 18px; padding: 10px 18px 12px; border-radius: 18px; background: var(--tint); }
+.ptag-logo .plogo { font-size: clamp(28px, 2.6vw, 36px); }
+
+/* ---------- Gradient-style icons (match the icons on the framework graphic) ----------
+   Icon glyphs on light backgrounds are drawn with the brand gradient (blue -> purple);
+   tiles are white with a gradient frame. In Elementor: SVG icons exported with the gradient. */
+.ptile, .itile, .rel .itile, .inc .itile, .panel-svcs .itile {
+  background: linear-gradient(#fff, #fff) padding-box, var(--grad-diag) border-box !important;
+  border: 2px solid transparent; color: var(--navy) !important;
+  box-shadow: 0 10px 22px -14px rgba(40, 32, 96, .55);
+}
+
+/* ---------- Video block (hero media on inner pages) ----------
+   Elementor: Video widget inside the gradient-frame container; poster = custom image overlay. */
+.vid { --bw: 16px; --r: 64px; position: relative; width: 100%; align-self: center; }
+.vid .gcard__in { overflow: hidden; padding: 0; }
+.vid-btn { position: relative; display: block; width: 100%; aspect-ratio: 16 / 11; padding: 0; border: 0; cursor: pointer; overflow: hidden;
+  background: radial-gradient(70% 60% at 50% 105%, rgba(50, 153, 213, .9), transparent 70%), radial-gradient(60% 50% at 0% 0%, rgba(124, 210, 211, .35), transparent 70%), var(--navy); }
+.vid-btn img { position: absolute; left: 50%; bottom: 0; height: 92%; width: auto; max-width: none; transform: translateX(-50%); object-fit: contain; }
+.vid-btn img.cover { left: 0; top: 0; width: 100%; height: 100%; transform: none; object-fit: cover; opacity: .55; }
+.vid-btn img.wide { left: 3%; width: 94%; height: auto; transform: none; }
+.vid-play { position: absolute; left: 50%; top: 50%; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .95); color: var(--navy); box-shadow: 0 0 0 12px rgba(255, 255, 255, .22), 0 20px 40px -12px rgba(16, 12, 48, .7); transition: transform .2s ease, box-shadow .2s ease; }
+.vid-play svg { width: 34px; height: 34px; margin-left: 5px; }
+.vid-btn:hover .vid-play { transform: scale(1.06); box-shadow: 0 0 0 18px rgba(255, 255, 255, .25), 0 20px 40px -12px rgba(16, 12, 48, .7); }
+.vid-cap { position: absolute; left: 20px; right: 20px; bottom: 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px; text-align: left; }
+.vid-cap b { padding: 9px 14px; border-radius: 14px; background: rgba(255, 255, 255, .95); font-family: var(--font); font-weight: 600; font-size: 15px; color: var(--navy); line-height: 1.25; }
+.vid-cap span { flex: none; padding: 6px 10px; border-radius: 999px; background: rgba(16, 12, 48, .7); font-family: var(--font-ui); font-size: 13px; color: var(--white); }
+.vid-tag { position: absolute; left: 22px; top: 20px; display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border-radius: 999px; background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .3); font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--white); }
+.vid-tag i { width: 8px; height: 8px; border-radius: 50%; background: #FF5A5A; box-shadow: 0 0 0 4px rgba(255, 90, 90, .25); }
+.vid-btn.is-playing .vid-play { display: none; }
+.vid-btn.is-playing::after { content: "Video plays here (placeholder)"; position: absolute; inset: 0; display: grid; place-items: center; background: rgba(16, 12, 48, .78); color: var(--white); font: 600 18px var(--font); }
+
+/* ---------- Framework Quiz callout with scorecard (same block on every page that has it) ---------- */
+.quizcta { padding-block: clamp(64px, 7vw, 100px); }
+.quizcta-card { --bw: 10px; --r: 48px; }
+.quizcta-card > .gcard__in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 470px); gap: clamp(28px, 4vw, 64px); align-items: center; padding: clamp(28px, 4vw, 56px); }
+.quizcta h2 { font-weight: 700; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.08; }
+.quizcta .lead { margin-top: 14px; font-size: 18px; }
+.quizcta ul { margin-top: 22px; display: grid; gap: 10px; }
+.quizcta li { display: flex; gap: 10px; font-size: 16.5px; color: var(--body); }
+.quizcta li .icon { width: 21px; height: 21px; flex: none; margin-top: 2px; }
+.quizcta-side { display: grid; gap: 20px; justify-items: center; }
+.quizcta-side .btn { width: 100%; max-width: 440px; padding: 16px 28px; font-size: 20px; }
+.quizcta-side small { font-family: var(--font-ui); font-size: 13.5px; color: var(--muted); }
+.scorecard { width: 100%; max-width: 440px; padding: 22px; border-radius: 26px; color: var(--white); background: radial-gradient(240px 200px at 100% 0%, rgba(50, 153, 213, .55), transparent 70%), var(--navy); box-shadow: 0 30px 50px -26px rgba(16, 12, 48, .8); transform: rotate(-1.2deg); }
+.sc-top { display: flex; align-items: center; gap: 16px; padding-bottom: 16px; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, .15); }
+.sc-ring { --p: 62; width: 76px; height: 76px; flex: none; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(closest-side, var(--navy) 78%, transparent 80% 100%), conic-gradient(#7CD2D3 0, #3299D5 calc(var(--p) * 1%), rgba(255, 255, 255, .15) 0); font-weight: 800; font-size: 24px; }
+.sc-top p { font-family: var(--font-ui); font-size: 12.5px; text-transform: uppercase; letter-spacing: .08em; color: #8FD5EE; }
+.sc-top b { display: block; font-size: 19px; line-height: 1.25; }
+.sc-row { display: grid; grid-template-columns: 128px minmax(0, 1fr) 34px; gap: 12px; align-items: center; padding: 7px 0; }
+.sc-row .plogo { font-size: 16px; }
+.sc-bar { height: 10px; border-radius: 99px; background: rgba(255, 255, 255, .12); overflow: hidden; }
+.sc-bar i { display: block; height: 100%; border-radius: inherit; background: var(--grad); }
+.sc-row em { font-style: normal; font-family: var(--font-ui); font-weight: 600; font-size: 14px; text-align: right; }
+.sc-row.low em { color: #FFB86B; }
+.sc-row.low .sc-bar i { background: linear-gradient(90deg, #FFB86B, #FF8A5B); }
+.sc-tip { margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: rgba(255, 255, 255, .1); font-family: var(--font-ui); font-size: 13.5px; line-height: 1.45; color: rgba(255, 255, 255, .9); }
+.sc-tip b { color: #FFB86B; }
+
+/* ---------- Footer (bolder) ---------- */
+.footer { background: radial-gradient(700px 420px at 0% 100%, rgba(50, 153, 213, .38), transparent 70%), radial-gradient(600px 360px at 100% 30%, rgba(124, 210, 211, .18), transparent 70%), var(--navy); }
+.ft { overflow: hidden; }
+.ft { position: relative; padding-block: clamp(110px, 10vw, 140px) 40px; }
+.ft::after { content: "first search"; position: absolute; right: -20px; bottom: -30px; font-weight: 800; font-size: clamp(90px, 15vw, 230px); line-height: 1; letter-spacing: -0.05em; color: rgba(255, 255, 255, .035); pointer-events: none; white-space: nowrap; }
+.ft-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: end; padding-bottom: 44px; border-bottom: 1px solid rgba(255, 255, 255, .14); }
+.ft-brand img { height: 70px; width: auto; margin-bottom: 18px; }
+.ft-brand p { font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; line-height: 1.2; color: var(--white); max-width: 22ch; }
+.ft-brand p span { color: transparent; background: linear-gradient(90deg, #7CD2D3, #6CC7EE); -webkit-background-clip: text; background-clip: text; }
+.ft-news { padding: 26px; border-radius: 26px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .14); }
+.ft-news h3 { font-family: var(--font); font-weight: 700; font-size: 20px; color: var(--white); margin: 0 0 4px; }
+.ft-news p { font-family: var(--font-ui); font-size: 14.5px; color: rgba(255, 255, 255, .78); margin-bottom: 14px; }
+.ft-news form { display: flex; gap: 10px; }
+.ft-news input { flex: 1; min-width: 0; min-height: 50px; padding: 0 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, .3); background: rgba(255, 255, 255, .95); font: 16px var(--font-ui); color: var(--ink); }
+.ft-news .btn { flex: none; font-size: 16px; padding: 12px 20px; }
+.ft-news .ok { margin: 10px 0 0; color: #8FD5EE; font-weight: 600; }
+.ft-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.25fr); gap: 32px; padding-block: 44px; }
+.ft h4 { position: relative; margin: 0 0 18px; padding-bottom: 12px; font-family: var(--font); font-weight: 700; font-size: 17px; letter-spacing: .02em; color: var(--white); }
+.ft h4::after { content: ""; position: absolute; left: 0; bottom: 0; width: 34px; height: 3px; border-radius: 3px; background: var(--grad); }
+.ft ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.ft a { font-family: var(--font-ui); font-size: 16px; color: rgba(255, 255, 255, .86); text-decoration: none; transition: color .15s ease; }
+.ft a:hover { color: var(--white); text-decoration: underline; text-decoration-color: #7CD2D3; text-underline-offset: 4px; }
+.ft .ft-pl { display: grid; gap: 8px; margin-top: 16px; }
+.ft .ft-pl a { font-size: 17px; }
+.ft .ft-pl a:hover { text-decoration: none; opacity: .85; }
+.ft-ct li { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 12px; align-items: center; font-family: var(--font-ui); font-size: 15.5px; color: rgba(255, 255, 255, .86); }
+.ft-ct i { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--grad-diag); color: var(--white); }
+.ft-ct i .icon { width: 19px; height: 19px; }
+.ft-social { display: flex; gap: 10px; margin-top: 22px; }
+.ft-social a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .1); color: var(--white); transition: background .2s ease, transform .2s ease; }
+.ft-social a:hover { background: var(--grad-diag); transform: translateY(-2px); }
+.ft-social .icon { width: 19px; height: 19px; }
+.ft-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, .14); font-family: var(--font-ui); font-size: 14px; color: rgba(255, 255, 255, .7); }
+.ft-bottom nav { display: flex; gap: 20px; }
+.ft-bottom a { font-size: 14px; }
+.foot-bar { height: 10px; background: var(--grad); }
+
+@media (max-width: 1024px) {
+  .quizcta-card > .gcard__in, .ft-top { grid-template-columns: minmax(0, 1fr); }
+  .ft-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+  .vid { --bw: 10px; --r: 40px; }
+  .vid-play { width: 72px; height: 72px; margin: -36px 0 0 -36px; }
+  .vid-cap b { font-size: 13.5px; }
+  .ft-cols { grid-template-columns: minmax(0, 1fr); }
+  .ft-news form { flex-direction: column; }
+  .sc-row { grid-template-columns: 112px minmax(0, 1fr) 30px; }
+  .scorecard { transform: none; padding: 18px; }
+}
+/* ---------- "Two ways" as tabs (Home, pillar pages): Elementor Pro Tabs widget ---------- */
+.ways2 { padding-block: clamp(110px, 11vw, 160px) clamp(80px, 9vw, 120px); }
+.ways2-head { max-width: 860px; margin-bottom: 34px; }
+.ways2-head .lead { margin-top: 14px; font-size: clamp(17px, 1.6vw, 21px); }
+.ways2-head .plogo { font-size: 1em; }
+.wt-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 30px; padding: 8px; border-radius: 30px; background: var(--white); box-shadow: var(--shadow-card); }
+.wt-tabs button { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border: 0; border-radius: 22px; background: transparent; text-align: left; cursor: pointer; font-family: var(--font); color: var(--navy); transition: background .2s ease, color .2s ease; }
+.wt-tabs button:hover { background: var(--tint); }
+.wt-tabs i { width: 46px; height: 46px; flex: none; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-weight: 800; font-size: 20px; background: var(--tint); color: var(--navy); }
+.wt-tabs b { display: block; font-size: clamp(18px, 1.7vw, 22px); font-weight: 700; line-height: 1.2; }
+.wt-tabs small { display: block; margin-top: 2px; font-family: var(--font-ui); font-size: 14px; color: var(--muted); }
+.wt-tabs [aria-selected="true"], .wt-tabs [aria-selected="true"]:hover { background: var(--navy); color: var(--white); }
+.wt-tabs [aria-selected="true"] i { background: var(--grad-diag); color: var(--white); }
+.wt-tabs [aria-selected="true"] small { color: rgba(255, 255, 255, .8); }
+.wt-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); gap: 28px; align-items: stretch; }
+.wt-panel[hidden] { display: none; }
+.wt-partner { padding-top: 0; border-radius: 48px; overflow: hidden; display: flex; flex-direction: column; }
+.wt-partner .partner-team { height: 250px; margin-top: 0; overflow: hidden; background: radial-gradient(70% 90% at 50% 100%, rgba(50, 153, 213, .7), transparent 70%); }
+.wt-partner .spots-label { margin-bottom: 0; }
+.wt-card { --bw: 8px; --r: 44px; }
+.wt-card > .gcard__in { height: 100%; padding: clamp(26px, 3vw, 40px); display: flex; flex-direction: column; }
+.wt-card h3 { font-weight: 700; font-size: clamp(24px, 2.2vw, 30px); margin-bottom: 18px; }
+.wt-fit { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.wt-fit h4 { font-weight: 700; font-size: 16px; margin-bottom: 10px; }
+.wt-fit li { display: flex; gap: 9px; padding: 4px 0; font-size: 15.5px; line-height: 1.45; color: var(--body); }
+.wt-fit .icon { width: 18px; height: 18px; flex: none; margin-top: 3px; }
+.wt-fit .n .icon { color: #9B98B3; }
+.wt-incl { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.wt-incl span { display: inline-flex; align-items: center; gap: 7px; padding: 8px 13px; border-radius: 999px; background: var(--tint); font-family: var(--font-ui); font-size: 14px; font-weight: 600; color: var(--navy); }
+.wt-incl .icon { width: 16px; height: 16px; }
+.wt-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; margin-top: auto; padding-top: 24px; border-top: 1px solid var(--line); }
+.wt-card .wt-foot { margin-top: 26px; }
+.wt-foot p { font-size: 17px; color: var(--body); }
+.wt-foot b { color: var(--navy); }
+.wt-diy { display: flex; flex-direction: column; gap: 16px; }
+.wt-diy .diy-logos { display: flex; flex-wrap: wrap; gap: 14px 34px; margin: 0; }
+.wt-diy .diy-logos img { height: 60px; width: auto; }
+.wt-diy h3 { font-weight: 700; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.1; }
+.wt-diy > p { font-size: 17.5px; color: var(--body); }
+.wt-diy .vid { --bw: 12px; --r: 44px; margin-top: 6px; }
+.wt-list { display: grid; margin: 0; padding: 0; list-style: none; }
+.wt-res { display: grid; grid-template-columns: 92px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.wt-res:first-child { padding-top: 0; }
+.wt-img { width: 92px; height: 92px; border-radius: 20px; display: grid; place-items: center; overflow: hidden; background: var(--tint); }
+.wt-img img { max-width: 84%; max-height: 84%; width: auto; height: auto; object-fit: contain; }
+.wt-img--coach { align-items: end; background: radial-gradient(70% 70% at 50% 100%, rgba(50, 153, 213, .8), transparent 75%), var(--navy); }
+.wt-img--coach img { max-width: none; max-height: none; width: 120%; margin-bottom: -6px; }
+.wt-res h4 { font-weight: 700; font-size: 19px; }
+.wt-res p { margin: 3px 0 6px; font-size: 15px; line-height: 1.45; color: var(--body); }
+.wt-res .link-u { font-size: 16px; }
+.wt-price { align-self: start; padding: 6px 12px; border-radius: 999px; background: var(--tint); font-weight: 700; font-size: 15px; color: var(--navy); white-space: nowrap; }
+.wt-more { margin-top: 18px; font-size: 15px; color: var(--body); }
+.wt-more a { color: var(--blue-ink); font-weight: 600; }
+@media (max-width: 1024px) { .wt-panel { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 640px) {
+  .wt-tabs { grid-template-columns: 1fr; }
+  .wt-tabs button { padding: 12px 14px; }
+  .wt-fit { grid-template-columns: 1fr; }
+  .wt-res { grid-template-columns: 70px minmax(0, 1fr); }
+  .wt-img { width: 70px; height: 70px; }
+  .wt-price { grid-column: 2; justify-self: start; order: -1; }
+  .wt-foot .btn { width: 100%; }
+}
+/*/THEME-CSS*/
+
 </style>
 </head>
 <body>
 <!-- Icon sprite (in Elementor: upload these as SVG icons / use the Icon widget) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="g-brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7CD2D3"/><stop offset=".5" stop-color="#528FC0"/><stop offset="1" stop-color="#2E4DA5"/></linearGradient>
+    <linearGradient id="g-brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3299D5"/><stop offset="1" stop-color="#282060"/></linearGradient>
     <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
     <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol>
     <symbol id="i-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7Z"/><path d="M19 15.5c.2 1.6 1 2.3 2.5 2.5-1.5.2-2.3.9-2.5 2.5-.2-1.6-1-2.3-2.5-2.5 1.5-.2 2.3-.9 2.5-2.5Z"/></symbol>
@@ -1148,6 +1681,10 @@ button { font: inherit; color: inherit; }
     <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.2"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M6.5 20a5.5 5.5 0 0 1 11 0M1.5 19a3.6 3.6 0 0 1 4.6-3.4M22.5 19a3.6 3.6 0 0 0-4.6-3.4"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.1 7-11.8a7 7 0 1 0-14 0c0 5.7 7 11.8 7 11.8Z"/><circle cx="12" cy="9.8" r="2.5"/></symbol>
     <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="m8.3 10.8 7.4-4.4M8.3 13.2l7.4 4.4"/></symbol>
+    <symbol id="i-sms" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 18.5h3"/><path d="M8.8 7.5h6.4M8.8 10.5h4.2"/></symbol><!--TW--><linearGradient id="g-ico" gradientUnits="userSpaceOnUse" x1="3" y1="3" x2="21" y2="21"><stop offset="0" stop-color="#3299D5"/><stop offset="1" stop-color="#282060"/></linearGradient><linearGradient id="g-ico64" gradientUnits="userSpaceOnUse" x1="6" y1="6" x2="58" y2="58"><stop offset="0" stop-color="#3299D5"/><stop offset="1" stop-color="#282060"/></linearGradient><symbol id="i-search--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol><symbol id="i-map--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linejoin="round"><path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5Z"/><path d="M9 4.5v13M15 6.5v13"/></symbol><symbol id="i-sparkle--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7Z"/><path d="M19 15.5c.2 1.6 1 2.3 2.5 2.5-1.5.2-2.3.9-2.5 2.5-.2-1.6-1-2.3-2.5-2.5 1.5-.2 2.3-.9 2.5-2.5Z"/></symbol><symbol id="i-chat--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linejoin="round"><path d="M20.5 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.6A8 8 0 1 1 20.5 11.5Z"/></symbol><symbol id="i-check--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol><symbol id="i-x--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol><symbol id="i-arrow--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></symbol><symbol id="i-menu--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol><symbol id="i-close--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol><symbol id="i-web--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 8.5h19M6.5 12.5h6M6.5 15.5h4"/><rect x="14.5" y="11.5" width="4" height="5" rx="1"/></symbol><symbol id="i-magnet--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5v8a6 6 0 0 0 12 0v-8"/><path d="M6 3.5h3.5v8a2.5 2.5 0 0 0 5 0v-8H18M6 7.5h3.5M14.5 7.5H18"/></symbol><symbol id="i-star--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9Z"/></symbol><symbol id="i-report--g" viewBox="0 0 64 64" fill="none" stroke="url(#g-ico64)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="8" width="44" height="48" rx="5"/><path d="M19 44V34M28 44V26M37 44V31M46 44V22"/><circle cx="46" cy="16" r="0" /><path d="M17 18h14"/><circle cx="48" cy="48" r="9" fill="#26275B"/><path d="M45.5 45.5a3 3 0 1 1 3.5 3c-.6.2-1 .7-1 1.3v.7M48 53.5v.2"/></symbol><symbol id="i-puzzle--g" viewBox="0 0 64 64" fill="none" stroke="url(#g-ico64)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="10" width="18" height="18" rx="4"/><rect x="38" y="8" width="18" height="18" rx="4" transform="rotate(8 47 17)"/><rect x="10" y="38" width="18" height="18" rx="4" transform="rotate(-6 19 47)"/><rect x="38" y="38" width="18" height="18" rx="4"/><path d="M29 19h3M34 19h2M47 30v3M47 35v1M30 47h3M19 30v2" stroke-dasharray="2 4"/></symbol><symbol id="i-handshake--g" viewBox="0 0 64 64" fill="none" stroke="url(#g-ico64)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24l10-8 9 4"/><path d="M60 24l-10-8-12 3-11 9a3.4 3.4 0 0 0 4.6 5l7-5"/><path d="M14 16l-6 22 6 4M50 16l6 22-8 6"/><path d="M14 42l6 5a3 3 0 0 0 4.3-4.2M24.3 42.8l3.4 3a3 3 0 0 0 4.2-4.3M31.9 41.5l2.8 2.4a3 3 0 0 0 4.2-4.3l-5.3-4.6M38.9 39.6l2.3 2a3 3 0 0 0 4.2-4.2L37.5 30"/><path d="M27 6l-3 6M34 4v7M41 6l-3 6" stroke="#7CD2D3"/></symbol><symbol id="i-facebook--g" viewBox="0 0 24 24"><path fill="url(#g-ico)" d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></symbol><symbol id="i-instagram--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="url(#g-ico)" stroke="none"/></symbol><symbol id="i-linkedin--g" viewBox="0 0 24 24"><path fill="url(#g-ico)" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1a3.8 3.8 0 0 1 3.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.3ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5Z"/></symbol><symbol id="i-chev--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-tick--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol><symbol id="i-trend--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol><symbol id="i-doc--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol><symbol id="i-play--g" viewBox="0 0 24 24"><path fill="url(#g-ico)" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></symbol><symbol id="i-mic--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></symbol><symbol id="i-trophy--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0Z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 21h7M10 17h4"/></symbol><symbol id="s-branding--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.4-1.9-.4-1.1.3-2.1 1.5-2.1H17a4 4 0 0 0 4-4c0-5.5-4-10-9-10Z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="11" cy="7.2" r="1.2"/><circle cx="15.8" cy="8.5" r="1.2"/></symbol><symbol id="s-website--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 8.5h19M6.5 12.5h6M6.5 15.5h4"/><rect x="14.5" y="11.5" width="4" height="5" rx="1"/></symbol><symbol id="s-analytics--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><rect x="5.5" y="12" width="3" height="5.5" rx=".8"/><rect x="10.5" y="8.5" width="3" height="9" rx=".8"/><rect x="15.5" y="4.5" width="3" height="13" rx=".8"/></symbol><symbol id="s-crm--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.5a6.5 6.5 0 0 1 3 5.5"/></symbol><symbol id="s-seo--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol><symbol id="s-advertising--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10v4a1.5 1.5 0 0 0 1.5 1.5h2L14 19V5L7 8.5H5A1.5 1.5 0 0 0 3.5 10Z"/><path d="M17.5 9a4 4 0 0 1 0 6M19.8 6.5a7.5 7.5 0 0 1 0 11"/></symbol><symbol id="s-social-media--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linejoin="round"><path d="M20.5 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.6A8 8 0 1 1 20.5 11.5Z"/><path d="M12.5 15s-3.5-2-3.5-4.2a1.8 1.8 0 0 1 3.5-.6 1.8 1.8 0 0 1 3.5.6c0 2.2-3.5 4.2-3.5 4.2Z"/></symbol><symbol id="s-local-ties--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.1 7-11.8a7 7 0 1 0-14 0c0 5.7 7 11.8 7 11.8Z"/><circle cx="12" cy="9.8" r="2.5"/></symbol><symbol id="s-lead-generation--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5v8a6 6 0 0 0 12 0v-8"/><path d="M6 3.5h3.5v8a2.5 2.5 0 0 0 5 0v-8H18M6 7.5h3.5M14.5 7.5H18"/></symbol><symbol id="s-marketing-automation--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5 4.5 13.5H11l-1 8 8.5-11H12Z"/></symbol><symbol id="s-loyalty--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v8h14v-8M12 8.5v12"/><path d="M12 8.5S10.5 4 8 4a2.2 2.2 0 0 0 0 4.5ZM12 8.5S13.5 4 16 4a2.2 2.2 0 0 1 0 4.5Z"/></symbol><symbol id="s-reviews-referrals--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9Z"/></symbol><symbol id="i-phone--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.4v2.8a1.9 1.9 0 0 1-2 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.7-5.7A18.6 18.6 0 0 1 2.3 4.4 1.9 1.9 0 0 1 4.2 2.4H7a1.9 1.9 0 0 1 1.9 1.6c.1.9.4 1.8.7 2.6a1.9 1.9 0 0 1-.4 2L8 9.8a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.3 1.7.6 2.6.7a1.9 1.9 0 0 1 1.5 1.8Z"/></symbol><symbol id="i-left--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></symbol><symbol id="i-right--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol><symbol id="i-heart--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></symbol><symbol id="i-target--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="url(#g-ico)"/></symbol><symbol id="i-eye--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3.2"/></symbol><symbol id="i-users--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.2"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M6.5 20a5.5 5.5 0 0 1 11 0M1.5 19a3.6 3.6 0 0 1 4.6-3.4M22.5 19a3.6 3.6 0 0 0-4.6-3.4"/></symbol><symbol id="i-pin--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.1 7-11.8a7 7 0 1 0-14 0c0 5.7 7 11.8 7 11.8Z"/><circle cx="12" cy="9.8" r="2.5"/></symbol><symbol id="i-bulb--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></symbol><symbol id="i-mail--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol><symbol id="i-clock--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol><symbol id="i-share--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="m8.3 10.8 7.4-4.4M8.3 13.2l7.4 4.4"/></symbol><symbol id="i-sms--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 18.5h3"/><path d="M8.8 7.5h6.4M8.8 10.5h4.2"/></symbol><!--/TW-->
   </defs>
 </svg>
 
@@ -1158,14 +1695,14 @@ button { font: inherit; color: inherit; }
      ========================================================================= -->
 <header class="site-header" id="site-header">
   <div class="e-con header-row">
-    <a class="logo" href="rebrand-homepage.html" aria-label="First Search Marketing home"><img src="assets/img/logo.png" alt="First Search Marketing" width="576" height="196"></a>
+    <a class="logo" href="rebrand-homepage.html" aria-label="First Search Marketing home"><img src="assets/img/logo-white.png" alt="First Search Marketing" width="576" height="196"></a>
     <nav class="nav sn" aria-label="Primary">
       <ul class="sn-list">
         <li class="sn-dd"><button type="button" class="sn-top is-current" aria-expanded="false" aria-controls="sn-about">About First Search<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="sn-panel" id="sn-about" hidden><ul><li><a class="sn-item" href="about.html" aria-current="page"><b>About Us</b><span>Our story, values and the team behind your marketing</span></a></li><li><a class="sn-item" href="why-choose-us.html"><b>Why Choose Us</b><span>How we compare, and the FirstSearch Guarantee</span></a></li></ul></div></li>
         <li class="sn-dd sn-dd--mega"><button type="button" class="sn-top" aria-expanded="false" aria-controls="sn-do">What We Do<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="sn-panel sn-mega" id="sn-do" hidden><div class="sn-mega-in">
-            <div class="sn-cols"><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=brand" style="--dot:#7CD2D3"><i></i><span><b>FirstBrand</b><small>Build the foundation</small></span></a><ul><li><a class="sn-svc" href="services.html?service=branding&amp;stage=brand"><span>Branding &amp; Content Creation</span></a></li><li><a class="sn-svc" href="services.html?service=website&amp;stage=brand"><span>Website</span></a></li><li><a class="sn-svc" href="services.html?service=analytics&amp;stage=brand"><span>Analytics</span></a></li><li><a class="sn-svc" href="services.html?service=crm&amp;stage=brand"><span>CRM</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=thought" style="--dot:#4E98D8"><i></i><span><b>FirstThought</b><small>Get found first</small></span></a><ul><li><a class="sn-svc" href="services.html?service=seo&amp;stage=thought"><span>SEO</span></a></li><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=thought"><span>Advertising</span><small>2 stages</small></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=thought"><span>Social Media</span><small>3 stages</small></a></li><li><a class="sn-svc" href="services.html?service=local-ties&amp;stage=thought"><span>Local Ties</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=choice" style="--dot:#2E4DA5"><i></i><span><b>FirstChoice</b><small>Get chosen</small></span></a><ul><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=choice"><span>Advertising</span><small>2 stages</small></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=choice"><span>Social Media</span><small>3 stages</small></a></li><li><a class="sn-svc" href="services.html?service=lead-generation&amp;stage=choice"><span>Lead Generation</span></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=choice"><span>Marketing Automation</span><small>2 stages</small></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=referral" style="--dot:#9E9AAE"><i></i><span><b>FirstReferral</b><small>Get referred</small></span></a><ul><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=referral"><span>Social Media</span><small>3 stages</small></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=referral"><span>Marketing Automation</span><small>2 stages</small></a></li><li><a class="sn-svc" href="services.html?service=loyalty&amp;stage=referral"><span>Loyalty</span></a></li><li><a class="sn-svc" href="services.html?service=reviews-referrals&amp;stage=referral"><span>Reviews &amp; Referrals</span></a></li></ul></div></div>
+            <div class="sn-cols"><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=brand" style="--dot:#7CD2D3"><span class="plogo" role="img" aria-label="FirstBrand"><b>first</b>brand</span><small>Build the foundation</small></a><ul><li><a class="sn-svc" href="services.html?service=branding&amp;stage=brand"><span>Branding &amp; Content Creation</span></a></li><li><a class="sn-svc" href="services.html?service=website&amp;stage=brand"><span>Website</span></a></li><li><a class="sn-svc" href="services.html?service=analytics&amp;stage=brand"><span>Analytics</span></a></li><li><a class="sn-svc" href="services.html?service=crm&amp;stage=brand"><span>CRM</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=thought" style="--dot:#3299D5"><span class="plogo" role="img" aria-label="FirstThought"><b>first</b>thought</span><small>Get found first</small></a><ul><li><a class="sn-svc" href="services.html?service=seo&amp;stage=thought"><span>SEO</span></a></li><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=thought"><span>Advertising</span><small>2 stages</small></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=thought"><span>Social Media</span><small>3 stages</small></a></li><li><a class="sn-svc" href="services.html?service=local-ties&amp;stage=thought"><span>Local Ties</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=choice" style="--dot:#282060"><span class="plogo" role="img" aria-label="FirstChoice"><b>first</b>choice</span><small>Get chosen</small></a><ul><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=choice"><span>Advertising</span><small>2 stages</small></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=choice"><span>Social Media</span><small>3 stages</small></a></li><li><a class="sn-svc" href="services.html?service=lead-generation&amp;stage=choice"><span>Lead Generation</span></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=choice"><span>Marketing Automation</span><small>2 stages</small></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=referral" style="--dot:#9E9AAE"><span class="plogo" role="img" aria-label="FirstReferral"><b>first</b>referral</span><small>Get referred</small></a><ul><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=referral"><span>Social Media</span><small>3 stages</small></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=referral"><span>Marketing Automation</span><small>2 stages</small></a></li><li><a class="sn-svc" href="services.html?service=loyalty&amp;stage=referral"><span>Loyalty</span></a></li><li><a class="sn-svc" href="services.html?service=reviews-referrals&amp;stage=referral"><span>Reviews &amp; Referrals</span></a></li></ul></div></div>
             <div class="sn-cta">
               <p class="sn-k">What we do</p>
               <a class="sn-big" href="services-overview.html">All services<span>12 services, one system</span></a>
@@ -1190,7 +1727,7 @@ button { font: inherit; color: inherit; }
   </details>
   <details class="sn-mg"><summary>What We Do<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
     <a class="sn-m" href="services-overview.html">All services</a>
-    <div class="sn-mcols"><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=brand" style="--dot:#7CD2D3"><i></i><span><b>FirstBrand</b><small>Build the foundation</small></span></a><ul><li><a class="sn-svc" href="services.html?service=branding&amp;stage=brand"><span>Branding &amp; Content Creation</span></a></li><li><a class="sn-svc" href="services.html?service=website&amp;stage=brand"><span>Website</span></a></li><li><a class="sn-svc" href="services.html?service=analytics&amp;stage=brand"><span>Analytics</span></a></li><li><a class="sn-svc" href="services.html?service=crm&amp;stage=brand"><span>CRM</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=thought" style="--dot:#4E98D8"><i></i><span><b>FirstThought</b><small>Get found first</small></span></a><ul><li><a class="sn-svc" href="services.html?service=seo&amp;stage=thought"><span>SEO</span></a></li><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=thought"><span>Advertising</span></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=thought"><span>Social Media</span></a></li><li><a class="sn-svc" href="services.html?service=local-ties&amp;stage=thought"><span>Local Ties</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=choice" style="--dot:#2E4DA5"><i></i><span><b>FirstChoice</b><small>Get chosen</small></span></a><ul><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=choice"><span>Advertising</span></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=choice"><span>Social Media</span></a></li><li><a class="sn-svc" href="services.html?service=lead-generation&amp;stage=choice"><span>Lead Generation</span></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=choice"><span>Marketing Automation</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=referral" style="--dot:#9E9AAE"><i></i><span><b>FirstReferral</b><small>Get referred</small></span></a><ul><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=referral"><span>Social Media</span></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=referral"><span>Marketing Automation</span></a></li><li><a class="sn-svc" href="services.html?service=loyalty&amp;stage=referral"><span>Loyalty</span></a></li><li><a class="sn-svc" href="services.html?service=reviews-referrals&amp;stage=referral"><span>Reviews &amp; Referrals</span></a></li></ul></div></div>
+    <div class="sn-mcols"><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=brand" style="--dot:#7CD2D3"><span class="plogo" role="img" aria-label="FirstBrand"><b>first</b>brand</span><small>Build the foundation</small></a><ul><li><a class="sn-svc" href="services.html?service=branding&amp;stage=brand"><span>Branding &amp; Content Creation</span></a></li><li><a class="sn-svc" href="services.html?service=website&amp;stage=brand"><span>Website</span></a></li><li><a class="sn-svc" href="services.html?service=analytics&amp;stage=brand"><span>Analytics</span></a></li><li><a class="sn-svc" href="services.html?service=crm&amp;stage=brand"><span>CRM</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=thought" style="--dot:#3299D5"><span class="plogo" role="img" aria-label="FirstThought"><b>first</b>thought</span><small>Get found first</small></a><ul><li><a class="sn-svc" href="services.html?service=seo&amp;stage=thought"><span>SEO</span></a></li><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=thought"><span>Advertising</span></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=thought"><span>Social Media</span></a></li><li><a class="sn-svc" href="services.html?service=local-ties&amp;stage=thought"><span>Local Ties</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=choice" style="--dot:#282060"><span class="plogo" role="img" aria-label="FirstChoice"><b>first</b>choice</span><small>Get chosen</small></a><ul><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=choice"><span>Advertising</span></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=choice"><span>Social Media</span></a></li><li><a class="sn-svc" href="services.html?service=lead-generation&amp;stage=choice"><span>Lead Generation</span></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=choice"><span>Marketing Automation</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=referral" style="--dot:#9E9AAE"><span class="plogo" role="img" aria-label="FirstReferral"><b>first</b>referral</span><small>Get referred</small></a><ul><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=referral"><span>Social Media</span></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=referral"><span>Marketing Automation</span></a></li><li><a class="sn-svc" href="services.html?service=loyalty&amp;stage=referral"><span>Loyalty</span></a></li><li><a class="sn-svc" href="services.html?service=reviews-referrals&amp;stage=referral"><span>Reviews &amp; Referrals</span></a></li></ul></div></div>
   </details>
   <details class="sn-mg"><summary>Grow Your Marketing<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
     <a class="sn-m" href="events-resources.html">Events</a><a class="sn-m" href="events-resources.html#resources">Resources</a><a class="sn-m" href="ways-to-learn.html">BeFirst Academy</a>
@@ -1214,10 +1751,7 @@ button { font: inherit; color: inherit; }
         <a class="link-u" href="#team">Meet the team</a>
       </div>
     </div>
-    <div class="gcard hero-photo"><div class="gcard__in">
-      <span class="cap"><i></i>Family-owned in Exeter, NH</span>
-      <img src="assets/img/design/team-group.webp" alt="The First Search Marketing team" width="1300" height="645">
-    </div></div>
+    <!--VIDEO:Meet the First Search team|[1:45]|assets/img/design/team-group.webp|wide--><div class="gcard vid"><div class="gcard__in"><button type="button" class="vid-btn" aria-label="Play video: Meet the First Search team"><img class=wide src="assets/img/design/team-group.webp" alt=""><span class="vid-tag"><i></i>Video</span><span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></svg></span><span class="vid-cap"><b>Meet the First Search team</b><span class="ph">[1:45]</span></span></button></div></div><!--/VIDEO-->
   </div>
 </section>
 
@@ -1287,7 +1821,7 @@ button { font: inherit; color: inherit; }
 </section>
 
 <!-- 7. TEAM -->
-<section class="section bg-geo" id="team" aria-labelledby="team-title" style="padding-top:0">
+<section class="section team-sec" id="team" aria-labelledby="team-title">
   <div class="e-con">
     <div class="sec-head"><span class="eyebrow">Our team</span><h2 class="h2" id="team-title">The people behind your marketing.</h2><p class="lead">A full marketing team at a fraction of the cost of hiring one. Small in size, serious in results. <span class="ph">[CONFIRM: current team members and titles]</span></p></div>
     <div class="team-grid" id="team-grid"></div>
@@ -1295,24 +1829,40 @@ button { font: inherit; color: inherit; }
   </div>
 </section>
 
-<!-- 8. MANIFESTO (homepage framework block) -->
+<!-- 8. FIRSTSEARCHER MANIFESTO  ·  homepage framework block, 2 columns: text | manifesto graphic (Image widget) -->
 <section class="framework" aria-labelledby="man-title">
   <div class="fw-block on-dark">
-    <div class="e-con">
-      <div class="fw-head">
+    <div class="e-con man-grid">
+      <div class="man-copy">
         <span class="eyebrow">The FirstSearcher Manifesto</span>
-        <h2 class="h2" id="man-title">Fueling growth. Taking action. Building a legacy.</h2>
+        <h2 class="h2" id="man-title">What it means to be a FirstSearcher.</h2>
+        <p>A FirstSearcher is a business owner who has stopped chasing hacks and trends and decided to build something that lasts. They don't wait to be found. They show up at every stage of the customer journey, so choosing them is the obvious answer.</p>
+        <p>It's how we work, and it's who we work best with. Our partners, our students and our team all share the same belief: marketing isn't a cost, it's the most important investment you make in your business.</p>
+        <ul class="man-pts">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Execution over ideas</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>A brand customers trust and come back to</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Present at every stage of the journey</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Success built through consistency</li>
+        </ul>
+        <p class="mf-end">This is my business. My vision. My legacy.<em>And I will Be First Search.</em></p>
       </div>
-      <ol class="mf">
-        <li><div>Ideas mean nothing without execution. <span>Every move I make brings me closer to my goals.</span></div></li>
-        <li><div>My business is more than a service. <span>It's a mission-driven brand customers trust, recognize and come back to.</span></div></li>
-        <li><div>I don't wait to be found. <span>I use every channel to be in front of the right people at the right moment.</span></div></li>
-        <li><div>I show up at every stage of the customer journey, <span>so choosing me is the only logical answer.</span></div></li>
-        <li><div>I build a community of loyal customers <span>who refer, recommend and carry my brand further than any ad.</span></div></li>
-        <li><div>Marketing isn't a cost. <span>It's the most important investment I make in my business.</span></div></li>
-        <li><div>Success isn't luck. <span>It's built through consistency, strategy and execution.</span></div></li>
-      </ol>
-      <p class="mf-end">This is my business. My vision. My legacy.<em>And I will Be First Search.</em></p>
+      <figure class="man-art">
+        <div class="man-poster">
+          <span class="ph man-ph">[Manifesto graphic goes here]</span>
+          <p class="man-k">The FirstSearcher Manifesto</p>
+          <ol>
+            <li>Ideas mean nothing without execution.</li>
+            <li>My business is more than a service.</li>
+            <li>I don't wait to be found.</li>
+            <li>I show up at every stage of the customer journey.</li>
+            <li>I build a community of loyal customers.</li>
+            <li>Marketing isn't a cost. It's an investment.</li>
+            <li>Success isn't luck.</li>
+          </ol>
+          <p class="man-sign">I will <b>Be First Search.</b></p>
+        </div>
+        <figcaption class="vh">The FirstSearcher Manifesto graphic</figcaption>
+      </figure>
     </div>
   </div>
   <div class="cta-overlap"><a class="btn btn--lg" href="contact.html">Let’s Talk!</a></div>
@@ -1354,32 +1904,37 @@ button { font: inherit; color: inherit; }
     </div>
   </div>
 
-  <div class="e-con foot-grid">
-    <div class="foot-brand">
-      <img src="assets/img/logo-white.png" alt="First Search Marketing" width="576" height="196">
-      <p>Family-owned digital marketing in Exeter, NH.</p>
-      <div class="socials">
-        <a href="#" aria-label="Facebook" data-ph-link="Facebook profile"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
-        <a href="#" aria-label="Instagram" data-ph-link="Instagram profile"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
-        <a href="#" aria-label="LinkedIn" data-ph-link="LinkedIn profile"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+  <div class="e-con ft">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <img src="assets/img/logo-white.png" alt="First Search Marketing" width="576" height="196">
+        <p>Be the business your customers <span>find first.</span></p>
+      </div>
+      <div class="ft-news">
+        <h3>The FirstSearcher monthly</h3>
+        <p>One practical marketing play for local businesses, every month. No spam.</p>
+        <form class="ft-form" novalidate><label class="vh" for="ft-email">Email address</label><input id="ft-email" type="email" placeholder="you@business.com" autocomplete="email"><button class="btn btn--sec" type="submit">Subscribe</button></form>
       </div>
     </div>
-    <nav aria-labelledby="f-col">
-      <h3 id="f-col">Explore</h3>
-      <ul class="foot-links" id="foot-col"></ul>
-    </nav>
-    <div>
-      <h3>Contact</h3>
-      <ul class="foot-contact">
-        <li>92 Portsmouth Ave Ste #21,<br>Exeter, NH 03833</li>
-        <li><a href="tel:+16035188090">603-518-8090</a></li>
-        <li><a href="mailto:chris@befirstsearch.com">chris@befirstsearch.com</a></li>
-      </ul>
+    <div class="ft-cols">
+      <nav aria-labelledby="ft-a"><h4 id="ft-a">About First Search</h4><ul>
+        <li><a href="about.html">About Us</a></li><li><a href="why-choose-us.html">Why Choose Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="#" data-ph-link="careers page">Careers</a></li></ul></nav>
+      <nav aria-labelledby="ft-d"><h4 id="ft-d">What We Do</h4><ul>
+        <li><a href="services-overview.html">All services</a></li><li><a href="services-overview.html#framework">The FirstSearch Framework</a></li></ul>
+        <div class="ft-pl"><a href="pillars.html?pillar=brand"><span class="plogo plogo--light" role="img" aria-label="FirstBrand"><b>first</b>brand</span></a><a href="pillars.html?pillar=thought"><span class="plogo plogo--light" role="img" aria-label="FirstThought"><b>first</b>thought</span></a><a href="pillars.html?pillar=choice"><span class="plogo plogo--light" role="img" aria-label="FirstChoice"><b>first</b>choice</span></a><a href="pillars.html?pillar=referral"><span class="plogo plogo--light" role="img" aria-label="FirstReferral"><b>first</b>referral</span></a></div></nav>
+      <nav aria-labelledby="ft-g"><h4 id="ft-g">Grow Your Marketing</h4><ul>
+        <li><a href="events-resources.html">Events</a></li><li><a href="events-resources.html#resources">Resources</a></li><li><a href="ways-to-learn.html">BeFirst Academy</a></li><li><a href="#" data-ph-link="Framework Quiz">Framework Quiz</a></li></ul></nav>
+      <div><h4>Get in touch</h4><ul class="ft-ct">
+        <li><i><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></i><span>92 Portsmouth Ave, Ste #21<br>Exeter, NH 03833</span></li>
+        <li><i><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></i><a href="tel:+16035188090">603-518-8090</a></li>
+        <li><i><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></i><a href="mailto:chris@befirstsearch.com">chris@befirstsearch.com</a></li></ul>
+        <div class="ft-social">
+          <a href="#" aria-label="Facebook" data-ph-link="Facebook profile"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a href="#" aria-label="Instagram" data-ph-link="Instagram profile"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a href="#" aria-label="LinkedIn" data-ph-link="LinkedIn profile"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+        </div></div>
     </div>
-  </div>
-  <div class="e-con foot-bottom">
-    <span>© 2026 First Search Marketing LLC.</span>
-    <nav aria-label="Legal"><a href="#" data-ph-link="privacy policy">Privacy policy</a><a href="#" data-ph-link="terms">Terms</a></nav>
+    <div class="ft-bottom"><span>© 2026 First Search Marketing LLC · Family-owned in Exeter, NH</span><nav aria-label="Legal"><a href="#" data-ph-link="privacy policy">Privacy policy</a><a href="#" data-ph-link="terms">Terms</a></nav></div>
   </div>
   <div class="foot-bar" aria-hidden="true"></div>
 </footer>
@@ -1400,8 +1955,8 @@ button { font: inherit; color: inherit; }
   // Stage dots match the framework wheel image.
   const ST = {
     brand:    { n: 1, label: 'FirstBrand',    sub: 'Build the foundation', long: 'Build a brand people trust on sight', dot: '#7CD2D3' },
-    thought:  { n: 2, label: 'FirstThought',  sub: 'Get found first',      long: 'Get found wherever customers look',   dot: '#4E98D8' },
-    choice:   { n: 3, label: 'FirstChoice',   sub: 'Get chosen',           long: 'Turn attention into booked business', dot: '#2E4DA5' },
+    thought:  { n: 2, label: 'FirstThought',  sub: 'Get found first',      long: 'Get found wherever customers look',   dot: '#3299D5' },
+    choice:   { n: 3, label: 'FirstChoice',   sub: 'Get chosen',           long: 'Turn attention into booked business', dot: '#282060' },
     referral: { n: 4, label: 'FirstReferral', sub: 'Get referred',         long: 'Make customers your best channel',    dot: '#9E9AAE' }
   };
   const ORDER = ['brand', 'thought', 'choice', 'referral'];
@@ -1420,6 +1975,7 @@ button { font: inherit; color: inherit; }
     'reviews-referrals':    ['Reviews & Referrals', ['referral'], 'Reviews & Referrals']
   };
   const NAV = Object.fromEntries(ORDER.map(k => [k, Object.keys(SVC).filter(s => SVC[s][1].includes(k))]));
+  const plogo = (k, cls = '') => `<span class="plogo${cls ? ' ' + cls : ''}" role="img" aria-label="${ST[k].label}"><b>first</b>${k}</span>`;
   const stageDot = k => `<span class="dot" style="background:${ST[k].dot}" aria-hidden="true"></span>`;
   const RESOURCES = [
     { type: 'blog', date: '2026-10-09', title: 'Showing up in AI search: what local businesses need to know', tags: ['SEO', 'Branding & content'], meta: '7 min read' },
@@ -1479,6 +2035,37 @@ button { font: inherit; color: inherit; }
   /**
    * wheel({ on: [stages that are part of this page], active, clickable: [stages], attr: 'data-stage' | 'data-pillar', label })
    */
+  // Service cells on the wheel image (12 outer cells of 30°, radius 338–545) and the FirstBrand words in the core.
+  const CR0 = 338, CR1 = 545;
+  const wsec = (a0, a1, r0, r1) => { const [x1, y1] = wpt(r1, a0), [x2, y2] = wpt(r1, a1), [x3, y3] = wpt(r0, a1), [x4, y4] = wpt(r0, a0); return `M${x1} ${y1}A${r1} ${r1} 0 0 1 ${x2} ${y2}L${x3} ${y3}A${r0} ${r0} 0 0 0 ${x4} ${y4}Z`; };
+  const wrect = cy => `M478 ${cy - 19}h144a14 14 0 0 1 14 14v10a14 14 0 0 1-14 14H478a14 14 0 0 1-14-14v-10a14 14 0 0 1 14-14Z`;
+  const CELLS = {
+    'website': [['brand', 517]], 'analytics': [['brand', 558]], 'branding': [['brand', 598]], 'crm': [['brand', 635]],
+    'advertising': [['thought', 0], ['choice', 180]], 'seo': [['thought', 30]], 'local-ties': [['thought', 60]],
+    'social-media': [['thought', 90], ['choice', 150], ['referral', 270]], 'lead-generation': [['choice', 120]],
+    'marketing-automation': [['choice', 210], ['referral', 240]], 'loyalty': [['referral', 300]], 'reviews-referrals': [['referral', 330]]
+  };
+  let wid = 0;
+  /** Service wheel: only this service's cells are lit, raised and clickable (data-stage). */
+  const wheelCells = ({ slug, active, label }) => {
+    const id = ++wid;
+    const cells = CELLS[slug].map(([k, v]) => {
+      const d = k === 'brand' ? wrect(v) : wsec(v, v + 30, CR0, CR1);
+      const [cx, cy] = k === 'brand' ? [550, v] : wpt((CR0 + CR1) / 2, v + 15);
+      return { k, d, cx, cy };
+    });
+    let svg = `<defs>${cells.map((c, i) => `<clipPath id="wc${id}-${i}"><path d="${c.d}"/></clipPath>`).join('')}</defs>`;
+    svg += `<path class="wz-dim wz-dim--cells" fill-rule="evenodd" d="${wcircle(WRO)}${cells.map(c => c.d).join('')}"/>`;
+    svg += cells.map((c, i) => `<g class="wcell${c.k === active ? ' on' : ''}" style="transform-origin:${c.cx}px ${c.cy}px" data-stage="${c.k}" tabindex="0" role="button" aria-label="${ST[c.k].label}${c.k === active ? ' (selected)' : ''}"><image href="assets/img/framework-wheel.webp" width="1100" height="1100" clip-path="url(#wc${id}-${i})"/><path class="wcell-o" d="${c.d}"/></g>`).join('');
+    return `<div class="wheel wheel--cells"><img src="assets/img/framework-wheel.webp" alt="${esc(label)}" width="1100" height="1100"><svg viewBox="0 0 1100 1100">${svg}</svg></div>`;
+  };
+  /** Numbered wheel: badges 1–4 on each stage, the current stage lit. */
+  const BADGE = { brand: [550, 400], thought: wpt(445, 59), choice: wpt(445, 179), referral: wpt(445, 300) };
+  const wheelNumbered = ({ active, label }) => {
+    let svg = ORDER.filter(k => k !== active).map(k => `<path class="wz-dim" d="${WSHAPE[k]}"/>`).join('') + `<path class="wring" d="${WSHAPE[active]}"/>`;
+    svg += ORDER.map(k => { const [x, y] = BADGE[k]; return `<g class="wbadge${k === active ? ' on' : ''}"><circle cx="${x}" cy="${y}" r="46"/><text x="${x}" y="${+y + 17}" text-anchor="middle">${ST[k].n}</text></g>`; }).join('');
+    return `<div class="wheel"><img src="assets/img/framework-wheel.webp" alt="${esc(label)}" width="1100" height="1100"><svg viewBox="0 0 1100 1100" aria-hidden="true">${svg}</svg></div>`;
+  };
   const wheel = ({ on, active, clickable = [], attr = 'data-stage', label }) => {
     let svg = '';
     ORDER.forEach(k => { if (!on.includes(k)) svg += `<path class="wz-dim" d="${WSHAPE[k]}"/>`; else if (k !== active) svg += `<path class="wz-soft" d="${WSHAPE[k]}"/>`; });
@@ -1526,7 +2113,7 @@ button { font: inherit; color: inherit; }
     if (a) { e.preventDefault(); setMega(false); setMenu(false); showToast('Prototype: this will link to the ' + a.dataset.phLink + '.'); }
   });
   addEventListener('keydown', e => {
-    const h = e.target.closest && e.target.closest('.wz-hit');
+    const h = e.target.closest && e.target.closest('.wz-hit, .wcell');
     if (h && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); h.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
   });
 
@@ -1555,6 +2142,7 @@ button { font: inherit; color: inherit; }
   const lc = s => s.toLowerCase().replace('seo', 'SEO').replace('crm', 'CRM');
 
   const siteFooter = () => {
+    if (!$('#foot-col')) return;
     $('#foot-col').innerHTML = [['about.html', 'About Us'], ['why-choose-us.html', 'Why Choose Us'], ['services-overview.html', 'Services'], ['events-resources.html', 'Events'], ['events-resources.html#resources', 'Resources'], ['ways-to-learn.html', 'BeFirst Academy'], ['contact.html', 'Contact Us']].map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('');
   };
 
@@ -1610,5 +2198,37 @@ button { font: inherit; color: inherit; }
   if (mn && mb) mn.addEventListener('click', e => { if (e.target.closest('a') && mn.classList.contains('is-open')) mb.click(); });
 })();
 </script><!--/SN:js-->
+<!--TH:js--><script>
+(() => {
+  // Gradient-style icons: on light backgrounds, solid icons switch to their gradient twin (#id--g).
+  const SKIP = new Set(['i-chev', 'i-close', 'i-menu', 'i-arrow', 'i-left', 'i-right', 'i-play', 'i-google', 'i-facebook', 'i-instagram', 'i-linkedin', 'i-x', 'i-star', 'i-search']);
+  const DARK = '.on-dark, .note, .booked, .btn, .site-header, .footer, .navy-card, .step--hl, .sn-cta, .vid, .scorecard, .modal-x, [data-noswap]';
+  const light = c => { const m = c.match(/\d+(\.\d+)?/g); if (!m) return false; const [r, g, b] = m.map(Number); return (r * .299 + g * .587 + b * .114) > 200; };
+  const swap = () => document.querySelectorAll('svg use').forEach(u => {
+    const h = u.getAttribute('href'); if (!h || h.slice(-3) === '--g') return;
+    const id = h.slice(1); if (SKIP.has(id) || !document.getElementById(id + '--g')) return;
+    const svg = u.closest('svg'); if (!svg || svg.closest(DARK) || light(getComputedStyle(svg).color)) return;
+    u.setAttribute('href', h + '--g');
+  });
+  let q; const later = () => { cancelAnimationFrame(q); q = requestAnimationFrame(swap); };
+  swap(); new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
+  // Tabs (Elementor Tabs widget): click + arrow keys
+  document.querySelectorAll('.wt-tabs').forEach(tl => {
+    const tabs = [...tl.querySelectorAll('[role="tab"]')];
+    const sel = (t, focus) => { tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; }); if (focus) t.focus(); };
+    tabs.forEach((t, i) => { t.addEventListener('click', () => sel(t)); t.addEventListener('keydown', e => { const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key]; if (d) { e.preventDefault(); sel(tabs[(i + d + tabs.length) % tabs.length], true); } }); });
+  });
+  // Partner spots bars
+  document.querySelectorAll('.spots-bar[data-filled]').forEach(b => { if (!b.children.length) b.innerHTML = Array.from({ length: 25 }, (_, i) => `<span${i < +b.dataset.filled ? ' class="on"' : ''}></span>`).join(''); });
+  // Video placeholders
+  document.addEventListener('click', e => { const v = e.target.closest('.vid-btn'); if (v) v.classList.toggle('is-playing'); });
+  // Footer newsletter (prototype)
+  document.querySelectorAll('.ft-form').forEach(f => f.addEventListener('submit', e => {
+    e.preventDefault(); const i = f.querySelector('input');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(i.value.trim())) { i.setAttribute('aria-invalid', 'true'); i.focus(); return; }
+    f.outerHTML = '<p class="ok" role="status">Thanks! You\'re on the list.</p>';
+  }));
+})();
+</script><!--/TH:js-->
 </body>
 </html>
