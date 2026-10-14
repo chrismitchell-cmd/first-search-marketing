@@ -14,7 +14,9 @@
   - Built from the homepage design system: same stylesheet, header, footer, gradient-frame cards, navy trust band,
     framework block, "How it works" steps, case study + reviews, "Two ways" and FAQ. Only the page-specific
     blocks at the end of the stylesheet are new.
-  - Header: the Services item is an Elementor Pro Mega Menu (four stage columns + CTA card).
+  - Header: Elementor Pro Nav Menu / Mega Menu with three dropdowns: About First Search (About Us, Why Choose Us),
+    What We Do (full-width mega panel: four stage columns + CTA card) and Grow Your Marketing (Events, Resources,
+    BeFirst Academy), plus Contact Us. Same menu on every page.
   - ONE Theme Builder "Single" template for a "Service" custom post type; every section reads ACF fields
     (stages, headline, lead, problems, per-stage role, included items, platforms, 90-day steps, related, FAQ).
   - Framework wheel = the homepage wheel image with an HTML-widget overlay that dims the stages the service
@@ -573,6 +575,11 @@ button { font: inherit; color: inherit; }
   .caret { display: none; }
 }
 
+
+
+
+
+
 /* ==========================================================================
    SHARED ADDITIONS FOR SERVICE + PILLAR PAGES
    (everything above this line is the homepage stylesheet, unchanged)
@@ -783,6 +790,64 @@ button { font: inherit; color: inherit; }
   .partner .btn { width: 100%; }
 }
 
+/*SN-CSS*/
+/* ==========================================================================
+   Shared site navigation (Elementor Pro: Nav Menu + Mega Menu)
+   ========================================================================== */
+.site-header { position: sticky; }
+.sn .sn-list { display: flex; align-items: center; gap: clamp(16px, 2vw, 30px); margin: 0; padding: 0; list-style: none; }
+.sn .sn-list > li { position: relative; }
+.sn .sn-list > li.sn-dd--mega { position: static; }
+.sn .sn-top { display: inline-flex; align-items: center; gap: 6px; padding: 8px 0; border: 0; border-bottom: 2px solid transparent; background: none; font-family: var(--font-ui); font-size: 18px; font-weight: 500; color: var(--navy); text-decoration: none; cursor: pointer; white-space: nowrap; }
+.sn .sn-top:hover, .sn .sn-top[aria-expanded="true"] { color: var(--royal); border-bottom-color: var(--teal); }
+.sn .sn-top.is-current, .sn .sn-top[aria-current="page"] { color: var(--royal); font-weight: 600; border-bottom-color: var(--teal); }
+.sn-chev { width: 15px; height: 15px; flex: none; transition: transform .2s ease; }
+.sn-top[aria-expanded="true"] .sn-chev { transform: rotate(180deg); }
+.sn-panel { position: absolute; top: calc(100% + 18px); left: -22px; z-index: 95; min-width: 360px; padding: 12px; border-radius: 24px; background: var(--white); box-shadow: 0 30px 60px -20px rgba(38, 39, 91, .45), 0 0 0 1px rgba(38, 39, 91, .06); }
+.sn-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 20px; }
+.sn-panel ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+.sn .sn-item { display: grid; gap: 2px; padding: 14px 16px; border: 0; border-radius: 16px; text-decoration: none; }
+.sn .sn-item b { font-family: var(--font); font-weight: 700; font-size: 18px; color: var(--navy); }
+.sn .sn-item span { font-family: var(--font-ui); font-size: 14px; line-height: 1.4; color: var(--muted); }
+.sn .sn-item:hover { background: var(--soft, #F1F0F6); }
+.sn .sn-item[aria-current="page"] { background: #E7EEF9; box-shadow: inset 4px 0 0 var(--royal); }
+.sn-mega { left: 0; right: 0; top: 100%; min-width: 0; padding: 0; border-radius: 0 0 32px 32px; }
+.sn-mega::before { top: -12px; height: 12px; }
+.sn-mega-in { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 30px; max-width: calc(var(--content, 1240px) + var(--pad-x, 24px) * 2); margin-inline: auto; padding: 34px var(--pad-x, 24px) 38px; }
+.sn-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; }
+.sn .sn-stage { display: flex; align-items: center; gap: 10px; padding: 0 0 12px; margin-bottom: 10px; border: 0; border-bottom: 3px solid var(--dot); text-decoration: none; }
+.sn .sn-stage i { width: 12px; height: 12px; border-radius: 50%; background: var(--dot); flex: none; }
+.sn .sn-stage b { display: block; font-family: var(--font); font-weight: 700; font-size: 18px; color: var(--navy); }
+.sn .sn-stage small { display: block; font-family: var(--font-ui); font-size: 13px; color: var(--muted); }
+.sn .sn-stage:hover b { color: var(--royal); text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 3px; text-underline-offset: 5px; }
+.sn .sn-svc { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 -10px; padding: 8px 10px; border: 0; border-radius: 10px; font-family: var(--font-ui); font-size: 15.5px; color: var(--ink); text-decoration: none; }
+.sn .sn-svc small { font-size: 11px; color: var(--muted); white-space: nowrap; }
+.sn .sn-svc:hover { background: var(--soft, #F1F0F6); color: var(--royal); }
+.sn-cta { display: grid; gap: 10px; align-content: start; padding: 24px; border-radius: 28px; color: var(--white); background: radial-gradient(260px 200px at 100% 100%, rgba(91, 186, 232, .8), transparent 70%), var(--navy); }
+.sn-cta .sn-k { margin: 0 0 4px; font-family: var(--font); font-weight: 600; font-size: 15px; color: var(--teal); }
+.sn .sn-big { display: grid; gap: 2px; padding: 12px 14px; border: 0; border-radius: 16px; background: rgba(255, 255, 255, .08); font-family: var(--font); font-weight: 700; font-size: 17px; color: var(--white); text-decoration: none; }
+.sn .sn-big span { font-family: var(--font-ui); font-weight: 400; font-size: 13.5px; color: rgba(255, 255, 255, .8); }
+.sn .sn-big:hover, .sn .sn-big[aria-current="page"] { background: rgba(255, 255, 255, .18); }
+.sn-cta .btn { margin-top: 6px; font-size: 17px; }
+/* Mobile menu groups */
+.mobile-nav { overflow-y: auto; }
+.mobile-nav a.m[aria-current="page"] { color: var(--royal); }
+.sn-mg { border-bottom: 1px solid var(--line); }
+.sn-mg summary { list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 18px 0; font-weight: 600; font-size: 22px; color: var(--navy); cursor: pointer; }
+.sn-mg summary::-webkit-details-marker { display: none; }
+.sn-mg summary .sn-chev { width: 20px; height: 20px; }
+.sn-mg[open] summary .sn-chev { transform: rotate(180deg); }
+.sn-m { display: block; padding: 10px 0 10px 14px; border-left: 3px solid var(--line); font-family: var(--font-ui); font-size: 18px; color: var(--navy); text-decoration: none; }
+.sn-m[aria-current="page"] { border-left-color: var(--royal); font-weight: 600; color: var(--royal); }
+.sn-mcols { padding: 8px 0 16px 14px; display: grid; gap: 14px; }
+.sn-mcols .sn-stage { display: flex; gap: 8px; align-items: center; text-decoration: none; }
+.sn-mcols .sn-stage i { width: 10px; height: 10px; border-radius: 50%; background: var(--dot); }
+.sn-mcols .sn-stage b { font-size: 17px; color: var(--navy); }
+.sn-mcols .sn-stage small { display: none; }
+.sn-mcols ul { margin: 6px 0 0 18px; padding: 0; list-style: none; display: grid; gap: 2px; }
+.sn-mcols .sn-svc { display: block; padding: 5px 0; font-family: var(--font-ui); font-size: 15.5px; color: var(--body, #3A3650); text-decoration: none; }
+@media (max-width: 1180px) { .sn .sn-top { font-size: 16.5px; } .sn .sn-list { gap: 16px; } }
+/*/SN-CSS*/
 </style>
 </head>
 <body>
@@ -835,42 +900,64 @@ button { font: inherit; color: inherit; }
     <symbol id="s-marketing-automation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5 4.5 13.5H11l-1 8 8.5-11H12Z"/></symbol>
     <symbol id="s-loyalty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v8h14v-8M12 8.5v12"/><path d="M12 8.5S10.5 4 8 4a2.2 2.2 0 0 0 0 4.5ZM12 8.5S13.5 4 16 4a2.2 2.2 0 0 1 0 4.5Z"/></symbol>
     <symbol id="s-reviews-referrals" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.9Z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.4v2.8a1.9 1.9 0 0 1-2 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.7-5.7A18.6 18.6 0 0 1 2.3 4.4 1.9 1.9 0 0 1 4.2 2.4H7a1.9 1.9 0 0 1 1.9 1.6c.1.9.4 1.8.7 2.6a1.9 1.9 0 0 1-.4 2L8 9.8a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.3 1.7.6 2.6.7a1.9 1.9 0 0 1 1.5 1.8Z"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3.2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.2"/><circle cx="5" cy="10" r="2.2"/><circle cx="19" cy="10" r="2.2"/><path d="M6.5 20a5.5 5.5 0 0 1 11 0M1.5 19a3.6 3.6 0 0 1 4.6-3.4M22.5 19a3.6 3.6 0 0 0-4.6-3.4"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.1 7-11.8a7 7 0 1 0-14 0c0 5.7 7 11.8 7 11.8Z"/><circle cx="12" cy="9.8" r="2.5"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></symbol>
   </defs>
 </svg>
 
-<!-- Prototype-only page switcher (not part of the Elementor build) -->
-<div class="review-bar" role="region" aria-label="Prototype review controls">
-  <div class="e-con"><label>Service page <select id="svc-select" aria-label="Choose a service page"></select></label><span class="note">Prototype · 12 service pages from one template · try the Services menu and the stage pills</span></div>
-</div>
+<div class="review-bar" role="region" aria-label="Prototype review controls"><div class="e-con"><label>Service page <select id="svc-select" aria-label="Choose a service page"></select></label><span class="note">Prototype · 12 service pages from one template · try the Services menu and the stage pills</span></div></div>
 
 <!-- =========================================================================
      HEADER  ·  Theme Builder Header (same as homepage) + Services Mega Menu
      ========================================================================= -->
 <header class="site-header" id="site-header">
   <div class="e-con header-row">
-    <a class="logo" href="#" data-ph-link="homepage" aria-label="First Search Marketing home"><img src="assets/img/logo.png" alt="First Search Marketing" width="576" height="196"></a>
-    <nav class="nav" aria-label="Primary">
-      <ul>
-        <li><a href="#" data-ph-link="About page">About</a></li>
-        <li><button type="button" class="nav-svc is-current" id="svc-btn" aria-expanded="false" aria-controls="mega">Services<svg class="icon" aria-hidden="true"><use href="#i-chev"/></svg></button></li>
-        <li><a href="#" data-ph-link="Events page">Events</a></li>
-        <li><a href="#" data-ph-link="Resources page">Resources</a></li>
-        <li><a href="#" data-ph-link="Contact page">Contact</a></li>
+    <a class="logo" href="rebrand-homepage.html" aria-label="First Search Marketing home"><img src="assets/img/logo.png" alt="First Search Marketing" width="576" height="196"></a>
+    <nav class="nav sn" aria-label="Primary">
+      <ul class="sn-list">
+        <li class="sn-dd"><button type="button" class="sn-top" aria-expanded="false" aria-controls="sn-about">About First Search<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="sn-panel" id="sn-about" hidden><ul><li><a class="sn-item" href="about.html"><b>About Us</b><span>Our story, values and the team behind your marketing</span></a></li><li><a class="sn-item" href="why-choose-us.html"><b>Why Choose Us</b><span>How we compare, and the FirstSearch Guarantee</span></a></li></ul></div></li>
+        <li class="sn-dd sn-dd--mega"><button type="button" class="sn-top is-current" aria-expanded="false" aria-controls="sn-do">What We Do<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="sn-panel sn-mega" id="sn-do" hidden><div class="sn-mega-in">
+            <div class="sn-cols"><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=brand" style="--dot:#7CD2D3"><i></i><span><b>FirstBrand</b><small>Build the foundation</small></span></a><ul><li><a class="sn-svc" href="services.html?service=branding&amp;stage=brand"><span>Branding &amp; Content Creation</span></a></li><li><a class="sn-svc" href="services.html?service=website&amp;stage=brand"><span>Website</span></a></li><li><a class="sn-svc" href="services.html?service=analytics&amp;stage=brand"><span>Analytics</span></a></li><li><a class="sn-svc" href="services.html?service=crm&amp;stage=brand"><span>CRM</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=thought" style="--dot:#4E98D8"><i></i><span><b>FirstThought</b><small>Get found first</small></span></a><ul><li><a class="sn-svc" href="services.html?service=seo&amp;stage=thought"><span>SEO</span></a></li><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=thought"><span>Advertising</span><small>2 stages</small></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=thought"><span>Social Media</span><small>3 stages</small></a></li><li><a class="sn-svc" href="services.html?service=local-ties&amp;stage=thought"><span>Local Ties</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=choice" style="--dot:#2E4DA5"><i></i><span><b>FirstChoice</b><small>Get chosen</small></span></a><ul><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=choice"><span>Advertising</span><small>2 stages</small></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=choice"><span>Social Media</span><small>3 stages</small></a></li><li><a class="sn-svc" href="services.html?service=lead-generation&amp;stage=choice"><span>Lead Generation</span></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=choice"><span>Marketing Automation</span><small>2 stages</small></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=referral" style="--dot:#9E9AAE"><i></i><span><b>FirstReferral</b><small>Get referred</small></span></a><ul><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=referral"><span>Social Media</span><small>3 stages</small></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=referral"><span>Marketing Automation</span><small>2 stages</small></a></li><li><a class="sn-svc" href="services.html?service=loyalty&amp;stage=referral"><span>Loyalty</span></a></li><li><a class="sn-svc" href="services.html?service=reviews-referrals&amp;stage=referral"><span>Reviews &amp; Referrals</span></a></li></ul></div></div>
+            <div class="sn-cta">
+              <p class="sn-k">What we do</p>
+              <a class="sn-big" href="services-overview.html">All services<span>12 services, one system</span></a>
+              <a class="sn-big" href="services-overview.html#framework">The FirstSearch Framework<span>Four stages, one customer journey</span></a>
+              <a class="btn btn--white" href="contact.html">Let’s Talk!</a>
+            </div>
+          </div></div></li>
+        <li class="sn-dd"><button type="button" class="sn-top" aria-expanded="false" aria-controls="sn-grow">Grow Your Marketing<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="sn-panel" id="sn-grow" hidden><ul><li><a class="sn-item" href="events-resources.html"><b>Events</b><span>Workshops and live trainings, online and in Exeter</span></a></li><li><a class="sn-item" href="events-resources.html#resources"><b>Resources</b><span>Articles, client stories, podcasts and videos</span></a></li><li><a class="sn-item" href="ways-to-learn.html"><b>BeFirst Academy</b><span>The Community, Blueprint and 1:1 coaching to grow it yourself</span></a></li></ul></div></li>
+        <li><a class="sn-top" href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
-    <a class="btn header-cta" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+    <a class="btn header-cta" href="contact.html">Let’s Talk!</a>
     <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
   </div>
   <div class="stripe" aria-hidden="true"></div>
-  <div class="mega" id="mega" hidden><div class="e-con mega-inner" id="mega-inner"></div></div>
 </header>
 <div class="mobile-nav" id="mobile-nav">
-  <a class="m" href="#" data-ph-link="About page">About</a>
-  <details class="m-svc"><summary>Services<svg class="icon" aria-hidden="true"><use href="#i-chev"/></svg></summary><div id="m-svc-inner"></div></details>
-  <a class="m" href="#" data-ph-link="Events page">Events</a>
-  <a class="m" href="#" data-ph-link="Resources page">Resources</a>
-  <a class="m" href="#" data-ph-link="Contact page">Contact</a>
-  <a class="btn" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+  <a class="m" href="rebrand-homepage.html">Home</a>
+  <details class="sn-mg"><summary>About First Search<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+    <a class="sn-m" href="about.html">About Us</a><a class="sn-m" href="why-choose-us.html">Why Choose Us</a>
+  </details>
+  <details class="sn-mg" open><summary>What We Do<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+    <a class="sn-m" href="services-overview.html">All services</a>
+    <div class="sn-mcols"><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=brand" style="--dot:#7CD2D3"><i></i><span><b>FirstBrand</b><small>Build the foundation</small></span></a><ul><li><a class="sn-svc" href="services.html?service=branding&amp;stage=brand"><span>Branding &amp; Content Creation</span></a></li><li><a class="sn-svc" href="services.html?service=website&amp;stage=brand"><span>Website</span></a></li><li><a class="sn-svc" href="services.html?service=analytics&amp;stage=brand"><span>Analytics</span></a></li><li><a class="sn-svc" href="services.html?service=crm&amp;stage=brand"><span>CRM</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=thought" style="--dot:#4E98D8"><i></i><span><b>FirstThought</b><small>Get found first</small></span></a><ul><li><a class="sn-svc" href="services.html?service=seo&amp;stage=thought"><span>SEO</span></a></li><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=thought"><span>Advertising</span></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=thought"><span>Social Media</span></a></li><li><a class="sn-svc" href="services.html?service=local-ties&amp;stage=thought"><span>Local Ties</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=choice" style="--dot:#2E4DA5"><i></i><span><b>FirstChoice</b><small>Get chosen</small></span></a><ul><li><a class="sn-svc" href="services.html?service=advertising&amp;stage=choice"><span>Advertising</span></a></li><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=choice"><span>Social Media</span></a></li><li><a class="sn-svc" href="services.html?service=lead-generation&amp;stage=choice"><span>Lead Generation</span></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=choice"><span>Marketing Automation</span></a></li></ul></div><div class="sn-col"><a class="sn-stage" href="pillars.html?pillar=referral" style="--dot:#9E9AAE"><i></i><span><b>FirstReferral</b><small>Get referred</small></span></a><ul><li><a class="sn-svc" href="services.html?service=social-media&amp;stage=referral"><span>Social Media</span></a></li><li><a class="sn-svc" href="services.html?service=marketing-automation&amp;stage=referral"><span>Marketing Automation</span></a></li><li><a class="sn-svc" href="services.html?service=loyalty&amp;stage=referral"><span>Loyalty</span></a></li><li><a class="sn-svc" href="services.html?service=reviews-referrals&amp;stage=referral"><span>Reviews &amp; Referrals</span></a></li></ul></div></div>
+  </details>
+  <details class="sn-mg"><summary>Grow Your Marketing<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+    <a class="sn-m" href="events-resources.html">Events</a><a class="sn-m" href="events-resources.html#resources">Resources</a><a class="sn-m" href="ways-to-learn.html">BeFirst Academy</a>
+  </details>
+  <a class="m" href="contact.html">Contact Us</a>
+  <a class="btn" href="contact.html">Let’s Talk!</a>
 </div>
 
 <main id="main">
@@ -879,12 +966,12 @@ button { font: inherit; color: inherit; }
 <section class="hero bg-geo" aria-labelledby="svc-title">
   <div class="e-con hero-grid">
     <div>
-      <ol class="crumbs" aria-label="Breadcrumb"><li><a href="#" data-ph-link="Services overview page">Services</a></li><li><a href="#" id="crumb-stage"></a></li><li aria-current="page" id="crumb-svc"></li></ol>
+      <ol class="crumbs" aria-label="Breadcrumb"><li><a href="services-overview.html">Services</a></li><li><a href="#" id="crumb-stage"></a></li><li aria-current="page" id="crumb-svc"></li></ol>
       <span class="eyebrow" id="svc-eyebrow"></span>
       <h1 id="svc-title"></h1>
       <p class="hero-lead" id="svc-lead"></p>
       <div class="hero-ctas">
-        <a class="btn" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+        <a class="btn" href="contact.html">Let’s Talk!</a>
         <a class="link-u" href="#framework">See how it fits the framework</a>
       </div>
     </div>
@@ -932,7 +1019,7 @@ button { font: inherit; color: inherit; }
       </div>
     </div>
   </div>
-  <div class="cta-overlap"><a class="btn btn--lg" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a></div>
+  <div class="cta-overlap"><a class="btn btn--lg" href="contact.html">Let’s Talk!</a></div>
 </section>
 
 <!-- 5. WHAT'S INCLUDED -->
@@ -955,7 +1042,7 @@ button { font: inherit; color: inherit; }
     <ol class="steps" id="steps" style="padding:0;margin:0;list-style:none"></ol>
   </div>
 </section>
-<div class="cta-overlap"><a class="btn btn--lg" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a></div>
+<div class="cta-overlap"><a class="btn btn--lg" href="contact.html">Let’s Talk!</a></div>
 
 <!-- 7. CASE STUDY + REVIEWS  ·  homepage section -->
 <section class="cases bg-geo" aria-labelledby="case-title">
@@ -1005,7 +1092,7 @@ button { font: inherit; color: inherit; }
     <div class="rel-grid" id="rel-grid"></div>
     <div class="res-head" style="margin-top:clamp(80px,9vw,120px)">
       <div><span class="eyebrow">From our resources</span><h2 class="h2" id="res-title"></h2></div>
-      <a class="link-u" href="#" id="res-all" data-ph-link="Resources page, filtered to this service"></a>
+      <a class="link-u" href="events-resources.html#resources" id="res-all"></a>
     </div>
     <div class="rgrid" id="rgrid"></div>
   </div>
@@ -1030,7 +1117,7 @@ button { font: inherit; color: inherit; }
         <h2 id="final-h"></h2>
         <p id="final-p"></p>
       </div>
-      <a class="btn btn--white" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+      <a class="btn btn--white" href="contact.html">Let’s Talk!</a>
     </div>
   </div>
 
@@ -1193,30 +1280,15 @@ button { font: inherit; color: inherit; }
   mBtn.addEventListener('click', () => setMenu(!mNav.classList.contains('is-open')));
   matchMedia('(min-width: 1025px)').addEventListener('change', e => e.matches && setMenu(false));
 
-  const megaCols = () => ORDER.map(k => {
-    const S = ST[k];
-    return `<div class="mega-col"><h3 style="border-color:${S.dot}">${stageDot(k)}<button type="button" data-pillar="${k}">${S.label}</button></h3><p class="sub">${S.sub}</p><ul>` +
-      NAV[k].map(slug => { const [name, st] = SVC[slug]; return `<li><button type="button" class="mlink" data-svc="${slug}" data-stage="${k}"><span>${esc(name)}</span>${st.length > 1 ? `<span class="multi">${st.length} stages</span>` : ''}</button></li>`; }).join('') + `</ul></div>`;
-  }).join('');
-  $('#mega-inner').innerHTML = megaCols() + `<div class="mega-cta on-dark"><h3>Not sure what you need?</h3><p>Every partnership is built around your business. Let's map out the right mix of services together.</p><a class="btn btn--white" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a><a class="link-u" href="#" data-ph-link="Framework Quiz">Or take the Framework Quiz</a></div>`;
-  $('#m-svc-inner').innerHTML = megaCols();
-  const svcBtn = $('#svc-btn'), mega = $('#mega');
-  const setMega = open => { mega.hidden = !open; svcBtn.setAttribute('aria-expanded', open); };
-  svcBtn.addEventListener('click', e => { e.stopPropagation(); setMega(mega.hidden); });
-  document.addEventListener('click', e => { if (!mega.hidden && !mega.contains(e.target) && !svcBtn.contains(e.target)) setMega(false); });
-  addEventListener('keydown', e => {
-    if (e.key !== 'Escape') return;
-    if (!mega.hidden) { setMega(false); svcBtn.focus(); }
-    if (mNav.classList.contains('is-open')) { setMenu(false); mBtn.focus(); }
-  });
-
-  // Page hooks: each page sets these; anything unhandled shows a prototype toast.
+  addEventListener('keydown', e => { if (e.key === 'Escape' && mNav.classList.contains('is-open')) { setMenu(false); mBtn.focus(); } });
+  const setMega = () => {};
+  // Page hooks: the service and pillar templates swap content in place; elsewhere these links open those pages.
   const hooks = { svc: null, pillar: null };
   document.addEventListener('click', e => {
     const s = e.target.closest('[data-svc]');
-    if (s) { e.preventDefault(); setMega(false); setMenu(false); hooks.svc ? hooks.svc(s.dataset.svc, s.dataset.stage) : showToast(`Prototype: opens the ${SVC[s.dataset.svc][0]} service page.`); return; }
+    if (s) { e.preventDefault(); setMega(false); setMenu(false); hooks.svc ? hooks.svc(s.dataset.svc, s.dataset.stage) : (location.href = `services.html?service=${s.dataset.svc}${s.dataset.stage ? '&stage=' + s.dataset.stage : ''}`); return; }
     const p = e.target.closest('[data-pillar]');
-    if (p) { e.preventDefault(); setMega(false); setMenu(false); hooks.pillar ? hooks.pillar(p.dataset.pillar) : showToast(`Prototype: opens the ${ST[p.dataset.pillar].label} pillar page.`); return; }
+    if (p) { e.preventDefault(); setMega(false); setMenu(false); hooks.pillar ? hooks.pillar(p.dataset.pillar) : (location.href = `pillars.html?pillar=${p.dataset.pillar}`); return; }
     const a = e.target.closest('[data-ph-link]');
     if (a) { e.preventDefault(); setMega(false); setMenu(false); showToast('Prototype: this will link to the ' + a.dataset.phLink + '.'); }
   });
@@ -1230,7 +1302,7 @@ button { font: inherit; color: inherit; }
     $('#faq-list').innerHTML = faq.map(([q, a], i) => `<div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="fa${i}" id="fq${i}"><span class="plus" aria-hidden="true"></span>${esc(q)}</button></h3><div class="qa-a" id="fa${i}" role="region" aria-labelledby="fq${i}"><div><p>${ph(a)}</p></div></div></div>`).join('');
     $('#faq-schema').textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
   };
-  $('#faq-list').addEventListener('click', e => {
+  if ($('#faq-list')) $('#faq-list').addEventListener('click', e => {
     const q = e.target.closest('.qa-q'); if (!q) return;
     const open = q.getAttribute('aria-expanded') !== 'true';
     $$('.qa').forEach(o => { o.classList.remove('is-open'); $('.qa-q', o).setAttribute('aria-expanded', 'false'); });
@@ -1248,6 +1320,10 @@ button { font: inherit; color: inherit; }
   };
   const toTop = () => scrollTo({ top: 0, behavior: 'instant' });
   const lc = s => s.toLowerCase().replace('seo', 'SEO').replace('crm', 'CRM');
+
+  const siteFooter = () => {
+    $('#foot-col').innerHTML = [['about.html', 'About Us'], ['why-choose-us.html', 'Why Choose Us'], ['services-overview.html', 'Services'], ['events-resources.html', 'Events'], ['events-resources.html#resources', 'Resources'], ['ways-to-learn.html', 'BeFirst Academy'], ['contact.html', 'Contact Us']].map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('');
+  };
   const SERVICES = [
     {
       slug: 'branding', name: 'Branding & Content Creation', tag: 'Branding & content', stages: ['brand'],
@@ -1885,7 +1961,7 @@ button { font: inherit; color: inherit; }
         <p class="partner-body">Our team runs ${lc(svc.name)} alongside every other service your plan needs, with one strategy and one monthly report. There's no à la carte pricing.</p>
         <div class="chips-row"><span>${ico('i-check')}Fixed monthly retainer</span><span>${ico('i-check')}Six-month partnership</span><span>${ico('i-check')}Results guaranteed in writing</span></div>
         <p class="price">From <span class="ph">[$X,XXX]</span><small>/month, all services included</small></p>
-        <a class="btn" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+        <a class="btn" href="contact.html">Let’s Talk!</a>
       </div>
       <div class="ways-right">
         <div class="diy-logos">
@@ -1894,11 +1970,11 @@ button { font: inherit; color: inherit; }
         </div>
         <div class="gcard diy"><div class="gcard__in">
           <div class="prod"><div class="prod-img"><img src="assets/img/design/course-mockup.webp" alt="BeFirst Online Course on laptop, tablet and phone" width="727" height="421"></div>
-            <div><h4>The ${esc(svc.name)} module</h4><p>Course lessons, Blueprint templates and live webinars on ${lc(svc.name)}, inside the BeFirst Community. <span class="price">$88/month</span></p><a class="link-u" href="#" data-ph-link="Ways to learn page (Community)">See the Community</a></div></div>
+            <div><h4>The ${esc(svc.name)} module</h4><p>Course lessons, Blueprint templates and live webinars on ${lc(svc.name)}, inside the BeFirst Community. <span class="price">$88/month</span></p><a class="link-u" href="ways-to-learn.html">See the Community</a></div></div>
           <div class="prod"><div class="prod-img"><img src="assets/img/design/blueprint-book.webp" alt="The Marketing Blueprint workbook" width="723" height="900"></div>
             <div><h4>The FirstSearch Blueprint</h4><p>The exact SOPs, worksheets and checklists we use with every client. <span class="price">$8</span></p><a class="link-u" href="#" data-ph-link="Blueprint checkout">Get the Blueprint</a></div></div>
           <div class="prod"><div class="prod-img prod-img--coach"><img src="assets/img/design/chris-cutout.webp" alt="Chris Mitchell, BeFirst coach" width="765" height="867"></div>
-            <div><h4>Coaching and workshops</h4><p>Work through your plan 1:1, or join <b>${esc(wk[0][2])}</b> (${MONTHS[+wk[0][1].split('-')[1] - 1]} ${+wk[0][1].split('-')[2]}). <span class="price">From $500/month</span></p><a class="link-u" href="#" data-ph-link="Ways to learn page (coaching)">See coaching and workshops</a></div></div>
+            <div><h4>Coaching and workshops</h4><p>Work through your plan 1:1, or join <b>${esc(wk[0][2])}</b> (${MONTHS[+wk[0][1].split('-')[1] - 1]} ${+wk[0][1].split('-')[2]}). <span class="price">From $500/month</span></p><a class="link-u" href="ways-to-learn.html">See coaching and workshops</a></div></div>
         </div></div>
       </div>`;
 
@@ -1947,5 +2023,31 @@ button { font: inherit; color: inherit; }
   render();
 })();
 </script>
+<!--SN:js--><script>
+(() => {
+  // Shared nav: dropdowns open on click or hover, close on outside click / Escape.
+  const dds = [...document.querySelectorAll('.sn-dd')];
+  const fine = matchMedia('(hover: hover) and (pointer: fine)');
+  const set = (dd, open) => { const b = dd.querySelector('.sn-top'), p = dd.querySelector('.sn-panel'); b.setAttribute('aria-expanded', open); p.hidden = !open; };
+  const closeAll = except => dds.forEach(d => d !== except && set(d, false));
+  dds.forEach(dd => {
+    const b = dd.querySelector('.sn-top'); let t;
+    b.addEventListener('click', e => { e.stopPropagation(); const open = (fine.matches && dd.matches(':hover')) || b.getAttribute('aria-expanded') !== 'true'; closeAll(dd); set(dd, open); });
+    dd.addEventListener('mouseenter', () => { if (!fine.matches) return; clearTimeout(t); closeAll(dd); set(dd, true); });
+    dd.addEventListener('mouseleave', () => { if (!fine.matches) return; t = setTimeout(() => set(dd, false), 160); });
+  });
+  document.addEventListener('click', e => { if (!e.target.closest('.sn-dd')) closeAll(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { const o = dds.find(d => d.querySelector('.sn-top').getAttribute('aria-expanded') === 'true'); if (o) { set(o, false); o.querySelector('.sn-top').focus(); } } });
+  // Same-file links that only change the hash (e.g. Events -> Resources) reload so the page shows the right view.
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]'); if (!a || e.defaultPrevented) return;
+    const u = new URL(a.href, location.href);
+    if (u.pathname === location.pathname && u.search === location.search && u.hash !== location.hash && document.getElementById('page-events')) { e.preventDefault(); if (u.hash) { location.hash = u.hash; location.reload(); } else location.href = u.href; }
+  });
+  // Mobile menu: close it when a link is followed (in-page anchors keep the page, so the menu must not stay open).
+  const mn = document.getElementById('mobile-nav'), mb = document.querySelector('.menu-btn');
+  if (mn && mb) mn.addEventListener('click', e => { if (e.target.closest('a') && mn.classList.contains('is-open')) mb.click(); });
+})();
+</script><!--/SN:js-->
 </body>
 </html>
