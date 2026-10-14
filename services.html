@@ -1,0 +1,1487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services | First Search Marketing</title>
+<meta name="description" content="First Search Marketing services, each built to do a specific job inside the FirstSearch Framework.">
+<meta name="theme-color" content="#26275B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+
+<!--
+  ELEMENTOR BUILD NOTES (Service pages)
+  - Build ONE Theme Builder "Single" template for a "Service" custom post type. Every section below is driven by
+    ACF fields on the service: stages (checkbox), hero lead, problem title + 3 problems (repeater), per-stage role
+    content (repeater: stage, headline, description, items, metric), included items (repeater with stage checkboxes),
+    platforms line, 4 process steps, related services (relationship), FAQ (repeater).
+  - Resources strip = Loop Grid of Posts filtered by the "Service" taxonomy term that matches this service.
+  - Services mega menu = Elementor Pro Mega Menu widget in the header template (four stage columns + CTA card).
+  - The interactive framework wheel and stage tabs = one HTML widget (script at the bottom of this file).
+  - The proof section is hidden on any service without a real case study (ACF true/false).
+  - In this prototype all 12 services live in one file: use the Services menu or the bar at the top to switch.
+-->
+
+<script type="application/ld+json" id="faq-schema"></script>
+
+<style>
+
+/* ==========================================================================
+   Global tokens (shared with the homepage)
+   ========================================================================== */
+:root {
+  --navy: #26275B; --navy-deep: #1D1E4A; --blue: #4E98D8; --blue-ink: #2F78BA;
+  --teal: #7CD2D3; --mid: #528FC0; --royal: #2E4DA5;
+  --ink: #221C1B; --body: #3A3650; --muted: #6A6880; --bg: #F8F7F7; --white: #FFFFFF;
+  --line: #E3E2EA; --soft: #F1F0F6; --ice: #EAF4FB; --star: #F4B400; --ph: #FFE45C;
+  --grad: linear-gradient(90deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%);
+  --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%);
+  --font: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-ui: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --content: 1240px; --pad-x: 24px;
+  --shadow-card: 0 18px 40px -18px rgba(38, 39, 91, .28);
+  --shadow-btn: 0 14px 30px -12px rgba(46, 77, 165, .55);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--font); font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font); color: var(--navy); line-height: 1.12; letter-spacing: -0.015em; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+.on-dark :focus-visible { outline-color: var(--white); }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[hidden] { display: none !important; }
+.icon { width: 24px; height: 24px; flex: none; }
+.e-con { width: 100%; max-width: calc(var(--content) + var(--pad-x) * 2); margin-inline: auto; padding-inline: var(--pad-x); }
+.bg-geo { background: var(--bg) url("assets/img/design/bg-geometric.jpg") center / cover no-repeat; }
+.eyebrow { display: block; margin-bottom: 14px; font-weight: 600; font-size: 17px; color: var(--blue-ink); }
+.on-dark .eyebrow { color: var(--teal); }
+.h1 { font-weight: 700; font-size: clamp(40px, 5.2vw, 72px); line-height: 1.02; letter-spacing: -0.025em; }
+.h1 span { color: var(--blue); }
+.lede { margin-top: 22px; font-size: clamp(18px, 1.7vw, 23px); line-height: 1.45; color: var(--ink); max-width: 36ch; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px;
+  padding: 12px 24px; border: 0; border-radius: 10px; cursor: pointer;
+  font-family: var(--font); font-weight: 500; font-size: 17px; line-height: 1.2; text-decoration: none; text-align: center;
+  color: var(--white); background: var(--grad); background-size: 140% 100%; background-position: 0 0;
+  box-shadow: var(--shadow-btn); text-shadow: 0 1px 2px rgba(20, 30, 80, .3);
+  transition: background-position .35s ease, transform .2s ease, box-shadow .2s ease;
+}
+.btn:hover { background-position: 100% 0; transform: translateY(-2px); }
+.btn--lg { min-height: 56px; padding: 15px 30px; font-size: 19px; }
+.btn--navy { background: var(--navy); text-shadow: none; box-shadow: 0 14px 28px -14px rgba(38, 39, 91, .7); }
+.btn--navy:hover { background: var(--royal); }
+.btn--white { background: var(--white); color: var(--navy); text-shadow: none; box-shadow: 0 14px 30px -14px rgba(0, 0, 0, .45); }
+.btn--white:hover { color: var(--royal); }
+.btn--ghost { background: var(--white); color: var(--navy); text-shadow: none; box-shadow: inset 0 0 0 2px var(--teal); }
+.btn--ghost:hover { box-shadow: inset 0 0 0 2px var(--royal); color: var(--royal); }
+.link-u {
+  font-weight: 500; font-style: italic; color: var(--navy); background: none; border: 0; padding: 0; cursor: pointer;
+  text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 3px; text-underline-offset: 6px;
+}
+.link-u:hover { color: var(--royal); text-decoration-color: var(--royal); }
+.on-dark .link-u { color: var(--white); }
+
+/* Gradient-border card */
+.gcard { --bw: 6px; --r: 32px; padding: var(--bw); border-radius: var(--r); background: var(--grad-diag); box-shadow: var(--shadow-card); }
+.gcard__in { height: 100%; background: var(--white); border-radius: calc(var(--r) - var(--bw)); }
+
+/* Placeholders + toast (review aids) */
+.ph { border-radius: 3px; transition: background-color .2s ease; }
+.show-ph .ph { background: var(--ph); color: var(--ink) !important; box-shadow: 0 0 0 2px var(--ph); }
+.ph-toggle { position: fixed; left: 14px; bottom: 14px; z-index: 250; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); background: rgba(29, 30, 74, .92); color: #fff; font: 600 13px/1 var(--font-ui); box-shadow: 0 8px 20px -8px rgba(0,0,0,.4); }
+.ph-toggle .dot { width: 9px; height: 9px; background: #8A86A0; }
+.ph-toggle[aria-pressed="true"] { background: var(--ph); color: var(--ink); }
+.ph-toggle[aria-pressed="true"] .dot { background: var(--ink); }
+.menu-open .ph-toggle { display: none; }
+.toast { position: fixed; left: 50%; bottom: 22px; z-index: 260; transform: translate(-50%, 16px); max-width: min(420px, calc(100% - 32px)); padding: 12px 18px; border-radius: 12px; background: var(--navy-deep); color: #fff; font: 500 14.5px/1.4 var(--font-ui); opacity: 0; pointer-events: none; transition: .2s ease; }
+.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+/* Review bar (page switcher, mockup only) */
+.review-bar { background: var(--navy-deep); color: #fff; font-family: var(--font-ui); font-size: 14px; }
+.review-bar .e-con { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding-block: 10px; }
+.review-bar .tabs { display: flex; gap: 6px; }
+.review-bar button { min-height: 38px; padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,.25); background: transparent; color: #DADAF0; font-weight: 600; font-size: 14px; }
+.review-bar button[aria-pressed="true"] { background: var(--white); color: var(--navy); border-color: var(--white); }
+.review-bar .note { color: #A9A8C8; }
+
+/* ==========================================================================
+   Header (same as homepage)
+   ========================================================================== */
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--white); transition: box-shadow .25s ease; }
+.site-header.is-scrolled { box-shadow: 0 10px 30px -18px rgba(38, 39, 91, .45); }
+.header-row { display: flex; align-items: center; gap: 32px; height: 100px; transition: height .25s ease; }
+.site-header.is-scrolled .header-row { height: 80px; }
+.logo img { height: 56px; width: auto; transition: height .25s ease; }
+.site-header.is-scrolled .logo img { height: 46px; }
+.nav { margin-left: auto; }
+.nav ul { display: flex; gap: clamp(18px, 2.2vw, 34px); }
+.nav a { font-family: var(--font-ui); font-size: 19px; color: var(--navy); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; transition: .15s ease; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--royal); border-bottom-color: var(--teal); }
+.nav a[aria-current="page"] { font-weight: 600; }
+.header-cta { font-size: 19px; padding: 11px 26px; }
+.stripe { height: 12px; background: var(--grad); }
+.menu-btn { display: none; margin-left: auto; width: 48px; height: 48px; border-radius: 12px; border: 1px solid var(--line); background: var(--white); color: var(--navy); place-items: center; }
+.mobile-nav { position: fixed; inset: 0; top: var(--mh, 88px); z-index: 99; display: flex; flex-direction: column; padding: 16px 24px 28px; background: var(--white); visibility: hidden; opacity: 0; transform: translateY(-8px); transition: .2s ease; }
+.mobile-nav.is-open { visibility: visible; opacity: 1; transform: none; }
+.mobile-nav a.m { padding: 18px 0; border-bottom: 1px solid var(--line); font-weight: 600; font-size: 22px; color: var(--navy); text-decoration: none; }
+.mobile-nav a.m[aria-current="page"] { color: var(--royal); }
+.mobile-nav .btn { margin-top: auto; width: 100%; }
+
+
+/* ==========================================================================
+   SERVICE PAGE
+   ========================================================================== */
+:root {
+  --st-brand: #7CD2D3; --st-thought: #4E98D8; --st-choice: #2E4DA5; --st-referral: #9E9AAE;
+}
+.h2 { font-weight: 700; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.08; }
+.section { padding-block: clamp(72px, 8vw, 120px); scroll-margin-top: 90px; }
+.lead { font-size: clamp(17px, 1.6vw, 21px); line-height: 1.55; color: var(--body); }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+
+/* review bar select */
+.review-bar select { min-height: 38px; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,.3); background: var(--white); color: var(--navy); font: 600 14px var(--font-ui); }
+.review-bar label { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+
+/* Services nav button + mega menu */
+.site-header { position: sticky; }
+.nav-svc { display: inline-flex; align-items: center; gap: 6px; padding: 6px 0; border: 0; border-bottom: 2px solid transparent; background: none; font-family: var(--font-ui); font-size: 19px; color: var(--royal); font-weight: 600; }
+.nav-svc .icon { width: 16px; height: 16px; transition: transform .2s ease; }
+.nav-svc[aria-expanded="true"] .icon { transform: rotate(180deg); }
+.nav-svc:hover, .nav-svc[aria-expanded="true"] { border-bottom-color: var(--teal); }
+.mega { position: absolute; left: 0; right: 0; top: 100%; z-index: 90; background: var(--white); box-shadow: 0 30px 60px -20px rgba(38, 39, 91, .35); border-top: 1px solid var(--line); }
+.mega-inner { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) 290px; gap: 28px; padding-block: 34px 38px; }
+.mega-col h3 { display: flex; align-items: center; gap: 8px; padding-bottom: 10px; border-bottom: 3px solid; font-weight: 700; font-size: 17px; }
+.mega-col .sub { margin: 8px 0 10px; font-family: var(--font-ui); font-size: 13px; color: var(--muted); }
+.mega-col ul { display: grid; gap: 2px; }
+.svc-link { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; margin: 0 -10px; width: calc(100% + 20px); padding: 9px 10px; border: 0; border-radius: 10px; background: none; text-align: left; font-family: var(--font-ui); font-size: 15.5px; color: var(--ink); text-decoration: none; }
+.svc-link:hover { background: var(--soft); }
+.svc-link.current { background: var(--ice); color: var(--navy); font-weight: 600; }
+.svc-link .multi { font-size: 11px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+.mega-cta { position: relative; overflow: hidden; display: grid; gap: 12px; align-content: start; padding: 26px; border-radius: 24px; color: var(--white); background: radial-gradient(260px 200px at 100% 100%, rgba(91, 186, 232, .8), transparent 70%), var(--navy); }
+.mega-cta h3 { color: var(--white); font-weight: 700; font-size: 20px; }
+.mega-cta p { font-size: 14.5px; color: rgba(255, 255, 255, .85); }
+.mega-cta .link-u { font-size: 15px; justify-self: start; }
+
+/* mobile nav services accordion */
+.m-svc { border-bottom: 1px solid var(--line); }
+.m-svc summary { list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 18px 0; font-weight: 600; font-size: 22px; color: var(--royal); cursor: pointer; }
+.m-svc summary::-webkit-details-marker { display: none; }
+.m-svc summary .icon { transition: transform .2s ease; }
+.m-svc[open] summary .icon { transform: rotate(180deg); }
+.m-svc .mega-col { margin-bottom: 18px; }
+.mobile-nav { overflow-y: auto; }
+
+/* Breadcrumb + hero */
+.crumbs { padding-top: 26px; font-family: var(--font-ui); font-size: 14.5px; color: var(--muted); }
+.crumbs ol { display: flex; flex-wrap: wrap; gap: 8px; }
+.crumbs li + li::before { content: "›"; margin-right: 8px; color: var(--teal); font-weight: 700; }
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--royal); text-decoration: underline; }
+.crumbs [aria-current] { color: var(--navy); font-weight: 600; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: clamp(32px, 5vw, 80px); align-items: center; padding-block: 36px clamp(72px, 8vw, 110px); }
+.hero-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; }
+.hero-chips .lbl { font-family: var(--font-ui); font-size: 14px; color: var(--muted); margin-right: 2px; }
+.stage-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--white); font-size: 13.5px; font-weight: 600; color: var(--navy); }
+.stage-chip.on { border-color: currentColor; }
+.hero h1 { font-weight: 700; font-size: clamp(44px, 5.6vw, 80px); line-height: 1; letter-spacing: -0.025em; }
+.hero .lead { margin-top: 22px; max-width: 34ch; font-size: clamp(19px, 1.9vw, 25px); color: var(--ink); }
+.hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 30px; margin-top: 36px; }
+.hero-ctas .link-u { font-size: 19px; }
+.hero-viz { --bw: 12px; --r: 56px; }
+.hero-viz .gcard__in { padding: 30px 30px 26px; display: grid; justify-items: center; gap: 14px; }
+.hero-viz p { font-size: 15px; color: var(--muted); text-align: center; max-width: 30ch; }
+.wheel-svg { width: 100%; max-width: 380px; height: auto; overflow: visible; }
+
+/* Problem */
+.prob-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 44px; }
+.prob { --bw: 5px; --r: 30px; }
+.prob .gcard__in { padding: 30px 28px; display: grid; gap: 12px; align-content: start; }
+.prob .n { width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center; background: var(--navy); color: var(--white); font-weight: 700; font-size: 20px; }
+.prob h3 { font-weight: 700; font-size: 22px; line-height: 1.25; }
+.prob p { font-size: 16px; line-height: 1.6; color: var(--body); }
+.prob-close { margin-top: 44px; font-weight: 600; font-size: clamp(20px, 2vw, 27px); line-height: 1.35; color: var(--navy); max-width: 40ch; }
+.prob-close span { color: var(--blue-ink); }
+
+/* Role (navy block, the signature) */
+.role-block { position: relative; overflow: hidden; color: var(--white); border-radius: clamp(40px, 9vw, 130px); padding-block: clamp(64px, 7vw, 100px) clamp(80px, 8vw, 120px); background: radial-gradient(640px 520px at 6% 90%, rgba(91, 186, 232, .9), rgba(78, 152, 216, .35) 45%, transparent 72%), var(--navy); }
+.role-head { max-width: 780px; margin: 0 auto; text-align: center; }
+.role-head .eyebrow { color: var(--teal); }
+.role-head .h2 { color: var(--white); }
+.role-head .lead { margin-top: 16px; color: rgba(255, 255, 255, .88); }
+.tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 38px; }
+.tab { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 10px 20px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, .35); background: rgba(255, 255, 255, .06); color: var(--white); font-size: 15.5px; font-weight: 500; }
+.tab:hover { border-color: var(--teal); }
+.tab[aria-selected="true"] { background: var(--white); color: var(--navy); border-color: var(--white); font-weight: 600; }
+.tab .dot { box-shadow: 0 0 0 2px rgba(255, 255, 255, .7); }
+.role-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 470px); gap: clamp(32px, 5vw, 72px); align-items: center; margin-top: 48px; }
+.role-panel { --bw: 12px; --r: 52px; color: var(--ink); }
+.role-panel .gcard__in { padding: clamp(28px, 3.6vw, 44px); min-height: 520px; }
+.panel-in { animation: fade .22s ease; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.stage-name { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 10px; border-radius: 999px; background: var(--soft); font-size: 14px; font-weight: 600; color: var(--navy); }
+.role-panel h3 { margin-top: 18px; font-weight: 700; font-size: clamp(26px, 2.5vw, 34px); line-height: 1.12; }
+.role-panel .desc { margin-top: 14px; font-size: 17px; line-height: 1.6; color: var(--body); }
+.role-panel h4 { margin-top: 24px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.checks { display: grid; gap: 11px; margin-top: 12px; }
+.checks li { display: flex; gap: 12px; font-size: 16px; line-height: 1.45; }
+.checks .icon { width: 21px; height: 21px; margin-top: 1px; color: var(--blue-ink); }
+.metric { display: flex; align-items: center; gap: 14px; margin-top: 26px; padding: 16px 20px; border-radius: 16px; background: var(--ice); font-size: 15.5px; }
+.metric b { display: block; font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.metric span span { font-weight: 600; color: var(--navy); }
+.metric .icon { width: 30px; height: 30px; color: var(--royal); }
+.role-viz { display: grid; justify-items: center; gap: 14px; }
+.role-viz p { font-size: 14.5px; color: rgba(255, 255, 255, .8); text-align: center; }
+.wseg { cursor: pointer; outline: none; }
+.wseg path, .wseg circle { transition: fill .2s ease, stroke .2s ease; }
+.wseg:hover path, .wseg:hover circle { stroke-width: 3; }
+.wseg:focus-visible path, .wseg:focus-visible circle { stroke: var(--white); stroke-width: 5; }
+.cta-overlap { position: relative; z-index: 3; display: flex; justify-content: center; margin-top: -40px; padding-inline: var(--pad-x); }
+
+/* Included */
+.inc-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px; }
+.hl-toggle { display: inline-flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 999px; background: var(--white); box-shadow: 0 0 0 2px var(--teal); font-family: var(--font-ui); font-size: 14.5px; font-weight: 500; color: var(--navy); cursor: pointer; }
+.hl-toggle input { width: 18px; height: 18px; accent-color: var(--royal); }
+.inc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 24px; margin-top: 38px; }
+.inc { --bw: 4px; --r: 26px; transition: opacity .2s ease, transform .2s ease; }
+.inc .gcard__in { padding: 24px 24px 22px; display: flex; flex-direction: column; gap: 10px; }
+.inc.dim { opacity: .35; }
+.inc.hl { transform: translateY(-4px); box-shadow: 0 26px 46px -20px rgba(38, 39, 91, .5); }
+.inc h3 { font-weight: 700; font-size: 18.5px; line-height: 1.3; }
+.inc p { font-size: 15.5px; line-height: 1.55; color: var(--body); }
+.inc .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.inc .tags > span { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; background: var(--soft); font-family: var(--font-ui); font-size: 12px; font-weight: 600; color: var(--body); }
+.inc .tags .dot { width: 8px; height: 8px; }
+.platforms { margin-top: 30px; padding: 18px 24px; border-radius: 18px; background: var(--white); box-shadow: var(--shadow-card); font-size: 16px; color: var(--body); }
+.platforms b { color: var(--navy); }
+
+/* Process (navy band, homepage how-it-works style) */
+.process { position: relative; overflow: hidden; color: var(--white); padding-block: clamp(72px, 8vw, 110px) clamp(96px, 9vw, 140px); background: radial-gradient(520px 480px at 100% 20%, rgba(78, 152, 216, .75), transparent 70%), var(--navy); }
+.process .eyebrow { color: var(--teal); }
+.process .h2 { color: var(--white); margin-bottom: 96px; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(24px, 3vw, 44px); }
+.step { position: relative; --bw: 5px; --r: 30px; color: var(--ink); }
+.step .gcard__in { padding: 56px 24px 28px; }
+.step-num { position: absolute; top: -78px; left: 50%; transform: translateX(-50%); z-index: 2; font-weight: 800; font-size: 104px; line-height: 1; letter-spacing: -0.04em; background: linear-gradient(180deg, #5FB0E6, var(--blue) 60%, #3B6FC0); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .25)); }
+.step .when { font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--blue-ink); }
+.step h3 { margin-top: 6px; font-weight: 700; font-size: 20px; line-height: 1.25; }
+.step p { margin-top: 8px; font-size: 15px; line-height: 1.55; color: var(--body); }
+.step:last-child .gcard__in { background: var(--grad-diag); }
+.step:last-child .when, .step:last-child h3, .step:last-child p { color: var(--white); }
+.step:not(:last-child)::after { content: ""; position: absolute; top: 110px; left: 100%; width: clamp(24px, 3vw, 44px); border-top: 3px dashed rgba(255, 255, 255, .9); }
+
+/* Proof */
+.proof { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); overflow: hidden; border-radius: 44px; background: var(--navy); color: var(--white); box-shadow: var(--shadow-card); }
+.proof-l { position: relative; min-height: 360px; background: var(--navy-deep); }
+.proof-l img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% 0; }
+.proof-l::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(29, 30, 74, .05), rgba(29, 30, 74, .6) 45%, var(--navy-deep) 88%); }
+.proof-metrics { position: absolute; z-index: 1; left: 32px; right: 28px; bottom: 30px; display: grid; gap: 18px; }
+.proof-metrics b { display: block; font-weight: 800; font-size: 56px; line-height: .95; letter-spacing: -0.03em; color: #8ED8F0; }
+.proof-metrics > div > span { font-size: 15.5px; }
+.proof-r { padding: clamp(30px, 4vw, 48px); display: grid; gap: 16px; align-content: center; justify-items: start; background: radial-gradient(360px 260px at 100% 100%, rgba(78, 152, 216, .55), transparent 70%); }
+.proof-r .eyebrow { margin: 0; color: var(--teal); }
+.proof-r h3 { color: var(--white); font-weight: 700; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.2; }
+.proof-r blockquote { margin: 0; padding-left: 18px; border-left: 3px solid var(--teal); font-size: 17.5px; line-height: 1.6; font-style: italic; color: rgba(255, 255, 255, .92); }
+.proof-r figcaption { font-family: var(--font-ui); font-size: 14px; color: rgba(255, 255, 255, .75); }
+.proof-note { display: none; margin-top: 14px; font-size: 13.5px; color: var(--muted); }
+.show-ph .proof-note { display: block; }
+
+/* Ways */
+.ways-grid { display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: 28px; margin-top: 44px; align-items: stretch; }
+.way { --bw: 5px; --r: 36px; }
+.way .gcard__in, .way-main { padding: 32px 30px; display: flex; flex-direction: column; gap: 14px; }
+.way .k, .way-main .k { font-weight: 600; font-size: 15px; color: var(--blue-ink); }
+.way h3 { font-weight: 700; font-size: 23px; line-height: 1.2; }
+.way p { font-size: 15.5px; line-height: 1.6; color: var(--body); }
+.way .price, .way-main .price { font-weight: 700; font-size: 30px; line-height: 1; color: var(--navy); }
+.price small { font-size: 14.5px; font-weight: 500; color: var(--muted); }
+.way .link-u { margin-top: auto; align-self: flex-start; font-size: 17px; }
+.way-main { position: relative; overflow: hidden; border-radius: 36px; color: var(--white); background: radial-gradient(380px 300px at 100% 100%, rgba(91, 186, 232, .75), transparent 70%), var(--navy); box-shadow: var(--shadow-card); }
+.way-main .k { color: var(--teal); }
+.way-main h3 { color: var(--white); font-weight: 700; font-size: 26px; line-height: 1.2; }
+.way-main p { font-size: 15.5px; line-height: 1.6; color: rgba(255, 255, 255, .88); }
+.way-main .price { color: var(--white); font-size: 32px; }
+.way-main .price small { color: rgba(255, 255, 255, .75); }
+.way-main ul { display: grid; gap: 8px; }
+.way-main li { display: flex; gap: 10px; font-size: 15.5px; }
+.way-main li .icon { width: 19px; height: 19px; margin-top: 2px; color: var(--teal); }
+.way-main .btn { margin-top: auto; align-self: flex-start; }
+
+/* Related + resources */
+.rel-grid, .res-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 36px; }
+.rel { --bw: 4px; --r: 30px; display: block; padding: var(--bw); text-align: left; border: 0; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+.rel:hover { transform: translateY(-4px); box-shadow: 0 26px 46px -22px rgba(38, 39, 91, .45); }
+.rel .gcard__in { padding: 26px; display: grid; gap: 12px; align-content: start; }
+.rel .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.rel .chips > span { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; background: var(--soft); font-family: var(--font-ui); font-size: 12px; font-weight: 600; color: var(--body); }
+.rel .chips .dot { width: 8px; height: 8px; }
+.rel h3 { font-weight: 700; font-size: 21px; color: var(--navy); }
+.rel p { font-size: 15.5px; line-height: 1.55; color: var(--body); }
+.rel .why { font-weight: 500; font-style: italic; color: var(--navy); text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 3px; text-underline-offset: 6px; justify-self: start; }
+.res-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px; }
+.res-head .h2 { font-size: clamp(28px, 3vw, 40px); }
+.res-head .link-u { font-size: 17px; }
+.res { --bw: 4px; --r: 26px; }
+.res .gcard__in { display: flex; flex-direction: column; overflow: hidden; }
+.media { position: relative; height: 150px; overflow: hidden; display: grid; place-items: center; }
+.m-blog { background: linear-gradient(135deg, var(--ice), #DDEBF7); }
+.m-blog .art { width: 64px; height: 64px; border-radius: 16px; display: grid; place-items: center; background: var(--navy); color: var(--white); }
+.m-case { justify-items: start; align-content: center; padding: 0 24px; color: var(--white); background: radial-gradient(260px 180px at 100% 100%, rgba(78, 152, 216, .7), transparent 70%), var(--navy); }
+.m-case b { font-weight: 800; font-size: 40px; line-height: 1; color: #8ED8F0; }
+.m-case span { font-size: 14px; margin-top: 4px; }
+.m-pod { display: flex; gap: 16px; padding: 0 22px; background: var(--grad-diag); place-items: center start; }
+.m-vid { background: var(--navy-deep); }
+.m-vid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; opacity: .55; }
+.play { position: relative; flex: none; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: var(--white); color: var(--navy); box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .45); }
+.play .icon { width: 20px; height: 20px; margin-left: 3px; }
+.dur { position: absolute; right: 10px; bottom: 10px; padding: 2px 8px; border-radius: 6px; background: rgba(0, 0, 0, .75); color: var(--white); font-family: var(--font-ui); font-size: 12px; font-weight: 600; }
+.res-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.res-body .t { font-family: var(--font-ui); font-size: 13px; font-weight: 600; color: var(--navy); }
+.res-body .t span { color: var(--muted); font-weight: 500; }
+.res-body h3 { font-weight: 600; font-size: 17.5px; line-height: 1.35; }
+.res-body .link-u { margin-top: auto; padding-top: 6px; align-self: flex-start; font-size: 15.5px; }
+
+/* FAQ */
+.faq-list { display: grid; gap: 22px; max-width: 846px; margin: 44px auto 0; }
+.qa { background: var(--white); border: 2px solid var(--teal); border-radius: 26px; box-shadow: 0 10px 24px -16px rgba(38, 39, 91, .35); }
+.qa-q { width: 100%; display: flex; align-items: center; gap: 26px; padding: 22px 36px; background: none; border: 0; text-align: left; font-weight: 700; font-size: clamp(17px, 1.7vw, 22px); line-height: 1.25; color: var(--ink); }
+.qa-q:hover { color: var(--royal); }
+.plus { position: relative; flex: none; width: 50px; height: 50px; border-radius: 50%; border: 1.5px solid var(--teal); }
+.plus::before, .plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 20px; height: 3px; margin: -1.5px 0 0 -10px; border-radius: 2px; background: var(--grad); transition: transform .25s ease; }
+.plus::after { transform: rotate(90deg); }
+.qa-q[aria-expanded="true"] .plus::after { transform: rotate(0); }
+.qa-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.qa-a > div { overflow: hidden; }
+.qa-a p { padding: 0 40px 26px 112px; font-size: clamp(15.5px, 1.4vw, 18px); line-height: 1.6; color: var(--navy); }
+.qa.is-open .qa-a { grid-template-rows: 1fr; }
+
+/* ==========================================================================
+   Footer (same as homepage, with newsletter banner)
+   ========================================================================== */
+.footer { position: relative; color: var(--white); background: radial-gradient(760px 420px at 50% 100%, rgba(78, 152, 216, .85), rgba(78, 152, 216, .25) 50%, transparent 75%), var(--navy); margin-top: 110px; }
+.final { position: relative; top: -110px; margin-bottom: -110px; }
+.final-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); align-items: center; gap: 24px 48px; padding: clamp(32px, 4vw, 56px) clamp(28px, 5vw, 72px); border-radius: 40px; background: var(--grad); box-shadow: 0 30px 60px -30px rgba(29, 30, 74, .6); }
+.final h2 { color: var(--white); font-weight: 700; font-size: clamp(30px, 3.6vw, 52px); line-height: 1.04; letter-spacing: -0.025em; text-shadow: 0 2px 10px rgba(20, 30, 80, .25); }
+.final p { margin-top: 10px; font-size: 17.5px; color: rgba(255, 255, 255, .95); }
+.final .inline-form { justify-content: flex-start; max-width: none; }
+.final .inline-form input { border-color: transparent; }
+.final .ok { color: var(--white); font-size: 19px; }
+.foot-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; padding-block: 96px 80px; }
+.foot-brand img { height: 60px; width: auto; margin-bottom: 18px; }
+.foot-brand p { font-family: var(--font-ui); font-size: 17px; color: rgba(255, 255, 255, .8); max-width: 30ch; }
+.footer h3 { color: var(--white); font-family: var(--font-ui); font-weight: 500; font-size: 28px; margin-bottom: 24px; }
+.foot-links li, .foot-contact li { margin-bottom: 10px; }
+.footer a:not(.btn) { color: var(--white); text-decoration: none; }
+.footer a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--teal); }
+.foot-links a, .foot-contact { font-family: var(--font-ui); font-size: 18px; line-height: 1.4; }
+.socials { display: flex; gap: 10px; margin-top: 22px; }
+.socials a { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(255, 255, 255, .1); }
+.socials .icon { width: 20px; height: 20px; }
+.foot-bottom { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; padding-bottom: 26px; font-family: var(--font-ui); font-size: 14px; color: rgba(255, 255, 255, .75); }
+.foot-bottom nav { display: flex; gap: 20px; }
+.foot-bar { height: 12px; background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 50%, var(--navy) 100%); }
+
+
+.final-in { grid-template-columns: minmax(0, 1fr) auto; }
+
+.hero > *, .role-split > *, .proof > *, .ways-grid > *, .rel-grid > *, .res-grid > *, .prob-grid > *, .steps > *, .final-in > *, .mega-inner > * { min-width: 0; }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .nav, .header-cta { display: none; }
+  .menu-btn { display: grid; }
+  .header-row, .site-header.is-scrolled .header-row { height: 80px; }
+  .logo img, .site-header.is-scrolled .logo img { height: 46px; }
+  .mega { display: none !important; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-viz { max-width: 460px; width: 100%; }
+  .prob-grid { grid-template-columns: 1fr; max-width: 640px; }
+  .role-split { grid-template-columns: 1fr; }
+  .role-viz { order: -1; }
+  .role-panel { max-width: 640px; width: 100%; margin-inline: auto; }
+  .role-panel .gcard__in { min-height: 0; }
+  .steps { grid-template-columns: 1fr 1fr; row-gap: 110px; }
+  .step:nth-child(2)::after { display: none; }
+  .proof { grid-template-columns: 1fr; }
+  .ways-grid { grid-template-columns: 1fr; max-width: 640px; }
+  .rel-grid, .res-grid { grid-template-columns: 1fr 1fr; }
+  .final-in { grid-template-columns: 1fr; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .foot-brand { grid-column: 1 / -1; }
+}
+/* Mobile */
+@media (max-width: 767px) {
+  :root { --pad-x: 16px; }
+  body { font-size: 16px; }
+  .header-row, .site-header.is-scrolled .header-row { height: 72px; }
+  .logo img, .site-header.is-scrolled .logo img { height: 42px; }
+  .stripe { height: 8px; }
+  .review-bar .note { display: none; }
+  .review-bar select { max-width: 200px; }
+  .hero-ctas .btn, .cta-overlap .btn, .way-main .btn, .final .btn { width: 100%; }
+  .hero-viz, .role-panel { --r: 36px; --bw: 8px; }
+  .role-block { border-radius: 36px; }
+  .tabs { justify-content: flex-start; }
+  .steps { grid-template-columns: 1fr; row-gap: 100px; }
+  .step::after { display: none; }
+  .proof { border-radius: 32px; }
+  .rel-grid, .res-grid { grid-template-columns: 1fr; }
+  .qa-q { padding: 18px 20px; gap: 16px; }
+  .plus { width: 40px; height: 40px; }
+  .plus::before, .plus::after { width: 16px; margin-left: -8px; }
+  .qa-a p { padding: 0 20px 22px 76px; }
+  .final-in { padding: 32px 22px; border-radius: 30px; }
+  .foot-grid { grid-template-columns: 1fr; padding-block: 72px 48px; gap: 34px; }
+  .footer h3 { font-size: 22px; margin-bottom: 14px; }
+  .foot-links a, .foot-contact { font-size: 16.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.8 2.8L16.3 9.5"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1a3.8 3.8 0 0 1 3.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.3ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5Z"/></symbol>
+  </defs>
+</svg>
+
+<div class="review-bar" role="region" aria-label="Prototype review controls">
+  <div class="e-con">
+    <label>Service page <select id="svc-select" aria-label="Choose a service page"></select></label>
+    <span class="note">Prototype · 12 service pages from one template · try the Services menu and the stage tabs</span>
+  </div>
+</div>
+
+<header class="site-header" id="site-header">
+  <div class="e-con header-row">
+    <a class="logo" href="#" data-ph-link="homepage" aria-label="First Search Marketing home"><img src="assets/img/logo.png" alt="First Search Marketing" width="576" height="196"></a>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><button type="button" class="nav-svc" id="svc-btn" aria-expanded="false" aria-controls="mega">Services<svg class="icon" aria-hidden="true"><use href="#i-chev"/></svg></button></li>
+        <li><a href="#" data-ph-link="Ways to learn page">Ways to learn</a></li>
+        <li><a href="#" data-ph-link="Events page">Events</a></li>
+        <li><a href="#" data-ph-link="Resources page">Resources</a></li>
+        <li><a href="#" data-ph-link="About page">About</a></li>
+      </ul>
+    </nav>
+    <a class="btn header-cta" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </div>
+  <div class="stripe" aria-hidden="true"></div>
+  <div class="mega" id="mega" hidden><div class="e-con mega-inner" id="mega-inner"></div></div>
+</header>
+<div class="mobile-nav" id="mobile-nav">
+  <details class="m-svc"><summary>Services<svg class="icon" aria-hidden="true"><use href="#i-chev"/></svg></summary><div id="m-svc-inner"></div></details>
+  <a class="m" href="#" data-ph-link="Ways to learn page">Ways to learn</a>
+  <a class="m" href="#" data-ph-link="Events page">Events</a>
+  <a class="m" href="#" data-ph-link="Resources page">Resources</a>
+  <a class="m" href="#" data-ph-link="About page">About</a>
+  <a class="btn" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a>
+</div>
+
+<main id="main">
+  <div class="bg-geo">
+    <div class="e-con crumbs">
+      <nav aria-label="Breadcrumb"><ol>
+        <li><a href="#" data-ph-link="Services overview page">Services</a></li>
+        <li><a href="#" id="crumb-stage" data-ph-link="stage overview page"></a></li>
+        <li aria-current="page" id="crumb-svc"></li>
+      </ol></nav>
+    </div>
+    <section class="e-con hero" aria-labelledby="svc-title">
+      <div>
+        <div class="hero-chips"><span class="lbl">Part of</span><span id="hero-chips" style="display:contents"></span></div>
+        <h1 id="svc-title"></h1>
+        <p class="lead" id="svc-lead"></p>
+        <div class="hero-ctas">
+          <a class="btn btn--lg" href="#" data-ph-link="strategy call calendar">Book your strategy call</a>
+          <a class="link-u" href="#role">See how it fits your framework</a>
+        </div>
+      </div>
+      <div class="gcard hero-viz"><div class="gcard__in"><div id="viz-hero"></div><p id="viz-hero-cap"></p></div></div>
+    </section>
+  </div>
+
+  <section class="section bg-geo" aria-labelledby="prob-title" style="padding-top:0">
+    <div class="e-con">
+      <span class="eyebrow">Sound familiar?</span>
+      <h2 class="h2" id="prob-title" style="max-width:22ch"></h2>
+      <div class="prob-grid" id="prob-grid"></div>
+      <p class="prob-close" id="prob-close"></p>
+    </div>
+  </section>
+
+  <section class="bg-geo" id="role" aria-labelledby="role-title" style="scroll-margin-top:90px">
+    <div class="role-block on-dark">
+      <div class="e-con">
+        <div class="role-head">
+          <span class="eyebrow">Where this fits in your framework</span>
+          <h2 class="h2" id="role-title"></h2>
+          <p class="lead" id="role-lead"></p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Framework stages" id="tabs"></div>
+        <div class="role-split">
+          <div class="gcard role-panel"><div class="gcard__in" id="panel" role="tabpanel" tabindex="0"></div></div>
+          <div class="role-viz"><div id="viz-role"></div><p id="viz-role-cap"></p></div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-overlap"><a class="btn btn--lg" href="#" data-ph-link="strategy call calendar">Let’s Talk!</a></div>
+  </section>
+
+  <section class="section bg-geo" aria-labelledby="inc-title">
+    <div class="e-con">
+      <div class="inc-head">
+        <div><span class="eyebrow">What's included</span><h2 class="h2" id="inc-title"></h2></div>
+        <label class="hl-toggle" id="hl-wrap"><input type="checkbox" id="hl-toggle"><span id="hl-label">Highlight what's used at the selected stage</span></label>
+      </div>
+      <div class="inc-grid" id="inc-grid"></div>
+      <p class="platforms" id="platforms"></p>
+    </div>
+  </section>
+
+  <section class="process on-dark" aria-labelledby="proc-title">
+    <div class="e-con">
+      <span class="eyebrow">How we do it</span>
+      <h2 class="h2" id="proc-title">Your first 90 days.</h2>
+      <ol class="steps" id="steps"></ol>
+    </div>
+  </section>
+
+  <section class="section bg-geo" aria-labelledby="proof-title">
+    <div class="e-con">
+      <figure class="proof on-dark" style="margin:0">
+        <div class="proof-l">
+          <img src="assets/img/design/case-dental.webp" alt="">
+          <div class="proof-metrics" id="proof-metrics"></div>
+        </div>
+        <div class="proof-r">
+          <p class="eyebrow"><span class="ph">[Client name]</span> · <span class="ph">[Industry], [Town] NH</span></p>
+          <h3 id="proof-title"><span class="ph" id="proof-h"></span></h3>
+          <blockquote><span class="ph" id="proof-q"></span></blockquote>
+          <figcaption><span class="ph">[Client name, title]</span></figcaption>
+          <a class="btn btn--white" href="#" data-ph-link="case study">Read the full case study</a>
+        </div>
+      </figure>
+      <p class="proof-note">Hide this section on any service page that doesn't have a real case study yet.</p>
+    </div>
+  </section>
+
+  <section class="section bg-geo" aria-labelledby="ways-title" style="padding-top:0">
+    <div class="e-con">
+      <span class="eyebrow">Ways to get this</span>
+      <h2 class="h2" id="ways-title">Have us run it, or learn to do it yourself.</h2>
+      <div class="ways-grid" id="ways-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="rel-title" style="background:var(--white);padding-bottom:48px">
+    <div class="e-con">
+      <span class="eyebrow">Works best with</span>
+      <h2 class="h2" id="rel-title"></h2>
+      <div class="rel-grid" id="rel-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="res-title" style="background:var(--white);padding-top:48px">
+    <div class="e-con">
+      <div class="res-head">
+        <div><span class="eyebrow">From our resources</span><h2 class="h2" id="res-title"></h2></div>
+        <a class="link-u" href="#" id="res-all" data-ph-link="Resources page, filtered to this service"></a>
+      </div>
+      <div class="res-grid" id="res-grid"></div>
+    </div>
+  </section>
+
+  <section class="section bg-geo" aria-labelledby="faq-title" style="padding-bottom: clamp(170px, 16vw, 230px)">
+    <div class="e-con">
+      <h2 class="h2" id="faq-title" style="text-align:center"></h2>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer on-dark">
+  <div class="e-con final">
+    <div class="final-in">
+      <div><h2 id="final-h"></h2><p id="final-p"></p></div>
+      <a class="btn btn--white btn--lg" href="#" data-ph-link="strategy call calendar">Book your strategy call</a>
+    </div>
+  </div>
+  <div class="e-con foot-grid">
+    <div class="foot-brand">
+      <img src="assets/img/logo-white.png" alt="First Search Marketing" width="576" height="196">
+      <p>Family-owned digital marketing in Exeter, NH.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook" data-ph-link="Facebook profile"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+        <a href="#" aria-label="Instagram" data-ph-link="Instagram profile"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        <a href="#" aria-label="LinkedIn" data-ph-link="LinkedIn profile"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+      </div>
+    </div>
+    <nav aria-labelledby="f-services">
+      <h3 id="f-services">Services</h3>
+      <ul class="foot-links" id="foot-svc"></ul>
+    </nav>
+    <div>
+      <h3>Contact</h3>
+      <ul class="foot-contact">
+        <li>92 Portsmouth Ave Ste #21,<br>Exeter, NH 03833</li>
+        <li><a href="tel:+16035188090">603-518-8090</a></li>
+        <li><a href="mailto:chris@befirstsearch.com">chris@befirstsearch.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="e-con foot-bottom">
+    <span>© 2026 First Search Marketing LLC.</span>
+    <nav aria-label="Legal"><a href="#" data-ph-link="privacy policy">Privacy policy</a><a href="#" data-ph-link="terms">Terms</a></nav>
+  </div>
+  <div class="foot-bar" aria-hidden="true"></div>
+</footer>
+
+<button class="ph-toggle" type="button" id="ph-toggle" aria-pressed="false"><span class="dot" aria-hidden="true"></span>Highlight placeholders</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const ph = s => esc(s).replace(/\[[^\]]+\]/g, m => `<span class="ph">${m}</span>`);
+  const ico = (id, cls = 'icon') => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
+
+  /* ======================================================================
+     DATA
+     ====================================================================== */
+  // dot = brand colour; fill/on = colours for an active wheel segment (AA contrast)
+  const STAGES = {
+    brand:    { label: 'FirstBrand',    sub: 'Build the foundation', dot: '#7CD2D3', fill: '#7CD2D3', on: '#26275B', tint: '#E2F5F5' },
+    thought:  { label: 'FirstThought',  sub: 'Get found first',      dot: '#4E98D8', fill: '#2F78BA', on: '#FFFFFF', tint: '#E3F0FA' },
+    choice:   { label: 'FirstChoice',   sub: 'Get chosen',           dot: '#2E4DA5', fill: '#2E4DA5', on: '#FFFFFF', tint: '#E3E8F6' },
+    referral: { label: 'FirstReferral', sub: 'Get referred',         dot: '#9E9AAE', fill: '#6B6785', on: '#FFFFFF', tint: '#EEEDF3' }
+  };
+  const ORDER = ['brand', 'thought', 'choice', 'referral'];
+  const WORKSHOP = {
+    brand: 'Build a brand people trust on sight (Oct 27)',
+    thought: 'Get found first: local SEO and AI search (Nov 4)',
+    choice: 'Turn your website into a lead machine (Nov 17)',
+    referral: 'Reviews, referrals and loyalty that sell for you (Dec 2)'
+  };
+
+  const SERVICES = [
+    {
+      slug: 'branding', name: 'Branding & Content Creation', tag: 'Branding & content', stages: ['brand'],
+      short: 'A brand people recognize and trust, with content that sounds like you everywhere.',
+      lead: 'A brand people recognize, trust and remember, with content that sounds like you everywhere you show up.',
+      probTitle: 'Your marketing looks like five different businesses.',
+      problems: [
+        ['Nothing matches.', 'Your logo, website, social and signage were made at different times by different people. Customers notice, even if you don\'t.'],
+        ['You can\'t say what makes you different.', 'Ask three people on your team why customers should choose you and you\'ll get three different answers.'],
+        ['Content is always last-minute.', 'Posts, emails and flyers get thrown together the day they\'re due, so they never quite say what you mean.']
+      ],
+      close: ['The fix isn\'t a new logo.', 'It\'s a brand system that makes every touchpoint work together.'],
+      roleTitle: 'The foundation everything else stands on.',
+      roleLead: 'Branding sits at the center of the FirstSearch Framework. Every ad, post, page and email gets stronger when the brand behind it is clear.',
+      role: {
+        brand: { h: 'Build a brand people trust on sight.', d: 'We define who you are, what makes you different and how you sound, then turn it into tools your team can use every day.', items: ['Brand strategy: positioning, value statement and core messaging', 'Logo, colour palette and typography, refreshed or built from scratch', 'Brand guidelines your team and vendors can actually follow', 'A content library of photos, video and templates, ready to use'], metric: 'Brand consistency and recognition' }
+      },
+      included: [
+        ['Brand discovery workshop', 'Interviews with you, your team and customers to find what really sets you apart.', ['brand']],
+        ['Value statement and messaging', 'The words that explain who you help, how and why you\'re the better choice.', ['brand']],
+        ['Logo and visual identity', 'Logo, colours and type that look right everywhere, from a van wrap to an Instagram story.', ['brand']],
+        ['Brand guidelines', 'A simple guide so every vendor and new hire gets the brand right.', ['brand']],
+        ['Photo and video content', 'Real images of your team and work, planned and produced by us.', ['brand']],
+        ['Branded templates', 'Social, email, flyer and proposal templates your team can use.', ['brand']],
+        ['Brand video', 'A short film that tells your story on your website and social.', ['brand']],
+        ['Ongoing content creation', 'Copy, graphics and video for every channel in your plan.', ['brand']]
+      ],
+      platforms: ['Deliverables', 'Logo files, brand guide (PDF), template library, photo and video library [CONFIRM: what each package includes]'],
+      process: [
+        ['Days 1 to 14', 'Discovery', 'We interview you, your team and a few customers to find what really sets you apart.'],
+        ['Days 15 to 30', 'Strategy', 'Positioning, value statement and messaging, reviewed and approved with you.'],
+        ['Days 31 to 60', 'Design and create', 'Visual identity, guidelines, templates and a first batch of content.'],
+        ['Days 61 to 90', 'Roll out', 'We update every touchpoint, brief your team and hand over the brand toolkit.']
+      ],
+      proof: [['[XX]%', '[Increase in website inquiries after the rebrand]'], ['[XX]', '[Pieces of branded content delivered]']],
+      proofH: '[Result headline, e.g. "A rebrand that finally matched the quality of the work"]',
+      related: ['website', 'social-media', 'advertising'],
+      faq: [
+        ['Do you only do full rebrands?', 'No. Sometimes the right move is a refresh: keep what customers already recognize and tighten everything around it. We\'ll recommend the smallest change that solves the problem.'],
+        ['Who owns the logo and brand files?', 'You do. Every file, source file and guideline belongs to your business.'],
+        ['Will you create ongoing content too?', 'Yes. Once the brand is set, our team creates photos, video, graphics and copy for your website, social and campaigns as part of your plan.'],
+        ['How long does a brand project take?', '[CONFIRM] Most brand foundations are finished within the first 60 to 90 days of a partnership.']
+      ],
+      final: ['Make your brand impossible to forget.', 'Let\'s look at how your business shows up today, and how it should.']
+    },
+    {
+      slug: 'website', name: 'Website', tag: 'Website', stages: ['brand'],
+      short: 'A fast, clear website built to turn visitors into calls and bookings.',
+      lead: 'A fast, clear website that turns visitors into calls, bookings and inquiries, and that you can actually update.',
+      probTitle: 'Your website looks fine. It just doesn\'t bring in business.',
+      problems: [
+        ['It\'s a digital brochure.', 'Visitors land, look around and leave. There\'s no clear next step and no reason to act today.'],
+        ['It\'s slow and clumsy on a phone.', 'Most of your visitors are on mobile, and every extra second of loading costs you customers.'],
+        ['You can\'t change anything.', 'Updating a price or a photo means emailing someone and waiting a week.']
+      ],
+      close: ['The fix isn\'t a prettier website.', 'It\'s a website built to do a job.'],
+      roleTitle: 'Your hardest-working salesperson.',
+      roleLead: 'Your website is part of the FirstBrand foundation. Every ad, post and search result sends people there, so it has to convert.',
+      role: {
+        brand: { h: 'Build a website that turns visitors into customers.', d: 'We design and build your site around the questions customers ask and the actions you want them to take.', items: ['Conversion-focused design with a clear next step on every page', 'Mobile-first build that loads fast and scores well with Google', 'Service and location pages written to rank and to sell', 'An easy editor so you can update content yourself'], metric: 'Website conversion rate' }
+      },
+      included: [
+        ['Strategy and sitemap', 'Every page planned around your services, customers and goals.', ['brand']],
+        ['Custom design', 'A design built on your brand, not a template everyone else uses.', ['brand']],
+        ['WordPress development', 'Built with WordPress and Elementor so your team can edit it.', ['brand']],
+        ['Copywriting', 'Clear, persuasive page copy written by our team.', ['brand']],
+        ['On-page SEO setup', 'Titles, structure and schema so Google understands every page.', ['brand']],
+        ['Speed and mobile optimization', 'Fast loading and easy to use on every device.', ['brand']],
+        ['Forms, booking and CRM', 'Every inquiry lands straight in your CRM.', ['brand']],
+        ['Hosting and maintenance', 'Hosting, security updates, backups and small changes.', ['brand']],
+        ['Team training', 'A walkthrough so you can make everyday updates yourself.', ['brand']]
+      ],
+      platforms: ['Built on', 'WordPress and Elementor, with forms connected to your CRM [CONFIRM]'],
+      process: [
+        ['Days 1 to 14', 'Discovery and sitemap', 'We map your services, customers and goals, then plan every page and the path through it.'],
+        ['Days 15 to 45', 'Design and copy', 'Wireframes, design and page copy, reviewed with you before anything is built.'],
+        ['Days 46 to 75', 'Build and connect', 'Development, forms, booking and analytics, tested on every device.'],
+        ['Days 76 to 90', 'Launch and train', 'We launch, monitor, fix anything that comes up and show your team how to make updates.']
+      ],
+      proof: [['[XX]%', '[More website inquiries]'], ['[X.X]s', '[Page load time, down from X.Xs]']],
+      proofH: '[Result headline, e.g. "From a brochure site to the busiest salesperson on the team"]',
+      related: ['seo', 'lead-generation', 'analytics'],
+      faq: [
+        ['Do you redesign or rebuild?', 'Both. If your current site has a solid foundation, we\'ll improve it. If it\'s holding you back, we\'ll rebuild it properly.'],
+        ['Will I be able to edit it myself?', 'Yes. We build on WordPress with a visual editor and train your team on everyday updates.'],
+        ['Who owns the website?', 'You do. The domain, the content and the site itself belong to your business.'],
+        ['Do you handle hosting and maintenance?', '[CONFIRM] Yes. Hosting, security updates, backups and small changes are part of your plan.']
+      ],
+      final: ['Turn your website into a lead machine.', 'Let\'s look at what your site is doing today, and what it should be doing.']
+    },
+    {
+      slug: 'analytics', name: 'Analytics', tag: 'Analytics', stages: ['brand'],
+      short: 'Know exactly which marketing brings in customers, in plain English.',
+      lead: 'Know exactly which marketing brings in customers, in plain English, every month.',
+      probTitle: 'You\'re spending on marketing. You can\'t tell what\'s working.',
+      problems: [
+        ['Reports full of vanity metrics.', 'Impressions, clicks and reach look busy but never tell you how many calls, leads or customers you got.'],
+        ['Your data lives in ten places.', 'Google, Facebook, your website and your CRM all tell a different story, and none of them talk to each other.'],
+        ['Decisions are gut calls.', 'Without a clear picture, budget goes to whatever feels like it\'s working.']
+      ],
+      close: ['The fix isn\'t more reports.', 'It\'s tracking that connects every dollar to a result.'],
+      roleTitle: 'Measured end to end.',
+      roleLead: 'Analytics sits in the foundation because it runs across every stage. It\'s how you know which part of your marketing to fix next.',
+      role: {
+        brand: { h: 'See what\'s working, and what isn\'t.', d: 'We set up tracking that follows customers from first click to booked job, then report on it in language you can use.', items: ['Google Analytics 4 and Tag Manager set up correctly', 'Call, form and booking tracking on every channel', 'A live dashboard with the handful of numbers that matter', 'A monthly review with clear recommendations'], metric: 'Cost per lead and marketing ROI' }
+      },
+      included: [
+        ['Tracking audit', 'What\'s tracked today, what\'s broken and what\'s missing.', ['brand']],
+        ['GA4 and Tag Manager setup', 'The foundation for every other number, set up properly.', ['brand']],
+        ['Conversion and call tracking', 'Forms, calls and bookings tied back to their source.', ['brand']],
+        ['Ad platform tracking', 'Google and Meta conversions reported accurately.', ['brand']],
+        ['CRM attribution', 'Leads matched to customers and revenue.', ['brand']],
+        ['Live dashboard', 'One screen with the numbers that matter.', ['brand']],
+        ['Monthly report and review', 'Results and recommendations in plain English.', ['brand']]
+      ],
+      platforms: ['Tools', 'Google Analytics 4, Google Tag Manager, Looker Studio and call tracking [CONFIRM]'],
+      process: [
+        ['Days 1 to 14', 'Audit', 'We check what\'s tracked today, what\'s broken and what\'s missing.'],
+        ['Days 15 to 30', 'Set up tracking', 'Analytics, conversions and calls tracked on every channel and connected to your CRM.'],
+        ['Days 31 to 60', 'Build the dashboard', 'One place to see leads, cost per lead and revenue by channel.'],
+        ['Days 61 to 90', 'Report and act', 'Your first monthly reviews, with clear recommendations on where to spend next.']
+      ],
+      proof: [['[XX]%', '[Lower cost per lead after reallocating budget]'], ['[$XX]', '[Wasted monthly spend found and cut]']],
+      proofH: '[Result headline, e.g. "Finally knowing which ads actually made the phone ring"]',
+      related: ['crm', 'advertising', 'website'],
+      faq: [
+        ['What will I actually see each month?', 'A short report showing leads, calls, cost per lead and revenue by channel, plus what we recommend doing next.'],
+        ['Do I need new software?', 'Usually not. We work with Google\'s free tools and the systems you already use, and only recommend paid tools when they pay for themselves.'],
+        ['Can you track phone calls?', 'Yes. Call tracking shows which channel, ad or page made the phone ring.'],
+        ['Who owns the data?', 'You do. Every account is set up in your business\'s name.']
+      ],
+      final: ['Know exactly what your marketing is doing.', 'Let\'s look at what you\'re tracking today, and what you should be.']
+    },
+    {
+      slug: 'crm', name: 'CRM', tag: 'CRM', stages: ['brand'],
+      short: 'One place for every lead and customer, so nothing slips through the cracks.',
+      lead: 'One place for every lead and customer, so nothing slips through the cracks and follow-up happens on time.',
+      probTitle: 'Leads come in. Then they disappear.',
+      problems: [
+        ['Leads live everywhere.', 'Some in email, some in texts, some on sticky notes. No one has the full list.'],
+        ['Follow-up depends on memory.', 'When it gets busy, callbacks slip, and those leads quietly go to a competitor.'],
+        ['You can\'t see your pipeline.', 'There\'s no easy way to tell how many jobs are coming or where deals get stuck.']
+      ],
+      close: ['The fix isn\'t working harder.', 'It\'s a system that remembers for you.'],
+      roleTitle: 'The system behind every customer.',
+      roleLead: 'Your CRM is part of the FirstBrand foundation. It\'s where every lead from every stage lands, and where automation and analytics get their data.',
+      role: {
+        brand: { h: 'Never lose track of a lead again.', d: 'We set up a CRM around how your business actually sells, then connect it to your website, ads and phone.', items: ['A CRM chosen and set up around your sales process', 'Every form, call and message flowing into one inbox', 'A visual pipeline so you can see every deal at a glance', 'Team training and simple habits that make it stick'], metric: 'Lead response time and close rate' }
+      },
+      included: [
+        ['CRM selection', 'The right system for your size, team and budget.', ['brand']],
+        ['Setup and customization', 'Fields, stages and views that match how you sell.', ['brand']],
+        ['Pipeline design', 'See every open deal and where it\'s stuck.', ['brand']],
+        ['Lead capture integrations', 'Website forms, ads, calls and texts in one place.', ['brand']],
+        ['Data import and cleanup', 'Your contacts and customers moved over and tidied up.', ['brand']],
+        ['Team training', 'Short, practical training so everyone uses it.', ['brand']],
+        ['Ongoing support', 'Tweaks and fixes as your business changes.', ['brand']]
+      ],
+      platforms: ['Platforms', 'GoHighLevel, HubSpot or your existing CRM [CONFIRM]'],
+      process: [
+        ['Days 1 to 14', 'Map your sales process', 'How leads arrive, who follows up and what happens next.'],
+        ['Days 15 to 30', 'Build and configure', 'Pipeline, fields, views and notifications set up for your team.'],
+        ['Days 31 to 45', 'Connect and import', 'Forms, calls and ads connected; contacts imported and cleaned.'],
+        ['Days 46 to 90', 'Train and refine', 'Team training, then we adjust based on how it\'s actually used.']
+      ],
+      proof: [['[X] min', '[Average lead response time, down from X hours]'], ['[XX]%', '[Higher close rate]']],
+      proofH: '[Result headline, e.g. "No more leads lost in the inbox"]',
+      related: ['marketing-automation', 'lead-generation', 'analytics'],
+      faq: [
+        ['Which CRM do you use?', '[CONFIRM] We often use GoHighLevel, but we\'ll recommend what fits your business and work with the CRM you already have when it makes sense.'],
+        ['Will my team actually use it?', 'That\'s the goal. We keep it simple, train everyone and only set up what you\'ll use.'],
+        ['Can you move my existing contacts?', 'Yes. We import and clean up your contacts, customers and open deals.'],
+        ['Does it connect to my phone and email?', 'Yes. Calls, texts, emails and form fills can all land in the same place.']
+      ],
+      final: ['Stop losing leads to a messy inbox.', 'Let\'s map how leads come in today, and where they slip away.']
+    },
+    {
+      slug: 'seo', name: 'SEO', tag: 'SEO', stages: ['thought'],
+      short: 'Show up first on Google, the map and in AI answers.',
+      lead: 'Show up first when people near you search for what you sell: on Google, on the map and in AI answers.',
+      probTitle: 'Customers are searching for you. They\'re finding your competitors.',
+      problems: [
+        ['You\'re not in the map pack.', 'For most local searches, the top three map results get the calls. If you\'re not there, you\'re invisible.'],
+        ['AI search skips you.', 'ChatGPT and Google\'s AI answers recommend businesses they can understand and trust. Most local sites give them nothing to work with.'],
+        ['SEO feels like a black box.', 'You\'ve paid for SEO before and never saw clear rankings, traffic or calls.']
+      ],
+      close: ['The fix isn\'t tricks.', 'It\'s giving Google and AI every reason to recommend you.'],
+      roleTitle: 'Get found first.',
+      roleLead: 'SEO lives in FirstThought. Its job is to put your name in front of people at the exact moment they\'re looking.',
+      role: {
+        thought: { h: 'Be the first name customers see.', d: 'We optimize your website, Google Business Profile and local presence so search engines and AI tools recommend you first.', items: ['Keyword research based on how local customers actually search', 'Google Business Profile optimization and weekly posts', 'Service and location pages that rank and convert', 'Technical fixes, speed and structured data for AI search'], metric: 'Map pack rankings and calls from search' }
+      },
+      included: [
+        ['SEO audit', 'Where you rank, why, and what\'s holding you back.', ['thought']],
+        ['Keyword research', 'The searches your customers actually use.', ['thought']],
+        ['Google Business Profile', 'Optimized, posted to weekly and kept accurate.', ['thought']],
+        ['On-page optimization', 'Titles, content and structure tuned for every service.', ['thought']],
+        ['Local citations', 'Consistent listings across the directories that matter.', ['thought']],
+        ['Technical SEO', 'Speed, indexing and structured data fixed.', ['thought']],
+        ['AI search visibility', 'Content and data that AI tools can understand and quote.', ['thought']],
+        ['Content and links', 'Helpful articles and local links that build authority.', ['thought']],
+        ['Monthly rankings report', 'Rankings, traffic and calls from search.', ['thought']]
+      ],
+      platforms: ['Covers', 'Google Search, Google Maps, Bing, Apple Maps and AI search tools like ChatGPT and Gemini [CONFIRM]'],
+      process: [
+        ['Days 1 to 14', 'Audit and research', 'Rankings, competitors and keywords mapped for your market.'],
+        ['Days 15 to 30', 'Fix the foundation', 'Google Business Profile, technical issues and key pages fixed first.'],
+        ['Days 31 to 60', 'Build authority', 'New service and location content, citations and local links.'],
+        ['Days 61 to 90', 'Measure and expand', 'Report rankings and calls, then go after the next set of keywords.']
+      ],
+      proof: [['#[X]', '[Map pack position, up from #X]'], ['[XX]%', '[More calls from Google]']],
+      proofH: '[Client name]: from page three to the map pack',
+      related: ['website', 'reviews-referrals', 'local-ties'],
+      faq: [
+        ['How long does SEO take?', 'Most businesses see movement in 60 to 90 days, with stronger results building over six months. SEO compounds, which is why it\'s part of a six-month partnership.'],
+        ['Can you guarantee #1 rankings?', 'No one honestly can. What we guarantee is the result in your roadmap, measured in leads, not just rankings.'],
+        ['What is AI search?', 'Tools like ChatGPT, Gemini and Google\'s AI Overviews now answer "who should I call?" questions. We make sure your business is one they can find, understand and recommend.'],
+        ['Do I need a new website for SEO?', 'Not always. We\'ll tell you honestly whether your site can rank, or if it\'s holding you back.']
+      ],
+      final: ['Be the first business customers find.', 'Let\'s look at where you rank today, and what it would take to be first.']
+    },
+    {
+      slug: 'advertising', name: 'Advertising', tag: 'Advertising', stages: ['thought', 'choice'],
+      short: 'Paid ads that reach the right local people and turn clicks into booked jobs.',
+      lead: 'Ads that reach the right local customers and turn clicks into booked jobs, measured in cost per lead, not impressions.',
+      probTitle: 'You\'re paying for ads. You\'re not sure they\'re paying you back.',
+      problems: [
+        ['Clicks, but no customers.', 'Your ads get traffic, but the phone doesn\'t ring any more than it used to.'],
+        ['Budget leaks everywhere.', 'Broad targeting, the wrong keywords and ads running at 2am burn money without you knowing.'],
+        ['No one knows the cost per lead.', 'You get reports on impressions and clicks, not on what each customer actually cost.']
+      ],
+      close: ['The fix isn\'t spending more.', 'It\'s ads with a clear job and a number to hit.'],
+      roleTitle: 'One service. Two jobs.',
+      roleLead: 'We split advertising into two jobs: getting discovered by new people, and converting the people who already know you.',
+      role: {
+        thought: { h: 'Reach new local customers.', d: 'Awareness campaigns put your business in front of the right people nearby, before and while they\'re looking.', items: ['Google Search ads for high-intent local keywords', 'Meta and YouTube campaigns in your service area', 'Local Services Ads where they fit your industry', 'Creative that stops the scroll and builds recognition'], metric: 'Qualified reach and cost per click' },
+        choice: { h: 'Turn interest into booked jobs.', d: 'Conversion campaigns follow up with warm audiences and give them a reason to act now.', items: ['Retargeting for people who visited or engaged', 'Offer-driven campaigns with dedicated landing pages', 'Lead form ads connected straight to your CRM', 'Weekly budget shifts toward what\'s producing leads'], metric: 'Cost per lead and cost per acquisition' }
+      },
+      included: [
+        ['Ad strategy and budget plan', 'Where to spend, how much and what each campaign has to deliver.', ['thought', 'choice']],
+        ['Campaign setup', 'Accounts, campaigns and tracking built properly.', ['thought', 'choice']],
+        ['Ad creative and copy', 'Images, video and copy made for each platform.', ['thought']],
+        ['Audience targeting', 'The right people in your service area, nobody else.', ['thought']],
+        ['Landing pages', 'Focused pages that turn ad clicks into leads.', ['choice']],
+        ['Retargeting', 'Bring back people who visited but didn\'t act.', ['choice']],
+        ['Conversion tracking', 'Calls, forms and bookings tied back to each ad.', ['choice']],
+        ['Weekly optimization', 'Budget moved toward what\'s working, every week.', ['thought', 'choice']],
+        ['Monthly reporting', 'Spend, leads and cost per lead in plain English.', ['thought', 'choice']]
+      ],
+      platforms: ['Platforms', 'Google Ads, Local Services Ads, Meta (Facebook and Instagram) and YouTube [CONFIRM: LinkedIn]'],
+      process: [
+        ['Days 1 to 14', 'Audit and plan', 'Past spend reviewed, targets set and a campaign plan built for each job.'],
+        ['Days 15 to 30', 'Build and launch', 'Creative, landing pages, tracking and campaigns go live.'],
+        ['Days 31 to 60', 'Optimize', 'Weekly changes to keywords, audiences, ads and budget.'],
+        ['Days 61 to 90', 'Scale', 'Put more budget behind what\'s producing leads at the right cost.']
+      ],
+      proof: [['[$XX]', '[Cost per lead, down from $XX]'], ['[XX]', '[Booked jobs per month from ads]']],
+      proofH: '[Client name]: paid ads that pay for themselves',
+      related: ['social-media', 'lead-generation', 'analytics'],
+      faq: [
+        ['How much should I spend on ads?', 'It depends on your market and goals. We\'ll recommend a starting budget in your roadmap and adjust it based on cost per lead.'],
+        ['Is ad spend included in the retainer?', '[CONFIRM] No. Ad spend is paid directly to Google or Meta, so you always see exactly what\'s spent. Our management is part of your retainer.'],
+        ['Which platform is best?', 'For people already searching, Google. For reaching people before they search, Meta and YouTube. Most local businesses need both, each with a different job.'],
+        ['How fast will I see results?', 'Ads can produce leads in the first few weeks. Cost per lead usually improves over the first 60 to 90 days as we optimize.']
+      ],
+      final: ['Make every ad dollar count.', 'Let\'s look at what your ads are doing today, and what they should be doing.']
+    },
+    {
+      slug: 'social-media', name: 'Social Media', tag: 'Social Media', stages: ['thought', 'choice', 'referral'],
+      short: 'Social that gets you found, turns followers into customers and keeps them talking.',
+      lead: 'Social that gets you found by the people near you, turns followers into booked customers, and keeps your best customers talking about you.',
+      probTitle: 'You\'re posting. You just can\'t point to a single customer it brought in.',
+      problems: [
+        ['Nothing happens when you post.', 'A few likes from friends and family, then silence. The algorithm isn\'t showing your content to people who could actually buy from you.'],
+        ['Consistency is impossible.', 'You post for two weeks, get busy running the business, and disappear for a month. Every restart feels like starting from zero.'],
+        ['There\'s no line to revenue.', 'Followers and engagement look fine on paper, but no one can tell you how many leads or customers social actually produced.']
+      ],
+      close: ['The fix isn\'t posting more.', 'It\'s giving social a job at every stage of the customer journey.'],
+      roleTitle: 'One service. Three jobs.',
+      roleLead: 'Most agencies treat social as a single thing. We give it a specific job at each stage, with its own tactics and its own number to hit.',
+      role: {
+        thought: { h: 'Get discovered by the people near you.', d: 'At this stage, social is about reach. We put your business in front of local people who don\'t know you yet, with content worth stopping for.', items: ['A content calendar built around what your local audience searches for and cares about', 'Short-form video and reels that show the people behind the business', 'Collaborations with local partners and community organizations', 'Profiles optimized so new visitors understand what you do in seconds'], metric: 'Local reach and profile visits' },
+        choice: { h: 'Turn followers into booked customers.', d: 'Here, social has one job: produce leads. Every post has a purpose, and every interested follower has an easy next step.', items: ['Offer-driven posts with a clear call to action', 'Keyword DM automations (“Comment GUIDE”) that capture leads around the clock', 'Retargeting campaigns for people who engaged but didn\'t act', 'Lead magnets promoted to your warmest followers'], metric: 'Leads and booked calls from social' },
+        referral: { h: 'Keep customers engaged and sharing.', d: 'After the sale, social keeps you top of mind and turns happy customers into public advocates for your business.', items: ['Customer spotlights and user-generated content', 'Review and testimonial content that doubles as social proof', 'Fast, personal replies to comments and messages', 'Promotion of your loyalty and referral programs'], metric: 'Repeat engagement, shares and referrals' }
+      },
+      included: [
+        ['Social strategy and content calendar', 'A monthly plan that gives every post a stage and a purpose.', ['thought', 'choice', 'referral']],
+        ['Content creation', 'Branded graphics, carousels, reels and short-form video, created by our team.', ['thought']],
+        ['Profile setup and optimization', 'Bios, links, highlights and visuals that make a strong first impression.', ['thought']],
+        ['Local and community collaborations', 'Partner posts and community features that reach new local audiences.', ['thought']],
+        ['DM automation', 'Keyword-triggered messages that deliver lead magnets and book calls automatically.', ['choice']],
+        ['Lead campaigns and offers', 'Posts and promotions built to produce inquiries, not just likes.', ['choice']],
+        ['Community management', 'Timely, on-brand replies to comments and messages.', ['referral']],
+        ['Customer spotlights and reviews', 'Turning real customers and reviews into content people trust.', ['referral']],
+        ['Monthly reporting', 'Results tied to leads and customers, explained in plain English.', ['thought', 'choice', 'referral']]
+      ],
+      platforms: ['Platforms', 'Facebook, Instagram and LinkedIn [CONFIRM: TikTok, YouTube, Google Business Profile posts]'],
+      process: [
+        ['Days 1 to 14', 'Audit and strategy', 'We review your profiles, competitors and audience, then set the job and target number for each stage.'],
+        ['Days 15 to 30', 'Build the engine', 'Profiles optimized, brand templates designed, content calendar planned and DM automations set up.'],
+        ['Days 31 to 60', 'Launch and publish', 'Consistent posting starts, community management goes live and lead campaigns begin.'],
+        ['Days 61 to 90', 'Optimize and report', 'We double down on what\'s producing leads, cut what isn\'t, and walk you through results.']
+      ],
+      proof: [['[XX]%', '[Increase in leads from social]'], ['[XX]', '[Booked calls from DM automation per month]']],
+      proofH: '[Result headline, e.g. "From posting into the void to a steady flow of DMs"]',
+      related: ['branding', 'advertising', 'reviews-referrals'],
+      faq: [
+        ['Which platforms do you manage?', '[CONFIRM] We typically manage Facebook, Instagram and LinkedIn, and recommend the right mix for your business during your strategy session.'],
+        ['Do I have to create the content myself?', 'No. Our team plans, creates and publishes your content. We may ask for photos or quick videos from your business, because real images of your team and work perform best.'],
+        ['How long until I see results?', 'Most businesses see engagement improve within the first month. Leads from social typically build over the first 60 to 90 days as the calendar, automations and campaigns work together.'],
+        ['Will you respond to comments and messages?', 'Yes. Community management is included, and DM automations handle common questions and lead capture around the clock.']
+      ],
+      final: ['Make social pull its weight.', 'Let\'s look at what your social is doing today, and what it should be doing.']
+    },
+    {
+      slug: 'local-ties', name: 'Local Ties', tag: 'Local Ties', stages: ['thought'],
+      short: 'Get known in your community through the partners and groups customers trust.',
+      lead: 'Get known in your community through the partners, groups and events your customers already trust.',
+      probTitle: 'The best local businesses aren\'t just online. They\'re known all over town.',
+      problems: [
+        ['You\'re a stranger in your own market.', 'Competitors with half your quality get the referrals because people know them.'],
+        ['Networking takes time you don\'t have.', 'Chamber events and sponsorships feel worthwhile but never seem to turn into customers.'],
+        ['Online and offline don\'t connect.', 'What you do in the community never shows up in your marketing, so the effort fades.']
+      ],
+      close: ['The fix isn\'t more events.', 'It\'s a plan for being known locally that also works online.'],
+      roleTitle: 'Get found first, offline too.',
+      roleLead: 'Local ties are part of FirstThought. Being known in your community makes every search, ad and post more likely to land.',
+      role: {
+        thought: { h: 'Become the name everyone in town knows.', d: 'We help you pick the right partners and moments, then turn every local connection into visibility online.', items: ['A local partnership plan: chambers, groups, schools and nonprofits', 'Co-marketing with complementary local businesses', 'Event and sponsorship promotion across your channels', 'Local citations and community content that boost local SEO'], metric: 'Local awareness and partner referrals' }
+      },
+      included: [
+        ['Local market map', 'The groups, partners and events your customers care about.', ['thought']],
+        ['Partnership plan', 'Which relationships to build first, and why.', ['thought']],
+        ['Co-marketing campaigns', 'Joint offers and content with complementary businesses.', ['thought']],
+        ['Event promotion', 'Before, during and after, across every channel.', ['thought']],
+        ['Sponsorship strategy', 'Sponsorships chosen for visibility, not just goodwill.', ['thought']],
+        ['Community content', 'Stories and features that show you\'re part of the town.', ['thought']],
+        ['Local PR', 'Pitches to local news, newsletters and podcasts.', ['thought']]
+      ],
+      platforms: ['Examples', '[Exeter Area Chamber of Commerce], BNI groups, local nonprofits, schools and youth sports [CONFIRM]'],
+      process: [
+        ['Days 1 to 14', 'Map your market', 'Who your customers trust locally, and where competitors already show up.'],
+        ['Days 15 to 30', 'Pick the right partners', 'A short list of partnerships and events with a clear goal for each.'],
+        ['Days 31 to 60', 'Show up and promote', 'Co-marketing, events and community content go live.'],
+        ['Days 61 to 90', 'Measure and grow', 'Track referrals and visibility, then double down on what works.']
+      ],
+      proof: [['[XX]', '[Partner referrals per month]'], ['[XX]%', '[Increase in branded local searches]']],
+      proofH: '[Result headline, e.g. "Known all over town in under six months"]',
+      related: ['seo', 'social-media', 'reviews-referrals'],
+      faq: [
+        ['Is this just networking?', 'No. It\'s a plan: the right partners and events for your customers, plus content and SEO that keep each one working online.'],
+        ['Will you attend events for me?', '[CONFIRM] We plan, promote and support them. You and your team are the faces people should meet.'],
+        ['How do you measure local marketing?', 'Partner referrals, local search visibility, event leads and mentions, tracked in your monthly report.'],
+        ['Do I need to sponsor things?', 'Not necessarily. Many of the best local ties are partnerships that cost little more than time.']
+      ],
+      final: ['Be the business everyone in town recommends.', 'Let\'s map your local market and where you should show up.']
+    },
+    {
+      slug: 'lead-generation', name: 'Lead Generation', tag: 'Lead Generation', stages: ['choice'],
+      short: 'Offers, lead magnets and landing pages that turn visitors into leads.',
+      lead: 'Offers, lead magnets and landing pages that turn interested visitors into real leads, every day.',
+      probTitle: 'People visit. Very few reach out.',
+      problems: [
+        ['There\'s no reason to act now.', 'Visitors who aren\'t ready to call today leave with no way to stay in touch.'],
+        ['Every form says "Contact us."', 'One generic form can\'t capture people at different stages of deciding.'],
+        ['Leads arrive with no follow-up.', 'When someone does reach out, it can take hours or days to respond.']
+      ],
+      close: ['The fix isn\'t more traffic.', 'It\'s giving every visitor an easy, valuable next step.'],
+      roleTitle: 'Turn attention into booked business.',
+      roleLead: 'Lead generation is the heart of FirstChoice. Everything we do here is measured in leads.',
+      role: {
+        choice: { h: 'Capture more of the people you already reach.', d: 'We build offers and lead magnets worth signing up for, and pages designed to convert.', items: ['Lead magnets: guides, checklists, quizzes and free assessments', 'Dedicated landing pages for every offer and campaign', 'Instant follow-up so new leads hear from you in minutes', 'A/B tests on offers, pages and forms'], metric: 'Leads per month and conversion rate' }
+      },
+      included: [
+        ['Offer strategy', 'The offers your customers actually want to say yes to.', ['choice']],
+        ['Lead magnet creation', 'Guides, checklists and quizzes, written and designed.', ['choice']],
+        ['Landing pages', 'Focused pages for each offer and campaign.', ['choice']],
+        ['Forms and quizzes', 'Short, smart forms that qualify as they capture.', ['choice']],
+        ['Instant follow-up', 'Every new lead gets a reply in minutes.', ['choice']],
+        ['CRM connection', 'Every lead lands in your pipeline automatically.', ['choice']],
+        ['A/B testing', 'Constant small tests to raise conversion.', ['choice']],
+        ['Lead reporting', 'Leads by source, offer and quality, every month.', ['choice']]
+      ],
+      platforms: ['Built with', 'Your website, GoHighLevel funnels and forms, and your CRM [CONFIRM]'],
+      process: [
+        ['Days 1 to 14', 'Find the offer', 'What your best customers want, and what will make them raise a hand.'],
+        ['Days 15 to 30', 'Build the funnel', 'Lead magnet, landing page, form and follow-up built and tested.'],
+        ['Days 31 to 60', 'Launch and drive traffic', 'Promoted through your site, social, email and ads.'],
+        ['Days 61 to 90', 'Test and improve', 'A/B tests on headlines, offers and forms to raise conversion.']
+      ],
+      proof: [['[XX]', '[New leads per month, up from XX]'], ['[XX]%', '[Landing page conversion rate]']],
+      proofH: '[Result headline, e.g. "Turning a quiet website into a daily source of leads"]',
+      related: ['advertising', 'marketing-automation', 'website'],
+      faq: [
+        ['What\'s a lead magnet?', 'Something valuable a visitor gets in exchange for their email or phone number, like a checklist, guide, quiz or free estimate.'],
+        ['Do you guarantee a number of leads?', 'The guarantee in your roadmap is defined up front and measured monthly. For many partners, that\'s lead growth.'],
+        ['Will these be quality leads?', 'We build offers for your ideal customer, track which leads become customers and refine from there.'],
+        ['Where do the leads go?', 'Straight into your CRM with instant notifications, so your team can follow up fast.']
+      ],
+      final: ['Turn more visitors into leads.', 'Let\'s find the offer that makes your best customers raise a hand.']
+    },
+    {
+      slug: 'marketing-automation', name: 'Marketing Automation', tag: 'Marketing Automation', stages: ['choice', 'referral'],
+      short: 'Follow-up that happens on its own, so leads hear back fast and customers come back.',
+      lead: 'Follow-up that happens on its own, so every lead hears back fast and every customer comes back.',
+      probTitle: 'You can\'t follow up with everyone. Automation can.',
+      problems: [
+        ['Leads wait too long.', 'The first business to respond usually wins the job, and you\'re often busy doing the work.'],
+        ['Past customers go quiet.', 'Once a job is done, there\'s no system to bring them back or ask for a review.'],
+        ['Your team repeats the same messages.', 'Confirmations, reminders and follow-ups eat hours every week.']
+      ],
+      close: ['The fix isn\'t more hours.', 'It\'s systems that work while you do.'],
+      roleTitle: 'One service. Two jobs.',
+      roleLead: 'Automation wins the sale in FirstChoice, then keeps customers coming back in FirstReferral.',
+      role: {
+        choice: { h: 'Respond first and close more.', d: 'Automations reply instantly, nurture leads who aren\'t ready and book appointments without the back-and-forth.', items: ['Instant text and email replies to every new lead', 'Nurture sequences for leads who aren\'t ready yet', 'Online booking with automatic reminders', 'Missed-call text back so no caller is lost'], metric: 'Lead response time and booking rate' },
+        referral: { h: 'Bring customers back and get them talking.', d: 'After the job, automation keeps you in touch and turns happy customers into reviews and referrals.', items: ['Review requests sent at the right moment', 'Win-back campaigns for past customers', 'Referral program reminders and rewards', 'Seasonal, birthday and anniversary touchpoints'], metric: 'Repeat customers and reviews per month' }
+      },
+      included: [
+        ['Automation strategy', 'Every touchpoint in your customer journey, mapped.', ['choice', 'referral']],
+        ['Instant lead follow-up', 'Text and email replies within a minute.', ['choice']],
+        ['Nurture sequences', 'Helpful messages that keep warm leads warm.', ['choice']],
+        ['Booking and reminders', 'Online booking with confirmations and reminders.', ['choice']],
+        ['Missed-call text back', 'Every missed caller gets a text right away.', ['choice']],
+        ['Review requests', 'Sent automatically after every job.', ['referral']],
+        ['Win-back campaigns', 'Bring past customers back at the right time.', ['referral']],
+        ['Email newsletter', 'A regular, useful email that keeps you top of mind.', ['referral']],
+        ['Reporting', 'What each automation produced, every month.', ['choice', 'referral']]
+      ],
+      platforms: ['Platforms', 'GoHighLevel, your CRM, email and SMS [CONFIRM]'],
+      process: [
+        ['Days 1 to 14', 'Map the journey', 'Every point where a lead or customer should hear from you.'],
+        ['Days 15 to 30', 'Build the automations', 'Messages written in your voice and workflows built.'],
+        ['Days 31 to 45', 'Launch and test', 'Everything tested end to end before it touches a customer.'],
+        ['Days 46 to 90', 'Refine', 'We tune timing and messages based on replies and bookings.']
+      ],
+      proof: [['[X] min', '[Average response time to new leads]'], ['[XX]%', '[More repeat bookings]']],
+      proofH: '[Result headline, e.g. "Follow-up that runs while the team is on the job"]',
+      related: ['crm', 'lead-generation', 'reviews-referrals'],
+      faq: [
+        ['Will automation feel robotic?', 'Not when it\'s done well. We write every message in your voice, keep them short and hand off to a real person when it matters.'],
+        ['Do I need a new CRM?', 'Not necessarily. We\'ll use your current system if it can do the job, or recommend one that can.'],
+        ['What can be automated?', 'Lead replies, reminders, follow-ups, review requests, win-backs and newsletters. Anything repetitive that should happen every time.'],
+        ['Can I change the messages later?', 'Yes. You can review and edit any message, and we update them as your offers change.']
+      ],
+      final: ['Put your follow-up on autopilot.', 'Let\'s map where leads and customers are slipping away today.']
+    },
+    {
+      slug: 'loyalty', name: 'Loyalty', tag: 'Loyalty', stages: ['referral'],
+      short: 'Programs that keep customers coming back and choosing you every time.',
+      lead: 'Programs that keep customers coming back, spending more and choosing you every time.',
+      probTitle: 'Winning a new customer costs far more than keeping one.',
+      problems: [
+        ['Customers buy once and drift.', 'Not because they were unhappy, but because nothing reminded them you exist.'],
+        ['Your best customers get treated like everyone else.', 'There\'s no reward for loyalty, so there\'s no reason to stay.'],
+        ['You don\'t know who your regulars are.', 'Customer history lives in your head, not in a system you can use.']
+      ],
+      close: ['The fix isn\'t discounts.', 'It\'s a reason to stay that feels personal.'],
+      roleTitle: 'Get chosen again and again.',
+      roleLead: 'Loyalty lives in FirstReferral. Loyal customers spend more, cost less to keep and bring their friends.',
+      role: {
+        referral: { h: 'Turn one-time buyers into regulars.', d: 'We design a loyalty program that fits how your customers buy, then run it so it actually gets used.', items: ['A loyalty or membership program designed for your business', 'Perks, points or VIP tiers customers actually care about', 'Automated reminders for service, renewals and rewards', 'Exclusive offers and events for your best customers'], metric: 'Repeat purchase rate and customer lifetime value' }
+      },
+      included: [
+        ['Program design', 'The right structure for how your customers buy.', ['referral']],
+        ['Rewards and tiers', 'Perks that feel valuable without hurting margins.', ['referral']],
+        ['Maintenance and membership plans', 'Recurring plans that keep customers on your calendar.', ['referral']],
+        ['Launch campaign', 'Announce the program to every past customer.', ['referral']],
+        ['Automated reminders', 'Service, renewal and reward reminders that run themselves.', ['referral']],
+        ['VIP offers and events', 'Something special for your best customers.', ['referral']],
+        ['Loyalty reporting', 'Repeat rate and lifetime value, tracked monthly.', ['referral']]
+      ],
+      platforms: ['Delivered through', 'Your CRM, email, text and [loyalty platform] [CONFIRM]'],
+      process: [
+        ['Days 1 to 14', 'Know your customers', 'Who buys again, who doesn\'t, and why.'],
+        ['Days 15 to 30', 'Design the program', 'Rewards, tiers and plans built around your margins.'],
+        ['Days 31 to 60', 'Launch', 'Announced to every past customer and built into checkout.'],
+        ['Days 61 to 90', 'Grow', 'Track usage and repeat rate, then refine the rewards.']
+      ],
+      proof: [['[XX]%', '[Increase in repeat customers]'], ['[XX]', '[Members on recurring plans]']],
+      proofH: '[Result headline, e.g. "Turning one-time jobs into customers for life"]',
+      related: ['reviews-referrals', 'marketing-automation', 'crm'],
+      faq: [
+        ['Does loyalty work for service businesses?', 'Yes. Maintenance plans, priority booking and member pricing work especially well for service businesses.'],
+        ['Will this cut into my margins?', 'Done right, no. Good rewards cost little and bring in repeat revenue that more than pays for them.'],
+        ['Do customers need an app?', 'No. Most programs run through text, email and your CRM, with nothing to download.'],
+        ['How do you measure it?', 'Repeat purchase rate, plan sign-ups and customer lifetime value, in your monthly report.']
+      ],
+      final: ['Give customers a reason to come back.', 'Let\'s look at who buys from you again, and who doesn\'t.']
+    },
+    {
+      slug: 'reviews-referrals', name: 'Reviews & Referrals', tag: 'Reviews & Referrals', stages: ['referral'],
+      short: 'More five-star reviews and a steady stream of referrals, without awkward asks.',
+      lead: 'More five-star reviews and a steady stream of referrals, without awkward asks.',
+      probTitle: 'Happy customers rarely tell anyone. Unless you ask the right way.',
+      problems: [
+        ['Your reviews don\'t reflect your work.', 'You have hundreds of happy customers and a handful of reviews.'],
+        ['Asking feels awkward.', 'So it doesn\'t happen, or it happens once and stops.'],
+        ['Referrals are luck.', 'Word of mouth happens, but there\'s no system to encourage it, track it or say thank you.']
+      ],
+      close: ['The fix isn\'t hoping.', 'It\'s a system that asks at the right moment and rewards people who share.'],
+      roleTitle: 'Make customers your best marketing channel.',
+      roleLead: 'Reviews and referrals are the payoff of FirstReferral, and they feed new awareness straight back into FirstThought.',
+      role: {
+        referral: { h: 'Get more reviews and more referrals.', d: 'We automate review requests, help you respond well and build a referral program people actually use.', items: ['Automated review requests by text and email after every job', 'Review responses that build trust with future customers', 'A simple referral program with rewards that fit your business', 'Reviews turned into social posts and website proof'], metric: 'Reviews per month, star rating and referrals' }
+      },
+      included: [
+        ['Reputation audit', 'Where you stand on Google, Facebook and industry sites.', ['referral']],
+        ['Automated review requests', 'Sent at the right moment after every job.', ['referral']],
+        ['Review monitoring and replies', 'Every review answered, good or bad.', ['referral']],
+        ['Referral program design', 'Rewards and a simple way for customers to share.', ['referral']],
+        ['Referral tracking and rewards', 'Know who sent whom, and thank them automatically.', ['referral']],
+        ['Testimonial content', 'Reviews turned into posts, videos and website proof.', ['referral']],
+        ['Reputation reporting', 'Review count, rating and referrals every month.', ['referral']]
+      ],
+      platforms: ['Review sites', 'Google, Facebook, Yelp and industry review sites [CONFIRM]'],
+      process: [
+        ['Days 1 to 14', 'Audit your reputation', 'Reviews, ratings and referral sources mapped.'],
+        ['Days 15 to 30', 'Set up requests', 'Review requests automated and response playbook written.'],
+        ['Days 31 to 60', 'Launch referrals', 'Referral program designed, announced and tracked.'],
+        ['Days 61 to 90', 'Amplify', 'Best reviews turned into content across your channels.']
+      ],
+      proof: [['[XXX]', '[New Google reviews]'], ['[X.X]★', '[Average rating, up from X.X]']],
+      proofH: '[Client name]: building a referral engine',
+      related: ['marketing-automation', 'social-media', 'seo'],
+      faq: [
+        ['Is it allowed to ask for reviews?', 'Yes, as long as you ask every customer and don\'t offer rewards for reviews. We keep everything within Google\'s guidelines.'],
+        ['What about bad reviews?', 'We help you respond quickly and professionally. A thoughtful reply to a bad review often builds more trust than another five stars.'],
+        ['Do referral rewards actually work?', 'Yes, when they\'re simple and feel like a thank-you. We\'ll design rewards that fit your business and margins.'],
+        ['How fast will reviews grow?', 'Most businesses see new reviews within the first week of automated requests, and steady growth from there.']
+      ],
+      final: ['Turn happy customers into your best marketing.', 'Let\'s look at your reviews today, and where they should be.']
+    }
+  ];
+  const BY = Object.fromEntries(SERVICES.map(s => [s.slug, s]));
+  // Mega menu columns (a service can appear under more than one stage)
+  const NAV = Object.fromEntries(ORDER.map(k => [k, SERVICES.filter(s => s.stages.includes(k)).map(s => s.slug)]));
+
+  const RESOURCES = [
+    { type: 'blog', date: '2026-10-09', title: 'Showing up in AI search: what local businesses need to know', tags: ['SEO', 'Branding & content'], meta: '7 min read' },
+    { type: 'video', date: '2026-10-07', title: 'The FirstSearch Framework in 10 minutes', tags: ['Branding & content', 'Lead Generation', 'Reviews & Referrals'], meta: '10:24' },
+    { type: 'case', date: '2026-10-05', title: '[Client name]: from page three to the map pack', tags: ['SEO', 'Local Ties', 'Website'], metric: '[XX]%', metricLabel: '[More calls from Google]' },
+    { type: 'blog', date: '2026-10-06', title: 'Why your Google Business Profile matters more than your website', tags: ['SEO', 'Local Ties'], meta: '6 min read' },
+    { type: 'podcast', date: '2026-10-02', title: 'Ep. [XX]: Strategy beats size', tags: ['Branding & content', 'Analytics'], meta: '[XX] min' },
+    { type: 'video', date: '2026-09-30', title: 'Setting up a CRM you will actually use', tags: ['CRM', 'Marketing Automation'], meta: '14:02' },
+    { type: 'blog', date: '2026-09-29', title: 'Vanity metrics vs. growth metrics: what to actually track', tags: ['Analytics'], meta: '5 min read' },
+    { type: 'case', date: '2026-09-26', title: '[Client name]: building a referral engine', tags: ['Reviews & Referrals', 'Loyalty'], metric: '[XX]', metricLabel: '[New referrals per month]' },
+    { type: 'podcast', date: '2026-09-25', title: 'Ep. [XX]: Local ties, the marketing that happens offline', tags: ['Local Ties', 'Social Media'], meta: '[XX] min' },
+    { type: 'blog', date: '2026-09-22', title: 'The five automations every local business should have running', tags: ['Marketing Automation', 'CRM'], meta: '8 min read' },
+    { type: 'video', date: '2026-09-18', title: 'Building a Meta ad from scratch', tags: ['Advertising', 'Social Media'], meta: '18:40' },
+    { type: 'blog', date: '2026-09-15', title: 'How to ask for reviews without feeling awkward', tags: ['Reviews & Referrals'], meta: '4 min read' },
+    { type: 'case', date: '2026-09-12', title: '[Client name]: a rebrand and a new website', tags: ['Branding & content', 'Website', 'Lead Generation'], metric: '[XX]%', metricLabel: '[More website inquiries]' },
+    { type: 'podcast', date: '2026-09-11', title: 'Ep. [XX]: Turning customers into your sales team', tags: ['Loyalty', 'Reviews & Referrals'], meta: '[XX] min' },
+    { type: 'blog', date: '2026-09-08', title: 'Is your website a brochure or a lead machine?', tags: ['Website', 'Lead Generation'], meta: '6 min read' },
+    { type: 'video', date: '2026-09-04', title: 'Social posts that get engagement, not just likes', tags: ['Social Media', 'Branding & content'], meta: '11:15' },
+    { type: 'case', date: '2026-08-29', title: '[Client name]: paid ads that pay for themselves', tags: ['Advertising', 'Lead Generation', 'Analytics'], metric: '[$XX]', metricLabel: '[Cost per lead]' },
+    { type: 'podcast', date: '2026-08-28', title: 'Ep. [XX]: Why growth is a system', tags: ['Marketing Automation', 'Analytics'], meta: '[XX] min' }
+  ];
+  const TYPES = { blog: ['Blog', 'Read the article'], case: ['Case study', 'Read the case study'], podcast: ['Podcast', 'Listen to the episode'], video: ['Video', 'Watch the video'] };
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  /* ======================================================================
+     STATE + CHROME
+     ====================================================================== */
+  const params = new URLSearchParams(location.search);
+  let svc = BY[params.get('service')] || BY['social-media'];
+  let active = svc.stages.includes(params.get('stage')) ? params.get('stage') : svc.stages[0];
+  let highlight = false;
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const header = $('#site-header');
+  const onScroll = () => header.classList.toggle('is-scrolled', scrollY > 30);
+  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+
+  const toast = $('#toast'); let tt;
+  const showToast = m => { toast.textContent = m; toast.classList.add('is-visible'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('is-visible'), 2600); };
+  const phBtn = $('#ph-toggle');
+  phBtn.addEventListener('click', () => phBtn.setAttribute('aria-pressed', document.body.classList.toggle('show-ph')));
+
+  // Mobile menu
+  const mBtn = $('.menu-btn'), mNav = $('#mobile-nav');
+  const setMenu = open => {
+    document.documentElement.style.setProperty('--mh', header.getBoundingClientRect().bottom + 'px');
+    mNav.classList.toggle('is-open', open);
+    mBtn.setAttribute('aria-expanded', open);
+    mBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    $('use', mBtn).setAttribute('href', open ? '#i-close' : '#i-menu');
+    document.body.classList.toggle('menu-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  mBtn.addEventListener('click', () => setMenu(!mNav.classList.contains('is-open')));
+  matchMedia('(min-width: 1025px)').addEventListener('change', e => e.matches && setMenu(false));
+
+  // Mega menu
+  const megaCols = () => ORDER.map(k => {
+    const S = STAGES[k];
+    return `<div class="mega-col"><h3 style="border-color:${S.dot}"><span class="dot" style="background:${S.dot}" aria-hidden="true"></span>${S.label}</h3><p class="sub">${S.sub}</p><ul>` +
+      NAV[k].map(slug => {
+        const s = BY[slug], n = s.stages.length;
+        return `<li><button type="button" class="svc-link" data-svc="${slug}" data-stage="${k}"><span>${esc(s.name)}</span>${n > 1 ? `<span class="multi">${n} stages</span>` : ''}</button></li>`;
+      }).join('') + `</ul></div>`;
+  }).join('');
+  $('#mega-inner').innerHTML = megaCols() + `<div class="mega-cta on-dark"><h3>Not sure what you need?</h3><p>Every partnership is built around your business. Let's map out the right mix of services together.</p><a class="btn btn--white" href="#" data-ph-link="strategy call calendar">Book your strategy call</a><a class="link-u" href="#" data-ph-link="Framework Quiz">Or take the Framework Quiz</a></div>`;
+  $('#m-svc-inner').innerHTML = megaCols();
+  const svcBtn = $('#svc-btn'), mega = $('#mega');
+  const setMega = open => { mega.hidden = !open; svcBtn.setAttribute('aria-expanded', open); };
+  svcBtn.addEventListener('click', e => { e.stopPropagation(); setMega(mega.hidden); });
+  document.addEventListener('click', e => { if (!mega.hidden && !mega.contains(e.target) && !svcBtn.contains(e.target)) setMega(false); });
+  addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (!mega.hidden) { setMega(false); svcBtn.focus(); }
+    if (mNav.classList.contains('is-open')) { setMenu(false); mBtn.focus(); }
+  });
+
+  // Footer service list + review select
+  $('#foot-svc').innerHTML = SERVICES.map(s => `<li><a href="?service=${s.slug}" data-svc="${s.slug}">${esc(s.name)}</a></li>`).join('');
+  $('#svc-select').innerHTML = SERVICES.map(s => `<option value="${s.slug}">${esc(s.name)}</option>`).join('');
+  $('#svc-select').addEventListener('change', e => go(e.target.value));
+
+  // Global click routing
+  document.addEventListener('click', e => {
+    const s = e.target.closest('[data-svc]');
+    if (s) { e.preventDefault(); setMega(false); setMenu(false); go(s.dataset.svc, s.dataset.stage); return; }
+    const a = e.target.closest('[data-ph-link]');
+    if (a) { e.preventDefault(); setMega(false); setMenu(false); showToast('Prototype: this will link to the ' + a.dataset.phLink + '.'); }
+  });
+
+  /* ======================================================================
+     WHEEL
+     ====================================================================== */
+  const arc = (cx, cy, ro, ri, a0, a1) => {
+    const r = Math.PI / 180, p = (R, a) => [(cx + R * Math.cos(a * r)).toFixed(2), (cy + R * Math.sin(a * r)).toFixed(2)];
+    const o0 = p(ro, a0), o1 = p(ro, a1), i1 = p(ri, a1), i0 = p(ri, a0);
+    return `M${o0} A${ro},${ro} 0 0 1 ${o1} L${i1} A${ri},${ri} 0 0 0 ${i0} Z`;
+  };
+  function wheel(interactive, onDark) {
+    const segs = [['thought', -90], ['choice', 30], ['referral', 150]];
+    const offFill = onDark ? 'rgba(255,255,255,.08)' : '#F1F0F6', offStroke = onDark ? 'rgba(255,255,255,.18)' : '#E3E2EA', offTxt = onDark ? 'rgba(255,255,255,.4)' : '#A9A6B8';
+    const segAttrs = (k, on) => interactive ? ` class="wseg" tabindex="0" role="button" aria-pressed="${on}" aria-label="Show ${svc.name} in ${STAGES[k].label}" data-stage="${k}"` : '';
+    let out = `<svg class="wheel-svg" viewBox="0 0 320 320" role="img" aria-label="FirstSearch Framework, with ${esc(svc.name)} in ${svc.stages.map(k => STAGES[k].label).join(', ')}">`;
+    segs.forEach(([k, a]) => {
+      const S = STAGES[k], inSvc = svc.stages.includes(k), on = k === active;
+      const fill = on ? S.fill : inSvc ? S.tint : offFill, txt = on ? S.on : inSvc ? '#26275B' : offTxt;
+      const mid = (a + 60) * Math.PI / 180, lx = 160 + 113 * Math.cos(mid), ly = 160 + 113 * Math.sin(mid);
+      out += `<g${inSvc ? segAttrs(k, on) : ''}><path d="${arc(160, 160, 152, 74, a + 1.5, a + 118.5)}" fill="${fill}" stroke="${inSvc ? S.dot : offStroke}" stroke-width="${on ? 0 : 1.5}"/>` +
+        `<text x="${lx.toFixed(1)}" y="${(ly + 5).toFixed(1)}" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="600" fill="${txt}" style="pointer-events:none">${S.label}</text></g>`;
+    });
+    const B = STAGES.brand, bIn = svc.stages.includes('brand'), bOn = active === 'brand';
+    const bFill = bOn ? B.fill : bIn ? B.tint : offFill, bTxt = bOn ? B.on : bIn ? '#26275B' : offTxt;
+    out += `<g${bIn ? segAttrs('brand', bOn) : ''}><circle cx="160" cy="160" r="66" fill="${bFill}" stroke="${bIn ? B.dot : offStroke}" stroke-width="${bOn ? 0 : 1.5}"/>` +
+      `<text x="160" y="157" text-anchor="middle" font-family="Poppins,sans-serif" font-size="14" font-weight="600" fill="${bTxt}" style="pointer-events:none">FirstBrand</text>` +
+      `<text x="160" y="176" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="${bTxt}" style="pointer-events:none">Foundation</text></g>`;
+    const arrow = onDark ? 'rgba(255,255,255,.75)' : '#6A6880';
+    [30, 150, 270].forEach(r => { out += `<path d="M160 4 l8 -5 v10 z" fill="${arrow}" transform="rotate(${r} 160 160)"/>`; });
+    return out + '</svg>';
+  }
+
+  /* ======================================================================
+     RENDER
+     ====================================================================== */
+  const n = svc => svc.stages.length;
+  const word = k => ['one', 'two', 'three', 'four'][k - 1];
+  const stageList = s => s.stages.map(k => STAGES[k].label).join(s.stages.length === 2 ? ' and ' : ', ').replace(/, ([^,]*)$/, ' and $1');
+
+  function renderStage() {
+    const S = STAGES[active], R = svc.role[active];
+    $('#crumb-stage').textContent = S.label;
+    $('#hero-chips').innerHTML = svc.stages.map(k => { const T = STAGES[k], on = k === active; return `<span class="stage-chip${on ? ' on' : ''}" style="${on ? `background:${T.tint};color:${T.fill === '#7CD2D3' ? '#26275B' : T.fill}` : ''}"><span class="dot" style="background:${T.dot}" aria-hidden="true"></span><span style="color:var(--navy)">${T.label}</span></span>`; }).join('');
+    $('#tabs').innerHTML = svc.stages.map(k => { const T = STAGES[k], on = k === active; return `<button type="button" class="tab" role="tab" id="tab-${k}" aria-controls="panel" aria-selected="${on}" tabindex="${on ? 0 : -1}" data-stage="${k}"><span class="dot" style="background:${T.dot}" aria-hidden="true"></span>${T.label}</button>`; }).join('');
+    const p = $('#panel');
+    p.setAttribute('aria-labelledby', 'tab-' + active);
+    p.innerHTML = `<div class="panel-in"><span class="stage-name"><span class="dot" style="background:${S.dot}" aria-hidden="true"></span>${esc(svc.name)} in ${S.label}</span>
+      <h3>${ph(R.h)}</h3><p class="desc">${ph(R.d)}</p><h4>What we do</h4>
+      <ul class="checks">${R.items.map(t => `<li>${ico('i-check')}<span>${ph(t)}</span></li>`).join('')}</ul>
+      <div class="metric">${ico('i-trend')}<span><b>The number it moves</b><span>${ph(R.metric)}</span></span></div></div>`;
+    $('#viz-hero').innerHTML = wheel(false, false);
+    $('#viz-role').innerHTML = wheel(true, true);
+    $$('.svc-link').forEach(a => a.classList.toggle('current', a.dataset.svc === svc.slug && a.dataset.stage === active));
+    renderIncluded();
+  }
+
+  function renderIncluded() {
+    $('#inc-grid').innerHTML = svc.included.map(([t, d, s]) => {
+      const used = s.includes(active), cls = highlight && n(svc) > 1 ? (used ? ' hl' : ' dim') : '';
+      return `<article class="gcard inc${cls}"><div class="gcard__in"><h3>${ph(t)}</h3><p>${ph(d)}</p><div class="tags">${s.map(k => `<span><span class="dot" style="background:${STAGES[k].dot}" aria-hidden="true"></span>${STAGES[k].label}</span>`).join('')}</div></div></article>`;
+    }).join('');
+    $('#hl-label').textContent = `Highlight what's used in ${STAGES[active].label}`;
+  }
+
+  function render() {
+    const k = n(svc);
+    document.title = `${svc.name} | First Search Marketing`;
+    $('#svc-select').value = svc.slug;
+    $('#crumb-svc').textContent = svc.name;
+    $('#svc-title').textContent = svc.name;
+    $('#svc-lead').innerHTML = ph(svc.lead);
+    $('#viz-hero-cap').textContent = k === 1 ? `${svc.name} does its work in ${STAGES[svc.stages[0]].label}.` : `${svc.name} works across ${word(k)} stages of the FirstSearch Framework.`;
+    $('#prob-title').innerHTML = ph(svc.probTitle);
+    $('#prob-grid').innerHTML = svc.problems.map(([h, p], i) => `<div class="gcard prob"><div class="gcard__in"><span class="n" aria-hidden="true">${i + 1}</span><h3>${ph(h)}</h3><p>${ph(p)}</p></div></div>`).join('');
+    $('#prob-close').innerHTML = `${ph(svc.close[0])} <span>${ph(svc.close[1])}</span>`;
+    $('#role-title').innerHTML = ph(svc.roleTitle);
+    $('#role-lead').innerHTML = ph(svc.roleLead);
+    $('#viz-role-cap').textContent = k > 1 ? 'Select a stage on the graphic or the tabs above.' : `Highlighted: where ${svc.name} does its work.`;
+    $('#inc-title').textContent = `Everything it takes to do ${svc.name.toLowerCase().replace('seo', 'SEO').replace('crm', 'CRM')} properly.`;
+    $('#hl-wrap').hidden = k < 2;
+    if (k < 2) { highlight = false; $('#hl-toggle').checked = false; }
+    $('#platforms').innerHTML = `<b>${esc(svc.platforms[0])}:</b> ${ph(svc.platforms[1])}`;
+    $('#steps').innerHTML = svc.process.map(([w, h, p], i) => `<li class="gcard step"><span class="step-num" aria-hidden="true">${i + 1}</span><div class="gcard__in"><p class="when">${w}</p><h3>${ph(h)}</h3><p>${ph(p)}</p></div></li>`).join('');
+    $('#proof-metrics').innerHTML = svc.proof.map(([b, s]) => `<div><b>${ph(b)}</b><span>${ph(s)}</span></div>`).join('');
+    $('#proof-h').textContent = svc.proofH;
+    $('#proof-q').textContent = `"[Client quote about results from ${svc.name.toLowerCase()}. Must be a real client statement.]"`;
+
+    const ws = WORKSHOP[svc.stages.includes('brand') ? 'brand' : svc.stages[svc.stages.length - 1]];
+    $('#ways-grid').innerHTML = `
+      <article class="way-main on-dark"><p class="k">Let us run it</p><h3>Included in every partnership</h3>
+        <p>${esc(svc.name)} is part of your full FirstSearch strategy, run by our team alongside every other service your plan needs. There's no à la carte pricing.</p>
+        <ul><li>${ico('i-check')}Fixed monthly retainer</li><li>${ico('i-check')}Six-month partnership</li><li>${ico('i-check')}Results guaranteed in writing</li></ul>
+        <p class="price">From <span class="ph">[$X,XXX]</span><small>/month, all services included</small></p>
+        <a class="btn btn--white" href="#" data-ph-link="strategy call calendar">Book your strategy call</a></article>
+      <article class="gcard way"><div class="gcard__in"><p class="k">Learn it yourself</p><h3>${esc(svc.name)} in the BeFirst Community</h3>
+        <p>The ${esc(svc.name.toLowerCase().replace('seo', 'SEO').replace('crm', 'CRM'))} module in the online course, templates in the Blueprint, live webinars and weekly content.</p>
+        <p class="price">$88<small>/month</small></p><a class="link-u" href="#" data-ph-link="Ways to learn page (Community)">See the Community</a></div></article>
+      <article class="gcard way"><div class="gcard__in"><p class="k">Build it with us</p><h3>Coaching and workshops</h3>
+        <p>Work through your plan 1:1 with a coach, or join the next hands-on workshop: <b>${esc(ws)}</b>.</p>
+        <p class="price">From $500<small>/month coaching</small></p><a class="link-u" href="#" data-ph-link="Ways to learn page (coaching)">See coaching and workshops</a></div></article>`;
+
+    $('#rel-title').textContent = `${svc.name} is stronger as part of the system.`;
+    $('#rel-grid').innerHTML = svc.related.map(slug => {
+      const r = BY[slug];
+      return `<button type="button" class="gcard rel" data-svc="${slug}"><span class="gcard__in"><span class="chips">${r.stages.map(k => `<span><span class="dot" style="background:${STAGES[k].dot}" aria-hidden="true"></span>${STAGES[k].label}</span>`).join('')}</span><h3>${esc(r.name)}</h3><p>${esc(r.short)}</p><span class="why">Explore ${esc(r.name)}</span></span></button>`;
+    }).join('');
+
+    const res = RESOURCES.filter(r => r.tags.includes(svc.tag)).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+    $('#res-title').textContent = `Learn more about ${svc.name.toLowerCase().replace('seo', 'SEO').replace('crm', 'CRM')}`;
+    $('#res-all').textContent = `See all ${svc.name} resources`;
+    $('#res-grid').innerHTML = res.map(r => {
+      const [y, m, d] = r.date.split('-'), T = TYPES[r.type];
+      const media = r.type === 'blog' ? `<div class="media m-blog"><span class="art">${ico('i-doc')}</span></div>`
+        : r.type === 'case' ? `<div class="media m-case"><b>${ph(r.metric)}</b><span>${ph(r.metricLabel)}</span></div>`
+        : r.type === 'podcast' ? `<div class="media m-pod"><span class="play">${ico('i-play')}</span><svg aria-hidden="true" width="140" height="44" viewBox="0 0 150 48" fill="none"><g stroke="#fff" stroke-width="4" stroke-linecap="round"><path d="M4 20v8M14 12v24M24 18v12M34 6v36M44 16v16M54 10v28M64 20v8M74 14v20M84 4v40M94 16v16M104 10v28M114 20v8M124 14v20M134 18v12M144 22v4"/></g></svg></div>`
+        : `<div class="media m-vid"><img src="assets/img/design/chris-cutout.webp" alt=""><span class="play">${ico('i-play')}</span><span class="dur">${esc(r.meta)}</span></div>`;
+      return `<article class="gcard res"><div class="gcard__in">${media}<div class="res-body"><p class="t">${T[0]} · <span>${MONTHS[+m - 1]} ${+d}, ${y}</span></p><h3>${ph(r.title)}</h3><a class="link-u" href="#" data-ph-link="${T[0].toLowerCase()}">${T[1]}</a></div></div></article>`;
+    }).join('');
+
+    const faq = [...svc.faq, [`Can I buy ${svc.name} on its own?`, `No. Every service is delivered as part of a FirstSearch partnership, because ${svc.name.toLowerCase().replace('seo', 'SEO').replace('crm', 'CRM')} works best alongside the rest of your marketing system. Your plan includes every service your business needs for one fixed monthly retainer.`]];
+    $('#faq-title').textContent = `${svc.name} questions`;
+    $('#faq-list').innerHTML = faq.map(([q, a], i) => `<div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="fa${i}" id="fq${i}"><span class="plus" aria-hidden="true"></span>${esc(q)}</button></h3><div class="qa-a" id="fa${i}" role="region" aria-labelledby="fq${i}"><div><p>${ph(a)}</p></div></div></div>`).join('');
+    $('#faq-schema').textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
+
+    $('#final-h').textContent = svc.final[0];
+    $('#final-p').textContent = svc.final[1];
+    renderStage();
+  }
+
+  function select(k, focus) {
+    if (!svc.stages.includes(k) || k === active) return;
+    active = k;
+    try { history.replaceState(null, '', `?service=${svc.slug}&stage=${k}`); } catch (e) {}
+    renderStage();
+    if (focus) { const t = focus === 'tab' ? $('#tab-' + k) : $(`#viz-role [data-stage="${k}"]`); if (t) t.focus(); }
+  }
+  function go(slug, stage) {
+    svc = BY[slug] || svc;
+    active = svc.stages.includes(stage) ? stage : svc.stages[0];
+    try { history.replaceState(null, '', `?service=${svc.slug}${stage ? '&stage=' + active : ''}`); } catch (e) {}
+    render();
+    scrollTo({ top: 0, behavior: RM ? 'auto' : 'instant' });
+  }
+
+  $('#tabs').addEventListener('click', e => { const b = e.target.closest('.tab'); if (b) select(b.dataset.stage); });
+  $('#tabs').addEventListener('keydown', e => {
+    if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(e.key)) return;
+    e.preventDefault();
+    const st = svc.stages, i = st.indexOf(active);
+    const nx = e.key === 'Home' ? st[0] : e.key === 'End' ? st[st.length - 1] : st[(i + (e.key === 'ArrowRight' ? 1 : st.length - 1)) % st.length];
+    select(nx, 'tab'); $('#tab-' + nx).focus();
+  });
+  $('#viz-role').addEventListener('click', e => { const g = e.target.closest('.wseg'); if (g) select(g.dataset.stage); });
+  $('#viz-role').addEventListener('keydown', e => { const g = e.target.closest('.wseg'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); select(g.dataset.stage, 'viz'); } });
+  $('#hl-toggle').addEventListener('change', e => { highlight = e.target.checked; renderIncluded(); });
+
+  $('#faq-list').addEventListener('click', e => {
+    const q = e.target.closest('.qa-q'); if (!q) return;
+    const open = q.getAttribute('aria-expanded') !== 'true';
+    $$('.qa').forEach(o => { o.classList.remove('is-open'); $('.qa-q', o).setAttribute('aria-expanded', 'false'); });
+    if (open) { q.closest('.qa').classList.add('is-open'); q.setAttribute('aria-expanded', 'true'); }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
