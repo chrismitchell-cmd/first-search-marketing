@@ -572,12 +572,6 @@ button { cursor: pointer; }
 .feat .btn--ghost { background: var(--grad); color: var(--white); border-color: transparent; }
 .feat .btn--ghost:hover { background: linear-gradient(90deg, #7AD4DF, #1C5BB5); color: var(--white); }
 .feat-r .checks .icon { color: #3299D5; }
-/* Round 5: format tabs above the content in the brand gradient */
-.cats-band { background: var(--grad); border-bottom: 0; }
-.cat { color: rgba(255, 255, 255, .92); }
-.cat[aria-pressed="true"] { color: var(--white); border-bottom-color: var(--white); font-weight: 700; }
-.cat .n { background: rgba(255, 255, 255, .25); }
-.cat[aria-pressed="true"] .n { background: var(--navy); }
 /* Round 5: featured case study, matching the new case study block */
 .rfeat { gap: 0; padding: 16px; border-radius: 32px; box-shadow: 0 30px 60px -30px rgba(28, 22, 72, .7); }
 .rfeat-l { min-height: 320px; padding: 4px; border-radius: 24px; background: var(--grad-diag); overflow: hidden; }
@@ -595,6 +589,15 @@ button { cursor: pointer; }
 
 
 
+
+
+
+/* Round 6: workshop stage pills with a border; active filter pill in the gradient */
+.ev-info .stage.plogo-chip { justify-self: start; width: max-content; padding: 5px 12px 6px; font-size: 14px; }
+.ev-info .stage.plogo-chip--full, .feat .chip--logo:not(:has(.plogo)) { background: var(--white); color: var(--navy); font-family: var(--font); font-weight: 700; font-size: 13px; box-shadow: inset 0 0 0 1.5px #DCE3F3, 0 6px 16px -10px rgba(40, 32, 96, .45); }
+.achip { background: var(--grad); color: var(--white); }
+.achip:hover { background: linear-gradient(90deg, #7AD4DF, #1C5BB5); }
+.achip .icon { color: var(--white); }
 
 
 /*SN-CSS*/
@@ -1153,6 +1156,24 @@ h1, h2, h3, h4 { color: var(--navy); }
 .case2-tbl td.a { background: var(--grad); color: var(--white); border-right: 0; border-bottom-color: rgba(255, 255, 255, .3); }
 .case2-tbl td.a .ph { color: inherit; }
 .case2-tbl tbody tr:last-child > * { border-bottom: 0; }
+
+/* ==========================================================================
+   ROUND 6
+   ========================================================================== */
+/* Menu: hover keeps titles purple (no blue link colour, no underline), Let's Talk stays legible */
+.sn-panel a, .sn-panel a:hover { border-bottom-width: 0; text-decoration: none; }
+.sn .sn-big:hover, .sn .sn-big:hover b, .sn .sn-big[aria-current="page"] { color: var(--navy) !important; }
+.sn .sn-svc:hover span { color: var(--navy); }
+.sn-cta .btn:hover, .sn-cta .btn:focus-visible { color: var(--white) !important; background: linear-gradient(135deg, #34208A 0%, #2E2878 100%); border-color: #72CCD8; }
+/* Case study table: metric column and the arrow column in light grey */
+.case2-tbl tbody th { background: #ECECEC; color: var(--navy); border-bottom-color: #D9D8D7; border-right: 1px solid #D9D8D7; }
+.case2-tbl td.ar { background: #ECECEC; }
+/* Feature pills, one brand style: purple pill with a blue check (white pill on purple backgrounds) */
+.chip:has(> .icon), .part-main .chip { background: var(--white); color: var(--navy); font-weight: 600; }
+.chip:has(> .icon) .icon, .part-main .chip .icon { width: 22px; height: 22px; padding: 4px; border-radius: 50%; background: #3299D5; color: var(--white) !important; }
+.save { background: var(--grad) !important; color: var(--white) !important; }
+.ctag--diy { background: var(--white) !important; color: var(--navy) !important; box-shadow: inset 0 0 0 2px var(--navy) !important; }
+.ctag--ag { background: #3299D5 !important; color: var(--white) !important; box-shadow: none !important; }
 /*/THEME-CSS*/
 
 </style>
@@ -1551,7 +1572,7 @@ h1, h2, h3, h4 { color: var(--navy); }
           return `<li class="ev-item${open ? ' is-open' : ''}">
             <div class="ev-row">
               <div class="datebox"><p class="m">${e.month}</p><p class="d">${e.day}</p><p class="w">${e.weekday.slice(0, 3)}</p></div>
-              <div class="ev-info"><span class="stage">${pl(e.pillar)}</span><h3>${ph(e.title)}</h3><p class="meta">${e.time} · ${e.format} · ${ph(e.location)}</p></div>
+              <div class="ev-info"><span class="stage plogo-chip${e.pillar === 'full' ? ' plogo-chip--full' : ''}">${pl(e.pillar)}</span><h3>${ph(e.title)}</h3><p class="meta">${e.time} · ${e.format} · ${ph(e.location)}</p></div>
               <div class="ev-act">
                 <button type="button" class="btn btn--sec" data-toggle="${e.id}" aria-expanded="${open}" aria-controls="det-${e.id}">${open ? 'Hide details' : 'Details'}${ico('i-chev', 'chev')}</button>
                 <div class="ev-book"><b class="ev-price">${ph(e.price)}</b><a class="btn" href="#" data-ph-link="registration page">Reserve your seat</a><span class="ev-seats">${ph(e.seats)}</span></div>
@@ -1744,6 +1765,8 @@ h1, h2, h3, h4 { color: var(--navy); }
   if (location.hash === '#resources') showPage('resources'); else showPage('events');
 })();
 </script>
+
+
 
 
 

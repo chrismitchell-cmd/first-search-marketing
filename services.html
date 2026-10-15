@@ -729,6 +729,9 @@ button { font: inherit; color: inherit; }
 
 
 
+
+
+
 /* ==========================================================================
    SHARED ADDITIONS FOR SERVICE + PILLAR PAGES
    (everything above this line is the homepage stylesheet, unchanged)
@@ -1034,6 +1037,8 @@ button { font: inherit; color: inherit; }
 .tmc .tm-photo img { position: absolute; left: 50%; bottom: 0; height: 104%; width: auto; max-width: none; transform: translateX(-50%); transform-origin: 50% 100%; transition: transform .45s ease; }
 .tmc:hover .tm-photo img { transform: translateX(-50%) scale(1.07); }
 .tm-tag { position: absolute; left: 16px; top: 16px; z-index: 1; padding: 6px 12px; border-radius: 999px; background: rgba(255, 255, 255, .92); font-family: var(--font); font-weight: 600; font-size: 12.5px; color: var(--navy); }
+.tm-tag { position: absolute; left: 16px; top: 16px; z-index: 1; padding: 7px 14px; border-radius: 999px; background: var(--grad); color: var(--white); font-family: var(--font); font-weight: 600; font-size: 13px; box-shadow: 0 8px 18px -8px rgba(0, 0, 0, .45); transition: opacity .2s ease; }
+.tmc.is-flipped .tm-tag { opacity: 0; visibility: hidden; }
 .tmc .tm-body { padding: 18px 22px 20px; display: grid; gap: 2px; }
 .tmc h3 { font-weight: 700; font-size: 22px; color: var(--navy); }
 .tmc .role { font-weight: 600; font-size: 14.5px; color: #3299D5; }
@@ -1300,6 +1305,9 @@ a.fcard:hover .go .icon { transform: translateX(4px); }
 .founder .g-copy p.sig, .founder .sig { color: var(--navy); }
 .mv .gcard .k { color: var(--navy); }
 .mv .navy-card .k { color: #3299D5 !important; }
+
+/* Stage number pill on the Why framework cards */
+.rel .chips > span.stage-n { background: var(--grad); color: var(--white); font-family: var(--font); font-weight: 700; }
 
 /* Logo as card title */
 .rel-logo .plogo { font-size: 30px; }
@@ -1960,6 +1968,24 @@ h1, h2, h3, h4 { color: var(--navy); }
 .case2-tbl td.a { background: var(--grad); color: var(--white); border-right: 0; border-bottom-color: rgba(255, 255, 255, .3); }
 .case2-tbl td.a .ph { color: inherit; }
 .case2-tbl tbody tr:last-child > * { border-bottom: 0; }
+
+/* ==========================================================================
+   ROUND 6
+   ========================================================================== */
+/* Menu: hover keeps titles purple (no blue link colour, no underline), Let's Talk stays legible */
+.sn-panel a, .sn-panel a:hover { border-bottom-width: 0; text-decoration: none; }
+.sn .sn-big:hover, .sn .sn-big:hover b, .sn .sn-big[aria-current="page"] { color: var(--navy) !important; }
+.sn .sn-svc:hover span { color: var(--navy); }
+.sn-cta .btn:hover, .sn-cta .btn:focus-visible { color: var(--white) !important; background: linear-gradient(135deg, #34208A 0%, #2E2878 100%); border-color: #72CCD8; }
+/* Case study table: metric column and the arrow column in light grey */
+.case2-tbl tbody th { background: #ECECEC; color: var(--navy); border-bottom-color: #D9D8D7; border-right: 1px solid #D9D8D7; }
+.case2-tbl td.ar { background: #ECECEC; }
+/* Feature pills, one brand style: purple pill with a blue check (white pill on purple backgrounds) */
+.chip:has(> .icon), .part-main .chip { background: var(--white); color: var(--navy); font-weight: 600; }
+.chip:has(> .icon) .icon, .part-main .chip .icon { width: 22px; height: 22px; padding: 4px; border-radius: 50%; background: #3299D5; color: var(--white) !important; }
+.save { background: var(--grad) !important; color: var(--white) !important; }
+.ctag--diy { background: var(--white) !important; color: var(--navy) !important; box-shadow: inset 0 0 0 2px var(--navy) !important; }
+.ctag--ag { background: #3299D5 !important; color: var(--white) !important; box-shadow: none !important; }
 /*/THEME-CSS*/
 
 </style>
