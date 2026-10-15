@@ -730,6 +730,15 @@ button { font: inherit; color: inherit; }
 
 
 
+
+
+
+
+
+
+
+
+
 /*SN-CSS*/
 /* ==========================================================================
    Shared site navigation (Elementor Pro: Nav Menu + Mega Menu)
@@ -1160,6 +1169,80 @@ h1, h2, h3, h4 { color: var(--navy); }
 .cases2 .reviews { display: grid; gap: 22px; }
 @media (max-width: 1024px) { .case2-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 480px) { .case2-tbl th, .case2-tbl td { padding: 10px 10px; } .case2-tbl td.b, .case2-tbl td.a { width: 52px; } .case2-tbl td.ar { width: 26px; } }
+/* ==========================================================================
+   ROUND 4
+   ========================================================================== */
+/* Section headings (outside the hero) use the gradient like the hero H1, at section size.
+   The script wraps the second half of each heading in .gt; Elementor: a Heading widget with a gradient span. */
+.gt { color: transparent; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+
+/* Headers over centred content are centred; left-aligned only when content sits beside the header */
+.sec-head, .ways2-head, .wt-head, .faq-head, .tog-head { margin-inline: auto; text-align: center; max-width: 880px; }
+.sec-head .lead, .ways2-head .lead, .tog-head .lead { margin-inline: auto; }
+#all-services .fpills, #all-services .count-label { justify-content: center; text-align: center; }
+.rel-sec .e-con > .eyebrow, .rel-sec .e-con > .h2, .more > h2 { display: block; text-align: center; }
+.rel-sec .e-con > .h2 { max-width: 880px; margin-inline: auto; margin-bottom: 8px; }
+
+/* Sub-headers / call-outs on purple use the core brand blue (not aqua), same type everywhere */
+.on-dark .eyebrow, .navy-card .eyebrow, .fw-block .eyebrow, .here-sec .eyebrow, .ct-office .eyebrow, .rel-sec .eyebrow, .how .eyebrow { color: #3299D5 !important; }
+.partner-kicker, .navy-card .k, .mv .navy-card .k, .p2--3 .k, .info-row .k, .sn-cta .sn-k, .feat-r h3 { font-family: var(--font); font-weight: 600; font-size: clamp(16px, 1.35vw, 20px); letter-spacing: 0; text-transform: none; color: #3299D5 !important; }
+.man-pts .icon, .here-row em, .on-dark .checks .icon { color: #3299D5; }
+.on-dark .plogo b, .plogo--light b, .navy-card .plogo b { color: #3299D5; }
+.ft-brand p span { background: none; color: #3299D5; -webkit-background-clip: border-box; background-clip: border-box; }
+.on-dark .link-u { text-decoration-color: #3299D5; }
+
+/* "Sound familiar?" style call-outs: purple shapes, white icon tile with gradient glow */
+.pcard { background: var(--navy); color: var(--white); box-shadow: 0 22px 40px -24px rgba(28, 22, 72, .8); }
+.pcard h3 { color: var(--white); }
+.pcard p { color: rgba(255, 255, 255, .92); }
+.pcard .ip { border-top-color: rgba(255, 255, 255, .18); color: rgba(255, 255, 255, .9); }
+.pcard .ip b { color: #3299D5; }
+.pcard .ptile, .problem .pcard .ptile { background: var(--white) !important; border: 0; box-shadow: 0 0 0 4px #3299D5, 0 0 20px 4px rgba(50, 153, 213, .55) !important; }
+.pcard .ptile b { font-weight: 800; font-size: 44px; color: transparent; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; }
+.problem-close { color: var(--navy); }
+.problem-close span { color: transparent; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; }
+
+/* Feature pills (what's included): on brand */
+.wt-incl span, .chips-row span, .deliver-row .chips-row span, .partner .chips-row span { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px 9px 9px; border-radius: 999px; background: var(--navy); color: var(--white); font-family: var(--font); font-weight: 600; font-size: 14.5px; box-shadow: 0 8px 18px -12px rgba(28, 22, 72, .8); }
+.wt-incl .icon, .chips-row .icon { width: 22px; height: 22px; padding: 4px; border-radius: 50%; background: #3299D5; color: var(--white) !important; flex: none; }
+.on-dark .chips-row span { background: var(--white); color: var(--navy); }
+
+/* Comparison tables: lines between every row and column */
+.cmp2 { border-spacing: 0; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow-card); background: var(--white); }
+.cmp2 thead th { background: var(--white); padding: 18px 20px; border-bottom: 2px solid var(--navy); }
+.cmp2 thead th.us { padding: 0; background: var(--grad); vertical-align: middle; }
+.cmp2 thead th.us .cmp2-h { border-radius: 0; background: none; min-height: 72px; }
+.cmp2 tbody th, .cmp2 tbody td { border-radius: 0 !important; box-shadow: none; border-left: 0; border-bottom: 1px solid #D9D8D7; border-right: 1px solid #D9D8D7; }
+.cmp2 tbody th { border-bottom-color: rgba(255, 255, 255, .18); border-right: 0; }
+.cmp2 tbody td.us { border-right: 0; border-bottom-color: rgba(255, 255, 255, .3); }
+.cmp2 tbody tr:last-child th, .cmp2 tbody tr:last-child td { border-bottom: 0; }
+.cmp2 thead th:not(:last-child) { border-right: 1px solid #D9D8D7; }
+.ways-tbl th, .ways-tbl td { border-bottom: 1px solid #D9D8D7; border-right: 1px solid #D9D8D7; }
+.ways-tbl tr > :last-child { border-right: 0; }
+.ways-tbl tbody th { border-bottom-color: rgba(255, 255, 255, .18); }
+.ways-tbl td.us, .ways-tbl thead th.us { border-bottom-color: rgba(255, 255, 255, .3); }
+.ways-tbl thead th { border-bottom: 2px solid var(--navy) !important; }
+.ways-tbl thead th.us { border-bottom-color: transparent !important; }
+@media (max-width: 767px) {
+  .cmp2 { overflow: visible; box-shadow: none; background: none; }
+  .cmp2 tbody th, .cmp2 tbody td { border-right: 0; }
+  .ways-tbl th, .ways-tbl td { border-right: 0; }
+}
+
+/* Ways tabs: hover and selected match the navigation (light grey with a gradient left edge) */
+.wt-tabs button { border-left: 4px solid transparent; }
+.wt-tabs button:hover, .wt-tabs [aria-selected="true"], .wt-tabs [aria-selected="true"]:hover { background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; color: var(--navy); }
+.wt-tabs [aria-selected="true"] small { color: var(--ink); }
+.wt-tabs [aria-selected="true"] i { background: var(--grad-diag); color: var(--white); }
+.wt-tabs button:hover i { background: var(--white); }
+.wt-tabs [aria-selected="true"]:hover i { background: var(--grad-diag); }
+/* Partner tab: same left side as the other two tabs (logo, heading, copy, video) */
+.wt-diy .diy-logos img.wt-logo { height: 54px; }
+.wt-spots .spots-bar span { background: #E3E2EA; }
+.wt-spots .spots-bar span.on { background: #3299D5; }
+.wt-spots .spots-label { margin: 0; font-size: 14.5px; font-weight: 600; color: var(--navy); }
+.on-dark .gcard__in .link-u { color: var(--navy); text-decoration-color: #72CCD8; }
+.plogo-chip.plogo-chip--full { background: var(--grad); color: var(--white); font-family: var(--font); font-weight: 700; font-size: 13.5px; box-shadow: none; }
 /*/THEME-CSS*/
 
 </style>
@@ -1542,13 +1625,12 @@ h1, h2, h3, h4 { color: var(--navy); }
     <div class="ways2-head"><span class="eyebrow">Work with us</span><h2 class="h2" id="ways-title">Three ways to become a FirstSearcher</h2><p class="lead">Work with our team, learn the system yourself, or get guided by us while you do the work.</p></div>
     <div class="wt-tabs wt-tabs--3" role="tablist" aria-label="Ways to work with us"><button type="button" role="tab" id="wt-t1" aria-controls="wt-p1" aria-selected="true"><i>1</i><span><b>Partner with our team</b><small>We build and run it for you, results guaranteed</small></span></button><button type="button" role="tab" id="wt-t2" aria-controls="wt-p2" aria-selected="false" tabindex="-1"><i>2</i><span><b>Do it yourself</b><small>BeFirst Academy: learn the system at your pace</small></span></button><button type="button" role="tab" id="wt-t3" aria-controls="wt-p3" aria-selected="false" tabindex="-1"><i>3</i><span><b>Get guided by us</b><small>1:1 coaching while you do the work</small></span></button></div>
     <div class="wt-panel" role="tabpanel" id="wt-p1" aria-labelledby="wt-t1" tabindex="0">
-      <div class="partner on-dark wt-partner">
-        <div class="partner-team"><img src="assets/img/design/team-group.webp" alt="The First Search Marketing team" width="1300" height="645"></div>
-        <p class="partner-kicker">Partner with our team</p>
+      <div class="wt-diy">
+        <div class="diy-logos"><img class="wt-logo" src="assets/img/logo.png" alt="First Search Marketing" width="576" height="196" loading="lazy"></div>
         <h3>We work with 25 businesses. That's it.</h3>
-        <p class="partner-body">Capping our partner list means every client gets senior attention, real strategy and a team that knows their business. When the spots are full, they're full.</p>
-        <div class="spots-bar" data-filled="19" aria-hidden="true"></div>
-        <p class="spots-label"><span class="ph">6</span> of 25 partner spots open.</p>
+        <p>Capping our partner list means every client gets senior attention, real strategy and a team that knows their business. When the spots are full, they're full.</p>
+        <div class="wt-spots"><div class="spots-bar" data-filled="19" aria-hidden="true"></div><p class="spots-label"><span class="ph">6</span> of 25 partner spots open.</p></div>
+        <div class="gcard vid"><div class="gcard__in"><button type="button" class="vid-btn" aria-label="Play video: Meet the team behind your marketing"><img class=wide src="assets/img/design/team-group.webp" alt=""><span class="vid-tag"><i></i>Video</span><span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></svg></span><span class="vid-cap"><b>Meet the team behind your marketing</b><span class="ph">[1:45]</span></span></button></div></div>
       </div>
       <div class="gcard wt-card"><div class="gcard__in">
         <h3>Is a partnership right for you?</h3>
@@ -1633,7 +1715,7 @@ h1, h2, h3, h4 { color: var(--navy); }
     <div class="ft-top">
       <div class="ft-brand">
         <img src="assets/img/logo-white.png" alt="First Search Marketing" width="576" height="196">
-        <p>Be the business your customers <span>find first.</span></p>
+        <p>We put your business <span>first.</span></p>
       </div>
       <div class="ft-news">
         <h3>The FirstSearcher monthly</h3>
@@ -1949,6 +2031,12 @@ h1, h2, h3, h4 { color: var(--navy); }
 
 
 
+
+
+
+
+
+
 <!--SN:js--><script>
 (() => {
   // Shared nav: dropdowns open on click or hover, close on outside click / Escape.
@@ -1997,6 +2085,20 @@ h1, h2, h3, h4 { color: var(--navy); }
   });
   // Partner spots bars
   document.querySelectorAll('.spots-bar[data-filled]').forEach(b => { if (!b.children.length) b.innerHTML = Array.from({ length: 25 }, (_, i) => `<span${i < +b.dataset.filled ? ' class="on"' : ''}></span>`).join(''); });
+  // Section headings (outside the hero): second half of the heading in the brand gradient, like the hero H1
+  const SKIPH = '.side, .empty, .on-dark, .fw-block, .how, .final, .here-sec, .rel-sec, .ct-office, .stats, .navy-card, .case2, .partner, .check-r, .feat-r, .pw-band, .vcard, .modal, .sn, .scorecard, .p2--3';
+  const gradHeads = () => document.querySelectorAll('main h2, main .guar2-title h2').forEach(h => {
+    if (h.querySelector('.gt') || h.closest(SKIPH) || h.classList.contains('vh')) return;
+    const kids = [...h.childNodes];
+    if (kids.some(n => n.nodeType === 1 && n.tagName !== 'BR')) return;
+    const br = h.querySelector('br');
+    if (br) { const after = br.nextSibling; if (after && after.nodeType === 3 && after.textContent.trim()) { const s = document.createElement('span'); s.className = 'gt'; s.textContent = after.textContent; after.replaceWith(s); } return; }
+    const words = h.textContent.trim().split(/\s+/); if (words.length < 2) return;
+    const k = Math.max(1, Math.round(words.length * 0.45));
+    h.textContent = words.slice(0, words.length - k).join(' ') + ' ';
+    const s = document.createElement('span'); s.className = 'gt'; s.textContent = words.slice(-k).join(' '); h.appendChild(s);
+  });
+  gradHeads(); new MutationObserver(() => requestAnimationFrame(gradHeads)).observe(document.body, { childList: true, subtree: true });
   // Video placeholders
   document.addEventListener('click', e => { const v = e.target.closest('.vid-btn'); if (v) v.classList.toggle('is-playing'); });
   // Footer newsletter (prototype)
