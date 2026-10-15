@@ -517,6 +517,33 @@ button { cursor: pointer; }
 
 
 
+
+
+
+
+/* Table v3: purple label column, gradient "Let us run it" column, header tags that pop */
+.ways-tbl tbody th { background: var(--navy); color: var(--white); border-bottom-color: rgba(255, 255, 255, .14); }
+.ways-tbl tbody tr:first-child th { border-top-left-radius: 0; }
+.ways-tbl thead th.wk { vertical-align: bottom; }
+.ways-tbl .us { background: linear-gradient(180deg, #5FBAD3 0%, #2A73B8 55%, #174FA2 100%); background-attachment: local; }
+.ways-tbl td.us { background: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%); color: var(--white); }
+.ways-tbl thead th.us { background: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%); }
+.ways-tbl .us .wh small, .ways-tbl .us small { color: rgba(255, 255, 255, .85); }
+.ctag { display: inline-flex; align-items: center; gap: 8px; width: max-content; padding: 7px 14px; border-radius: 999px; font-family: var(--font); font-weight: 700; font-size: 13.5px; letter-spacing: .02em; text-transform: none; }
+.wh small.ctag { font-size: 13px; }
+.ctag--k { background: var(--navy); color: var(--white); }
+.ctag--diy { background: #E9E8EC; color: var(--ink); box-shadow: inset 0 0 0 2px #CFCDD6; }
+.ctag--ag { background: #E2F0FA; color: #174FA2; box-shadow: inset 0 0 0 2px #A9D3EF; }
+.ways-tbl .us .wh small.ctag--us { background: var(--white); color: #174FA2; }
+.ways-tbl .wy::before { background: var(--white); color: #174FA2; }
+
+
+
+
+
+
+
+
 /*SN-CSS*/
 /* ==========================================================================
    Shared site navigation (Elementor Pro: Nav Menu + Mega Menu)
@@ -585,14 +612,15 @@ button { cursor: pointer; }
   --navy-deep: #1C1648;
   --blue: #3299D5;            /* brand light blue */
   --blue-ink: #1F78B4;        /* light blue for small text on white (AA) */
-  --ink: #2A2546;             /* headings-adjacent dark text, tinted to the purple */
-  --body: #474462;            /* all running text on light backgrounds */
-  --muted: #6C6984;
+  --ink: #1C1B22;             /* body copy (near-black, per the type sheet) */
+  --body: #2F2E36;
+  --muted: #6B6A72;
   --tint: #EEF0F9;            /* light section background (alternates with white / geometric) */
-  --grad: linear-gradient(90deg, #7CD2D3 0%, #3299D5 50%, #2E4DA5 100%);
-  --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #3299D5 50%, #2E4DA5 100%);
-  --grad-text: linear-gradient(90deg, #3FB4DA 0%, #3299D5 35%, #2E4DA5 75%, #282060 100%);
-  --grad-primary: linear-gradient(120deg, #282060 0%, #2F2C7A 55%, #2E4DA5 100%);
+  --aqua: #72CCD8; --royal: #174FA2; --grey: #D9D8D7; --teal: #72CCD8; --mid: #3299D5;
+  --grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);          /* Linear Gradient 1 */
+  --grad-diag: linear-gradient(120deg, #72CCD8 0%, #174FA2 100%);
+  --grad-text: linear-gradient(90deg, #72CCD8 0%, #3299D5 45%, #174FA2 100%);
+  --grad-primary: linear-gradient(135deg, #2C1774 0%, #282060 55%, #24206E 100%);
   --grad-icon: linear-gradient(135deg, #3299D5 0%, #282060 100%);
   --shadow-btn: 0 14px 30px -12px rgba(40, 32, 96, .55);
 }
@@ -617,26 +645,50 @@ h1, h2, h3, h4 { color: var(--navy); }
 /* ---------- Buttons ----------
    Primary (.btn) = dark purple gradient · Secondary (.btn--sec) = the original light gradient
    · .btn--white on dark/gradient backgrounds. Same radius, weight and height everywhere. */
-.btn { border-radius: 12px; font-weight: 600; letter-spacing: .005em; color: var(--white); background: var(--grad-primary); background-size: 160% 100%; background-position: 0 0; text-shadow: none; box-shadow: var(--shadow-btn); }
-.btn:hover { background-position: 100% 0; color: var(--white); box-shadow: 0 18px 36px -12px rgba(40, 32, 96, .6); }
-.btn--sec, .header-cta, .final .btn--sec { background: var(--grad); background-size: 140% 100%; text-shadow: 0 1px 2px rgba(20, 30, 80, .3); box-shadow: 0 14px 30px -12px rgba(46, 77, 165, .5); }
-.btn--white, .btn--white:hover { background: var(--white); color: var(--navy); text-shadow: none; }
+.btn { border-radius: 10px; font-weight: 600; font-size: 18px; letter-spacing: .005em; color: var(--white); background: var(--grad-primary); background-size: 100% 100%; text-shadow: none; border: 2px solid #4AA6DC; box-shadow: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55); }
+.btn:hover { color: var(--white); background: linear-gradient(135deg, #34208A 0%, #2E2878 100%); box-shadow: 0 0 0 3px rgba(114, 204, 216, .35), 0 14px 28px -8px rgba(50, 153, 213, .65); }
+.btn--lg { font-size: clamp(19px, 1.6vw, 22px); }
+.btn--sec, .final .btn--sec { background: var(--grad); border-color: transparent; text-shadow: 0 1px 2px rgba(20, 30, 80, .3); box-shadow: 0 14px 30px -12px rgba(23, 79, 162, .5); }
+.btn--sec:hover { background: linear-gradient(90deg, #7AD4DF 0%, #1C5BB5 100%); }
+.btn--white, .btn--white:hover { background: var(--white); color: var(--navy); text-shadow: none; border-color: transparent; }
 .btn--white:hover { color: #2E4DA5; }
-.btn--ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy); }
+.btn--ghost { background: transparent; color: var(--navy); border-color: var(--navy); box-shadow: none; }
 .btn--ghost:hover { background: var(--navy); color: var(--white); }
 .on-dark .btn--ghost { color: var(--white); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .7); }
 .btn--lg { border-radius: 16px; }
 
 /* ---------- Header: dark purple, white logo and links ---------- */
-.site-header { background: radial-gradient(520px 160px at 88% 0%, rgba(50, 153, 213, .35), transparent 70%), var(--navy); }
-.site-header.is-scrolled { box-shadow: 0 12px 30px -16px rgba(16, 12, 48, .7); }
-.site-header .sn .sn-top { color: var(--white); }
+.site-header { background: var(--white); }
+.site-header.is-scrolled { box-shadow: 0 12px 30px -18px rgba(40, 32, 96, .45); }
+.site-header .sn .sn-top { color: var(--navy); font-weight: 500; }
 .site-header .sn .sn-top:hover, .site-header .sn .sn-top[aria-expanded="true"],
-.site-header .sn .sn-top.is-current, .site-header .sn .sn-top[aria-current="page"] { color: var(--white); border-bottom-color: #7CD2D3; }
+.site-header .sn .sn-top.is-current, .site-header .sn .sn-top[aria-current="page"] { color: var(--navy); border-bottom: 2px solid transparent; border-image: var(--grad) 1; }
 .site-header .sn .sn-top.is-current, .site-header .sn .sn-top[aria-current="page"] { font-weight: 600; }
-.site-header .menu-btn { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .25); color: var(--white); }
-.site-header .header-cta:focus-visible, .site-header a:focus-visible, .site-header button:focus-visible { outline-color: var(--white); }
 .stripe { background: var(--grad); }
+
+/* ---------- Dropdowns: About First Search + Grow Your Marketing ----------
+   White card; hovered / current item = light grey fill with a gradient curve on its left edge. */
+.sn-panel { border-radius: 28px; padding: 12px; box-shadow: 0 30px 60px -22px rgba(28, 22, 72, .45), 0 0 0 1px rgba(40, 32, 96, .05); }
+.sn .sn-item { position: relative; border: 0; border-left: 3px solid transparent; border-radius: 18px; padding: 14px 18px; background: transparent; transition: background .15s ease; }
+.sn .sn-item b { color: var(--navy); font-size: 18px; }
+.sn .sn-item span { color: var(--ink); font-family: var(--font); font-size: 14.5px; }
+.sn .sn-item:hover, .sn .sn-item[aria-current="page"] { background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; box-shadow: none; }
+
+/* ---------- What We Do mega panel: brand purple, sub-brand logos, gradient lines ---------- */
+.sn-mega { background: radial-gradient(520px 340px at 100% 100%, rgba(50, 153, 213, .35), transparent 70%), var(--navy); }
+.sn .sn-stage { border-bottom: 0; padding-bottom: 14px; margin-bottom: 12px; background: linear-gradient(90deg, #72CCD8, #174FA2) left bottom / 100% 3px no-repeat; }
+.sn .sn-stage .plogo { color: var(--white); }
+.sn .sn-stage .plogo b { color: #6CC4EE !important; }
+.sn .sn-stage small { color: rgba(255, 255, 255, .7); }
+.sn .sn-stage:hover .plogo { text-decoration: none; }
+.sn .sn-svc { position: relative; color: rgba(255, 255, 255, .9); border-left: 3px solid transparent; }
+.sn .sn-svc small { color: rgba(255, 255, 255, .6); }
+.sn .sn-svc:hover, .sn .sn-svc[aria-current="page"] { color: var(--white); background: linear-gradient(#3B3476, #3B3476) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; }
+.sn-cta { background: var(--grad); }
+.sn-cta .sn-k { color: var(--white); }
+.sn .sn-big { background: rgba(255, 255, 255, .14); }
+.sn .sn-big:hover, .sn .sn-big[aria-current="page"] { background: rgba(255, 255, 255, .26); }
+
 
 /* ---------- Pillar logos (same lockup as the framework graphic) ---------- */
 .plogo { display: inline-flex; align-items: baseline; font-family: var(--font); font-weight: 800; letter-spacing: -0.03em; line-height: 1; text-transform: lowercase; color: #282060; white-space: nowrap; font-size: 1em; }
@@ -652,7 +704,6 @@ h1, h2, h3, h4 { color: var(--navy); }
 .sn .sn-stage .plogo b, .sn-mcols .sn-stage .plogo b { display: inline; font-size: inherit; font-weight: 800; color: #3299D5; }
 .sn .sn-stage { flex-direction: column; align-items: flex-start; gap: 4px; }
 .sn .sn-stage i { display: none; }
-.sn .sn-stage:hover .plogo { text-decoration: underline; text-decoration-color: #7CD2D3; text-decoration-thickness: 3px; text-underline-offset: 6px; }
 .sn-mcols .sn-stage .plogo { font-size: 19px; }
 
 /* Framework explorer: logos under the wheel and as the panel tag */
@@ -674,7 +725,7 @@ h1, h2, h3, h4 { color: var(--navy); }
 
 /* ---------- Video block (hero media on inner pages) ----------
    Elementor: Video widget inside the gradient-frame container; poster = custom image overlay. */
-.vid { --bw: 16px; --r: 64px; position: relative; width: 100%; align-self: center; }
+.vid { --bw: 6px; --r: 48px; position: relative; width: 100%; align-self: center; }
 .vid .gcard__in { overflow: hidden; padding: 0; }
 .vid-btn { position: relative; display: block; width: 100%; aspect-ratio: 16 / 11; padding: 0; border: 0; cursor: pointer; overflow: hidden;
   background: radial-gradient(70% 60% at 50% 105%, rgba(50, 153, 213, .9), transparent 70%), radial-gradient(60% 50% at 0% 0%, rgba(124, 210, 211, .35), transparent 70%), var(--navy); }
@@ -761,7 +812,7 @@ h1, h2, h3, h4 { color: var(--navy); }
   .ft-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 767px) {
-  .vid { --bw: 10px; --r: 40px; }
+  .vid { --bw: 5px; --r: 34px; }
   .vid-play { width: 72px; height: 72px; margin: -36px 0 0 -36px; }
   .vid-cap b { font-size: 13.5px; }
   .ft-cols { grid-template-columns: minmax(0, 1fr); }
@@ -808,7 +859,7 @@ h1, h2, h3, h4 { color: var(--navy); }
 .wt-diy .diy-logos img { height: 60px; width: auto; }
 .wt-diy h3 { font-weight: 700; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.1; }
 .wt-diy > p { font-size: 17.5px; color: var(--body); }
-.wt-diy .vid { --bw: 12px; --r: 44px; margin-top: 6px; }
+.wt-diy .vid { --bw: 5px; --r: 36px; margin-top: 6px; }
 .wt-list { display: grid; margin: 0; padding: 0; list-style: none; }
 .wt-res { display: grid; grid-template-columns: 92px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); }
 .wt-res:first-child { padding-top: 0; }
@@ -832,6 +883,97 @@ h1, h2, h3, h4 { color: var(--navy); }
   .wt-price { grid-column: 2; justify-self: start; order: -1; }
   .wt-foot .btn { width: 100%; }
 }
+/* ==========================================================================
+   TYPE SYSTEM (round 3 type sheets) — web sizes scaled from the design canvas
+   Hero:      Sub1 (eyebrow) Poppins 600 sky · H1 Poppins 700 navy, 2nd line Linear Gradient 1, aqua rule
+              · body Poppins 400 near-black · CTA Poppins 600 on the purple button · CTA 2 italic underlined link
+   White:     Sub1 sky · Display (H2) Poppins 700 navy or gradient · body near-black · Number Poppins 700
+   Coloured:  Display + body white, button purple
+   ========================================================================== */
+.eyebrow { font-family: var(--font); font-size: clamp(16px, 1.35vw, 20px); font-weight: 600; letter-spacing: 0; color: #3299D5; }
+.on-dark .eyebrow, .navy-card .eyebrow, .fw-block .eyebrow { color: #72CCD8; }
+.stats .eyebrow { color: var(--white); }
+.hero h1, h1.h1, .dhero h1 { font-weight: 700; font-size: clamp(40px, 5vw, 72px); line-height: 1.04; letter-spacing: -0.025em; color: var(--navy); }
+.hero h1::after, h1.h1::after { content: ""; display: block; width: clamp(96px, 10vw, 140px); height: 4px; margin-top: clamp(18px, 2vw, 26px); border-radius: 2px; background: #72CCD8; }
+.hero-lead, .lede { font-size: clamp(17px, 1.45vw, 20px); line-height: 1.55; font-weight: 400; color: var(--ink); }
+.h2, .sec-head .h2, .faq-head .h2 { font-weight: 700; font-size: clamp(32px, 3.6vw, 52px); line-height: 1.08; letter-spacing: -0.02em; }
+.lead, .how-sub, .ways-sub, .ways2-head .lead { font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; color: var(--ink); }
+.on-dark .lead, .on-dark .how-sub { color: rgba(255, 255, 255, .9); }
+.fw-block .h2, .fw-head .h2, .man-copy .h2, .how .h2, .here-sec .h2, .rel-sec .h2 { color: var(--white); }
+.final h2 { font-weight: 700; font-size: clamp(36px, 4.6vw, 66px); line-height: 1.04; color: var(--white); text-shadow: none; }
+.final p { font-size: clamp(16px, 1.3vw, 18px); color: rgba(255, 255, 255, .95); }
+.final .btn--white { background: var(--grad-primary); color: var(--white); border: 2px solid #4AA6DC; }
+.stat-num, .trust-num { font-weight: 700; letter-spacing: -0.03em; }
+.link-u { font-family: var(--font); font-style: italic; font-weight: 500; color: var(--navy); text-decoration: underline; text-decoration-color: #72CCD8; text-decoration-thickness: 2px; text-underline-offset: 7px; }
+.on-dark .link-u { color: var(--white); }
+.btn { font-family: var(--font); }
+.wt-tabs--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.wt-img--ico { background: var(--grad-diag); color: var(--white); }
+.wt-img--ico .icon { width: 40px; height: 40px; }
+.wt-coach-price { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+.wt-coach-price > div { padding: 16px 18px; border-radius: 18px; background: var(--tint); }
+.wt-coach-price > div:last-child { background: var(--navy); color: var(--white); }
+.wt-coach-price b { font-weight: 800; font-size: 34px; color: var(--navy); }
+.wt-coach-price > div:last-child b { color: var(--white); }
+.wt-coach-price span { font-size: 15px; color: var(--muted); }
+.wt-coach-price > div:last-child span, .wt-coach-price > div:last-child small { color: rgba(255, 255, 255, .8); }
+.wt-coach-price small { display: block; font-family: var(--font-ui); font-size: 13.5px; color: var(--body); }
+.wt-coach { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.wt-coach li { display: flex; gap: 10px; font-size: 16px; color: var(--ink); }
+.wt-coach .icon { width: 19px; height: 19px; flex: none; margin-top: 3px; }
+@media (max-width: 900px) { .wt-tabs--3 { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .wt-coach-price { grid-template-columns: 1fr; } }
+/* ---------- FirstSearch Guarantee (condensed) ---------- */
+.guar2 { padding-top: clamp(60px, 7vw, 100px); }
+.guar2-grid { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: end; }
+.guar2-photo { position: relative; align-self: end; }
+.guar2-photo img { display: block; width: 100%; max-width: 380px; height: auto; margin: 0 auto; }
+.guar2-quote { position: absolute; left: -12px; right: 18%; bottom: 22%; margin: 0; padding: 16px 18px; border-radius: 18px; background: rgba(255, 255, 255, .72); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: 0 14px 30px -18px rgba(28, 22, 72, .5); font-style: italic; font-size: 15px; line-height: 1.45; color: var(--navy); }
+.guar2-quote cite { display: block; margin-top: 8px; font-style: normal; font-family: var(--font-ui); font-size: 12.5px; color: var(--muted); }
+.guar2-copy { padding-bottom: clamp(40px, 5vw, 70px); }
+.guar2-title { display: flex; align-items: center; gap: clamp(16px, 2vw, 28px); margin-bottom: 18px; }
+.guar2-title img { width: clamp(86px, 9vw, 128px); height: auto; flex: none; }
+.guar2-title h2 { font-weight: 700; font-size: clamp(32px, 3.8vw, 54px); line-height: 1.06; letter-spacing: -0.02em; color: var(--navy); }
+.guar2-lead { max-width: 60ch; margin-bottom: 22px; font-size: clamp(16px, 1.3vw, 18px); color: var(--ink); }
+.guar2-pills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; max-width: 760px; margin: 0; padding: 0; list-style: none; }
+.guar2-pills li, .guar2-pills button { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 12px 18px; border-radius: 10px; background: var(--navy); color: var(--white); font-family: var(--font); font-style: italic; font-weight: 500; font-size: 16px; line-height: 1.3; box-shadow: 0 12px 24px -14px rgba(28, 22, 72, .7); }
+.guar2-pills li:has(button) { padding: 0; background: none; box-shadow: none; }
+.guar2-pills button { width: 100%; border: 0; text-align: left; cursor: pointer; background: linear-gradient(135deg, #2C1774, #282060); box-shadow: 0 0 0 2px #4AA6DC inset, 0 12px 24px -14px rgba(28, 22, 72, .7); text-decoration: underline; text-decoration-color: #72CCD8; text-underline-offset: 4px; }
+.guar2-pills button:hover { background: #34208A; }
+.g2-ck { width: 26px; height: 26px; flex: none; border-radius: 50%; display: grid; place-items: center; background: #3299D5; color: var(--white); }
+.g2-ck svg { width: 16px; height: 16px; }
+@media (max-width: 900px) {
+  .guar2-grid { grid-template-columns: minmax(0, 1fr); }
+  .guar2-photo { order: 2; max-width: 360px; margin: 0 auto; }
+  .guar2-copy { padding-bottom: 10px; }
+}
+@media (max-width: 600px) { .guar2-pills { grid-template-columns: minmax(0, 1fr); } .guar2-title h2 br { display: none; } }
+
+/* ---------- Case study (new mockup) + two testimonials ---------- */
+.cases2 { padding-block: clamp(80px, 8vw, 120px); }
+.case2-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.case2-grid > * { min-width: 0; }
+.case2 { border-radius: 32px; background: var(--navy); padding: 16px 16px 30px; box-shadow: 0 30px 60px -30px rgba(28, 22, 72, .7); }
+.case2-photo { border-radius: 24px; padding: 4px; background: var(--grad-diag); }
+.case2-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1400 / 700; object-fit: cover; border-radius: 20px; }
+.case2-body { padding: 26px clamp(14px, 2.4vw, 30px) 0; }
+.case2-client { font-weight: 600; font-size: clamp(16px, 1.4vw, 20px); color: #3299D5; }
+.case2-body h3 { margin: 10px 0 24px; font-weight: 700; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.12; color: var(--white); }
+.case2-tbl { border-radius: 22px; padding: 4px; background: var(--grad-diag); }
+.case2-tbl table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--white); border-radius: 18px; overflow: hidden; color: var(--navy); }
+.case2-tbl th, .case2-tbl td { padding: 12px 16px; text-align: left; vertical-align: middle; border-bottom: 1px solid #C8D4EE; }
+.case2-tbl thead th { padding-block: 14px 10px; font-family: var(--font-ui); font-weight: 500; font-size: 14px; color: var(--ink); border-bottom-color: var(--navy); }
+.case2-tbl tbody tr:last-child th, .case2-tbl tbody tr:last-child td { border-bottom: 0; }
+.case2-tbl tbody th { font-weight: 500; font-size: clamp(16px, 1.6vw, 22px); color: var(--navy); }
+.case2-tbl td.b, .case2-tbl td.a { width: 74px; text-align: center; font-weight: 600; font-size: 17px; }
+.case2-tbl td.b { background: #E9E8EC; }
+.case2-tbl td.a { background: linear-gradient(180deg, #D7EEF3, #BFD3EE); color: var(--navy); }
+.case2-tbl td.ar { width: 44px; text-align: center; font-size: 20px; color: var(--ink); }
+.case2-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: 22px; }
+.case2-foot blockquote { margin: 0; font-style: italic; font-size: 16px; color: rgba(255, 255, 255, .9); max-width: 46ch; }
+.cases2 .reviews { display: grid; gap: 22px; }
+@media (max-width: 1024px) { .case2-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .case2-tbl th, .case2-tbl td { padding: 10px 10px; } .case2-tbl td.b, .case2-tbl td.a { width: 52px; } .case2-tbl td.ar { width: 26px; } }
 /*/THEME-CSS*/
 
 </style>
@@ -857,7 +999,7 @@ h1, h2, h3, h4 { color: var(--navy); }
 
 <header class="site-header" id="site-header">
   <div class="e-con header-row">
-    <a class="logo" href="rebrand-homepage.html" aria-label="First Search Marketing home"><img src="assets/img/logo-white.png" alt="First Search Marketing" width="576" height="196"></a>
+    <a class="logo" href="rebrand-homepage.html" aria-label="First Search Marketing home"><img src="assets/img/logo.png" alt="First Search Marketing" width="576" height="196"></a>
     <nav class="nav sn" aria-label="Primary">
       <ul class="sn-list">
         <li class="sn-dd"><button type="button" class="sn-top" aria-expanded="false" aria-controls="sn-about">About First Search<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -920,7 +1062,7 @@ h1, h2, h3, h4 { color: var(--navy); }
     <div class="ways-tbl-wrap">
       <table class="ways-tbl">
         <caption class="vh">The three ways to work with First Search compared</caption>
-        <thead><tr><th scope="col"><span class="vh">Compare</span></th><th scope="col"><span class="wh"><i>1</i><small>You do it</small><b>Learn it yourself</b><em>BeFirst Community</em></span></th><th scope="col"><span class="wh"><i>2</i><small>We do it together</small><b>Build it with us</b><em>1:1 Coaching</em></span></th><th scope="col" class=us><span class="wh"><i>3</i><small>We do it for you</small><b>Let us run it</b><em>Strategic partnership</em></span></th></tr></thead>
+        <thead><tr><th scope="col" class="wk"><span class="ctag ctag--k">What matters</span></th><th scope="col"><span class="wh"><i>1</i><small class="ctag ctag--diy">You do it</small><b>Learn it yourself</b><em>BeFirst Community</em></span></th><th scope="col"><span class="wh"><i>2</i><small class="ctag ctag--ag">We do it together</small><b>Build it with us</b><em>1:1 Coaching</em></span></th><th scope="col" class=us><span class="wh"><i>3</i><small class="ctag ctag--us">We do it for you</small><b>Let us run it</b><em>Strategic partnership</em></span></th></tr></thead>
         <tbody><tr><th scope="row">Who does the work</th><td data-label="Learn it yourself"><b>You do</b></td><td data-label="Build it with us"><b>You do, with a coach</b></td><td data-label="Let us run it" class=us><b>Our team does</b></td></tr><tr><th scope="row">Investment</th><td data-label="Learn it yourself"><b class="wp">$88</b>/month<small>Or start with the $8 Blueprint</small></td><td data-label="Build it with us"><b class="wp">$500</b>/month<small>$1,000/month to meet every two weeks</small></td><td data-label="Let us run it" class=us><b class="wp"><span class="ph">[$X,XXX]</span></b>/month<small>Fixed retainer, six-month partnership</small></td></tr><tr><th scope="row">What's included</th><td data-label="Learn it yourself">Course, Blueprint, live webinars and weekly content</td><td data-label="Build it with us">Everything in the Community, plus 1:1 strategy sessions</td><td data-label="Let us run it" class=us>A full team running every stage, with monthly reporting</td></tr><tr><th scope="row">Your time</th><td data-label="Learn it yourself"><span class="wmeter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span>The most</td><td data-label="Build it with us"><span class="wmeter" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span>Moderate</td><td data-label="Let us run it" class=us><span class="wmeter" aria-hidden="true"><i class="on"></i><i></i><i></i></span>The least</td></tr><tr><th scope="row">Results guaranteed</th><td data-label="Learn it yourself"><span class="wx">No</span></td><td data-label="Build it with us"><span class="wx">No</span></td><td data-label="Let us run it" class=us><span class="wy">Yes, in writing</span></td></tr><tr><th scope="row">Best for</th><td data-label="Learn it yourself">Owners who like to learn, then do</td><td data-label="Build it with us">Owners who want an expert sounding board and accountability</td><td data-label="Let us run it" class=us>Owners who want it done right, without doing it themselves</td></tr><tr class="wcta"><th scope="row"><span class="vh">Next step</span></th><td data-label="Learn it yourself"><a class="btn btn--sec" href="#community">See the Community</a></td><td data-label="Build it with us"><a class="btn btn--sec" href="#coaching">See coaching</a></td><td data-label="Let us run it" class="us"><a class="btn btn--white" href="#partnership">See the partnership</a></td></tr></tbody>
       </table>
     </div>
@@ -1267,6 +1409,14 @@ h1, h2, h3, h4 { color: var(--navy); }
   $('.qa-q', qas[0]).click();
 })();
 </script>
+
+
+
+
+
+
+
+
 
 
 

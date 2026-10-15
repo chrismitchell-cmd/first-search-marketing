@@ -202,35 +202,57 @@ button { font: inherit; color: inherit; }
 .scn.is-on { display: block; animation: scnIn .45s ease; }
 @keyframes scnIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .pav { width: 38px; height: 38px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--grad-diag); color: #fff; font-size: 13px; font-weight: 700; }
-.scn .post { position: relative; border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; margin-bottom: 10px; background: #fff; }
-.scn .post-h { display: flex; align-items: center; gap: 10px; }
-.scn .post-h > div { flex: 1; min-width: 0; display: grid; }
-.scn .post-h b { font-size: 14.5px; color: var(--navy); }
-.scn .post-h small { font-size: 12px; color: var(--muted); }
-.fol { padding: 5px 12px; border-radius: 999px; background: var(--navy); color: #fff; font-size: 12px; font-weight: 600; transition: background .25s ease; }
-.fol.on { background: #E7F3FB; color: var(--navy); }
-.post-t { margin: 10px 0; font-size: 14px; line-height: 1.45; color: var(--body); }
-.post-img { display: grid; align-content: end; height: 104px; padding: 14px; border-radius: 12px; color: #fff; background: radial-gradient(160px 120px at 85% 20%, rgba(124, 210, 211, .8), transparent 70%), linear-gradient(135deg, #3299D5, #282060); }
-.post-img span { font-family: var(--font); font-weight: 700; font-size: 20px; line-height: 1.1; }
-.post-img small { font-size: 12px; opacity: .85; }
-.post-a { display: flex; align-items: center; gap: 16px; margin-top: 10px; font-size: 13px; color: var(--muted); }
-.post-a span { display: inline-flex; align-items: center; gap: 5px; }
-.post-a .icon { width: 17px; height: 17px; }
-.post-a .lk.pop .icon { animation: pop .5s ease; }
-@keyframes pop { 40% { transform: scale(1.45); } }
-.tag-o, .tag-p { margin-left: auto; padding: 3px 9px; border-radius: 999px; font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
-.tag-o { background: #E3F6F6; color: #1D7F80; }
-.tag-p { background: #EDEAFB; color: var(--navy); }
-.ad-row { display: grid; grid-template-columns: 54px minmax(0, 1fr) auto; gap: 10px; align-items: center; margin-top: 10px; }
-.ad-img { width: 54px; height: 54px; border-radius: 10px; background: linear-gradient(135deg, #7CD2D3, #3299D5); }
-.ad-row b { display: block; font-size: 13.5px; color: var(--navy); line-height: 1.3; }
-.ad-row small { font-size: 12px; color: var(--muted); }
-.ad-cta { padding: 8px 12px; border-radius: 10px; background: var(--grad-primary, #282060); color: #fff; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
-.scn-social { position: relative; }
-.notes { display: grid; gap: 6px; }
-.note { display: flex; align-items: center; gap: 10px; padding: 7px 12px; border-radius: 12px; background: var(--navy); color: #fff; font-size: 13px; box-shadow: 0 12px 24px -12px rgba(16, 12, 48, .7); opacity: 0; transform: translateY(10px); transition: opacity .35s ease, transform .35s ease; }
-.note.is-in { opacity: 1; transform: none; }
-.note .icon { width: 17px; height: 17px; color: #7CD2D3; flex: none; }
+/* Social scene: an Instagram feed (organic post, then a sponsored post) */
+.ig { position: relative; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #000; }
+.ig-top { display: flex; align-items: center; justify-content: space-between; padding: 0 4px 8px; }
+.ig-logo { font-family: "Grand Hotel", "Brush Script MT", "Segoe Script", cursive; font-size: 29px; line-height: 1; }
+.ig-tico { display: flex; gap: 14px; }
+.igi { width: 22px; height: 22px; color: #000; display: block; }
+.ig-stories { display: flex; gap: 10px; padding: 4px 4px 10px; border-bottom: 1px solid #EFEFEF; overflow: hidden; }
+.ig-st { display: grid; justify-items: center; gap: 4px; flex: none; width: 58px; }
+.ig-st i { width: 54px; height: 54px; border-radius: 50%; padding: 2.5px; background: conic-gradient(from 210deg, #FEDA75, #FA7E1E, #D62976, #962FBF, #4F5BD5, #FEDA75); display: grid; }
+.ig-st i b { border-radius: 50%; border: 2.5px solid #fff; display: grid; place-items: center; background: linear-gradient(135deg, #C7D3E8, #9AA9C7); color: #fff; font-size: 15px; font-weight: 700; }
+.ig-st.you i b { background: var(--grad-diag); }
+.ig-st small { font-size: 11px; color: #262626; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 58px; }
+.ig-view { position: relative; height: 446px; overflow: hidden; }
+.ig-track { transition: transform .8s cubic-bezier(.4, 0, .2, 1); }
+.ig-post { padding-top: 10px; }
+.ig-ph { display: flex; align-items: center; gap: 10px; padding: 0 4px 8px; }
+.ig-ph > div { flex: 1; min-width: 0; display: grid; line-height: 1.2; }
+.ig-ph b { font-size: 13.5px; font-weight: 600; }
+.ig-ph small { font-size: 11.5px; color: #737373; }
+.ig-av { width: 34px; height: 34px; flex: none; border-radius: 50%; padding: 2px; background: conic-gradient(from 210deg, #FEDA75, #FA7E1E, #D62976, #962FBF, #4F5BD5, #FEDA75); display: grid; }
+.ig-av b { border-radius: 50%; border: 2px solid #fff; display: grid; place-items: center; background: var(--grad-diag); color: #fff; font-size: 10.5px; font-weight: 700; }
+.ig-av.sm { width: 28px; height: 28px; }
+.ig-fol { font-size: 13px; font-weight: 600; color: #0095F6; }
+.ig-fol.on { color: #262626; }
+.ig-dots { font-size: 11px; letter-spacing: 1px; color: #262626; }
+.ig-img { display: grid; align-content: end; height: 230px; padding: 16px; color: #fff; background: radial-gradient(220px 160px at 80% 15%, rgba(114, 204, 216, .9), transparent 70%), linear-gradient(140deg, #3299D5, #282060); }
+.ig-img span { font-family: var(--font); font-weight: 700; font-size: 24px; line-height: 1.1; }
+.ig-img small { font-size: 12.5px; opacity: .9; }
+.ig-img--ad { height: 200px; background: radial-gradient(200px 150px at 15% 85%, rgba(114, 204, 216, .8), transparent 70%), linear-gradient(140deg, #282060, #174FA2); }
+.ig-cta { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: #0095F6; color: #fff; font-size: 14px; font-weight: 600; }
+.ig-cta.pulse { animation: igpulse .9s ease 2; }
+@keyframes igpulse { 50% { background: #36AEFF; } }
+.ig-act { display: flex; align-items: center; gap: 14px; padding: 10px 4px 6px; }
+.ig-act .igi { width: 24px; height: 24px; }
+.ig-save { margin-left: auto; }
+.ig-like { display: grid; }
+.ig-like > * { grid-area: 1 / 1; }
+.ig-heartfull { opacity: 0; transform: scale(.4); transition: transform .35s cubic-bezier(.3, 1.6, .5, 1), opacity .2s ease; }
+.ig-like.on .ig-heartfull { opacity: 1; transform: none; }
+.ig-send.pop .igi { animation: pop .5s ease; }
+.ig-likes, .ig-cap, .ig-meta { margin: 0; padding: 0 4px; font-size: 13px; line-height: 1.4; color: #000; }
+.ig-likes b, .ig-cap b { font-weight: 600; }
+.ig-cap { margin-top: 3px; }
+.ig-meta { margin-top: 3px; color: #737373; }
+.ig-toasts { position: absolute; left: 6px; right: 6px; bottom: 10px; display: grid; }
+.ig-toast { grid-area: 1 / 1; display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 14px; background: rgba(38, 38, 38, .94); color: #fff; font-size: 13px; box-shadow: 0 10px 24px -10px rgba(0, 0, 0, .6); opacity: 0; transform: translateY(12px); transition: opacity .3s ease, transform .3s ease; }
+.ig-toast span:not(.ig-av) { flex: 1; }
+.ig-toast .igi { width: 18px; height: 18px; flex: none; }
+.ig-toast .ig-heartfull { opacity: 1; transform: none; }
+.ig-toast.is-in { opacity: 1; transform: none; }
+@media (max-width: 767px) { .ig-view { height: 420px; } .ig-img { height: 190px; } .ig-img--ad { height: 170px; } }
 .scn .lead-in { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #F1F0F6; margin-bottom: 14px; }
 .scn .lead-in > div { flex: 1; min-width: 0; display: grid; }
 .scn .lead-in small { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--blue-ink); }
@@ -696,6 +718,18 @@ button { font: inherit; color: inherit; }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*SN-CSS*/
 /* ==========================================================================
    Shared site navigation (Elementor Pro: Nav Menu + Mega Menu)
@@ -764,14 +798,15 @@ button { font: inherit; color: inherit; }
   --navy-deep: #1C1648;
   --blue: #3299D5;            /* brand light blue */
   --blue-ink: #1F78B4;        /* light blue for small text on white (AA) */
-  --ink: #2A2546;             /* headings-adjacent dark text, tinted to the purple */
-  --body: #474462;            /* all running text on light backgrounds */
-  --muted: #6C6984;
+  --ink: #1C1B22;             /* body copy (near-black, per the type sheet) */
+  --body: #2F2E36;
+  --muted: #6B6A72;
   --tint: #EEF0F9;            /* light section background (alternates with white / geometric) */
-  --grad: linear-gradient(90deg, #7CD2D3 0%, #3299D5 50%, #2E4DA5 100%);
-  --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #3299D5 50%, #2E4DA5 100%);
-  --grad-text: linear-gradient(90deg, #3FB4DA 0%, #3299D5 35%, #2E4DA5 75%, #282060 100%);
-  --grad-primary: linear-gradient(120deg, #282060 0%, #2F2C7A 55%, #2E4DA5 100%);
+  --aqua: #72CCD8; --royal: #174FA2; --grey: #D9D8D7; --teal: #72CCD8; --mid: #3299D5;
+  --grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);          /* Linear Gradient 1 */
+  --grad-diag: linear-gradient(120deg, #72CCD8 0%, #174FA2 100%);
+  --grad-text: linear-gradient(90deg, #72CCD8 0%, #3299D5 45%, #174FA2 100%);
+  --grad-primary: linear-gradient(135deg, #2C1774 0%, #282060 55%, #24206E 100%);
   --grad-icon: linear-gradient(135deg, #3299D5 0%, #282060 100%);
   --shadow-btn: 0 14px 30px -12px rgba(40, 32, 96, .55);
 }
@@ -796,26 +831,50 @@ h1, h2, h3, h4 { color: var(--navy); }
 /* ---------- Buttons ----------
    Primary (.btn) = dark purple gradient · Secondary (.btn--sec) = the original light gradient
    · .btn--white on dark/gradient backgrounds. Same radius, weight and height everywhere. */
-.btn { border-radius: 12px; font-weight: 600; letter-spacing: .005em; color: var(--white); background: var(--grad-primary); background-size: 160% 100%; background-position: 0 0; text-shadow: none; box-shadow: var(--shadow-btn); }
-.btn:hover { background-position: 100% 0; color: var(--white); box-shadow: 0 18px 36px -12px rgba(40, 32, 96, .6); }
-.btn--sec, .header-cta, .final .btn--sec { background: var(--grad); background-size: 140% 100%; text-shadow: 0 1px 2px rgba(20, 30, 80, .3); box-shadow: 0 14px 30px -12px rgba(46, 77, 165, .5); }
-.btn--white, .btn--white:hover { background: var(--white); color: var(--navy); text-shadow: none; }
+.btn { border-radius: 10px; font-weight: 600; font-size: 18px; letter-spacing: .005em; color: var(--white); background: var(--grad-primary); background-size: 100% 100%; text-shadow: none; border: 2px solid #4AA6DC; box-shadow: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55); }
+.btn:hover { color: var(--white); background: linear-gradient(135deg, #34208A 0%, #2E2878 100%); box-shadow: 0 0 0 3px rgba(114, 204, 216, .35), 0 14px 28px -8px rgba(50, 153, 213, .65); }
+.btn--lg { font-size: clamp(19px, 1.6vw, 22px); }
+.btn--sec, .final .btn--sec { background: var(--grad); border-color: transparent; text-shadow: 0 1px 2px rgba(20, 30, 80, .3); box-shadow: 0 14px 30px -12px rgba(23, 79, 162, .5); }
+.btn--sec:hover { background: linear-gradient(90deg, #7AD4DF 0%, #1C5BB5 100%); }
+.btn--white, .btn--white:hover { background: var(--white); color: var(--navy); text-shadow: none; border-color: transparent; }
 .btn--white:hover { color: #2E4DA5; }
-.btn--ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy); }
+.btn--ghost { background: transparent; color: var(--navy); border-color: var(--navy); box-shadow: none; }
 .btn--ghost:hover { background: var(--navy); color: var(--white); }
 .on-dark .btn--ghost { color: var(--white); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .7); }
 .btn--lg { border-radius: 16px; }
 
 /* ---------- Header: dark purple, white logo and links ---------- */
-.site-header { background: radial-gradient(520px 160px at 88% 0%, rgba(50, 153, 213, .35), transparent 70%), var(--navy); }
-.site-header.is-scrolled { box-shadow: 0 12px 30px -16px rgba(16, 12, 48, .7); }
-.site-header .sn .sn-top { color: var(--white); }
+.site-header { background: var(--white); }
+.site-header.is-scrolled { box-shadow: 0 12px 30px -18px rgba(40, 32, 96, .45); }
+.site-header .sn .sn-top { color: var(--navy); font-weight: 500; }
 .site-header .sn .sn-top:hover, .site-header .sn .sn-top[aria-expanded="true"],
-.site-header .sn .sn-top.is-current, .site-header .sn .sn-top[aria-current="page"] { color: var(--white); border-bottom-color: #7CD2D3; }
+.site-header .sn .sn-top.is-current, .site-header .sn .sn-top[aria-current="page"] { color: var(--navy); border-bottom: 2px solid transparent; border-image: var(--grad) 1; }
 .site-header .sn .sn-top.is-current, .site-header .sn .sn-top[aria-current="page"] { font-weight: 600; }
-.site-header .menu-btn { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .25); color: var(--white); }
-.site-header .header-cta:focus-visible, .site-header a:focus-visible, .site-header button:focus-visible { outline-color: var(--white); }
 .stripe { background: var(--grad); }
+
+/* ---------- Dropdowns: About First Search + Grow Your Marketing ----------
+   White card; hovered / current item = light grey fill with a gradient curve on its left edge. */
+.sn-panel { border-radius: 28px; padding: 12px; box-shadow: 0 30px 60px -22px rgba(28, 22, 72, .45), 0 0 0 1px rgba(40, 32, 96, .05); }
+.sn .sn-item { position: relative; border: 0; border-left: 3px solid transparent; border-radius: 18px; padding: 14px 18px; background: transparent; transition: background .15s ease; }
+.sn .sn-item b { color: var(--navy); font-size: 18px; }
+.sn .sn-item span { color: var(--ink); font-family: var(--font); font-size: 14.5px; }
+.sn .sn-item:hover, .sn .sn-item[aria-current="page"] { background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; box-shadow: none; }
+
+/* ---------- What We Do mega panel: brand purple, sub-brand logos, gradient lines ---------- */
+.sn-mega { background: radial-gradient(520px 340px at 100% 100%, rgba(50, 153, 213, .35), transparent 70%), var(--navy); }
+.sn .sn-stage { border-bottom: 0; padding-bottom: 14px; margin-bottom: 12px; background: linear-gradient(90deg, #72CCD8, #174FA2) left bottom / 100% 3px no-repeat; }
+.sn .sn-stage .plogo { color: var(--white); }
+.sn .sn-stage .plogo b { color: #6CC4EE !important; }
+.sn .sn-stage small { color: rgba(255, 255, 255, .7); }
+.sn .sn-stage:hover .plogo { text-decoration: none; }
+.sn .sn-svc { position: relative; color: rgba(255, 255, 255, .9); border-left: 3px solid transparent; }
+.sn .sn-svc small { color: rgba(255, 255, 255, .6); }
+.sn .sn-svc:hover, .sn .sn-svc[aria-current="page"] { color: var(--white); background: linear-gradient(#3B3476, #3B3476) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; }
+.sn-cta { background: var(--grad); }
+.sn-cta .sn-k { color: var(--white); }
+.sn .sn-big { background: rgba(255, 255, 255, .14); }
+.sn .sn-big:hover, .sn .sn-big[aria-current="page"] { background: rgba(255, 255, 255, .26); }
+
 
 /* ---------- Pillar logos (same lockup as the framework graphic) ---------- */
 .plogo { display: inline-flex; align-items: baseline; font-family: var(--font); font-weight: 800; letter-spacing: -0.03em; line-height: 1; text-transform: lowercase; color: #282060; white-space: nowrap; font-size: 1em; }
@@ -831,7 +890,6 @@ h1, h2, h3, h4 { color: var(--navy); }
 .sn .sn-stage .plogo b, .sn-mcols .sn-stage .plogo b { display: inline; font-size: inherit; font-weight: 800; color: #3299D5; }
 .sn .sn-stage { flex-direction: column; align-items: flex-start; gap: 4px; }
 .sn .sn-stage i { display: none; }
-.sn .sn-stage:hover .plogo { text-decoration: underline; text-decoration-color: #7CD2D3; text-decoration-thickness: 3px; text-underline-offset: 6px; }
 .sn-mcols .sn-stage .plogo { font-size: 19px; }
 
 /* Framework explorer: logos under the wheel and as the panel tag */
@@ -853,7 +911,7 @@ h1, h2, h3, h4 { color: var(--navy); }
 
 /* ---------- Video block (hero media on inner pages) ----------
    Elementor: Video widget inside the gradient-frame container; poster = custom image overlay. */
-.vid { --bw: 16px; --r: 64px; position: relative; width: 100%; align-self: center; }
+.vid { --bw: 6px; --r: 48px; position: relative; width: 100%; align-self: center; }
 .vid .gcard__in { overflow: hidden; padding: 0; }
 .vid-btn { position: relative; display: block; width: 100%; aspect-ratio: 16 / 11; padding: 0; border: 0; cursor: pointer; overflow: hidden;
   background: radial-gradient(70% 60% at 50% 105%, rgba(50, 153, 213, .9), transparent 70%), radial-gradient(60% 50% at 0% 0%, rgba(124, 210, 211, .35), transparent 70%), var(--navy); }
@@ -940,7 +998,7 @@ h1, h2, h3, h4 { color: var(--navy); }
   .ft-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 767px) {
-  .vid { --bw: 10px; --r: 40px; }
+  .vid { --bw: 5px; --r: 34px; }
   .vid-play { width: 72px; height: 72px; margin: -36px 0 0 -36px; }
   .vid-cap b { font-size: 13.5px; }
   .ft-cols { grid-template-columns: minmax(0, 1fr); }
@@ -987,7 +1045,7 @@ h1, h2, h3, h4 { color: var(--navy); }
 .wt-diy .diy-logos img { height: 60px; width: auto; }
 .wt-diy h3 { font-weight: 700; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.1; }
 .wt-diy > p { font-size: 17.5px; color: var(--body); }
-.wt-diy .vid { --bw: 12px; --r: 44px; margin-top: 6px; }
+.wt-diy .vid { --bw: 5px; --r: 36px; margin-top: 6px; }
 .wt-list { display: grid; margin: 0; padding: 0; list-style: none; }
 .wt-res { display: grid; grid-template-columns: 92px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); }
 .wt-res:first-child { padding-top: 0; }
@@ -1011,9 +1069,101 @@ h1, h2, h3, h4 { color: var(--navy); }
   .wt-price { grid-column: 2; justify-self: start; order: -1; }
   .wt-foot .btn { width: 100%; }
 }
+/* ==========================================================================
+   TYPE SYSTEM (round 3 type sheets) — web sizes scaled from the design canvas
+   Hero:      Sub1 (eyebrow) Poppins 600 sky · H1 Poppins 700 navy, 2nd line Linear Gradient 1, aqua rule
+              · body Poppins 400 near-black · CTA Poppins 600 on the purple button · CTA 2 italic underlined link
+   White:     Sub1 sky · Display (H2) Poppins 700 navy or gradient · body near-black · Number Poppins 700
+   Coloured:  Display + body white, button purple
+   ========================================================================== */
+.eyebrow { font-family: var(--font); font-size: clamp(16px, 1.35vw, 20px); font-weight: 600; letter-spacing: 0; color: #3299D5; }
+.on-dark .eyebrow, .navy-card .eyebrow, .fw-block .eyebrow { color: #72CCD8; }
+.stats .eyebrow { color: var(--white); }
+.hero h1, h1.h1, .dhero h1 { font-weight: 700; font-size: clamp(40px, 5vw, 72px); line-height: 1.04; letter-spacing: -0.025em; color: var(--navy); }
+.hero h1::after, h1.h1::after { content: ""; display: block; width: clamp(96px, 10vw, 140px); height: 4px; margin-top: clamp(18px, 2vw, 26px); border-radius: 2px; background: #72CCD8; }
+.hero-lead, .lede { font-size: clamp(17px, 1.45vw, 20px); line-height: 1.55; font-weight: 400; color: var(--ink); }
+.h2, .sec-head .h2, .faq-head .h2 { font-weight: 700; font-size: clamp(32px, 3.6vw, 52px); line-height: 1.08; letter-spacing: -0.02em; }
+.lead, .how-sub, .ways-sub, .ways2-head .lead { font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; color: var(--ink); }
+.on-dark .lead, .on-dark .how-sub { color: rgba(255, 255, 255, .9); }
+.fw-block .h2, .fw-head .h2, .man-copy .h2, .how .h2, .here-sec .h2, .rel-sec .h2 { color: var(--white); }
+.final h2 { font-weight: 700; font-size: clamp(36px, 4.6vw, 66px); line-height: 1.04; color: var(--white); text-shadow: none; }
+.final p { font-size: clamp(16px, 1.3vw, 18px); color: rgba(255, 255, 255, .95); }
+.final .btn--white { background: var(--grad-primary); color: var(--white); border: 2px solid #4AA6DC; }
+.stat-num, .trust-num { font-weight: 700; letter-spacing: -0.03em; }
+.link-u { font-family: var(--font); font-style: italic; font-weight: 500; color: var(--navy); text-decoration: underline; text-decoration-color: #72CCD8; text-decoration-thickness: 2px; text-underline-offset: 7px; }
+.on-dark .link-u { color: var(--white); }
+.btn { font-family: var(--font); }
+.wt-tabs--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.wt-img--ico { background: var(--grad-diag); color: var(--white); }
+.wt-img--ico .icon { width: 40px; height: 40px; }
+.wt-coach-price { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+.wt-coach-price > div { padding: 16px 18px; border-radius: 18px; background: var(--tint); }
+.wt-coach-price > div:last-child { background: var(--navy); color: var(--white); }
+.wt-coach-price b { font-weight: 800; font-size: 34px; color: var(--navy); }
+.wt-coach-price > div:last-child b { color: var(--white); }
+.wt-coach-price span { font-size: 15px; color: var(--muted); }
+.wt-coach-price > div:last-child span, .wt-coach-price > div:last-child small { color: rgba(255, 255, 255, .8); }
+.wt-coach-price small { display: block; font-family: var(--font-ui); font-size: 13.5px; color: var(--body); }
+.wt-coach { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.wt-coach li { display: flex; gap: 10px; font-size: 16px; color: var(--ink); }
+.wt-coach .icon { width: 19px; height: 19px; flex: none; margin-top: 3px; }
+@media (max-width: 900px) { .wt-tabs--3 { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .wt-coach-price { grid-template-columns: 1fr; } }
+/* ---------- FirstSearch Guarantee (condensed) ---------- */
+.guar2 { padding-top: clamp(60px, 7vw, 100px); }
+.guar2-grid { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: end; }
+.guar2-photo { position: relative; align-self: end; }
+.guar2-photo img { display: block; width: 100%; max-width: 380px; height: auto; margin: 0 auto; }
+.guar2-quote { position: absolute; left: -12px; right: 18%; bottom: 22%; margin: 0; padding: 16px 18px; border-radius: 18px; background: rgba(255, 255, 255, .72); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: 0 14px 30px -18px rgba(28, 22, 72, .5); font-style: italic; font-size: 15px; line-height: 1.45; color: var(--navy); }
+.guar2-quote cite { display: block; margin-top: 8px; font-style: normal; font-family: var(--font-ui); font-size: 12.5px; color: var(--muted); }
+.guar2-copy { padding-bottom: clamp(40px, 5vw, 70px); }
+.guar2-title { display: flex; align-items: center; gap: clamp(16px, 2vw, 28px); margin-bottom: 18px; }
+.guar2-title img { width: clamp(86px, 9vw, 128px); height: auto; flex: none; }
+.guar2-title h2 { font-weight: 700; font-size: clamp(32px, 3.8vw, 54px); line-height: 1.06; letter-spacing: -0.02em; color: var(--navy); }
+.guar2-lead { max-width: 60ch; margin-bottom: 22px; font-size: clamp(16px, 1.3vw, 18px); color: var(--ink); }
+.guar2-pills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; max-width: 760px; margin: 0; padding: 0; list-style: none; }
+.guar2-pills li, .guar2-pills button { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 12px 18px; border-radius: 10px; background: var(--navy); color: var(--white); font-family: var(--font); font-style: italic; font-weight: 500; font-size: 16px; line-height: 1.3; box-shadow: 0 12px 24px -14px rgba(28, 22, 72, .7); }
+.guar2-pills li:has(button) { padding: 0; background: none; box-shadow: none; }
+.guar2-pills button { width: 100%; border: 0; text-align: left; cursor: pointer; background: linear-gradient(135deg, #2C1774, #282060); box-shadow: 0 0 0 2px #4AA6DC inset, 0 12px 24px -14px rgba(28, 22, 72, .7); text-decoration: underline; text-decoration-color: #72CCD8; text-underline-offset: 4px; }
+.guar2-pills button:hover { background: #34208A; }
+.g2-ck { width: 26px; height: 26px; flex: none; border-radius: 50%; display: grid; place-items: center; background: #3299D5; color: var(--white); }
+.g2-ck svg { width: 16px; height: 16px; }
+@media (max-width: 900px) {
+  .guar2-grid { grid-template-columns: minmax(0, 1fr); }
+  .guar2-photo { order: 2; max-width: 360px; margin: 0 auto; }
+  .guar2-copy { padding-bottom: 10px; }
+}
+@media (max-width: 600px) { .guar2-pills { grid-template-columns: minmax(0, 1fr); } .guar2-title h2 br { display: none; } }
+
+/* ---------- Case study (new mockup) + two testimonials ---------- */
+.cases2 { padding-block: clamp(80px, 8vw, 120px); }
+.case2-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.case2-grid > * { min-width: 0; }
+.case2 { border-radius: 32px; background: var(--navy); padding: 16px 16px 30px; box-shadow: 0 30px 60px -30px rgba(28, 22, 72, .7); }
+.case2-photo { border-radius: 24px; padding: 4px; background: var(--grad-diag); }
+.case2-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1400 / 700; object-fit: cover; border-radius: 20px; }
+.case2-body { padding: 26px clamp(14px, 2.4vw, 30px) 0; }
+.case2-client { font-weight: 600; font-size: clamp(16px, 1.4vw, 20px); color: #3299D5; }
+.case2-body h3 { margin: 10px 0 24px; font-weight: 700; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.12; color: var(--white); }
+.case2-tbl { border-radius: 22px; padding: 4px; background: var(--grad-diag); }
+.case2-tbl table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--white); border-radius: 18px; overflow: hidden; color: var(--navy); }
+.case2-tbl th, .case2-tbl td { padding: 12px 16px; text-align: left; vertical-align: middle; border-bottom: 1px solid #C8D4EE; }
+.case2-tbl thead th { padding-block: 14px 10px; font-family: var(--font-ui); font-weight: 500; font-size: 14px; color: var(--ink); border-bottom-color: var(--navy); }
+.case2-tbl tbody tr:last-child th, .case2-tbl tbody tr:last-child td { border-bottom: 0; }
+.case2-tbl tbody th { font-weight: 500; font-size: clamp(16px, 1.6vw, 22px); color: var(--navy); }
+.case2-tbl td.b, .case2-tbl td.a { width: 74px; text-align: center; font-weight: 600; font-size: 17px; }
+.case2-tbl td.b { background: #E9E8EC; }
+.case2-tbl td.a { background: linear-gradient(180deg, #D7EEF3, #BFD3EE); color: var(--navy); }
+.case2-tbl td.ar { width: 44px; text-align: center; font-size: 20px; color: var(--ink); }
+.case2-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: 22px; }
+.case2-foot blockquote { margin: 0; font-style: italic; font-size: 16px; color: rgba(255, 255, 255, .9); max-width: 46ch; }
+.cases2 .reviews { display: grid; gap: 22px; }
+@media (max-width: 1024px) { .case2-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .case2-tbl th, .case2-tbl td { padding: 10px 10px; } .case2-tbl td.b, .case2-tbl td.a { width: 52px; } .case2-tbl td.ar { width: 26px; } }
 /*/THEME-CSS*/
 
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -1055,7 +1205,7 @@ h1, h2, h3, h4 { color: var(--navy); }
      ========================================================================= -->
 <header class="site-header" id="site-header">
   <div class="e-con header-row">
-    <a class="logo" href="rebrand-homepage.html" aria-label="First Search Marketing home"><img src="assets/img/logo-white.png" alt="First Search Marketing" width="576" height="196"></a>
+    <a class="logo" href="rebrand-homepage.html" aria-label="First Search Marketing home"><img src="assets/img/logo.png" alt="First Search Marketing" width="576" height="196"></a>
     <nav class="nav sn" aria-label="Primary">
       <ul class="sn-list">
         <li class="sn-dd"><button type="button" class="sn-top" aria-expanded="false" aria-controls="sn-about">About First Search<svg class="sn-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -1143,18 +1293,31 @@ h1, h2, h3, h4 { color: var(--navy); }
           </div>
         </div>
         </div>
-        <div class="scn scn-social" aria-hidden="true">
-          <article class="post res">
-            <div class="post-h"><span class="pav">YB</span><div><b>Your Business</b><small>2h · Exeter, NH</small></div><span class="fol">+ Follow</span></div>
-            <p class="post-t">Fall tune-up season is here. Book before Nov 1 and we'll check your whole system for free.</p>
-            <div class="post-img"><span>Free system check</span><small>This month only</small></div>
-            <div class="post-a"><span class="lk"><svg class="icon"><use href="#i-heart"/></svg><b data-c="likes">128</b></span><span><svg class="icon"><use href="#i-chat"/></svg>24</span><span><svg class="icon"><use href="#i-share"/></svg><b data-c="shares">9</b></span><em class="tag-o">Organic</em></div>
-          </article>
-          <article class="post post--ad res">
-            <div class="post-h"><span class="pav">YB</span><div><b>Your Business</b><small>Sponsored</small></div><em class="tag-p">Paid</em></div>
-            <div class="ad-row"><div class="ad-img"></div><div><b>Same-day repairs, upfront pricing</b><small>yourbusiness.com</small></div><span class="ad-cta">Book now</span></div>
-          </article>
-          <div class="notes"><div class="note"><svg class="icon"><use href="#i-heart"/></svg><span><b>Megan R.</b> liked your post</span></div><div class="note"><svg class="icon"><use href="#i-users"/></svg><span><b>Dave P.</b> started following you</span></div><div class="note"><svg class="icon"><use href="#i-share"/></svg><span><b>Lisa K.</b> shared your post</span></div></div>
+        <div class="scn scn-social ig" aria-hidden="true" data-noswap>
+          <div class="ig-top"><span class="ig-logo">Instagram</span><span class="ig-tico"><svg class="igi " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/></svg><svg class="igi " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z"/></svg><svg class="igi " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3 10.2 14.3M21.5 3 15 21l-4.8-6.7L3 9.6Z"/></svg></span></div>
+          <div class="ig-stories"><span class="ig-st you"><i><b>YB</b></i><small>Your story</small></span><span class="ig-st"><i><b>M</b></i><small>megan_r</small></span><span class="ig-st"><i><b>D</b></i><small>dave.p</small></span><span class="ig-st"><i><b>L</b></i><small>lisa.k</small></span><span class="ig-st"><i><b>S</b></i><small>seacoast</small></span></div>
+          <div class="ig-view"><div class="ig-track">
+            <article class="ig-post">
+              <div class="ig-ph"><span class="ig-av"><b>YB</b></span><div><b>yourbusiness</b><small>Exeter, New Hampshire</small></div><span class="ig-fol" data-c="follow">Follow</span><span class="ig-dots">•••</span></div>
+              <div class="ig-img"><span>Free system check</span><small>Book before Nov 1</small></div>
+              
+              <div class="ig-act"><span class="ig-like" data-c="like"><svg class="igi " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z"/></svg><svg class="igi ig-heartfull" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF3040" d="M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z"/></svg></span><svg class="igi " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 12a8.6 8.6 0 0 1-12.7 7.6L3.4 21l1.4-4.4A8.6 8.6 0 1 1 20.6 12Z"/></svg><span class="ig-send" data-c="send"><svg class="igi " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3 10.2 14.3M21.5 3 15 21l-4.8-6.7L3 9.6Z"/></svg></span><svg class="igi ig-save" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21 12 16l-7 5V4.5A1.5 1.5 0 0 1 6.5 3h11A1.5 1.5 0 0 1 19 4.5Z"/></svg></div>
+              <p class="ig-likes">Liked by <b>megan_r</b> and <b data-c="likes">128</b> others</p>
+              <p class="ig-cap"><b>yourbusiness</b> Fall tune-up season is here. Book before Nov 1 and we'll check your whole system for free.</p>
+              <p class="ig-meta">View all 24 comments · 2 hours ago</p>
+            </article>
+            <article class="ig-post ig-ad">
+              <div class="ig-ph"><span class="ig-av"><b>YB</b></span><div><b>yourbusiness</b><small>Sponsored</small></div><span class="ig-dots">•••</span></div>
+              <div class="ig-img ig-img--ad"><span>Same-day repairs.<br>Upfront pricing.</span><small>Serving the Seacoast since [2012]</small></div>
+              <div class="ig-cta"><span>Book now</span><span aria-hidden="true">›</span></div>
+              <div class="ig-act"><span class="ig-like"><svg class="igi " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z"/></svg><svg class="igi ig-heartfull" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF3040" d="M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z"/></svg></span><svg class="igi " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 12a8.6 8.6 0 0 1-12.7 7.6L3.4 21l1.4-4.4A8.6 8.6 0 1 1 20.6 12Z"/></svg><span class="ig-send"><svg class="igi " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3 10.2 14.3M21.5 3 15 21l-4.8-6.7L3 9.6Z"/></svg></span><svg class="igi ig-save" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21 12 16l-7 5V4.5A1.5 1.5 0 0 1 6.5 3h11A1.5 1.5 0 0 1 19 4.5Z"/></svg></div>
+              <p class="ig-likes">Liked by <b>megan_r</b> and <b>312</b> others</p>
+              <p class="ig-cap"><b>yourbusiness</b> Furnace acting up? We'll be there today, with the price upfront. Tap Book now.</p>
+              
+            </article>
+          </div>
+            <div class="ig-toasts"><div class="ig-toast"><span class="ig-av sm"><b>M</b></span><span><b>megan_r</b> liked your post.</span><svg class="igi ig-heartfull" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF3040" d="M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z"/></svg></div><div class="ig-toast"><span class="ig-av sm"><b>D</b></span><span><b>dave.p</b> started following you.</span></div><div class="ig-toast"><span class="ig-av sm"><b>L</b></span><span><b>lisa.k</b> shared your post to their story.</span></div><div class="ig-toast"><span class="ig-av sm"><b>3</b></span><span><b>3 people</b> tapped <b>Book now</b> on your ad.</span></div></div>
+          </div>
         </div>
         <div class="scn scn-auto" aria-hidden="true">
           <div class="lead-in res"><span class="pav">S</span><div><small>New lead · Website form</small><b>Sarah M.</b><span>"Do you have any openings next week?"</span></div><em>Just now</em></div>
@@ -1281,27 +1444,22 @@ h1, h2, h3, h4 { color: var(--navy); }
      Right: Image (Chris cutout, flush to bottom)
      Then STATS: Container (gradient bg) → 4 × Counter widget, dividers
      ========================================================================= -->
-<section class="guarantee bg-geo" id="why-us" aria-labelledby="g-title">
-  <div class="e-con g-grid">
-    <div class="g-copy">
-      <div class="g-title">
-        <img src="assets/img/design/guarantee-seal.webp" alt="FirstSearch Guarantee: results in writing" width="481" height="479">
-        <h2 id="g-title">Results, guaranteed. In writing.</h2>
-      </div>
-      <p class="g-lead">You've heard big promises from agencies before. Here's ours: if we don't deliver <span class="ph">the lead growth we commit to in your roadmap</span>, <span class="ph">we keep working at no cost until we do</span>.</p>
-      <ul class="terms">
-        <li class="term"><b>Fixed monthly retainer.</b> No surprise invoices.</li>
-        <li class="term"><b>Six-month partnership.</b> Enough time to build something that compounds.</li>
-        <li class="term"><b>Guaranteed results.</b> Defined up front, measured monthly.</li>
-      </ul>
-      <button class="link-u" type="button" id="open-terms" aria-haspopup="dialog">Read the full guarantee terms.</button>
-    </div>
-    <div class="g-photo">
+<!--GUAR--><section class="guar2 bg-geo" id="guarantee" aria-labelledby="g-title">
+  <div class="e-con guar2-grid">
+    <div class="guar2-photo">
       <img src="assets/img/design/chris-cutout.webp" alt="Chris Mitchell, Owner and Digital Partner" width="765" height="867">
-      <blockquote class="quote-chip"><span class="ph">"I put our guarantee in writing because our clients deserve to know we're as invested in their results as they are."</span><cite>Chris Mitchell, Owner &amp; Digital Partner</cite></blockquote>
+      <blockquote class="guar2-quote"><span class="ph">"I put our guarantee in writing because our clients deserve to know we're as invested in their results as they are."</span><cite>Chris Mitchell, Owner &amp; Digital Partner</cite></blockquote>
+    </div>
+    <div class="guar2-copy">
+      <div class="guar2-title">
+        <img src="assets/img/design/guarantee-seal.webp" alt="FirstSearch Guarantee: results in writing" width="481" height="479">
+        <h2 id="g-title">Results, guaranteed.<br>In writing.</h2>
+      </div>
+      <p class="guar2-lead">If we don't deliver <span class="ph">the lead growth we commit to in your roadmap</span>, <span class="ph">we keep working at no cost until we do</span>.</p>
+      <ul class="guar2-pills"><li><span class="g2-ck" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 12.5 4 4L18 8.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Fixed monthly retainer. No surprise invoices.</span></li><li><span class="g2-ck" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 12.5 4 4L18 8.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Six-month partnership, not a long lock-in.</span></li><li><span class="g2-ck" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 12.5 4 4L18 8.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Results defined up front, measured monthly.</span></li><li><button type="button" id="open-terms" aria-haspopup="dialog"><span class="g2-ck" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 12.5 4 4L18 8.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Read the full guarantee terms.</span></button></li></ul>
     </div>
   </div>
-</section>
+</section><!--/GUAR-->
 
 <section class="stats on-dark" aria-label="Results by the numbers" id="stats">
   <div class="e-con stats-row">
@@ -1317,41 +1475,27 @@ h1, h2, h3, h4 { color: var(--navy); }
      Left: Container (navy, radius 40) → Image (photo breaks out above via negative margin) · Headings · 3 × Counter/Text
      Right: 2 × gradient-border card → Testimonial / Text Editor (or Reviews widget)
      ========================================================================= -->
-<section class="cases bg-geo" aria-labelledby="case-title">
-  <div class="e-con case-grid">
-    <article class="case on-dark">
-      <div class="case-photo"><img src="assets/img/design/case-dental.webp" alt="A dentist treating a patient, with the practice's 4.9-star Google profile overlaid" width="1400" height="830"></div>
-      <div class="case-body">
-        <p class="case-client"><span class="ph">Client name</span> · <span class="ph">Industry, NH town</span></p>
+<!--CASE:home--><section class="cases2 bg-geo" aria-labelledby="case-title">
+  <div class="e-con case2-grid">
+    <article class="case2">
+      <div class="case2-photo"><img src="assets/img/design/case-dental.webp" alt="A dentist treating a patient, with the practice's 4.9-star Google profile overlaid" width="1400" height="830" loading="lazy"></div>
+      <div class="case2-body on-dark">
+        <p class="case2-client"><span class="ph">Client name</span> · <span class="ph">Industry, NH town</span></p>
         <h3 id="case-title"><span class="ph">From invisible on Google to booked out three weeks ahead</span></h3>
-        <div class="metrics">
-          <div class="metric"><div class="metric-num"><span class="ph">12</span><svg class="ar" aria-label="to"><use href="#i-arrow"/></svg><span class="ph">41</span></div><div class="metric-label">Monthly leads</div></div>
-          <div class="metric"><div class="metric-num"><span class="ph">#9</span><svg class="ar" aria-label="to"><use href="#i-arrow"/></svg><span class="ph">#1</span></div><div class="metric-label">Map pack position</div></div>
-          <div class="metric"><div class="metric-num"><span class="ph">18</span><svg class="ar" aria-label="to"><use href="#i-arrow"/></svg><span class="ph">112</span></div><div class="metric-label">Google reviews</div></div>
-        </div>
-        <div class="case-foot">
-          <blockquote class="case-quote"><span class="ph">"We stopped wondering where the next job was coming from."</span></blockquote>
-          <a class="link-u" href="#" data-ph-link="case study page">Read the full story</a>
-        </div>
+        <div class="case2-tbl"><table>
+          <thead><tr><th scope="col">Metrics</th><th scope="col">Before</th><th aria-hidden="true"></th><th scope="col">After</th></tr></thead>
+          <tbody id="case-metrics"><tr><th scope="row">Monthly leads</th><td class="b"><span class="ph">12</span></td><td class="ar"><span aria-label="to">&rarr;</span></td><td class="a"><span class="ph">41</span></td></tr><tr><th scope="row">Map pack position</th><td class="b"><span class="ph">#9</span></td><td class="ar"><span aria-label="to">&rarr;</span></td><td class="a"><span class="ph">#1</span></td></tr><tr><th scope="row">Google reviews</th><td class="b"><span class="ph">18</span></td><td class="ar"><span aria-label="to">&rarr;</span></td><td class="a"><span class="ph">112</span></td></tr></tbody>
+        </table></div>
+        <div class="case2-foot"><blockquote><span class="ph">"We stopped wondering where the next job was coming from."</span></blockquote><a class="link-u" href="#" data-ph-link="case study page">Read the full story</a></div>
       </div>
     </article>
-
     <div class="reviews">
-      <figure class="gcard review"><div class="gcard__in">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>"We contacted Chris at First Search after a bad experience with a national brand company. He was able to fix our website and get our Google profile up and running. Chris and his team are very professional and always did what was right for our success."</blockquote>
-        <figcaption class="review-by"><b>Steven McGibbon</b> · <svg class="icon" aria-hidden="true"><use href="#i-google"/></svg>Posted on Google</figcaption>
-        <p class="ph-note">Light edit: original says "bar experience". Get client OK or quote verbatim.</p>
-      </div></figure>
-      <figure class="gcard review"><div class="gcard__in">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>"My business partner and I have been working with First Search for about six months and we were starting pretty much from ground zero with our marketing. We didn't really even know where to start but the whole process has been easy and approachable and we couldn't be happier with the results thus far."</blockquote>
-        <figcaption class="review-by"><b>Patrick Wilson</b> · <svg class="icon" aria-hidden="true"><use href="#i-google"/></svg>Posted on Google</figcaption>
-      </div></figure>
+      <figure class="gcard review"><div class="gcard__in"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>"We contacted Chris at First Search after a bad experience with a national brand company. He was able to fix our website and get our Google profile up and running. Chris and his team are very professional and always did what was right for our success."</blockquote><figcaption class="review-by"><b>Steven McGibbon</b> · <svg class="icon" aria-hidden="true"><use href="#i-google"/></svg>Posted on Google</figcaption></div></figure>
+      <figure class="gcard review"><div class="gcard__in"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>"My business partner and I have been working with First Search for about six months and we were starting pretty much from ground zero with our marketing. We didn't really even know where to start but the whole process has been easy and approachable and we couldn't be happier with the results thus far."</blockquote><figcaption class="review-by"><b>Patrick Wilson</b> · <svg class="icon" aria-hidden="true"><use href="#i-google"/></svg>Posted on Google</figcaption></div></figure>
       <a class="link-u" href="#" data-ph-link="Google reviews">Read all <span class="ph">XX</span> Google reviews</a>
     </div>
   </div>
-</section>
+</section><!--/CASE-->
 
 <!-- =========================================================================
      7. HOW IT WORKS  ·  Container (navy + radial glow) → Heading · 4 × gradient-border card
@@ -1395,11 +1539,8 @@ h1, h2, h3, h4 { color: var(--navy); }
      ========================================================================= -->
 <!--WAYS--><section class="ways2 bg-geo" id="work-with-us" aria-labelledby="ways-title">
   <div class="e-con">
-    <div class="ways2-head"><span class="eyebrow">Work with us</span><h2 class="h2" id="ways-title">Two ways to become a FirstSearcher</h2><p class="lead">Work with our team, or take our system and run it yourself.</p></div>
-    <div class="wt-tabs" role="tablist" aria-label="Ways to work with us">
-      <button type="button" role="tab" id="wt-t1" aria-controls="wt-p1" aria-selected="true"><i>1</i><span><b>Partner with our team</b><small>We build and run it for you, results guaranteed</small></span></button>
-      <button type="button" role="tab" id="wt-t2" aria-controls="wt-p2" aria-selected="false" tabindex="-1"><i>2</i><span><b>Do it yourself</b><small>BeFirst Academy: learn the system, run it yourself</small></span></button>
-    </div>
+    <div class="ways2-head"><span class="eyebrow">Work with us</span><h2 class="h2" id="ways-title">Three ways to become a FirstSearcher</h2><p class="lead">Work with our team, learn the system yourself, or get guided by us while you do the work.</p></div>
+    <div class="wt-tabs wt-tabs--3" role="tablist" aria-label="Ways to work with us"><button type="button" role="tab" id="wt-t1" aria-controls="wt-p1" aria-selected="true"><i>1</i><span><b>Partner with our team</b><small>We build and run it for you, results guaranteed</small></span></button><button type="button" role="tab" id="wt-t2" aria-controls="wt-p2" aria-selected="false" tabindex="-1"><i>2</i><span><b>Do it yourself</b><small>BeFirst Academy: learn the system at your pace</small></span></button><button type="button" role="tab" id="wt-t3" aria-controls="wt-p3" aria-selected="false" tabindex="-1"><i>3</i><span><b>Get guided by us</b><small>1:1 coaching while you do the work</small></span></button></div>
     <div class="wt-panel" role="tabpanel" id="wt-p1" aria-labelledby="wt-t1" tabindex="0">
       <div class="partner on-dark wt-partner">
         <div class="partner-team"><img src="assets/img/design/team-group.webp" alt="The First Search Marketing team" width="1300" height="645"></div>
@@ -1421,15 +1562,29 @@ h1, h2, h3, h4 { color: var(--navy); }
     </div>
     <div class="wt-panel" role="tabpanel" id="wt-p2" aria-labelledby="wt-t2" tabindex="0" hidden>
       <div class="wt-diy">
-        <div class="diy-logos"><img src="assets/img/design/befirst-training.png" alt="BeFirst Marketing Training" width="549" height="222" loading="lazy"><img src="assets/img/design/befirst-coaching.png" alt="BeFirst Marketing Coaching" width="498" height="199" loading="lazy"></div>
+        <div class="diy-logos"><img src="assets/img/design/befirst-training.png" alt="BeFirst Marketing Training" width="549" height="222" loading="lazy"></div>
         <h3>Learn the system. Run it yourself.</h3>
-        <p>The same framework we use with our partners, packaged so you can implement it at your own pace. Start with an $8 workbook or get coached through every step.</p>
+        <p>The same framework we use with our partners, packaged so you can implement it at your own pace. Start with an $8 workbook, or get everything in the Community.</p>
         <div class="gcard vid"><div class="gcard__in"><button type="button" class="vid-btn" aria-label="Play video: Inside BeFirst Academy: how the DIY path works"><img class=cover src="assets/img/design/course-mockup.webp" alt=""><span class="vid-tag"><i></i>Video</span><span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></svg></span><span class="vid-cap"><b>Inside BeFirst Academy: how the DIY path works</b><span class="ph">[3:10]</span></span></button></div></div>
       </div>
       <div class="gcard wt-card"><div class="gcard__in">
         <h3>Your DIY resources</h3>
-        <ul class="wt-list"><li class="wt-res"><span class="wt-img"><img src="assets/img/design/blueprint-book.webp" alt="" loading="lazy"></span><div><h4>The FirstSearch Blueprint</h4><p>The exact SOPs, worksheets and checklists we use with every client.</p><a class="link-u" href="#" data-ph-link="Blueprint checkout">Get the Blueprint</a></div><b class="wt-price"><span class="ph">$8</span></b></li><li class="wt-res"><span class="wt-img"><img src="assets/img/design/course-mockup.webp" alt="" loading="lazy"></span><div><h4>BeFirst Online Course</h4><p>A founder-led video walkthrough of the entire framework, one stage at a time.</p><a class="link-u" href="#" data-ph-link="course page">Explore the course</a></div><b class="wt-price"><span class="ph">[$XX]</span></b></li><li class="wt-res"><span class="wt-img"><img src="assets/img/design/befirst-training.png" alt="" loading="lazy"></span><div><h4>BeFirst Community</h4><p>The course, Blueprint, live webinars and weekly content, all in one membership.</p><a class="link-u" href="#" data-ph-link="Community checkout">Join the Community</a></div><b class="wt-price"><span class="ph">$88/mo</span></b></li><li class="wt-res"><span class="wt-img wt-img--coach"><img src="assets/img/design/chris-cutout.webp" alt="" loading="lazy"></span><div><h4>1:1 Coaching</h4><p>You implement; we coach you through it with strategy sessions built around your business.</p><a class="link-u" href="#" data-ph-link="coaching page">Learn about coaching</a></div><b class="wt-price"><span class="ph">From $500/mo</span></b></li></ul>
-        <p class="wt-more">Prefer to learn live? <a href="events-resources.html">See upcoming trainings and webinars</a> or <a href="ways-to-learn.html">compare every option in BeFirst Academy</a>.</p>
+        <ul class="wt-list"><li class="wt-res"><span class="wt-img"><img src="assets/img/design/blueprint-book.webp" alt="" loading="lazy"></span><div><h4>The FirstSearch Blueprint</h4><p>The exact SOPs, worksheets and checklists we use with every client.</p><a class="link-u" href="#" data-ph-link="Blueprint checkout">Get the Blueprint</a></div><b class="wt-price"><span class="ph">$8</span></b></li><li class="wt-res"><span class="wt-img"><img src="assets/img/design/course-mockup.webp" alt="" loading="lazy"></span><div><h4>BeFirst Online Course</h4><p>A founder-led video walkthrough of the entire framework, one stage at a time.</p><a class="link-u" href="#" data-ph-link="course page">Explore the course</a></div><b class="wt-price"><span class="ph">[$XX]</span></b></li><li class="wt-res"><span class="wt-img"><img src="assets/img/design/befirst-training.png" alt="" loading="lazy"></span><div><h4>BeFirst Community</h4><p>The course, Blueprint, live webinars and weekly content, all in one membership.</p><a class="link-u" href="#" data-ph-link="Community checkout">Join the Community</a></div><b class="wt-price"><span class="ph">$88/mo</span></b></li><li class="wt-res"><span class="wt-img wt-img--ico"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><div><h4>Live trainings and webinars</h4><p>Hands-on workshops, online and in Exeter, on every stage of the framework.</p><a class="link-u" href="events-resources.html">See upcoming events</a></div><b class="wt-price"><span class="ph">[Free to $XX]</span></b></li></ul>
+        <p class="wt-more">Not sure where to start? <a href="ways-to-learn.html">Compare every option in BeFirst Academy</a>.</p>
+      </div></div>
+    </div>
+    <div class="wt-panel" role="tabpanel" id="wt-p3" aria-labelledby="wt-t3" tabindex="0" hidden>
+      <div class="wt-diy">
+        <div class="diy-logos"><img src="assets/img/design/befirst-coaching.png" alt="BeFirst Marketing Coaching" width="498" height="199" loading="lazy"></div>
+        <h3>You do the work. We guide every step.</h3>
+        <p>1:1 strategy sessions with our team, built entirely around your business. You implement; we bring the plan, the expertise and the accountability.</p>
+        <div class="gcard vid"><div class="gcard__in"><button type="button" class="vid-btn" aria-label="Play video: What a BeFirst coaching session looks like"><img src="assets/img/design/chris-cutout.webp" alt=""><span class="vid-tag"><i></i>Video</span><span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></svg></span><span class="vid-cap"><b>What a BeFirst coaching session looks like</b><span class="ph">[2:00]</span></span></button></div></div>
+      </div>
+      <div class="gcard wt-card"><div class="gcard__in">
+        <h3>BeFirst Coaching</h3>
+        <div class="wt-coach-price"><div><b>$500</b><span>/month</span><small>One 1:1 session a month</small></div><div><b>$1,000</b><span>/month</span><small>A session every two weeks</small></div></div>
+        <ul class="wt-coach"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>A 1:1 strategy session with our team every month (or every two weeks)</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>A personalized action plan after each session</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Accountability on what you committed to</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Between-session support by email or chat <span class="ph">[CONFIRM]</span></span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Includes the BeFirst Community at 50% off</span></li></ul>
+        <div class="wt-foot"><p><b>Best for:</b> owners who want an expert sounding board and accountability.</p><a class="btn" href="#" data-ph-link="coaching call calendar">Book a coaching call</a></div>
       </div></div>
     </div>
   </div>
@@ -1592,16 +1747,18 @@ h1, h2, h3, h4 { color: var(--navy); }
       for (const c of $$('.res', sc)) { c.classList.add('is-in'); await step(g, 420); }
       await step(g, 3800);
     },
-    async (g, sc) => { // Social: organic post, paid post, live engagement
-      const likes = $('[data-c="likes"]', sc), shares = $('[data-c="shares"]', sc), fol = $('.fol', sc), lk = $('.lk', sc);
-      likes.textContent = 128; shares.textContent = 9; fol.classList.remove('on'); fol.textContent = '+ Follow';
-      for (const c of $$('.post', sc)) { c.classList.add('is-in'); await step(g, 450); }
-      const notes = $$('.note', sc);
-      notes[0].classList.add('is-in'); lk.classList.add('pop'); likes.textContent = 129; await step(g, 900);
-      lk.classList.remove('pop'); notes[1].classList.add('is-in'); fol.classList.add('on'); fol.textContent = 'Following'; await step(g, 900);
-      notes[2].classList.add('is-in'); shares.textContent = 10; await step(g, 700);
-      for (let n = 130; n <= 141; n++) { likes.textContent = n; await step(g, 120); }
-      await step(g, 2600);
+    async (g, sc) => { // Social: an Instagram post gets liked, followed and shared, then the feed scrolls to a sponsored post
+      const track = $('.ig-track', sc), like = $('[data-c="like"]', sc), likes = $('[data-c="likes"]', sc), fol = $('[data-c="follow"]', sc), send = $('[data-c="send"]', sc), toasts = $$('.ig-toast', sc), cta = $('.ig-cta', sc);
+      const toast = i => toasts.forEach((t, k) => t.classList.toggle('is-in', k === i));
+      track.style.transform = 'none'; like.classList.remove('on'); likes.textContent = 128; fol.textContent = 'Follow'; fol.classList.remove('on'); toast(-1); cta.classList.remove('pulse');
+      await step(g, 700);
+      like.classList.add('on'); likes.textContent = 129; toast(0); await step(g, 1300);
+      fol.textContent = 'Following'; fol.classList.add('on'); toast(1); await step(g, 1300);
+      send.classList.add('pop'); toast(2); await step(g, 900); send.classList.remove('pop');
+      for (let n = 130; n <= 141; n++) { likes.textContent = n; await step(g, 90); }
+      toast(-1); await step(g, 500);
+      track.style.transform = `translateY(-${$('.ig-post', sc).offsetHeight + 4}px)`; await step(g, 1100);
+      cta.classList.add('pulse'); toast(3); await step(g, 2600);
     },
     async (g, sc) => { // Automation: email -> text -> call -> booked
       const call = $('[data-c="call"]', sc); call.textContent = 'Ringing…'; call.classList.remove('ok');
@@ -1628,7 +1785,7 @@ h1, h2, h3, h4 { color: var(--navy); }
     if (RM) { scenes.forEach((sc, n) => sc.classList.toggle('is-on', n === k)); tabs.forEach((x, n) => x.classList.toggle('on', n === k)); return; }
     go(k);
   }));
-  if (RM) { fill(DEMO[0]); sq.textContent = DEMO[0].q; scenes.forEach(showAll); $$('.fol').forEach(f => { f.classList.add('on'); f.textContent = 'Following'; }); }
+  if (RM) { fill(DEMO[0]); sq.textContent = DEMO[0].q; scenes.forEach(showAll); $$('.ig-like').forEach(l => l.classList.add('on')); }
   else wait(500).then(() => go(0));
 
   /* 4. Framework wheel */
@@ -1752,6 +1909,14 @@ h1, h2, h3, h4 { color: var(--navy); }
   $('.qa-q', qas[0]).click();
 })();
 </script>
+
+
+
+
+
+
+
+
 
 
 
