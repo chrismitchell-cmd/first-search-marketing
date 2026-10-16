@@ -729,6 +729,9 @@ button { font: inherit; color: inherit; }
 
 
 
+
+
+
 /* ==========================================================================
    SHARED ADDITIONS FOR SERVICE + PILLAR PAGES
    (everything above this line is the homepage stylesheet, unchanged)
@@ -1983,6 +1986,63 @@ h1, h2, h3, h4 { color: var(--navy); }
 .save { background: var(--grad) !important; color: var(--white) !important; }
 .ctag--diy { background: var(--white) !important; color: var(--navy) !important; box-shadow: inset 0 0 0 2px var(--navy) !important; }
 .ctag--ag { background: #3299D5 !important; color: var(--white) !important; box-shadow: none !important; }
+
+/* ==========================================================================
+   ROUND 7
+   ========================================================================== */
+/* Gradient buttons are a straight gradient: the gradient also sits under the (transparent) border, no dark edge */
+.btn { background-origin: border-box; }
+.btn--sec, .final .btn--sec { border-color: transparent !important; }
+/* Primary (purple) buttons turn into the gradient button on hover */
+.btn:not(.btn--sec):not(.btn--white):not(.btn--ghost):hover { background: var(--grad); border-color: transparent; color: var(--white); box-shadow: 0 14px 30px -12px rgba(23, 79, 162, .55); }
+/* Buttons sitting in purple sections, or straddling purple and white, use the gradient button */
+.on-dark .btn:not(.final .btn):not(.gcard__in .btn):not(.ft-form .btn):not(.scorecard .btn),
+.navy-card .btn, .cta-overlap .btn, .sn-cta .btn, .pw-band .btn, .case2 .btn, .p2--3 .btn, .rfeat .btn, .check-r .btn, .part-main .btn, .partner .btn {
+  background: var(--grad) !important; border-color: transparent !important; color: var(--white) !important; text-shadow: 0 1px 2px rgba(20, 30, 80, .25); box-shadow: 0 14px 30px -12px rgba(23, 79, 162, .55); }
+.on-dark .btn:not(.final .btn):not(.gcard__in .btn):hover, .navy-card .btn:hover, .cta-overlap .btn:hover, .sn-cta .btn:hover, .pw-band .btn:hover, .case2 .btn:hover, .p2--3 .btn:hover, .rfeat .btn:hover, .check-r .btn:hover, .part-main .btn:hover, .partner .btn:hover {
+  background: linear-gradient(90deg, #7AD4DF 0%, #1C5BB5 100%) !important; }
+/* Menu: stage headings and services share the grey + gradient-edge hover */
+.sn .sn-stage { border-radius: 12px; padding: 8px 10px 14px; margin: 0 -10px 12px; border-left: 4px solid transparent; transition: background .15s ease; background: linear-gradient(90deg, #72CCD8, #174FA2) 10px calc(100% - 0px) / calc(100% - 20px) 3px no-repeat; }
+.sn .sn-stage:hover { background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; }
+.sn .sn-stage:hover .plogo { color: var(--navy); }
+.sn .sn-stage:hover .plogo b { color: #3299D5 !important; }
+.sn .sn-stage:hover small { color: var(--ink); }
+/* Case study table: Metrics header white, arrow-column header grey; no client quote under the table */
+.case2-tbl thead th:first-child { background: var(--white); color: var(--navy); border-right: 1px solid #D9D8D7; }
+.case2-tbl thead th:nth-child(3) { background: #ECECEC; }
+.case2-foot blockquote { display: none; }
+.case2-foot { justify-content: flex-start; }
+/* Comparison table: our logo in a white rounded box with a glow on the gradient column */
+.cmp2 thead th.us .cmp2-h img, .ways-logo { height: 30px; width: auto; }
+.cmp2 thead th.us .cmp2-h { padding: 14px; }
+.cmp2-logo { display: inline-flex; padding: 9px 14px; border-radius: 14px; background: var(--white); box-shadow: 0 0 0 3px rgba(255, 255, 255, .35), 0 0 22px 4px rgba(255, 255, 255, .45); }
+/* Ways tabs: coaching prices, DIY price pills, partner card on brand */
+.wt-coach-price > div:first-child { background: var(--navy); color: var(--white); }
+.wt-coach-price > div:first-child b, .wt-coach-price > div:last-child b { color: var(--white); }
+.wt-coach-price > div:first-child span, .wt-coach-price > div:first-child small { color: rgba(255, 255, 255, .85); }
+.wt-coach-price > div:last-child { background: var(--grad); }
+.wt-coach-price > div:last-child span, .wt-coach-price > div:last-child small { color: rgba(255, 255, 255, .92); }
+.wt-price { background: var(--grad); color: var(--white); }
+.wt-price .ph { color: inherit; }
+.wt-fit { gap: 14px; }
+.wt-fit > div { padding: 18px 18px 16px; border-radius: 20px; }
+.wt-fit > div:first-child { background: radial-gradient(220px 160px at 100% 100%, rgba(50, 153, 213, .5), transparent 70%), var(--navy); color: var(--white); }
+.wt-fit > div:first-child h4 { color: #3299D5; }
+.wt-fit > div:first-child li { color: rgba(255, 255, 255, .92); }
+.wt-fit > div:first-child .icon { color: #3299D5 !important; }
+.wt-fit > div:last-child { background: #ECECEC; border-left: 4px solid transparent; background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; }
+.wt-fit > div:last-child h4 { color: var(--navy); }
+.wt-fit .n .icon { color: var(--navy); }
+.wt-foot b { color: transparent; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; font-size: 1.25em; }
+/* Pillar: "You are here" pill text white */
+.here-row em { color: var(--white) !important; }
+/* Service page: "The number it moves" box = light grey with a gradient left edge */
+.metricbox { background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box !important; border: 0 !important; border-left: 4px solid transparent !important; border-radius: 14px !important; }
+.metricbox small { color: #3299D5 !important; }
+.metricbox b { color: var(--navy) !important; }
+/* Services overview: stage service list hover = light grey with gradient left edge */
+.panel-svcs a { border-left: 4px solid transparent; background: linear-gradient(#F6F6F8, #F6F6F8) padding-box, linear-gradient(#F6F6F8, #F6F6F8) border-box; }
+.panel-svcs a:hover { color: var(--navy); background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; }
 /*/THEME-CSS*/
 
 </style>
