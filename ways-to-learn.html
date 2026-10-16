@@ -566,6 +566,12 @@ button { cursor: pointer; }
 
 
 
+
+
+
+
+
+
 /*SN-CSS*/
 /* ==========================================================================
    Shared site navigation (Elementor Pro: Nav Menu + Mega Menu)
@@ -1197,6 +1203,25 @@ h1, h2, h3, h4 { color: var(--navy); }
 /* Services overview: stage service list hover = light grey with gradient left edge */
 .panel-svcs a { border-left: 4px solid transparent; background: linear-gradient(#F6F6F8, #F6F6F8) padding-box, linear-gradient(#F6F6F8, #F6F6F8) border-box; }
 .panel-svcs a:hover { color: var(--navy); background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; }
+
+/* ==========================================================================
+   ROUND 8
+   ========================================================================== */
+/* Buttons: the background always paints edge to edge, so gradient buttons have no visible border at all */
+.btn { background-origin: border-box !important; background-clip: border-box !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; }
+.btn--sec, .cta-overlap .btn, .sn-cta .btn, .on-dark .btn:not(.final .btn):not(.gcard__in .btn), .navy-card .btn, .pw-band .btn, .case2 .btn, .p2--3 .btn, .rfeat .btn, .check-r .btn, .part-main .btn, .partner .btn, .ev-act .btn--sec, .feat .btn--ghost { border-color: transparent !important; outline: 0; }
+.btn:not(.btn--sec):not(.btn--white):not(.btn--ghost):hover { border-color: transparent !important; }
+/* Menu: pillar hover underline is the brand gradient under the whole logo (no aqua underline on "first") */
+.sn .sn-stage:hover b, .sn .sn-stage:hover .plogo b { text-decoration: none !important; }
+.sn .sn-stage:hover .plogo { padding-bottom: 6px; background: linear-gradient(90deg, #72CCD8, #174FA2) left bottom / 100% 3px no-repeat; }
+/* Service page: "The number it moves" box and the "SEO in firstthought" tag share one lighter grey */
+.fw-card .ptag-logo, .metricbox { background-color: #F4F4F6 !important; }
+.metricbox { background: linear-gradient(#F4F4F6, #F4F4F6) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box !important; }
+.on-dark .btn:not(.final .btn):not(.gcard__in .btn):not(.ft-form .btn):not(.scorecard .btn),
+.navy-card .btn, .cta-overlap .btn, .sn-cta .btn, .pw-band .btn, .case2 .btn, .p2--3 .btn, .rfeat .btn, .check-r .btn, .part-main .btn, .partner .btn,
+.on-dark .btn:not(.final .btn):not(.gcard__in .btn):hover, .navy-card .btn:hover, .cta-overlap .btn:hover, .sn-cta .btn:hover, .pw-band .btn:hover, .case2 .btn:hover, .p2--3 .btn:hover, .rfeat .btn:hover, .check-r .btn:hover, .part-main .btn:hover, .partner .btn:hover,
+.btn--sec, .btn--sec:hover, .final .btn--sec, .feat .btn--ghost, .feat .btn--ghost:hover, .ev-act .btn--sec, .btn:not(.btn--sec):not(.btn--white):not(.btn--ghost):hover {
+  background-origin: border-box !important; background-clip: border-box !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; border-color: transparent !important; }
 /*/THEME-CSS*/
 
 </style>
@@ -1632,6 +1657,10 @@ h1, h2, h3, h4 { color: var(--navy); }
   $('.qa-q', qas[0]).click();
 })();
 </script>
+
+
+
+
 
 
 
