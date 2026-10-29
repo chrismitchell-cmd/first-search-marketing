@@ -1,0 +1,136 @@
+/* ==========================================================================
+   First Search Marketing · GoHighLevel CALENDAR (booking widget)
+   Paste into: Calendars > Calendar settings > (your calendar) > Widget / Customizations > Custom CSS.
+   If your account has no Custom CSS field there, put the calendar element on a GHL
+   site/funnel page and paste this into that page's Settings > Custom CSS instead.
+   Covers the classic widget, the newer "Neo" widget and the date-picker libraries GHL uses.
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap");
+
+:root {
+  --fs-navy: #282060; --fs-sky: #3299D5; --fs-aqua: #72CCD8; --fs-royal: #174FA2;
+  --fs-ink: #1C1B22; --fs-body: #2F2E36; --fs-muted: #6B6A72; --fs-line: #E3E2EA; --fs-tint: #EEF0F9;
+  --fs-grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);
+  --fs-grad-primary: linear-gradient(135deg, #2C1774 0%, #282060 55%, #24206E 100%);
+  --fs-head: "Poppins", Arial, sans-serif; --fs-ui: "Inter", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box !important; }
+
+/* ---------- Canvas ---------- */
+html, body { background: transparent !important; font-family: var(--fs-ui) !important; color: var(--fs-body) !important; }
+.appointment_widgets--content, .hl_appointment-widget, .calendar-widget, .booking-widget, .widget-container, .calendar-container, .neo-widget {
+  font-family: var(--fs-ui) !important; color: var(--fs-body) !important;
+  background: #fff !important; border: 0 !important; border-radius: 22px !important;
+  box-shadow: 0 18px 40px -18px rgba(40, 32, 96, .28) !important;
+}
+
+/* Left panel (calendar name, host, duration) */
+.appointment_widgets--info, .widget-info, .calendar-info, .booking-info, .left-panel {
+  background: var(--fs-grad-primary) !important; color: #fff !important; border-radius: 22px 0 0 22px !important;
+}
+.appointment_widgets--info *, .widget-info *, .calendar-info *, .booking-info *, .left-panel * { color: #fff !important; }
+.appointment_widgets--info svg, .widget-info svg, .calendar-info svg { color: var(--fs-aqua) !important; fill: currentColor; }
+
+/* Headings */
+h1, h2, h3, h4, .widget-title, .calendar-title, .appointment_widgets--title, .booking-title {
+  font-family: var(--fs-head) !important; font-weight: 700 !important; color: var(--fs-navy) !important; line-height: 1.25 !important;
+}
+.appointment_widgets--info h1, .appointment_widgets--info h2, .appointment_widgets--info h3, .widget-info h2, .left-panel h2 { color: #fff !important; }
+
+/* ---------- Month header and arrows ---------- */
+.vdp-datepicker__calendar header, .vc-header, .calendar-header, .month-header {
+  font-family: var(--fs-head) !important; font-weight: 700 !important; color: var(--fs-navy) !important;
+}
+.vc-title, .day__month_btn, .month-title, .calendar-header .title { font-family: var(--fs-head) !important; font-size: 18px !important; font-weight: 700 !important; color: var(--fs-navy) !important; background: none !important; }
+.vc-arrow, .prev, .next, .calendar-header button, .month-nav button {
+  width: 40px !important; height: 40px !important; border-radius: 50% !important;
+  border: 1px solid var(--fs-line) !important; background: #fff !important; color: var(--fs-navy) !important;
+}
+.vc-arrow:hover, .prev:hover:not(.disabled), .next:hover:not(.disabled), .calendar-header button:hover { background: var(--fs-navy) !important; color: #fff !important; border-color: var(--fs-navy) !important; }
+.vdp-datepicker__calendar header .prev::after { border-right-color: currentColor !important; }
+.vdp-datepicker__calendar header .next::after { border-left-color: currentColor !important; }
+
+/* Weekday labels */
+.day-header, .vc-weekday, .weekday, .calendar-weekdays span, th { font: 600 12px var(--fs-ui) !important; letter-spacing: .04em !important; text-transform: uppercase !important; color: var(--fs-muted) !important; }
+
+/* ---------- Day cells ---------- */
+.vdp-datepicker__calendar, .vc-container, .date-picker { border: 0 !important; background: transparent !important; font-family: var(--fs-ui) !important; width: 100% !important; }
+.cell.day, .vc-day-content, .calendar-day, .day-cell, td[role="gridcell"] button {
+  border-radius: 12px !important; border: 0 !important;
+  font: 600 15px var(--fs-ui) !important; color: var(--fs-navy) !important;
+  background: var(--fs-tint) !important; transition: background .15s ease, color .15s ease !important;
+}
+.vc-day-content { width: 40px !important; height: 40px !important; }
+/* Available day hover */
+.cell.day:not(.blank):not(.disabled):hover, .vc-day-content:not(.is-disabled):hover, .calendar-day:not(.disabled):hover, .day-cell.available:hover {
+  background: #DCE3F6 !important; border: 0 !important; color: var(--fs-navy) !important;
+}
+/* Selected day: brand gradient */
+.cell.day.selected, .cell.day.selected:hover, .vc-highlight, .vc-day.is-selected .vc-day-content, .calendar-day.selected, .day-cell.selected, td[aria-selected="true"] button {
+  background: var(--fs-grad) !important; color: #fff !important; font-weight: 700 !important;
+}
+.vc-highlight + .vc-day-content, .vc-day-content.vc-highlight-content-solid { color: #fff !important; }
+/* Unavailable / past days */
+.cell.day.disabled, .vc-day-content.is-disabled, .calendar-day.disabled, .day-cell.disabled {
+  background: transparent !important; color: #C3C2CC !important; text-decoration: none !important; cursor: default !important;
+}
+.cell.day.blank { background: transparent !important; }
+/* Today marker */
+.cell.day.today:not(.selected), .vc-day.is-today .vc-day-content:not(.vc-highlight-content-solid) { box-shadow: inset 0 0 0 2px var(--fs-aqua) !important; }
+
+/* ---------- Time slots ---------- */
+.widgets-time-slot, .time-slot, .slot, .timeslot, .slot-item, .available-slot, .hl-time-slot {
+  min-height: 46px !important; padding: 10px 14px !important;
+  border: 2px solid var(--fs-aqua) !important; border-radius: 12px !important; background: #fff !important;
+  font: 600 15px var(--fs-ui) !important; color: var(--fs-navy) !important; text-align: center !important; cursor: pointer !important;
+  transition: border-color .15s ease, background .15s ease, color .15s ease !important;
+}
+.widgets-time-slot:hover, .time-slot:hover, .slot:hover, .timeslot:hover, .slot-item:hover, .available-slot:hover { border-color: var(--fs-royal) !important; }
+.widgets-time-slot.selected, .time-slot.selected, .slot.selected, .slot.active, .timeslot.active, .slot-item.selected, .selected-slot, .hl-time-slot.selected {
+  background: var(--fs-navy) !important; border-color: var(--fs-navy) !important; color: #fff !important;
+}
+.time-zone, .timezone, .timezone-select, .tz-select { font: 500 14px var(--fs-ui) !important; color: var(--fs-muted) !important; }
+
+/* ---------- Booking form step (name, email, phone) ---------- */
+label { font: 600 15px var(--fs-ui) !important; color: var(--fs-navy) !important; }
+input[type="text"], input[type="email"], input[type="tel"], input:not([type]), select, textarea, .form-control {
+  width: 100% !important; min-height: 52px !important; padding: 12px 16px !important;
+  border: 2px solid var(--fs-line) !important; border-radius: 12px !important; background: #fff !important; box-shadow: none !important;
+  font: 16px var(--fs-head) !important; color: var(--fs-ink) !important;
+}
+textarea { min-height: 120px !important; }
+input:focus, select:focus, textarea:focus, .form-control:focus { outline: none !important; border-color: var(--fs-aqua) !important; box-shadow: 0 0 0 4px rgba(114, 204, 216, .3) !important; }
+input[type="checkbox"], input[type="radio"] { width: 20px !important; height: 20px !important; min-height: 0 !important; accent-color: var(--fs-royal) !important; }
+
+/* ---------- Buttons: Continue / Schedule Meeting ---------- */
+button[type="submit"], .btn-schedule, .schedule-btn, .confirm-btn, .hl-btn-primary, .btn-primary, .continue-btn, .book-btn {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  min-height: 54px !important; padding: 14px 30px !important;
+  border: 2px solid #4AA6DC !important; border-radius: 10px !important;
+  background: var(--fs-grad-primary) !important; color: #fff !important;
+  font: 600 18px var(--fs-head) !important; text-transform: none !important; cursor: pointer !important;
+  box-shadow: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55) !important;
+}
+button[type="submit"]:hover, .btn-schedule:hover, .confirm-btn:hover, .hl-btn-primary:hover, .btn-primary:hover, .continue-btn:hover {
+  background: linear-gradient(135deg, #34208A 0%, #2E2878 100%) !important;
+  box-shadow: 0 0 0 3px rgba(114, 204, 216, .35), 0 14px 28px -8px rgba(50, 153, 213, .65) !important;
+}
+.btn-back, .back-btn, .hl-btn-secondary, .btn-secondary {
+  min-height: 48px !important; border: 2px solid var(--fs-navy) !important; border-radius: 10px !important;
+  background: transparent !important; color: var(--fs-navy) !important; font: 600 16px var(--fs-head) !important;
+}
+
+/* ---------- Confirmation screen ---------- */
+.booking-confirmed, .confirmation, .appointment-confirmed, .thank-you, .success-message {
+  padding: 26px !important; border-radius: 18px !important; background: var(--fs-grad-primary) !important; color: #fff !important;
+}
+.booking-confirmed *, .confirmation *, .appointment-confirmed *, .thank-you *, .success-message * { color: #fff !important; }
+
+/* Hide the "Powered by" footer if your plan allows white-labelling (delete this rule if not) */
+/* .powered-by, .branding-footer { display: none !important; } */
+
+@media (max-width: 760px) {
+  .appointment_widgets--info, .widget-info, .calendar-info, .booking-info, .left-panel { border-radius: 22px 22px 0 0 !important; }
+  button[type="submit"], .btn-schedule, .confirm-btn, .hl-btn-primary, .btn-primary, .continue-btn { width: 100% !important; }
+}

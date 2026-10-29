@@ -1,0 +1,115 @@
+/* ==========================================================================
+   First Search Marketing · GoHighLevel FORMS
+   Paste into: Sites > Forms > (your form) > Styles panel > Custom CSS
+   The form runs inside its own iframe, so these rules only touch the form.
+   Element selectors do most of the work (they survive GHL class renames);
+   GHL's own class names are added where known.
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap");
+
+:root {
+  --fs-navy: #282060; --fs-sky: #3299D5; --fs-aqua: #72CCD8; --fs-royal: #174FA2;
+  --fs-ink: #1C1B22; --fs-body: #2F2E36; --fs-muted: #6B6A72; --fs-line: #E3E2EA; --fs-tint: #F4F4F6;
+  --fs-error: #B42318;
+  --fs-grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);
+  --fs-grad-primary: linear-gradient(135deg, #2C1774 0%, #282060 55%, #24206E 100%);
+  --fs-head: "Poppins", Arial, sans-serif; --fs-ui: "Inter", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box !important; }
+
+/* ---------- Canvas: transparent so the website card shows through ---------- */
+html, body, #_builder-form, .builder-form, .form-builder--wrap, .ghl-form-wrap, .form-builder-container {
+  background: transparent !important;
+  font-family: var(--fs-ui) !important;
+  color: var(--fs-body) !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+#_builder-form, .form-builder--wrap { padding: 0 !important; max-width: 100% !important; }
+.form-builder--item, .form-field-wrapper, .field-container { margin-bottom: 16px !important; padding: 0 !important; }
+
+/* ---------- Headings and text elements ---------- */
+h1, h2, h3, h4, .form-builder--item h1, .form-builder--item h2, .form-builder--item h3 {
+  font-family: var(--fs-head) !important; color: var(--fs-navy) !important; font-weight: 700 !important; line-height: 1.2 !important;
+}
+p, .text-element { font-family: var(--fs-ui) !important; color: var(--fs-body) !important; line-height: 1.6 !important; }
+a { color: var(--fs-royal) !important; }
+
+/* ---------- Labels ---------- */
+label, .label-alignment, .form-builder--item label, .field-label {
+  font-family: var(--fs-ui) !important; font-size: 15px !important; font-weight: 600 !important;
+  color: var(--fs-navy) !important; margin-bottom: 6px !important;
+}
+.required, label .text-red-500, label span[style*="red"] { color: var(--fs-sky) !important; }
+.short-label, .field-description, small { font-size: 13px !important; color: var(--fs-muted) !important; font-weight: 400 !important; }
+
+/* ---------- Inputs, selects, textareas ---------- */
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="url"],
+input[type="date"], input[type="password"], input:not([type]), select, textarea,
+.form-control, .form-builder--item .form-control, .vs__dropdown-toggle, .multiselect__tags, .iti input {
+  width: 100% !important; min-height: 52px !important; padding: 12px 16px !important;
+  border: 2px solid var(--fs-line) !important; border-radius: 12px !important;
+  background: #fff !important; box-shadow: none !important;
+  font-family: var(--fs-head) !important; font-size: 16px !important; color: var(--fs-ink) !important;
+  transition: border-color .15s ease, box-shadow .15s ease !important;
+}
+textarea { min-height: 130px !important; resize: vertical !important; }
+input::placeholder, textarea::placeholder { color: #9A99A6 !important; opacity: 1 !important; }
+input:focus, select:focus, textarea:focus, .form-control:focus, .vs--open .vs__dropdown-toggle, .multiselect--active .multiselect__tags {
+  outline: none !important; border-color: var(--fs-aqua) !important; box-shadow: 0 0 0 4px rgba(114, 204, 216, .3) !important;
+}
+select { appearance: none !important; -webkit-appearance: none !important; padding-right: 44px !important;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23282060' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center !important; }
+.vs__dropdown-menu, .multiselect__content-wrapper { border: 2px solid var(--fs-line) !important; border-radius: 12px !important; box-shadow: 0 18px 40px -18px rgba(40, 32, 96, .4) !important; }
+.vs__dropdown-option--highlight, .multiselect__option--highlight { background: var(--fs-navy) !important; color: #fff !important; }
+/* Phone field country picker */
+.iti__selected-flag, .iti__flag-container { border-radius: 12px 0 0 12px !important; }
+.iti input { padding-left: 56px !important; }
+
+/* ---------- Errors ---------- */
+.error, .error-msg, .text-danger, .field-error, .ghl-error, .form-error { color: var(--fs-error) !important; font-size: 14px !important; font-family: var(--fs-ui) !important; }
+input.error, .has-error input, .has-error textarea, .has-error select, input[aria-invalid="true"] { border-color: #D64545 !important; }
+
+/* ---------- Checkboxes and radios (consent, multiple choice) ---------- */
+input[type="checkbox"], input[type="radio"] { width: 20px !important; height: 20px !important; min-height: 0 !important; padding: 0 !important; accent-color: var(--fs-royal) !important; }
+.option, .checkbox-container, .radio-container, .form-check, .ghl-checkbox, .ghl-radio {
+  display: flex !important; align-items: flex-start !important; gap: 12px !important;
+  font-family: var(--fs-ui) !important; font-size: 15px !important; color: var(--fs-body) !important;
+}
+/* SMS / A2P consent block: soft grey panel like the website contact form */
+.terms-and-conditions, .sms-consent, .ghl-tc, [class*="consent"] {
+  padding: 14px 16px !important; border-radius: 14px !important; background: var(--fs-tint) !important;
+  font-size: 13.5px !important; line-height: 1.5 !important; color: var(--fs-body) !important;
+}
+
+/* ---------- Submit button: the website's primary purple button ---------- */
+button[type="submit"], .btn-dark, .ghl-btn, .ghl-submit-btn, .form-builder--item .btn, .button-element button {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  min-height: 54px !important; padding: 14px 30px !important; width: auto !important;
+  border: 2px solid #4AA6DC !important; border-radius: 10px !important;
+  background: var(--fs-grad-primary) !important; color: #fff !important;
+  font-family: var(--fs-head) !important; font-size: 18px !important; font-weight: 600 !important; letter-spacing: .005em !important;
+  text-transform: none !important; text-shadow: none !important; cursor: pointer !important;
+  box-shadow: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55) !important;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease !important;
+}
+button[type="submit"]:hover, .btn-dark:hover, .ghl-btn:hover, .ghl-submit-btn:hover {
+  background: linear-gradient(135deg, #34208A 0%, #2E2878 100%) !important;
+  box-shadow: 0 0 0 3px rgba(114, 204, 216, .35), 0 14px 28px -8px rgba(50, 153, 213, .65) !important;
+  transform: translateY(-1px) !important;
+}
+button[type="submit"]:focus-visible { outline: 3px solid var(--fs-aqua) !important; outline-offset: 3px !important; }
+button[type="submit"]:disabled { opacity: .6 !important; cursor: not-allowed !important; transform: none !important; }
+
+/* Full-width button on phones */
+@media (max-width: 600px) {
+  button[type="submit"], .ghl-btn, .ghl-submit-btn { width: 100% !important; }
+}
+
+/* ---------- Thank-you message ---------- */
+.thank-you-message, .ghl-thank-you, .form-success, .success-message {
+  padding: 24px !important; border-radius: 16px !important; background: var(--fs-grad-primary) !important;
+  color: #fff !important; font-family: var(--fs-ui) !important; text-align: left !important;
+}
+.thank-you-message *, .ghl-thank-you *, .form-success *, .success-message * { color: #fff !important; }
