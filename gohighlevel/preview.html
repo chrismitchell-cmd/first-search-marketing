@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GoHighLevel Style Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#282060;--sky:#3299D5;--aqua:#72CCD8;--royal:#174FA2;--muted:#6B6A72;--line:#E3E2EA;--grad:linear-gradient(90deg,#72CCD8,#174FA2);--bg:#F4F4F6}
+*{box-sizing:border-box} body{margin:0;background:var(--bg) radial-gradient(70% 50% at 100% 0%,rgba(50,153,213,.12),transparent 60%);font:16px/1.55 Inter,system-ui,sans-serif;color:#2F2E36}
+.top{position:sticky;top:0;z-index:5;background:var(--navy);color:#fff}
+.top .in{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.top b{font:700 17px Poppins,sans-serif} .top b span{color:var(--aqua)}
+.nav{display:flex;flex-wrap:wrap;gap:6px} .nav a{padding:7px 14px;border-radius:8px;color:#DADAF0;text-decoration:none;font-weight:600;font-size:14px;border:1px solid rgba(255,255,255,.25)} .nav a:hover{background:rgba(255,255,255,.1)}
+.seg{display:inline-flex;padding:3px;border-radius:10px;background:rgba(255,255,255,.12)} .seg button{border:0;background:none;color:#DADAF0;font:600 14px Inter;padding:7px 14px;border-radius:8px;cursor:pointer} .seg button[aria-pressed=true]{background:#fff;color:var(--navy)}
+.intro{max-width:1180px;margin:0 auto;padding:40px 16px 8px} .intro h1{margin:0 0 8px;font:800 clamp(30px,4vw,44px)/1.1 Poppins,sans-serif;color:var(--navy)} .intro h1 span{background:linear-gradient(90deg,#72CCD8,#3299D5 45%,#174FA2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro p{max-width:760px;margin:0;color:#4A4952}
+.pv{max-width:1180px;margin:0 auto;padding:36px 16px 20px}
+.pv-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;margin-bottom:18px}
+.num{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--grad);color:#fff;font:800 20px Poppins}
+.pv-head h2{margin:0;font:700 24px Poppins,sans-serif;color:var(--navy)} .pv-head p{margin:2px 0 0;color:var(--muted);font-size:14.5px}
+.file{font-size:13px;color:var(--muted)} code{background:#fff;border:1px solid var(--line);border-radius:6px;padding:2px 6px;color:var(--navy)}
+.stage{margin:0 auto;max-width:760px;transition:max-width .3s ease} #s-cal .stage{max-width:940px}
+body.phone .stage{max-width:390px!important}
+.gframe{padding:4px;border-radius:30px;background:var(--grad);box-shadow:0 24px 50px -24px rgba(40,32,96,.45)}
+.gframe__in{border-radius:26px;background:#fff;padding:clamp(18px,3vw,32px)}
+iframe{display:block;width:100%;height:400px;border:0;background:transparent}
+.foot{max-width:1180px;margin:20px auto 60px;padding:0 16px;color:var(--muted);font-size:13.5px}
+@media(max-width:700px){.pv-head{grid-template-columns:auto minmax(0,1fr)} .file{grid-column:1/-1}}
+</style></head><body>
+<div class="top"><div class="in"><b>First Search <span>·</span> GoHighLevel styles</b>
+<nav class="nav" aria-label="Sections"><a href="#s-form">1 · Form</a><a href="#s-quiz">2 · Quiz</a><a href="#s-cal">3 · Calendar</a></nav>
+<div class="seg" role="group" aria-label="Preview width"><button type="button" data-w="desk" aria-pressed="true">Desktop</button><button type="button" data-w="phone" aria-pressed="false">Phone</button></div></div></div>
+<div class="intro"><h1>GoHighLevel pieces, <span>in the website style.</span></h1>
+<p>Each preview below runs the real stylesheet inside a frame, the same way GoHighLevel embeds it, placed in the website's gradient card. Everything is clickable. Feedback by number works best, for example "2: make the answer cards shorter".</p></div>
+
+<section class="pv" id="s-form" aria-labelledby="h-form">
+  <header class="pv-head"><span class="num">1</span><div><h2 id="h-form">Contact form</h2><p>Try sending it empty to see the error states, then fill it in.</p></div><span class="file"><code>ghl-forms.css</code> · Sites › Forms</span></header>
+  <div class="stage"><div class="gframe"><div class="gframe__in"><iframe id="f-form" title="Contact form preview" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;/* ==========================================================================
+   First Search Marketing · GoHighLevel FORMS
+   Paste into: Sites &gt; Forms &gt; (your form) &gt; Styles panel &gt; Custom CSS
+   The form runs inside its own iframe, so these rules only touch the form.
+   Element selectors do most of the work (they survive GHL class renames);
+   GHL&#x27;s own class names are added where known.
+   ========================================================================== */
+@import url(&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Poppins:wght@500;600;700;800&amp;display=swap&quot;);
+
+:root {
+  --fs-navy: #282060; --fs-sky: #3299D5; --fs-aqua: #72CCD8; --fs-royal: #174FA2;
+  --fs-ink: #1C1B22; --fs-body: #2F2E36; --fs-muted: #6B6A72; --fs-line: #E3E2EA; --fs-tint: #F4F4F6;
+  --fs-error: #B42318;
+  --fs-grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);
+  --fs-grad-primary: linear-gradient(135deg, #2C1774 0%, #282060 55%, #24206E 100%);
+  --fs-head: &quot;Poppins&quot;, Arial, sans-serif; --fs-ui: &quot;Inter&quot;, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box !important; }
+
+/* ---------- Canvas: transparent so the website card shows through ---------- */
+html, body, #_builder-form, .builder-form, .form-builder--wrap, .ghl-form-wrap, .form-builder-container {
+  background: transparent !important;
+  font-family: var(--fs-ui) !important;
+  color: var(--fs-body) !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+#_builder-form, .form-builder--wrap { padding: 0 !important; max-width: 100% !important; }
+.form-builder--item, .form-field-wrapper, .field-container { margin-bottom: 16px !important; padding: 0 !important; }
+
+/* ---------- Headings and text elements ---------- */
+h1, h2, h3, h4, .form-builder--item h1, .form-builder--item h2, .form-builder--item h3 {
+  font-family: var(--fs-head) !important; color: var(--fs-navy) !important; font-weight: 700 !important; line-height: 1.2 !important;
+}
+p, .text-element { font-family: var(--fs-ui) !important; color: var(--fs-body) !important; line-height: 1.6 !important; }
+a { color: var(--fs-royal) !important; }
+
+/* ---------- Labels ---------- */
+label, .label-alignment, .form-builder--item label, .field-label {
+  font-family: var(--fs-ui) !important; font-size: 15px !important; font-weight: 600 !important;
+  color: var(--fs-navy) !important; margin-bottom: 6px !important;
+}
+.required, label .text-red-500, label span[style*=&quot;red&quot;] { color: var(--fs-sky) !important; }
+.short-label, .field-description, small { font-size: 13px !important; color: var(--fs-muted) !important; font-weight: 400 !important; }
+
+/* ---------- Inputs, selects, textareas ---------- */
+input[type=&quot;text&quot;], input[type=&quot;email&quot;], input[type=&quot;tel&quot;], input[type=&quot;number&quot;], input[type=&quot;url&quot;],
+input[type=&quot;date&quot;], input[type=&quot;password&quot;], input:not([type]), select, textarea,
+.form-control, .form-builder--item .form-control, .vs__dropdown-toggle, .multiselect__tags, .iti input {
+  width: 100% !important; min-height: 52px !important; padding: 12px 16px !important;
+  border: 2px solid var(--fs-line) !important; border-radius: 12px !important;
+  background: #fff !important; box-shadow: none !important;
+  font-family: var(--fs-head) !important; font-size: 16px !important; color: var(--fs-ink) !important;
+  transition: border-color .15s ease, box-shadow .15s ease !important;
+}
+textarea { min-height: 130px !important; resize: vertical !important; }
+input::placeholder, textarea::placeholder { color: #9A99A6 !important; opacity: 1 !important; }
+input:focus, select:focus, textarea:focus, .form-control:focus, .vs--open .vs__dropdown-toggle, .multiselect--active .multiselect__tags {
+  outline: none !important; border-color: var(--fs-aqua) !important; box-shadow: 0 0 0 4px rgba(114, 204, 216, .3) !important;
+}
+select { appearance: none !important; -webkit-appearance: none !important; padding-right: 44px !important;
+  background: #fff url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;18&#x27; height=&#x27;18&#x27; viewBox=&#x27;0 0 24 24&#x27; fill=&#x27;none&#x27; stroke=&#x27;%23282060&#x27; stroke-width=&#x27;2.4&#x27; stroke-linecap=&#x27;round&#x27; stroke-linejoin=&#x27;round&#x27;%3E%3Cpath d=&#x27;m6 9 6 6 6-6&#x27;/%3E%3C/svg%3E&quot;) no-repeat right 16px center !important; }
+.vs__dropdown-menu, .multiselect__content-wrapper { border: 2px solid var(--fs-line) !important; border-radius: 12px !important; box-shadow: 0 18px 40px -18px rgba(40, 32, 96, .4) !important; }
+.vs__dropdown-option--highlight, .multiselect__option--highlight { background: var(--fs-navy) !important; color: #fff !important; }
+/* Phone field country picker */
+.iti__selected-flag, .iti__flag-container { border-radius: 12px 0 0 12px !important; }
+.iti input { padding-left: 56px !important; }
+
+/* ---------- Errors ---------- */
+.error, .error-msg, .text-danger, .field-error, .ghl-error, .form-error { color: var(--fs-error) !important; font-size: 14px !important; font-family: var(--fs-ui) !important; }
+input.error, .has-error input, .has-error textarea, .has-error select, input[aria-invalid=&quot;true&quot;] { border-color: #D64545 !important; }
+
+/* ---------- Checkboxes and radios (consent, multiple choice) ---------- */
+input[type=&quot;checkbox&quot;], input[type=&quot;radio&quot;] { width: 20px !important; height: 20px !important; min-height: 0 !important; padding: 0 !important; accent-color: var(--fs-royal) !important; }
+.option, .checkbox-container, .radio-container, .form-check, .ghl-checkbox, .ghl-radio {
+  display: flex !important; align-items: flex-start !important; gap: 12px !important;
+  font-family: var(--fs-ui) !important; font-size: 15px !important; color: var(--fs-body) !important;
+}
+/* SMS / A2P consent block: soft grey panel like the website contact form */
+.terms-and-conditions, .sms-consent, .ghl-tc, [class*=&quot;consent&quot;] {
+  padding: 14px 16px !important; border-radius: 14px !important; background: var(--fs-tint) !important;
+  font-size: 13.5px !important; line-height: 1.5 !important; color: var(--fs-body) !important;
+}
+
+/* ---------- Submit button: the website&#x27;s primary purple button ---------- */
+button[type=&quot;submit&quot;], .btn-dark, .ghl-btn, .ghl-submit-btn, .form-builder--item .btn, .button-element button {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  min-height: 54px !important; padding: 14px 30px !important; width: auto !important;
+  border: 2px solid #4AA6DC !important; border-radius: 10px !important;
+  background: var(--fs-grad-primary) !important; color: #fff !important;
+  font-family: var(--fs-head) !important; font-size: 18px !important; font-weight: 600 !important; letter-spacing: .005em !important;
+  text-transform: none !important; text-shadow: none !important; cursor: pointer !important;
+  box-shadow: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55) !important;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease !important;
+}
+button[type=&quot;submit&quot;]:hover, .btn-dark:hover, .ghl-btn:hover, .ghl-submit-btn:hover {
+  background: linear-gradient(135deg, #34208A 0%, #2E2878 100%) !important;
+  box-shadow: 0 0 0 3px rgba(114, 204, 216, .35), 0 14px 28px -8px rgba(50, 153, 213, .65) !important;
+  transform: translateY(-1px) !important;
+}
+button[type=&quot;submit&quot;]:focus-visible { outline: 3px solid var(--fs-aqua) !important; outline-offset: 3px !important; }
+button[type=&quot;submit&quot;]:disabled { opacity: .6 !important; cursor: not-allowed !important; transform: none !important; }
+
+/* Full-width button on phones */
+@media (max-width: 600px) {
+  button[type=&quot;submit&quot;], .ghl-btn, .ghl-submit-btn { width: 100% !important; }
+}
+
+/* ---------- Thank-you message ---------- */
+.thank-you-message, .ghl-thank-you, .form-success, .success-message {
+  padding: 24px !important; border-radius: 16px !important; background: var(--fs-grad-primary) !important;
+  color: #fff !important; font-family: var(--fs-ui) !important; text-align: left !important;
+}
+.thank-you-message *, .ghl-thank-you *, .form-success *, .success-message * { color: #fff !important; }
+&lt;/style&gt;&lt;style&gt;body{margin:0;padding:4px}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;form id=&quot;_builder-form&quot; class=&quot;builder-form&quot; novalidate&gt;
+&lt;div class=&quot;form-builder--item&quot;&gt;&lt;h2&gt;Send us a message&lt;/h2&gt;&lt;p&gt;Have a question first? Tell us a little about your business.&lt;/p&gt;&lt;/div&gt;
+&lt;div style=&quot;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0 16px&quot;&gt;
+&lt;div class=&quot;form-builder--item&quot;&gt;&lt;label for=&quot;fn&quot;&gt;Full name &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;fn&quot; class=&quot;form-control&quot; placeholder=&quot;Jane Smith&quot; required&gt;&lt;/div&gt;
+&lt;div class=&quot;form-builder--item&quot;&gt;&lt;label for=&quot;em&quot;&gt;Email &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;em&quot; type=&quot;email&quot; class=&quot;form-control&quot; placeholder=&quot;you@business.com&quot; required&gt;&lt;div class=&quot;error&quot; hidden&gt;Please enter a valid email.&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;form-builder--item&quot;&gt;&lt;label for=&quot;ph&quot;&gt;Phone&lt;/label&gt;&lt;input id=&quot;ph&quot; type=&quot;tel&quot; class=&quot;form-control&quot; placeholder=&quot;(603) 555-0123&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;form-builder--item&quot;&gt;&lt;label for=&quot;bz&quot;&gt;Business name &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;bz&quot; class=&quot;form-control&quot; placeholder=&quot;Smith Plumbing&quot; required&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-builder--item&quot;&gt;&lt;label for=&quot;tp&quot;&gt;What can we help with?&lt;/label&gt;&lt;select id=&quot;tp&quot; class=&quot;form-control&quot;&gt;&lt;option&gt;Choose one&lt;/option&gt;&lt;option&gt;A marketing partnership&lt;/option&gt;&lt;option&gt;The BeFirst Community&lt;/option&gt;&lt;option&gt;1:1 coaching&lt;/option&gt;&lt;option&gt;Workshops and events&lt;/option&gt;&lt;option&gt;Something else&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
+&lt;div class=&quot;form-builder--item&quot;&gt;&lt;label for=&quot;ms&quot;&gt;Message&lt;/label&gt;&lt;textarea id=&quot;ms&quot; class=&quot;form-control&quot; placeholder=&quot;Tell us where your marketing is today&quot;&gt;&lt;/textarea&gt;&lt;small class=&quot;short-label&quot;&gt;A few sentences is plenty.&lt;/small&gt;&lt;/div&gt;
+&lt;div class=&quot;form-builder--item terms-and-conditions&quot;&gt;&lt;div class=&quot;option&quot;&gt;&lt;input id=&quot;sms&quot; type=&quot;checkbox&quot;&gt;&lt;label for=&quot;sms&quot;&gt;I agree to receive text messages from First Search Marketing about my inquiry. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. See our &lt;a href=&quot;#&quot;&gt;Privacy Policy&lt;/a&gt; and &lt;a href=&quot;#&quot;&gt;Terms&lt;/a&gt;.&lt;/label&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;form-builder--item&quot;&gt;&lt;button type=&quot;submit&quot; class=&quot;btn btn-dark&quot;&gt;Send message&lt;/button&gt;&lt;/div&gt;
+&lt;/form&gt;
+&lt;div class=&quot;thank-you-message&quot; hidden&gt;&lt;h3&gt;Thanks, we got your message.&lt;/h3&gt;&lt;p&gt;Someone from our team will reply within one business day.&lt;/p&gt;&lt;/div&gt;
+&lt;script&gt;
+const f=document.getElementById(&#x27;_builder-form&#x27;);
+f.addEventListener(&#x27;submit&#x27;,e=&gt;{e.preventDefault();let ok=true;f.querySelectorAll(&#x27;[required]&#x27;).forEach(i=&gt;{const bad=!i.value.trim()||(i.type===&#x27;email&#x27;&amp;&amp;!/^\S+@\S+\.\S+$/.test(i.value));i.classList.toggle(&#x27;error&#x27;,bad);if(bad)ok=false;});
+f.querySelector(&#x27;#em&#x27;).nextElementSibling.hidden=!f.querySelector(&#x27;#em&#x27;).classList.contains(&#x27;error&#x27;);
+if(ok){f.hidden=true;document.querySelector(&#x27;.thank-you-message&#x27;).hidden=false;}});
+&lt;/script&gt;&lt;script&gt;new ResizeObserver(()=&gt;parent.postMessage({h:Math.ceil(document.body.getBoundingClientRect().height)+8,id:frameElement&amp;&amp;frameElement.id},&quot;*&quot;)).observe(document.body)&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div></div>
+</section>
+<section class="pv" id="s-quiz" aria-labelledby="h-quiz">
+  <header class="pv-head"><span class="num">2</span><div><h2 id="h-quiz">Framework Quiz</h2><p>Pick answers and click Next. The last step shows the score screen.</p></div><span class="file"><code>ghl-quiz.css</code> · Sites › Quizzes</span></header>
+  <div class="stage"><div class="gframe"><div class="gframe__in"><iframe id="f-quiz" title="Framework Quiz preview" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;/* ==========================================================================
+   First Search Marketing · GoHighLevel QUIZZES and SURVEYS
+   Paste into: Sites &gt; Quizzes (or Surveys) &gt; (your quiz) &gt; Styles panel &gt; Custom CSS
+   The form runs inside its own iframe, so these rules only touch the form.
+   Element selectors do most of the work (they survive GHL class renames);
+   GHL&#x27;s own class names are added where known.
+   ========================================================================== */
+@import url(&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Poppins:wght@500;600;700;800&amp;display=swap&quot;);
+
+:root {
+  --fs-navy: #282060; --fs-sky: #3299D5; --fs-aqua: #72CCD8; --fs-royal: #174FA2;
+  --fs-ink: #1C1B22; --fs-body: #2F2E36; --fs-muted: #6B6A72; --fs-line: #E3E2EA; --fs-tint: #F4F4F6;
+  --fs-error: #B42318;
+  --fs-grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);
+  --fs-grad-primary: linear-gradient(135deg, #2C1774 0%, #282060 55%, #24206E 100%);
+  --fs-head: &quot;Poppins&quot;, Arial, sans-serif; --fs-ui: &quot;Inter&quot;, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box !important; }
+
+/* ---------- Canvas: transparent so the website card shows through ---------- */
+html, body, #_builder-form, .builder-form, .form-builder--wrap, .ghl-form-wrap, .form-builder-container {
+  background: transparent !important;
+  font-family: var(--fs-ui) !important;
+  color: var(--fs-body) !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+#_builder-form, .form-builder--wrap { padding: 0 !important; max-width: 100% !important; }
+.form-builder--item, .form-field-wrapper, .field-container { margin-bottom: 16px !important; padding: 0 !important; }
+
+/* ---------- Headings and text elements ---------- */
+h1, h2, h3, h4, .form-builder--item h1, .form-builder--item h2, .form-builder--item h3 {
+  font-family: var(--fs-head) !important; color: var(--fs-navy) !important; font-weight: 700 !important; line-height: 1.2 !important;
+}
+p, .text-element { font-family: var(--fs-ui) !important; color: var(--fs-body) !important; line-height: 1.6 !important; }
+a { color: var(--fs-royal) !important; }
+
+/* ---------- Labels ---------- */
+label, .label-alignment, .form-builder--item label, .field-label {
+  font-family: var(--fs-ui) !important; font-size: 15px !important; font-weight: 600 !important;
+  color: var(--fs-navy) !important; margin-bottom: 6px !important;
+}
+.required, label .text-red-500, label span[style*=&quot;red&quot;] { color: var(--fs-sky) !important; }
+.short-label, .field-description, small { font-size: 13px !important; color: var(--fs-muted) !important; font-weight: 400 !important; }
+
+/* ---------- Inputs, selects, textareas ---------- */
+input[type=&quot;text&quot;], input[type=&quot;email&quot;], input[type=&quot;tel&quot;], input[type=&quot;number&quot;], input[type=&quot;url&quot;],
+input[type=&quot;date&quot;], input[type=&quot;password&quot;], input:not([type]), select, textarea,
+.form-control, .form-builder--item .form-control, .vs__dropdown-toggle, .multiselect__tags, .iti input {
+  width: 100% !important; min-height: 52px !important; padding: 12px 16px !important;
+  border: 2px solid var(--fs-line) !important; border-radius: 12px !important;
+  background: #fff !important; box-shadow: none !important;
+  font-family: var(--fs-head) !important; font-size: 16px !important; color: var(--fs-ink) !important;
+  transition: border-color .15s ease, box-shadow .15s ease !important;
+}
+textarea { min-height: 130px !important; resize: vertical !important; }
+input::placeholder, textarea::placeholder { color: #9A99A6 !important; opacity: 1 !important; }
+input:focus, select:focus, textarea:focus, .form-control:focus, .vs--open .vs__dropdown-toggle, .multiselect--active .multiselect__tags {
+  outline: none !important; border-color: var(--fs-aqua) !important; box-shadow: 0 0 0 4px rgba(114, 204, 216, .3) !important;
+}
+select { appearance: none !important; -webkit-appearance: none !important; padding-right: 44px !important;
+  background: #fff url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;18&#x27; height=&#x27;18&#x27; viewBox=&#x27;0 0 24 24&#x27; fill=&#x27;none&#x27; stroke=&#x27;%23282060&#x27; stroke-width=&#x27;2.4&#x27; stroke-linecap=&#x27;round&#x27; stroke-linejoin=&#x27;round&#x27;%3E%3Cpath d=&#x27;m6 9 6 6 6-6&#x27;/%3E%3C/svg%3E&quot;) no-repeat right 16px center !important; }
+.vs__dropdown-menu, .multiselect__content-wrapper { border: 2px solid var(--fs-line) !important; border-radius: 12px !important; box-shadow: 0 18px 40px -18px rgba(40, 32, 96, .4) !important; }
+.vs__dropdown-option--highlight, .multiselect__option--highlight { background: var(--fs-navy) !important; color: #fff !important; }
+/* Phone field country picker */
+.iti__selected-flag, .iti__flag-container { border-radius: 12px 0 0 12px !important; }
+.iti input { padding-left: 56px !important; }
+
+/* ---------- Errors ---------- */
+.error, .error-msg, .text-danger, .field-error, .ghl-error, .form-error { color: var(--fs-error) !important; font-size: 14px !important; font-family: var(--fs-ui) !important; }
+input.error, .has-error input, .has-error textarea, .has-error select, input[aria-invalid=&quot;true&quot;] { border-color: #D64545 !important; }
+
+/* ---------- Checkboxes and radios (consent, multiple choice) ---------- */
+input[type=&quot;checkbox&quot;], input[type=&quot;radio&quot;] { width: 20px !important; height: 20px !important; min-height: 0 !important; padding: 0 !important; accent-color: var(--fs-royal) !important; }
+.option, .checkbox-container, .radio-container, .form-check, .ghl-checkbox, .ghl-radio {
+  display: flex !important; align-items: flex-start !important; gap: 12px !important;
+  font-family: var(--fs-ui) !important; font-size: 15px !important; color: var(--fs-body) !important;
+}
+/* SMS / A2P consent block: soft grey panel like the website contact form */
+.terms-and-conditions, .sms-consent, .ghl-tc, [class*=&quot;consent&quot;] {
+  padding: 14px 16px !important; border-radius: 14px !important; background: var(--fs-tint) !important;
+  font-size: 13.5px !important; line-height: 1.5 !important; color: var(--fs-body) !important;
+}
+
+/* ---------- Submit button: the website&#x27;s primary purple button ---------- */
+button[type=&quot;submit&quot;], .btn-dark, .ghl-btn, .ghl-submit-btn, .form-builder--item .btn, .button-element button {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  min-height: 54px !important; padding: 14px 30px !important; width: auto !important;
+  border: 2px solid #4AA6DC !important; border-radius: 10px !important;
+  background: var(--fs-grad-primary) !important; color: #fff !important;
+  font-family: var(--fs-head) !important; font-size: 18px !important; font-weight: 600 !important; letter-spacing: .005em !important;
+  text-transform: none !important; text-shadow: none !important; cursor: pointer !important;
+  box-shadow: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55) !important;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease !important;
+}
+button[type=&quot;submit&quot;]:hover, .btn-dark:hover, .ghl-btn:hover, .ghl-submit-btn:hover {
+  background: linear-gradient(135deg, #34208A 0%, #2E2878 100%) !important;
+  box-shadow: 0 0 0 3px rgba(114, 204, 216, .35), 0 14px 28px -8px rgba(50, 153, 213, .65) !important;
+  transform: translateY(-1px) !important;
+}
+button[type=&quot;submit&quot;]:focus-visible { outline: 3px solid var(--fs-aqua) !important; outline-offset: 3px !important; }
+button[type=&quot;submit&quot;]:disabled { opacity: .6 !important; cursor: not-allowed !important; transform: none !important; }
+
+/* Full-width button on phones */
+@media (max-width: 600px) {
+  button[type=&quot;submit&quot;], .ghl-btn, .ghl-submit-btn { width: 100% !important; }
+}
+
+/* ---------- Thank-you message ---------- */
+.thank-you-message, .ghl-thank-you, .form-success, .success-message {
+  padding: 24px !important; border-radius: 16px !important; background: var(--fs-grad-primary) !important;
+  color: #fff !important; font-family: var(--fs-ui) !important; text-align: left !important;
+}
+.thank-you-message *, .ghl-thank-you *, .form-success *, .success-message * { color: #fff !important; }
+
+/* ==========================================================================
+   QUIZ / SURVEY ADDITIONS (everything above is the shared form styling)
+   ========================================================================== */
+
+/* ---------- Progress bar: brand gradient on a soft track ---------- */
+.progress, .progress-bar-container, .survey-progress, .ghl-progress, [role=&quot;progressbar&quot;] {
+  height: 10px !important; border-radius: 999px !important; background: var(--fs-line) !important;
+  overflow: hidden !important; border: 0 !important; box-shadow: none !important;
+}
+.progress-bar, .progress .progress-bar, .survey-progress &gt; div, .ghl-progress &gt; div, [role=&quot;progressbar&quot;] &gt; div {
+  height: 100% !important; border-radius: inherit !important; background: var(--fs-grad) !important;
+  transition: width .35s ease !important;
+}
+.progress-text, .slide-no, .survey-progress-text, .step-count { font-family: var(--fs-ui) !important; font-size: 13px !important; font-weight: 600 !important; color: var(--fs-muted) !important; }
+
+/* ---------- Question title ---------- */
+.question-title, .survey-question, .slide-title, .form-builder--item &gt; label:first-child {
+  font-family: var(--fs-head) !important; font-size: clamp(20px, 2.4vw, 26px) !important;
+  font-weight: 700 !important; line-height: 1.25 !important; color: var(--fs-navy) !important;
+}
+
+/* ---------- Answer choices as tappable cards ---------- */
+.option, .radio-container, .checkbox-container, .form-check, .ghl-radio, .ghl-checkbox, .survey-option {
+  position: relative !important; align-items: center !important;
+  margin: 0 0 10px !important; padding: 16px 18px !important; min-height: 58px !important;
+  border: 2px solid var(--fs-line) !important; border-radius: 14px !important; background: #fff !important;
+  font-family: var(--fs-head) !important; font-size: 16px !important; font-weight: 500 !important; color: var(--fs-navy) !important;
+  cursor: pointer !important; transition: border-color .15s ease, background .15s ease, box-shadow .15s ease !important;
+}
+.option:hover, .radio-container:hover, .checkbox-container:hover, .form-check:hover, .survey-option:hover {
+  border-color: var(--fs-sky) !important; box-shadow: 0 10px 24px -16px rgba(40, 32, 96, .45) !important;
+}
+/* Selected answer (works in browsers with :has, which is all current ones) */
+.option:has(input:checked), .radio-container:has(input:checked), .checkbox-container:has(input:checked),
+.form-check:has(input:checked), .survey-option:has(input:checked), .option.selected, .option.active {
+  border-color: var(--fs-navy) !important; background: #EEF0F9 !important; box-shadow: inset 4px 0 0 var(--fs-sky) !important;
+}
+.option label, .radio-container label, .checkbox-container label, .form-check label {
+  margin: 0 !important; font: inherit !important; color: inherit !important; cursor: pointer !important;
+}
+
+/* ---------- Next / Back / Submit ---------- */
+.ghl-footer, .survey-footer, .slide-footer, .footer-buttons { display: flex !important; gap: 12px !important; align-items: center !important; justify-content: space-between !important; margin-top: 22px !important; }
+.ghl-footer-next, .next-btn, .btn-next, .survey-next, .ghl-footer button:last-child {
+  min-height: 54px !important; padding: 14px 30px !important; border: 2px solid #4AA6DC !important; border-radius: 10px !important;
+  background: var(--fs-grad-primary) !important; color: #fff !important;
+  font-family: var(--fs-head) !important; font-size: 18px !important; font-weight: 600 !important; cursor: pointer !important;
+  box-shadow: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55) !important;
+}
+.ghl-footer-back, .back-btn, .prev-btn, .btn-back, .survey-back, .ghl-footer button:first-child:not(:last-child) {
+  min-height: 54px !important; padding: 14px 24px !important; border: 2px solid var(--fs-navy) !important; border-radius: 10px !important;
+  background: transparent !important; color: var(--fs-navy) !important; box-shadow: none !important;
+  font-family: var(--fs-head) !important; font-size: 16px !important; font-weight: 600 !important; cursor: pointer !important;
+}
+.ghl-footer-back:hover, .back-btn:hover, .prev-btn:hover, .btn-back:hover { background: var(--fs-navy) !important; color: #fff !important; }
+
+/* ---------- Score / result screen: matches the website scorecard ---------- */
+.quiz-result, .result-page, .score-container, .ghl-quiz-result, .thank-you-message {
+  padding: clamp(22px, 4vw, 34px) !important; border-radius: 22px !important;
+  background: radial-gradient(90% 80% at 100% 0%, rgba(50, 153, 213, .45) 0%, transparent 60%), var(--fs-grad-primary) !important;
+  color: #fff !important; box-shadow: 0 30px 60px -26px rgba(28, 22, 72, .7) !important;
+}
+.quiz-result *, .result-page *, .score-container *, .ghl-quiz-result * { color: #fff !important; }
+.quiz-score, .score, .score-value, .result-score {
+  font-family: var(--fs-head) !important; font-size: clamp(56px, 9vw, 88px) !important; font-weight: 800 !important; line-height: 1 !important;
+  background: linear-gradient(90deg, #72CCD8 0%, #3299D5 45%, #9FC3F0 100%) !important;
+  -webkit-background-clip: text !important; background-clip: text !important; color: transparent !important;
+}
+.quiz-result a, .result-page a, .quiz-result button, .result-page button {
+  display: inline-flex !important; min-height: 52px !important; align-items: center !important; padding: 12px 26px !important;
+  border-radius: 10px !important; background: #fff !important; color: var(--fs-navy) !important; border: 0 !important;
+  font-family: var(--fs-head) !important; font-weight: 600 !important; text-decoration: none !important;
+}
+.quiz-result a *, .result-page a *, .quiz-result button *, .result-page button * { color: var(--fs-navy) !important; }
+
+@media (max-width: 600px) {
+  .ghl-footer, .survey-footer, .slide-footer, .footer-buttons { flex-direction: column-reverse !important; align-items: stretch !important; }
+  .ghl-footer button, .survey-footer button { width: 100% !important; }
+}
+&lt;/style&gt;&lt;style&gt;body{margin:0;padding:4px}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;survey-form-container&quot;&gt;
+&lt;div class=&quot;progress&quot;&gt;&lt;div class=&quot;progress-bar&quot; id=&quot;pb&quot; style=&quot;width:33%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;p class=&quot;slide-no&quot; id=&quot;sn&quot;&gt;Question 1 of 3&lt;/p&gt;
+&lt;div id=&quot;q&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;ghl-footer&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;ghl-footer-back&quot; id=&quot;bk&quot;&gt;Back&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;ghl-footer-next&quot; id=&quot;nx&quot;&gt;Next&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quiz-result&quot; id=&quot;res&quot; hidden&gt;&lt;p&gt;Your FirstSearch score&lt;/p&gt;&lt;div class=&quot;quiz-score&quot;&gt;62&lt;/div&gt;&lt;h3&gt;Solid foundation. Leads are leaking at the choice stage.&lt;/h3&gt;&lt;p&gt;Start with FirstChoice: fix your offers and follow-up first.&lt;/p&gt;&lt;a href=&quot;#&quot;&gt;Book a strategy call&lt;/a&gt;&lt;/div&gt;
+&lt;script&gt;
+const QS=[[&quot;How do most new customers find you today?&quot;, [&quot;Google search&quot;, &quot;Referrals and word of mouth&quot;, &quot;Social media&quot;, &quot;Honestly, I&#x27;m not sure&quot;]], [&quot;How often do you follow up with leads who don&#x27;t book?&quot;, [&quot;Every time, automatically&quot;, &quot;When I remember&quot;, &quot;Rarely or never&quot;]], [&quot;Do you ask happy customers for reviews?&quot;, [&quot;Yes, every time&quot;, &quot;Sometimes&quot;, &quot;No&quot;]]];let i=0;const ans={};
+const draw=()=&gt;{const [t,o]=QS[i];document.getElementById(&#x27;q&#x27;).innerHTML=&#x27;&lt;div class=&quot;form-builder--item&quot;&gt;&lt;label class=&quot;question-title&quot;&gt;&#x27;+t+&#x27;&lt;/label&gt;&#x27;+o.map((x,k)=&gt;&#x27;&lt;div class=&quot;option&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;a&quot; id=&quot;o&#x27;+k+&#x27;&quot;&#x27;+(ans[i]===k?&#x27; checked&#x27;:&#x27;&#x27;)+&#x27;&gt;&lt;label for=&quot;o&#x27;+k+&#x27;&quot;&gt;&#x27;+x+&#x27;&lt;/label&gt;&lt;/div&gt;&#x27;).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;;
+document.getElementById(&#x27;pb&#x27;).style.width=((i+1)/QS.length*100)+&#x27;%&#x27;;document.getElementById(&#x27;sn&#x27;).textContent=&#x27;Question &#x27;+(i+1)+&#x27; of &#x27;+QS.length;
+document.getElementById(&#x27;bk&#x27;).style.visibility=i?&#x27;visible&#x27;:&#x27;hidden&#x27;;document.getElementById(&#x27;nx&#x27;).textContent=i===QS.length-1?&#x27;See my score&#x27;:&#x27;Next&#x27;;
+document.querySelectorAll(&#x27;[name=a]&#x27;).forEach((r,k)=&gt;r.addEventListener(&#x27;change&#x27;,()=&gt;ans[i]=k));};
+document.getElementById(&#x27;nx&#x27;).onclick=()=&gt;{if(i&lt;QS.length-1){i++;draw();}else{document.querySelector(&#x27;.survey-form-container&#x27;).hidden=true;document.getElementById(&#x27;res&#x27;).hidden=false;}};
+document.getElementById(&#x27;bk&#x27;).onclick=()=&gt;{if(i){i--;draw();}};draw();
+&lt;/script&gt;&lt;script&gt;new ResizeObserver(()=&gt;parent.postMessage({h:Math.ceil(document.body.getBoundingClientRect().height)+8,id:frameElement&amp;&amp;frameElement.id},&quot;*&quot;)).observe(document.body)&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div></div>
+</section>
+<section class="pv" id="s-cal" aria-labelledby="h-cal">
+  <header class="pv-head"><span class="num">3</span><div><h2 id="h-cal">Booking calendar</h2><p>Pick a day, then a time, then Continue to see the details and confirmation steps.</p></div><span class="file"><code>ghl-calendar.css</code> · Calendars › Widget</span></header>
+  <div class="stage"><div class="gframe"><div class="gframe__in"><iframe id="f-cal" title="Booking calendar preview" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;/* ==========================================================================
+   First Search Marketing · GoHighLevel CALENDAR (booking widget)
+   Paste into: Calendars &gt; Calendar settings &gt; (your calendar) &gt; Widget / Customizations &gt; Custom CSS.
+   If your account has no Custom CSS field there, put the calendar element on a GHL
+   site/funnel page and paste this into that page&#x27;s Settings &gt; Custom CSS instead.
+   Covers the classic widget, the newer &quot;Neo&quot; widget and the date-picker libraries GHL uses.
+   ========================================================================== */
+@import url(&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap&quot;);
+
+:root {
+  --fs-navy: #282060; --fs-sky: #3299D5; --fs-aqua: #72CCD8; --fs-royal: #174FA2;
+  --fs-ink: #1C1B22; --fs-body: #2F2E36; --fs-muted: #6B6A72; --fs-line: #E3E2EA; --fs-tint: #EEF0F9;
+  --fs-grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);
+  --fs-grad-primary: linear-gradient(135deg, #2C1774 0%, #282060 55%, #24206E 100%);
+  --fs-head: &quot;Poppins&quot;, Arial, sans-serif; --fs-ui: &quot;Inter&quot;, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box !important; }
+
+/* ---------- Canvas ---------- */
+html, body { background: transparent !important; font-family: var(--fs-ui) !important; color: var(--fs-body) !important; }
+.appointment_widgets--content, .hl_appointment-widget, .calendar-widget, .booking-widget, .widget-container, .calendar-container, .neo-widget {
+  font-family: var(--fs-ui) !important; color: var(--fs-body) !important;
+  background: #fff !important; border: 0 !important; border-radius: 22px !important;
+  box-shadow: 0 18px 40px -18px rgba(40, 32, 96, .28) !important;
+}
+
+/* Left panel (calendar name, host, duration) */
+.appointment_widgets--info, .widget-info, .calendar-info, .booking-info, .left-panel {
+  background: var(--fs-grad-primary) !important; color: #fff !important; border-radius: 22px 0 0 22px !important;
+}
+.appointment_widgets--info *, .widget-info *, .calendar-info *, .booking-info *, .left-panel * { color: #fff !important; }
+.appointment_widgets--info svg, .widget-info svg, .calendar-info svg { color: var(--fs-aqua) !important; fill: currentColor; }
+
+/* Headings */
+h1, h2, h3, h4, .widget-title, .calendar-title, .appointment_widgets--title, .booking-title {
+  font-family: var(--fs-head) !important; font-weight: 700 !important; color: var(--fs-navy) !important; line-height: 1.25 !important;
+}
+.appointment_widgets--info h1, .appointment_widgets--info h2, .appointment_widgets--info h3, .widget-info h2, .left-panel h2 { color: #fff !important; }
+
+/* ---------- Month header and arrows ---------- */
+.vdp-datepicker__calendar header, .vc-header, .calendar-header, .month-header {
+  font-family: var(--fs-head) !important; font-weight: 700 !important; color: var(--fs-navy) !important;
+}
+.vc-title, .day__month_btn, .month-title, .calendar-header .title { font-family: var(--fs-head) !important; font-size: 18px !important; font-weight: 700 !important; color: var(--fs-navy) !important; background: none !important; }
+.vc-arrow, .prev, .next, .calendar-header button, .month-nav button {
+  width: 40px !important; height: 40px !important; border-radius: 50% !important;
+  border: 1px solid var(--fs-line) !important; background: #fff !important; color: var(--fs-navy) !important;
+}
+.vc-arrow:hover, .prev:hover:not(.disabled), .next:hover:not(.disabled), .calendar-header button:hover { background: var(--fs-navy) !important; color: #fff !important; border-color: var(--fs-navy) !important; }
+.vdp-datepicker__calendar header .prev::after { border-right-color: currentColor !important; }
+.vdp-datepicker__calendar header .next::after { border-left-color: currentColor !important; }
+
+/* Weekday labels */
+.day-header, .vc-weekday, .weekday, .calendar-weekdays span, th { font: 600 12px var(--fs-ui) !important; letter-spacing: .04em !important; text-transform: uppercase !important; color: var(--fs-muted) !important; }
+
+/* ---------- Day cells ---------- */
+.vdp-datepicker__calendar, .vc-container, .date-picker { border: 0 !important; background: transparent !important; font-family: var(--fs-ui) !important; width: 100% !important; }
+.cell.day, .vc-day-content, .calendar-day, .day-cell, td[role=&quot;gridcell&quot;] button {
+  border-radius: 12px !important; border: 0 !important;
+  font: 600 15px var(--fs-ui) !important; color: var(--fs-navy) !important;
+  background: var(--fs-tint) !important; transition: background .15s ease, color .15s ease !important;
+}
+.vc-day-content { width: 40px !important; height: 40px !important; }
+/* Available day hover */
+.cell.day:not(.blank):not(.disabled):hover, .vc-day-content:not(.is-disabled):hover, .calendar-day:not(.disabled):hover, .day-cell.available:hover {
+  background: #DCE3F6 !important; border: 0 !important; color: var(--fs-navy) !important;
+}
+/* Selected day: brand gradient */
+.cell.day.selected, .cell.day.selected:hover, .vc-highlight, .vc-day.is-selected .vc-day-content, .calendar-day.selected, .day-cell.selected, td[aria-selected=&quot;true&quot;] button {
+  background: var(--fs-grad) !important; color: #fff !important; font-weight: 700 !important;
+}
+.vc-highlight + .vc-day-content, .vc-day-content.vc-highlight-content-solid { color: #fff !important; }
+/* Unavailable / past days */
+.cell.day.disabled, .vc-day-content.is-disabled, .calendar-day.disabled, .day-cell.disabled {
+  background: transparent !important; color: #C3C2CC !important; text-decoration: none !important; cursor: default !important;
+}
+.cell.day.blank { background: transparent !important; }
+/* Today marker */
+.cell.day.today:not(.selected), .vc-day.is-today .vc-day-content:not(.vc-highlight-content-solid) { box-shadow: inset 0 0 0 2px var(--fs-aqua) !important; }
+
+/* ---------- Time slots ---------- */
+.widgets-time-slot, .time-slot, .slot, .timeslot, .slot-item, .available-slot, .hl-time-slot {
+  min-height: 46px !important; padding: 10px 14px !important;
+  border: 2px solid var(--fs-aqua) !important; border-radius: 12px !important; background: #fff !important;
+  font: 600 15px var(--fs-ui) !important; color: var(--fs-navy) !important; text-align: center !important; cursor: pointer !important;
+  transition: border-color .15s ease, background .15s ease, color .15s ease !important;
+}
+.widgets-time-slot:hover, .time-slot:hover, .slot:hover, .timeslot:hover, .slot-item:hover, .available-slot:hover { border-color: var(--fs-royal) !important; }
+.widgets-time-slot.selected, .time-slot.selected, .slot.selected, .slot.active, .timeslot.active, .slot-item.selected, .selected-slot, .hl-time-slot.selected {
+  background: var(--fs-navy) !important; border-color: var(--fs-navy) !important; color: #fff !important;
+}
+.time-zone, .timezone, .timezone-select, .tz-select { font: 500 14px var(--fs-ui) !important; color: var(--fs-muted) !important; }
+
+/* ---------- Booking form step (name, email, phone) ---------- */
+label { font: 600 15px var(--fs-ui) !important; color: var(--fs-navy) !important; }
+input[type=&quot;text&quot;], input[type=&quot;email&quot;], input[type=&quot;tel&quot;], input:not([type]), select, textarea, .form-control {
+  width: 100% !important; min-height: 52px !important; padding: 12px 16px !important;
+  border: 2px solid var(--fs-line) !important; border-radius: 12px !important; background: #fff !important; box-shadow: none !important;
+  font: 16px var(--fs-head) !important; color: var(--fs-ink) !important;
+}
+textarea { min-height: 120px !important; }
+input:focus, select:focus, textarea:focus, .form-control:focus { outline: none !important; border-color: var(--fs-aqua) !important; box-shadow: 0 0 0 4px rgba(114, 204, 216, .3) !important; }
+input[type=&quot;checkbox&quot;], input[type=&quot;radio&quot;] { width: 20px !important; height: 20px !important; min-height: 0 !important; accent-color: var(--fs-royal) !important; }
+
+/* ---------- Buttons: Continue / Schedule Meeting ---------- */
+button[type=&quot;submit&quot;], .btn-schedule, .schedule-btn, .confirm-btn, .hl-btn-primary, .btn-primary, .continue-btn, .book-btn {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  min-height: 54px !important; padding: 14px 30px !important;
+  border: 2px solid #4AA6DC !important; border-radius: 10px !important;
+  background: var(--fs-grad-primary) !important; color: #fff !important;
+  font: 600 18px var(--fs-head) !important; text-transform: none !important; cursor: pointer !important;
+  box-shadow: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55) !important;
+}
+button[type=&quot;submit&quot;]:hover, .btn-schedule:hover, .confirm-btn:hover, .hl-btn-primary:hover, .btn-primary:hover, .continue-btn:hover {
+  background: linear-gradient(135deg, #34208A 0%, #2E2878 100%) !important;
+  box-shadow: 0 0 0 3px rgba(114, 204, 216, .35), 0 14px 28px -8px rgba(50, 153, 213, .65) !important;
+}
+.btn-back, .back-btn, .hl-btn-secondary, .btn-secondary {
+  min-height: 48px !important; border: 2px solid var(--fs-navy) !important; border-radius: 10px !important;
+  background: transparent !important; color: var(--fs-navy) !important; font: 600 16px var(--fs-head) !important;
+}
+
+/* ---------- Confirmation screen ---------- */
+.booking-confirmed, .confirmation, .appointment-confirmed, .thank-you, .success-message {
+  padding: 26px !important; border-radius: 18px !important; background: var(--fs-grad-primary) !important; color: #fff !important;
+}
+.booking-confirmed *, .confirmation *, .appointment-confirmed *, .thank-you *, .success-message * { color: #fff !important; }
+
+/* Hide the &quot;Powered by&quot; footer if your plan allows white-labelling (delete this rule if not) */
+/* .powered-by, .branding-footer { display: none !important; } */
+
+@media (max-width: 760px) {
+  .appointment_widgets--info, .widget-info, .calendar-info, .booking-info, .left-panel { border-radius: 22px 22px 0 0 !important; }
+  button[type=&quot;submit&quot;], .btn-schedule, .confirm-btn, .hl-btn-primary, .btn-primary, .continue-btn { width: 100% !important; }
+}
+&lt;/style&gt;&lt;style&gt;body{margin:0;padding:4px}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;.wrap{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr)}.vdp-datepicker__calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:10px}.cell{display:grid;place-items:center;height:44px;padding:0}.cell.day-header{height:28px}.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin-top:10px}.calendar-header{display:flex;justify-content:space-between;align-items:center}.pane{padding:26px}.meta{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+@media(max-width:620px){.wrap{grid-template-columns:minmax(0,1fr)}}&lt;/style&gt;
+&lt;div class=&quot;appointment_widgets--content wrap&quot;&gt;
+&lt;div class=&quot;appointment_widgets--info pane&quot;&gt;&lt;p style=&quot;margin:0 0 8px;font-weight:600;opacity:.8&quot;&gt;First Search Marketing&lt;/p&gt;&lt;h2 style=&quot;margin:0&quot;&gt;Free 30-minute consultation&lt;/h2&gt;&lt;ul class=&quot;meta&quot;&gt;&lt;li&gt;&amp;#9719; 30 minutes&lt;/li&gt;&lt;li&gt;&amp;#9742; Phone or Zoom&lt;/li&gt;&lt;li&gt;&amp;#9733; With Chris Mitchell&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;div class=&quot;pane&quot; id=&quot;step1&quot;&gt;&lt;div class=&quot;calendar-header&quot;&gt;&lt;button class=&quot;prev&quot; type=&quot;button&quot; aria-label=&quot;Previous month&quot;&gt;&amp;lsaquo;&lt;/button&gt;&lt;span class=&quot;month-title&quot;&gt;November 2026&lt;/span&gt;&lt;button class=&quot;next&quot; type=&quot;button&quot; aria-label=&quot;Next month&quot;&gt;&amp;rsaquo;&lt;/button&gt;&lt;/div&gt;
+&lt;div class=&quot;vdp-datepicker__calendar&quot;&gt;&lt;span class=&quot;cell day-header&quot;&gt;Su&lt;/span&gt;&lt;span class=&quot;cell day-header&quot;&gt;Mo&lt;/span&gt;&lt;span class=&quot;cell day-header&quot;&gt;Tu&lt;/span&gt;&lt;span class=&quot;cell day-header&quot;&gt;We&lt;/span&gt;&lt;span class=&quot;cell day-header&quot;&gt;Th&lt;/span&gt;&lt;span class=&quot;cell day-header&quot;&gt;Fr&lt;/span&gt;&lt;span class=&quot;cell day-header&quot;&gt;Sa&lt;/span&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;1&quot; disabled&gt;1&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day today&quot; data-d=&quot;2&quot;&gt;2&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;3&quot;&gt;3&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;4&quot;&gt;4&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;5&quot;&gt;5&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;6&quot; disabled&gt;6&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;7&quot; disabled&gt;7&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;8&quot; disabled&gt;8&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;9&quot;&gt;9&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;10&quot;&gt;10&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;11&quot;&gt;11&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;12&quot;&gt;12&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;13&quot; disabled&gt;13&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;14&quot; disabled&gt;14&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;15&quot; disabled&gt;15&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;16&quot;&gt;16&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;17&quot;&gt;17&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;18&quot;&gt;18&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;19&quot;&gt;19&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;20&quot; disabled&gt;20&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;21&quot; disabled&gt;21&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;22&quot; disabled&gt;22&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;23&quot;&gt;23&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;24&quot;&gt;24&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;25&quot;&gt;25&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;26&quot;&gt;26&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;27&quot; disabled&gt;27&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;28&quot; disabled&gt;28&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day disabled&quot; data-d=&quot;29&quot; disabled&gt;29&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;cell day&quot; data-d=&quot;30&quot;&gt;30&lt;/button&gt;&lt;/div&gt;
+&lt;p class=&quot;timezone&quot; style=&quot;margin:14px 0 0&quot;&gt;Eastern Time (US &amp;amp; Canada)&lt;/p&gt;
+&lt;div class=&quot;slots&quot; id=&quot;slots&quot;&gt;&lt;/div&gt;
+&lt;button class=&quot;btn-schedule&quot; id=&quot;go&quot; type=&quot;button&quot; style=&quot;margin-top:18px&quot; hidden&gt;Continue&lt;/button&gt;&lt;/div&gt;
+&lt;div class=&quot;pane&quot; id=&quot;step2&quot; hidden&gt;&lt;h3 style=&quot;margin-top:0&quot; id=&quot;when&quot;&gt;&lt;/h3&gt;
+&lt;label for=&quot;cn&quot;&gt;Name&lt;/label&gt;&lt;input id=&quot;cn&quot; placeholder=&quot;Jane Smith&quot; style=&quot;margin:6px 0 14px&quot;&gt;&lt;label for=&quot;ce&quot;&gt;Email&lt;/label&gt;&lt;input id=&quot;ce&quot; type=&quot;email&quot; placeholder=&quot;you@business.com&quot; style=&quot;margin:6px 0 14px&quot;&gt;&lt;label for=&quot;cp&quot;&gt;Phone&lt;/label&gt;&lt;input id=&quot;cp&quot; type=&quot;tel&quot; placeholder=&quot;(603) 555-0123&quot; style=&quot;margin:6px 0 18px&quot;&gt;
+&lt;div style=&quot;display:flex;gap:10px;flex-wrap:wrap&quot;&gt;&lt;button class=&quot;btn-back&quot; id=&quot;back&quot; type=&quot;button&quot; style=&quot;padding:0 22px&quot;&gt;Back&lt;/button&gt;&lt;button class=&quot;btn-schedule&quot; id=&quot;book&quot; type=&quot;button&quot;&gt;Schedule meeting&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;pane&quot; id=&quot;step3&quot; hidden&gt;&lt;div class=&quot;booking-confirmed&quot;&gt;&lt;h3 style=&quot;margin-top:0&quot;&gt;You&#x27;re booked.&lt;/h3&gt;&lt;p id=&quot;conf&quot;&gt;&lt;/p&gt;&lt;p&gt;A calendar invite is on its way to your inbox.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const T=[&#x27;9:00 am&#x27;,&#x27;9:30 am&#x27;,&#x27;10:30 am&#x27;,&#x27;11:00 am&#x27;,&#x27;1:00 pm&#x27;,&#x27;2:30 pm&#x27;,&#x27;3:00 pm&#x27;];let day,slot;
+const $=s=&gt;document.querySelector(s);
+document.querySelectorAll(&#x27;.cell.day:not(.disabled)&#x27;).forEach(b=&gt;b.onclick=()=&gt;{document.querySelectorAll(&#x27;.cell.day&#x27;).forEach(x=&gt;x.classList.remove(&#x27;selected&#x27;));b.classList.add(&#x27;selected&#x27;);day=b.dataset.d;slot=null;$(&#x27;#go&#x27;).hidden=true;
+$(&#x27;#slots&#x27;).innerHTML=T.map(t=&gt;&#x27;&lt;button type=&quot;button&quot; class=&quot;widgets-time-slot&quot;&gt;&#x27;+t+&#x27;&lt;/button&gt;&#x27;).join(&#x27;&#x27;);
+document.querySelectorAll(&#x27;.widgets-time-slot&#x27;).forEach(s=&gt;s.onclick=()=&gt;{document.querySelectorAll(&#x27;.widgets-time-slot&#x27;).forEach(x=&gt;x.classList.remove(&#x27;selected&#x27;));s.classList.add(&#x27;selected&#x27;);slot=s.textContent;$(&#x27;#go&#x27;).hidden=false;});});
+$(&#x27;#go&#x27;).onclick=()=&gt;{$(&#x27;#step1&#x27;).hidden=true;$(&#x27;#step2&#x27;).hidden=false;$(&#x27;#when&#x27;).textContent=&#x27;November &#x27;+day+&#x27;, &#x27;+slot;};
+$(&#x27;#back&#x27;).onclick=()=&gt;{$(&#x27;#step2&#x27;).hidden=true;$(&#x27;#step1&#x27;).hidden=false;};
+$(&#x27;#book&#x27;).onclick=()=&gt;{$(&#x27;#step2&#x27;).hidden=true;$(&#x27;#step3&#x27;).hidden=false;$(&#x27;#conf&#x27;).textContent=&#x27;November &#x27;+day+&#x27; at &#x27;+slot+&#x27; Eastern, with Chris Mitchell.&#x27;;};
+document.querySelector(&#x27;.cell.day:not(.disabled)[data-d=&quot;10&quot;]&#x27;).click();
+&lt;/script&gt;&lt;script&gt;new ResizeObserver(()=&gt;parent.postMessage({h:Math.ceil(document.body.getBoundingClientRect().height)+8,id:frameElement&amp;&amp;frameElement.id},&quot;*&quot;)).observe(document.body)&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div></div>
+</section>
+<p class="foot">Preview only. The layout around each piece mimics GoHighLevel's standard output, so spacing in your real form may differ slightly. Sample text throughout.</p>
+<script>
+addEventListener('message',e=>{const d=e.data;if(!d||!d.id)return;const f=document.getElementById(d.id);if(f)f.style.height=(d.h+8)+'px';});
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));document.body.classList.toggle('phone',b.dataset.w==='phone');});
+</script></body></html>
