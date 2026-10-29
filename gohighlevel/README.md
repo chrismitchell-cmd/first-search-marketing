@@ -5,7 +5,8 @@ Paste-in CSS that makes GoHighLevel's standard forms, quizzes and calendars matc
 | File | Paste it into |
 |---|---|
 | `ghl-forms.css` | Sites › Forms › open the form › **Styles** panel › **Custom CSS** |
-| `ghl-quiz.css` | Sites › Quizzes (or Surveys) › open it › **Styles** panel › **Custom CSS** (includes the form styles, so paste this one file only) |
+| `ghl-quiz.css` | Sites › Quizzes › open the quiz › **Styles** › **Custom CSS**. Replace everything already in that box. Written against the quiz's real markup. |
+| `quiz-results-setup.md` | Brand settings for the quiz **Results** tab, plus problems found in the quiz setup |
 | `ghl-calendar.css` | Calendars › Calendar settings › open the calendar › Widget / Customizations › **Custom CSS**. No field there? Put the calendar on a GHL site page and paste it into that page's Settings › Custom CSS. |
 
 ## Important
