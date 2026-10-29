@@ -330,8 +330,16 @@ html, body { background: transparent !important; }
 /* Selected answer */
 #app #_builder-form .standard-radio-container:has(input:checked) {
   border-color: var(--fs-navy) !important; background: var(--fs-tint) !important;
-  box-shadow: inset 4px 0 0 var(--fs-sky) !important;
+  box-shadow: none !important;
 }
+/* Gradient bar on the left of the selected answer (aqua to royal, as on the website) */
+#app #_builder-form .standard-radio-container { overflow: hidden !important; }
+#app #_builder-form .standard-radio-container::before {
+  content: &quot;&quot;; position: absolute; left: 0; top: 0; bottom: 0; width: 7px;
+  background: linear-gradient(180deg, #72CCD8 0%, #3299D5 50%, #174FA2 100%);
+  opacity: 0; transition: opacity .15s ease; pointer-events: none;
+}
+#app #_builder-form .standard-radio-container:has(input:checked)::before { opacity: 1; }
 #app #_builder-form .standard-radio-container:has(input:checked) label { font-weight: 600 !important; }
 
 /* Bubble-style choices (if any question is switched to the &quot;bubble&quot; display) */
