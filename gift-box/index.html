@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partner Gift Box</title>
+<meta name="description" content="Strategic partner thank-you box, designed in the First Search Marketing website brand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #282060; --navy-deep: #1C1648; --sky: #3299D5; --aqua: #72CCD8; --royal: #174FA2; --grey: #D9D8D7;
+  --ink: #1C1B22; --body: #2F2E36; --muted: #6B6A72; --line: #E3E2EA; --tint: #EEF0F9; --page: #F4F4F6;
+  --grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);
+  --grad-diag: linear-gradient(120deg, #72CCD8 0%, #174FA2 100%);
+  --grad-text: linear-gradient(90deg, #72CCD8 0%, #3299D5 45%, #174FA2 100%);
+  --grad-primary: linear-gradient(135deg, #2C1774 0%, #282060 55%, #24206E 100%);
+  --glow: radial-gradient(90% 80% at 100% 0%, rgba(50, 153, 213, .55) 0%, transparent 60%);
+  --font: "Poppins", system-ui, sans-serif; --ui: "Inter", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--page); color: var(--body); font: 16px/1.55 var(--ui); }
+h1, h2, h3, h4 { font-family: var(--font); color: var(--navy); margin: 0; line-height: 1.15; }
+img { display: block; max-width: 100%; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.eyebrow { display: block; font: 600 15px var(--font); color: var(--sky); margin-bottom: 8px; }
+.gt { color: transparent; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; }
+.plogo { display: inline-flex; align-items: baseline; font: 800 1em/1 var(--font); letter-spacing: -.03em; text-transform: lowercase; color: var(--navy); white-space: nowrap; }
+.plogo b { font-weight: 800; color: var(--sky); }
+.plogo--light { color: #fff; } .plogo--light b { color: #8FD5EE; }
+
+/* Top bar */
+.top { background: #fff; border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 76px; }
+.top img { height: 42px; width: auto; }
+.top span { font: 600 14px var(--ui); color: var(--muted); }
+.stripe { height: 8px; background: var(--grad); }
+
+/* Intro */
+.intro { padding: 48px 0 8px; background: url(img/bg-geometric.jpg) center / cover; }
+.intro h1 { font-size: clamp(34px, 5vw, 56px); font-weight: 800; letter-spacing: -.02em; }
+.intro p { max-width: 720px; margin: 14px 0 0; font-size: 18px; }
+
+/* ---------- 3D mockup ---------- */
+.stage { padding: 30px 0 60px; background: url(img/bg-geometric.jpg) center / cover; }
+.stage-in { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; align-items: center; }
+.scene { height: 520px; display: grid; place-items: center; perspective: 1600px; }
+.box3d { --w: 420px; --d: 300px; --h: 130px; position: relative; width: var(--w); height: var(--d); transform-style: preserve-3d; transition: transform 1s cubic-bezier(.3, .7, .3, 1); }
+.box3d[data-view="angle"] { transform: rotateX(58deg) rotateZ(-32deg); }
+.box3d[data-view="front"] { transform: rotateX(72deg) rotateZ(0deg); }
+.box3d[data-view="side"] { transform: rotateX(68deg) rotateZ(-68deg); }
+.box3d[data-view="top"] { transform: rotateX(0deg) rotateZ(0deg); }
+.face { position: absolute; left: 50%; top: 50%; overflow: hidden; backface-visibility: hidden; }
+.f-top { width: var(--w); height: var(--d); margin: calc(var(--d) / -2) 0 0 calc(var(--w) / -2); transform: translateZ(var(--h)); }
+.f-front, .f-back { width: var(--w); height: var(--h); margin: calc(var(--h) / -2) 0 0 calc(var(--w) / -2); }
+.f-front { transform: translate3d(0, calc(var(--d) / 2), calc(var(--h) / 2)) rotateX(-90deg); }
+.f-back { transform: translate3d(0, calc(var(--d) / -2), calc(var(--h) / 2)) rotateX(90deg) rotateZ(180deg); }
+.f-right, .f-left { width: var(--d); height: var(--h); margin: calc(var(--h) / -2) 0 0 calc(var(--d) / -2); }
+.f-right { transform: translate3d(calc(var(--w) / 2), 0, calc(var(--h) / 2)) rotateZ(-90deg) rotateX(-90deg); }
+.f-left { transform: translate3d(calc(var(--w) / -2), 0, calc(var(--h) / 2)) rotateZ(90deg) rotateX(-90deg); }
+.shadow { position: absolute; inset: 4%; background: rgba(28, 22, 72, .35); filter: blur(26px); transform: translateZ(0); border-radius: 30px; }
+.views { display: grid; gap: 10px; }
+.views h2 { font-size: 26px; margin-bottom: 4px; }
+.views p { margin: 0 0 8px; color: var(--body); }
+.views button { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 18px; border: 2px solid transparent; border-radius: 14px; background: #fff; font: 600 16px var(--font); color: var(--navy); cursor: pointer; box-shadow: 0 10px 24px -16px rgba(40, 32, 96, .5); }
+.views button[aria-pressed="true"] { background: linear-gradient(#fff, #fff) padding-box, var(--grad) border-box; }
+.views button:focus-visible { outline: 3px solid var(--aqua); outline-offset: 2px; }
+
+/* ---------- Panel artwork (shared by the 3D faces and the flat panels) ---------- */
+/* LID TOP: light, like the website hero */
+.art-top { position: relative; width: 100%; height: 100%; background: url(img/bg-geometric.jpg) center / cover, #fff; display: grid; place-items: center; container-type: inline-size; }
+.art-top::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4.5%; background: var(--grad); }
+.art-top .in { display: grid; justify-items: center; gap: 4cqw; text-align: center; }
+.art-top .logo { width: 58cqw; }
+.art-top .eb { font: 600 3cqw var(--font); letter-spacing: .14em; text-transform: uppercase; color: var(--sky); }
+.art-top .rule { width: 12cqw; height: .9cqw; border-radius: 1cqw; background: var(--grad); }
+
+/* FRONT: purple band with the tagline, like the website footer */
+.art-front { position: relative; width: 100%; height: 100%; background: var(--glow), var(--grad-primary); display: grid; place-items: center; container-type: inline-size; }
+.art-front p { margin: 0; font: 700 5.6cqw/1.1 var(--font); color: #fff; letter-spacing: -.01em; text-align: center; }
+.art-front p span { color: var(--sky); }
+.art-front .rule { width: 9cqw; height: .8cqw; margin: 2.6cqw auto 0; border-radius: 1cqw; background: var(--grad); }
+
+/* SIDES: brand gradient + the four framework stages */
+.art-side { position: relative; width: 100%; height: 100%; background: var(--grad-diag); display: grid; place-items: center; container-type: size; }
+.art-side ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: auto auto; gap: 10cqh 9cqw; text-align: center; }
+.art-side .plogo { font-size: 7cqw; }
+.art-side small { display: block; margin-top: 3cqh; font: 600 3.2cqw var(--ui); color: rgba(255, 255, 255, .92); letter-spacing: .02em; }
+
+/* INSIDE LID: the thank-you message */
+.art-inside { position: relative; width: 100%; height: 100%; padding: 6cqw 7cqw; background: var(--glow), var(--grad-primary); color: #fff; text-align: center; display: grid; align-content: center; justify-items: center; container-type: inline-size; }
+.art-inside .eb { font: 600 2.4cqw var(--font); letter-spacing: .16em; text-transform: uppercase; color: var(--aqua); }
+.art-inside h3 { margin: 1.4cqw 0 0; font: 800 5.6cqw/1.08 var(--font); color: #fff; letter-spacing: -.02em; }
+.art-inside h3 span { display: block; }
+.art-inside .rule { width: 9cqw; height: .6cqw; margin: 2.6cqw 0; border-radius: 1cqw; background: var(--grad); }
+.art-inside p { max-width: 64cqw; margin: 0; font: 400 2.1cqw/1.55 var(--ui); color: rgba(255, 255, 255, .92); }
+.vals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2cqw; width: 100%; margin-top: 4cqw; }
+.val { display: grid; justify-items: center; gap: 1.4cqw; }
+.val i { display: grid; place-items: center; width: 9cqw; height: 9cqw; border-radius: 2.2cqw; background: #fff; box-shadow: 0 0 0 .5cqw #3299D5, 0 0 2.4cqw .4cqw rgba(50, 153, 213, .55); }
+.val i img { width: 64%; height: 64%; object-fit: contain; }
+.val b { font: 700 1.7cqw var(--font); letter-spacing: .08em; text-transform: uppercase; color: #fff; }
+.art-inside .sig { margin-top: 3.4cqw; font: italic 500 2.2cqw var(--font); color: var(--aqua); }
+
+/* INTERIOR: tissue + sticker */
+.art-tissue { position: relative; width: 100%; height: 100%; display: grid; place-items: center; container-type: inline-size;
+  background:
+    repeating-linear-gradient(55deg, rgba(255, 255, 255, .07) 0 2px, transparent 2px 22px),
+    repeating-linear-gradient(-35deg, rgba(0, 0, 0, .12) 0 3px, transparent 3px 30px),
+    radial-gradient(60% 60% at 30% 30%, #3B2E9A, transparent 70%),
+    radial-gradient(70% 70% at 80% 80%, #174FA2, transparent 70%), #282060; }
+.sticker { width: 34cqw; aspect-ratio: 1; border-radius: 50%; padding: 1.4cqw; background: var(--grad); box-shadow: 0 2cqw 4cqw -1cqw rgba(0, 0, 0, .55); }
+.sticker > div { width: 100%; height: 100%; border-radius: 50%; background: #fff; display: grid; place-items: center; }
+.sticker img { width: 34%; }
+
+/* INSERT CARD: gradient-border card, like the website */
+.art-card { width: 100%; height: 100%; padding: 1.4cqw; border-radius: 4cqw; background: var(--grad); container-type: inline-size; }
+.art-card > div { width: 100%; height: 100%; border-radius: 3cqw; background: #fff; padding: 7cqw; display: grid; align-content: space-between; }
+.art-card .pin { width: 8cqw; }
+.art-card h4 { margin: 5cqw 0 3cqw; font: 800 6.4cqw/1.1 var(--font); color: var(--navy); letter-spacing: -.02em; }
+.art-card p { margin: 0; font: 400 3.2cqw/1.55 var(--ui); color: var(--body); }
+.art-card .lines { display: grid; gap: 5.4cqw; margin: 6cqw 0 4cqw; }
+.art-card .lines i { display: block; height: 1px; background: var(--line); }
+.art-card .from { font: 600 3.2cqw var(--font); color: var(--navy); }
+.art-card .from span { display: block; font: 500 2.8cqw var(--ui); color: var(--muted); }
+
+/* ---------- Flat panel sheet ---------- */
+.sheet { padding: 64px 0; background: #fff; }
+.sec-head { max-width: 760px; margin: 0 auto 36px; text-align: center; }
+.sec-head h2 { font-size: clamp(28px, 3.4vw, 42px); font-weight: 800; letter-spacing: -.02em; }
+.sec-head p { margin: 10px 0 0; font-size: 17px; }
+.panels { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; }
+.panel { grid-column: span 3; }
+.panel--wide { grid-column: span 4; }
+.panel--narrow { grid-column: span 2; }
+.panel figure { margin: 0; }
+.frame { border-radius: 16px; overflow: hidden; box-shadow: 0 18px 40px -22px rgba(28, 22, 72, .55); }
+.panel figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; margin-top: 12px; }
+.panel figcaption b { font: 700 16px var(--font); color: var(--navy); }
+.panel figcaption span { font: 500 14px var(--ui); color: var(--muted); }
+.panel figcaption p { width: 100%; margin: 2px 0 0; font-size: 14.5px; color: var(--body); }
+.r-top { aspect-ratio: 12 / 9; }
+.r-front { aspect-ratio: 12 / 4; }
+.r-side { aspect-ratio: 9 / 4; }
+.r-inside { aspect-ratio: 12 / 9; }
+.r-tissue { aspect-ratio: 12 / 9; }
+.r-card { aspect-ratio: 5 / 7; border-radius: 0; box-shadow: none; }
+.sides { display: grid; gap: 14px; }
+
+/* ---------- Spec ---------- */
+.spec { padding: 64px 0 80px; background: url(img/bg-geometric.jpg) center / cover; }
+.spec-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.card { position: relative; padding: 4px; border-radius: 26px; background: var(--grad); }
+.card > div { height: 100%; border-radius: 22px; background: #fff; padding: 24px 26px; }
+.card h3 { font-size: 20px; margin-bottom: 12px; }
+.card ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 15px; }
+.card li b { color: var(--navy); }
+.sw { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: center; }
+.sw i { width: 44px; height: 44px; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .08); }
+.sw span { font-size: 13.5px; color: var(--muted); display: block; }
+.changes { grid-column: 1 / -1; }
+.changes .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 32px; }
+.changes li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }
+.changes li::before { content: ""; width: 10px; height: 10px; margin-top: 7px; border-radius: 50%; background: var(--grad); }
+.note { margin: 28px auto 0; max-width: 760px; text-align: center; font-size: 14px; color: var(--muted); }
+footer.foot { background: var(--grad-primary); color: #D8D6EE; padding: 26px 0; font-size: 14px; }
+footer.foot .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+footer.foot b { color: #fff; }
+.foot-bar { height: 8px; background: var(--grad); }
+
+@media (max-width: 1000px) {
+  .stage-in { grid-template-columns: minmax(0, 1fr); }
+  .views { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .views h2, .views p { grid-column: 1 / -1; }
+  .panel, .panel--wide, .panel--narrow { grid-column: span 6; }
+  .spec-grid { grid-template-columns: minmax(0, 1fr); }
+  .changes .cols { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 16px; }
+  .scene { height: 340px; }
+  .box3d { --w: 250px; --d: 180px; --h: 80px; }
+  .top span { display: none; }
+  .views button { font-size: 14.5px; padding: 12px 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .box3d { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap"><img src="img/logo.png" alt="First Search Marketing" width="533" height="152"><span>Strategic partner gift box · Concept for review</span></div></header>
+<div class="stripe" aria-hidden="true"></div>
+
+<section class="intro" aria-labelledby="t">
+  <div class="wrap">
+    <span class="eyebrow">Partner thank-you gift</span>
+    <h1 id="t">A year of wins, <span class="gt">boxed in our brand.</span></h1>
+    <p>The concept you shared, rebuilt with the approved website system: our purple and gradient, Poppins and Inter, the gradient-frame card, the four FirstSearch stages and our value icons.</p>
+  </div>
+</section>
+
+<!-- 3D MOCKUP -->
+<section class="stage" aria-label="3D box mockup">
+  <div class="wrap stage-in">
+    <div class="scene">
+      <div class="box3d" id="box" data-view="angle" role="img" aria-label="Mailer box: white geometric lid with the First Search logo, purple front panel reading We put your business first, and gradient side panels listing the four FirstSearch stages.">
+        <div class="shadow"></div>
+        <div class="face f-top"><div class="art-top"><div class="in"><img class="logo" src="img/logo.png" alt=""><span class="rule"></span><span class="eb">Strategic Partner · 2026</span></div></div></div>
+        <div class="face f-front"><div class="art-front"><div><p>We put your <span>business first.</span></p><div class="rule"></div></div></div></div>
+        <div class="face f-right"><div class="art-side"><ul><li><span class="plogo plogo--light"><b>first</b>brand</span></li><li><span class="plogo plogo--light"><b>first</b>thought</span></li><li><span class="plogo plogo--light"><b>first</b>choice</span></li><li><span class="plogo plogo--light"><b>first</b>referral</span></li></ul></div></div>
+        <div class="face f-left"><div class="art-side"><ul><li><span class="plogo plogo--light"><b>first</b>brand</span></li><li><span class="plogo plogo--light"><b>first</b>thought</span></li><li><span class="plogo plogo--light"><b>first</b>choice</span></li><li><span class="plogo plogo--light"><b>first</b>referral</span></li></ul></div></div>
+        <div class="face f-back"><div class="art-front"><div><p>We put your <span>business first.</span></p></div></div></div>
+      </div>
+    </div>
+    <div class="views" role="group" aria-label="Choose a view">
+      <h2>Turn the box</h2>
+      <p>Same views as your concept board.</p>
+      <button type="button" data-v="angle" aria-pressed="true">Angled view <span aria-hidden="true">↻</span></button>
+      <button type="button" data-v="front" aria-pressed="false">Front view <span aria-hidden="true">↻</span></button>
+      <button type="button" data-v="side" aria-pressed="false">Side view <span aria-hidden="true">↻</span></button>
+      <button type="button" data-v="top" aria-pressed="false">Lid from above <span aria-hidden="true">↻</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- FLAT PANELS -->
+<section class="sheet" aria-labelledby="p">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Every panel</span><h2 id="p">The artwork, <span class="gt">panel by panel.</span></h2><p>Shown at the proportions of a 12 × 9 × 4 in mailer. Final art gets laid onto your printer's dieline.</p></div>
+    <div class="panels">
+      <figure class="panel panel--wide">
+        <div class="frame r-top"><div class="art-top"><div class="in"><img class="logo" src="img/logo.png" alt="First Search Marketing logo"><span class="rule"></span><span class="eb">Strategic Partner · 2026</span></div></div></div>
+        <figcaption><b>1 · Lid top</b><span>12 × 9 in</span><p>White with the website's geometric texture and the full-colour logo, like the homepage hero. The gradient bar along the front edge is the website's header stripe.</p></figcaption>
+      </figure>
+      <figure class="panel panel--narrow">
+        <div class="sides">
+          <div class="frame r-side"><div class="art-side"><ul><li><span class="plogo plogo--light"><b>first</b>brand</span><small>Build the foundation</small></li><li><span class="plogo plogo--light"><b>first</b>thought</span><small>Get found first</small></li><li><span class="plogo plogo--light"><b>first</b>choice</span><small>Get chosen</small></li><li><span class="plogo plogo--light"><b>first</b>referral</span><small>Get referred</small></li></ul></div></div>
+          <div class="frame r-side"><div class="art-side"><ul><li><span class="plogo plogo--light"><b>first</b>brand</span></li><li><span class="plogo plogo--light"><b>first</b>thought</span></li><li><span class="plogo plogo--light"><b>first</b>choice</span></li><li><span class="plogo plogo--light"><b>first</b>referral</span></li></ul></div></div>
+        </div>
+        <figcaption><b>2 · Side panels</b><span>9 × 4 in each</span><p>Brand gradient with the four FirstSearch stages in place of "Strategy · Visibility · Leads · Growth". One side adds each stage's job.</p></figcaption>
+      </figure>
+      <figure class="panel panel--wide">
+        <div class="frame r-front"><div class="art-front"><div><p>We put your <span>business first.</span></p><div class="rule"></div></div></div></div>
+        <figcaption><b>3 · Front and back panels</b><span>12 × 4 in</span><p>Our purple with the soft blue glow from the website's dark sections, and the approved tagline exactly as it appears in the footer.</p></figcaption>
+      </figure>
+      <figure class="panel panel--narrow">
+        <div class="frame r-tissue"><div class="art-tissue"><div class="sticker"><div><img src="img/pin.png" alt="First Search pin mark"></div></div></div></div>
+        <figcaption><b>4 · Tissue + seal sticker</b><span>3 in round</span><p>Purple tissue sealed with the pin mark on white, ringed in the gradient like our cards.</p></figcaption>
+      </figure>
+      <figure class="panel panel--wide">
+        <div class="frame r-inside"><div class="art-inside">
+          <span class="eb">A year of wins</span>
+          <h3><span>A partnership</span><span class="gt">worth celebrating.</span></h3>
+          <div class="rule"></div>
+          <p>Thank you for trusting First Search Marketing to be part of your journey. Here's to more growth, more opportunities and an even brighter 2027.</p>
+          <div class="vals">
+            <div class="val"><i><img src="img/trust.webp" alt=""></i><b>Accountability</b></div>
+            <div class="val"><i><img src="img/conversation.webp" alt=""></i><b>Collaboration</b></div>
+            <div class="val"><i><img src="img/idea.webp" alt=""></i><b>Curiosity</b></div>
+            <div class="val"><i><img src="img/handshake.webp" alt=""></i><b>Partnership</b></div>
+          </div>
+          <p class="sig">Chris Mitchell &amp; the First Search team</p>
+        </div></div>
+        <figcaption><b>5 · Inside lid</b><span>12 × 9 in</span><p>Your message in the website's heading style, with our four core values and the same brand icons (white tiles, blue glow) used on the About page.</p></figcaption>
+      </figure>
+      <figure class="panel panel--narrow">
+        <div class="frame r-card" style="box-shadow:none"><div class="art-card"><div>
+          <div><img class="pin" src="img/pin.png" alt=""><h4>Here's to an even <span class="gt">brighter 2027.</span></h4><p>A personal note for your partner:</p></div>
+          <div class="lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <p class="from">Chris Mitchell<span>Owner &amp; Digital Partner</span></p>
+        </div></div></div>
+        <figcaption><b>6 · Handwritten note card</b><span>5 × 7 in</span><p>The website's gradient-frame card, with room for a personal note to each partner.</p></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- SPEC -->
+<section class="spec" aria-labelledby="s">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">For the printer</span><h2 id="s">Brand specs, <span class="gt">straight from the website.</span></h2></div>
+    <div class="spec-grid">
+      <div class="card"><div>
+        <h3>Colours</h3>
+        <ul>
+          <li class="sw"><i style="background:#282060"></i><div><b>Purple</b> #282060<span>Fronts, inside lid, tissue</span></div></li>
+          <li class="sw"><i style="background:#3299D5"></i><div><b>Sky blue</b> #3299D5<span>Accent words, icon glow</span></div></li>
+          <li class="sw"><i style="background:linear-gradient(90deg,#72CCD8,#174FA2)"></i><div><b>Gradient</b> #72CCD8 → #174FA2<span>Sides, stripe, card frames</span></div></li>
+          <li class="sw"><i style="background:#fff"></i><div><b>White</b> #FFFFFF<span>Lid top, sticker, note card</span></div></li>
+        </ul>
+      </div></div>
+      <div class="card"><div>
+        <h3>Type and elements</h3>
+        <ul>
+          <li><b>Headlines:</b> Poppins ExtraBold / Bold</li>
+          <li><b>Body:</b> Inter Regular / SemiBold</li>
+          <li><b>Stage logos:</b> lowercase, "first" in sky blue</li>
+          <li><b>Icons:</b> the approved brand icon set (trust, conversation, idea, handshake)</li>
+          <li><b>Texture:</b> the website's geometric background</li>
+          <li><b>Frame:</b> gradient border, rounded corners</li>
+        </ul>
+      </div></div>
+      <div class="card"><div>
+        <h3>Print notes</h3>
+        <ul>
+          <li><b>Box:</b> 12 × 9 × 4 in tuck-front mailer <span class="gt" style="font-weight:600">[confirm size]</span></li>
+          <li><b>Colour:</b> CMYK, with a printed proof. Purple and the gradient can shift, so check against the website.</li>
+          <li><b>Gradient:</b> print as a smooth blend, not stepped</li>
+          <li><b>Inside print:</b> lid and flaps only</li>
+          <li><b>Files:</b> fonts outlined, 0.125 in bleed, logo from vector</li>
+        </ul>
+      </div></div>
+      <div class="card changes"><div>
+        <h3>What changed from the concept</h3>
+        <ul class="cols">
+          <li><span>Bright blue fade swapped for our approved aqua-to-royal gradient and purple.</span></li>
+          <li><span>Lid now matches the website hero: white, geometric texture, full-colour logo.</span></li>
+          <li><span>Tagline set exactly like the website footer: "We put your <b>business first.</b>"</span></li>
+          <li><span>"Strategy · Visibility · Leads · Growth" replaced by the four FirstSearch stage logos.</span></li>
+          <li><span>Value icons replaced with our approved brand icons in the About page tile style.</span></li>
+          <li><span>Headline uses the website's two-tone heading: white, then the gradient.</span></li>
+          <li><span>Sticker gets the gradient ring used on our cards and icons.</span></li>
+          <li><span>Added a gradient-frame note card for a personal message.</span></li>
+        </ul>
+      </div></div>
+    </div>
+    <p class="note">Mockup for review. Colours on screen differ from print; approve from a physical proof.</p>
+  </div>
+</section>
+
+<footer class="foot"><div class="wrap"><span><b>First Search Marketing</b> · Family-owned in Hampton, NH</span><span>Strategic partner gift box · Concept v1</span></div></footer>
+<div class="foot-bar" aria-hidden="true"></div>
+
+<script>
+(() => {
+  const box = document.getElementById('box');
+  document.querySelectorAll('.views button').forEach(b => b.addEventListener('click', () => {
+    box.dataset.view = b.dataset.v;
+    document.querySelectorAll('.views button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  }));
+})();
+</script>
+</body>
+</html>
