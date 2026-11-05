@@ -50,7 +50,7 @@ img { display: block; max-width: 100%; }
 .box3d { --w: 420px; --d: 300px; --h: 130px; position: relative; width: var(--w); height: var(--d); transform-style: preserve-3d; transition: transform 1s cubic-bezier(.3, .7, .3, 1); }
 .box3d[data-view="angle"] { transform: rotateX(58deg) rotateZ(-32deg); }
 .box3d[data-view="front"] { transform: rotateX(72deg) rotateZ(0deg); }
-.box3d[data-view="side"] { transform: rotateX(68deg) rotateZ(-68deg); }
+.box3d[data-view="side"] { transform: rotateX(66deg) rotateZ(62deg); }
 .box3d[data-view="top"] { transform: rotateX(0deg) rotateZ(0deg); }
 .face { position: absolute; left: 50%; top: 50%; overflow: hidden; backface-visibility: hidden; }
 .f-top { width: var(--w); height: var(--d); margin: calc(var(--d) / -2) 0 0 calc(var(--w) / -2); transform: translateZ(var(--h)); }
@@ -92,8 +92,9 @@ img { display: block; max-width: 100%; }
 /* INSIDE LID: the thank-you message */
 .art-inside { position: relative; width: 100%; height: 100%; padding: 6cqw 7cqw; background: var(--glow), var(--grad-primary); color: #fff; text-align: center; display: grid; align-content: center; justify-items: center; container-type: inline-size; }
 .art-inside .eb { font: 600 2.4cqw var(--font); letter-spacing: .16em; text-transform: uppercase; color: var(--aqua); }
-.art-inside h3 { margin: 1.4cqw 0 0; font: 800 5.6cqw/1.08 var(--font); color: #fff; letter-spacing: -.02em; }
+.art-inside h3 { margin: 0; font: 800 5.6cqw/1.12 var(--font); color: #fff; letter-spacing: -.02em; }
 .art-inside h3 span { display: block; }
+.art-inside h3 .gt { width: fit-content; margin-inline: auto; }
 .art-inside .rule { width: 9cqw; height: .6cqw; margin: 2.6cqw 0; border-radius: 1cqw; background: var(--grad); }
 .art-inside p { max-width: 64cqw; margin: 0; font: 400 2.1cqw/1.55 var(--ui); color: rgba(255, 255, 255, .92); }
 .vals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2cqw; width: 100%; margin-top: 4cqw; }
@@ -143,6 +144,11 @@ img { display: block; max-width: 100%; }
 .r-top { aspect-ratio: 12 / 9; }
 .r-front { aspect-ratio: 12 / 4; }
 .r-side { aspect-ratio: 9 / 4; }
+.art-side--wheel { grid-auto-flow: column; justify-content: center; align-items: center; gap: 5cqw; }
+.art-side--wheel .wh { width: 82cqh; aspect-ratio: 1; border-radius: 50%; padding: 3cqh; background: #fff; box-shadow: 0 0 0 1.2cqh rgba(255, 255, 255, .35), 0 2cqh 5cqh -1cqh rgba(16, 12, 48, .5); }
+.art-side--wheel .wh img { width: 100%; height: 100%; }
+.art-side--wheel p { margin: 0; font: 800 7cqw/1.05 var(--font); color: #fff; letter-spacing: -.02em; text-align: left; }
+.art-side--wheel p span { display: block; font: 600 3.4cqw var(--font); letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .85); margin-bottom: 1cqh; }
 .r-inside { aspect-ratio: 12 / 9; }
 .r-tissue { aspect-ratio: 12 / 9; }
 .r-card { aspect-ratio: 5 / 7; border-radius: 0; box-shadow: none; }
@@ -208,7 +214,7 @@ footer.foot b { color: #fff; }
         <div class="shadow"></div>
         <div class="face f-top"><div class="art-top"><div class="in"><img class="logo" src="img/logo.png" alt=""><span class="rule"></span><span class="eb">Strategic Partner · 2026</span></div></div></div>
         <div class="face f-front"><div class="art-front"><div><p>We put your <span>business first.</span></p><div class="rule"></div></div></div></div>
-        <div class="face f-right"><div class="art-side"><ul><li><span class="plogo plogo--light"><b>first</b>brand</span></li><li><span class="plogo plogo--light"><b>first</b>thought</span></li><li><span class="plogo plogo--light"><b>first</b>choice</span></li><li><span class="plogo plogo--light"><b>first</b>referral</span></li></ul></div></div>
+        <div class="face f-right"><div class="art-side art-side--wheel"><div class="wh"><img src="img/framework-wheel.webp" alt="The FirstSearch Framework wheel"></div><p><span>The</span>FirstSearch<br>Framework</p></div></div>
         <div class="face f-left"><div class="art-side"><ul><li><span class="plogo plogo--light"><b>first</b>brand</span></li><li><span class="plogo plogo--light"><b>first</b>thought</span></li><li><span class="plogo plogo--light"><b>first</b>choice</span></li><li><span class="plogo plogo--light"><b>first</b>referral</span></li></ul></div></div>
         <div class="face f-back"><div class="art-front"><div><p>We put your <span>business first.</span></p></div></div></div>
       </div>
@@ -236,9 +242,9 @@ footer.foot b { color: #fff; }
       <figure class="panel panel--narrow">
         <div class="sides">
           <div class="frame r-side"><div class="art-side"><ul><li><span class="plogo plogo--light"><b>first</b>brand</span><small>Build the foundation</small></li><li><span class="plogo plogo--light"><b>first</b>thought</span><small>Get found first</small></li><li><span class="plogo plogo--light"><b>first</b>choice</span><small>Get chosen</small></li><li><span class="plogo plogo--light"><b>first</b>referral</span><small>Get referred</small></li></ul></div></div>
-          <div class="frame r-side"><div class="art-side"><ul><li><span class="plogo plogo--light"><b>first</b>brand</span></li><li><span class="plogo plogo--light"><b>first</b>thought</span></li><li><span class="plogo plogo--light"><b>first</b>choice</span></li><li><span class="plogo plogo--light"><b>first</b>referral</span></li></ul></div></div>
+          <div class="frame r-side"><div class="art-side art-side--wheel"><div class="wh"><img src="img/framework-wheel.webp" alt="The FirstSearch Framework wheel"></div><p><span>The</span>FirstSearch<br>Framework</p></div></div>
         </div>
-        <figcaption><b>2 · Side panels</b><span>9 × 4 in each</span><p>Brand gradient with the four FirstSearch stages in place of "Strategy · Visibility · Leads · Growth". One side adds each stage's job.</p></figcaption>
+        <figcaption><b>2 · Side panels</b><span>9 × 4 in each</span><p>Brand gradient on both sides: the four FirstSearch stages (in place of "Strategy · Visibility · Leads · Growth") on one, the framework wheel on the opposite side.</p></figcaption>
       </figure>
       <figure class="panel panel--wide">
         <div class="frame r-front"><div class="art-front"><div><p>We put your <span>business first.</span></p><div class="rule"></div></div></div></div>
@@ -250,8 +256,7 @@ footer.foot b { color: #fff; }
       </figure>
       <figure class="panel panel--wide">
         <div class="frame r-inside"><div class="art-inside">
-          <span class="eb">A year of wins</span>
-          <h3><span>A partnership</span><span class="gt">worth celebrating.</span></h3>
+          <h3><span>A Year of Wins.</span><span class="gt">A Partnership</span><span class="gt">Worth Celebrating.</span></h3>
           <div class="rule"></div>
           <p>Thank you for trusting First Search Marketing to be part of your journey. Here's to more growth, more opportunities and an even brighter 2027.</p>
           <div class="vals">
@@ -317,9 +322,9 @@ footer.foot b { color: #fff; }
           <li><span>Bright blue fade swapped for our approved aqua-to-royal gradient and purple.</span></li>
           <li><span>Lid now matches the website hero: white, geometric texture, full-colour logo.</span></li>
           <li><span>Tagline set exactly like the website footer: "We put your <b>business first.</b>"</span></li>
-          <li><span>"Strategy · Visibility · Leads · Growth" replaced by the four FirstSearch stage logos.</span></li>
+          <li><span>"Strategy · Visibility · Leads · Growth" replaced by the four stage logos, with the framework wheel on the opposite side.</span></li>
           <li><span>Value icons replaced with our approved brand icons in the About page tile style.</span></li>
-          <li><span>Headline uses the website's two-tone heading: white, then the gradient.</span></li>
+          <li><span>Inside lid headline in the website's two-tone heading: "A Year of Wins." in white, the rest in the gradient.</span></li>
           <li><span>Sticker gets the gradient ring used on our cards and icons.</span></li>
           <li><span>Added a gradient-frame note card for a personal message.</span></li>
         </ul>
