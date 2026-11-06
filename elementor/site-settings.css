@@ -1,17 +1,17 @@
 /* ==========================================================================
-   First Search Marketing · Elementor global CSS
-   Paste into: Elementor › Site Settings › Custom CSS
+   First Search Marketing - Elementor global CSS
+   Paste into: Elementor > Site Settings > Custom CSS
    Matches the approved website prototype (v13). Brand purple: #250762.
 
    HOW TO USE
    - Most styles apply automatically (headings, buttons, forms, links).
    - The rest are opt-in classes. Add them in Elementor under
-     Advanced › CSS Classes (no dot), e.g.  fs-gcard
+     Advanced > CSS Classes (no dot), e.g.  fs-gcard
    - Inline pieces (gradient words, stage logos) go in a Heading or
      Text Editor widget's HTML, e.g.
-       We put your <span class="fs-gt">business first.</span>
-       <span class="fs-plogo"><b>first</b>brand</span>
-   - Also set the same values in Site Settings › Global Colors and
+       We put your span.fs-gt "business first."
+       span.fs-plogo "firstbrand"
+   - Also set the same values in Site Settings > Global Colors and
      Global Fonts (listed in the README) so widgets pick them up too.
    ========================================================================== */
 
@@ -68,7 +68,7 @@ h3.elementor-heading-title { font-weight: 700; font-size: clamp(22px, 2vw, 28px)
 .fs-dark .elementor-heading-title { color: #fff; }
 .fs-dark, .fs-dark p, .fs-dark li, .fs-dark .elementor-widget-text-editor { color: rgba(255, 255, 255, .9); }
 
-/* Gradient words inside a heading: <span class="fs-gt">...</span> */
+/* Gradient words inside a heading: span.fs-gt "..." */
 .fs-gt {
   color: transparent;
   background: var(--fs-grad-text);
@@ -77,7 +77,7 @@ h3.elementor-heading-title { font-weight: 700; font-size: clamp(22px, 2vw, 28px)
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-/* Sky-blue words (the footer tagline style): <span class="fs-sky">business first.</span> */
+/* Sky-blue words (the footer tagline style): span.fs-sky "business first." */
 .fs-sky { color: var(--fs-sky); }
 
 /* Eyebrow above a heading (add to a Heading or Text widget) */
@@ -220,11 +220,11 @@ a.fs-link-u {
 .fs-grad { background: var(--fs-grad); color: #fff; }
 .fs-grad .elementor-heading-title, .fs-grad p { color: #fff; }
 
-/* Header: gradient stripe under the header (add to an empty Container or Divider, 8–14px tall) */
+/* Header: gradient stripe under the header (add to an empty Container or Divider, 8-14px tall) */
 .fs-stripe { height: 10px; min-height: 0; padding: 0; background: var(--fs-grad); }
 
 /* ---------- 6. Cards ---------- */
-/* Gradient-border card: white inside, aqua → blue frame (add to a Container) */
+/* Gradient-border card: white inside, aqua -> blue frame (add to a Container) */
 .fs-gcard {
   --fs-bw: 6px;
   border: var(--fs-bw) solid transparent !important;
@@ -287,7 +287,7 @@ a.fs-link-u {
 .fs-type--video { background: #174FA2; }
 
 /* ---------- 9. FirstSearch stage logos ---------- */
-/* <span class="fs-plogo"><b>first</b>brand</span>  (add fs-plogo--light on dark backgrounds) */
+/* span.fs-plogo "firstbrand"  (add fs-plogo--light on dark backgrounds) */
 .fs-plogo {
   display: inline-flex;
   align-items: baseline;
@@ -528,7 +528,7 @@ a.fs-link-u {
 .fs-dark .elementor-counter-number-wrapper { font-family: var(--fs-font); font-weight: 800; font-size: clamp(48px, 5vw, 72px); color: #fff; }
 .fs-dark .elementor-counter-title { font-family: var(--fs-font-ui); color: rgba(255, 255, 255, .88); }
 
-/* Before -> after table (HTML widget: <table class="fs-table">) */
+/* Before -> after table (HTML widget: ) */
 .fs-table { width: 100%; border-collapse: separate; border-spacing: 0; overflow: hidden; border-radius: 14px; background: #fff; font-family: var(--fs-font); }
 .fs-table th, .fs-table td { padding: 14px 16px; border-bottom: 1px solid var(--fs-line); text-align: left; color: var(--fs-purple); font-size: 17px; }
 .fs-table thead th { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; background: #fff; }
