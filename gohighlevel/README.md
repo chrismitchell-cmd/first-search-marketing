@@ -15,7 +15,7 @@ Paste-in CSS that makes GoHighLevel's standard forms, quizzes and calendars matc
 - **Set the basics in GHL's own style settings first:**
   - Background: transparent or white
   - Font: Poppins
-  - Button colour: #282060
+  - Button colour: #250762
   - Field corner radius: 12
 
   The CSS polishes what those settings can't do.

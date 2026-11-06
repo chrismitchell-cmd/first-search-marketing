@@ -5,14 +5,14 @@ Your quiz's page code includes the results page settings (Quiz builder › **Res
 | Section | Setting | Now | Change to |
 |---|---|---|---|
 | Layout | Background | #FFFFFF | #FFFFFF (keep) |
-| Header | Heading text "Your Marketing Score" | 32px, sans-serif, #250762 | Poppins, Bold, **#282060** |
+| Header | Heading text "Your Marketing Score" | 32px, sans-serif, #250762 | Poppins, Bold, **#250762** |
 | Overall score | Background | #FFFFFF | #FFFFFF (keep) |
-| Overall score | Text "Your journey to long-term digital success starts here!" | #250762 | **#282060** |
-| Category scores | Section background | #4B9DD6 | **#282060** (purple band, like the website's "How it works") |
+| Overall score | Text "Your journey to long-term digital success starts here!" | #250762 | **#250762** |
+| Category scores | Section background | #4B9DD6 | **#250762** (purple band, like the website's "How it works") |
 | Category scores | Category card background | #FFFFFF | #FFFFFF (keep) |
-| Call to action | Background | #250762 | **#282060** |
+| Call to action | Background | #250762 | **#250762** |
 | Call to action | Button colour / text | #4B9DD6 / white | **#3299D5** / white |
-| Footer | Text and icons | default | **#282060** |
+| Footer | Text and icons | default | **#250762** |
 | Score tiers | Low / Medium / High colours | #F04438 / #F79009 / #12B76A | Keep. Red, amber and green read instantly as poor, OK and good. |
 
 Fonts: wherever the results editor offers a font, pick **Poppins** for headings and **Inter** for body text.

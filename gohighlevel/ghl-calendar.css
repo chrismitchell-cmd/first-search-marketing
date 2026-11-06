@@ -8,10 +8,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap");
 
 :root {
-  --fs-navy: #282060; --fs-sky: #3299D5; --fs-aqua: #72CCD8; --fs-royal: #174FA2;
+  --fs-navy: #250762; --fs-sky: #3299D5; --fs-aqua: #72CCD8; --fs-royal: #174FA2;
   --fs-ink: #1C1B22; --fs-body: #2F2E36; --fs-muted: #6B6A72; --fs-line: #E3E2EA; --fs-tint: #EEF0F9;
   --fs-grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);
-  --fs-grad-primary: linear-gradient(135deg, #2C1774 0%, #282060 55%, #24206E 100%);
+  --fs-grad-primary: linear-gradient(135deg, #2B0A80 0%, #250762 55%, #200556 100%);
   --fs-head: "Poppins", Arial, sans-serif; --fs-ui: "Inter", Arial, sans-serif;
 }
 
@@ -22,7 +22,7 @@ html, body { background: transparent !important; font-family: var(--fs-ui) !impo
 .appointment_widgets--content, .hl_appointment-widget, .calendar-widget, .booking-widget, .widget-container, .calendar-container, .neo-widget {
   font-family: var(--fs-ui) !important; color: var(--fs-body) !important;
   background: #fff !important; border: 0 !important; border-radius: 22px !important;
-  box-shadow: 0 18px 40px -18px rgba(40, 32, 96, .28) !important;
+  box-shadow: 0 18px 40px -18px rgba(37, 7, 98, .28) !important;
 }
 
 /* Left panel (calendar name, host, duration) */
@@ -113,7 +113,7 @@ button[type="submit"], .btn-schedule, .schedule-btn, .confirm-btn, .hl-btn-prima
   box-shadow: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55) !important;
 }
 button[type="submit"]:hover, .btn-schedule:hover, .confirm-btn:hover, .hl-btn-primary:hover, .btn-primary:hover, .continue-btn:hover {
-  background: linear-gradient(135deg, #34208A 0%, #2E2878 100%) !important;
+  background: linear-gradient(135deg, #300C8C 0%, #2A0874 100%) !important;
   box-shadow: 0 0 0 3px rgba(114, 204, 216, .35), 0 14px 28px -8px rgba(50, 153, 213, .65) !important;
 }
 .btn-back, .back-btn, .hl-btn-secondary, .btn-secondary {
