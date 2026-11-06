@@ -78,7 +78,7 @@ def pillar():
     svcs = [('advertising', 'Advertising', 'Retargeting and conversion campaigns that turn warm audiences into booked jobs.'), ('social', 'Social Media', 'Offer-driven posts and DM automations that turn followers into leads.'),
             ('lead-gen', 'Lead Generation', 'Offers, lead magnets and landing pages that give every visitor a next step.'), ('automation', 'Marketing Automation', 'Instant replies, nurture sequences and booking that close leads while you work.')]
     slugs = ['advertising', 'social-media', 'lead-generation', 'marketing-automation']
-    here = '<ol class="fs-here">' + ''.join(f'<li class="{"on" if k == "choice" else ""}"><a href="/first{k}/"><i>{n}</i>{plogo(k, k == "choice")}<small>{STAGES_JOB[k]}</small></a></li>' for n, k in enumerate(STAGES, 1)) + '</ol>'
+    here = '<ol class="fs-here">' + ''.join(f'<li class="{"on" if k == "choice" else ""}"><a href="/first{k}/"><i>{n}</i>{plogo(k)}<small>{STAGES_JOB[k]}</small></a></li>' for n, k in enumerate(STAGES, 1)) + '</ol>'
     check = section(con(row(col(eyebrow('Self-check'), heading('How strong is <span class="fs-gt">your FirstChoice?</span>'), text('Tick every statement that’s true for your business today.'), wpct=40),
                             col(html(sc), wpct=58), gap_=40, align='flex-start'), cls='fs-gcard', p=pad(40)),
                     cls='fs-geo', title='Self-check', bg_img=GEO)
