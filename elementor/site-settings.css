@@ -1,0 +1,453 @@
+/* ==========================================================================
+   First Search Marketing · Elementor global CSS
+   Paste into: Elementor › Site Settings › Custom CSS
+   Matches the approved website prototype (v13). Brand purple: #250762.
+
+   HOW TO USE
+   - Most styles apply automatically (headings, buttons, forms, links).
+   - The rest are opt-in classes. Add them in Elementor under
+     Advanced › CSS Classes (no dot), e.g.  fs-gcard
+   - Inline pieces (gradient words, stage logos) go in a Heading or
+     Text Editor widget's HTML, e.g.
+       We put your <span class="fs-gt">business first.</span>
+       <span class="fs-plogo"><b>first</b>brand</span>
+   - Also set the same values in Site Settings › Global Colors and
+     Global Fonts (listed in the README) so widgets pick them up too.
+   ========================================================================== */
+
+/* ---------- 1. Brand tokens ---------- */
+:root {
+  --fs-purple: #250762;          /* primary brand purple */
+  --fs-purple-deep: #1A0446;
+  --fs-sky: #3299D5;             /* accent words, links, icon glow */
+  --fs-sky-ink: #1F78B4;         /* sky blue for small text on white (AA) */
+  --fs-aqua: #72CCD8;
+  --fs-royal: #174FA2;
+  --fs-grey: #D9D8D7;
+  --fs-ink: #1C1B22;             /* body copy */
+  --fs-body: #2F2E36;
+  --fs-muted: #6B6A72;
+  --fs-line: #E3E2EA;
+  --fs-tint: #EEF0F9;
+  --fs-soft: #F4F4F6;
+
+  --fs-grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);
+  --fs-grad-diag: linear-gradient(120deg, #72CCD8 0%, #174FA2 100%);
+  --fs-grad-text: linear-gradient(90deg, #72CCD8 0%, #3299D5 45%, #174FA2 100%);
+  --fs-grad-purple: linear-gradient(135deg, #2B0A80 0%, #250762 55%, #200556 100%);
+  --fs-grad-purple-hover: linear-gradient(135deg, #300C8C 0%, #2A0874 100%);
+  --fs-glow: radial-gradient(90% 80% at 100% 0%, rgba(50, 153, 213, .5) 0%, transparent 60%);
+
+  --fs-font: "Poppins", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --fs-font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  --fs-shadow-card: 0 18px 40px -18px rgba(37, 7, 98, .28);
+  --fs-shadow-btn: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55);
+  --fs-shadow-btn-hover: 0 0 0 3px rgba(114, 204, 216, .35), 0 14px 28px -8px rgba(50, 153, 213, .65);
+}
+
+/* ---------- 2. Base type ---------- */
+body {
+  font-family: var(--fs-font);
+  color: var(--fs-ink);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6,
+.elementor-heading-title {
+  font-family: var(--fs-font);
+  color: var(--fs-purple);
+  letter-spacing: -0.015em;
+}
+h1.elementor-heading-title { font-weight: 700; font-size: clamp(40px, 5vw, 72px); line-height: 1.04; letter-spacing: -0.025em; }
+h2.elementor-heading-title { font-weight: 700; font-size: clamp(32px, 3.9vw, 56px); line-height: 1.08; }
+h3.elementor-heading-title { font-weight: 700; font-size: clamp(22px, 2vw, 28px); line-height: 1.2; }
+::selection { background: rgba(114, 204, 216, .35); }
+
+/* Text on dark sections */
+.fs-dark h1, .fs-dark h2, .fs-dark h3, .fs-dark h4,
+.fs-dark .elementor-heading-title { color: #fff; }
+.fs-dark, .fs-dark p, .fs-dark li, .fs-dark .elementor-widget-text-editor { color: rgba(255, 255, 255, .9); }
+
+/* Gradient words inside a heading: <span class="fs-gt">...</span> */
+.fs-gt {
+  color: transparent;
+  background: var(--fs-grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+/* Sky-blue words (the footer tagline style): <span class="fs-sky">business first.</span> */
+.fs-sky { color: var(--fs-sky); }
+
+/* Eyebrow above a heading (add to a Heading or Text widget) */
+.fs-eyebrow .elementor-heading-title,
+.fs-eyebrow, .fs-eyebrow p {
+  font-family: var(--fs-font);
+  font-size: clamp(16px, 1.35vw, 20px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+  color: var(--fs-sky);
+  margin: 0;
+}
+
+/* Short aqua rule under a page title (add fs-h1-rule to the H1 Heading widget) */
+.fs-h1-rule .elementor-heading-title::after {
+  content: "";
+  display: block;
+  width: clamp(96px, 10vw, 140px);
+  height: 4px;
+  margin-top: clamp(18px, 2vw, 26px);
+  border-radius: 2px;
+  background: var(--fs-aqua);
+}
+/* Centered title: add both fs-h1-rule and fs-center */
+.fs-center.fs-h1-rule .elementor-heading-title::after { margin-inline: auto; }
+
+/* Hero paragraph */
+.fs-hero-lead, .fs-hero-lead p {
+  font-size: clamp(18px, 1.55vw, 22px);
+  line-height: 1.45;
+  max-width: 42ch;
+  color: var(--fs-ink);
+}
+
+/* ---------- 3. Links ---------- */
+.elementor-widget-text-editor a:not(.elementor-button) {
+  color: var(--fs-sky-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* Italic underlined text link (the secondary link next to a button) */
+.fs-link-u .elementor-button,
+.fs-link-u a,
+a.fs-link-u {
+  display: inline !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  font-family: var(--fs-font);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--fs-purple) !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--fs-aqua) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 7px;
+}
+.fs-link-u .elementor-button:hover, .fs-link-u a:hover, a.fs-link-u:hover {
+  color: var(--fs-royal) !important;
+  text-decoration-color: var(--fs-royal) !important;
+  transform: none;
+}
+.fs-dark .fs-link-u .elementor-button, .fs-dark .fs-link-u a { color: #fff !important; }
+
+/* ---------- 4. Buttons ---------- */
+[class*="elementor-kit-"] .elementor-button,
+.elementor-button {
+  font-family: var(--fs-font);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: .005em;
+  line-height: 1.2;
+  padding: 16px 30px;
+  border: 2px solid #4AA6DC;
+  border-radius: 10px;
+  color: #fff;
+  background: var(--fs-grad-purple);
+  background-origin: border-box;
+  background-clip: border-box;
+  box-shadow: var(--fs-shadow-btn);
+  text-shadow: none;
+  text-decoration: none;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+[class*="elementor-kit-"] .elementor-button:hover,
+.elementor-button:hover,
+.elementor-button:focus-visible {
+  color: #fff;
+  background: var(--fs-grad-purple-hover);
+  box-shadow: var(--fs-shadow-btn-hover);
+  transform: translateY(-1px);
+}
+.elementor-button:focus-visible { outline: 3px solid var(--fs-aqua); outline-offset: 3px; }
+
+/* Gradient button: use on purple sections, cards and banners */
+.fs-dark .elementor-button,
+.fs-btn-grad .elementor-button {
+  border-color: transparent;
+  background: var(--fs-grad);
+  text-shadow: 0 1px 2px rgba(20, 30, 80, .3);
+  box-shadow: 0 14px 30px -12px rgba(23, 79, 162, .5);
+}
+.fs-dark .elementor-button:hover,
+.fs-btn-grad .elementor-button:hover {
+  background: linear-gradient(90deg, #7AD4DF 0%, #1C5BB5 100%);
+  box-shadow: 0 18px 34px -12px rgba(23, 79, 162, .6);
+}
+/* White button: on the gradient banner / footer CTA */
+.fs-btn-white .elementor-button {
+  border-color: transparent;
+  background: #fff;
+  color: var(--fs-purple);
+  box-shadow: 0 14px 30px -14px rgba(16, 12, 48, .45);
+}
+.fs-btn-white .elementor-button:hover { background: #fff; color: var(--fs-royal); }
+/* Large button */
+.fs-btn-lg .elementor-button { font-size: clamp(19px, 1.6vw, 22px); padding: 18px 36px; border-radius: 16px; }
+
+/* ---------- 5. Sections (add to a Container) ---------- */
+/* Light geometric background: upload bg-geometric.jpg to the Media Library,
+   then set it as the container's Background image (Cover, Center).
+   This class adds the fallback colour and spacing. */
+.fs-geo { background-color: var(--fs-soft); }
+.fs-section { padding-block: clamp(80px, 9vw, 130px); }
+
+/* Purple section with the soft blue glow (How it works, framework, CTAs) */
+.fs-dark {
+  background: var(--fs-glow), var(--fs-grad-purple);
+  color: #fff;
+}
+/* Purple block with rounded top corners (the framework / coaching blocks) */
+.fs-dark-round { border-radius: 56px; overflow: hidden; }
+@media (max-width: 767px) { .fs-dark-round { border-radius: 32px; } }
+
+/* Gradient band (stats band, gradient CTA banner) */
+.fs-grad { background: var(--fs-grad); color: #fff; }
+.fs-grad .elementor-heading-title, .fs-grad p { color: #fff; }
+
+/* Header: gradient stripe under the header (add to an empty Container or Divider, 8–14px tall) */
+.fs-stripe { height: 10px; min-height: 0; padding: 0; background: var(--fs-grad); }
+
+/* ---------- 6. Cards ---------- */
+/* Gradient-border card: white inside, aqua → blue frame (add to a Container) */
+.fs-gcard {
+  --fs-bw: 6px;
+  border: var(--fs-bw) solid transparent !important;
+  border-radius: 32px !important;
+  background: linear-gradient(#fff, #fff) padding-box, var(--fs-grad-diag) border-box !important;
+  box-shadow: var(--fs-shadow-card);
+}
+.fs-gcard--thin { --fs-bw: 4px; border-radius: 24px !important; }
+.fs-gcard--hover { transition: transform .2s ease, box-shadow .2s ease; }
+.fs-gcard--hover:hover { transform: translateY(-4px); box-shadow: 0 26px 46px -22px rgba(37, 7, 98, .45); }
+
+/* Purple card with a blue glow in the corner */
+.fs-purple-card {
+  border-radius: 32px;
+  color: #fff;
+  background: radial-gradient(380px 300px at 100% 100%, rgba(91, 186, 232, .7), transparent 70%), var(--fs-purple);
+  box-shadow: var(--fs-shadow-card);
+}
+.fs-purple-card .elementor-heading-title, .fs-purple-card p, .fs-purple-card li { color: #fff; }
+
+/* Soft grey box (callouts, metric boxes) */
+.fs-soft-box { background: var(--fs-soft); border-radius: 18px; }
+
+/* ---------- 7. Icon tiles (Icon Box / Image Box) ---------- */
+/* White tile with the sky-blue ring and glow (core values, "Sound familiar?" cards) */
+.fs-tile .elementor-icon,
+.fs-tile .elementor-image-box-img img,
+.fs-tile .elementor-icon-box-icon .elementor-icon {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 0 4px var(--fs-sky), 0 0 20px 4px rgba(50, 153, 213, .55);
+}
+.fs-tile .elementor-image-box-img img { padding: 12px; }
+/* Gradient icon colour for line icons on light backgrounds */
+.fs-icon-grad .elementor-icon { color: var(--fs-sky); }
+.fs-icon-grad .elementor-icon svg { fill: var(--fs-sky); }
+
+/* ---------- 8. Pills ---------- */
+.fs-pill {
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--fs-tint);
+  font-family: var(--fs-font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fs-purple);
+}
+.fs-pill--purple { background: var(--fs-purple); color: #fff; }
+/* Resource type pills (Loop Grid cards) */
+.fs-type { display: inline-flex; width: max-content; padding: 4px 12px; border-radius: 999px; font-family: var(--fs-font); font-size: 12.5px; font-weight: 700; letter-spacing: .02em; color: #fff !important; }
+.fs-type--blog { background: #3299D5; }
+.fs-type--case { background: var(--fs-purple); }
+.fs-type--podcast { background: var(--fs-grad); }
+.fs-type--video { background: #174FA2; }
+
+/* ---------- 9. FirstSearch stage logos ---------- */
+/* <span class="fs-plogo"><b>first</b>brand</span>  (add fs-plogo--light on dark backgrounds) */
+.fs-plogo {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--fs-font);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: lowercase;
+  white-space: nowrap;
+  color: var(--fs-purple);
+}
+.fs-plogo b { font-weight: 800; color: var(--fs-sky); }
+.fs-plogo--light { color: #fff; }
+.fs-plogo--light b { color: #8FD5EE; }
+/* White chip around a stage logo (stage pills) */
+.fs-plogo-chip { display: inline-flex; padding: 7px 16px 8px; border-radius: 999px; background: #fff; box-shadow: 0 8px 20px -12px rgba(37, 7, 98, .45); }
+
+/* ---------- 10. Header menu (Nav Menu / Mega Menu widget: add fs-nav) ---------- */
+.fs-nav .elementor-nav-menu--main .elementor-item,
+.fs-nav .e-n-menu-title {
+  font-family: var(--fs-font-ui);
+  font-weight: 500;
+  color: var(--fs-purple);
+}
+.fs-nav .elementor-nav-menu--main .elementor-item:hover,
+.fs-nav .elementor-nav-menu--main .elementor-item.elementor-item-active,
+.fs-nav .e-n-menu-title:hover { color: var(--fs-royal); }
+/* Pointer: choose "Underline" in the widget, then this makes it the brand gradient */
+.fs-nav .elementor-nav-menu--main .elementor-item::after { background: var(--fs-grad) !important; height: 2px; }
+/* Dropdown panels */
+.fs-nav .elementor-nav-menu--dropdown,
+.fs-nav .e-n-menu-content > .e-con {
+  border-radius: 18px;
+  box-shadow: 0 24px 50px -18px rgba(28, 22, 72, .45);
+  overflow: hidden;
+}
+.fs-nav .elementor-nav-menu--dropdown a:hover { background: var(--fs-tint); color: var(--fs-purple); }
+
+/* ---------- 11. FAQ (Accordion / Toggle widget: add fs-faq) ---------- */
+/* Classic Accordion & Toggle */
+.fs-faq .elementor-accordion-item,
+.fs-faq .elementor-toggle-item {
+  margin-bottom: 18px;
+  border: 0 !important;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 28px -20px rgba(28, 22, 72, .55);
+  overflow: hidden;
+}
+.fs-faq .elementor-tab-title {
+  padding: 22px 28px !important;
+  border: 0 !important;
+  font-family: var(--fs-font);
+  font-weight: 700;
+  font-size: clamp(17px, 1.6vw, 22px);
+  color: var(--fs-purple);
+}
+.fs-faq .elementor-tab-title.elementor-active { background: var(--fs-purple); color: #fff; }
+.fs-faq .elementor-tab-title.elementor-active a,
+.fs-faq .elementor-tab-title.elementor-active .elementor-accordion-icon,
+.fs-faq .elementor-tab-title.elementor-active .elementor-toggle-icon { color: #fff; }
+.fs-faq .elementor-tab-content {
+  padding: 18px 28px 26px !important;
+  border: 0 !important;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--fs-ink);
+}
+/* Nested Accordion (newer Elementor) */
+.fs-faq .e-n-accordion-item {
+  margin-bottom: 18px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 28px -20px rgba(28, 22, 72, .55);
+  overflow: hidden;
+}
+.fs-faq .e-n-accordion-item-title {
+  padding: 22px 28px;
+  border: 0;
+  font-family: var(--fs-font);
+  font-weight: 700;
+  color: var(--fs-purple);
+}
+.fs-faq .e-n-accordion-item[open] > .e-n-accordion-item-title { background: var(--fs-purple); }
+.fs-faq .e-n-accordion-item[open] > .e-n-accordion-item-title,
+.fs-faq .e-n-accordion-item[open] > .e-n-accordion-item-title * { color: #fff; }
+
+/* ---------- 12. Forms (Elementor Pro Form widget) ---------- */
+.elementor-form .elementor-field-group > label,
+.elementor-form .elementor-field-label {
+  font-family: var(--fs-font-ui);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--fs-purple);
+}
+.elementor-form .elementor-field-textual,
+.elementor-form select.elementor-field {
+  min-height: 52px;
+  padding: 12px 16px;
+  border: 2px solid var(--fs-line);
+  border-radius: 12px;
+  background: #fff;
+  font-family: var(--fs-font);
+  font-size: 16px;
+  color: var(--fs-ink);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.elementor-form textarea.elementor-field-textual { min-height: 130px; }
+.elementor-form .elementor-field-textual:focus,
+.elementor-form select.elementor-field:focus {
+  outline: none;
+  border-color: var(--fs-aqua);
+  box-shadow: 0 0 0 4px rgba(114, 204, 216, .3);
+}
+.elementor-form .elementor-field-type-acceptance,
+.elementor-form .elementor-field-type-checkbox.fs-consent {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--fs-soft);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.elementor-form input[type="checkbox"], .elementor-form input[type="radio"] { accent-color: var(--fs-royal); }
+.elementor-form .elementor-message-danger, .elementor-form .elementor-error { color: #B42318; }
+.elementor-form .elementor-message-success { color: var(--fs-purple); font-weight: 600; }
+
+/* ---------- 13. Hero layout (add fs-hero to the hero's row Container) ---------- */
+/* Text column flexes; media column (video / card) is 440px on desktop */
+@media (min-width: 1025px) {
+  .fs-hero { column-gap: clamp(40px, 4vw, 64px) !important; }
+  .fs-hero > .e-con:last-child,
+  .fs-hero > .elementor-element:last-child { flex: 0 0 440px !important; max-width: 440px; }
+  .fs-hero > .e-con:first-child,
+  .fs-hero > .elementor-element:first-child { flex: 1 1 0 !important; min-width: 0; }
+}
+
+/* ---------- 14. Media frames ---------- */
+/* Video in a gradient frame (Video widget: add fs-video) */
+.fs-video .elementor-wrapper,
+.fs-video .elementor-custom-embed-image-overlay {
+  border-radius: 36px;
+  overflow: hidden;
+}
+.fs-video {
+  padding: 6px;
+  border-radius: 42px;
+  background: var(--fs-grad-diag);
+  box-shadow: var(--fs-shadow-card);
+}
+/* Image with rounded gradient frame (Image widget: add fs-img-frame) */
+.fs-img-frame img { border-radius: 24px; padding: 4px; background: var(--fs-grad-diag); }
+
+/* ---------- 15. Footer ---------- */
+.fs-footer { background: var(--fs-glow), var(--fs-grad-purple); color: #D8D6EE; }
+.fs-footer a { color: #D8D6EE; }
+.fs-footer a:hover { color: #fff; }
+.fs-footer .elementor-heading-title { color: #fff; }
+/* White box behind the full-colour logo in the footer */
+.fs-logo-box { display: inline-block; padding: 12px 18px; border-radius: 18px; background: #fff; box-shadow: 0 0 0 3px rgba(50, 153, 213, .35), 0 0 28px 4px rgba(50, 153, 213, .35); }
+
+/* ---------- 16. Accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .elementor-button, .fs-gcard--hover { transition: none; }
+  .elementor-button:hover, .fs-gcard--hover:hover { transform: none; }
+}
