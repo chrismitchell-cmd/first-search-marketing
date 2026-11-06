@@ -74,7 +74,16 @@ The templates load their images from
 Upload the **contents** of `elementor/upload/first-search/` to `wp-content/uploads/first-search/` using SFTP or your host's File Manager. Keep the subfolders, including `wheels/`, which holds the highlighted framework wheel for each service and stage.
 Do this **before** importing. Elementor copies each image into the Media Library during import. If the files aren't there yet, the images come in blank.
 
-### Step 2: Site Settings
+### Step 2: turn on the required Elementor features (do this before importing)
+Go to **Elementor › Settings › Features** and set these to **Active**, then save:
+- **Flexbox Container** (also called *Container*). Every template is built from containers. If this is off, Elementor silently drops every container during import, and the template comes in **completely blank**.
+- **Nested Elements**. Needed for the tabs (framework stages, "Three ways", multi-stage services).
+- **Menu** (Elementor Pro). Needed for the header's mega menu.
+
+Turning these on doesn't change any existing pages built with sections and columns.
+If you already imported a template while these were off, it was saved empty. Delete it from Templates › Saved Templates and import the JSON again.
+
+### Step 2b: Site Settings
 Complete sections 1–3 above (global colors, global fonts, custom CSS) before you import. The templates depend on the `fs-*` classes.
 
 ### Step 3: import
