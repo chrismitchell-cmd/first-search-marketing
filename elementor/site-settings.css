@@ -275,6 +275,8 @@ a.fs-link-u {
   font-size: 14px;
   font-weight: 600;
   color: var(--fs-purple);
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 .fs-pill--purple { background: var(--fs-purple); color: #fff; }
 /* Resource type pills (Loop Grid cards) */
@@ -445,6 +447,290 @@ a.fs-link-u {
 .fs-footer .elementor-heading-title { color: #fff; }
 /* White box behind the full-colour logo in the footer */
 .fs-logo-box { display: inline-block; padding: 12px 18px; border-radius: 18px; background: #fff; box-shadow: 0 0 0 3px rgba(50, 153, 213, .35), 0 0 28px 4px rgba(50, 153, 213, .35); }
+
+/* ---------- 17. Header & footer templates (used by the importable templates) ---------- */
+/* Header bar: white, shadow + shorter once sticky has kicked in */
+.fs-header { background: #fff; transition: box-shadow .25s ease; z-index: 99; }
+.fs-header.elementor-sticky--effects { box-shadow: 0 12px 30px -18px rgba(37, 7, 98, .45); }
+.fs-header .fs-header-row { transition: min-height .25s ease; }
+.fs-header.elementor-sticky--effects .fs-header-row { min-height: 84px !important; }
+.fs-header .elementor-widget-theme-site-logo img { width: auto; max-height: 62px; transition: max-height .25s ease; }
+.fs-header.elementor-sticky--effects .elementor-widget-theme-site-logo img { max-height: 50px; }
+
+/* Menu widget (Elementor Pro "Menu"): titles */
+.fs-nav .e-n-menu-title { padding: 8px 0 !important; border-bottom: 2px solid transparent; }
+.fs-nav .e-n-menu-title-text, .fs-nav .e-n-menu-title-text a { font-family: var(--fs-font-ui); font-size: 18px; font-weight: 500; color: var(--fs-purple); }
+.fs-nav .e-n-menu-title:hover, .fs-nav .e-n-menu-title.e-current, .fs-nav .e-n-menu-title:has([aria-expanded="true"]) { border-bottom-color: transparent; background: var(--fs-grad) left bottom / 100% 2px no-repeat; }
+.fs-nav .e-n-menu-title:hover .e-n-menu-title-text { color: var(--fs-royal); }
+.fs-nav .e-n-menu-dropdown-icon { color: var(--fs-purple); }
+/* Drop-down panels */
+.fs-mega { background: #fff; border-radius: 22px; box-shadow: 0 30px 60px -24px rgba(28, 22, 72, .5); }
+/* Links with a bold title and a one-line description */
+.fs-menu-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.fs-menu-list a { display: block; padding: 12px 14px; border-radius: 14px; text-decoration: none !important; transition: background .15s ease; }
+.fs-menu-list a:hover { background: var(--fs-tint); }
+.fs-menu-list b { display: block; font-family: var(--fs-font); font-size: 17px; font-weight: 700; color: var(--fs-purple); }
+.fs-menu-list span { display: block; margin-top: 2px; font-family: var(--fs-font-ui); font-size: 14px; color: var(--fs-muted); }
+/* What We Do: stage columns */
+.fs-stage-link { display: block; padding: 10px 12px; border-radius: 14px; text-decoration: none !important; }
+.fs-stage-link:hover { background: var(--fs-tint); }
+.fs-stage-link .fs-plogo { font-size: 22px; }
+.fs-stage-link small { display: block; margin-top: 4px; font-family: var(--fs-font-ui); font-size: 13.5px; color: var(--fs-muted); }
+.fs-svc-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.fs-svc-list a { display: block; padding: 7px 12px; border-radius: 10px; font-family: var(--fs-font-ui); font-size: 15px; font-weight: 500; color: var(--fs-body) !important; text-decoration: none !important; }
+.fs-svc-list a:hover { background: var(--fs-tint); color: var(--fs-purple) !important; }
+/* What We Do: purple call-to-action card on the right of the panel */
+.fs-mega-cta .fs-big { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, .18); font-family: var(--fs-font); font-size: 18px; font-weight: 700; color: #fff !important; text-decoration: none !important; }
+.fs-mega-cta .fs-big span { display: block; font-family: var(--fs-font-ui); font-size: 13.5px; font-weight: 400; color: #C9C6EA; }
+.fs-mega-cta .fs-big:hover { color: var(--fs-aqua) !important; }
+
+/* Footer */
+.fs-footer .fs-tagline .elementor-heading-title { font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; line-height: 1.2; color: #fff; }
+.fs-footer h4.elementor-heading-title, .fs-footer .fs-col-title .elementor-heading-title { font-size: 17px; font-weight: 700; color: #fff; }
+.fs-footer .fs-col-title .elementor-heading-title::after { content: ""; display: block; width: 32px; height: 3px; margin-top: 10px; border-radius: 2px; background: var(--fs-grad); }
+.fs-footer .elementor-icon-list-text { color: #D8D6EE; transition: color .15s ease; }
+.fs-footer .elementor-icon-list-item a:hover .elementor-icon-list-text { color: #fff; }
+.fs-footer .elementor-icon-list-icon i, .fs-footer .elementor-icon-list-icon svg { color: var(--fs-aqua); fill: var(--fs-aqua); }
+.fs-footer .fs-news { padding: 24px 26px; border-radius: 22px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); }
+.fs-footer .fs-news .elementor-field-textual { min-height: 50px; border-color: transparent; }
+.fs-footer .fs-news .elementor-button { border-color: transparent; background: var(--fs-grad); }
+.fs-footer .elementor-social-icon { background: rgba(255, 255, 255, .1) !important; border-radius: 50%; }
+.fs-footer .elementor-social-icon:hover { background: var(--fs-grad) !important; }
+.fs-footer .fs-bottom, .fs-footer .fs-bottom a { font-family: var(--fs-font-ui); font-size: 14px; color: #B9B5DA; }
+.fs-footer .fs-bottom a:hover { color: #fff; }
+.fs-footer .fs-stage-links a { display: inline-block; margin: 4px 0; text-decoration: none; }
+.fs-footer .fs-stage-links .fs-plogo { font-size: 19px; }
+
+/* ---------- 18. Page sections (used by the page templates) ---------- */
+/* Section header: eyebrow + H2 + lead, centred */
+.fs-sec-head { text-align: center; max-width: 880px; margin-inline: auto; }
+.fs-lead, .fs-lead p { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; color: var(--fs-body); }
+.fs-dark .fs-lead, .fs-dark .fs-lead p { color: rgba(255, 255, 255, .88); }
+
+/* Problem cards: purple row card with a white icon tile (Image Box, position left) */
+.fs-pcard { padding: 22px 26px; border-radius: 24px; background: var(--fs-purple); box-shadow: 0 22px 40px -24px rgba(28, 22, 72, .8); }
+.fs-pcard .elementor-image-box-img img { background: #fff; border-radius: 16px; padding: 12px; box-shadow: 0 0 0 4px var(--fs-sky), 0 0 20px 4px rgba(50, 153, 213, .55); }
+.fs-pcard .elementor-image-box-title { color: #fff !important; font-size: clamp(20px, 1.8vw, 26px); margin-bottom: 6px; }
+.fs-pcard .elementor-image-box-description { color: rgba(255, 255, 255, .92); font-size: 17px; line-height: 1.45; }
+.fs-close .elementor-heading-title { font-size: clamp(20px, 1.9vw, 26px); font-weight: 600; color: var(--fs-purple); }
+
+/* "How it works" steps: big gradient number above a white card */
+.fs-step { position: relative; padding: 64px 26px 30px !important; }
+.fs-step-num .elementor-heading-title { position: absolute; top: -78px; left: 50%; transform: translateX(-50%); font-size: 110px; font-weight: 800; line-height: 1; color: transparent; background: linear-gradient(180deg, #8FD5EE, #3299D5 55%, #174FA2); -webkit-background-clip: text; background-clip: text; }
+.fs-step .elementor-heading-title { text-align: center; }
+.fs-step-hl { background: var(--fs-grad-diag) !important; border-color: transparent !important; }
+.fs-step-hl .elementor-heading-title:not(.fs-step-num *), .fs-step-hl p { color: #fff !important; }
+.fs-steps { padding-top: 90px; }
+
+/* Stats band (Counter widget inside fs-grad) */
+.fs-grad .elementor-counter-number-wrapper { font-family: var(--fs-font); font-weight: 800; font-size: clamp(48px, 5vw, 76px); color: #fff; }
+.fs-grad .elementor-counter-title { font-family: var(--fs-font-ui); font-size: 17px; color: rgba(255, 255, 255, .92); }
+.fs-dark .elementor-counter-number-wrapper { font-family: var(--fs-font); font-weight: 800; font-size: clamp(48px, 5vw, 72px); color: #fff; }
+.fs-dark .elementor-counter-title { font-family: var(--fs-font-ui); color: rgba(255, 255, 255, .88); }
+
+/* Before -> after table (HTML widget: <table class="fs-table">) */
+.fs-table { width: 100%; border-collapse: separate; border-spacing: 0; overflow: hidden; border-radius: 14px; background: #fff; font-family: var(--fs-font); }
+.fs-table th, .fs-table td { padding: 14px 16px; border-bottom: 1px solid var(--fs-line); text-align: left; color: var(--fs-purple); font-size: 17px; }
+.fs-table thead th { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; background: #fff; }
+.fs-table thead th.b { background: var(--fs-purple); color: #fff; text-align: center; }
+.fs-table thead th.a { background: var(--fs-grad); color: #fff; text-align: center; }
+.fs-table tbody th { background: #F4F4F6; font-weight: 600; }
+.fs-table td.b { text-align: center; font-weight: 600; }
+.fs-table td.ar { width: 44px; text-align: center; color: var(--fs-sky); background: #F4F4F6; }
+.fs-table td.a { text-align: center; font-weight: 800; color: #fff; background: var(--fs-grad); }
+.fs-table tr:last-child th, .fs-table tr:last-child td { border-bottom: 0; }
+@media (max-width: 767px) {
+  .fs-table th, .fs-table td { padding: 10px 8px; font-size: 14px; }
+  .fs-table thead th { font-size: 11px; letter-spacing: .02em; }
+  .fs-table td.ar { width: 24px; padding: 10px 2px; }
+}
+
+/* Review cards */
+.fs-review .fs-stars { color: #F4B400; font-size: 20px; letter-spacing: 2px; }
+.fs-review blockquote { margin: 10px 0 14px; font-size: 16.5px; line-height: 1.55; color: var(--fs-body); }
+.fs-review cite { font-style: normal; font-weight: 700; color: var(--fs-purple); }
+.fs-review cite span { font-weight: 500; color: var(--fs-muted); }
+
+/* Check pills (Icon List widget): purple pills with a sky check */
+.fs-check-pills .elementor-icon-list-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.fs-check-pills .elementor-icon-list-item { padding: 12px 16px !important; margin: 0 !important; border-radius: 14px; background: var(--fs-purple); }
+.fs-check-pills .elementor-icon-list-text { color: #fff; font-style: italic; font-weight: 500; }
+.fs-check-pills .elementor-icon-list-icon i, .fs-check-pills .elementor-icon-list-icon svg { color: var(--fs-sky); fill: var(--fs-sky); }
+@media (max-width: 767px) { .fs-check-pills .elementor-icon-list-items { grid-template-columns: minmax(0, 1fr); } }
+/* Plain check list */
+.fs-checks .elementor-icon-list-icon i, .fs-checks .elementor-icon-list-icon svg { color: var(--fs-sky); fill: var(--fs-sky); }
+.fs-checks .elementor-icon-list-text { color: inherit; }
+
+/* Framework block: stage tabs (Nested Tabs widget) */
+.fs-stage-tabs .e-n-tabs-heading { gap: 10px; flex-wrap: wrap; }
+.fs-stage-tabs .e-n-tab-title { border: 1px solid rgba(255, 255, 255, .35) !important; border-radius: 999px !important; background: transparent !important; padding: 10px 20px !important; }
+.fs-stage-tabs .e-n-tab-title[aria-selected="true"] { background: #fff !important; border-color: #fff !important; }
+.fs-stage-tabs .e-n-tab-title-text { font-family: var(--fs-font); font-weight: 800; font-size: 19px; letter-spacing: -.02em; color: #fff; }
+.fs-stage-tabs .e-n-tab-title[aria-selected="true"] .e-n-tab-title-text { color: var(--fs-purple); }
+.fs-stage-tabs .e-n-tabs-content > .e-con { background: transparent; }
+
+/* Quiz callout */
+.fs-quiz-card { padding: clamp(28px, 4vw, 56px) !important; }
+
+/* Gradient CTA banner above the footer */
+.fs-cta-banner { border-radius: 40px; padding: clamp(36px, 5vw, 64px) !important; text-align: center; }
+.fs-cta-banner .elementor-heading-title { color: #fff; font-size: clamp(36px, 4.6vw, 64px); }
+.fs-cta-banner p { color: rgba(255, 255, 255, .92); font-size: 18px; }
+
+/* Team cards */
+.fs-team .elementor-image-box-img img { border-radius: 24px 24px 0 0; background: radial-gradient(260px 220px at 50% 100%, rgba(50, 153, 213, .9), transparent 70%), var(--fs-purple); }
+.fs-team .elementor-image-box-title { color: var(--fs-purple); }
+.fs-team .elementor-image-box-description { color: var(--fs-sky-ink); font-weight: 600; font-size: 15px; }
+
+/* Value cards (purple, icon tile left) reuse fs-pcard */
+/* Comparison / pricing tables reuse .fs-table in an HTML widget; wide tables scroll on phones */
+.fs-table-wrap { overflow-x: auto; border-radius: 18px; box-shadow: var(--fs-shadow-card); }
+.fs-table-wrap .fs-table { min-width: 760px; }
+.fs-table td.us, .fs-table th.us { background: var(--fs-tint); }
+.fs-table .no { color: #9B98B3; }
+
+/* ---------- 19. Page template details ---------- */
+.fs-trust-num .elementor-heading-title { font-size: clamp(44px, 4.6vw, 68px); font-weight: 800; color: #fff; line-height: 1; }
+.fs-identity p { color: var(--fs-aqua); font-size: 17px; }
+.fs-sig .elementor-heading-title { font-family: var(--fs-font); font-size: 20px; font-weight: 700; color: var(--fs-purple); margin: 0; }
+.fs-dark .fs-sig .elementor-heading-title { color: #fff; }
+.fs-belief .elementor-heading-title { max-width: 980px; margin-inline: auto; font-size: clamp(22px, 2.4vw, 32px); font-weight: 700; line-height: 1.35; color: #fff; }
+.fs-mf-end .elementor-heading-title { font-size: clamp(20px, 2vw, 26px); font-weight: 700; color: #fff; }
+.fs-price .elementor-heading-title { font-family: var(--fs-font); font-size: clamp(40px, 4vw, 56px); font-weight: 800; line-height: 1; color: var(--fs-purple); }
+.fs-price .elementor-heading-title small { font-size: 18px; font-weight: 500; color: var(--fs-muted); }
+.fs-dark .fs-price .elementor-heading-title, .fs-purple-card .fs-price .elementor-heading-title { color: #fff; }
+.fs-dark .fs-price .elementor-heading-title small, .fs-purple-card .fs-price .elementor-heading-title small { color: #C9C6EA; }
+.fs-k { font-family: var(--fs-font-ui); font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--fs-muted); margin: 0 0 6px; }
+.fs-card-meta, .fs-card-meta p { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0; font-family: var(--fs-font-ui); font-size: 14px; color: var(--fs-muted); }
+.fs-crumbs { font-family: var(--fs-font-ui); font-size: 14px; color: var(--fs-muted); }
+.fs-crumbs a { color: var(--fs-muted); text-decoration: none; }
+.fs-crumbs a:hover { color: var(--fs-royal); text-decoration: underline; }
+.fs-crumbs [aria-current] { color: var(--fs-purple); font-weight: 600; }
+.fs-back { font-family: var(--fs-font-ui); font-size: 14.5px; font-weight: 600; color: var(--fs-sky-ink); text-decoration: none; }
+.fs-back:hover { color: var(--fs-royal); }
+
+/* Quote chip over a cut-out photo */
+.fs-quote-chip { position: relative; max-width: 340px; margin: -70px 0 0 auto; padding: 16px 18px; border-radius: 14px; background: #fff; box-shadow: 0 16px 34px -18px rgba(28, 22, 72, .45); font-size: 15px; font-style: italic; color: var(--fs-ink); }
+.fs-quote-chip cite { display: block; margin-top: 8px; font-size: 13px; font-style: normal; font-weight: 700; color: var(--fs-purple); }
+
+/* Event / workshop dates and fact rows */
+.fs-date { display: grid; place-items: center; width: 78px; padding: 10px 0; border-radius: 16px; background: var(--fs-grad); color: #fff; text-align: center; font-family: var(--fs-font); line-height: 1.1; }
+.fs-date small { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.fs-date b { font-size: 30px; font-weight: 800; }
+.fs-date span { font-size: 12px; opacity: .9; }
+.fs-date--lg { display: flex; gap: 14px; align-items: center; width: auto; padding: 0; background: none; }
+.fs-date--lg b { font-size: clamp(76px, 8vw, 104px); color: transparent; background: var(--fs-grad-text); -webkit-background-clip: text; background-clip: text; }
+.fs-date--lg span { font-size: 26px; font-weight: 700; text-align: left; }
+.fs-date--lg small { display: block; font-size: 15px; font-weight: 500; letter-spacing: 0; text-transform: none; color: #C9C6EA; }
+.fs-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 16px 0; border-block: 1px solid var(--fs-line); }
+.fs-facts dt { font-family: var(--fs-font-ui); font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--fs-sky-ink); }
+.fs-facts dd { margin: 4px 0 0; font-family: var(--fs-font-ui); font-size: 14px; color: var(--fs-muted); }
+.fs-facts dd b { display: block; font-family: var(--fs-font); font-size: 16px; color: var(--fs-purple); }
+.fs-facts--stack { grid-template-columns: minmax(0, 1fr); gap: 0; border: 0; padding: 0; }
+.fs-facts--stack > div { padding: 10px 0; border-bottom: 1px solid var(--fs-line); }
+.fs-facts--stack dd { font-family: var(--fs-font); font-size: 15.5px; font-weight: 600; color: var(--fs-purple); }
+@media (max-width: 767px) { .fs-facts { grid-template-columns: minmax(0, 1fr); } }
+.fs-countdown .elementor-countdown-item { background: rgba(255, 255, 255, .1) !important; border-radius: 16px; }
+.fs-countdown .elementor-countdown-digits { font-family: var(--fs-font); font-weight: 800; color: #fff; }
+.fs-countdown .elementor-countdown-label { color: #C9C6EA; }
+.fs-agenda { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.fs-agenda li { display: grid; grid-template-columns: 84px minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 16px 20px; border-radius: 16px; background: #fff; box-shadow: 0 14px 30px -20px rgba(28, 22, 72, .45); }
+.fs-agenda .t { font-family: var(--fs-font); font-size: 20px; font-weight: 800; color: var(--fs-sky-ink); }
+.fs-agenda b { font-family: var(--fs-font); font-size: 17px; color: var(--fs-purple); }
+.fs-agenda li.brk { background: transparent; box-shadow: none; border: 1.5px dashed #C9C8D3; }
+.fs-agenda li.brk b { font-weight: 500; color: var(--fs-muted); }
+@media (max-width: 767px) { .fs-agenda li { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+
+/* Pillar page: "You are here" list and self-check */
+.fs-here { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.fs-here a { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: center; padding: 12px 16px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, .22); text-decoration: none; }
+.fs-here i { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, .12); font-style: normal; font-weight: 800; color: #fff; }
+.fs-here .fs-plogo { font-size: 22px; color: #fff; }
+.fs-here small { display: block; font-family: var(--fs-font-ui); font-size: 13.5px; color: #C9C6EA; }
+.fs-here li.on a { background: #fff; border-color: #fff; }
+.fs-here li.on i { background: var(--fs-grad); }
+.fs-here li.on small { color: var(--fs-muted); }
+.fs-selfcheck ul { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 10px; }
+.fs-selfcheck label { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 2px solid var(--fs-line); border-radius: 14px; cursor: pointer; font-size: 16px; color: var(--fs-purple); }
+.fs-selfcheck label:has(input:checked) { border-color: var(--fs-purple); background: var(--fs-tint); }
+.fs-selfcheck input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--fs-royal); }
+.fs-sc-result { padding: 24px; border-radius: 20px; background: var(--fs-glow), var(--fs-grad-purple); color: #fff; }
+.fs-sc-result h3 { color: #fff !important; margin: 4px 0 6px; }
+.fs-sc-result p { color: rgba(255, 255, 255, .9); }
+.fs-sc-score b { font-family: var(--fs-font); font-size: 56px; font-weight: 800; color: #fff; }
+.fs-sc-result .elementor-button { margin-top: 12px; background: #fff; color: var(--fs-purple); border-color: transparent; }
+
+/* Case study: simple bar chart */
+.fs-bars { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; align-items: end; height: 260px; padding-top: 24px; }
+.fs-bar { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.fs-bar i { display: block; width: min(34px, 70%); border-radius: 4px 4px 0 0; background: #3299D5; }
+.fs-bar--base i { background: #B9B8C6; }
+.fs-bar span { font: 700 13px var(--fs-font-ui); color: var(--fs-purple); margin-bottom: 4px; }
+.fs-bar small { margin-top: 6px; font: 500 12px var(--fs-font-ui); color: var(--fs-muted); }
+
+/* Articles */
+.fs-prose { font-size: 17.5px; line-height: 1.75; color: var(--fs-body); }
+.fs-prose h2 { margin: 46px 0 14px; font-size: clamp(26px, 2.6vw, 32px); color: var(--fs-purple); }
+.fs-prose ul, .fs-prose ol { padding-left: 22px; }
+.fs-prose li + li { margin-top: 8px; }
+.fs-prose a { color: var(--fs-sky-ink); text-decoration: underline; }
+.fs-dek { font-size: 20px; color: var(--fs-purple); }
+.fs-callout { margin: 28px 0; padding: 22px 24px; border-radius: 18px; background: var(--fs-soft); }
+.fs-callout b { display: block; font-family: var(--fs-font); font-size: 17px; color: var(--fs-purple); }
+.fs-pull, .fs-pull .elementor-blockquote { margin: 30px 0; padding: 4px 0 4px 26px; border-left: 4px solid; border-image: var(--fs-grad) 1; font-family: var(--fs-font); font-size: clamp(20px, 2vw, 24px); font-weight: 600; line-height: 1.45; color: var(--fs-purple); }
+.fs-pull cite, .fs-pull .elementor-blockquote__author { display: block; margin-top: 10px; font-family: var(--fs-font-ui); font-size: 14.5px; font-style: normal; font-weight: 500; color: var(--fs-muted); }
+.fs-sample-content { position: relative; padding: 28px 22px 10px; border: 2px dashed #F2994A; border-radius: 16px; }
+.fs-sample-content::before { content: "Sample article for design reference: delete this widget once Post Content shows a real post"; position: absolute; top: -12px; left: 16px; padding: 2px 10px; border-radius: 6px; background: #F2994A; color: #fff; font: 700 12px var(--fs-font-ui); }
+.fs-toc .elementor-toc__header { background: none; border: 0; padding: 0 0 8px; }
+.fs-toc .elementor-toc__header-title { font: 700 12.5px var(--fs-font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--fs-muted); }
+.fs-toc .elementor-toc__list-item-text { font-family: var(--fs-font-ui); font-size: 14.5px; color: var(--fs-body); }
+.fs-toc .elementor-toc__list-item-text.elementor-item-active { color: var(--fs-purple); font-weight: 700; }
+.fs-byline .elementor-icon-list-text { font-family: var(--fs-font-ui); font-size: 14.5px; color: var(--fs-muted); }
+.fs-chapters { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.fs-chapters li { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; padding: 12px 16px; border: 1px solid var(--fs-line); border-radius: 14px; font-family: var(--fs-font-ui); }
+.fs-chapters span { font-weight: 700; color: var(--fs-sky-ink); }
+
+/* Placeholders for embeds (GoHighLevel calendar, podcast player) */
+.fs-embed-ph { display: grid; place-items: center; min-height: 220px; padding: 20px; border: 2px dashed #9FB7D9; border-radius: 16px; background: #EEF4FB; font-family: var(--fs-font-ui); font-size: 14px; text-align: center; color: var(--fs-royal); }
+
+/* Team flip cards */
+.fs-team-flip .elementor-flip-box__front { border-radius: 28px; }
+.fs-team-flip .elementor-flip-box__front .elementor-flip-box__layer__overlay { background: linear-gradient(180deg, transparent 50%, rgba(37, 7, 98, .92)) !important; }
+.fs-team-flip .elementor-flip-box__layer__title { font-family: var(--fs-font); font-weight: 700; color: #fff; }
+.fs-team-flip .elementor-flip-box__layer__description { font-family: var(--fs-font-ui); font-size: 14px; color: rgba(255, 255, 255, .9); }
+.fs-team-flip .elementor-flip-box__back { border-radius: 28px; }
+.fs-team-flip .elementor-flip-box__button { border: 0; border-radius: 10px; background: var(--fs-grad); color: #fff; }
+
+/* Small service rows in the framework tabs */
+.fs-svc-row .elementor-image-box-wrapper { display: flex; align-items: center; gap: 14px; text-align: left; }
+.fs-svc-row .elementor-image-box-img { width: 48px !important; margin: 0 !important; }
+.fs-svc-row .elementor-image-box-title { margin: 0; font-size: 16px; }
+
+/* "Three ways" tabs */
+.fs-ways-tabs .e-n-tabs-heading { gap: 10px; padding: 8px; border-radius: 22px; background: #fff; box-shadow: 0 16px 34px -22px rgba(28, 22, 72, .4); }
+.fs-ways-tabs .e-n-tab-title { flex: 1; border: 0 !important; border-radius: 16px !important; background: transparent !important; }
+.fs-ways-tabs .e-n-tab-title[aria-selected="true"] { background: #ECECEC !important; box-shadow: inset 4px 0 0 var(--fs-sky); }
+.fs-ways-tabs .e-n-tab-title-text { font-family: var(--fs-font); font-weight: 700; font-size: 17px; color: var(--fs-purple); }
+
+/* Posts widget cards */
+.fs-posts .elementor-post__card { border-radius: 24px; border: 0; box-shadow: var(--fs-shadow-card); }
+.fs-posts .elementor-post__title a { font-family: var(--fs-font); color: var(--fs-purple); }
+.fs-posts .elementor-post__badge { border-radius: 999px; background: var(--fs-sky); font-family: var(--fs-font); }
+.fs-posts .elementor-post__read-more { font-family: var(--fs-font); font-style: italic; color: var(--fs-purple); text-decoration: underline; text-decoration-color: var(--fs-aqua); text-underline-offset: 6px; }
+.fs-map iframe { border-radius: 20px; }
+
+/* White cards sitting inside purple sections keep dark text */
+.fs-dark .fs-gcard:not(.fs-step-hl) .elementor-heading-title,
+.fs-dark .fs-gcard:not(.fs-step-hl) h1, .fs-dark .fs-gcard:not(.fs-step-hl) h2, .fs-dark .fs-gcard:not(.fs-step-hl) h3, .fs-dark .fs-gcard:not(.fs-step-hl) h4 { color: var(--fs-purple); }
+.fs-dark .fs-gcard:not(.fs-step-hl) p, .fs-dark .fs-gcard:not(.fs-step-hl) li,
+.fs-dark .fs-gcard:not(.fs-step-hl) .elementor-widget-text-editor,
+.fs-dark .fs-gcard:not(.fs-step-hl) .elementor-icon-list-text,
+.fs-dark .fs-gcard:not(.fs-step-hl) .elementor-image-box-description { color: var(--fs-body); }
+.fs-dark .fs-gcard .fs-eyebrow .elementor-heading-title, .fs-dark .fs-gcard .fs-eyebrow p { color: var(--fs-sky); }
+.fs-dark .fs-gcard .fs-link-u .elementor-button, .fs-dark .fs-gcard .fs-link-u a { color: var(--fs-purple) !important; }
+.fs-dark .fs-gcard .fs-soft-box p { color: var(--fs-ink); }
+.fs-dark .fs-gcard .elementor-image-box-title { color: var(--fs-purple) !important; }
+.fs-dark .fs-gcard .fs-step-num .elementor-heading-title { color: transparent; }
 
 /* ---------- 16. Accessibility ---------- */
 @media (prefers-reduced-motion: reduce) {

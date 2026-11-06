@@ -1,0 +1,532 @@
+{
+ "version": "0.4",
+ "title": "First Search · Header",
+ "type": "header",
+ "content": [
+  {
+   "id": "ae0189e",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "full",
+    "flex_direction": "column",
+    "css_classes": "fs-header",
+    "flex_gap": {
+     "unit": "px",
+     "size": 0,
+     "column": "0",
+     "row": "0",
+     "isLinked": true
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": true
+    },
+    "sticky": "top",
+    "sticky_on": [
+     "desktop",
+     "tablet",
+     "mobile"
+    ],
+    "sticky_effects_offset": 30,
+    "background_background": "classic",
+    "background_color": "#FFFFFF"
+   },
+   "elements": [
+    {
+     "id": "56c71b7",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "boxed",
+      "flex_direction": "column",
+      "boxed_width": {
+       "unit": "px",
+       "size": 1288,
+       "sizes": []
+      },
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": true
+      }
+     },
+     "elements": [
+      {
+       "id": "222506a",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "css_classes": "fs-header-row",
+        "flex_gap": {
+         "unit": "px",
+         "size": 32,
+         "column": "32",
+         "row": "32",
+         "isLinked": true
+        },
+        "flex_justify_content": "space-between",
+        "flex_align_items": "center",
+        "min_height": {
+         "unit": "px",
+         "size": 112,
+         "sizes": []
+        },
+        "min_height_mobile": {
+         "unit": "px",
+         "size": 76,
+         "sizes": []
+        },
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "24",
+         "bottom": "0",
+         "left": "24",
+         "isLinked": false
+        },
+        "padding_mobile": {
+         "unit": "px",
+         "top": "0",
+         "right": "16",
+         "bottom": "0",
+         "left": "16",
+         "isLinked": false
+        },
+        "flex_wrap": "nowrap"
+       },
+       "elements": [
+        {
+         "id": "4f25e2e",
+         "elType": "widget",
+         "widgetType": "theme-site-logo",
+         "settings": {
+          "image_size": "full",
+          "width": {
+           "unit": "px",
+           "size": 220,
+           "sizes": []
+          },
+          "link_to": "home"
+         },
+         "elements": []
+        },
+        {
+         "id": "370edf1",
+         "elType": "widget",
+         "widgetType": "n-menu",
+         "settings": {
+          "menu_items": [
+           {
+            "_id": "45cb8fa",
+            "item_title": "About First Search",
+            "item_dropdown_content": "yes"
+           },
+           {
+            "_id": "f2b68f6",
+            "item_title": "What We Do",
+            "item_dropdown_content": "yes",
+            "item_link": {
+             "url": "/services/",
+             "is_external": "",
+             "nofollow": ""
+            }
+           },
+           {
+            "_id": "2325354",
+            "item_title": "Grow Your Marketing",
+            "item_dropdown_content": "yes"
+           },
+           {
+            "_id": "2bd8b2b",
+            "item_title": "Contact Us",
+            "item_dropdown_content": "",
+            "item_link": {
+             "url": "/contact-us/",
+             "is_external": "",
+             "nofollow": ""
+            }
+           }
+          ],
+          "item_layout": "horizontal",
+          "open_on": "hover",
+          "content_width": "fit_to_content",
+          "breakpoint_selector": "tablet",
+          "menu_item_title_distance_from_content": {
+           "unit": "px",
+           "size": 14,
+           "sizes": []
+          },
+          "_css_classes": "fs-nav"
+         },
+         "elements": [
+          {
+           "id": "0c5f650",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "css_classes": "fs-mega",
+            "padding": {
+             "unit": "px",
+             "top": "14",
+             "right": "14",
+             "bottom": "14",
+             "left": "14",
+             "isLinked": true
+            },
+            "width": {
+             "unit": "px",
+             "size": 380,
+             "sizes": []
+            }
+           },
+           "elements": [
+            {
+             "id": "a611929",
+             "elType": "widget",
+             "widgetType": "html",
+             "settings": {
+              "html": "<ul class=\"fs-menu-list\"><li><a href=\"/about-us/\"><b>About Us</b><span>Our story, values and the team behind your marketing</span></a></li><li><a href=\"/why-choose-us/\"><b>Why Choose Us</b><span>How we compare, and the FirstSearch Guarantee</span></a></li></ul>"
+             },
+             "elements": []
+            }
+           ]
+          },
+          {
+           "id": "a61f7f3",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-mega",
+            "flex_gap": {
+             "unit": "px",
+             "size": 22,
+             "column": "22",
+             "row": "22",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "22",
+             "right": "22",
+             "bottom": "22",
+             "left": "22",
+             "isLinked": true
+            },
+            "flex_direction_mobile": "column",
+            "width": {
+             "unit": "px",
+             "size": 1180,
+             "sizes": []
+            },
+            "width_tablet": {
+             "unit": "%",
+             "size": 100,
+             "sizes": []
+            }
+           },
+           "elements": [
+            {
+             "id": "02f8899",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "row",
+              "flex_gap": {
+               "unit": "px",
+               "size": 8,
+               "column": "8",
+               "row": "8",
+               "isLinked": true
+              },
+              "flex_direction_mobile": "column",
+              "flex_grow": 1
+             },
+             "elements": [
+              {
+               "id": "d985607",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_grow": 1,
+                "width": {
+                 "unit": "%",
+                 "size": 24,
+                 "sizes": []
+                }
+               },
+               "elements": [
+                {
+                 "id": "9e16a3f",
+                 "elType": "widget",
+                 "widgetType": "html",
+                 "settings": {
+                  "html": "<a class=\"fs-stage-link\" href=\"/firstbrand/\"><span class=\"fs-plogo\"><b>first</b>brand</span><small>Build the foundation</small></a><ul class=\"fs-svc-list\"><li><a href=\"/services/branding-content-creation/\">Branding & Content Creation</a></li><li><a href=\"/services/website/\">Website</a></li><li><a href=\"/services/analytics/\">Analytics</a></li><li><a href=\"/services/crm/\">CRM</a></li></ul>"
+                 },
+                 "elements": []
+                }
+               ]
+              },
+              {
+               "id": "67e552d",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_grow": 1,
+                "width": {
+                 "unit": "%",
+                 "size": 24,
+                 "sizes": []
+                }
+               },
+               "elements": [
+                {
+                 "id": "5337caf",
+                 "elType": "widget",
+                 "widgetType": "html",
+                 "settings": {
+                  "html": "<a class=\"fs-stage-link\" href=\"/firstthought/\"><span class=\"fs-plogo\"><b>first</b>thought</span><small>Get found first</small></a><ul class=\"fs-svc-list\"><li><a href=\"/services/seo/\">SEO</a></li><li><a href=\"/services/advertising/\">Advertising</a></li><li><a href=\"/services/social-media/\">Social Media</a></li><li><a href=\"/services/local-ties/\">Local Ties</a></li></ul>"
+                 },
+                 "elements": []
+                }
+               ]
+              },
+              {
+               "id": "474e9d4",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_grow": 1,
+                "width": {
+                 "unit": "%",
+                 "size": 24,
+                 "sizes": []
+                }
+               },
+               "elements": [
+                {
+                 "id": "ff8115e",
+                 "elType": "widget",
+                 "widgetType": "html",
+                 "settings": {
+                  "html": "<a class=\"fs-stage-link\" href=\"/firstchoice/\"><span class=\"fs-plogo\"><b>first</b>choice</span><small>Get chosen</small></a><ul class=\"fs-svc-list\"><li><a href=\"/services/advertising/\">Advertising</a></li><li><a href=\"/services/social-media/\">Social Media</a></li><li><a href=\"/services/lead-generation/\">Lead Generation</a></li><li><a href=\"/services/marketing-automation/\">Marketing Automation</a></li></ul>"
+                 },
+                 "elements": []
+                }
+               ]
+              },
+              {
+               "id": "ab82649",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_grow": 1,
+                "width": {
+                 "unit": "%",
+                 "size": 24,
+                 "sizes": []
+                }
+               },
+               "elements": [
+                {
+                 "id": "e1adf5f",
+                 "elType": "widget",
+                 "widgetType": "html",
+                 "settings": {
+                  "html": "<a class=\"fs-stage-link\" href=\"/firstreferral/\"><span class=\"fs-plogo\"><b>first</b>referral</span><small>Get referred</small></a><ul class=\"fs-svc-list\"><li><a href=\"/services/social-media/\">Social Media</a></li><li><a href=\"/services/marketing-automation/\">Marketing Automation</a></li><li><a href=\"/services/loyalty/\">Loyalty</a></li><li><a href=\"/services/reviews-referrals/\">Reviews & Referrals</a></li></ul>"
+                 },
+                 "elements": []
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "id": "01f4758",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "css_classes": "fs-purple-card fs-mega-cta",
+              "flex_gap": {
+               "unit": "px",
+               "size": 12,
+               "column": "12",
+               "row": "12",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "26",
+               "right": "26",
+               "bottom": "26",
+               "left": "26",
+               "isLinked": true
+              },
+              "width": {
+               "unit": "px",
+               "size": 280,
+               "sizes": []
+              },
+              "flex_shrink": 0
+             },
+             "elements": [
+              {
+               "id": "169d897",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "What we do",
+                "header_size": "p",
+                "_css_classes": "fs-eyebrow"
+               },
+               "elements": []
+              },
+              {
+               "id": "223281b",
+               "elType": "widget",
+               "widgetType": "html",
+               "settings": {
+                "html": "<div class=\"fs-mega-cta\"><a class=\"fs-big\" href=\"/services/\">All services<span>12 services, one system</span></a><a class=\"fs-big\" href=\"/services/#framework\">The FirstSearch Framework<span>Four stages, one customer journey</span></a></div>"
+               },
+               "elements": []
+              },
+              {
+               "id": "3c2e374",
+               "elType": "widget",
+               "widgetType": "button",
+               "settings": {
+                "text": "Let’s Talk!",
+                "link": {
+                 "url": "/contact-us/",
+                 "is_external": "",
+                 "nofollow": ""
+                },
+                "size": "md",
+                "_css_classes": "fs-btn-white"
+               },
+               "elements": []
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "id": "e7bb8ba",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "css_classes": "fs-mega",
+            "padding": {
+             "unit": "px",
+             "top": "14",
+             "right": "14",
+             "bottom": "14",
+             "left": "14",
+             "isLinked": true
+            },
+            "width": {
+             "unit": "px",
+             "size": 420,
+             "sizes": []
+            }
+           },
+           "elements": [
+            {
+             "id": "06607ca",
+             "elType": "widget",
+             "widgetType": "html",
+             "settings": {
+              "html": "<ul class=\"fs-menu-list\"><li><a href=\"/events/\"><b>Events</b><span>Workshops and live trainings, online and in Hampton</span></a></li><li><a href=\"/resources/\"><b>Resources</b><span>Articles, client stories, podcasts and videos</span></a></li><li><a href=\"/befirst-training/\"><b>BeFirst Training</b><span>The Community, Blueprint and 1:1 coaching to grow it yourself</span></a></li></ul>"
+             },
+             "elements": []
+            }
+           ]
+          },
+          {
+           "id": "1cf95f0",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column"
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "941fa93",
+         "elType": "widget",
+         "widgetType": "button",
+         "settings": {
+          "text": "Let’s Talk!",
+          "link": {
+           "url": "/contact-us/",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "size": "md",
+          "_css_classes": "fs-header-cta",
+          "hide_mobile": "hidden-mobile"
+         },
+         "elements": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "e3e1335",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "css_classes": "fs-stripe",
+      "min_height": {
+       "unit": "px",
+       "size": 10,
+       "sizes": []
+      },
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": true
+      }
+     },
+     "elements": []
+    }
+   ]
+  }
+ ],
+ "page_settings": {}
+}
