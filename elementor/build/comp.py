@@ -126,14 +126,28 @@ def three_ways(h2='Three ways to <span class="fs-gt">become a FirstSearcher</spa
             icon_list(['Fixed monthly retainer', 'Six-month partnership', 'Results guaranteed in writing', 'A dedicated local team'], 'fas fa-check-circle', 'fs-check-pills'),
             row(text('<p>Partnerships start at <b>$X,XXX</b>/month.</p>'), button('Let’s Talk!', '/contact-us/'), justify='space-between', s={'flex_direction_mobile': 'column'}),
             wpct=54, cls='fs-gcard', p=pad(30), gap_=16), gap_=28, align='stretch')
-    diy = row(col(image('assets/img/design/befirst-training.png', '', 240), heading('Learn the system at your own pace.', 'h3'),
-                  text('The BeFirst Community gives you the full FirstSearch Framework: the online course, the Blueprint, live webinars and new content every week, for one flat monthly price.'),
-                  row(button('Explore the Community', '/befirst-training/'), link_u('Get the Blueprint', '/befirst-training/#blueprint')), wpct=55),
-              col(image('assets/img/design/course-mockup.webp', 'fs-img-frame', '100%'), wpct=45), gap_=32)
-    coach = row(col(image('assets/img/design/befirst-coaching.png', '', 240), heading('Your plan, with a coach in your corner.', 'h3'),
-                    text('1:1 strategy sessions built around your business. You do the work; we keep it focused, accountable and moving.'),
-                    button('Book a coaching call', '/befirst-training/#coaching'), wpct=55),
-                col(image('assets/img/team/chris.webp', 'fs-img-frame', '100%'), wpct=45), gap_=32)
+    def wt_res(img, h, p_, link, url, price):
+        return row(con(image(img, '', None, 'center'), cls='fs-wt-img'),
+                   con(heading(h, 'h4'), text(p_), link_u(link, url), gap_=4, cls='fs-wt-body'),
+                   html(f'<span class="fs-wt-price">{price}</span>'), gap_=18, cls='fs-wt-res', s={'flex_direction_mobile': 'row', 'flex_wrap_mobile': 'wrap'})
+    diy = row(col(image('assets/img/design/befirst-training.png', '', 240), heading('Learn the system. Run it yourself.', 'h3'),
+                  text('The same framework we use with our partners, packaged so you can implement it at your own pace. Start with an $8 workbook, or get everything in the Community.'),
+                  video('', 'assets/img/design/course-mockup.webp', 'fs-video'), wpct=46, gap_=16),
+              col(heading('Your DIY resources', 'h3'),
+                  wt_res('assets/img/design/blueprint-book.webp', 'The FirstSearch Blueprint', 'The exact SOPs, worksheets and checklists we use with every client.', 'Get the Blueprint', '/befirst-training/#blueprint', '$8'),
+                  wt_res('assets/img/design/course-mockup.webp', 'BeFirst Online Course', 'A founder-led video walkthrough of the entire framework, one stage at a time.', 'Explore the course', '/befirst-training/#course', '[$XX]'),
+                  wt_res('assets/img/design/befirst-training.png', 'BeFirst Community', 'The course, Blueprint, live webinars and weekly content, all in one membership.', 'Join the Community', '/befirst-training/#community', '$88/mo'),
+                  wt_res('assets/img/icons/team.webp', 'Live trainings and webinars', 'Hands-on workshops, online and in Hampton, on every stage of the framework.', 'See upcoming events', '/events/', '[Free to $XX]'),
+                  text('<p>Not sure where to start? <a href="/befirst-training/">Compare every option in BeFirst Training</a>.</p>', 'fs-wt-more'),
+                  wpct=54, cls='fs-gcard', p=pad(30), gap_=0), gap_=28, align='stretch')
+    coach = row(col(image('assets/img/design/befirst-coaching.png', '', 240), heading('You do the work. We guide every step.', 'h3'),
+                    text('1:1 strategy sessions with our team, built entirely around your business. You implement; we bring the plan, the expertise and the accountability.'),
+                    video('', 'assets/img/design/chris-cutout.webp', 'fs-video'), wpct=46, gap_=16),
+                col(heading('BeFirst Coaching', 'h3'),
+                    html('<div class="fs-coach-price"><div><b>$500</b><span>/month</span><small>One 1:1 session a month</small></div><div><b>$1,000</b><span>/month</span><small>A session every two weeks</small></div></div>'),
+                    icon_list(['A personalized action plan after each session', 'Between-session support by email or chat [CONFIRM]', 'Includes the BeFirst Community at 50% off'], cls='fs-checks'),
+                    text('<p><b>Best for:</b> owners who want an expert sounding board and accountability.</p>'),
+                    button('Book a coaching call', '/befirst-training/#coaching'), wpct=54, cls='fs-gcard', p=pad(30), gap_=16), gap_=28, align='stretch')
     tabs = nested_tabs([('1 · Partner with our team', con(partner, p=pad(0))), ('2 · Do it yourself', con(diy, p=pad(0))), ('3 · Get guided by us', con(coach, p=pad(0)))], 'fs-ways-tabs')
     return section(sec_head('Work with us', h2, lead), tabs, cls='fs-geo', title='Three ways', bg_img='assets/img/design/bg-geometric.jpg', gap_=32)
 

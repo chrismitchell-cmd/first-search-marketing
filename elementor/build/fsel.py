@@ -9,9 +9,12 @@ def uid():
         if i not in _ids:
             _ids.add(i); return i
 
-ASSET = 'https://befirstsearch.com/wp-content/uploads/first-search/'
+# Images are served from the public GitHub repo, pinned to a commit so the URLs never change.
+# Elementor downloads each one into the Media Library during import.
+ASSET_COMMIT = '218e548a5706c5b64bd0b77483dc2a4833e589e4'
+ASSET = f'https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/{ASSET_COMMIT}/elementor/upload/first-search/'
 def asset(path):
-    """Prototype asset path (assets/img/...) -> URL in the uploaded assets folder."""
+    """Prototype asset path (assets/img/...) -> hosted URL."""
     return ASSET + re.sub(r'^assets/img/', '', path)
 
 def px(n): return {'unit': 'px', 'size': n, 'sizes': []}
@@ -126,5 +129,16 @@ def template(title, kind, content, page_css=''):
     if page_css: t['page_settings'] = {'custom_css': page_css}
     return t
 
+def _stable_ids(o):
+    """Give every hosted image a stable non-empty id. Elementor only de-duplicates imported images
+    (by URL hash) when the id is set, so each image lands in the Media Library once, not once per use."""
+    if isinstance(o, dict):
+        if isinstance(o.get('url'), str) and o['url'].startswith(ASSET) and not o.get('id'):
+            import hashlib
+            o['id'] = 700000 + int(hashlib.sha1(o['url'].encode()).hexdigest()[:6], 16) % 99999
+        for v in o.values(): _stable_ids(v)
+    elif isinstance(o, list):
+        for v in o: _stable_ids(v)
 def save(path, tpl):
+    _stable_ids(tpl)
     with open(path, 'w', encoding='utf-8') as f: json.dump(tpl, f, ensure_ascii=False, indent=1)

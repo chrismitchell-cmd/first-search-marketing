@@ -68,11 +68,11 @@ We put your <span class="fs-sky">business first.</span>     <!-- sky-blue words 
 
 Everything is in `elementor/templates/`. Do the steps in order.
 
-### Step 1: upload the images first
-The templates load their images from
-`https://befirstsearch.com/wp-content/uploads/first-search/...`.
-Upload the **contents** of `elementor/upload/first-search/` to `wp-content/uploads/first-search/` using SFTP or your host's File Manager. Keep the subfolders, including `wheels/`, which holds the highlighted framework wheel for each service and stage.
-Do this **before** importing. Elementor copies each image into the Media Library during import. If the files aren't there yet, the images come in blank.
+### Step 1: images (automatic)
+Every image and background in the templates is hosted in the public GitHub repo, at a fixed version that never changes. When you import a template, Elementor downloads each image into your Media Library and points the page at your own copy. You don't need to upload anything first.
+- Each image has a fixed ID, so Elementor imports it **once** and reuses it in every later template. The Media Library doesn't fill up with duplicates.
+- If an image still comes in as a grey placeholder, your host is blocking WordPress from downloading files. Ask the host to allow outgoing requests to `raw.githubusercontent.com`. Or upload `elementor/upload/first-search/` to `wp-content/uploads/first-search/` and swap the images in by hand.
+- If you imported templates before this change, delete them and import them again to pick up the images.
 
 ### Step 2: turn on the required Elementor features (do this before importing)
 Go to **Elementor › Settings › Features** and set these to **Active**, then save:

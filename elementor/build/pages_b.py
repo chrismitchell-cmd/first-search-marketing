@@ -1,10 +1,22 @@
 from comp import *
 from pages_a import SERVICES, GEO
 
+DOC_SVG = '<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>'
+PLAY = '<span class="fs-rplay"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></svg></span>'
+WAVE = '<svg aria-hidden="true" width="150" height="48" viewBox="0 0 150 48" fill="none"><g stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"><path d="M4 20v8M14 12v24M24 18v12M34 6v36M44 16v16M54 10v28M64 20v8M74 14v20M84 4v40M94 16v16M104 10v28M114 20v8M124 14v20M134 18v12M144 22v4"/></g></svg>'
+def card_media(t, meta=''):
+    """Coloured media header for a resource card, matching the prototype."""
+    if t == 'video':
+        dur = meta.split(' · ')[0] if ':' in meta.split(' · ')[0] else ''
+        return con(html(PLAY + (f'<span class="fs-rdur">{dur}</span>' if dur else '')), cls='fs-rmedia fs-rm-vid', bg_img='assets/img/design/chris-cutout.webp',
+                   p=pad(0), justify='center', align='center')
+    if t == 'podcast': return html(f'<div class="fs-rmedia fs-rm-pod">{PLAY}{WAVE}</div>')
+    if t == 'case': return html('<div class="fs-rmedia fs-rm-case"><b>[XX]%</b><span>[more leads in 90 days]</span></div>')
+    return html(f'<div class="fs-rmedia fs-rm-blog"><span class="fs-art">{DOC_SVG}</span></div>')
 def rel_cards(items):
     """items: (type, label, meta, title, cta, url)"""
-    return row(*[col(html(f'<p class="fs-card-meta"><span class="fs-type fs-type--{t}">{lab}</span> {meta}</p>'), heading(ti, 'h3'), link_u(cta, u),
-                     wpct=31, cls='fs-gcard fs-gcard--thin fs-gcard--hover', p=pad(24), gap_=10) for t, lab, meta, ti, cta, u in items], gap_=24, align='stretch')
+    return row(*[col(card_media(t, meta), con(html(f'<p class="fs-card-meta"><span class="fs-type fs-type--{t}">{lab}</span> {meta}</p>'), heading(ti, 'h3'), link_u(cta, u), p=pad(24), gap_=10),
+                     wpct=31, cls='fs-gcard fs-gcard--thin fs-gcard--hover fs-rcard', p=pad(0), gap_=0) for t, lab, meta, ti, cta, u in items], gap_=24, align='stretch')
 
 # ======================= SERVICE (sample: SEO) =======================
 def service():
@@ -280,9 +292,11 @@ def contact():
         two,
         section(sec_head('Find us', 'Prefer to reach <span class="fs-gt">out directly?</span>'),
                 row(*[col(image_box(f'assets/img/icons/{i}', f'<small>{k}</small><br>{v}', s, 'fs-tile', 'top', 'p'), link_u(c, u) if c else None,
-                          wpct=23, cls='fs-purple-card fs-dark', p=pad(26), gap_=8) for i, k, v, s, c, u in find], gap_=20, align='stretch', wrap=True),
+                          wpct=23, cls='fs-gcard', p=pad(26), gap_=8) for i, k, v, s, c, u in find], gap_=20, align='stretch', wrap=True),
                 w('google_maps', {'address': '1 Merrill Industrial Drive, Unit 4, Hampton, NH 03842', 'zoom': px(14), 'height': px(320)}, 'fs-map'),
-                cls='fs-geo', title='Find us', bg_img=GEO),
+                cls='fs-dark fs-office', title='Find us', bg_img='assets/img/design/team-group.webp',
+                s={'background_position': 'center center', 'background_overlay_background': 'classic', 'background_overlay_color': '#250762',
+                   'background_overlay_opacity': {'unit': 'px', 'size': 0.92, 'sizes': []}}),
         steps('After you book', 'What happens next.', '', [
             ('You get a confirmation.', 'A calendar invite and a reminder before the call, by email and text if you opted in.'),
             ('A quick questionnaire.', 'A few short questions about your business, so we can come prepared. [CONFIRM]'),

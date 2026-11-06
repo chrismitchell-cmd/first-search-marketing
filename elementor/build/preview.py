@@ -1,3 +1,4 @@
+from fsel import ASSET
 """Approximate Elementor front-end rendering of the templates, for visual QA only (not shipped)."""
 import json, sys, html as H, os
 CSSV = []
@@ -20,7 +21,12 @@ def render(e, depth=0):
         if s.get('max_width'): css += f"max-width:{u(s['max_width'])};width:100%;"
         if s.get('min_height'): css += f"min-height:{u(s['min_height'])};"
         if s.get('flex_grow'): css += f"flex-grow:{s['flex_grow']};"
-        if s.get('background_image'): css += f"background-image:url('{s['background_image']['url'].replace('https://befirstsearch.com/wp-content/uploads/first-search/', '../upload/first-search/')}');background-size:cover;background-position:center;"
+        if s.get('background_image'):
+            ov = ''
+            if s.get('background_overlay_color'):
+                c = s['background_overlay_color'].lstrip('#'); a = s.get('background_overlay_opacity', {}).get('size', .5)
+                ov = f"linear-gradient(rgba({int(c[0:2],16)},{int(c[2:4],16)},{int(c[4:6],16)},{a}),rgba({int(c[0:2],16)},{int(c[2:4],16)},{int(c[4:6],16)},{a})),"
+            css += f"background-image:{ov}url('{s['background_image']['url'].replace(ASSET, '../upload/first-search/')}') !important;background-size:cover;background-position:center;"
         if s.get('background_color'): css += f"background-color:{s['background_color']};"
         if s.get('sticky'): css += 'position:sticky;top:0;'
         rule(eid, css)
@@ -46,7 +52,7 @@ def render(e, depth=0):
         j = {'center': 'center', 'right': 'flex-end', 'justify': 'stretch'}.get(al, 'flex-start')
         return wrap(f'<div style="display:flex;justify-content:{j}"><a class="elementor-button" href="{s["link"]["url"]}" style="{"width:100%;text-align:center" if al == "justify" else ""}"><span>{s["text"]}</span></a></div>')
     if k == 'image':
-        wv = u(s.get('width')); src = s['image']['url'].replace('https://befirstsearch.com/wp-content/uploads/first-search/', '../upload/first-search/')
+        wv = u(s.get('width')); src = s['image']['url'].replace(ASSET, '../upload/first-search/')
         j = {'center': 'center', 'right': 'flex-end'}.get(al, 'flex-start')
         return wrap(f'<div style="display:flex;justify-content:{j}"><img src="{src}" alt="" style="max-width:100%;{"width:" + wv if wv else ""};height:auto;display:block"></div>')
     if k == 'theme-site-logo': return wrap('<img src="../../assets/img/logo.png" style="width:220px;height:auto;display:block" alt="logo">')
@@ -55,12 +61,12 @@ def render(e, depth=0):
         items = ''.join(f'<li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0">' + (f'<span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span>' if it['selected_icon'].get('value') else '') + f'<span class="elementor-icon-list-text">{it["text"]}</span></li>' for it in s['icon_list'])
         return wrap(f'<ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0">{items}</ul>')
     if k == 'image-box':
-        src = s['image']['url'].replace('https://befirstsearch.com/wp-content/uploads/first-search/', '../upload/first-search/')
+        src = s['image']['url'].replace(ASSET, '../upload/first-search/')
         pos = s.get('position', 'top'); t = s.get('title_size', 'h3')
         lay = 'display:flex;gap:20px;align-items:center' if pos == 'left' else 'text-align:left'
         return wrap(f'<div class="elementor-image-box-wrapper" style="{lay}"><figure class="elementor-image-box-img" style="margin:0 0 10px;width:{"96px" if pos == "left" else "72px"};flex:none"><img src="{src}" style="width:100%;display:block"></figure><div class="elementor-image-box-content"><{t} class="elementor-image-box-title" style="margin:0 0 6px">{s["title_text"]}</{t}><p class="elementor-image-box-description" style="margin:0">{s["description_text"]}</p></div></div>')
     if k == 'video':
-        img = s.get('image_overlay', {}).get('url', '').replace('https://befirstsearch.com/wp-content/uploads/first-search/', '../upload/first-search/')
+        img = s.get('image_overlay', {}).get('url', '').replace(ASSET, '../upload/first-search/')
         return wrap(f'<div class="elementor-wrapper" style="aspect-ratio:16/9;background:#250762 url(\'{img}\') center bottom/contain no-repeat;display:grid;place-items:center;border-radius:28px"><span style="width:80px;height:80px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:30px;color:#250762">▶</span></div>')
     if k in ('accordion', 'toggle'):
         its = ''.join(f'<div class="elementor-accordion-item"><div class="elementor-tab-title{" elementor-active" if n == 0 else ""}">{t["tab_title"]}</div>' + (f'<div class="elementor-tab-content">{t["tab_content"]}</div>' if n == 0 else '') + '</div>' for n, t in enumerate(s['tabs']))
@@ -80,7 +86,7 @@ def render(e, depth=0):
         t = ''.join(f'<div class="e-n-tab-title" aria-selected="{"true" if n == 0 else "false"}"><span class="e-n-tab-title-text">{it["tab_title"]}</span></div>' for n, it in enumerate(s['tabs']))
         return wrap(f'<div class="e-n-tabs"><div class="e-n-tabs-heading" style="display:flex;gap:10px;margin-bottom:18px">{t}</div><div class="e-n-tabs-content">{render(e["elements"][0])}</div></div>')
     if k == 'flip-box':
-        src = s['background_a_image']['url'].replace('https://befirstsearch.com/wp-content/uploads/first-search/', '../upload/first-search/')
+        src = s['background_a_image']['url'].replace(ASSET, '../upload/first-search/')
         return wrap(f'<div class="elementor-flip-box"><div class="elementor-flip-box__front" style="height:420px;background:#250762 url(\'{src}\') bottom/contain no-repeat;display:flex;align-items:flex-end;padding:20px;box-sizing:border-box;position:relative"><div class="elementor-flip-box__layer__overlay" style="position:absolute;inset:0"></div><div style="position:relative"><h3 class="elementor-flip-box__layer__title" style="margin:0">{s["title_text_a"]}</h3><div class="elementor-flip-box__layer__description">{s["description_text_a"]}</div></div></div></div>')
     if k in ('posts',):
         c = ''.join('<div class="elementor-post__card" style="background:#fff;padding:20px;height:220px"><span class="elementor-post__badge" style="color:#fff;padding:2px 10px">Blog</span><h3 class="elementor-post__title"><a>Post title</a></h3><a class="elementor-post__read-more">Read more »</a></div>' for _ in range(3))

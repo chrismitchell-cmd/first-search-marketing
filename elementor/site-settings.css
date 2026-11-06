@@ -734,6 +734,48 @@ a.fs-link-u {
 .fs-dark .fs-gcard .elementor-image-box-title { color: var(--fs-purple) !important; }
 .fs-dark .fs-gcard .fs-step-num .elementor-heading-title { color: transparent; }
 
+/* ---------- 20. Media details (resource cards, DIY resources, coaching) ---------- */
+/* Resource card media header: card container gets fs-rcard; media is the first child */
+.fs-rcard { overflow: hidden; }
+.fs-rmedia { position: relative; height: 172px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.e-con.fs-rmedia { --min-height: 172px; min-height: 172px; }
+.fs-rm-blog { background: linear-gradient(135deg, #EAF4FB, #DDEBF7); }
+.fs-rm-blog .fs-art { width: 74px; height: 74px; border-radius: 18px; display: grid; place-items: center; background: var(--fs-purple); color: #fff; box-shadow: 0 14px 24px -12px rgba(37, 7, 98, .6); }
+.fs-rm-case { flex-direction: column; align-items: flex-start; padding: 0 26px; color: #fff; background: radial-gradient(260px 180px at 100% 100%, rgba(78, 152, 216, .7), transparent 70%), var(--fs-purple); }
+.fs-rm-case b { font-weight: 800; font-size: 46px; line-height: 1; color: #8ED8F0; }
+.fs-rm-case span { margin-top: 6px; font-size: 14.5px; }
+.fs-rm-pod { gap: 18px; padding: 0 24px; justify-content: flex-start; background: linear-gradient(135deg, #72CCD8, #3299D5 45%, #174FA2); }
+.e-con.fs-rm-vid { background-color: var(--fs-purple-deep); background-position: 50% 15% !important; }
+.e-con.fs-rm-vid::before { content: ""; position: absolute; inset: 0; background: rgba(26, 4, 70, .45); }
+.fs-rm-vid > .elementor-widget { position: static; }
+.fs-rplay { position: relative; z-index: 1; flex: none; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--fs-purple); box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .45); }
+.fs-rplay svg { margin-left: 3px; }
+.fs-rdur { position: absolute; z-index: 1; right: 12px; bottom: 12px; padding: 3px 8px; border-radius: 6px; background: rgba(0, 0, 0, .75); color: #fff; font-family: var(--fs-font-ui); font-size: 12px; font-weight: 600; }
+
+/* DIY resource rows (Three ways > Do it yourself) */
+.fs-wt-res { padding: 16px 0 !important; border-bottom: 1px solid var(--fs-line); }
+.fs-wt-res:last-of-type { border-bottom: 0; }
+.e-con.fs-wt-img { --width: 92px; width: 92px !important; height: 92px; flex: none; border-radius: 20px; overflow: hidden; background: var(--fs-tint); justify-content: center; align-items: center; padding: 8px !important; }
+.fs-wt-img img { max-width: 100%; max-height: 76px; width: auto !important; height: auto; object-fit: contain; }
+.e-con.fs-wt-body { --width: auto; flex: 1 1 0; min-width: 0; width: auto !important; }
+.fs-wt-body h4.elementor-heading-title { font-size: 19px; }
+.fs-wt-body p { margin: 0; font-size: 15px; line-height: 1.45; }
+.fs-wt-price { display: inline-block; padding: 6px 12px; border-radius: 999px; background: var(--fs-tint); font-family: var(--fs-font); font-weight: 700; font-size: 15px; color: var(--fs-purple); white-space: nowrap; }
+.fs-wt-more p { margin: 16px 0 0; font-size: 15px; }
+@media (max-width: 767px) {
+  .e-con.fs-wt-img { --width: 70px; width: 70px !important; height: 70px; }
+  .e-con.fs-wt-body { flex-basis: calc(100% - 88px); }
+}
+
+/* Coaching prices */
+.fs-coach-price { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fs-coach-price > div { padding: 16px 18px; border-radius: 16px; background: var(--fs-tint); }
+.fs-coach-price b { font-family: var(--fs-font); font-size: 30px; font-weight: 800; color: var(--fs-purple); }
+.fs-coach-price span { color: var(--fs-body); font-size: 15px; }
+.fs-coach-price small { display: block; margin-top: 4px; color: var(--fs-body); font-size: 14px; }
+@media (max-width: 480px) { .fs-coach-price { grid-template-columns: 1fr; } }
+
+
 /* ---------- 16. Accessibility ---------- */
 @media (prefers-reduced-motion: reduce) {
   .elementor-button, .fs-gcard--hover { transition: none; }
