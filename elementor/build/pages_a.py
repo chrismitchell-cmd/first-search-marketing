@@ -82,7 +82,7 @@ def about():
     return [
         hero('About First Search Marketing', 'We put local businesses first. <span class="fs-gt">It’s in our name.</span>',
              'A family-owned digital marketing agency in Hampton, NH, with big-agency strategy and the personal attention only a local partner can offer.',
-             link=('Meet the team', '#team'), media=vid('assets/img/design/team-group.webp')),
+             link=('Meet the team', '#team'), media=vid('assets/img/design/team-group.webp', 'Meet the First Search team', '[1:45]')),
         trust([('10+', 'years in digital marketing'), ('25', 'partner businesses, maximum'), ('NH', 'Family-owned in Hampton')]),
         section(row(col(eyebrow('A note from our founder'), heading('Why I started <span class="fs-gt">First Search.</span>'),
                         text('<p>[DRAFT for Chris to rewrite with his real story] I kept meeting local business owners who had done everything right. They worked hard, treated customers well and still couldn’t figure out why the phone wasn’t ringing.</p>'
@@ -147,7 +147,7 @@ def why():
     return [
         hero('Why First Search Marketing', 'You’ve heard the promises before. <span class="fs-gt">Here’s what’s different.</span>',
              'If you’ve been burned by an agency, you already know the pattern: a long contract, a report you can’t decode and results that never show up. We built First Search to be the opposite of that.',
-             link=('See the guarantee', '#guarantee'), media=vid()),
+             link=('See the guarantee', '#guarantee'), media=vid(caption='Why owners switch to First Search', length='[2:00]')),
         trust([('25', 'partner businesses, maximum'), ('6', 'month partnership, not a multi-year lock-in'), ('✓', 'results guaranteed in writing')]),
         section(sec_head('Side by side', 'Not all marketing help <span class="fs-gt">is created equal.</span>',
                          'You have three real options for growing your marketing: do it yourself, hire a typical agency, or partner with us. Here’s how they compare on the eight things that decide whether your marketing actually works.'),
@@ -180,7 +180,7 @@ def overview():
     return [
         hero('Our services', 'Everything your marketing needs, <span class="fs-gt">built as one system.</span>',
              'Twelve services, organized around the four stages of the FirstSearch Framework. We don’t sell them as a menu. We build the right mix into one plan for your business.',
-             link=('Browse all services', '#all-services'), media=vid()),
+             link=('Browse all services', '#all-services'), media=vid(caption='Our services, explained in 3 minutes', length='[3:00]')),
         trust([('12', 'services, one plan'), ('4', 'stages of the customer journey'), ('1', 'fixed monthly retainer')]),
         stage_explorer(SERVICES),
         service_grid(SERVICES),

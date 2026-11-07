@@ -88,7 +88,7 @@ def service(slug):
     rel = [SDATA[r] for r in s['related']]
     return [
         hero(f'{name} · {stages_text(st)}', f'{q(h1[0])} <span class="fs-gt">{q(h1[1])}</span>', q(s['lead']),
-             link=('See how it fits the framework', '#framework'), media=vid()),
+             link=('See how it fits the framework', '#framework'), media=vid(caption='Chris walks through this service', length='[2:30]')),
         trust([('4.9★', 'on Google · [XX] reviews'), ('10+', 'years in digital marketing'), ('NH', 'Family-owned in Hampton')]),
         problem('Sound familiar?', q(s['probTitle']),
                 [(icon_for(h + ' ' + p, i).split('/')[-1], q(h), q(p)) for i, (h, p) in enumerate(s['problems'])],
@@ -146,7 +146,7 @@ def stage(k):
     per = {2: 48, 3: 31, 4: 23}.get(len(nav), 23)
     return [
         hero(f'The FirstSearch Framework · Stage {n}: {label}', f'{q(P["h1"][0])} <span class="fs-gt">{q(P["h1"][1])}</span>', q(P['lead']),
-             link=('Take the 60-second self-check', '#check'), media=vid()),
+             link=('Take the 60-second self-check', '#check'), media=vid(caption='Chris explains this stage', length='[2:30]')),
         section(row(col(image(f'wheels/stage-{k}-numbered.webp', '', '100%', alt=f'The FirstSearch Framework, stage {n} of 4 ({label}) highlighted'), wpct=36),
                     col(eyebrow('You are here'), heading(f'Stage {n} of 4 in the FirstSearch Framework.'), html(here), wpct=60), gap_=48),
                 cls='fs-dark', title='You are here'),

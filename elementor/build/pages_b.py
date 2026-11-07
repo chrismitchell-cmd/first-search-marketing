@@ -38,7 +38,7 @@ def service():
     return [
         hero('SEO · FirstThought', 'Be the first business <span class="fs-gt">customers find.</span>',
              'Show up first when people near you search for what you sell: on Google, on the map and in AI answers.',
-             link=('See how it fits the framework', '#framework'), media=vid()),
+             link=('See how it fits the framework', '#framework'), media=vid(caption='Chris walks through this service', length='[2:30]')),
         trust([('4.9★', 'on Google · [XX] reviews'), ('10+', 'years in digital marketing'), ('NH', 'Family-owned in Hampton')]),
         problem('Sound familiar?', 'Customers are searching for you. <span class="fs-gt">They’re finding your competitors.</span>',
                 [('analytics.webp', 'You’re not in the map pack.', 'For most local searches, the top three map results get the calls. If you’re not there, you’re invisible.'),
@@ -98,7 +98,7 @@ def pillar():
     return [
         hero('The FirstSearch Framework · Stage 3: FirstChoice', 'Turn attention into <span class="fs-gt">booked business.</span>',
              'Getting found is only half of it. FirstChoice is where interested people become leads, and leads become customers, through offers, follow-up and campaigns built to convert.',
-             link=('Take the 60-second self-check', '#check'), media=vid()),
+             link=('Take the 60-second self-check', '#check'), media=vid(caption='Chris explains this stage', length='[2:30]')),
         section(row(col(image('assets/img/framework-wheel.webp', '', '100%', alt='The FirstSearch Framework, stage 3 of 4 (FirstChoice) highlighted'), wpct=40),
                     col(eyebrow('You are here'), heading('Stage 3 of 4 in the FirstSearch Framework.'), html(here), wpct=55), gap_=48), cls='fs-dark', title='You are here'),
         problem('What it looks like when this stage is weak', 'Signs FirstChoice is <span class="fs-gt">holding you back.</span>',
@@ -149,47 +149,26 @@ def ev_row(k, m, d, wd, t, meta, fmt):
                button('Reserve your seat', '/events/sample-event/' + ('?format=online' if fmt == 'online' else '')),
                cls='fs-gcard fs-gcard--thin fs-gcard--hover', p=pad(18, 24), gap_=20)
 def events():
-    feat = EVENTS[0]
     return [
         hero('Workshops and live trainings', 'Learn the system. <span class="fs-gt">Leave with a plan.</span>',
              'Hands-on workshops, online and in Hampton, built on the same framework we use with every partner. Pick the stage you want to work on, or take on the whole thing in a day.',
-             cta=('See the calendar', '#calendar'), media=vid()),
-        section(row(col(html('<span class="fs-pill fs-pill--purple">Next up</span> <span class="fs-pill">Full Framework</span>'),
-                        heading('The FirstSearch Framework <span class="fs-gt">in 60 minutes</span>', 'h2'),
-                        text('A fast, founder-led walkthrough of how the four stages fit together, and how to spot which one is holding your business back right now.'),
-                        html('<dl class="fs-facts"><div><dt>When</dt><dd><b>Thursday, October 22</b>12:00 to 1:00 PM</dd></div><div><dt>Where</dt><dd><b>Online</b>Live on Zoom</dd></div><div><dt>Investment</dt><dd><b>Free</b>Open registration</dd></div></dl>'),
-                        row(button('Reserve your seat', '/events/sample-event/?format=online', 'fs-btn-lg'), link_u('Add to calendar', '#'), gap_=24), wpct=58),
-                    col(heading('You’ll leave with', 'h3'), icon_list(['A clear picture of the full framework', 'Your weakest stage, identified', 'Three quick wins to try this week'], cls='fs-checks'),
-                        wpct=38, cls='fs-purple-card fs-dark', p=pad(32), gap_=14), gap_=40), title='Featured event'),
-        section(sec_head('The calendar', 'More upcoming <span class="fs-gt">workshops</span>', 'Replace these sample rows with a Loop Grid of your Events (newest first) once the Events post type is set up.'),
-                con(*[ev_row(*e) for e in EVENTS[1:]], gap_=14), cls='fs-geo', title='Calendar', bg_img=GEO, s={'_element_id': 'calendar'}),
-        section(row(col(heading('Want a workshop for your team or group?'), text('We run private sessions for business teams, chambers and networking groups, in person or online.'), wpct=65),
-                    button('Request a private workshop', '/contact-us/', 'fs-btn-white fs-btn-lg'), justify='space-between'), cls='fs-dark', title='Private workshops',
-                p={'unit': 'px', 'top': '56', 'right': '24', 'bottom': '56', 'left': '24', 'isLinked': False}),
+             cta=None, media=vid(caption='Chris walks you through our events', length='[2:00]'),
+             extra=[text(f'<p><b>{len(EVENT_LIST)}</b> workshops on the calendar this season · <a href="#calendar">See the calendar</a></p>', 'fs-evtotal')]),
+        event_filter_band(),
+        event_list(),
+        band_cta('Want a workshop for your team or group?', 'We run private sessions for business teams, chambers and networking groups, in person or online.',
+                 ('Request a private workshop', '/contact-us/'), 'Private workshops'),
         quiz(),
         cta_banner('Rather have us do it with you?', 'Book a free 30-minute strategy call and we’ll look at your marketing together.'),
     ]
 
 # ======================= RESOURCES =======================
 def resources():
-    posts = w('posts', {'_skin': 'cards', 'cards_columns': '3', 'cards_posts_per_page': 9, 'cards_meta_data': ['date'], 'cards_show_excerpt': 'yes',
-                        'cards_excerpt_length': 18, 'cards_read_more_text': 'Read more »', 'cards_show_badge': 'yes', 'cards_badge_taxonomy': 'category',
-                        'pagination_type': 'load_more_on_click', 'load_more_spinner': {'value': 'fas fa-spinner', 'library': 'fa-solid'}}, 'fs-posts')
-    filt = w('taxonomy-filter', {'selected_element': '', 'taxonomy': 'category'}, 'fs-filter')
     return [
         hero('Resources', 'Marketing you can <span class="fs-gt">actually use.</span>',
              'Articles, client stories, podcast episodes and videos from our team. Filter by format or by the part of your marketing you want to fix.',
-             cta=('Browse resources', '#library'), media=vid()),
-        section(row(col(image('assets/img/design/case-dental.webp', 'fs-img-frame', '100%'), wpct=48),
-                    col(html('<span class="fs-pill fs-pill--purple">Featured case study</span>'), heading('[Client name]: from page three to the map pack', 'h2'),
-                        text('How a local business went from invisible on Google to the top three map results, and what that did for their phone.'),
-                        table((('Map pack position', '#9', '#1'), ('Calls from Google', '[18]/mo', '[57]/mo'))),
-                        button('Read the case study', '/case-studies/'), wpct=48, gap_=14), gap_=40), title='Featured', cls='fs-geo', bg_img=GEO),
-        section(sec_head('The library', 'Every resource, <span class="fs-gt">in one place.</span>', 'Use the filter to show blogs, case studies, podcasts or videos.'),
-                filt, posts, cls='', title='Library', s={'_element_id': 'library'}),
-        section(row(col(heading('One useful marketing idea a week.'), text('Real stories and practical tips from our newsletter. No fluff, unsubscribe any time.'), wpct=50),
-                    col(form([('email', 'Email address', True, 'you@business.com')], 'Subscribe', 'Newsletter'), wpct=45), gap_=40),
-                cls='fs-grad', title='Newsletter'),
+             cta=None, media=vid(caption='How to get the most from our resources', length='[1:30]')),
+        *resources_library(),
         quiz(),
         cta_banner('Want help putting this into practice?', 'Book a free 30-minute call and we’ll look at how your business shows up today.'),
     ]
@@ -213,7 +192,7 @@ def training():
     return [
         hero('BeFirst Training', 'One proven system. <span class="fs-gt">Three ways to put it to work.</span>',
              'Every option runs on the FirstSearch Framework, the same system we use with every partner. The only difference is how much of the work you want to do yourself.',
-             cta=('Compare the three ways', '#compare'), link=('Explore the Community', '#community'), media=vid()),
+             cta=('Compare the three ways', '#compare'), link=('Explore the Community', '#community'), media=vid(caption='Which path is right for you?', length='[2:15]')),
         compare, quiz(), comm, coach, part,
         faq('Questions before <span class="fs-gt">you choose</span>', [
             ('Which path is right for me?', 'It comes down to how much of the work you want to do yourself. If you like to learn and implement, start with the Community. If you want an expert working through your plan with you, choose coaching. If you want it done for you with results guaranteed, book a strategy call. The Framework Quiz will also recommend a path based on your score.'),
@@ -249,7 +228,7 @@ def contact():
     return [
         hero('Contact us', 'Let’s talk about <span class="fs-gt">your marketing.</span>',
              'Book a free 30-minute consultation, or send us a message. We reply within [one business day].',
-             cta=('Book a call', '#book'), link=('Send a message', '#book'), media=vid()),
+             cta=('Book a call', '#book'), link=('Send a message', '#book'), media=vid(caption='What happens after you reach out', length='[1:30]')),
         two,
         find_cards(find, map_address='1 Merrill Industrial Drive, Unit 4, Hampton, NH 03842'),
         steps('After you book', 'What happens next.', '', [

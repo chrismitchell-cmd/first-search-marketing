@@ -50,8 +50,13 @@ def hero(eb, h1, lead, cta=('Let’s Talk!', '/contact-us/'), link=None, media=N
                    cls='fs-geo', title='Hero', bg_img='assets/img/design/bg-geometric.jpg',
                    p={'unit': 'px', 'top': '90', 'right': '24', 'bottom': '100', 'left': '24', 'isLinked': False})
 
-def vid(img='assets/img/design/chris-cutout.webp'):
-    return con(video('', img, ''), cls='fs-gcard', p=pad(0), s={'overflow': 'hidden'})
+def vid(img='assets/img/design/chris-cutout.webp', caption='Watch the video', length='[2:00]', fit=None):
+    """Hero video as in the design: navy panel, cover image, play button, "Video" tag and caption chip (all editable).
+    Paste the YouTube link in the Video widget; the caption and length are the Text widget under it."""
+    fit = fit or ('wide' if 'team-group' in img else 'cover' if 'case-' in img or 'course' in img else 'cut')
+    v = video('', img, f'fs-w-video fs-w-video--{fit}')
+    v['settings'].update({'aspect_ratio': '32', 'lightbox': '', 'show_play_icon': 'yes'})
+    return con(v, text(f'<p><b>{caption}</b><span>{length}</span></p>', 'fs-w-cap'), cls='fs-w-vid fs-hero-vid')
 
 # ---------- Trust band ----------
 def trust(items):
@@ -649,3 +654,211 @@ def partner_block():
     rev = review(*REVIEWS[0]); rev['settings']['css_classes'] += ' fs-quote-card'
     side = con(seal, rev, review_schema(REVIEWS[:1]), gap_=24, cls='fs-part-side')
     return row(main, side, gap_=32, align='stretch', cls='fs-part fs-nostyle')
+
+
+# ======================= Events page: filter band + featured event + workshop rows =======================
+# Each workshop is a normal container (date box, stage chip, title, details, price, button). The filter script in the
+# band reads each row's stage chip and its details line ("Online" / "In person"), so editing a row is all it takes.
+EVENT_LIST = [  # stage, month, day, weekday, title, time, format, location, price, seats, desc, outcomes
+    ('full', 'Oct', '22', 'Thursday', 'The FirstSearch Framework in 60 minutes', '12:00 to 1:00 PM', 'Online', 'Live on Zoom', 'Free', 'Open registration',
+     'A fast, founder-led walkthrough of how the four stages fit together, and how to spot which one is holding your business back right now.',
+     ['A clear picture of the full framework', 'Your weakest stage, identified', 'Three quick wins to try this week']),
+    ('brand', 'Oct', '27', 'Tue', 'Build a brand people trust on sight', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
+     'Define what makes you different, write a value statement you can actually use, and audit every touchpoint for consistency.',
+     ['A finished value statement', 'Your core values and competitive edge', 'A brand consistency checklist']),
+    ('thought', 'Nov', '4', 'Wed', 'Get found first: local SEO and AI search', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
+     'How Google, the map pack and AI search tools decide who shows up first, and what you can fix in your profile and site this month.',
+     ['A Google Business Profile tune-up list', 'Your top local keywords', 'An AI search visibility check']),
+    ('full', 'Nov', '12', 'Thu', 'BeFirst Live: the full-day framework workshop', '9:00 AM to 4:00 PM', 'In person', '[Venue], Hampton, NH', '[Price]', '[XX] of [XX] seats left',
+     'An immersive day working through every stage of the framework with our team. Bring your laptop and your real numbers. You leave with the plan finished, not homework.',
+     ['A completed marketing roadmap', 'Your KPIs for every stage', 'Confidence to execute on Monday']),
+    ('choice', 'Nov', '17', 'Tue', 'Turn your website into a lead machine', '8:30 to 10:30 AM', 'In person', '[Venue], Hampton, NH', '[Price]', '[XX] seats left',
+     'Lead magnets, offers and follow-up that turn visitors into booked calls. We review real websites in the room, so bring yours.',
+     ['A lead magnet idea and outline', 'An offer strategy that closes', 'A follow-up sequence map']),
+    ('referral', 'Dec', '2', 'Wed', 'Reviews, referrals and loyalty that sell for you', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
+     'Build the systems that turn happy customers into your best marketing channel, without awkward asks.',
+     ['A review request automation', 'A referral reward structure', 'A simple loyalty program outline']),
+    ('thought', 'Dec', '8', 'Tue', 'Ads that actually pay for themselves', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
+     'How to plan, launch and measure Google and Meta ads around real leads and cost per acquisition, not impressions.',
+     ['A campaign plan for one offer', 'The metrics that matter', 'A budget you can defend']),
+    ('choice', 'Jan', '13', 'Wed', 'Marketing automation for busy owners', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
+     'The handful of automations every local business should have running, and how to set them up without a tech team.',
+     ['Your first three automations mapped', 'Email list segments to build', 'A welcome journey outline'])]
+def stage_chip(k):
+    return '<span class="fs-plogo-chip fs-plogo-chip--full">Full Framework</span>' if k == 'full' else f'<span class="fs-plogo-chip">{plogo(k)}</span>'
+
+EV_FILTER_JS = """<div class="fs-evf"><div class="fs-evpills" role="group" aria-label="Framework stage"></div><div class="fs-evfrow"><div class="fs-seg fs-seg--dark fs-evformats" role="group" aria-label="Format"></div><p class="fs-evcount" aria-live="polite"></p></div></div>
+<script>(function(){var sc=document.currentScript;if(!sc)return;function init(){var box=sc.parentNode,doc=document;
+var items=[].slice.call(doc.querySelectorAll('.fs-evitem'));if(!items.length)return;
+items.forEach(function(it){var c=it.querySelector('.fs-evchip');var t=c?c.textContent.trim().toLowerCase():'';it._st=t.indexOf('full')>-1?'full':t.replace(/^first/,'');
+var m=it.querySelector('.fs-evmeta');var mt=m?m.textContent.toLowerCase():'';it._fm=mt.indexOf('in person')>-1?'inperson':'online';
+var tg=it.querySelector('.fs-evtoggle');if(tg){tg.setAttribute('role','button');tg.setAttribute('tabindex','0');tg.setAttribute('aria-expanded','false');
+function tog(){var open=!it.classList.contains('is-open');items.forEach(function(o){if(o!==it&&o.classList.contains('is-open')){o.classList.remove('is-open');var b=o.querySelector('.fs-evtoggle');if(b){b.setAttribute('aria-expanded','false');b.querySelector('.elementor-heading-title').textContent='Details';}}});
+it.classList.toggle('is-open',open);tg.setAttribute('aria-expanded',open);tg.querySelector('.elementor-heading-title').textContent=open?'Hide details':'Details';}
+tg.addEventListener('click',tog);tg.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}});}});
+var empty=doc.querySelector('.fs-evempty'),more=doc.querySelector('.fs-evmore-h'),S={st:'all',fm:'all'};
+var LBL={all:'All workshops',full:'Full Framework'};function lg(k){return LBL[k]||'<span class="fs-plogo"><b>first</b>'+k+'</span>';}
+function render(){var byF=items.filter(function(i){return S.fm==='all'||i._fm===S.fm;});var list=byF.filter(function(i){return S.st==='all'||i._st===S.st;});
+items.forEach(function(i){i.hidden=list.indexOf(i)<0;});
+box.querySelector('.fs-evpills').innerHTML=['all','full','brand','thought','choice','referral'].map(function(k){var n=k==='all'?byF.length:byF.filter(function(i){return i._st===k;}).length;
+return '<button type="button" class="fs-evpill" data-st="'+k+'" aria-pressed="'+(S.st===k)+'"><span>'+lg(k)+'</span><span class="n">'+n+'</span></button>';}).join('');
+box.querySelector('.fs-evformats').innerHTML=[['all','All formats'],['online','Online'],['inperson','In person']].map(function(f){return '<button type="button" data-fm="'+f[0]+'" aria-pressed="'+(S.fm===f[0])+'">'+f[1]+'</button>';}).join('');
+box.querySelector('.fs-evcount').textContent='Showing '+list.length+(list.length===1?' workshop':' workshops');
+var rows=list.filter(function(i){return !i.classList.contains('fs-evfeat');});if(more)more.hidden=!rows.length;if(empty)empty.hidden=!!list.length;}
+box.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.st)S.st=b.dataset.st;if(b.dataset.fm)S.fm=b.dataset.fm;render();});
+if(empty)empty.addEventListener('click',function(e){if(e.target.closest('.fs-evclear')){e.preventDefault();S={st:'all',fm:'all'};render();}});
+var tot=doc.querySelector('.fs-evtotal b');if(tot)tot.textContent=items.length;render();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();</script>"""
+
+def event_filter_band():
+    return section(html(EV_FILTER_JS, 'fs-evfilter-w'), cls='fs-dark fs-band fs-evfilter', title='Workshop filter',
+                   p={'unit': 'px', 'top': '24', 'right': '24', 'bottom': '24', 'left': '24', 'isLinked': False},
+                   s={'padding_mobile': {'unit': 'px', 'top': '18', 'right': '16', 'bottom': '18', 'left': '16', 'isLinked': False}})
+
+def featured_event(e):
+    k, m, d, wd, t, tm, fm, loc, pr, seats, desc, outs = e
+    fact = lambda a, b, c: text(f'<p class="k">{a}</p><p class="v">{b}</p><p class="s">{c}</p>', 'fs-fact')
+    left = con(text(f'<p><span class="fs-chip-next">Next up</span> {stage_chip(k).replace("fs-plogo-chip", "fs-plogo-chip fs-evchip", 1)}</p>', 'fs-feat-chips'),
+               heading(t, 'h2', 'fs-feat-h'), text(desc, 'fs-feat-desc'),
+               con(fact('When', f'{wd}, {"October" if m == "Oct" else m} {d}', tm), fact('Where', fm, loc), fact('Investment', pr, seats), d='row', gap_=0, mobile_col=True, cls='fs-facts2'),
+               text(f'<p>{fm} · {loc}</p>', 'fs-evmeta fs-sr'),
+               con(button('Reserve your seat', '/events/sample-event/?format=online', 'fs-btn-navy fs-btn-lg'), button('Add to calendar', '#', 'fs-btn-grad fs-btn-lg fs-ical'),
+                   d='row', gap_=10, wrap=True, cls='fs-feat-btns'),
+               cls='fs-feat-l', gap_=22, p=pad(48), s={'padding_mobile': pad(28)})
+    right = con(text(f'<p><b>{d}</b><span><span class="m">{m}</span><span class="w">{wd}</span></span></p>', 'fs-bigdate'),
+                heading('You’ll leave with', 'h3', 'fs-feat-rh'), icon_list(outs, 'fas fa-check', 'fs-feat-checks'),
+                cls='fs-feat-r fs-dark', gap_=18, p=pad(48), s={'padding_mobile': pad(28)})
+    return con(left, right, d='row', gap_=0, align='stretch', cls='fs-gcard fs-evfeat fs-evitem fs-nostyle')
+
+def event_row(e):
+    k, m, d, wd, t, tm, fm, loc, pr, seats, desc, outs = e
+    datebox = text(f'<p><span class="m">{m}</span><b>{d}</b><span class="w">{wd}</span></p>', 'fs-evdate')
+    info = con(text(f'<p>{stage_chip(k).replace("fs-plogo-chip", "fs-plogo-chip fs-evchip", 1)}</p>', 'fs-evchip-w'), heading(t, 'h3', 'fs-ev-h'),
+               text(f'<p>{tm} · {fm} · {loc}</p>', 'fs-evmeta'), gap_=6, cls='fs-evinfo')
+    act = con(heading('Details', 'p', 'fs-evtoggle'),
+              con(heading(pr, 'p', 'fs-evprice'), button('Reserve your seat', '/events/sample-event/' + ('?format=online' if fm == 'Online' else ''), 'fs-btn-navy'),
+                  text(f'<p>{seats}</p>', 'fs-evseats'), gap_=6, align='center', cls='fs-evbook'),
+              d='row', gap_=18, align='center', mobile_col=False, cls='fs-evact')
+    det = con(text(desc, 'fs-evdet-p'), con(heading('You’ll leave with', 'p', 'fs-evdet-h'), icon_list(outs, 'fas fa-check', 'fs-evdet-list'), gap_=10),
+              d='row', gap_=32, cls='fs-evdet')
+    return con(con(datebox, info, act, d='row', gap_=26, align='center', cls='fs-evrow-in', mobile_col=False), det, cls='fs-evitem fs-evrow', gap_=0)
+
+def event_list(events=EVENT_LIST):
+    empty = con(heading('No workshops match those filters right now', 'h2', 'fs-evempty-h'),
+                text('Leave your email and we’ll let you know the moment the next one opens. Or clear your filters to see everything on the calendar.', 'fs-evempty-p'),
+                form([('email', 'Email address', True, 'you@business.com')], 'Notify me', 'Workshop waitlist', 'fs-inline-form'),
+                button('Clear filters', '#', 'fs-link-u fs-evclear'), cls='fs-gcard fs-evempty', gap_=18, align='center', p=pad(56, 28))
+    empty['settings']['form_fields' if False else 'css_classes'] += ''
+    f = empty['elements'][2]['settings']; f.update({'show_labels': '', 'button_width': '30'}); f['form_fields'][0]['width'] = '70'
+    return section(featured_event(events[0]), heading('More upcoming <span class="fs-gt">workshops</span>', 'h2', 'fs-evmore-h', 'center'),
+                   con(*[event_row(e) for e in events[1:]], gap_=18, cls='fs-evlist fs-nostyle'), empty,
+                   cls='fs-geo', title='Workshops', bg_img='assets/img/design/bg-geometric.jpg', gap_=26,
+                   p={'unit': 'px', 'top': '64', 'right': '24', 'bottom': '100', 'left': '24', 'isLinked': False}, s={'_element_id': 'calendar'})
+
+def band_cta(h2, p_, btn, title):
+    return section(row(col(heading(h2, 'h2', 'fs-band-h'), text(p_, 'fs-band-p'), wpct=65, gap_=8), button(btn[0], btn[1], 'fs-btn-grad fs-btn-lg'),
+                       justify='space-between', s={'flex_align_items_mobile': 'flex-start'}), cls='fs-dark fs-band', title=title,
+                   p={'unit': 'px', 'top': '48', 'right': '24', 'bottom': '48', 'left': '24', 'isLinked': False})
+
+# ======================= Resources page: format tabs + search band, service sidebar, featured case study, cards =======================
+RES_TYPES = {'blog': ('Blog', 'Read the article', '/blog/sample-post/'), 'case': ('Case study', 'Read the case study', '/case-studies/sample/'),
+             'podcast': ('Podcast', 'Listen to the episode', '/podcast/sample/'), 'video': ('Video', 'Watch the video', '/videos/sample/')}
+RES_GROUPS = [('brand', ['Branding & content', 'Website']), ('thought', ['SEO', 'Advertising', 'Social Media', 'Local Ties']),
+              ('choice', ['Lead Generation', 'Marketing Automation', 'CRM']), ('referral', ['Loyalty', 'Reviews & Referrals']), ('', ['Analytics'])]
+RES_ITEMS = [  # type, date label, meta, title, excerpt, tags, (metric, metric label)
+    ('blog', 'Oct 9, 2026', '7 min read', 'Showing up in AI search: what local businesses need to know', 'AI tools are answering "who should I call?" questions. Here is how they decide which businesses to recommend.', ['SEO', 'Branding & content']),
+    ('video', 'Oct 7, 2026', '10:24', 'The FirstSearch Framework in 10 minutes', 'Chris walks through all four stages and how they connect, with real examples from local businesses.', ['Branding & content', 'Lead Generation', 'Reviews & Referrals']),
+    ('blog', 'Oct 6, 2026', '6 min read', 'Why your Google Business Profile matters more than your website', 'For most local searches, your profile is the first impression. Most owners have never touched theirs.', ['SEO', 'Local Ties']),
+    ('case', 'Oct 5, 2026', '[Industry]', '[Client name]: from page three to the map pack', 'Rebuilding a Google profile and local SEO from the ground up.', ['SEO', 'Local Ties', 'Website'], ('[XX]%', '[More calls from Google]')),
+    ('podcast', 'Oct 2, 2026', '[XX] min', 'Ep. [XX]: Strategy beats size', 'Why the smallest business in the market can still be the first one customers find.', ['Branding & content', 'Analytics']),
+    ('video', 'Sep 30, 2026', '14:02', 'Setting up a CRM you will actually use', 'The simplest CRM setup for a local business, and the three fields that matter most.', ['CRM', 'Marketing Automation']),
+    ('blog', 'Sep 29, 2026', '5 min read', 'Vanity metrics vs. growth metrics: what to actually track', 'Impressions feel good. Leads pay the bills. A plain-English guide to the numbers worth watching.', ['Analytics']),
+    ('case', 'Sep 26, 2026', '[Industry]', '[Client name]: building a referral engine', 'Turning a loyal customer base into a steady stream of referrals.', ['Reviews & Referrals', 'Loyalty'], ('[XX]', '[New referrals per month]')),
+    ('podcast', 'Sep 25, 2026', '[XX] min', 'Ep. [XX]: Local ties, the marketing that happens offline', 'Chambers, networking groups and community partners, and how to make them count.', ['Local Ties', 'Social Media']),
+    ('blog', 'Sep 22, 2026', '8 min read', 'The five automations every local business should have running', 'Welcome, follow-up, review request, re-engagement and referral. What each one does and when it fires.', ['Marketing Automation', 'CRM']),
+    ('video', 'Sep 18, 2026', '18:40', 'Building a Meta ad from scratch', 'Offer, audience, creative and tracking, start to finish in one sitting.', ['Advertising', 'Social Media']),
+    ('blog', 'Sep 15, 2026', '4 min read', 'How to ask for reviews without feeling awkward', 'Timing, wording and the automation that does the asking for you.', ['Reviews & Referrals']),
+    ('case', 'Sep 12, 2026', '[Industry]', '[Client name]: a rebrand and a new website', 'A full brand refresh and a site built to turn visitors into inquiries.', ['Branding & content', 'Website', 'Lead Generation'], ('[XX]%', '[More website inquiries]')),
+    ('podcast', 'Sep 11, 2026', '[XX] min', 'Ep. [XX]: Turning customers into your sales team', 'Loyalty programs that local businesses can actually run.', ['Loyalty', 'Reviews & Referrals']),
+    ('blog', 'Sep 8, 2026', '6 min read', 'Is your website a brochure or a lead machine?', 'Five signs your site is just sitting there, and what to change first.', ['Website', 'Lead Generation']),
+    ('video', 'Sep 4, 2026', '11:15', 'Social posts that get engagement, not just likes', 'The post types that start conversations, and the ones to stop making.', ['Social Media', 'Branding & content']),
+    ('case', 'Aug 29, 2026', '[Industry]', '[Client name]: paid ads that pay for themselves', 'Restructuring Google Ads around cost per lead instead of clicks.', ['Advertising', 'Lead Generation', 'Analytics'], ('[$XX]', '[Cost per lead]')),
+    ('podcast', 'Aug 28, 2026', '[XX] min', 'Ep. [XX]: Why growth is a system', 'Improving the whole customer journey beats chasing one big win.', ['Marketing Automation', 'Analytics'])]
+WAVE = '<svg aria-hidden="true" width="150" height="48" viewBox="0 0 150 48" fill="none"><g stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".9"><path d="M4 20v8M14 12v24M24 18v12M34 6v36M44 16v16M54 10v28M64 20v8M74 14v20M84 4v40M94 16v16M104 10v28M114 20v8M124 14v20M134 18v12M144 22v4"/></g></svg>'
+
+def res_card(item):
+    ty, dl, meta, t, ex, tags = item[:6]
+    lab, cta, url = RES_TYPES[ty]
+    if ty == 'blog': media = con(text('<p><span class="art"></span><span class="lbl">[Article image]</span></p>', 'fs-m-in'), cls='fs-media fs-m-blog')
+    elif ty == 'case': media = con(text(f'<p><b>{item[6][0]}</b><span>{item[6][1]}</span></p>', 'fs-m-in'), cls='fs-media fs-m-case')
+    elif ty == 'podcast': media = con(text(f'<p><span class="play"></span>{WAVE}</p>', 'fs-m-in'), cls='fs-media fs-m-pod')
+    else: media = con(image('assets/img/design/chris-cutout.webp', 'fs-m-img', None, 'center', ''), text(f'<p><span class="play"></span><span class="dur">{meta}</span></p>', 'fs-m-in'), cls='fs-media fs-m-vid')
+    sub = dl if ty == 'video' else f'{meta} · {dl}'
+    body = con(text(f'<p><span class="fs-tpill fs-tpill--{ty}">{lab}</span><span>{sub}</span></p>', 'fs-ctype'), heading(t, 'h3', 'fs-rc-h'), text(ex, 'fs-rc-ex'),
+               text('<p>' + ''.join(f'<span>{g}</span>' for g in tags) + '</p>', 'fs-ctags'), link_u(cta, url), gap_=10, cls='fs-rc-body', p=pad(22, 22, 24, 22))
+    return con(media, body, gap_=0, cls='fs-gcard fs-rcard')
+
+RES_JS = """<div class="fs-cats" role="group" aria-label="Format"></div>
+<div class="fs-search"><label class="fs-sr" for="fs-res-q">Search resources</label><input id="fs-res-q" type="search" placeholder="Search by topic, like reviews or Google ads" autocomplete="off"></div>
+<script>(function(){var sc=document.currentScript;if(!sc)return;function init(){var bar=sc.parentNode,doc=document,grid=doc.querySelector('.fs-rgrid');if(!grid)return;
+var cards=[].slice.call(grid.querySelectorAll('.fs-rcard'));var side=doc.querySelector('.fs-rside-groups'),tools=doc.querySelector('.fs-rtools-w'),feat=doc.querySelector('.fs-rfeat'),
+more=doc.querySelector('.fs-rmore'),empty=doc.querySelector('.fs-rempty'),PAGE=9;
+var GROUPS=JSON.parse(side?side.getAttribute('data-groups')||'[]':'[]');
+var MON={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+cards.forEach(function(c,i){var p=c.querySelector('.fs-tpill');c._ty=p?(p.className.match(/fs-tpill--(\\w+)/)||[])[1]:'';c._tags=[].map.call(c.querySelectorAll('.fs-ctags span'),function(s){return s.textContent.trim();});
+c._txt=c.textContent.toLowerCase();var m=(c.querySelector('.fs-ctype')||c).textContent.match(/([A-Z][a-z]{2}) (\\d{1,2}), (\\d{4})/);c._d=m?new Date(+m[3],MON[m[1].toLowerCase()],+m[2]).getTime():-i;c._i=i;});
+var S={cat:'all',tags:[],q:'',sort:'new',shown:PAGE};var TYPES=[['all','All'],['blog','Blogs'],['case','Case studies'],['podcast','Podcasts'],['video','Videos']];
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function render(){var q=S.q.trim().toLowerCase();var mQ=function(c){return !q||c._txt.indexOf(q)>-1;},mT=function(c){return !S.tags.length||c._tags.some(function(t){return S.tags.indexOf(t)>-1;});},
+inC=function(c){return S.cat==='all'||c._ty===S.cat;};var base=cards.filter(function(c){return mQ(c)&&mT(c);});
+var list=base.filter(inC).sort(function(a,b){return S.sort==='old'?a._d-b._d:b._d-a._d;});var tb=cards.filter(function(c){return mQ(c)&&inC(c);});
+bar.querySelector('.fs-cats').innerHTML=TYPES.map(function(t){var n=t[0]==='all'?base.length:base.filter(function(c){return c._ty===t[0];}).length;
+return '<button type="button" class="fs-cat" data-cat="'+t[0]+'" aria-pressed="'+(S.cat===t[0])+'"><span>'+t[1]+'</span><span class="n">'+n+'</span></button>';}).join('');
+if(side)side.querySelector('.fs-rgroups').innerHTML=GROUPS.map(function(g){return '<div class="fs-grp"><p class="fs-grp-l">'+(g[0]?'<span class="fs-plogo"><b>first</b>'+g[0]+'</span>':'<span class="dot"></span>Across every stage')+'</p><div class="fs-tags">'+
+g[1].map(function(t){var n=tb.filter(function(c){return c._tags.indexOf(t)>-1;}).length;return '<button type="button" class="fs-tag" data-tag="'+esc(t)+'" aria-pressed="'+(S.tags.indexOf(t)>-1)+'"><span>'+esc(t)+'</span><span class="n">'+n+'</span></button>';}).join('')+'</div></div>';}).join('');
+if(side){side.querySelector('.fs-rclear').hidden=!S.tags.length;var sc2=side.querySelector('.fs-rside-n');if(sc2)sc2.textContent=S.tags.length||'';}
+if(feat)feat.hidden=!(S.cat==='all'&&!S.tags.length&&!q);
+if(tools){tools.querySelector('.fs-rcount').textContent='Showing '+Math.min(S.shown,list.length)+' of '+list.length+(list.length===1?' resource':' resources');
+var act=[];if(S.cat!=='all')act.push(['cat','',TYPES.filter(function(t){return t[0]===S.cat;})[0][1]]);S.tags.forEach(function(t){act.push(['tag',t,t]);});if(q)act.push(['q','','"'+S.q.trim()+'"']);
+var a=tools.querySelector('.fs-ractive');a.hidden=!act.length;a.innerHTML=act.length?'<span>Filtered by</span>'+act.map(function(x){return '<button type="button" class="fs-achip" data-rm="'+x[0]+'" data-v="'+esc(x[1])+'">'+esc(x[2])+' <span aria-hidden="true">✕</span></button>';}).join('')+'<button type="button" class="fs-textbtn" data-clear>Clear all</button>':'';}
+cards.forEach(function(c){c.hidden=true;});list.forEach(function(c,i){c.hidden=i>=S.shown;grid.appendChild(c);});
+if(more)more.hidden=!(list.length>S.shown);if(empty)empty.hidden=!!list.length;}
+function clear(){S={cat:'all',tags:[],q:'',sort:S.sort,shown:PAGE};bar.querySelector('input').value='';render();}
+doc.addEventListener('click',function(e){var b=e.target.closest('button,a');if(!b)return;
+if(b.dataset.cat){S.cat=b.dataset.cat;S.shown=PAGE;render();}
+else if(b.dataset.tag){var t=b.dataset.tag;S.tags=S.tags.indexOf(t)>-1?S.tags.filter(function(x){return x!==t;}):S.tags.concat([t]);S.shown=PAGE;render();}
+else if(b.dataset.rm){if(b.dataset.rm==='cat')S.cat='all';if(b.dataset.rm==='tag')S.tags=S.tags.filter(function(x){return x!==b.dataset.v;});if(b.dataset.rm==='q'){S.q='';bar.querySelector('input').value='';}S.shown=PAGE;render();}
+else if(b.hasAttribute('data-clear')||b.closest('.fs-rclear')||b.closest('.fs-rempty-btn')){e.preventDefault();if(b.closest('.fs-rclear')){S.tags=[];S.shown=PAGE;render();}else clear();}
+else if(b.closest('.fs-rmore')){e.preventDefault();S.shown+=6;render();}
+else if(b.closest('.fs-rside-toggle')){var sd=b.closest('.fs-rside');sd.classList.toggle('is-open');}});
+bar.querySelector('input').addEventListener('input',function(e){S.q=e.target.value;S.shown=PAGE;render();});
+var sel=doc.querySelector('.fs-rsort');if(sel)sel.addEventListener('change',function(e){S.sort=e.target.value;render();});render();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();</script>"""
+
+def resources_library(items=RES_ITEMS, groups=RES_GROUPS):
+    import json as _j
+    band = section(html(RES_JS, 'fs-cats-w'), cls='fs-dark fs-band fs-catsband', title='Resource tabs + search',
+                   p={'unit': 'px', 'top': '0', 'right': '24', 'bottom': '0', 'left': '24', 'isLinked': False},
+                   s={'padding_mobile': {'unit': 'px', 'top': '0', 'right': '16', 'bottom': '12', 'left': '16', 'isLinked': False}})
+    side = con(html(f'<div class="fs-rside-groups" data-groups=\'{_j.dumps(groups)}\'><div class="fs-rside-head"><p class="fs-rside-t">Filter by service</p>'
+                    '<button type="button" class="fs-rclear fs-textbtn" hidden>Clear</button></div>'
+                    '<button type="button" class="fs-rside-toggle"><span>Filter by service <b class="fs-rside-n"></b></span><span class="chev" aria-hidden="true"></span></button>'
+                    '<div class="fs-rgroups"></div></div>', 'fs-rside-w'),
+               cls='fs-gcard fs-rside', p=pad(26, 22, 26, 22))
+    feat = con(con(image('assets/img/design/case-dental.webp', 'fs-rfeat-img', None, 'center', ''),
+                   text('<p><b>[XX]%</b><span>[Result metric, e.g. more calls from Google]</span><small>[Industry] · [Town], NH</small></p>', 'fs-rfeat-metric'), cls='fs-rfeat-l'),
+               con(text('<p><span class="fs-chip-next">Featured case study</span></p>', 'fs-rfeat-badge'), heading('[Client name]: from page three to the map pack', 'h2', 'fs-rfeat-h'),
+                   text('How a local business went from invisible on Google to the top three map results, and what that did for their phone.', 'fs-rfeat-p'),
+                   button('Read the case study', '/case-studies/sample/', 'fs-btn-grad fs-btn-lg'), gap_=14, cls='fs-rfeat-r', p=pad(20, 40, 20, 40), s={'padding_mobile': pad(20, 8)}),
+               d='row', gap_=0, align='stretch', cls='fs-rfeat fs-dark', p=pad(16))
+    tools = html('<div class="fs-rtools-w"><div class="fs-rtools"><p class="fs-rcount" aria-live="polite"></p><label class="fs-sortbox">Sort <select class="fs-rsort">'
+                 '<option value="new">Newest first</option><option value="old">Oldest first</option></select></label></div><div class="fs-ractive" hidden></div></div>', 'fs-rtools-x')
+    grid = row(*[res_card(i) for i in items], gap_=24, wrap=True, align='stretch', cls='fs-rgrid fs-nostyle')
+    more = button('Load more resources', '#', 'fs-btn-navy fs-btn-lg fs-rmore', 'center')
+    empty = con(heading('Nothing matches those filters yet', 'h2', 'fs-evempty-h'), text('Try removing a tag or a word from your search. New resources go up every week.', 'fs-evempty-p'),
+                button('Clear all filters', '#', 'fs-btn-navy fs-rempty-btn'), cls='fs-gcard fs-evempty fs-rempty', gap_=18, align='center', p=pad(56, 28))
+    main = con(feat, tools, grid, more, empty, gap_=28, cls='fs-rmain')
+    body = section(con(side, main, d='row', gap_=44, align='flex-start', cls='fs-rbody fs-nostyle'), cls='fs-geo', title='Resource library',
+                   bg_img='assets/img/design/bg-geometric.jpg', p={'unit': 'px', 'top': '56', 'right': '24', 'bottom': '100', 'left': '24', 'isLinked': False},
+                   s={'_element_id': 'library'})
+    return [band, body]

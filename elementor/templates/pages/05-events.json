@@ -4,7 +4,7 @@
  "type": "page",
  "content": [
   {
-   "id": "166a7d9",
+   "id": "91dc99f",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -60,7 +60,7 @@
    },
    "elements": [
     {
-     "id": "52f63e4",
+     "id": "20b26e1",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -84,7 +84,7 @@
      },
      "elements": [
       {
-       "id": "6a6328d",
+       "id": "c9db714",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -111,7 +111,7 @@
        },
        "elements": [
         {
-         "id": "2a9cf39",
+         "id": "166a7d9",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -135,7 +135,7 @@
          },
          "elements": [
           {
-           "id": "9440e23",
+           "id": "2a9cf39",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -169,7 +169,7 @@
            "elements": []
           },
           {
-           "id": "de55244",
+           "id": "6a6328d",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -213,7 +213,7 @@
            "elements": []
           },
           {
-           "id": "40b8f0e",
+           "id": "52f63e4",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -247,84 +247,42 @@
           },
           {
            "id": "6369bf0",
-           "elType": "container",
-           "isInner": true,
+           "elType": "widget",
+           "widgetType": "text-editor",
            "settings": {
-            "content_width": "full",
-            "flex_direction": "row",
-            "flex_gap": {
-             "unit": "px",
-             "size": 28,
-             "column": "28",
-             "row": "28",
-             "isLinked": true
+            "editor": "<p><b>8</b> workshops on the calendar this season · <a href=\"#calendar\">See the calendar</a></p>",
+            "_css_classes": "fs-evtotal",
+            "__globals__": {
+             "text_color": "globals/colors?id=primary"
             },
-            "flex_align_items": "center",
-            "padding": {
+            "typography_typography": "custom",
+            "typography_font_family": "Poppins",
+            "typography_font_weight": "400",
+            "typography_font_size": {
              "unit": "px",
-             "top": "0",
-             "right": "0",
-             "bottom": "0",
-             "left": "0",
-             "isLinked": true
+             "size": 16.0,
+             "sizes": []
             },
-            "flex_direction_mobile": "column",
-            "flex_align_items_mobile": "stretch",
-            "flex_wrap": "wrap",
-            "flex_gap_mobile": {
-             "unit": "px",
-             "size": 18,
-             "column": "18",
-             "row": "18",
-             "isLinked": true
-            }
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.6,
+             "sizes": []
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
-           "elements": [
-            {
-             "id": "8e2b622",
-             "elType": "widget",
-             "widgetType": "button",
-             "settings": {
-              "text": "See the calendar",
-              "link": {
-               "url": "#calendar",
-               "is_external": "",
-               "nofollow": ""
-              },
-              "size": "md",
-              "_css_classes": "fs-btn-lg",
-              "align_mobile": "justify",
-              "__globals__": {},
-              "typography_typography": "custom",
-              "typography_font_family": "Poppins",
-              "typography_font_weight": "500",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 16.0,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.6,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "italic"
-             },
-             "elements": []
-            }
-           ]
+           "elements": []
           }
          ]
         },
         {
-         "id": "a8dfc64",
+         "id": "8e2b622",
          "elType": "container",
          "isInner": true,
          "settings": {
           "content_width": "full",
           "flex_direction": "column",
-          "css_classes": "fs-gcard",
+          "css_classes": "fs-w-vid fs-hero-vid",
           "padding": {
            "unit": "px",
            "top": "0",
@@ -332,23 +290,58 @@
            "bottom": "0",
            "left": "0",
            "isLinked": true
-          },
-          "overflow": "hidden"
+          }
          },
          "elements": [
           {
-           "id": "5109a20",
+           "id": "de55244",
            "elType": "widget",
            "widgetType": "video",
            "settings": {
             "youtube_url": "https://www.youtube.com/watch?v=XHOmBV4js_E",
-            "aspect_ratio": "169",
+            "aspect_ratio": "32",
             "show_image_overlay": "yes",
             "image_overlay": {
              "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/design/chris-cutout.webp",
              "id": 749275,
              "source": "library"
-            }
+            },
+            "_css_classes": "fs-w-video fs-w-video--cut",
+            "lightbox": "",
+            "show_play_icon": "yes"
+           },
+           "elements": []
+          },
+          {
+           "id": "40b8f0e",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p><b>Chris walks you through our events</b><span>[2:00]</span></p>",
+            "_css_classes": "fs-w-cap",
+            "__globals__": {
+             "text_color": "globals/colors?id=text"
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Poppins",
+            "typography_font_weight": "400",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17.0,
+             "sizes": []
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 16.0,
+             "sizes": []
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.6,
+             "sizes": []
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           }
@@ -361,7 +354,7 @@
    ]
   },
   {
-   "id": "04b724f",
+   "id": "99b0e89",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -372,6 +365,7 @@
      "size": 1240,
      "sizes": []
     },
+    "css_classes": "fs-dark fs-band fs-evfilter",
     "flex_gap": {
      "unit": "px",
      "size": 0,
@@ -381,25 +375,25 @@
     },
     "padding": {
      "unit": "px",
-     "top": "100",
+     "top": "24",
      "right": "24",
-     "bottom": "100",
+     "bottom": "24",
      "left": "24",
      "isLinked": false
     },
-    "_title": "Featured event",
+    "_title": "Workshop filter",
     "padding_mobile": {
      "unit": "px",
-     "top": "64",
+     "top": "18",
      "right": "16",
-     "bottom": "64",
+     "bottom": "18",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "3b12fc1",
+     "id": "20f3335",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -423,397 +417,21 @@
      },
      "elements": [
       {
-       "id": "50fdb82",
-       "elType": "container",
-       "isInner": true,
+       "id": "e6762ad",
+       "elType": "widget",
+       "widgetType": "html",
        "settings": {
-        "content_width": "full",
-        "flex_direction": "row",
-        "flex_gap": {
-         "unit": "px",
-         "size": 40,
-         "column": "40",
-         "row": "40",
-         "isLinked": true
-        },
-        "flex_align_items": "center",
-        "padding": {
-         "unit": "px",
-         "top": "0",
-         "right": "0",
-         "bottom": "0",
-         "left": "0",
-         "isLinked": true
-        },
-        "flex_direction_mobile": "column"
+        "html": "<div class=\"fs-evf\"><div class=\"fs-evpills\" role=\"group\" aria-label=\"Framework stage\"></div><div class=\"fs-evfrow\"><div class=\"fs-seg fs-seg--dark fs-evformats\" role=\"group\" aria-label=\"Format\"></div><p class=\"fs-evcount\" aria-live=\"polite\"></p></div></div>\n<script>(function(){var sc=document.currentScript;if(!sc)return;function init(){var box=sc.parentNode,doc=document;\nvar items=[].slice.call(doc.querySelectorAll('.fs-evitem'));if(!items.length)return;\nitems.forEach(function(it){var c=it.querySelector('.fs-evchip');var t=c?c.textContent.trim().toLowerCase():'';it._st=t.indexOf('full')>-1?'full':t.replace(/^first/,'');\nvar m=it.querySelector('.fs-evmeta');var mt=m?m.textContent.toLowerCase():'';it._fm=mt.indexOf('in person')>-1?'inperson':'online';\nvar tg=it.querySelector('.fs-evtoggle');if(tg){tg.setAttribute('role','button');tg.setAttribute('tabindex','0');tg.setAttribute('aria-expanded','false');\nfunction tog(){var open=!it.classList.contains('is-open');items.forEach(function(o){if(o!==it&&o.classList.contains('is-open')){o.classList.remove('is-open');var b=o.querySelector('.fs-evtoggle');if(b){b.setAttribute('aria-expanded','false');b.querySelector('.elementor-heading-title').textContent='Details';}}});\nit.classList.toggle('is-open',open);tg.setAttribute('aria-expanded',open);tg.querySelector('.elementor-heading-title').textContent=open?'Hide details':'Details';}\ntg.addEventListener('click',tog);tg.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}});}});\nvar empty=doc.querySelector('.fs-evempty'),more=doc.querySelector('.fs-evmore-h'),S={st:'all',fm:'all'};\nvar LBL={all:'All workshops',full:'Full Framework'};function lg(k){return LBL[k]||'<span class=\"fs-plogo\"><b>first</b>'+k+'</span>';}\nfunction render(){var byF=items.filter(function(i){return S.fm==='all'||i._fm===S.fm;});var list=byF.filter(function(i){return S.st==='all'||i._st===S.st;});\nitems.forEach(function(i){i.hidden=list.indexOf(i)<0;});\nbox.querySelector('.fs-evpills').innerHTML=['all','full','brand','thought','choice','referral'].map(function(k){var n=k==='all'?byF.length:byF.filter(function(i){return i._st===k;}).length;\nreturn '<button type=\"button\" class=\"fs-evpill\" data-st=\"'+k+'\" aria-pressed=\"'+(S.st===k)+'\"><span>'+lg(k)+'</span><span class=\"n\">'+n+'</span></button>';}).join('');\nbox.querySelector('.fs-evformats').innerHTML=[['all','All formats'],['online','Online'],['inperson','In person']].map(function(f){return '<button type=\"button\" data-fm=\"'+f[0]+'\" aria-pressed=\"'+(S.fm===f[0])+'\">'+f[1]+'</button>';}).join('');\nbox.querySelector('.fs-evcount').textContent='Showing '+list.length+(list.length===1?' workshop':' workshops');\nvar rows=list.filter(function(i){return !i.classList.contains('fs-evfeat');});if(more)more.hidden=!rows.length;if(empty)empty.hidden=!!list.length;}\nbox.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.st)S.st=b.dataset.st;if(b.dataset.fm)S.fm=b.dataset.fm;render();});\nif(empty)empty.addEventListener('click',function(e){if(e.target.closest('.fs-evclear')){e.preventDefault();S={st:'all',fm:'all'};render();}});\nvar tot=doc.querySelector('.fs-evtotal b');if(tot)tot.textContent=items.length;render();}\nif(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();</script>",
+        "_css_classes": "fs-evfilter-w"
        },
-       "elements": [
-        {
-         "id": "1205a75",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "column",
-          "flex_gap": {
-           "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
-           "isLinked": true
-          },
-          "padding": {
-           "unit": "px",
-           "top": "0",
-           "right": "0",
-           "bottom": "0",
-           "left": "0",
-           "isLinked": true
-          },
-          "width": {
-           "unit": "%",
-           "size": 58,
-           "sizes": []
-          },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
-           "sizes": []
-          }
-         },
-         "elements": [
-          {
-           "id": "c9db714",
-           "elType": "widget",
-           "widgetType": "html",
-           "settings": {
-            "html": "<span class=\"fs-pill fs-pill--purple\">Next up</span> <span class=\"fs-pill\">Full Framework</span>"
-           },
-           "elements": []
-          },
-          {
-           "id": "20b26e1",
-           "elType": "widget",
-           "widgetType": "heading",
-           "settings": {
-            "title": "The FirstSearch Framework <span class=\"fs-gt\">in 60 minutes</span>",
-            "header_size": "h2",
-            "__globals__": {
-             "title_color": "globals/colors?id=primary"
-            },
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "700",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 40.0,
-             "sizes": []
-            },
-            "typography_font_size_tablet": {
-             "unit": "px",
-             "size": 30.5,
-             "sizes": []
-            },
-            "typography_font_size_mobile": {
-             "unit": "px",
-             "size": 28.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.1,
-             "sizes": []
-            },
-            "typography_letter_spacing": {
-             "unit": "em",
-             "size": -0.015,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          },
-          {
-           "id": "91dc99f",
-           "elType": "widget",
-           "widgetType": "text-editor",
-           "settings": {
-            "editor": "<p>A fast, founder-led walkthrough of how the four stages fit together, and how to spot which one is holding your business back right now.</p>",
-            "__globals__": {
-             "text_color": "globals/colors?id=text"
-            },
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "400",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 17.5,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          },
-          {
-           "id": "e6762ad",
-           "elType": "widget",
-           "widgetType": "html",
-           "settings": {
-            "html": "<dl class=\"fs-facts\"><div><dt>When</dt><dd><b>Thursday, October 22</b>12:00 to 1:00 PM</dd></div><div><dt>Where</dt><dd><b>Online</b>Live on Zoom</dd></div><div><dt>Investment</dt><dd><b>Free</b>Open registration</dd></div></dl>"
-           },
-           "elements": []
-          },
-          {
-           "id": "df50f58",
-           "elType": "container",
-           "isInner": true,
-           "settings": {
-            "content_width": "full",
-            "flex_direction": "row",
-            "flex_gap": {
-             "unit": "px",
-             "size": 24,
-             "column": "24",
-             "row": "24",
-             "isLinked": true
-            },
-            "flex_align_items": "center",
-            "padding": {
-             "unit": "px",
-             "top": "0",
-             "right": "0",
-             "bottom": "0",
-             "left": "0",
-             "isLinked": true
-            },
-            "flex_direction_mobile": "column"
-           },
-           "elements": [
-            {
-             "id": "20f3335",
-             "elType": "widget",
-             "widgetType": "button",
-             "settings": {
-              "text": "Reserve your seat",
-              "link": {
-               "url": "/events/sample-event/?format=online",
-               "is_external": "",
-               "nofollow": ""
-              },
-              "size": "md",
-              "_css_classes": "fs-btn-lg",
-              "__globals__": {},
-              "typography_typography": "custom",
-              "typography_font_family": "Poppins",
-              "typography_font_weight": "600",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 22.0,
-               "sizes": []
-              },
-              "typography_font_size_tablet": {
-               "unit": "px",
-               "size": 19.0,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.2,
-               "sizes": []
-              },
-              "typography_letter_spacing": {
-               "unit": "em",
-               "size": 0.005,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal"
-             },
-             "elements": []
-            },
-            {
-             "id": "99b0e89",
-             "elType": "widget",
-             "widgetType": "button",
-             "settings": {
-              "text": "Add to calendar",
-              "link": {
-               "url": "#",
-               "is_external": "",
-               "nofollow": ""
-              },
-              "size": "md",
-              "_css_classes": "fs-link-u",
-              "__globals__": {},
-              "typography_typography": "custom",
-              "typography_font_family": "Poppins",
-              "typography_font_weight": "600",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 22.0,
-               "sizes": []
-              },
-              "typography_font_size_tablet": {
-               "unit": "px",
-               "size": 19.0,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.2,
-               "sizes": []
-              },
-              "typography_letter_spacing": {
-               "unit": "em",
-               "size": 0.005,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal"
-             },
-             "elements": []
-            }
-           ]
-          }
-         ]
-        },
-        {
-         "id": "b187ed8",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "column",
-          "css_classes": "fs-purple-card fs-dark",
-          "flex_gap": {
-           "unit": "px",
-           "size": 14,
-           "column": "14",
-           "row": "14",
-           "isLinked": true
-          },
-          "padding": {
-           "unit": "px",
-           "top": "32",
-           "right": "32",
-           "bottom": "32",
-           "left": "32",
-           "isLinked": true
-          },
-          "width": {
-           "unit": "%",
-           "size": 38,
-           "sizes": []
-          },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
-           "sizes": []
-          }
-         },
-         "elements": [
-          {
-           "id": "d3bf015",
-           "elType": "widget",
-           "widgetType": "heading",
-           "settings": {
-            "title": "You’ll leave with",
-            "header_size": "h3",
-            "__globals__": {
-             "title_color": "globals/colors?id=secondary"
-            },
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 19.5,
-             "sizes": []
-            },
-            "typography_font_size_tablet": {
-             "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.12,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          },
-          {
-           "id": "f430d47",
-           "elType": "widget",
-           "widgetType": "icon-list",
-           "settings": {
-            "icon_list": [
-             {
-              "_id": "e11eaaf",
-              "text": "A clear picture of the full framework",
-              "selected_icon": {
-               "value": "fas fa-check",
-               "library": "fa-solid"
-              }
-             },
-             {
-              "_id": "694ebd3",
-              "text": "Your weakest stage, identified",
-              "selected_icon": {
-               "value": "fas fa-check",
-               "library": "fa-solid"
-              }
-             },
-             {
-              "_id": "3e111f2",
-              "text": "Three quick wins to try this week",
-              "selected_icon": {
-               "value": "fas fa-check",
-               "library": "fa-solid"
-              }
-             }
-            ],
-            "_css_classes": "fs-checks",
-            "__globals__": {},
-            "icon_typography_typography": "custom",
-            "icon_typography_font_family": "Poppins",
-            "icon_typography_font_weight": "400",
-            "icon_typography_font_size": {
-             "unit": "px",
-             "size": 16.5,
-             "sizes": []
-            },
-            "icon_typography_line_height": {
-             "unit": "em",
-             "size": 1.45,
-             "sizes": []
-            },
-            "icon_typography_text_transform": "none",
-            "icon_typography_font_style": "normal",
-            "text_color": "#FFFFFF"
-           },
-           "elements": []
-          }
-         ]
-        }
-       ]
+       "elements": []
       }
      ]
     }
    ]
   },
   {
-   "id": "e480bc2",
+   "id": "82a9668",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -834,13 +452,13 @@
     },
     "padding": {
      "unit": "px",
-     "top": "0",
+     "top": "64",
      "right": "24",
-     "bottom": "26",
+     "bottom": "100",
      "left": "24",
      "isLinked": false
     },
-    "_title": "Calendar",
+    "_title": "Workshops",
     "background_background": "classic",
     "background_image": {
      "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/design/bg-geometric.jpg",
@@ -852,25 +470,17 @@
     "background_repeat": "no-repeat",
     "padding_mobile": {
      "unit": "px",
-     "top": "0",
+     "top": "64",
      "right": "16",
-     "bottom": "26",
+     "bottom": "64",
      "left": "16",
      "isLinked": false
     },
-    "_element_id": "calendar",
-    "padding_tablet": {
-     "unit": "px",
-     "top": "0",
-     "right": "24",
-     "bottom": "26",
-     "left": "24",
-     "isLinked": false
-    }
+    "_element_id": "calendar"
    },
    "elements": [
     {
-     "id": "1d7f148",
+     "id": "84e6f09",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -878,9 +488,9 @@
       "flex_direction": "column",
       "flex_gap": {
        "unit": "px",
-       "size": 24,
-       "column": "24",
-       "row": "24",
+       "size": 26,
+       "column": "26",
+       "row": "26",
        "isLinked": true
       },
       "padding": {
@@ -894,18 +504,378 @@
      },
      "elements": [
       {
-       "id": "fd27dc9",
+       "id": "6e0118a",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "css_classes": "fs-gcard fs-evfeat fs-evitem fs-nostyle",
+        "flex_gap": {
+         "unit": "px",
+         "size": 0,
+         "column": "0",
+         "row": "0",
+         "isLinked": true
+        },
+        "flex_align_items": "stretch",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": true
+        },
+        "flex_direction_mobile": "column"
+       },
+       "elements": [
+        {
+         "id": "e5bf2ff",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-feat-l",
+          "flex_gap": {
+           "unit": "px",
+           "size": 22,
+           "column": "22",
+           "row": "22",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "48",
+           "right": "48",
+           "bottom": "48",
+           "left": "48",
+           "isLinked": true
+          },
+          "padding_mobile": {
+           "unit": "px",
+           "top": "28",
+           "right": "28",
+           "bottom": "28",
+           "left": "28",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "f430d47",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p><span class=\"fs-chip-next\">Next up</span> <span class=\"fs-plogo-chip fs-evchip fs-plogo-chip--full\">Full Framework</span></p>",
+            "_css_classes": "fs-feat-chips"
+           },
+           "elements": []
+          },
+          {
+           "id": "b187ed8",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "The FirstSearch Framework <span class=\"fs-gt\">in 60 minutes</span>",
+            "header_size": "h2",
+            "_css_classes": "fs-feat-h"
+           },
+           "elements": []
+          },
+          {
+           "id": "50fdb82",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>A fast, founder-led walkthrough of how the four stages fit together, and how to spot which one is holding your business back right now.</p>",
+            "_css_classes": "fs-feat-desc"
+           },
+           "elements": []
+          },
+          {
+           "id": "548914a",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-facts2",
+            "flex_gap": {
+             "unit": "px",
+             "size": 0,
+             "column": "0",
+             "row": "0",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "flex_direction_mobile": "column"
+           },
+           "elements": [
+            {
+             "id": "3b12fc1",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p class=\"k\">When</p><p class=\"v\">Thursday, October 22</p><p class=\"s\">12:00 to 1:00 PM</p>",
+              "_css_classes": "fs-fact"
+             },
+             "elements": []
+            },
+            {
+             "id": "04b724f",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p class=\"k\">Where</p><p class=\"v\">Online</p><p class=\"s\">Live on Zoom</p>",
+              "_css_classes": "fs-fact"
+             },
+             "elements": []
+            },
+            {
+             "id": "9192e78",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p class=\"k\">Investment</p><p class=\"v\">Free</p><p class=\"s\">Open registration</p>",
+              "_css_classes": "fs-fact"
+             },
+             "elements": []
+            }
+           ]
+          },
+          {
+           "id": "803ef4b",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Online · Live on Zoom</p>",
+            "_css_classes": "fs-evmeta fs-sr"
+           },
+           "elements": []
+          },
+          {
+           "id": "e056a58",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-feat-btns",
+            "flex_gap": {
+             "unit": "px",
+             "size": 10,
+             "column": "10",
+             "row": "10",
+             "isLinked": true
+            },
+            "flex_wrap": "wrap",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "flex_direction_mobile": "column"
+           },
+           "elements": [
+            {
+             "id": "fd27dc9",
+             "elType": "widget",
+             "widgetType": "button",
+             "settings": {
+              "text": "Reserve your seat",
+              "link": {
+               "url": "/events/sample-event/?format=online",
+               "is_external": "",
+               "nofollow": ""
+              },
+              "size": "md",
+              "_css_classes": "fs-btn-navy fs-btn-lg"
+             },
+             "elements": []
+            },
+            {
+             "id": "01ea78d",
+             "elType": "widget",
+             "widgetType": "button",
+             "settings": {
+              "text": "Add to calendar",
+              "link": {
+               "url": "#",
+               "is_external": "",
+               "nofollow": ""
+              },
+              "size": "md",
+              "_css_classes": "fs-btn-grad fs-btn-lg fs-ical"
+             },
+             "elements": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "id": "8109820",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-feat-r fs-dark",
+          "flex_gap": {
+           "unit": "px",
+           "size": 18,
+           "column": "18",
+           "row": "18",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "48",
+           "right": "48",
+           "bottom": "48",
+           "left": "48",
+           "isLinked": true
+          },
+          "padding_mobile": {
+           "unit": "px",
+           "top": "28",
+           "right": "28",
+           "bottom": "28",
+           "left": "28",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "6777652",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p><b>22</b><span><span class=\"m\">Oct</span><span class=\"w\">Thursday</span></span></p>",
+            "_css_classes": "fs-bigdate"
+           },
+           "elements": []
+          },
+          {
+           "id": "4112267",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "You’ll leave with",
+            "header_size": "h3",
+            "_css_classes": "fs-feat-rh"
+           },
+           "elements": []
+          },
+          {
+           "id": "830b1a8",
+           "elType": "widget",
+           "widgetType": "icon-list",
+           "settings": {
+            "icon_list": [
+             {
+              "_id": "fdc1108",
+              "text": "A clear picture of the full framework",
+              "selected_icon": {
+               "value": "fas fa-check",
+               "library": "fa-solid"
+              }
+             },
+             {
+              "_id": "ba1dcee",
+              "text": "Your weakest stage, identified",
+              "selected_icon": {
+               "value": "fas fa-check",
+               "library": "fa-solid"
+              }
+             },
+             {
+              "_id": "149b788",
+              "text": "Three quick wins to try this week",
+              "selected_icon": {
+               "value": "fas fa-check",
+               "library": "fa-solid"
+              }
+             }
+            ],
+            "_css_classes": "fs-feat-checks"
+           },
+           "elements": []
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "id": "ca387ed",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "More upcoming <span class=\"fs-gt\">workshops</span>",
+        "header_size": "h2",
+        "align": "center",
+        "_css_classes": "fs-evmore-h",
+        "__globals__": {
+         "title_color": "globals/colors?id=primary"
+        },
+        "typography_typography": "custom",
+        "typography_font_family": "Poppins",
+        "typography_font_weight": "700",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 40.0,
+         "sizes": []
+        },
+        "typography_font_size_tablet": {
+         "unit": "px",
+         "size": 30.5,
+         "sizes": []
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 28.0,
+         "sizes": []
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.12,
+         "sizes": []
+        },
+        "typography_letter_spacing": {
+         "unit": "em",
+         "size": -0.015,
+         "sizes": []
+        },
+        "typography_text_transform": "none",
+        "typography_font_style": "normal"
+       },
+       "elements": []
+      },
+      {
+       "id": "347dd96",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "css_classes": "fs-sec-head",
+        "css_classes": "fs-evlist fs-nostyle",
         "flex_gap": {
          "unit": "px",
-         "size": 14,
-         "column": "14",
-         "row": "14",
+         "size": 18,
+         "column": "18",
+         "row": "18",
          "isLinked": true
         },
         "padding": {
@@ -915,46 +885,2516 @@
          "bottom": "0",
          "left": "0",
          "isLinked": true
-        },
-        "width": {
-         "unit": "px",
-         "size": 880,
-         "sizes": []
-        },
-        "width_tablet": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        },
-        "width_mobile": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        },
-        "_flex_align_self": "center"
+        }
        },
        "elements": [
         {
-         "id": "548914a",
+         "id": "bc8b54e",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-evitem fs-evrow",
+          "flex_gap": {
+           "unit": "px",
+           "size": 0,
+           "column": "0",
+           "row": "0",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "77da85f",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evrow-in",
+            "flex_gap": {
+             "unit": "px",
+             "size": 26,
+             "column": "26",
+             "row": "26",
+             "isLinked": true
+            },
+            "flex_align_items": "center",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "f02c502",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p><span class=\"m\">Oct</span><b>27</b><span class=\"w\">Tue</span></p>",
+              "_css_classes": "fs-evdate"
+             },
+             "elements": []
+            },
+            {
+             "id": "b471ec3",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "css_classes": "fs-evinfo",
+              "flex_gap": {
+               "unit": "px",
+               "size": 6,
+               "column": "6",
+               "row": "6",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "aacda2d",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p><span class=\"fs-plogo-chip fs-evchip\"><span class=\"fs-plogo\"><b>first</b>brand</span></span></p>",
+                "_css_classes": "fs-evchip-w"
+               },
+               "elements": []
+              },
+              {
+               "id": "232f558",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Build a brand people trust on sight",
+                "header_size": "h3",
+                "_css_classes": "fs-ev-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "3712033",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p>12:00 to 1:30 PM · Online · Live on Zoom</p>",
+                "_css_classes": "fs-evmeta"
+               },
+               "elements": []
+              }
+             ]
+            },
+            {
+             "id": "ae5e136",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "row",
+              "css_classes": "fs-evact",
+              "flex_gap": {
+               "unit": "px",
+               "size": 18,
+               "column": "18",
+               "row": "18",
+               "isLinked": true
+              },
+              "flex_align_items": "center",
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "85ae861",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Details",
+                "header_size": "p",
+                "_css_classes": "fs-evtoggle"
+               },
+               "elements": []
+              },
+              {
+               "id": "d8c2e2a",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "css_classes": "fs-evbook",
+                "flex_gap": {
+                 "unit": "px",
+                 "size": 6,
+                 "column": "6",
+                 "row": "6",
+                 "isLinked": true
+                },
+                "flex_align_items": "center",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                }
+               },
+               "elements": [
+                {
+                 "id": "78bf20c",
+                 "elType": "widget",
+                 "widgetType": "heading",
+                 "settings": {
+                  "title": "[Price]",
+                  "header_size": "p",
+                  "_css_classes": "fs-evprice"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "ae69425",
+                 "elType": "widget",
+                 "widgetType": "button",
+                 "settings": {
+                  "text": "Reserve your seat",
+                  "link": {
+                   "url": "/events/sample-event/?format=online",
+                   "is_external": "",
+                   "nofollow": ""
+                  },
+                  "size": "md",
+                  "_css_classes": "fs-btn-navy"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "171fc55",
+                 "elType": "widget",
+                 "widgetType": "text-editor",
+                 "settings": {
+                  "editor": "<p>[XX] seats left</p>",
+                  "_css_classes": "fs-evseats"
+                 },
+                 "elements": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "id": "ef7e74b",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evdet",
+            "flex_gap": {
+             "unit": "px",
+             "size": 32,
+             "column": "32",
+             "row": "32",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "flex_direction_mobile": "column"
+           },
+           "elements": [
+            {
+             "id": "bb534c1",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p>Define what makes you different, write a value statement you can actually use, and audit every touchpoint for consistency.</p>",
+              "_css_classes": "fs-evdet-p"
+             },
+             "elements": []
+            },
+            {
+             "id": "8005919",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "flex_gap": {
+               "unit": "px",
+               "size": 10,
+               "column": "10",
+               "row": "10",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "c061aec",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "You’ll leave with",
+                "header_size": "p",
+                "_css_classes": "fs-evdet-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "d06b818",
+               "elType": "widget",
+               "widgetType": "icon-list",
+               "settings": {
+                "icon_list": [
+                 {
+                  "_id": "1abc9a2",
+                  "text": "A finished value statement",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "f2e47db",
+                  "text": "Your core values and competitive edge",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "6b19165",
+                  "text": "A brand consistency checklist",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 }
+                ],
+                "_css_classes": "fs-evdet-list"
+               },
+               "elements": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "id": "34685a3",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-evitem fs-evrow",
+          "flex_gap": {
+           "unit": "px",
+           "size": 0,
+           "column": "0",
+           "row": "0",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "94dd1c8",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evrow-in",
+            "flex_gap": {
+             "unit": "px",
+             "size": 26,
+             "column": "26",
+             "row": "26",
+             "isLinked": true
+            },
+            "flex_align_items": "center",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "03eabd5",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p><span class=\"m\">Nov</span><b>4</b><span class=\"w\">Wed</span></p>",
+              "_css_classes": "fs-evdate"
+             },
+             "elements": []
+            },
+            {
+             "id": "f60ebae",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "css_classes": "fs-evinfo",
+              "flex_gap": {
+               "unit": "px",
+               "size": 6,
+               "column": "6",
+               "row": "6",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "ffebbbf",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p><span class=\"fs-plogo-chip fs-evchip\"><span class=\"fs-plogo\"><b>first</b>thought</span></span></p>",
+                "_css_classes": "fs-evchip-w"
+               },
+               "elements": []
+              },
+              {
+               "id": "146486c",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Get found first: local SEO and AI search",
+                "header_size": "h3",
+                "_css_classes": "fs-ev-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "f3d5e07",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p>12:00 to 1:30 PM · Online · Live on Zoom</p>",
+                "_css_classes": "fs-evmeta"
+               },
+               "elements": []
+              }
+             ]
+            },
+            {
+             "id": "643c460",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "row",
+              "css_classes": "fs-evact",
+              "flex_gap": {
+               "unit": "px",
+               "size": 18,
+               "column": "18",
+               "row": "18",
+               "isLinked": true
+              },
+              "flex_align_items": "center",
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "bbf202c",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Details",
+                "header_size": "p",
+                "_css_classes": "fs-evtoggle"
+               },
+               "elements": []
+              },
+              {
+               "id": "5c45181",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "css_classes": "fs-evbook",
+                "flex_gap": {
+                 "unit": "px",
+                 "size": 6,
+                 "column": "6",
+                 "row": "6",
+                 "isLinked": true
+                },
+                "flex_align_items": "center",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                }
+               },
+               "elements": [
+                {
+                 "id": "418a788",
+                 "elType": "widget",
+                 "widgetType": "heading",
+                 "settings": {
+                  "title": "[Price]",
+                  "header_size": "p",
+                  "_css_classes": "fs-evprice"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "6cc7ddd",
+                 "elType": "widget",
+                 "widgetType": "button",
+                 "settings": {
+                  "text": "Reserve your seat",
+                  "link": {
+                   "url": "/events/sample-event/?format=online",
+                   "is_external": "",
+                   "nofollow": ""
+                  },
+                  "size": "md",
+                  "_css_classes": "fs-btn-navy"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "16eabec",
+                 "elType": "widget",
+                 "widgetType": "text-editor",
+                 "settings": {
+                  "editor": "<p>[XX] seats left</p>",
+                  "_css_classes": "fs-evseats"
+                 },
+                 "elements": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "id": "e480bc2",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evdet",
+            "flex_gap": {
+             "unit": "px",
+             "size": 32,
+             "column": "32",
+             "row": "32",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "flex_direction_mobile": "column"
+           },
+           "elements": [
+            {
+             "id": "9cb3ad1",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p>How Google, the map pack and AI search tools decide who shows up first, and what you can fix in your profile and site this month.</p>",
+              "_css_classes": "fs-evdet-p"
+             },
+             "elements": []
+            },
+            {
+             "id": "1d7f148",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "flex_gap": {
+               "unit": "px",
+               "size": 10,
+               "column": "10",
+               "row": "10",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "c98cadd",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "You’ll leave with",
+                "header_size": "p",
+                "_css_classes": "fs-evdet-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "8ce9e98",
+               "elType": "widget",
+               "widgetType": "icon-list",
+               "settings": {
+                "icon_list": [
+                 {
+                  "_id": "49c2143",
+                  "text": "A Google Business Profile tune-up list",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "7a0a088",
+                  "text": "Your top local keywords",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "ef9540d",
+                  "text": "An AI search visibility check",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 }
+                ],
+                "_css_classes": "fs-evdet-list"
+               },
+               "elements": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "id": "fe92ec7",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-evitem fs-evrow",
+          "flex_gap": {
+           "unit": "px",
+           "size": 0,
+           "column": "0",
+           "row": "0",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "8538f12",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evrow-in",
+            "flex_gap": {
+             "unit": "px",
+             "size": 26,
+             "column": "26",
+             "row": "26",
+             "isLinked": true
+            },
+            "flex_align_items": "center",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "a93f108",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p><span class=\"m\">Nov</span><b>12</b><span class=\"w\">Thu</span></p>",
+              "_css_classes": "fs-evdate"
+             },
+             "elements": []
+            },
+            {
+             "id": "d59e17c",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "css_classes": "fs-evinfo",
+              "flex_gap": {
+               "unit": "px",
+               "size": 6,
+               "column": "6",
+               "row": "6",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "8de74d1",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p><span class=\"fs-plogo-chip fs-evchip fs-plogo-chip--full\">Full Framework</span></p>",
+                "_css_classes": "fs-evchip-w"
+               },
+               "elements": []
+              },
+              {
+               "id": "be16ee7",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "BeFirst Live: the full-day framework workshop",
+                "header_size": "h3",
+                "_css_classes": "fs-ev-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "89ac737",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p>9:00 AM to 4:00 PM · In person · [Venue], Hampton, NH</p>",
+                "_css_classes": "fs-evmeta"
+               },
+               "elements": []
+              }
+             ]
+            },
+            {
+             "id": "816a337",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "row",
+              "css_classes": "fs-evact",
+              "flex_gap": {
+               "unit": "px",
+               "size": 18,
+               "column": "18",
+               "row": "18",
+               "isLinked": true
+              },
+              "flex_align_items": "center",
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "2cdec53",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Details",
+                "header_size": "p",
+                "_css_classes": "fs-evtoggle"
+               },
+               "elements": []
+              },
+              {
+               "id": "5b984f0",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "css_classes": "fs-evbook",
+                "flex_gap": {
+                 "unit": "px",
+                 "size": 6,
+                 "column": "6",
+                 "row": "6",
+                 "isLinked": true
+                },
+                "flex_align_items": "center",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                }
+               },
+               "elements": [
+                {
+                 "id": "f8c261b",
+                 "elType": "widget",
+                 "widgetType": "heading",
+                 "settings": {
+                  "title": "[Price]",
+                  "header_size": "p",
+                  "_css_classes": "fs-evprice"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "068729c",
+                 "elType": "widget",
+                 "widgetType": "button",
+                 "settings": {
+                  "text": "Reserve your seat",
+                  "link": {
+                   "url": "/events/sample-event/",
+                   "is_external": "",
+                   "nofollow": ""
+                  },
+                  "size": "md",
+                  "_css_classes": "fs-btn-navy"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "cc41794",
+                 "elType": "widget",
+                 "widgetType": "text-editor",
+                 "settings": {
+                  "editor": "<p>[XX] of [XX] seats left</p>",
+                  "_css_classes": "fs-evseats"
+                 },
+                 "elements": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "id": "eb65799",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evdet",
+            "flex_gap": {
+             "unit": "px",
+             "size": 32,
+             "column": "32",
+             "row": "32",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "flex_direction_mobile": "column"
+           },
+           "elements": [
+            {
+             "id": "4f7587b",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p>An immersive day working through every stage of the framework with our team. Bring your laptop and your real numbers. You leave with the plan finished, not homework.</p>",
+              "_css_classes": "fs-evdet-p"
+             },
+             "elements": []
+            },
+            {
+             "id": "72191db",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "flex_gap": {
+               "unit": "px",
+               "size": 10,
+               "column": "10",
+               "row": "10",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "220cf47",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "You’ll leave with",
+                "header_size": "p",
+                "_css_classes": "fs-evdet-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "864d3dd",
+               "elType": "widget",
+               "widgetType": "icon-list",
+               "settings": {
+                "icon_list": [
+                 {
+                  "_id": "65b2d9f",
+                  "text": "A completed marketing roadmap",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "c71dba2",
+                  "text": "Your KPIs for every stage",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "a78f518",
+                  "text": "Confidence to execute on Monday",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 }
+                ],
+                "_css_classes": "fs-evdet-list"
+               },
+               "elements": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "id": "34b861e",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-evitem fs-evrow",
+          "flex_gap": {
+           "unit": "px",
+           "size": 0,
+           "column": "0",
+           "row": "0",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "f7e1878",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evrow-in",
+            "flex_gap": {
+             "unit": "px",
+             "size": 26,
+             "column": "26",
+             "row": "26",
+             "isLinked": true
+            },
+            "flex_align_items": "center",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "e556651",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p><span class=\"m\">Nov</span><b>17</b><span class=\"w\">Tue</span></p>",
+              "_css_classes": "fs-evdate"
+             },
+             "elements": []
+            },
+            {
+             "id": "ec3617d",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "css_classes": "fs-evinfo",
+              "flex_gap": {
+               "unit": "px",
+               "size": 6,
+               "column": "6",
+               "row": "6",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "979d768",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p><span class=\"fs-plogo-chip fs-evchip\"><span class=\"fs-plogo\"><b>first</b>choice</span></span></p>",
+                "_css_classes": "fs-evchip-w"
+               },
+               "elements": []
+              },
+              {
+               "id": "e48eed5",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Turn your website into a lead machine",
+                "header_size": "h3",
+                "_css_classes": "fs-ev-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "ba1cc63",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p>8:30 to 10:30 AM · In person · [Venue], Hampton, NH</p>",
+                "_css_classes": "fs-evmeta"
+               },
+               "elements": []
+              }
+             ]
+            },
+            {
+             "id": "85f8d13",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "row",
+              "css_classes": "fs-evact",
+              "flex_gap": {
+               "unit": "px",
+               "size": 18,
+               "column": "18",
+               "row": "18",
+               "isLinked": true
+              },
+              "flex_align_items": "center",
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "7660767",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Details",
+                "header_size": "p",
+                "_css_classes": "fs-evtoggle"
+               },
+               "elements": []
+              },
+              {
+               "id": "b88de3a",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "css_classes": "fs-evbook",
+                "flex_gap": {
+                 "unit": "px",
+                 "size": 6,
+                 "column": "6",
+                 "row": "6",
+                 "isLinked": true
+                },
+                "flex_align_items": "center",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                }
+               },
+               "elements": [
+                {
+                 "id": "bb8f37e",
+                 "elType": "widget",
+                 "widgetType": "heading",
+                 "settings": {
+                  "title": "[Price]",
+                  "header_size": "p",
+                  "_css_classes": "fs-evprice"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "cb1dac2",
+                 "elType": "widget",
+                 "widgetType": "button",
+                 "settings": {
+                  "text": "Reserve your seat",
+                  "link": {
+                   "url": "/events/sample-event/",
+                   "is_external": "",
+                   "nofollow": ""
+                  },
+                  "size": "md",
+                  "_css_classes": "fs-btn-navy"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "d183e3a",
+                 "elType": "widget",
+                 "widgetType": "text-editor",
+                 "settings": {
+                  "editor": "<p>[XX] seats left</p>",
+                  "_css_classes": "fs-evseats"
+                 },
+                 "elements": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "id": "0ca5e23",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evdet",
+            "flex_gap": {
+             "unit": "px",
+             "size": 32,
+             "column": "32",
+             "row": "32",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "flex_direction_mobile": "column"
+           },
+           "elements": [
+            {
+             "id": "c17597d",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p>Lead magnets, offers and follow-up that turn visitors into booked calls. We review real websites in the room, so bring yours.</p>",
+              "_css_classes": "fs-evdet-p"
+             },
+             "elements": []
+            },
+            {
+             "id": "dddf8f4",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "flex_gap": {
+               "unit": "px",
+               "size": 10,
+               "column": "10",
+               "row": "10",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "f9993cd",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "You’ll leave with",
+                "header_size": "p",
+                "_css_classes": "fs-evdet-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "93288b9",
+               "elType": "widget",
+               "widgetType": "icon-list",
+               "settings": {
+                "icon_list": [
+                 {
+                  "_id": "e8c8400",
+                  "text": "A lead magnet idea and outline",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "d47a851",
+                  "text": "An offer strategy that closes",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "7d4a6b2",
+                  "text": "A follow-up sequence map",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 }
+                ],
+                "_css_classes": "fs-evdet-list"
+               },
+               "elements": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "id": "8cd4576",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-evitem fs-evrow",
+          "flex_gap": {
+           "unit": "px",
+           "size": 0,
+           "column": "0",
+           "row": "0",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "cffc89b",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evrow-in",
+            "flex_gap": {
+             "unit": "px",
+             "size": 26,
+             "column": "26",
+             "row": "26",
+             "isLinked": true
+            },
+            "flex_align_items": "center",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "419a2f5",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p><span class=\"m\">Dec</span><b>2</b><span class=\"w\">Wed</span></p>",
+              "_css_classes": "fs-evdate"
+             },
+             "elements": []
+            },
+            {
+             "id": "a0ac6e8",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "css_classes": "fs-evinfo",
+              "flex_gap": {
+               "unit": "px",
+               "size": 6,
+               "column": "6",
+               "row": "6",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "71860c4",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p><span class=\"fs-plogo-chip fs-evchip\"><span class=\"fs-plogo\"><b>first</b>referral</span></span></p>",
+                "_css_classes": "fs-evchip-w"
+               },
+               "elements": []
+              },
+              {
+               "id": "74842ed",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Reviews, referrals and loyalty that sell for you",
+                "header_size": "h3",
+                "_css_classes": "fs-ev-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "0b8e2b6",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p>12:00 to 1:30 PM · Online · Live on Zoom</p>",
+                "_css_classes": "fs-evmeta"
+               },
+               "elements": []
+              }
+             ]
+            },
+            {
+             "id": "9eba2f4",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "row",
+              "css_classes": "fs-evact",
+              "flex_gap": {
+               "unit": "px",
+               "size": 18,
+               "column": "18",
+               "row": "18",
+               "isLinked": true
+              },
+              "flex_align_items": "center",
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "8a66d32",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Details",
+                "header_size": "p",
+                "_css_classes": "fs-evtoggle"
+               },
+               "elements": []
+              },
+              {
+               "id": "4d14e4e",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "css_classes": "fs-evbook",
+                "flex_gap": {
+                 "unit": "px",
+                 "size": 6,
+                 "column": "6",
+                 "row": "6",
+                 "isLinked": true
+                },
+                "flex_align_items": "center",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                }
+               },
+               "elements": [
+                {
+                 "id": "8b3de6b",
+                 "elType": "widget",
+                 "widgetType": "heading",
+                 "settings": {
+                  "title": "[Price]",
+                  "header_size": "p",
+                  "_css_classes": "fs-evprice"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "385b191",
+                 "elType": "widget",
+                 "widgetType": "button",
+                 "settings": {
+                  "text": "Reserve your seat",
+                  "link": {
+                   "url": "/events/sample-event/?format=online",
+                   "is_external": "",
+                   "nofollow": ""
+                  },
+                  "size": "md",
+                  "_css_classes": "fs-btn-navy"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "267ac5e",
+                 "elType": "widget",
+                 "widgetType": "text-editor",
+                 "settings": {
+                  "editor": "<p>[XX] seats left</p>",
+                  "_css_classes": "fs-evseats"
+                 },
+                 "elements": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "id": "3d1e76a",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evdet",
+            "flex_gap": {
+             "unit": "px",
+             "size": 32,
+             "column": "32",
+             "row": "32",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "flex_direction_mobile": "column"
+           },
+           "elements": [
+            {
+             "id": "0669d24",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p>Build the systems that turn happy customers into your best marketing channel, without awkward asks.</p>",
+              "_css_classes": "fs-evdet-p"
+             },
+             "elements": []
+            },
+            {
+             "id": "11c5ee5",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "flex_gap": {
+               "unit": "px",
+               "size": 10,
+               "column": "10",
+               "row": "10",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "377d449",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "You’ll leave with",
+                "header_size": "p",
+                "_css_classes": "fs-evdet-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "540f1a3",
+               "elType": "widget",
+               "widgetType": "icon-list",
+               "settings": {
+                "icon_list": [
+                 {
+                  "_id": "9464659",
+                  "text": "A review request automation",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "813c48b",
+                  "text": "A referral reward structure",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "cee041e",
+                  "text": "A simple loyalty program outline",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 }
+                ],
+                "_css_classes": "fs-evdet-list"
+               },
+               "elements": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "id": "41766bd",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-evitem fs-evrow",
+          "flex_gap": {
+           "unit": "px",
+           "size": 0,
+           "column": "0",
+           "row": "0",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "3b3e497",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evrow-in",
+            "flex_gap": {
+             "unit": "px",
+             "size": 26,
+             "column": "26",
+             "row": "26",
+             "isLinked": true
+            },
+            "flex_align_items": "center",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "020223d",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p><span class=\"m\">Dec</span><b>8</b><span class=\"w\">Tue</span></p>",
+              "_css_classes": "fs-evdate"
+             },
+             "elements": []
+            },
+            {
+             "id": "633253f",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "css_classes": "fs-evinfo",
+              "flex_gap": {
+               "unit": "px",
+               "size": 6,
+               "column": "6",
+               "row": "6",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "5e71445",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p><span class=\"fs-plogo-chip fs-evchip\"><span class=\"fs-plogo\"><b>first</b>thought</span></span></p>",
+                "_css_classes": "fs-evchip-w"
+               },
+               "elements": []
+              },
+              {
+               "id": "0886891",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Ads that actually pay for themselves",
+                "header_size": "h3",
+                "_css_classes": "fs-ev-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "24bf364",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p>12:00 to 1:30 PM · Online · Live on Zoom</p>",
+                "_css_classes": "fs-evmeta"
+               },
+               "elements": []
+              }
+             ]
+            },
+            {
+             "id": "d2c8830",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "row",
+              "css_classes": "fs-evact",
+              "flex_gap": {
+               "unit": "px",
+               "size": 18,
+               "column": "18",
+               "row": "18",
+               "isLinked": true
+              },
+              "flex_align_items": "center",
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "c88fb03",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Details",
+                "header_size": "p",
+                "_css_classes": "fs-evtoggle"
+               },
+               "elements": []
+              },
+              {
+               "id": "f889bb9",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "css_classes": "fs-evbook",
+                "flex_gap": {
+                 "unit": "px",
+                 "size": 6,
+                 "column": "6",
+                 "row": "6",
+                 "isLinked": true
+                },
+                "flex_align_items": "center",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                }
+               },
+               "elements": [
+                {
+                 "id": "372deaf",
+                 "elType": "widget",
+                 "widgetType": "heading",
+                 "settings": {
+                  "title": "[Price]",
+                  "header_size": "p",
+                  "_css_classes": "fs-evprice"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "807f3b8",
+                 "elType": "widget",
+                 "widgetType": "button",
+                 "settings": {
+                  "text": "Reserve your seat",
+                  "link": {
+                   "url": "/events/sample-event/?format=online",
+                   "is_external": "",
+                   "nofollow": ""
+                  },
+                  "size": "md",
+                  "_css_classes": "fs-btn-navy"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "cdc7a76",
+                 "elType": "widget",
+                 "widgetType": "text-editor",
+                 "settings": {
+                  "editor": "<p>[XX] seats left</p>",
+                  "_css_classes": "fs-evseats"
+                 },
+                 "elements": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "id": "3ef4dad",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evdet",
+            "flex_gap": {
+             "unit": "px",
+             "size": 32,
+             "column": "32",
+             "row": "32",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "flex_direction_mobile": "column"
+           },
+           "elements": [
+            {
+             "id": "bdeb3d0",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p>How to plan, launch and measure Google and Meta ads around real leads and cost per acquisition, not impressions.</p>",
+              "_css_classes": "fs-evdet-p"
+             },
+             "elements": []
+            },
+            {
+             "id": "68d7ac4",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "flex_gap": {
+               "unit": "px",
+               "size": 10,
+               "column": "10",
+               "row": "10",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "618c2ad",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "You’ll leave with",
+                "header_size": "p",
+                "_css_classes": "fs-evdet-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "3febbbc",
+               "elType": "widget",
+               "widgetType": "icon-list",
+               "settings": {
+                "icon_list": [
+                 {
+                  "_id": "afd86e0",
+                  "text": "A campaign plan for one offer",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "78d04fa",
+                  "text": "The metrics that matter",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "89bb95b",
+                  "text": "A budget you can defend",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 }
+                ],
+                "_css_classes": "fs-evdet-list"
+               },
+               "elements": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "id": "6ce9321",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-evitem fs-evrow",
+          "flex_gap": {
+           "unit": "px",
+           "size": 0,
+           "column": "0",
+           "row": "0",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "38653df",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evrow-in",
+            "flex_gap": {
+             "unit": "px",
+             "size": 26,
+             "column": "26",
+             "row": "26",
+             "isLinked": true
+            },
+            "flex_align_items": "center",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "707a3cb",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p><span class=\"m\">Jan</span><b>13</b><span class=\"w\">Wed</span></p>",
+              "_css_classes": "fs-evdate"
+             },
+             "elements": []
+            },
+            {
+             "id": "3678c1b",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "css_classes": "fs-evinfo",
+              "flex_gap": {
+               "unit": "px",
+               "size": 6,
+               "column": "6",
+               "row": "6",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "025741d",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p><span class=\"fs-plogo-chip fs-evchip\"><span class=\"fs-plogo\"><b>first</b>choice</span></span></p>",
+                "_css_classes": "fs-evchip-w"
+               },
+               "elements": []
+              },
+              {
+               "id": "42986f8",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Marketing automation for busy owners",
+                "header_size": "h3",
+                "_css_classes": "fs-ev-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "ea76dc8",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p>12:00 to 1:30 PM · Online · Live on Zoom</p>",
+                "_css_classes": "fs-evmeta"
+               },
+               "elements": []
+              }
+             ]
+            },
+            {
+             "id": "d885799",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "row",
+              "css_classes": "fs-evact",
+              "flex_gap": {
+               "unit": "px",
+               "size": 18,
+               "column": "18",
+               "row": "18",
+               "isLinked": true
+              },
+              "flex_align_items": "center",
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "9a0f50b",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Details",
+                "header_size": "p",
+                "_css_classes": "fs-evtoggle"
+               },
+               "elements": []
+              },
+              {
+               "id": "dc64133",
+               "elType": "container",
+               "isInner": true,
+               "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "css_classes": "fs-evbook",
+                "flex_gap": {
+                 "unit": "px",
+                 "size": 6,
+                 "column": "6",
+                 "row": "6",
+                 "isLinked": true
+                },
+                "flex_align_items": "center",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                }
+               },
+               "elements": [
+                {
+                 "id": "8ab5396",
+                 "elType": "widget",
+                 "widgetType": "heading",
+                 "settings": {
+                  "title": "[Price]",
+                  "header_size": "p",
+                  "_css_classes": "fs-evprice"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "3dd422d",
+                 "elType": "widget",
+                 "widgetType": "button",
+                 "settings": {
+                  "text": "Reserve your seat",
+                  "link": {
+                   "url": "/events/sample-event/?format=online",
+                   "is_external": "",
+                   "nofollow": ""
+                  },
+                  "size": "md",
+                  "_css_classes": "fs-btn-navy"
+                 },
+                 "elements": []
+                },
+                {
+                 "id": "964010b",
+                 "elType": "widget",
+                 "widgetType": "text-editor",
+                 "settings": {
+                  "editor": "<p>[XX] seats left</p>",
+                  "_css_classes": "fs-evseats"
+                 },
+                 "elements": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "id": "ce89592",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "row",
+            "css_classes": "fs-evdet",
+            "flex_gap": {
+             "unit": "px",
+             "size": 32,
+             "column": "32",
+             "row": "32",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "flex_direction_mobile": "column"
+           },
+           "elements": [
+            {
+             "id": "5e59af4",
+             "elType": "widget",
+             "widgetType": "text-editor",
+             "settings": {
+              "editor": "<p>The handful of automations every local business should have running, and how to set them up without a tech team.</p>",
+              "_css_classes": "fs-evdet-p"
+             },
+             "elements": []
+            },
+            {
+             "id": "e5a2787",
+             "elType": "container",
+             "isInner": true,
+             "settings": {
+              "content_width": "full",
+              "flex_direction": "column",
+              "flex_gap": {
+               "unit": "px",
+               "size": 10,
+               "column": "10",
+               "row": "10",
+               "isLinked": true
+              },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              }
+             },
+             "elements": [
+              {
+               "id": "501c59b",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "You’ll leave with",
+                "header_size": "p",
+                "_css_classes": "fs-evdet-h"
+               },
+               "elements": []
+              },
+              {
+               "id": "75c99e0",
+               "elType": "widget",
+               "widgetType": "icon-list",
+               "settings": {
+                "icon_list": [
+                 {
+                  "_id": "7187524",
+                  "text": "Your first three automations mapped",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "e903081",
+                  "text": "Email list segments to build",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 },
+                 {
+                  "_id": "2ef207c",
+                  "text": "A welcome journey outline",
+                  "selected_icon": {
+                   "value": "fas fa-check",
+                   "library": "fa-solid"
+                  }
+                 }
+                ],
+                "_css_classes": "fs-evdet-list"
+               },
+               "elements": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "id": "3e111f2",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "fs-gcard fs-evempty",
+        "flex_gap": {
+         "unit": "px",
+         "size": 18,
+         "column": "18",
+         "row": "18",
+         "isLinked": true
+        },
+        "flex_align_items": "center",
+        "padding": {
+         "unit": "px",
+         "top": "56",
+         "right": "28",
+         "bottom": "56",
+         "left": "28",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "df50f58",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
-          "title": "The calendar",
-          "header_size": "p",
-          "align": "center",
-          "_css_classes": "fs-eyebrow",
+          "title": "No workshops match those <span class=\"fs-gt\">filters right now</span>",
+          "header_size": "h2",
+          "_css_classes": "fs-evempty-h",
           "__globals__": {
-           "title_color": "globals/colors?id=secondary"
+           "title_color": "globals/colors?id=primary"
           },
           "typography_typography": "custom",
           "typography_font_family": "Poppins",
-          "typography_font_weight": "600",
+          "typography_font_weight": "700",
           "typography_font_size": {
            "unit": "px",
-           "size": 19.5,
+           "size": 52.0,
            "sizes": []
           },
           "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 37.0,
+           "sizes": []
+          },
+          "typography_font_size_mobile": {
+           "unit": "px",
+           "size": 32.0,
+           "sizes": []
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.08,
+           "sizes": []
+          },
+          "typography_letter_spacing": {
+           "unit": "em",
+           "size": -0.02,
+           "sizes": []
+          },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal"
+         },
+         "elements": []
+        },
+        {
+         "id": "1205a75",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "settings": {
+          "editor": "<p>Leave your email and we’ll let you know the moment the next one opens. Or clear your filters to see everything on the calendar.</p>",
+          "_css_classes": "fs-evempty-p",
+          "__globals__": {},
+          "typography_typography": "custom",
+          "typography_font_family": "Poppins",
+          "typography_font_weight": "400",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 20.0,
+           "sizes": []
+          },
+          "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 16.0,
+           "sizes": []
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.4,
+           "sizes": []
+          },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal",
+          "text_color": "#FFFFFFEB"
+         },
+         "elements": []
+        },
+        {
+         "id": "e11eaaf",
+         "elType": "widget",
+         "widgetType": "form",
+         "settings": {
+          "form_name": "Workshop waitlist",
+          "form_fields": [
+           {
+            "_id": "d3bf015",
+            "custom_id": "email_address",
+            "field_type": "email",
+            "field_label": "Email address",
+            "placeholder": "you@business.com",
+            "required": "true",
+            "width": "70"
+           }
+          ],
+          "button_text": "Notify me",
+          "button_size": "md",
+          "show_labels": "",
+          "success_message": "Thanks! We got your message and will reply within one business day.",
+          "_css_classes": "fs-inline-form",
+          "button_width": "30"
+         },
+         "elements": []
+        },
+        {
+         "id": "694ebd3",
+         "elType": "widget",
+         "widgetType": "button",
+         "settings": {
+          "text": "Clear filters",
+          "link": {
+           "url": "#",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "size": "md",
+          "_css_classes": "fs-link-u fs-evclear",
+          "__globals__": {},
+          "typography_typography": "custom",
+          "typography_font_family": "Poppins",
+          "typography_font_weight": "500",
+          "typography_font_size": {
            "unit": "px",
            "size": 16.0,
            "sizes": []
@@ -965,1346 +3405,9 @@
            "sizes": []
           },
           "typography_text_transform": "none",
-          "typography_font_style": "normal"
+          "typography_font_style": "italic"
          },
          "elements": []
-        },
-        {
-         "id": "803ef4b",
-         "elType": "widget",
-         "widgetType": "heading",
-         "settings": {
-          "title": "More upcoming <span class=\"fs-gt\">workshops</span>",
-          "header_size": "h2",
-          "align": "center",
-          "__globals__": {
-           "title_color": "globals/colors?id=primary"
-          },
-          "typography_typography": "custom",
-          "typography_font_family": "Poppins",
-          "typography_font_weight": "700",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 40.0,
-           "sizes": []
-          },
-          "typography_font_size_tablet": {
-           "unit": "px",
-           "size": 30.5,
-           "sizes": []
-          },
-          "typography_font_size_mobile": {
-           "unit": "px",
-           "size": 28.0,
-           "sizes": []
-          },
-          "typography_line_height": {
-           "unit": "em",
-           "size": 1.12,
-           "sizes": []
-          },
-          "typography_letter_spacing": {
-           "unit": "em",
-           "size": -0.015,
-           "sizes": []
-          },
-          "typography_text_transform": "none",
-          "typography_font_style": "normal"
-         },
-         "elements": []
-        },
-        {
-         "id": "9192e78",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "settings": {
-          "editor": "<p>Replace these sample rows with a Loop Grid of your Events (newest first) once the Events post type is set up.</p>",
-          "align": "center",
-          "_css_classes": "fs-lead",
-          "_margin": {
-           "unit": "px",
-           "top": "4",
-           "right": "0",
-           "bottom": "0",
-           "left": "0",
-           "isLinked": false
-          },
-          "__globals__": {
-           "text_color": "globals/colors?id=text"
-          },
-          "typography_typography": "custom",
-          "typography_font_family": "Poppins",
-          "typography_font_weight": "400",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 19.0,
-           "sizes": []
-          },
-          "typography_font_size_tablet": {
-           "unit": "px",
-           "size": 17.0,
-           "sizes": []
-          },
-          "typography_line_height": {
-           "unit": "em",
-           "size": 1.6,
-           "sizes": []
-          },
-          "typography_text_transform": "none",
-          "typography_font_style": "normal"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "8ce9e98",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "flex_gap": {
-         "unit": "px",
-         "size": 14,
-         "column": "14",
-         "row": "14",
-         "isLinked": true
-        },
-        "padding": {
-         "unit": "px",
-         "top": "0",
-         "right": "0",
-         "bottom": "0",
-         "left": "0",
-         "isLinked": true
-        }
-       },
-       "elements": [
-        {
-         "id": "ba1dcee",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "row",
-          "css_classes": "fs-gcard fs-gcard--thin fs-gcard--hover",
-          "flex_gap": {
-           "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
-           "isLinked": true
-          },
-          "flex_align_items": "center",
-          "padding": {
-           "unit": "px",
-           "top": "18",
-           "right": "24",
-           "bottom": "18",
-           "left": "24",
-           "isLinked": false
-          },
-          "flex_direction_mobile": "column"
-         },
-         "elements": [
-          {
-           "id": "01ea78d",
-           "elType": "widget",
-           "widgetType": "html",
-           "settings": {
-            "html": "<div class=\"fs-date\"><small>Oct</small><b>27</b><span>Tue</span></div>"
-           },
-           "elements": []
-          },
-          {
-           "id": "4112267",
-           "elType": "container",
-           "isInner": true,
-           "settings": {
-            "content_width": "full",
-            "flex_direction": "column",
-            "flex_gap": {
-             "unit": "px",
-             "size": 6,
-             "column": "6",
-             "row": "6",
-             "isLinked": true
-            },
-            "padding": {
-             "unit": "px",
-             "top": "0",
-             "right": "0",
-             "bottom": "0",
-             "left": "0",
-             "isLinked": true
-            },
-            "flex_grow": 1
-           },
-           "elements": [
-            {
-             "id": "e056a58",
-             "elType": "widget",
-             "widgetType": "html",
-             "settings": {
-              "html": "<span class=\"fs-plogo-chip\"><span class=\"fs-plogo\" style=\"font-size:17px\"><b>first</b>brand</span></span>"
-             },
-             "elements": []
-            },
-            {
-             "id": "e5bf2ff",
-             "elType": "widget",
-             "widgetType": "heading",
-             "settings": {
-              "title": "Build a brand people trust on sight",
-              "header_size": "h3",
-              "__globals__": {
-               "title_color": "globals/colors?id=primary"
-              },
-              "typography_typography": "custom",
-              "typography_font_family": "Poppins",
-              "typography_font_weight": "700",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 21.0,
-               "sizes": []
-              },
-              "typography_font_size_mobile": {
-               "unit": "px",
-               "size": 18.0,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.25,
-               "sizes": []
-              },
-              "typography_letter_spacing": {
-               "unit": "em",
-               "size": -0.015,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal"
-             },
-             "elements": []
-            },
-            {
-             "id": "6777652",
-             "elType": "widget",
-             "widgetType": "text-editor",
-             "settings": {
-              "editor": "<p>12:00 to 1:30 PM · Online · Live on Zoom</p>",
-              "_css_classes": "fs-card-meta",
-              "__globals__": {},
-              "typography_typography": "custom",
-              "typography_font_family": "Inter",
-              "typography_font_weight": "400",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 14.5,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.6,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal",
-              "text_color": "#2F2E36"
-             },
-             "elements": []
-            }
-           ]
-          },
-          {
-           "id": "fdc1108",
-           "elType": "widget",
-           "widgetType": "button",
-           "settings": {
-            "text": "Reserve your seat",
-            "link": {
-             "url": "/events/sample-event/?format=online",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.2,
-             "sizes": []
-            },
-            "typography_letter_spacing": {
-             "unit": "em",
-             "size": 0.005,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "aacda2d",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "row",
-          "css_classes": "fs-gcard fs-gcard--thin fs-gcard--hover",
-          "flex_gap": {
-           "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
-           "isLinked": true
-          },
-          "flex_align_items": "center",
-          "padding": {
-           "unit": "px",
-           "top": "18",
-           "right": "24",
-           "bottom": "18",
-           "left": "24",
-           "isLinked": false
-          },
-          "flex_direction_mobile": "column"
-         },
-         "elements": [
-          {
-           "id": "149b788",
-           "elType": "widget",
-           "widgetType": "html",
-           "settings": {
-            "html": "<div class=\"fs-date\"><small>Nov</small><b>4</b><span>Wed</span></div>"
-           },
-           "elements": []
-          },
-          {
-           "id": "ca387ed",
-           "elType": "container",
-           "isInner": true,
-           "settings": {
-            "content_width": "full",
-            "flex_direction": "column",
-            "flex_gap": {
-             "unit": "px",
-             "size": 6,
-             "column": "6",
-             "row": "6",
-             "isLinked": true
-            },
-            "padding": {
-             "unit": "px",
-             "top": "0",
-             "right": "0",
-             "bottom": "0",
-             "left": "0",
-             "isLinked": true
-            },
-            "flex_grow": 1
-           },
-           "elements": [
-            {
-             "id": "830b1a8",
-             "elType": "widget",
-             "widgetType": "html",
-             "settings": {
-              "html": "<span class=\"fs-plogo-chip\"><span class=\"fs-plogo\" style=\"font-size:17px\"><b>first</b>thought</span></span>"
-             },
-             "elements": []
-            },
-            {
-             "id": "8109820",
-             "elType": "widget",
-             "widgetType": "heading",
-             "settings": {
-              "title": "Get found first: local SEO and AI search",
-              "header_size": "h3",
-              "__globals__": {
-               "title_color": "globals/colors?id=primary"
-              },
-              "typography_typography": "custom",
-              "typography_font_family": "Poppins",
-              "typography_font_weight": "700",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 21.0,
-               "sizes": []
-              },
-              "typography_font_size_mobile": {
-               "unit": "px",
-               "size": 18.0,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.25,
-               "sizes": []
-              },
-              "typography_letter_spacing": {
-               "unit": "em",
-               "size": -0.015,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal"
-             },
-             "elements": []
-            },
-            {
-             "id": "6e0118a",
-             "elType": "widget",
-             "widgetType": "text-editor",
-             "settings": {
-              "editor": "<p>12:00 to 1:30 PM · Online · Live on Zoom</p>",
-              "_css_classes": "fs-card-meta",
-              "__globals__": {},
-              "typography_typography": "custom",
-              "typography_font_family": "Inter",
-              "typography_font_weight": "400",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 14.5,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.6,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal",
-              "text_color": "#2F2E36"
-             },
-             "elements": []
-            }
-           ]
-          },
-          {
-           "id": "f02c502",
-           "elType": "widget",
-           "widgetType": "button",
-           "settings": {
-            "text": "Reserve your seat",
-            "link": {
-             "url": "/events/sample-event/?format=online",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.2,
-             "sizes": []
-            },
-            "typography_letter_spacing": {
-             "unit": "em",
-             "size": 0.005,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "171fc55",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "row",
-          "css_classes": "fs-gcard fs-gcard--thin fs-gcard--hover",
-          "flex_gap": {
-           "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
-           "isLinked": true
-          },
-          "flex_align_items": "center",
-          "padding": {
-           "unit": "px",
-           "top": "18",
-           "right": "24",
-           "bottom": "18",
-           "left": "24",
-           "isLinked": false
-          },
-          "flex_direction_mobile": "column"
-         },
-         "elements": [
-          {
-           "id": "232f558",
-           "elType": "widget",
-           "widgetType": "html",
-           "settings": {
-            "html": "<div class=\"fs-date\"><small>Nov</small><b>12</b><span>Thu</span></div>"
-           },
-           "elements": []
-          },
-          {
-           "id": "78bf20c",
-           "elType": "container",
-           "isInner": true,
-           "settings": {
-            "content_width": "full",
-            "flex_direction": "column",
-            "flex_gap": {
-             "unit": "px",
-             "size": 6,
-             "column": "6",
-             "row": "6",
-             "isLinked": true
-            },
-            "padding": {
-             "unit": "px",
-             "top": "0",
-             "right": "0",
-             "bottom": "0",
-             "left": "0",
-             "isLinked": true
-            },
-            "flex_grow": 1
-           },
-           "elements": [
-            {
-             "id": "3712033",
-             "elType": "widget",
-             "widgetType": "html",
-             "settings": {
-              "html": "<span class=\"fs-pill fs-pill--purple\">Full Framework</span>"
-             },
-             "elements": []
-            },
-            {
-             "id": "b471ec3",
-             "elType": "widget",
-             "widgetType": "heading",
-             "settings": {
-              "title": "BeFirst Live: the full-day framework workshop",
-              "header_size": "h3",
-              "__globals__": {
-               "title_color": "globals/colors?id=primary"
-              },
-              "typography_typography": "custom",
-              "typography_font_family": "Poppins",
-              "typography_font_weight": "700",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 21.0,
-               "sizes": []
-              },
-              "typography_font_size_mobile": {
-               "unit": "px",
-               "size": 18.0,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.25,
-               "sizes": []
-              },
-              "typography_letter_spacing": {
-               "unit": "em",
-               "size": -0.015,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal"
-             },
-             "elements": []
-            },
-            {
-             "id": "85ae861",
-             "elType": "widget",
-             "widgetType": "text-editor",
-             "settings": {
-              "editor": "<p>9:00 AM to 4:00 PM · In person · [Venue], Hampton, NH</p>",
-              "_css_classes": "fs-card-meta",
-              "__globals__": {},
-              "typography_typography": "custom",
-              "typography_font_family": "Inter",
-              "typography_font_weight": "400",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 14.5,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.6,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal",
-              "text_color": "#2F2E36"
-             },
-             "elements": []
-            }
-           ]
-          },
-          {
-           "id": "ae69425",
-           "elType": "widget",
-           "widgetType": "button",
-           "settings": {
-            "text": "Reserve your seat",
-            "link": {
-             "url": "/events/sample-event/",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.2,
-             "sizes": []
-            },
-            "typography_letter_spacing": {
-             "unit": "em",
-             "size": 0.005,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "6b19165",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "row",
-          "css_classes": "fs-gcard fs-gcard--thin fs-gcard--hover",
-          "flex_gap": {
-           "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
-           "isLinked": true
-          },
-          "flex_align_items": "center",
-          "padding": {
-           "unit": "px",
-           "top": "18",
-           "right": "24",
-           "bottom": "18",
-           "left": "24",
-           "isLinked": false
-          },
-          "flex_direction_mobile": "column"
-         },
-         "elements": [
-          {
-           "id": "d8c2e2a",
-           "elType": "widget",
-           "widgetType": "html",
-           "settings": {
-            "html": "<div class=\"fs-date\"><small>Nov</small><b>17</b><span>Tue</span></div>"
-           },
-           "elements": []
-          },
-          {
-           "id": "1abc9a2",
-           "elType": "container",
-           "isInner": true,
-           "settings": {
-            "content_width": "full",
-            "flex_direction": "column",
-            "flex_gap": {
-             "unit": "px",
-             "size": 6,
-             "column": "6",
-             "row": "6",
-             "isLinked": true
-            },
-            "padding": {
-             "unit": "px",
-             "top": "0",
-             "right": "0",
-             "bottom": "0",
-             "left": "0",
-             "isLinked": true
-            },
-            "flex_grow": 1
-           },
-           "elements": [
-            {
-             "id": "ae5e136",
-             "elType": "widget",
-             "widgetType": "html",
-             "settings": {
-              "html": "<span class=\"fs-plogo-chip\"><span class=\"fs-plogo\" style=\"font-size:17px\"><b>first</b>choice</span></span>"
-             },
-             "elements": []
-            },
-            {
-             "id": "bb534c1",
-             "elType": "widget",
-             "widgetType": "heading",
-             "settings": {
-              "title": "Turn your website into a lead machine",
-              "header_size": "h3",
-              "__globals__": {
-               "title_color": "globals/colors?id=primary"
-              },
-              "typography_typography": "custom",
-              "typography_font_family": "Poppins",
-              "typography_font_weight": "700",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 21.0,
-               "sizes": []
-              },
-              "typography_font_size_mobile": {
-               "unit": "px",
-               "size": 18.0,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.25,
-               "sizes": []
-              },
-              "typography_letter_spacing": {
-               "unit": "em",
-               "size": -0.015,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal"
-             },
-             "elements": []
-            },
-            {
-             "id": "c061aec",
-             "elType": "widget",
-             "widgetType": "text-editor",
-             "settings": {
-              "editor": "<p>8:30 to 10:30 AM · In person · [Venue], Hampton, NH</p>",
-              "_css_classes": "fs-card-meta",
-              "__globals__": {},
-              "typography_typography": "custom",
-              "typography_font_family": "Inter",
-              "typography_font_weight": "400",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 14.5,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.6,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal",
-              "text_color": "#2F2E36"
-             },
-             "elements": []
-            }
-           ]
-          },
-          {
-           "id": "f2e47db",
-           "elType": "widget",
-           "widgetType": "button",
-           "settings": {
-            "text": "Reserve your seat",
-            "link": {
-             "url": "/events/sample-event/",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.2,
-             "sizes": []
-            },
-            "typography_letter_spacing": {
-             "unit": "em",
-             "size": 0.005,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "ffebbbf",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "row",
-          "css_classes": "fs-gcard fs-gcard--thin fs-gcard--hover",
-          "flex_gap": {
-           "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
-           "isLinked": true
-          },
-          "flex_align_items": "center",
-          "padding": {
-           "unit": "px",
-           "top": "18",
-           "right": "24",
-           "bottom": "18",
-           "left": "24",
-           "isLinked": false
-          },
-          "flex_direction_mobile": "column"
-         },
-         "elements": [
-          {
-           "id": "d06b818",
-           "elType": "widget",
-           "widgetType": "html",
-           "settings": {
-            "html": "<div class=\"fs-date\"><small>Dec</small><b>2</b><span>Wed</span></div>"
-           },
-           "elements": []
-          },
-          {
-           "id": "bc8b54e",
-           "elType": "container",
-           "isInner": true,
-           "settings": {
-            "content_width": "full",
-            "flex_direction": "column",
-            "flex_gap": {
-             "unit": "px",
-             "size": 6,
-             "column": "6",
-             "row": "6",
-             "isLinked": true
-            },
-            "padding": {
-             "unit": "px",
-             "top": "0",
-             "right": "0",
-             "bottom": "0",
-             "left": "0",
-             "isLinked": true
-            },
-            "flex_grow": 1
-           },
-           "elements": [
-            {
-             "id": "8005919",
-             "elType": "widget",
-             "widgetType": "html",
-             "settings": {
-              "html": "<span class=\"fs-plogo-chip\"><span class=\"fs-plogo\" style=\"font-size:17px\"><b>first</b>referral</span></span>"
-             },
-             "elements": []
-            },
-            {
-             "id": "ef7e74b",
-             "elType": "widget",
-             "widgetType": "heading",
-             "settings": {
-              "title": "Reviews, referrals and loyalty that sell for you",
-              "header_size": "h3",
-              "__globals__": {
-               "title_color": "globals/colors?id=primary"
-              },
-              "typography_typography": "custom",
-              "typography_font_family": "Poppins",
-              "typography_font_weight": "700",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 21.0,
-               "sizes": []
-              },
-              "typography_font_size_mobile": {
-               "unit": "px",
-               "size": 18.0,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.25,
-               "sizes": []
-              },
-              "typography_letter_spacing": {
-               "unit": "em",
-               "size": -0.015,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal"
-             },
-             "elements": []
-            },
-            {
-             "id": "77da85f",
-             "elType": "widget",
-             "widgetType": "text-editor",
-             "settings": {
-              "editor": "<p>12:00 to 1:30 PM · Online · Live on Zoom</p>",
-              "_css_classes": "fs-card-meta",
-              "__globals__": {},
-              "typography_typography": "custom",
-              "typography_font_family": "Inter",
-              "typography_font_weight": "400",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 14.5,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.6,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal",
-              "text_color": "#2F2E36"
-             },
-             "elements": []
-            }
-           ]
-          },
-          {
-           "id": "03eabd5",
-           "elType": "widget",
-           "widgetType": "button",
-           "settings": {
-            "text": "Reserve your seat",
-            "link": {
-             "url": "/events/sample-event/?format=online",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.2,
-             "sizes": []
-            },
-            "typography_letter_spacing": {
-             "unit": "em",
-             "size": 0.005,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "16eabec",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "row",
-          "css_classes": "fs-gcard fs-gcard--thin fs-gcard--hover",
-          "flex_gap": {
-           "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
-           "isLinked": true
-          },
-          "flex_align_items": "center",
-          "padding": {
-           "unit": "px",
-           "top": "18",
-           "right": "24",
-           "bottom": "18",
-           "left": "24",
-           "isLinked": false
-          },
-          "flex_direction_mobile": "column"
-         },
-         "elements": [
-          {
-           "id": "146486c",
-           "elType": "widget",
-           "widgetType": "html",
-           "settings": {
-            "html": "<div class=\"fs-date\"><small>Dec</small><b>8</b><span>Tue</span></div>"
-           },
-           "elements": []
-          },
-          {
-           "id": "418a788",
-           "elType": "container",
-           "isInner": true,
-           "settings": {
-            "content_width": "full",
-            "flex_direction": "column",
-            "flex_gap": {
-             "unit": "px",
-             "size": 6,
-             "column": "6",
-             "row": "6",
-             "isLinked": true
-            },
-            "padding": {
-             "unit": "px",
-             "top": "0",
-             "right": "0",
-             "bottom": "0",
-             "left": "0",
-             "isLinked": true
-            },
-            "flex_grow": 1
-           },
-           "elements": [
-            {
-             "id": "f3d5e07",
-             "elType": "widget",
-             "widgetType": "html",
-             "settings": {
-              "html": "<span class=\"fs-plogo-chip\"><span class=\"fs-plogo\" style=\"font-size:17px\"><b>first</b>thought</span></span>"
-             },
-             "elements": []
-            },
-            {
-             "id": "f60ebae",
-             "elType": "widget",
-             "widgetType": "heading",
-             "settings": {
-              "title": "Ads that actually pay for themselves",
-              "header_size": "h3",
-              "__globals__": {
-               "title_color": "globals/colors?id=primary"
-              },
-              "typography_typography": "custom",
-              "typography_font_family": "Poppins",
-              "typography_font_weight": "700",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 21.0,
-               "sizes": []
-              },
-              "typography_font_size_mobile": {
-               "unit": "px",
-               "size": 18.0,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.25,
-               "sizes": []
-              },
-              "typography_letter_spacing": {
-               "unit": "em",
-               "size": -0.015,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal"
-             },
-             "elements": []
-            },
-            {
-             "id": "bbf202c",
-             "elType": "widget",
-             "widgetType": "text-editor",
-             "settings": {
-              "editor": "<p>12:00 to 1:30 PM · Online · Live on Zoom</p>",
-              "_css_classes": "fs-card-meta",
-              "__globals__": {},
-              "typography_typography": "custom",
-              "typography_font_family": "Inter",
-              "typography_font_weight": "400",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 14.5,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.6,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal",
-              "text_color": "#2F2E36"
-             },
-             "elements": []
-            }
-           ]
-          },
-          {
-           "id": "6cc7ddd",
-           "elType": "widget",
-           "widgetType": "button",
-           "settings": {
-            "text": "Reserve your seat",
-            "link": {
-             "url": "/events/sample-event/?format=online",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.2,
-             "sizes": []
-            },
-            "typography_letter_spacing": {
-             "unit": "em",
-             "size": 0.005,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "ef9540d",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "row",
-          "css_classes": "fs-gcard fs-gcard--thin fs-gcard--hover",
-          "flex_gap": {
-           "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
-           "isLinked": true
-          },
-          "flex_align_items": "center",
-          "padding": {
-           "unit": "px",
-           "top": "18",
-           "right": "24",
-           "bottom": "18",
-           "left": "24",
-           "isLinked": false
-          },
-          "flex_direction_mobile": "column"
-         },
-         "elements": [
-          {
-           "id": "5c45181",
-           "elType": "widget",
-           "widgetType": "html",
-           "settings": {
-            "html": "<div class=\"fs-date\"><small>Jan</small><b>13</b><span>Wed</span></div>"
-           },
-           "elements": []
-          },
-          {
-           "id": "49c2143",
-           "elType": "container",
-           "isInner": true,
-           "settings": {
-            "content_width": "full",
-            "flex_direction": "column",
-            "flex_gap": {
-             "unit": "px",
-             "size": 6,
-             "column": "6",
-             "row": "6",
-             "isLinked": true
-            },
-            "padding": {
-             "unit": "px",
-             "top": "0",
-             "right": "0",
-             "bottom": "0",
-             "left": "0",
-             "isLinked": true
-            },
-            "flex_grow": 1
-           },
-           "elements": [
-            {
-             "id": "643c460",
-             "elType": "widget",
-             "widgetType": "html",
-             "settings": {
-              "html": "<span class=\"fs-plogo-chip\"><span class=\"fs-plogo\" style=\"font-size:17px\"><b>first</b>choice</span></span>"
-             },
-             "elements": []
-            },
-            {
-             "id": "9cb3ad1",
-             "elType": "widget",
-             "widgetType": "heading",
-             "settings": {
-              "title": "Marketing automation for busy owners",
-              "header_size": "h3",
-              "__globals__": {
-               "title_color": "globals/colors?id=primary"
-              },
-              "typography_typography": "custom",
-              "typography_font_family": "Poppins",
-              "typography_font_weight": "700",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 21.0,
-               "sizes": []
-              },
-              "typography_font_size_mobile": {
-               "unit": "px",
-               "size": 18.0,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.25,
-               "sizes": []
-              },
-              "typography_letter_spacing": {
-               "unit": "em",
-               "size": -0.015,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal"
-             },
-             "elements": []
-            },
-            {
-             "id": "c98cadd",
-             "elType": "widget",
-             "widgetType": "text-editor",
-             "settings": {
-              "editor": "<p>12:00 to 1:30 PM · Online · Live on Zoom</p>",
-              "_css_classes": "fs-card-meta",
-              "__globals__": {},
-              "typography_typography": "custom",
-              "typography_font_family": "Inter",
-              "typography_font_weight": "400",
-              "typography_font_size": {
-               "unit": "px",
-               "size": 14.5,
-               "sizes": []
-              },
-              "typography_line_height": {
-               "unit": "em",
-               "size": 1.6,
-               "sizes": []
-              },
-              "typography_text_transform": "none",
-              "typography_font_style": "normal",
-              "text_color": "#2F2E36"
-             },
-             "elements": []
-            }
-           ]
-          },
-          {
-           "id": "7a0a088",
-           "elType": "widget",
-           "widgetType": "button",
-           "settings": {
-            "text": "Reserve your seat",
-            "link": {
-             "url": "/events/sample-event/?format=online",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.2,
-             "sizes": []
-            },
-            "typography_letter_spacing": {
-             "unit": "em",
-             "size": 0.005,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          }
-         ]
         }
        ]
       }
@@ -2313,7 +3416,7 @@
    ]
   },
   {
-   "id": "d59e17c",
+   "id": "119832c",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -2324,7 +3427,7 @@
      "size": 1240,
      "sizes": []
     },
-    "css_classes": "fs-dark",
+    "css_classes": "fs-dark fs-band",
     "flex_gap": {
      "unit": "px",
      "size": 0,
@@ -2360,7 +3463,7 @@
    },
    "elements": [
     {
-     "id": "89ac737",
+     "id": "b81ce2b",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -2384,7 +3487,7 @@
      },
      "elements": [
       {
-       "id": "be16ee7",
+       "id": "3034e59",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -2407,11 +3510,12 @@
          "left": "0",
          "isLinked": true
         },
-        "flex_direction_mobile": "column"
+        "flex_direction_mobile": "column",
+        "flex_align_items_mobile": "flex-start"
        },
        "elements": [
         {
-         "id": "a93f108",
+         "id": "b6bc59a",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -2419,9 +3523,9 @@
           "flex_direction": "column",
           "flex_gap": {
            "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
+           "size": 8,
+           "column": "8",
+           "row": "8",
            "isLinked": true
           },
           "padding": {
@@ -2445,12 +3549,13 @@
          },
          "elements": [
           {
-           "id": "94dd1c8",
+           "id": "c8be403",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
             "title": "Want a workshop for your team or group?",
             "header_size": "h2",
+            "_css_classes": "fs-band-h",
             "__globals__": {},
             "typography_typography": "custom",
             "typography_font_family": "Poppins",
@@ -2487,11 +3592,12 @@
            "elements": []
           },
           {
-           "id": "34685a3",
+           "id": "4862e8d",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
             "editor": "<p>We run private sessions for business teams, chambers and networking groups, in person or online.</p>",
+            "_css_classes": "fs-band-p",
             "__globals__": {},
             "typography_typography": "custom",
             "typography_font_family": "Poppins",
@@ -2515,7 +3621,7 @@
          ]
         },
         {
-         "id": "8de74d1",
+         "id": "ded1653",
          "elType": "widget",
          "widgetType": "button",
          "settings": {
@@ -2526,7 +3632,7 @@
            "nofollow": ""
           },
           "size": "md",
-          "_css_classes": "fs-btn-white fs-btn-lg",
+          "_css_classes": "fs-btn-grad fs-btn-lg",
           "__globals__": {},
           "typography_typography": "custom",
           "typography_font_family": "Poppins",
@@ -2563,7 +3669,7 @@
    ]
   },
   {
-   "id": "8538f12",
+   "id": "284ec57",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -2619,7 +3725,7 @@
    },
    "elements": [
     {
-     "id": "eb65799",
+     "id": "4a83462",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -2643,7 +3749,7 @@
      },
      "elements": [
       {
-       "id": "72191db",
+       "id": "6185e4f",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -2686,7 +3792,7 @@
        },
        "elements": [
         {
-         "id": "220cf47",
+         "id": "aa3e34a",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -2720,7 +3826,7 @@
          },
          "elements": [
           {
-           "id": "2cdec53",
+           "id": "c09128f",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -2754,7 +3860,7 @@
            "elements": []
           },
           {
-           "id": "f8c261b",
+           "id": "bc4c988",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -2797,7 +3903,7 @@
            "elements": []
           },
           {
-           "id": "068729c",
+           "id": "aa21c31",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -2825,13 +3931,13 @@
            "elements": []
           },
           {
-           "id": "4f7587b",
+           "id": "0bda832",
            "elType": "widget",
            "widgetType": "icon-list",
            "settings": {
             "icon_list": [
              {
-              "_id": "cc41794",
+              "_id": "9710cc2",
               "text": "A score for each stage of the FirstSearch Framework",
               "selected_icon": {
                "value": "fas fa-check",
@@ -2839,7 +3945,7 @@
               }
              },
              {
-              "_id": "5b984f0",
+              "_id": "5baf7a7",
               "text": "Your weakest stage, and what to fix first",
               "selected_icon": {
                "value": "fas fa-check",
@@ -2847,7 +3953,7 @@
               }
              },
              {
-              "_id": "816a337",
+              "_id": "d5ca4c5",
               "text": "Free, about five minutes, no sales call required",
               "selected_icon": {
                "value": "fas fa-check",
@@ -2879,7 +3985,7 @@
          ]
         },
         {
-         "id": "864d3dd",
+         "id": "fa3748e",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -2913,7 +4019,7 @@
          },
          "elements": [
           {
-           "id": "65b2d9f",
+           "id": "d5460e7",
            "elType": "widget",
            "widgetType": "image",
            "settings": {
@@ -2933,7 +4039,7 @@
            "elements": []
           },
           {
-           "id": "c71dba2",
+           "id": "5c16d6d",
            "elType": "widget",
            "widgetType": "button",
            "settings": {
@@ -2970,7 +4076,7 @@
            "elements": []
           },
           {
-           "id": "a78f518",
+           "id": "12eed94",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -3005,7 +4111,7 @@
    ]
   },
   {
-   "id": "7660767",
+   "id": "baa5fa8",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -3053,7 +4159,7 @@
    },
    "elements": [
     {
-     "id": "ec3617d",
+     "id": "cd8acc7",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -3077,7 +4183,7 @@
      },
      "elements": [
       {
-       "id": "ba1cc63",
+       "id": "aac6ae9",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -3119,7 +4225,7 @@
        },
        "elements": [
         {
-         "id": "979d768",
+         "id": "f99c2b6",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3144,7 +4250,7 @@
          },
          "elements": [
           {
-           "id": "fe92ec7",
+           "id": "b64ebb7",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3187,7 +4293,7 @@
            "elements": []
           },
           {
-           "id": "e556651",
+           "id": "ae3228a",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -3221,7 +4327,7 @@
          ]
         },
         {
-         "id": "e48eed5",
+         "id": "2c88033",
          "elType": "widget",
          "widgetType": "button",
          "settings": {

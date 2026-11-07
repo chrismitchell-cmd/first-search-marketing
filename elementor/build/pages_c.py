@@ -46,7 +46,7 @@ def case_study():
                     col(heading('Before → after', 'p', 'fs-eyebrow'), table((('Monthly leads', '12', '41'), ('Map pack position', '#9', '#1'), ('Google reviews', '18', '112'), ('Website conversion', '0.8%', '4.6%'), ('Cost per lead', '$94', '$31'))),
                         wpct=46, cls='fs-purple-card fs-dark', p=pad(28), gap_=12), gap_=28, align='stretch'),
                 cls='fs-geo', title='Results', bg_img=GEO),
-        section(row(vid('assets/img/design/case-dental.webp'),
+        section(row(vid('assets/img/design/case-dental.webp', '[Client name] on working with First Search', '[1:20]'),
                     con(eyebrow('In their words'), heading('“We stopped wondering where the next patient was coming from.”'), text('[Two or three sentences from the client about what changed for the business and for them personally.]', 'fs-lead'),
                         heading('[Client name]', 'p', 'fs-sig'), text('[Title], [Business]', 'fs-eyebrow'), gap_=12), cls='fs-hero', gap_=48), title='Client video'),
         section(sec_head('More results', 'More partner <span class="fs-gt">success stories.</span>'),
