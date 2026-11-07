@@ -148,7 +148,7 @@ Every image and background in the templates is hosted in the public GitHub repo,
 - If you imported templates before this change, delete them and import them again to pick up the images.
 
 ### Step 2: Site Settings first
-Import `first-search-site-settings.zip` (section 1 above) **before** the templates. It switches on the required features and adds the Global Colors and Global Fonts that every template links to. Templates imported before it will show unstyled text.
+Import `first-search-site-settings.zip` (section 1 above) **before** the templates, or set the four things listed there by hand. The templates need *Flexbox Container* switched on, the four Global Colors and the Custom CSS.
 If you already imported templates while *Flexbox Container* was off, they were saved empty: delete them and import them again.
 
 ### Step 3: import
@@ -227,5 +227,5 @@ If you'd rather use plain pages than Theme Builder for these, insert them into a
 ### Rebuilding
 `python3 elementor/build/build_all.py` (Python 3, no dependencies) regenerates every template plus `first-search-site-settings.zip`.
 - `build/data/proto-styles.json` holds the typography, colours and section spacing measured from the approved HTML at 1440 / 1024 / 390px.
-- `build/styler.py` writes those values into the templates as native Elementor settings, grouped into Global Fonts and Global Colors.
+- `build/styler.py` writes those values into the templates as native Elementor settings (colours linked to the four built-in Global Colors) and builds the Global Fonts list for the Site Settings file.
 - `elementor/preview/` has HTML renders of every template, used for QA. They mimic Elementor's container defaults, global styles and per-widget settings, but they're not a substitute for checking the real site.
