@@ -142,6 +142,15 @@ a.fs-link-u {
 .fs-dark .fs-link-u .elementor-button, .fs-dark .fs-link-u a { color: #fff !important; }
 
 /* ---------- 4. Buttons ---------- */
+/* Every button, every state: the gradient fills the whole button including its border and never repeats
+   (otherwise the end of the gradient shows as a thin strip down the left edge on hover). */
+.elementor-button, .elementor-button:hover, .elementor-button:focus, .elementor-button:focus-visible, .elementor-button:active,
+.elementor-button-wrapper .elementor-button, .e-n-menu .elementor-button {
+  background-origin: border-box !important;
+  background-clip: border-box !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+}
 [class*="elementor-kit-"] .elementor-button,
 .elementor-button {
   font-family: var(--fs-font);
