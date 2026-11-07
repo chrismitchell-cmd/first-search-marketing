@@ -59,7 +59,7 @@ def trust(items):
     cells = [col(heading(n.replace('★', '<small class="fs-star">★</small>'), 'p', 'fs-trust-num', 'center'), text(l, 'fs-trust-label', 'center'),
                  wpct=round(100 / len(items), 2), gap_=14) for n, l in items]
     counter_js = html("<script>(function(){function run(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.querySelectorAll('.fs-trust-num .elementor-heading-title').forEach(function(h){if(h.getAttribute('data-fsc'))return;h.setAttribute('data-fsc','1');var t=h.firstChild;if(!t||t.nodeType!==3)return;var m=t.textContent.match(/^(\\\\d+(?:\\\\.\\\\d+)?)(.*)$/);if(!m)return;var end=parseFloat(m[1]),dec=(m[1].split('.')[1]||'').length,rest=m[2];t.textContent=(0).toFixed(dec)+rest;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.disconnect();var t0=performance.now();(function tick(now){var p=Math.min((now-t0)/1400,1),k=1-Math.pow(1-p,3);t.textContent=(end*k).toFixed(dec)+rest;if(p<1)requestAnimationFrame(tick);})(t0);});},{threshold:.4});io.observe(h);});}if(document.readyState!=='loading')run();else document.addEventListener('DOMContentLoaded',run);})();</script>", 'fs-hidden-script')
-    return section(row(*cells, gap_=24, justify='space-between'), counter_js, cls='fs-dark', title='Trust band',
+    return section(row(*cells, gap_=24, justify='space-between', align='flex-start'), counter_js, cls='fs-dark fs-band', title='Trust band',
                    p={'unit': 'px', 'top': '52', 'right': '24', 'bottom': '56', 'left': '24', 'isLinked': False})
 
 # ---------- Problem cards ("Sound familiar?") ----------
@@ -420,3 +420,98 @@ def capacity(h2='We work with 25 businesses. That’s it.',
                        col(spots, text(f'<p><b>{spots_open}</b> of 25 partner spots open.</p>', 'fs-cap-label'), wpct=36, gap_=10),
                        gap_=40, justify='space-between', cls='fs-cap-row fs-nostyle'),
                    cls='fs-dark fs-band', title='Capacity', p={'unit': 'px', 'top': '56', 'right': '24', 'bottom': '56', 'left': '24', 'isLinked': False})
+
+
+# ---------- Stage explorer: wheel + stage pills (Nested Tabs titles) | stage card with its services ----------
+STAGE_DESC = {
+    'brand': 'The foundation everything else stands on: who you are, how you look and sound, and the systems that track what’s working.',
+    'thought': 'When someone needs what you sell, your business is the first name they see on Google, the map, AI answers and their feed.',
+    'choice': 'Getting seen is half of it. These services turn visitors into leads and leads into booked customers.',
+    'referral': 'Happy customers become your most trusted marketing channel, bringing themselves back and their friends with them.'}
+WHEEL_FX = """<svg class="fs-wheel-svg" viewBox="0 0 1100 1100" aria-hidden="true"></svg>
+<script>(function(){var sc=document.currentScript;if(!sc)return;function init(){var root=sc.closest('.fs-explorer');if(!root)return;var svg=sc.parentNode.querySelector('svg');
+var C=550,RO=545,RI=168,NS='http://www.w3.org/2000/svg';function pt(r,a){var t=a*Math.PI/180;return (C+r*Math.sin(t)).toFixed(1)+' '+(C-r*Math.cos(t)).toFixed(1);}
+function sec(a0,a1){return 'M'+pt(RO,a0)+'A'+RO+' '+RO+' 0 0 1 '+pt(RO,a1)+'L'+pt(RI,a1)+'A'+RI+' '+RI+' 0 0 0 '+pt(RI,a0)+'Z';}
+function circ(r){return 'M'+(C-r)+' '+C+'a'+r+' '+r+' 0 1 0 '+(r*2)+' 0a'+r+' '+r+' 0 1 0 '+(-r*2)+' 0Z';}
+var SH=[circ(RI),sec(0,118),sec(118,240),sec(240,360)];
+function tabs(){return root.querySelectorAll('.e-n-tabs-heading .e-n-tab-title');}
+function cur(){var t=tabs();for(var i=0;i<t.length;i++)if(t[i].getAttribute('aria-selected')==='true')return i;return 0;}
+function path(d,c){var p=document.createElementNS(NS,'path');p.setAttribute('d',d);p.setAttribute('class',c);svg.appendChild(p);return p;}
+function draw(){var a=cur();svg.innerHTML='';for(var i=0;i<4;i++)if(i!==a)path(SH[i],'fs-wz-soft');path(SH[a],'fs-wz-ring');
+[1,2,3,0].forEach(function(i){var h=path(SH[i],'fs-wz-hit');h.addEventListener('click',function(){var t=tabs();if(t[i])t[i].click();});});}
+draw();var hd=root.querySelector('.e-n-tabs-heading');if(hd&&window.MutationObserver)new MutationObserver(draw).observe(hd,{subtree:true,attributes:true,attributeFilter:['aria-selected']});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();</script>"""
+def stage_explorer(services, eb='The four stages', h2='Every service has a job in the customer journey.',
+                   lead='Choose a stage to see what it does for your business and which services power it.', btn=('Let’s Talk!', '/contact-us/')):
+    """services: (slug, name, icon, summary, stages). Nested Tabs: one tab per stage, its card lists the services that power it."""
+    def card(k):
+        rows = []
+        for slug, n, i, _, st in [s for s in services if k in s[4]]:
+            rows.append(con(con(image(f'assets/img/icons/{i}.webp', '', None, 'center', ''), cls='fs-ps-ico', justify='center', align='center'),
+                            heading(n, 'p', 'fs-ps-n'), heading(f'{len(st)} stages', 'p', 'fs-ps-more') if len(st) > 1 else None,
+                            d='row', gap_=14, align='center', mobile_col=False, cls='fs-ps-row',
+                            s={'html_tag': 'a', 'link': {'url': f'/services/{slug}/', 'is_external': '', 'nofollow': ''}}))
+        return con(heading(plogo(k), 'p', 'fs-ex-logo'), heading(STAGES[k][0], 'h3', 'fs-ex-h'), text(STAGE_DESC[k], 'fs-ex-desc'),
+                   heading(f'Services that power {STAGE_NAME[k]}', 'p', 'fs-ex-label'), con(*rows, gap_=8, cls='fs-ps-list'),
+                   button(f'Explore {STAGE_NAME[k]}', f'/first{k}/', 'fs-ex-btn'), cls='fs-gcard fs-ex-card', gap_=0)
+    tabs = nested_tabs([(plogo(k), card(k)) for k in STAGES], 'fs-explorer-tabs')
+    tabs['settings']['breakpoint_selector'] = 'none'
+    wheel = con(image('assets/img/framework-wheel.webp', 'fs-wheel-img', '100%', 'center', 'The FirstSearch Framework wheel: firstbrand at the centre, surrounded by firstthought, firstchoice and firstreferral'),
+                html(WHEEL_FX, 'fs-wheel-fx'), cls='fs-wheel')
+    return section(sec_head(eb, h2, lead), con(wheel, tabs, cls='fs-explorer fs-nostyle'), button(btn[0], btn[1], 'fs-btn-lg', 'center'),
+                   cls='fs-dark fs-fwblock', title='Framework explorer', gap_=56,
+                   p={'unit': 'px', 'top': '72', 'right': '24', 'bottom': '140', 'left': '24', 'isLinked': False},
+                   s={'_element_id': 'framework', 'padding_tablet': {'unit': 'px', 'top': '64', 'right': '24', 'bottom': '110', 'left': '24', 'isLinked': False},
+                      'padding_mobile': {'unit': 'px', 'top': '56', 'right': '16', 'bottom': '96', 'left': '16', 'isLinked': False}})
+
+# ---------- All services: native service cards + stage filter pills (small script; cards stay editable) ----------
+SVC_FILTER = """<div class="fs-fpills" role="group" aria-label="Filter services by stage"></div><p class="fs-sv-count" aria-live="polite"></p>
+<script>(function(){var sc=document.currentScript;if(!sc)return;function init(){var sec=sc.closest('.fs-allsvc');if(!sec)return;var grid=sec.querySelector('.fs-sv-grid');if(!grid)return;
+var wrap=sc.parentNode,pills=wrap.querySelector('.fs-fpills'),count=wrap.querySelector('.fs-sv-count'),ORDER=['brand','thought','choice','referral'],LIMIT=6,filter='all',open=false;
+var cards=[].slice.call(grid.children).filter(function(c){return c.classList.contains('fs-sv');});
+cards.forEach(function(c){c._st=[].map.call(c.querySelectorAll('.fs-sv-pl .fs-plogo'),function(p){return p.textContent.trim().toLowerCase().replace(/^first/,'');});});
+var more=document.createElement('div');more.className='fs-sv-more';more.innerHTML='<button type="button" aria-expanded="false"></button>';grid.parentNode.insertBefore(more,grid.nextSibling);
+function logo(k){return '<span class="fs-plogo"><b>first</b>'+k+'</span>';}
+function render(){var list=cards.filter(function(c){return filter==='all'||c._st.indexOf(filter)>-1;});var lim=filter==='all'&&!open?LIMIT:list.length;
+cards.forEach(function(c){c.hidden=true;});list.forEach(function(c,i){c.hidden=i>=lim;});
+pills.innerHTML=['all'].concat(ORDER).map(function(k){var n=k==='all'?cards.length:cards.filter(function(c){return c._st.indexOf(k)>-1;}).length;
+return '<button type="button" class="fs-fpill" data-f="'+k+'" aria-pressed="'+(filter===k)+'">'+(k==='all'?'All services':logo(k))+'<span class="n">'+n+'</span></button>';}).join('');
+count.textContent='Showing '+Math.min(lim,list.length)+' of '+cards.length+' services';
+var b=more.querySelector('button');more.hidden=!(filter==='all'&&cards.length>LIMIT);b.textContent=open?'Show fewer services':'See more services ('+(cards.length-LIMIT)+' more)';b.setAttribute('aria-expanded',open);}
+pills.addEventListener('click',function(e){var b=e.target.closest('.fs-fpill');if(!b)return;filter=b.getAttribute('data-f');open=false;render();});
+more.addEventListener('click',function(e){if(!e.target.closest('button'))return;open=!open;render();});render();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();</script>"""
+SVC_ONE = {
+    'branding-content-creation': 'Brand strategy, identity and content that make you recognizable everywhere.',
+    'website': 'Fast, conversion-focused websites built to be found and to turn visitors into leads.',
+    'analytics': 'Tracking and dashboards that show what’s working, in plain English.',
+    'crm': 'One home for every lead and customer, set up so your team actually uses it.',
+    'seo': 'Rank on Google, in the map pack and in AI search results.',
+    'advertising': 'Google and Meta campaigns built around cost per lead, not clicks.',
+    'social-media': 'Content that gets you found, chosen and talked about.',
+    'local-ties': 'Partnerships, sponsorships and community presence that make you known offline.',
+    'lead-generation': 'Offers, lead magnets and landing pages that turn interest into inquiries.',
+    'marketing-automation': 'Follow-up, nurture and review requests that run on their own.',
+    'loyalty': 'Programs that bring customers back again and again.',
+    'reviews-referrals': 'Systems that turn happy customers into reviews and referrals.'}
+def service_grid(services, eb='All services', h2='Twelve services. <span class="fs-gt">One connected system.</span>',
+                 lead='Every service has a specific job in your customer journey. Filter by stage to see which services power it, or open any service to see exactly what’s included.'):
+    """Each card is a linked container (icon, title, text, stage chips). The filter reads each card's stage chips,
+    so adding a stage chip to a card is all it takes to list it under that stage."""
+    cards = [con(image(f'assets/img/icons/{i}.webp', 'fs-sv-ico', None, 'left', ''), heading(n, 'h3', 'fs-sv-h'), text(SVC_ONE.get(slug, d), 'fs-sv-p'),
+                 text('<p>' + ' '.join(f'<span class="fs-plogo-chip fs-plogo-chip--sm">{plogo(k)}</span>' for k in st) + '</p>', 'fs-sv-pl'),
+                 cls='fs-sv', gap_=8, p=pad(24, 24, 22, 30), s={'html_tag': 'a', 'link': {'url': f'/services/{slug}/', 'is_external': '', 'nofollow': ''}})
+             for slug, n, i, d, st in services]
+    return section(sec_head(eb, h2, lead), html(SVC_FILTER, 'fs-sv-filter'), row(*cards, gap_=24, wrap=True, align='stretch', cls='fs-sv-grid fs-nostyle'),
+                   cls='fs-geo fs-allsvc', title='All services', bg_img='assets/img/design/bg-geometric.jpg', gap_=0,
+                   s={'_element_id': 'all-services'})
+
+# ---------- Delivery band: copy + check chips | glass price box ----------
+def delivery_band(eb='How it’s delivered', h2='No à la carte menu. One partnership, every service your plan needs.',
+                  lead='Your strategy decides which services you need and in what order, starting with your weakest stage. Everything runs on one fixed monthly retainer, with results guaranteed in writing.',
+                  chips=('Fixed monthly retainer', 'Six-month partnership', 'Guaranteed results'), price='From [$X,XXX]', per='per month', btn=('Let’s Talk!', '/contact-us/')):
+    left = con(eyebrow(eb), heading(h2, 'h2', 'fs-band-h fs-cap-h'), text(lead, 'fs-band-p'), icon_list(list(chips), 'fas fa-check', 'fs-del-chips'), gap_=0, cls='fs-del-copy')
+    box = con(heading(price, 'p', 'fs-pb-price'), text(per, 'fs-pb-per'), button(btn[0], btn[1], 'fs-btn-grad'), cls='fs-pricebox', align='center', gap_=0, p=pad(30))
+    return section(con(left, box, d='row', gap_=40, align='center', cls='fs-del-row fs-nostyle'), cls='fs-dark fs-band', title='Delivery',
+                   p={'unit': 'px', 'top': '80', 'right': '24', 'bottom': '80', 'left': '24', 'isLinked': False},
+                   s={'padding_mobile': {'unit': 'px', 'top': '56', 'right': '16', 'bottom': '56', 'left': '16', 'isLinked': False}})

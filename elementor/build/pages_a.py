@@ -177,36 +177,14 @@ def why():
 
 # ======================= SERVICES OVERVIEW =======================
 def overview():
-    def stage_svcs(k):
-        svcs = [s for s in SERVICES if k in s[4]]
-        h, d, *_ = STAGES[k]
-        card = con(html(f'<span class="fs-plogo-chip">{plogo(k, size=30)}</span>'), heading(h, 'h3'), text(d),
-                   heading(f'Services that power First{k.capitalize()}', 'p', 'fs-eyebrow'),
-                   *[image_box(f'assets/img/icons/{i}.webp', n, '', 'fs-tile fs-svc-row', tag='p') for _, n, i, _, _ in svcs],
-                   button(f'Explore First{k.capitalize()}', f'/first{k}/'), cls='fs-gcard', p=pad(32), gap_=10)
-        return con(card, p=pad(0))
-    fw = section(sec_head('The four stages', 'Every service has a job in the customer journey.', 'Choose a stage to see what it does for your business and which services power it.'),
-                 row(col(image('assets/img/framework-wheel.webp', '', '100%', 'center', 'The FirstSearch Framework wheel'), wpct=45),
-                     col(nested_tabs([(f'first{k}', stage_svcs(k)) for k in STAGES], 'fs-stage-tabs'), wpct=55), gap_=48),
-                 button('Let’s Talk!', '/contact-us/', 'fs-btn-lg', 'center'), cls='fs-dark fs-dark-round', title='Framework', gap_=40)
-    fw['settings']['_element_id'] = 'framework'
-    grid = row(*[col(image_box(f'assets/img/icons/{i}.webp', n, d + '<br><small>' + ' · '.join(f'First{k.capitalize()}' for k in st) + '</small>', 'fs-tile', 'top'),
-                     button('See the service', f'/services/{slug}/', 'fs-link-u'), wpct=31, cls='fs-gcard fs-gcard--thin fs-gcard--hover', p=pad(24), gap_=8)
-                 for slug, n, i, d, st in SERVICES], gap_=24, wrap=True, align='stretch')
-    allsec = section(sec_head('All services', 'Twelve services. <span class="fs-gt">One connected system.</span>',
-                              'Every service has a specific job in your customer journey. Open any service to see exactly what’s included.'), grid,
-                     cls='fs-geo', title='All services', bg_img=GEO)
-    allsec['settings']['_element_id'] = 'all-services'
     return [
         hero('Our services', 'Everything your marketing needs, <span class="fs-gt">built as one system.</span>',
              'Twelve services, organized around the four stages of the FirstSearch Framework. We don’t sell them as a menu. We build the right mix into one plan for your business.',
              link=('Browse all services', '#all-services'), media=vid()),
         trust([('12', 'services, one plan'), ('4', 'stages of the customer journey'), ('1', 'fixed monthly retainer')]),
-        fw, allsec,
-        section(row(col(eyebrow('How it’s delivered'), heading('No à la carte menu. One partnership, every service your plan needs.'),
-                        text('Your strategy decides which services you need and in what order, starting with your weakest stage. Everything runs on one fixed monthly retainer, with results guaranteed in writing.', 'fs-lead'), wpct=65),
-                    col(heading('From [$X,XXX]', 'p', 'fs-price'), button('Let’s Talk!', '/contact-us/', 'fs-btn-white fs-btn-lg'), wpct=30, align='center'), gap_=40),
-                cls='fs-dark', title='Delivery'),
+        stage_explorer(SERVICES),
+        service_grid(SERVICES),
+        delivery_band(),
         quiz(),
         faq('Questions about <span class="fs-gt">our services</span>', [
             ('Can I pick only certain services?', 'Every partnership is built from the services your plan needs, so you won’t pay for things that don’t move your business. What we don’t do is sell services one at a time, because marketing works as a system.'),
