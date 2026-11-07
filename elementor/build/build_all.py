@@ -62,6 +62,12 @@ for path, pk, tpl in built:
                 if isinstance(e['settings'].get('padding' + suf), dict): e['settings']['padding' + suf]['bottom'] = '0'
             if nxt['settings'].get('_title') not in ('CTA banner', 'Overlapping button'):
                 nxt['settings']['margin'] = {'unit': 'px', 'top': '-46', 'right': '0', 'bottom': '0', 'left': '0', 'isLinked': False}
+# Footer link lists rest at 86% white (white + gradient underline on hover), as in the design
+def _foot(e):
+    if e.get('widgetType') == 'icon-list':
+        e['settings']['text_color'] = '#FFFFFFDB'; e['settings'].get('__globals__', {}).pop('text_color', None)
+    for c in e.get('elements', []): _foot(c)
+for e in header_footer.FOOTER['content']: _foot(e)
 for path, _, tpl in built:
     save(f'../templates/{path}.json', tpl)
 css = open('../site-settings.css', encoding='utf-8').read()

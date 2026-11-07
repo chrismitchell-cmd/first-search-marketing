@@ -70,7 +70,12 @@ def render(e, depth=0):
     if k == 'theme-site-logo': return wrap('<img src="../../assets/img/logo.png" style="width:220px;height:auto;display:block" alt="logo">')
     if k in ('html',): return wrap(s['html'])
     if k == 'icon-list':
-        items = ''.join(f'<li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0">' + (f'<span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span>' if it['selected_icon'].get('value') else '') + f'<span class="elementor-icon-list-text">{it["text"]}</span></li>' for it in s['icon_list'])
+        def li(it):
+            inner = (f'<span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span>' if it['selected_icon'].get('value') else '') + f'<span class="elementor-icon-list-text">{it["text"]}</span>'
+            url = (it.get('link') or {}).get('url')
+            if url: inner = f'<a href="{url}" style="display:flex;gap:10px;align-items:baseline">{inner}</a>'
+            return f'<li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0">{inner}</li>'
+        items = ''.join(li(it) for it in s['icon_list'])
         return wrap(f'<ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0">{items}</ul>')
     if k == 'image-box':
         src = s['image']['url'].replace(ASSET, '../upload/first-search/')

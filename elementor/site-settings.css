@@ -873,4 +873,24 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 .fs-news-form .elementor-field-label { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 @media (max-width: 767px) { .fs-news-form .elementor-form-fields-wrapper { flex-wrap: wrap; } .fs-news-form .elementor-form-fields-wrapper > .elementor-field-group { flex: 1 1 100%; } }
 .fs-footer .fs-bottom a { text-decoration: none !important; margin-left: 16px; }
-.fs-footer .fs-bottom a:hover { color: #fff; text-decoration: underline !important; text-decoration-color: #7CD2D3 !important; text-underline-offset: 4px; }
+
+/* ---------- 25. Footer link hover: white text + gradient underline (as the header menu) ---------- */
+.fs-footer .elementor-icon-list-item > a { text-decoration: none !important; }
+.fs-footer .elementor-icon-list-item > a .elementor-icon-list-text,
+.fs-footer .fs-bottom a {
+  position: relative; display: inline-block; padding-bottom: 3px; transition: color .15s ease;
+}
+.fs-footer .elementor-icon-list-item > a .elementor-icon-list-text::after,
+.fs-footer .fs-bottom a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--fs-grad);
+  transform: scaleX(0); transform-origin: left; transition: transform .2s ease; pointer-events: none;
+}
+.fs-footer .elementor-icon-list-item > a:hover .elementor-icon-list-text,
+.fs-footer .elementor-icon-list-item > a:focus-visible .elementor-icon-list-text,
+.fs-footer .fs-bottom a:hover, .fs-footer .fs-bottom a:focus-visible { color: #fff !important; text-decoration: none !important; }
+.fs-footer .elementor-icon-list-item > a:hover .elementor-icon-list-text::after,
+.fs-footer .elementor-icon-list-item > a:focus-visible .elementor-icon-list-text::after,
+.fs-footer .fs-bottom a:hover::after, .fs-footer .fs-bottom a:focus-visible::after { transform: scaleX(1); }
+/* stage logos in the footer: gentle fade on hover, as in the design */
+.fs-footer .fs-stage-links a { transition: opacity .15s ease; }
+.fs-footer .fs-stage-links a:hover { opacity: .85; }
