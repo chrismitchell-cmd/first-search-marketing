@@ -150,15 +150,28 @@ def table(rows, head=('Metrics', 'Before', 'After')):
                           'eael_data_table_content_row_colspan': 1, 'eael_data_table_content_row_title': txt, 'eael_data_table_content_row_css_class': c})
     return w('eael-data-table', {'eael_data_table_header_cols_data': cols, 'eael_data_table_content_rows': cells,
                                  'table_alignment': 'center', 'eael_enable_responsive_header_styles': ''}, 'fs-dtable')
-def review(q, who):
-    return con(html(f'<div class="fs-review"><div class="fs-stars">★★★★★</div><blockquote>{q}</blockquote><cite>{who} <span>· Posted on Google</span></cite></div>'),
-               cls='fs-gcard', p=pad(26))
+def testimonial(q, who, where='Posted on Google'):
+    """Essential Addons Testimonial widget (stars on top, quote, name, source). Edit the text in the widget panel; the design comes from the fs-testi CSS."""
+    return w('eael-testimonial', {'eael_testimonial_style': 'default-style', 'eael_testimonial_enable_avatar': '', 'image': {'url': '', 'id': ''},
+                               'eael_testimonial_name': who, 'eael_testimonial_company_title': where, 'eael_testimonial_description': q,
+                               'eael_testimonial_show_quote': '', 'eael_testimonial_enable_rating': 'yes', 'eael_testimonial_rating_number': 'rating-five',
+                               'eael_testimonial_rating_position': 'top'}, 'fs-testi')
+def review(q, who, where='Posted on Google'):
+    """Google review card: the testimonial in a gradient-border card."""
+    return con(testimonial(q, who, where), cls='fs-gcard fs-review-card', p=pad(34, 32, 30, 32))
+def review_schema(items, business='First Search Marketing', url='https://befirstsearch.com/'):
+    """Review structured data (JSON-LD) for the reviews shown on the page. Keep it in step with the review widgets."""
+    data = {'@context': 'https://schema.org', '@type': 'ProfessionalService', 'name': business, 'url': url,
+            'review': [{'@type': 'Review', 'author': {'@type': 'Person', 'name': who},
+                        'reviewRating': {'@type': 'Rating', 'ratingValue': 5, 'bestRating': 5},
+                        'reviewBody': q.strip('“”"'), 'publisher': {'@type': 'Organization', 'name': 'Google'}} for q, who in items]}
+    return html('<script type="application/ld+json">' + _json.dumps(data, ensure_ascii=False) + '</script>', 'fs-hidden-script')
 def case_reviews(client='[Client name] · [Industry, NH town]', h3='[From invisible on Google to booked out three weeks ahead]',
                  rows=(('Monthly leads', '12', '41'), ('Map pack position', '#9', '#1'), ('Google reviews', '18', '112'))):
     case = col(image('assets/img/design/case-dental.webp', 'fs-img-frame', '100%'),
                heading(client, 'p', 'fs-eyebrow'), heading(h3, 'h3'), table(rows), link_u('Read the full story', '/case-studies/'),
                wpct=56, cls='fs-purple-card fs-dark', p=pad(24), gap_=16)
-    revs = col(*[review(q, n) for q, n in REVIEWS], link_u('Read all [XX] Google reviews', '#'), wpct=40, gap_=22)
+    revs = col(*[review(q, n) for q, n in REVIEWS], link_u('Read all [XX] Google reviews', '#'), review_schema(REVIEWS), wpct=40, gap_=22)
     return section(row(case, revs, gap_=40, align='flex-start'), cls='fs-geo', title='Case study + reviews', bg_img='assets/img/design/bg-geometric.jpg')
 
 # ---------- How it works ----------

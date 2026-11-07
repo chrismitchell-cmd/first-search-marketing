@@ -243,7 +243,7 @@ def training():
                            wpct=56, cls='fs-purple-card fs-dark', p=pad(32), gap_=12),
                        col(con(row(image('assets/img/design/guarantee-seal.webp', '', 100), con(heading('The FirstSearch Guarantee', 'h3'),
                                text('If we don’t deliver [the lead growth in your roadmap], [we keep working at no cost until we do].'), gap_=6), gap_=18, s={'flex_direction_mobile': 'row'}), cls='fs-gcard', p=pad(24)),
-                           review(*REVIEWS[0]), wpct=40, gap_=20), gap_=28, align='stretch'),
+                           review(*REVIEWS[0]), review_schema(REVIEWS[:1]), wpct=40, gap_=20), gap_=28, align='stretch'),
                    cls='fs-geo', title='Partnership', bg_img=GEO)
     part['settings']['_element_id'] = 'partnership'
     compare = section(sec_head('Three ways to work with us', 'Pick how much you <span class="fs-gt">want to do yourself.</span>'), html(tbl),

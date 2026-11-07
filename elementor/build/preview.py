@@ -122,6 +122,11 @@ def render(e, depth=0):
     if k == 'icon':
         ic = {'fa-search': '⌕', 'fa-route': '⤳', 'fa-cogs': '⚙', 'fa-chart-line': '📈'}.get(s['selected_icon']['value'].split()[-1], '●')
         return wrap(f'<div class="elementor-icon-wrapper" style="text-align:{s.get("align", "center")}"><span class="elementor-icon" style="font-size:{u(s.get("size")) or "50px"};color:{s.get("primary_color", "#250762")};line-height:1">{ic}</span></div>')
+    if k == 'eael-testimonial':
+        stars = '<ul class="testimonial-star-rating">' + '<li><i class="fas fa-star" aria-hidden="true">★</i></li>' * 5 + '</ul>'
+        return wrap(f'<div class="eael-testimonial-item clearfix {s["eael_testimonial_style"]} {s["eael_testimonial_rating_number"]}">{stars}<div class="eael-testimonial-content">'
+                    f'<div class="eael-testimonial-text">{s["eael_testimonial_description"]}</div><p class="eael-testimonial-user">{s["eael_testimonial_name"]}</p>'
+                    f'<p class="eael-testimonial-user-company">{s["eael_testimonial_company_title"]}</p></div></div>')
     if k == 'eael-data-table':
         th = ''.join(f'<th class="{c.get("eael_data_table_header_css_class", "")}"><span class="data-table-header-text">{c["eael_data_table_header_col"]}</span></th>' for c in s['eael_data_table_header_cols_data'])
         body, row = '', None
@@ -221,6 +226,7 @@ def widget_style(e):
                     if v in (None, ''): continue
                     decl += f"{css}:{v['size']}{v.get('unit','px')};" if isinstance(v, dict) else f'{css}:{v}' + (', sans-serif' if p == 'font_family' else '') + ';'
                 if decl: CSSV.append((mq, f'{sel}{{{decl}}}'))
+EA_CSS = ''.join(open(f).read() for f in ['/tmp/claude-0/-home-user-first-search-marketing/cbda635a-c308-5918-bc62-78d4657e8ad1/scratchpad/ea/src/assets/front-end/css/view/testimonials.css'] if os.path.exists(f))
 def page(paths, out):
     CSSV.clear()
     body = ''
@@ -232,7 +238,7 @@ def page(paths, out):
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
 <style>body{{margin:0;background:#fff}} img{{max-width:100%}} *{{box-sizing:border-box}} .e-con{{min-width:0}} .elementor-widget{{min-width:0}} p{{margin:0 0 .6em}}</style>
-<style>{kit_vars()}</style><style>{EL_DEFAULTS}</style><style>{css}</style><style>{EL_GLOBALS}</style><style>{rules}</style></head><body class="elementor-kit-5"><div class="elementor elementor-9">{body}</div></body></html>'''
+<style>{kit_vars()}</style><style>{EL_DEFAULTS}</style><style>{EA_CSS}</style><style>{css}</style><style>{EL_GLOBALS}</style><style>{rules}</style></head><body class="elementor-kit-5"><div class="elementor elementor-9">{body}</div></body></html>'''
     doc = doc.replace('https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/', '../upload/first-search/')
     open(out, 'w').write(doc)
 if __name__ == '__main__':

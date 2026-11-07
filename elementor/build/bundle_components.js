@@ -29,6 +29,33 @@ const COMPONENTS = [
   ].join('\n') },
 ];
 
+// Framework: write all four stage panels into the markup (readable by search engines without JS);
+// the script then only switches which panel is visible.
+function staticStages(html, css, js) {
+  const a = js.indexOf('const PILLARS = ['), b = js.indexOf('];', a) + 2;
+  const PILLARS = Function('return ' + js.slice(a + 'const PILLARS = '.length, b - 1))();
+  const panel = (p, i) => `<div class="fw-stage" data-i="${i}"${i ? ' hidden' : ''}>
+<div class="ptag-logo"><span class="plogo" role="img" aria-label="First${p.name}"><b>first</b>${p.name.toLowerCase()}</span></div>
+<h3>${p.outcome}</h3>
+<p class="fw-desc">${p.desc}</p>
+<p class="inc-label">What's included</p>
+<ul class="checks">${p.inc.map(x => `<li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>${x}</li>`).join('')}</ul>
+<p class="quizbox"><b>${p.quiz}</b> <a href="#" data-ph-link="Framework Quiz">Find out in the quiz.</a></p>
+<a class="svc-link" href="/first${p.name.toLowerCase()}/">${p.link}</a>
+</div>`;
+  const slot = '<div class="fw-content" id="fw-content"></div>';
+  if (!html.includes(slot)) throw new Error('framework: content slot not found');
+  html = html.replace(slot, `<div class="fw-content" id="fw-content">${PILLARS.map(panel).join('\n')}</div>`);
+  const h0 = js.indexOf('  const html = p => `'), h1 = js.indexOf('`;', h0) + 2;
+  if (h0 < 0 || !js.includes('content.innerHTML = html(PILLARS[i])')) throw new Error('framework: script markers not found');
+  js = js.slice(0, a) + js.slice(b, h0)
+    + "  const stages = [...content.querySelectorAll('.fw-stage')];\n  const swap = i => stages.forEach((s, k) => { s.hidden = k !== i; });"
+    + js.slice(h1);
+  js = js.split('content.innerHTML = html(PILLARS[i])').join('swap(i)');
+  css += '\n.fsx-framework .fw-stage[hidden]{display:none !important;}';
+  return { html, css, js };
+}
+
 function mainScript(src) {
   const a = src.indexOf("<script>\n(() => {\n  'use strict';");
   const b = src.indexOf('</script>', a);
@@ -176,6 +203,7 @@ ${W} img, ${W} svg{display:block;max-width:100%;height:auto;}`;
     css = reset + '\n' + css + '\n' + res.kf;
     let js = jsSeg.replace(/assets\/img\/([\w\/.-]+)/g, (m, f) => CDN + f).replace(/(['"`])([\w-]+\.html)(\?[^'"`]*)?\1/g, (m, q, f) => `${q}${LINKS[f] || '/'}${q}`)
       .replace(/pillars\.html\?pillar=\$\{([^}]+)\}/g, '/first${$1}/');
+    if (C.name === 'framework') ({ html, css, js } = staticStages(html, css, js));
     fs.writeFileSync(path.join(OUT, C.name + '.json'), JSON.stringify({ html: res.sprite + html, css, js }, null, 1));
     console.log(C.name, 'html', html.length, 'css', css.length, 'js', js.length);
   }

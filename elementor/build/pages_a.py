@@ -167,7 +167,7 @@ def why():
                 cls='fs-geo', title='Competencies', bg_img=GEO),
         guarantee(),
         stats([(47, 'average increase in leads', '%', ''), (1200, 'five-star reviews generated for partners', '', ''), (0, 'partner retention [CONFIRM]', '%', ''), (4.9, 'average Google rating', '★', '')]),
-        section(sec_head('Proof', 'Don’t take our <span class="fs-gt">word for it.</span>'), row(*[col(review(q, n), wpct=48) for q, n in REVIEWS], gap_=28, align='stretch'),
+        section(sec_head('Proof', 'Don’t take our <span class="fs-gt">word for it.</span>'), row(*[col(review(q, n), wpct=48) for q, n in REVIEWS], gap_=28, align='stretch'), review_schema(REVIEWS),
                 link_u('Read all [XX] Google reviews', '#'), cls='fs-geo', title='Reviews', bg_img=GEO, align='center'),
         steps('', 'What working with us looks like', 'No black boxes. You always know what’s happening.', [
             ('Kickoff and onboarding.', '<b>Week 1</b> · Your welcome kit, account access, goals and the people you’ll work with.'),

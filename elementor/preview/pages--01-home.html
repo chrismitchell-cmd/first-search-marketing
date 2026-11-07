@@ -11,6 +11,357 @@
 @media (max-width:767px){.e-con.e-flex{--width:100%;flex-wrap:wrap}}
 .elementor-heading-title{padding:0;margin:0;line-height:1}
 .elementor-widget-text-editor p{margin-top:0;margin-bottom:.9rem}
+</style><style>.eael-testimonial-slider {
+  position: relative;
+}
+
+.testimonial-star-rating {
+  padding: 0;
+  margin: 0;
+}
+
+.testimonial-star-rating li {
+  list-style: none;
+  display: inline-block;
+}
+
+.testimonial-star-rating li i {
+  color: #d8d8d8;
+}
+
+.rating-five .testimonial-star-rating li i {
+  color: #f2b01e;
+}
+
+.rating-one .testimonial-star-rating li:first-child i {
+  color: #f2b01e;
+}
+
+.rating-two .testimonial-star-rating li:nth-child(1) i,
+.rating-two .testimonial-star-rating li:nth-child(2) i {
+  color: #f2b01e;
+}
+
+.rating-three .testimonial-star-rating li:nth-child(1) i,
+.rating-three .testimonial-star-rating li:nth-child(2) i,
+.rating-three .testimonial-star-rating li:nth-child(3) i {
+  color: #f2b01e;
+}
+
+.rating-four .testimonial-star-rating li:nth-child(1) i,
+.rating-four .testimonial-star-rating li:nth-child(2) i,
+.rating-four .testimonial-star-rating li:nth-child(3) i,
+.rating-four .testimonial-star-rating li:nth-child(4) i {
+  color: #f2b01e;
+}
+
+/*--- Default styles ---*/
+
+.eael-testimonial-image img {
+  max-width: 100%;
+}
+
+.eael-testimonial-image {
+  padding: 10px 0px 0px 0px;
+}
+
+.eael-testimonial-image > figure {
+  display: block;
+  margin: 0;
+}
+
+.testimonial-avatar-rounded figure img {
+  border-radius: 50% !important;
+  height: auto;
+}
+
+.eael-testimonial-content {
+  margin: 0;
+  padding: 10px;
+}
+
+.eael-testimonial-item {
+  position: relative;
+}
+
+.eael-testimonial-item > figure {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.eael-testimonial-item .center-text {
+  text-align: center;
+}
+
+.eael-testimonial-item .right-text {
+  text-align: right;
+}
+
+.eael-testimonial-item .left-text {
+  text-align: left;
+}
+
+.eael-testimonial-item .justify-text {
+  text-align: justify;
+}
+
+.eael-testimonial-item .eael-testimonial-image figure img {
+  display: inline-block;
+}
+
+.eael-testimonial-item .eael-testimonial-quote::after {
+  color: inherit !important;
+  content: "\f10e";
+  font-family: "Font Awesome 5 Free";
+  font-size: 200%;
+  font-weight: 900;
+}
+
+.eael-testimonial-item.left .eael-testimonial-image {
+  text-align: left;
+}
+
+.eael-testimonial-item.center .eael-testimonial-image {
+  text-align: center;
+}
+
+.eael-testimonial-item.right .eael-testimonial-image {
+  text-align: right;
+}
+
+.eael-testimonial-item.simple-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fefde9;
+  border-radius: 10px;
+  padding: 30px;
+  gap: 30px;
+  position: relative;
+  font-family: "Segoe UI", sans-serif;
+}
+
+@media screen and (max-width: 767px) {
+  .eael-testimonial-item.simple-layout {
+    display: block;
+  }
+}
+
+.eael-testimonial-item.simple-layout .eael-testimonial-image img {
+  width: 180px;
+  height: auto;
+  border-radius: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.eael-testimonial-item.simple-layout .eael-testimonial-content {
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.eael-testimonial-item.simple-layout .eael-testimonial-user {
+  display: block;
+  font-size: 1.5rem;
+  margin: 0 0 5px;
+  font-weight: bold;
+  color: #111827;
+}
+
+.eael-testimonial-item.simple-layout .eael-testimonial-user-company {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.eael-testimonial-item.simple-layout .eael-testimonial-text {
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.eael-testimonial-content .eael-testimonial-text {
+  font-size: 100%;
+  font-style: italic;
+  line-height: 1.5;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.eael-testimonial-content .eael-testimonial-user {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 105%;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 5px;
+}
+
+.eael-testimonial-content .eael-testimonial-user-company {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 90%;
+  font-style: italic;
+  font-weight: lighter;
+  line-height: 1.75;
+  margin-bottom: 0;
+  margin-top: 1px;
+}
+
+.eael-testimonial-image {
+  position: relative;
+}
+
+/*--- Left align ---*/
+
+.icon-img-left-content .eael-testimonial-image {
+  float: left;
+  width: 30%;
+}
+
+.icon-img-left-content .eael-testimonial-content {
+  float: left;
+  width: 70%;
+  text-align: left;
+}
+
+.icon-img-left-content.eael-testimonial-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.icon-img-left-content .eael-testimonial-quote {
+  position: absolute;
+  right: 0;
+}
+
+.icon-img-left-content .eael-testimonial-text {
+  margin-top: 0;
+}
+
+/*--- Center align ---*/
+
+.eael-testimonial-align-centered .eael-testimonial-user,
+.eael-testimonial-align-centered .eael-testimonial-user-company {
+  float: none;
+  text-align: center;
+}
+
+.eael-testimonial-align-centered .eael-testimonial-image > figure img {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/*--- Right align ---*/
+
+.icon-img-right-content .eael-testimonial-image {
+  float: right;
+  width: 30%;
+}
+
+.icon-img-right-content .eael-testimonial-content {
+  float: right;
+  width: 70%;
+  text-align: right;
+}
+
+.icon-img-right-content.eael-testimonial-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.icon-img-right-content .eael-testimonial-quote {
+  position: absolute;
+}
+
+.icon-img-right-content .eael-testimonial-text {
+  margin-top: 0;
+}
+
+.classic-style.testimonial-alignment-center .eael-testimonial-image,
+.default-style.testimonial-alignment-center .eael-testimonial-image {
+  text-align: center;
+}
+
+.classic-style.testimonial-alignment-right .eael-testimonial-image,
+.default-style.testimonial-alignment-right .eael-testimonial-image {
+  text-align: right;
+}
+
+.classic-style.testimonial-alignment-center .eael-testimonial-image > figure,
+.default-style.testimonial-alignment-center .eael-testimonial-image > figure {
+  text-align: center;
+}
+
+span.eael-testimonial-quote {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+/*--- Float title image style ---*/
+
+.eael-testimonial-inline-bio .eael-testimonial-image {
+  float: left;
+}
+
+.eael-testimonial-inline-bio .bio-text {
+  padding-top: 10px;
+}
+
+.eael-testimonial-content.eael-testimonial-inline-bio {
+  overflow: hidden;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.eael-testimonial-inline-bio .testimonial-star-rating,
+.eael-testimonial-inline-bio .bio-text {
+  float: left;
+  width: 65%;
+}
+
+.testimonial-inline-style .eael-testimonial-image {
+  float: left;
+  max-width: 100%;
+  padding: 0;
+  margin-right: 15px;
+}
+
+.testimonial-inline-style {
+  overflow: hidden;
+  text-align: left;
+}
+
+.content-top-icon-title-inline .eael-testimonial-align-centered .eael-testimonial-text {
+  text-align: center;
+}
+
+.content-top-icon-title-inline .eael-testimonial-align-right .eael-testimonial-text {
+  text-align: right;
+}
+
+.content-bottom-icon-title-inline .eael-testimonial-text,
+.content-bottom-icon-title-inline .eael-testimonial-align-left .eael-testimonial-text {
+  text-align: left;
+}
+
+.content-bottom-icon-title-inline .eael-testimonial-align-centered .eael-testimonial-text {
+  text-align: center;
+}
+
+.content-bottom-icon-title-inline .eael-testimonial-align-right .eael-testimonial-text {
+  text-align: right;
+}
 </style><style>/* ==========================================================================
    First Search Marketing - Elementor Site Settings > Custom CSS
    Adds what Elementor can't do natively: gradient borders and text, glows,
@@ -532,7 +883,6 @@ a.fs-link-u {
 .fs-step { position: relative; }  /* padding is set on the container in Elementor */
 .fs-step-num .elementor-heading-title { position: absolute; top: -78px; left: 50%; transform: translateX(-50%); font-size: 110px; font-weight: 800; line-height: 1; color: transparent; background: linear-gradient(180deg, #8FD5EE, var(--fs-sky) 55%, var(--fs-royal)); -webkit-background-clip: text; background-clip: text; }
 .fs-step-num .elementor-heading-title { text-align: center; }
-.fs-step-hl { background: var(--fs-grad-diag) !important; border-color: transparent !important; }
 .fs-step-hl .elementor-heading-title:not(.fs-step-num *), .fs-step-hl .elementor-widget-text-editor { color: #fff; }
 .fs-steps { padding-top: 90px; }
 .fs-steps > .fs-step:not(:last-child)::after {
@@ -567,10 +917,6 @@ a.fs-link-u {
 }
 
 /* Review cards */
-.fs-review .fs-stars { color: #F4B400; font-size: 20px; letter-spacing: 2px; }
-.fs-review blockquote { margin: 10px 0 14px; font-size: 16.5px; line-height: 1.55; color: var(--fs-body); }
-.fs-review cite { font-style: normal; font-weight: 700; color: var(--fs-purple); }
-.fs-review cite span { font-weight: 500; color: var(--fs-muted); }
 
 /* Check pills (Icon List widget): purple pills with a sky check */
 .fs-check-pills .elementor-icon-list-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -926,7 +1272,7 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 .fs-faq .elementor-tab-title.elementor-active .elementor-accordion-title,
 .fs-faq .elementor-tab-title.elementor-active .elementor-toggle-title { color: #fff !important; }
 /* How it works: the last card is the gradient card, with white text */
-.fs-step.fs-step-hl { background: var(--fs-grad-diag) !important; border-color: transparent !important; }
+.fs-step.fs-step-hl { background: var(--fs-grad-diag) border-box !important; background-origin: border-box !important; background-clip: border-box !important; border-color: transparent !important; }
 .fs-step.fs-step-hl .elementor-heading-title:not(.fs-step-num *), .fs-step.fs-step-hl .elementor-widget-text-editor { color: #fff; }
 
 /* ---------- 27. Results table (Essential Addons Data Table: add fs-dtable) ----------
@@ -960,6 +1306,27 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
   .fs-dtable table.eael-data-table thead th { padding: 10px 8px 8px !important; font-size: 12px !important; }
   .fs-dtable table.eael-data-table td.ar { padding: 10px 2px !important; }
 }
+
+/* ---------- 28. Google review cards (Essential Addons Testimonial: add fs-testi; card container: fs-gcard fs-review-card) ---------- */
+.fs-review-card { border-radius: 38px !important; }
+.fs-testi .eael-testimonial-item { position: static; text-align: left; }
+.fs-testi .testimonial-star-rating { display: flex; gap: 3px; margin: 0 0 12px !important; padding: 0 !important; }
+.fs-testi .testimonial-star-rating li { display: block; margin: 0; padding: 0; line-height: 1; }
+.fs-testi .testimonial-star-rating li i, .fs-testi.elementor-widget .rating-five .testimonial-star-rating li i { color: #F4B400 !important; font-size: 19px; }
+.fs-testi .eael-testimonial-content { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0 !important; padding: 0 !important; }
+.fs-testi .eael-testimonial-content .eael-testimonial-text { flex: 0 0 100%; margin: 0 0 14px !important; font-family: var(--fs-font); font-size: 16.5px !important; font-style: normal !important;
+  line-height: 1.55 !important; color: var(--fs-body) !important; }
+.fs-testi .eael-testimonial-text p { margin: 0; }
+.fs-testi .eael-testimonial-content .eael-testimonial-user { display: inline-flex !important; align-items: center; gap: 10px; float: none !important; margin: 0 !important; white-space: nowrap;
+  font-family: var(--fs-font) !important; font-size: 16px !important; font-style: normal !important; font-weight: 600 !important; line-height: 1.4 !important; color: var(--fs-purple) !important; }
+.fs-testi .eael-testimonial-user::after { content: "\00B7"; font-family: var(--fs-font-ui); font-size: 14.5px; font-weight: 400; color: var(--fs-muted); }
+.fs-testi .eael-testimonial-content .eael-testimonial-user-company { display: inline-flex !important; align-items: center; gap: 10px; margin: 0 !important;
+  font-family: var(--fs-font-ui) !important; font-size: 14.5px !important; font-style: normal !important; font-weight: 400 !important; line-height: 1.4 !important; color: var(--fs-muted) !important; }
+.fs-testi .eael-testimonial-user-company::before { content: ""; width: 18px; height: 18px; flex: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23FFC107' d='M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5Z'/%3E%3Cpath fill='%23FF3D00' d='m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7Z'/%3E%3Cpath fill='%234CAF50' d='M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2A11.9 11.9 0 0 1 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44Z'/%3E%3Cpath fill='%231976D2' d='M43.6 20.5H42V20H24v8h11.3a12 12 0 0 1-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5Z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.fs-testi .eael-testimonial-quote, .fs-testi .eael-testimonial-image { display: none !important; }
+/* review on a purple card: white text */
+.fs-purple-card .fs-testi .eael-testimonial-content .eael-testimonial-text, .fs-purple-card .fs-testi .eael-testimonial-content .eael-testimonial-user { color: #fff !important; }
+.fs-purple-card .fs-testi .eael-testimonial-content .eael-testimonial-user-company, .fs-purple-card .fs-testi .eael-testimonial-user::after { color: rgba(255, 255, 255, .75) !important; }
 </style><style>
 .elementor-widget-heading .elementor-heading-title{color:#250762;font-family:"Poppins",sans-serif;font-weight:700}
 .elementor-widget-text-editor{color:#1C1B22;font-family:"Poppins",sans-serif;font-size:18px;font-weight:400;line-height:1.6em}
@@ -1073,74 +1440,74 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 .elementor-9 .elementor-element.elementor-element-c0b667f .elementor-counter-number-wrapper{color:#FFFFFF}
 .elementor-9 .elementor-element.elementor-element-c0b667f .elementor-counter-title{font-family:Poppins, sans-serif;font-size:20.0px;font-weight:400;line-height:1.25em;text-transform:none;font-style:normal;}
 .elementor-9 .elementor-element.elementor-element-c0b667f .elementor-counter-title{color:#FFFFFF}
-.elementor-9 .elementor-element.elementor-element-7aa9346{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:100px;--padding-right:24px;--padding-bottom:100px;--padding-left:24px;background-image:url('../upload/first-search/design/bg-geometric.jpg');background-size:cover;background-position:center center;}
-.elementor-9 .elementor-element.elementor-element-8fc4720{flex-direction:column;--row-gap:24px;--column-gap:24px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
-.elementor-9 .elementor-element.elementor-element-b27058a{flex-direction:row;--row-gap:40px;--column-gap:40px;align-items:flex-start;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
+.elementor-9 .elementor-element.elementor-element-b09a4e7{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:100px;--padding-right:24px;--padding-bottom:100px;--padding-left:24px;background-image:url('../upload/first-search/design/bg-geometric.jpg');background-size:cover;background-position:center center;}
+.elementor-9 .elementor-element.elementor-element-7aa9346{flex-direction:column;--row-gap:24px;--column-gap:24px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
+.elementor-9 .elementor-element.elementor-element-8fc4720{flex-direction:row;--row-gap:40px;--column-gap:40px;align-items:flex-start;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
 .elementor-9 .elementor-element.elementor-element-a4fef3e{flex-direction:column;--row-gap:16px;--column-gap:16px;--padding-top:24px;--padding-right:24px;--padding-bottom:24px;--padding-left:24px;--width:56%;}
 .elementor-9 .elementor-element.elementor-element-79ce392 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:20.0px;font-weight:600;line-height:1.6em;text-transform:none;font-style:normal;}
 .elementor-9 .elementor-element.elementor-element-79ce392 .elementor-heading-title{color:var(--e-global-color-secondary)}
 .elementor-9 .elementor-element.elementor-element-5b446e0 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:37.5px;font-weight:700;line-height:1.12em;letter-spacing:-0.015em;text-transform:none;font-style:normal;}
 .elementor-9 .elementor-element.elementor-element-5b446e0 .elementor-heading-title{color:#FFFFFF}
 .elementor-9 .elementor-element.elementor-element-085b0f0 .elementor-button{font-family:Poppins, sans-serif;font-size:20.0px;font-weight:500;line-height:1.6em;text-transform:none;font-style:italic;}
-.elementor-9 .elementor-element.elementor-element-77d467b{flex-direction:column;--row-gap:22px;--column-gap:22px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;--width:40%;}
-.elementor-9 .elementor-element.elementor-element-49d1b3f{flex-direction:column;--padding-top:26px;--padding-right:26px;--padding-bottom:26px;--padding-left:26px;}
-.elementor-9 .elementor-element.elementor-element-658c448{flex-direction:column;--padding-top:26px;--padding-right:26px;--padding-bottom:26px;--padding-left:26px;}
+.elementor-9 .elementor-element.elementor-element-b27058a{flex-direction:column;--row-gap:22px;--column-gap:22px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;--width:40%;}
+.elementor-9 .elementor-element.elementor-element-49d1b3f{flex-direction:column;--padding-top:34px;--padding-right:32px;--padding-bottom:30px;--padding-left:32px;}
+.elementor-9 .elementor-element.elementor-element-658c448{flex-direction:column;--padding-top:34px;--padding-right:32px;--padding-bottom:30px;--padding-left:32px;}
 .elementor-9 .elementor-element.elementor-element-ffee9f7 .elementor-button{font-family:Poppins, sans-serif;font-size:18.0px;font-weight:500;line-height:1.6em;text-transform:none;font-style:italic;}
-.elementor-9 .elementor-element.elementor-element-c5eb056{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:110px;--padding-right:24px;--padding-bottom:144px;--padding-left:24px;}
-.elementor-9 .elementor-element.elementor-element-bfbc20f{flex-direction:column;--row-gap:24px;--column-gap:24px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
-.elementor-9 .elementor-element.elementor-element-86bb576{flex-direction:column;--row-gap:14px;--column-gap:14px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;--width:880px;flex:0 0 auto;align-self:center;}
-.elementor-9 .elementor-element.elementor-element-5041086 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:52.0px;font-weight:700;line-height:1.08em;letter-spacing:-0.02em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-5041086 .elementor-heading-title{color:#FFFFFF}
-.elementor-9 .elementor-element.elementor-element-fb30d41{font-family:Poppins, sans-serif;font-size:19.0px;font-weight:400;line-height:1.6em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-fb30d41{color:#FFFFFFEB}
-.elementor-9 .elementor-element.elementor-element-a7a501c{flex-direction:row;--row-gap:56px;--column-gap:56px;align-items:stretch;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
-.elementor-9 .elementor-element.elementor-element-6892557{flex-direction:column;--row-gap:10px;--column-gap:10px;--padding-top:64px;--padding-right:28px;--padding-bottom:32px;--padding-left:28px;--width:22%;}
-.elementor-9 .elementor-element.elementor-element-710deef .elementor-heading-title{font-family:Poppins, sans-serif;font-size:120.0px;font-weight:800;line-height:1em;letter-spacing:-0.04em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-a77e2b8 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:21.0px;font-weight:700;line-height:1.2em;letter-spacing:-0.015em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-a77e2b8 .elementor-heading-title{color:var(--e-global-color-primary)}
-.elementor-9 .elementor-element.elementor-element-67968c9{font-family:Poppins, sans-serif;font-size:15.5px;font-weight:400;line-height:1.45em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-67968c9{color:var(--e-global-color-text)}
-.elementor-9 .elementor-element.elementor-element-340f783{flex-direction:column;--row-gap:10px;--column-gap:10px;--padding-top:64px;--padding-right:28px;--padding-bottom:32px;--padding-left:28px;--width:22%;}
-.elementor-9 .elementor-element.elementor-element-2411229 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:120.0px;font-weight:800;line-height:1em;letter-spacing:-0.04em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-3c78165 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:21.0px;font-weight:700;line-height:1.2em;letter-spacing:-0.015em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-3c78165 .elementor-heading-title{color:var(--e-global-color-primary)}
-.elementor-9 .elementor-element.elementor-element-94fb581{font-family:Poppins, sans-serif;font-size:15.5px;font-weight:400;line-height:1.45em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-94fb581{color:var(--e-global-color-text)}
-.elementor-9 .elementor-element.elementor-element-e722a83{flex-direction:column;--row-gap:10px;--column-gap:10px;--padding-top:64px;--padding-right:28px;--padding-bottom:32px;--padding-left:28px;--width:22%;}
-.elementor-9 .elementor-element.elementor-element-90ae3ff .elementor-heading-title{font-family:Poppins, sans-serif;font-size:120.0px;font-weight:800;line-height:1em;letter-spacing:-0.04em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-6ee7d92 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:21.0px;font-weight:700;line-height:1.2em;letter-spacing:-0.015em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-6ee7d92 .elementor-heading-title{color:var(--e-global-color-primary)}
-.elementor-9 .elementor-element.elementor-element-bcc5c10{font-family:Poppins, sans-serif;font-size:15.5px;font-weight:400;line-height:1.45em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-bcc5c10{color:var(--e-global-color-text)}
-.elementor-9 .elementor-element.elementor-element-2a4d700{flex-direction:column;--row-gap:10px;--column-gap:10px;--padding-top:64px;--padding-right:28px;--padding-bottom:32px;--padding-left:28px;--width:22%;}
-.elementor-9 .elementor-element.elementor-element-514a387 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:120.0px;font-weight:800;line-height:1em;letter-spacing:-0.04em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-6b44b14 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:21.0px;font-weight:700;line-height:1.2em;letter-spacing:-0.015em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-6b44b14 .elementor-heading-title{color:#FFFFFF}
-.elementor-9 .elementor-element.elementor-element-c8aef44{font-family:Poppins, sans-serif;font-size:15.5px;font-weight:400;line-height:1.45em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-c8aef44{color:#FFFFFF}
-.elementor-9 .elementor-element.elementor-element-1ce2b3a{flex-direction:column;--padding-top:0px;--padding-right:24px;--padding-bottom:0px;--padding-left:24px;}
-.elementor-9 .elementor-element.elementor-element-5e3934a{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
-.elementor-9 .elementor-element.elementor-element-c48e86a{flex-direction:column;--row-gap:24px;--column-gap:24px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
-.elementor-9 .elementor-element.elementor-element-d2efdf6{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:120px;--padding-right:24px;--padding-bottom:230px;--padding-left:24px;background-image:url('../upload/first-search/design/bg-geometric.jpg');background-size:cover;background-position:center center;}
-.elementor-9 .elementor-element.elementor-element-b9b670d{flex-direction:column;--row-gap:32px;--column-gap:32px;align-items:center;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
-.elementor-9 .elementor-element.elementor-element-cf5dd22{flex-direction:column;--row-gap:14px;--column-gap:14px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;--width:880px;flex:0 0 auto;align-self:center;}
-.elementor-9 .elementor-element.elementor-element-170f4c7 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:19.5px;font-weight:600;line-height:1.6em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-170f4c7 .elementor-heading-title{color:var(--e-global-color-secondary)}
-.elementor-9 .elementor-element.elementor-element-943face .elementor-heading-title{font-family:Poppins, sans-serif;font-size:52.0px;font-weight:700;line-height:1.08em;letter-spacing:-0.02em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-943face .elementor-heading-title{color:var(--e-global-color-primary)}
-.elementor-9 .elementor-element.elementor-element-02d60b6{flex-direction:column;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;--width:880px;flex:0 0 auto;align-self:center;}
-.elementor-9 .elementor-element.elementor-element-bbeb925 .elementor-accordion-title{font-family:Poppins, sans-serif;font-size:25.0px;font-weight:700;line-height:1.25em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-bbeb925 .elementor-tab-content{font-family:Poppins, sans-serif;font-size:21.0px;font-weight:400;line-height:1.6em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-bbeb925 .elementor-tab-content{color:var(--e-global-color-text)}
-.elementor-9 .elementor-element.elementor-element-c596148{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:0px;--padding-right:24px;--padding-bottom:0px;--padding-left:24px;}
-.elementor-9 .elementor-element.elementor-element-51657d8{flex-direction:column;--row-gap:24px;--column-gap:24px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
-.elementor-9 .elementor-element.elementor-element-81ca5a1{flex-direction:column;--row-gap:26px;--column-gap:26px;align-items:center;--padding-top:56px;--padding-right:86px;--padding-bottom:56px;--padding-left:86px;}
-.elementor-9 .elementor-element.elementor-element-bc9daab{flex-direction:column;--row-gap:10px;--column-gap:10px;align-items:center;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
-.elementor-9 .elementor-element.elementor-element-f903d90 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:66.0px;font-weight:700;line-height:1.04em;letter-spacing:-0.03em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-f903d90 .elementor-heading-title{color:#FFFFFF}
-.elementor-9 .elementor-element.elementor-element-8923841{font-family:Poppins, sans-serif;font-size:18.0px;font-weight:400;line-height:1.6em;text-transform:none;font-style:normal;}
-.elementor-9 .elementor-element.elementor-element-8923841{color:#FFFFFFEB}
-.elementor-9 .elementor-element.elementor-element-924a334 .elementor-button{font-family:Poppins, sans-serif;font-size:22.0px;font-weight:600;line-height:1.2em;letter-spacing:0.005em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-2784d6e{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:110px;--padding-right:24px;--padding-bottom:144px;--padding-left:24px;}
+.elementor-9 .elementor-element.elementor-element-c5eb056{flex-direction:column;--row-gap:24px;--column-gap:24px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
+.elementor-9 .elementor-element.elementor-element-a7a501c{flex-direction:column;--row-gap:14px;--column-gap:14px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;--width:880px;flex:0 0 auto;align-self:center;}
+.elementor-9 .elementor-element.elementor-element-86bb576 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:52.0px;font-weight:700;line-height:1.08em;letter-spacing:-0.02em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-86bb576 .elementor-heading-title{color:#FFFFFF}
+.elementor-9 .elementor-element.elementor-element-5041086{font-family:Poppins, sans-serif;font-size:19.0px;font-weight:400;line-height:1.6em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-5041086{color:#FFFFFFEB}
+.elementor-9 .elementor-element.elementor-element-bfbc20f{flex-direction:row;--row-gap:56px;--column-gap:56px;align-items:stretch;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
+.elementor-9 .elementor-element.elementor-element-b941e29{flex-direction:column;--row-gap:10px;--column-gap:10px;--padding-top:64px;--padding-right:28px;--padding-bottom:32px;--padding-left:28px;--width:22%;}
+.elementor-9 .elementor-element.elementor-element-a77e2b8 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:120.0px;font-weight:800;line-height:1em;letter-spacing:-0.04em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-67968c9 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:21.0px;font-weight:700;line-height:1.2em;letter-spacing:-0.015em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-67968c9 .elementor-heading-title{color:var(--e-global-color-primary)}
+.elementor-9 .elementor-element.elementor-element-6892557{font-family:Poppins, sans-serif;font-size:15.5px;font-weight:400;line-height:1.45em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-6892557{color:var(--e-global-color-text)}
+.elementor-9 .elementor-element.elementor-element-9ac8681{flex-direction:column;--row-gap:10px;--column-gap:10px;--padding-top:64px;--padding-right:28px;--padding-bottom:32px;--padding-left:28px;--width:22%;}
+.elementor-9 .elementor-element.elementor-element-3c78165 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:120.0px;font-weight:800;line-height:1em;letter-spacing:-0.04em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-94fb581 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:21.0px;font-weight:700;line-height:1.2em;letter-spacing:-0.015em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-94fb581 .elementor-heading-title{color:var(--e-global-color-primary)}
+.elementor-9 .elementor-element.elementor-element-340f783{font-family:Poppins, sans-serif;font-size:15.5px;font-weight:400;line-height:1.45em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-340f783{color:var(--e-global-color-text)}
+.elementor-9 .elementor-element.elementor-element-8d21fe7{flex-direction:column;--row-gap:10px;--column-gap:10px;--padding-top:64px;--padding-right:28px;--padding-bottom:32px;--padding-left:28px;--width:22%;}
+.elementor-9 .elementor-element.elementor-element-6ee7d92 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:120.0px;font-weight:800;line-height:1em;letter-spacing:-0.04em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-bcc5c10 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:21.0px;font-weight:700;line-height:1.2em;letter-spacing:-0.015em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-bcc5c10 .elementor-heading-title{color:var(--e-global-color-primary)}
+.elementor-9 .elementor-element.elementor-element-e722a83{font-family:Poppins, sans-serif;font-size:15.5px;font-weight:400;line-height:1.45em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-e722a83{color:var(--e-global-color-text)}
+.elementor-9 .elementor-element.elementor-element-fb30d41{flex-direction:column;--row-gap:10px;--column-gap:10px;--padding-top:64px;--padding-right:28px;--padding-bottom:32px;--padding-left:28px;--width:22%;}
+.elementor-9 .elementor-element.elementor-element-6b44b14 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:120.0px;font-weight:800;line-height:1em;letter-spacing:-0.04em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-c8aef44 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:21.0px;font-weight:700;line-height:1.2em;letter-spacing:-0.015em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-c8aef44 .elementor-heading-title{color:#FFFFFF}
+.elementor-9 .elementor-element.elementor-element-2a4d700{font-family:Poppins, sans-serif;font-size:15.5px;font-weight:400;line-height:1.45em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-2a4d700{color:#FFFFFF}
+.elementor-9 .elementor-element.elementor-element-f380c7d{flex-direction:column;--padding-top:0px;--padding-right:24px;--padding-bottom:0px;--padding-left:24px;}
+.elementor-9 .elementor-element.elementor-element-170f4c7{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
+.elementor-9 .elementor-element.elementor-element-5e3934a{flex-direction:column;--row-gap:24px;--column-gap:24px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
+.elementor-9 .elementor-element.elementor-element-f903d90{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:120px;--padding-right:24px;--padding-bottom:230px;--padding-left:24px;background-image:url('../upload/first-search/design/bg-geometric.jpg');background-size:cover;background-position:center center;}
+.elementor-9 .elementor-element.elementor-element-d2efdf6{flex-direction:column;--row-gap:32px;--column-gap:32px;align-items:center;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
+.elementor-9 .elementor-element.elementor-element-40c6cdd{flex-direction:column;--row-gap:14px;--column-gap:14px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;--width:880px;flex:0 0 auto;align-self:center;}
+.elementor-9 .elementor-element.elementor-element-943face .elementor-heading-title{font-family:Poppins, sans-serif;font-size:19.5px;font-weight:600;line-height:1.6em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-943face .elementor-heading-title{color:var(--e-global-color-secondary)}
+.elementor-9 .elementor-element.elementor-element-cf5dd22 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:52.0px;font-weight:700;line-height:1.08em;letter-spacing:-0.02em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-cf5dd22 .elementor-heading-title{color:var(--e-global-color-primary)}
+.elementor-9 .elementor-element.elementor-element-b9b670d{flex-direction:column;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;--width:880px;flex:0 0 auto;align-self:center;}
+.elementor-9 .elementor-element.elementor-element-02d60b6 .elementor-accordion-title{font-family:Poppins, sans-serif;font-size:25.0px;font-weight:700;line-height:1.25em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-02d60b6 .elementor-tab-content{font-family:Poppins, sans-serif;font-size:21.0px;font-weight:400;line-height:1.6em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-02d60b6 .elementor-tab-content{color:var(--e-global-color-text)}
+.elementor-9 .elementor-element.elementor-element-2b81c5b{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:0px;--padding-right:24px;--padding-bottom:0px;--padding-left:24px;}
+.elementor-9 .elementor-element.elementor-element-c596148{flex-direction:column;--row-gap:24px;--column-gap:24px;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
+.elementor-9 .elementor-element.elementor-element-51657d8{flex-direction:column;--row-gap:26px;--column-gap:26px;align-items:center;--padding-top:56px;--padding-right:86px;--padding-bottom:56px;--padding-left:86px;}
+.elementor-9 .elementor-element.elementor-element-924a334{flex-direction:column;--row-gap:10px;--column-gap:10px;align-items:center;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
+.elementor-9 .elementor-element.elementor-element-8923841 .elementor-heading-title{font-family:Poppins, sans-serif;font-size:66.0px;font-weight:700;line-height:1.04em;letter-spacing:-0.03em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-8923841 .elementor-heading-title{color:#FFFFFF}
+.elementor-9 .elementor-element.elementor-element-bc9daab{font-family:Poppins, sans-serif;font-size:18.0px;font-weight:400;line-height:1.6em;text-transform:none;font-style:normal;}
+.elementor-9 .elementor-element.elementor-element-bc9daab{color:#FFFFFFEB}
+.elementor-9 .elementor-element.elementor-element-81ca5a1 .elementor-button{font-family:Poppins, sans-serif;font-size:22.0px;font-weight:600;line-height:1.2em;letter-spacing:0.005em;text-transform:none;font-style:normal;}
 .elementor-9 .elementor-element.elementor-element-73b2953{flex-direction:column;--row-gap:0px;--column-gap:0px;--padding-top:140px;--padding-right:24px;--padding-bottom:40px;--padding-left:24px;}
 .elementor-9 .elementor-element.elementor-element-358a008{flex-direction:column;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;}
 .elementor-9 .elementor-element.elementor-element-92e6b70{flex-direction:row;--row-gap:40px;--column-gap:40px;justify-content:space-between;align-items:center;--padding-top:0px;--padding-right:0px;--padding-bottom:40px;--padding-left:0px;}
@@ -1214,18 +1581,18 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 .elementor-9 .elementor-element.elementor-element-c0b667f .elementor-counter-title{font-size:15.0px;}
 .elementor-9 .elementor-element.elementor-element-79ce392 .elementor-heading-title{font-size:16.0px;}
 .elementor-9 .elementor-element.elementor-element-5b446e0 .elementor-heading-title{font-size:26.5px;}
-.elementor-9 .elementor-element.elementor-element-c5eb056{--padding-top:82px;--padding-right:24px;--padding-bottom:110px;--padding-left:24px;}
-.elementor-9 .elementor-element.elementor-element-5041086 .elementor-heading-title{font-size:37.0px;}
-.elementor-9 .elementor-element.elementor-element-fb30d41{font-size:17.0px;}
-.elementor-9 .elementor-element.elementor-element-d2efdf6{--padding-top:92px;--padding-right:24px;--padding-bottom:170px;--padding-left:24px;}
-.elementor-9 .elementor-element.elementor-element-170f4c7 .elementor-heading-title{font-size:16.0px;}
-.elementor-9 .elementor-element.elementor-element-943face .elementor-heading-title{font-size:37.0px;}
-.elementor-9 .elementor-element.elementor-element-bbeb925 .elementor-accordion-title{font-size:18.5px;}
-.elementor-9 .elementor-element.elementor-element-bbeb925 .elementor-tab-content{font-size:16.5px;}
-.elementor-9 .elementor-element.elementor-element-81ca5a1{--padding-top:48px;--padding-right:48px;--padding-bottom:48px;--padding-left:48px;}
-.elementor-9 .elementor-element.elementor-element-f903d90 .elementor-heading-title{font-size:47.0px;}
-.elementor-9 .elementor-element.elementor-element-8923841{font-size:16.0px;}
-.elementor-9 .elementor-element.elementor-element-924a334 .elementor-button{font-size:19.0px;}
+.elementor-9 .elementor-element.elementor-element-2784d6e{--padding-top:82px;--padding-right:24px;--padding-bottom:110px;--padding-left:24px;}
+.elementor-9 .elementor-element.elementor-element-86bb576 .elementor-heading-title{font-size:37.0px;}
+.elementor-9 .elementor-element.elementor-element-5041086{font-size:17.0px;}
+.elementor-9 .elementor-element.elementor-element-f903d90{--padding-top:92px;--padding-right:24px;--padding-bottom:170px;--padding-left:24px;}
+.elementor-9 .elementor-element.elementor-element-943face .elementor-heading-title{font-size:16.0px;}
+.elementor-9 .elementor-element.elementor-element-cf5dd22 .elementor-heading-title{font-size:37.0px;}
+.elementor-9 .elementor-element.elementor-element-02d60b6 .elementor-accordion-title{font-size:18.5px;}
+.elementor-9 .elementor-element.elementor-element-02d60b6 .elementor-tab-content{font-size:16.5px;}
+.elementor-9 .elementor-element.elementor-element-51657d8{--padding-top:48px;--padding-right:48px;--padding-bottom:48px;--padding-left:48px;}
+.elementor-9 .elementor-element.elementor-element-8923841 .elementor-heading-title{font-size:47.0px;}
+.elementor-9 .elementor-element.elementor-element-bc9daab{font-size:16.0px;}
+.elementor-9 .elementor-element.elementor-element-81ca5a1 .elementor-button{font-size:19.0px;}
 .elementor-9 .elementor-element.elementor-element-73b2953{--padding-top:110px;--padding-right:24px;--padding-bottom:40px;--padding-left:24px;}
 .elementor-9 .elementor-element.elementor-element-c606b6c .elementor-heading-title{font-size:22.5px;}
 .elementor-9 .elementor-element.elementor-element-ff9c871{font-size:16.0px;}}
@@ -1269,29 +1636,29 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 .elementor-9 .elementor-element.elementor-element-9c48730 .elementor-counter-number-wrapper{font-size:46.0px;}
 .elementor-9 .elementor-element.elementor-element-e659d4b{--width:100%;}
 .elementor-9 .elementor-element.elementor-element-c0b667f .elementor-counter-number-wrapper{font-size:56.0px;}
-.elementor-9 .elementor-element.elementor-element-7aa9346{--padding-top:64px;--padding-right:16px;--padding-bottom:64px;--padding-left:16px;}
-.elementor-9 .elementor-element.elementor-element-b27058a{flex-direction:column;}
+.elementor-9 .elementor-element.elementor-element-b09a4e7{--padding-top:64px;--padding-right:16px;--padding-bottom:64px;--padding-left:16px;}
+.elementor-9 .elementor-element.elementor-element-8fc4720{flex-direction:column;}
 .elementor-9 .elementor-element.elementor-element-a4fef3e{--width:100%;}
 .elementor-9 .elementor-element.elementor-element-5b446e0 .elementor-heading-title{font-size:26.0px;}
-.elementor-9 .elementor-element.elementor-element-77d467b{--width:100%;}
-.elementor-9 .elementor-element.elementor-element-c5eb056{--padding-top:80px;--padding-right:16px;--padding-bottom:110px;--padding-left:16px;}
-.elementor-9 .elementor-element.elementor-element-86bb576{--width:100%;}
-.elementor-9 .elementor-element.elementor-element-5041086 .elementor-heading-title{font-size:32.0px;}
-.elementor-9 .elementor-element.elementor-element-a7a501c{flex-direction:column;}
-.elementor-9 .elementor-element.elementor-element-6892557{--width:100%;margin:70px 0px 0px 0px;}
-.elementor-9 .elementor-element.elementor-element-340f783{--width:100%;margin:70px 0px 0px 0px;}
-.elementor-9 .elementor-element.elementor-element-e722a83{--width:100%;margin:70px 0px 0px 0px;}
-.elementor-9 .elementor-element.elementor-element-2a4d700{--width:100%;margin:70px 0px 0px 0px;}
-.elementor-9 .elementor-element.elementor-element-5e3934a{--padding-top:64px;--padding-right:16px;--padding-bottom:64px;--padding-left:16px;}
-.elementor-9 .elementor-element.elementor-element-d2efdf6{--padding-top:80px;--padding-right:16px;--padding-bottom:170px;--padding-left:16px;}
-.elementor-9 .elementor-element.elementor-element-cf5dd22{--width:100%;}
-.elementor-9 .elementor-element.elementor-element-943face .elementor-heading-title{font-size:32.0px;}
-.elementor-9 .elementor-element.elementor-element-02d60b6{--width:100%;}
-.elementor-9 .elementor-element.elementor-element-bbeb925 .elementor-accordion-title{font-size:18.0px;}
-.elementor-9 .elementor-element.elementor-element-bbeb925 .elementor-tab-content{font-size:16.0px;}
-.elementor-9 .elementor-element.elementor-element-c596148{--padding-top:0px;--padding-right:16px;--padding-bottom:0px;--padding-left:16px;}
-.elementor-9 .elementor-element.elementor-element-81ca5a1{--padding-top:40px;--padding-right:28px;--padding-bottom:40px;--padding-left:28px;}
-.elementor-9 .elementor-element.elementor-element-f903d90 .elementor-heading-title{font-size:36.0px;}
+.elementor-9 .elementor-element.elementor-element-b27058a{--width:100%;}
+.elementor-9 .elementor-element.elementor-element-2784d6e{--padding-top:80px;--padding-right:16px;--padding-bottom:110px;--padding-left:16px;}
+.elementor-9 .elementor-element.elementor-element-a7a501c{--width:100%;}
+.elementor-9 .elementor-element.elementor-element-86bb576 .elementor-heading-title{font-size:32.0px;}
+.elementor-9 .elementor-element.elementor-element-bfbc20f{flex-direction:column;}
+.elementor-9 .elementor-element.elementor-element-b941e29{--width:100%;margin:70px 0px 0px 0px;}
+.elementor-9 .elementor-element.elementor-element-9ac8681{--width:100%;margin:70px 0px 0px 0px;}
+.elementor-9 .elementor-element.elementor-element-8d21fe7{--width:100%;margin:70px 0px 0px 0px;}
+.elementor-9 .elementor-element.elementor-element-fb30d41{--width:100%;margin:70px 0px 0px 0px;}
+.elementor-9 .elementor-element.elementor-element-170f4c7{--padding-top:64px;--padding-right:16px;--padding-bottom:64px;--padding-left:16px;}
+.elementor-9 .elementor-element.elementor-element-f903d90{--padding-top:80px;--padding-right:16px;--padding-bottom:170px;--padding-left:16px;}
+.elementor-9 .elementor-element.elementor-element-40c6cdd{--width:100%;}
+.elementor-9 .elementor-element.elementor-element-cf5dd22 .elementor-heading-title{font-size:32.0px;}
+.elementor-9 .elementor-element.elementor-element-b9b670d{--width:100%;}
+.elementor-9 .elementor-element.elementor-element-02d60b6 .elementor-accordion-title{font-size:18.0px;}
+.elementor-9 .elementor-element.elementor-element-02d60b6 .elementor-tab-content{font-size:16.0px;}
+.elementor-9 .elementor-element.elementor-element-2b81c5b{--padding-top:0px;--padding-right:16px;--padding-bottom:0px;--padding-left:16px;}
+.elementor-9 .elementor-element.elementor-element-51657d8{--padding-top:40px;--padding-right:28px;--padding-bottom:40px;--padding-left:28px;}
+.elementor-9 .elementor-element.elementor-element-8923841 .elementor-heading-title{font-size:36.0px;}
 .elementor-9 .elementor-element.elementor-element-73b2953{--padding-top:110px;--padding-right:16px;--padding-bottom:40px;--padding-left:16px;}
 .elementor-9 .elementor-element.elementor-element-92e6b70{flex-direction:column;}
 .elementor-9 .elementor-element.elementor-element-b1affa4{--width:100%;}
@@ -1668,7 +2035,42 @@ var q;new MutationObserver(function(){cancelAnimationFrame(q);q=requestAnimation
 
         <div class="gcard fw-card">
           <div class="gcard__in" id="fw-panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0">
-            <div class="fw-content" id="fw-content"></div>
+            <div class="fw-content" id="fw-content"><div class="fw-stage" data-i="0">
+<div class="ptag-logo"><span class="plogo" role="img" aria-label="FirstBrand"><b>first</b>brand</span></div>
+<h3>Build a brand people trust on sight.</h3>
+<p class="fw-desc">Your brand is the foundation everything else stands on. We define who you are, what makes you different, and how you show up, then make sure every touchpoint matches.</p>
+<p class="inc-label">What's included</p>
+<ul class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Brand strategy and messaging</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Logo and visual identity</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Website design and development</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Brand video</li></ul>
+<p class="quizbox"><b>How strong is your brand foundation?</b> <a href="#" data-ph-link="Framework Quiz">Find out in the quiz.</a></p>
+<a class="svc-link" href="/firstbrand/">Explore brand and web services</a>
+</div>
+<div class="fw-stage" data-i="1" hidden>
+<div class="ptag-logo"><span class="plogo" role="img" aria-label="FirstThought"><b>first</b>thought</span></div>
+<h3>Get found wherever customers are looking.</h3>
+<p class="fw-desc">When someone needs what you sell, your name should be the first one they see on Google, in AI search, on the map, and in their feed.</p>
+<p class="inc-label">What's included</p>
+<ul class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>SEO and AI search visibility</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Local and map pack rankings</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Paid advertising</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Social media</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Community and local partnerships</li></ul>
+<p class="quizbox"><b>Are customers finding you first?</b> <a href="#" data-ph-link="Framework Quiz">Find out in the quiz.</a></p>
+<a class="svc-link" href="/firstthought/">Explore visibility services</a>
+</div>
+<div class="fw-stage" data-i="2" hidden>
+<div class="ptag-logo"><span class="plogo" role="img" aria-label="FirstChoice"><b>first</b>choice</span></div>
+<h3>Turn attention into booked business.</h3>
+<p class="fw-desc">Getting seen is only half of it. We build the offers, lead magnets and follow-up that turn a visitor into a lead and a lead into a customer.</p>
+<p class="inc-label">What's included</p>
+<ul class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Lead generation and lead magnets</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Conversion-focused advertising</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Marketing automation</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>CRM setup</li></ul>
+<p class="quizbox"><b>Is your marketing converting?</b> <a href="#" data-ph-link="Framework Quiz">Find out in the quiz.</a></p>
+<a class="svc-link" href="/firstchoice/">Explore lead generation services</a>
+</div>
+<div class="fw-stage" data-i="3" hidden>
+<div class="ptag-logo"><span class="plogo" role="img" aria-label="FirstReferral"><b>first</b>referral</span></div>
+<h3>Make your customers your best marketing channel.</h3>
+<p class="fw-desc">Happy customers are the most trusted ad you'll ever run. We build the review, referral and loyalty systems that keep them coming back and bringing friends.</p>
+<p class="inc-label">What's included</p>
+<ul class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Review generation</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Referral programs</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Loyalty programs</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Retention email and automation</li></ul>
+<p class="quizbox"><b>Are your customers selling for you?</b> <a href="#" data-ph-link="Framework Quiz">Find out in the quiz.</a></p>
+<a class="svc-link" href="/firstreferral/">Explore loyalty and referral services</a>
+</div></div>
           </div>
         </div>
       </div>
@@ -1683,12 +2085,7 @@ function swap(){document.querySelectorAll('.fsx svg use').forEach(function(u){va
 if(SKIP.has(id)||!document.getElementById(id+'--g'))return;var svg=u.closest('svg');if(!svg||svg.closest(DARK)||light(getComputedStyle(svg).color))return;u.setAttribute('href',h+'--g');});}
 var q;new MutationObserver(function(){cancelAnimationFrame(q);q=requestAnimationFrame(swap);}).observe(document.body,{childList:true,subtree:true});swap();})();}try{(() => {'use strict';const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;const $=(s,el=ROOT)=>el.querySelector(s);const $$=(s,el=ROOT)=>[...el.querySelectorAll(s)];const wait=ms=>new Promise(r=>setTimeout(r,ms));
 /* 4. Framework wheel */
-  const PILLARS = [
-    { name: 'Brand', icon: 'i-web', outcome: 'Build a brand people trust on sight.', desc: 'Your brand is the foundation everything else stands on. We define who you are, what makes you different, and how you show up, then make sure every touchpoint matches.', inc: ['Brand strategy and messaging', 'Logo and visual identity', 'Website design and development', 'Brand video'], quiz: 'How strong is your brand foundation?', link: 'Explore brand and web services' },
-    { name: 'Thought', icon: 'i-search', outcome: 'Get found wherever customers are looking.', desc: 'When someone needs what you sell, your name should be the first one they see on Google, in AI search, on the map, and in their feed.', inc: ['SEO and AI search visibility', 'Local and map pack rankings', 'Paid advertising', 'Social media', 'Community and local partnerships'], quiz: 'Are customers finding you first?', link: 'Explore visibility services' },
-    { name: 'Choice', icon: 'i-magnet', outcome: 'Turn attention into booked business.', desc: 'Getting seen is only half of it. We build the offers, lead magnets and follow-up that turn a visitor into a lead and a lead into a customer.', inc: ['Lead generation and lead magnets', 'Conversion-focused advertising', 'Marketing automation', 'CRM setup'], quiz: 'Is your marketing converting?', link: 'Explore lead generation services' },
-    { name: 'Referral', icon: 'i-star', outcome: 'Make your customers your best marketing channel.', desc: 'Happy customers are the most trusted ad you\'ll ever run. We build the review, referral and loyalty systems that keep them coming back and bringing friends.', inc: ['Review generation', 'Referral programs', 'Loyalty programs', 'Retention email and automation'], quiz: 'Are your customers selling for you?', link: 'Explore loyalty and referral services' }
-  ];
+  
   // Wheel geometry (image is 1100×1100, centre 550, outer radius 545, core radius 168)
   const C = 550, RO = 545, RI = 168;
   const pt = (r, a) => { const t = a * Math.PI / 180; return [(C + r * Math.sin(t)).toFixed(1), (C - r * Math.cos(t)).toFixed(1)]; };
@@ -1700,14 +2097,8 @@ var q;new MutationObserver(function(){cancelAnimationFrame(q);q=requestAnimation
   const pills = $$('.pill'), panel = $('#fw-panel'), content = $('#fw-content');
   let locked = 0, shown = -1, timer = null, stopped = RM, ft;
 
-  const html = p => `
-    <div class="ptag-logo"><span class="plogo" role="img" aria-label="First${p.name}"><b>first</b>${p.name.toLowerCase()}</span></div>
-    <h3>${p.outcome}</h3>
-    <p class="fw-desc">${p.desc}</p>
-    <p class="inc-label">What's included</p>
-    <ul class="checks">${p.inc.map(x => `<li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>${x}</li>`).join('')}</ul>
-    <p class="quizbox"><b>${p.quiz}</b> <a href="#" data-ph-link="Framework Quiz">Find out in the quiz.</a></p>
-    <a class="svc-link" href="/firstbrand/">${p.link}</a>`;
+  const stages = [...content.querySelectorAll('.fw-stage')];
+  const swap = i => stages.forEach((s, k) => { s.hidden = k !== i; });
 
   const show = (i, instant) => {
     wdim.setAttribute('d', circle(RO) + SHAPES[i]);
@@ -1716,9 +2107,9 @@ var q;new MutationObserver(function(){cancelAnimationFrame(q);q=requestAnimation
     panel.setAttribute('aria-labelledby', 'tab-' + i);
     if (i === shown) return; shown = i;
     clearTimeout(ft);
-    if (instant || RM) { content.innerHTML = html(PILLARS[i]); return; }
+    if (instant || RM) { swap(i); return; }
     content.classList.add('is-fading');
-    ft = setTimeout(() => { content.innerHTML = html(PILLARS[i]); content.classList.remove('is-fading'); }, 200);
+    ft = setTimeout(() => { swap(i); content.classList.remove('is-fading'); }, 200);
   };
   const stop = () => { stopped = true; clearInterval(timer); };
   const select = i => { stop(); locked = i; show(i); };
@@ -1909,7 +2300,8 @@ var q;new MutationObserver(function(){cancelAnimationFrame(q);q=requestAnimation
 .fsx-framework .cta-overlap .btn { border-color: transparent !important; outline: 0; }
 .fsx-framework .fw-card .ptag-logo { background-color: #F4F4F6 !important; }
 .fsx-framework .cta-overlap .btn, .fsx-framework .cta-overlap .btn:hover { background-origin: border-box !important; background-clip: border-box !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; border-color: transparent !important; }
-</style></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-30fcb10 fs-geo"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-71e0372 "><div class="e-con e-flex elementor-element elementor-element-67fbb37 "><div class="e-con e-flex elementor-element elementor-element-582cc68 "><div class="elementor-element elementor-element-47abc37 elementor-widget elementor-widget-image " style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><img src="../upload/first-search/design/chris-cutout.webp" alt="" style="max-width:100%;width:100%;height:auto;display:block"></div></div></div><div class="elementor-element elementor-element-bb8ce6f elementor-widget elementor-widget-html " style=""><div class="elementor-widget-container"><blockquote class="fs-quote-chip">“I put our guarantee in writing because our clients deserve to know we’re as invested in their results as they are.”<cite>Chris Mitchell, Owner &amp; Digital Partner</cite></blockquote></div></div></div><div class="e-con e-flex elementor-element elementor-element-ecf9cef "><div class="e-con e-flex elementor-element elementor-element-5b9248c "><div class="elementor-element elementor-element-e52c241 elementor-widget elementor-widget-image " style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><img src="../upload/first-search/design/guarantee-seal.webp" alt="" style="max-width:100%;width:140px;height:auto;display:block"></div></div></div><div class="elementor-element elementor-element-933179d elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h2 class="elementor-heading-title" style="">Results, guaranteed.<br><span class="fs-gt">In writing.</span></h2></div></div></div><div class="elementor-element elementor-element-5840008 elementor-widget elementor-widget-text-editor fs-lead" style=""><div class="elementor-widget-container"><div style=""><p>If we don’t deliver [the lead growth we commit to in your roadmap], [we keep working at no cost until we do].</p></div></div></div><div class="elementor-element elementor-element-d072252 elementor-widget elementor-widget-icon-list fs-check-pills" style=""><div class="elementor-widget-container"><ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0"><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">Fixed monthly retainer. No surprise invoices.</span></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">Six-month partnership, not a long lock-in.</span></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">Results defined up front, measured monthly.</span></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/guarantee-terms/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">Read the full guarantee terms.</span></a></li></ul></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-b81cedd fs-grad fs-stats"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-dd75dc7 "><div class="e-con e-flex elementor-element elementor-element-49d48f9 "><div class="e-con e-flex elementor-element elementor-element-18c1067 "><div class="elementor-element elementor-element-f70f7b1 elementor-widget elementor-widget-counter " style=""><div class="elementor-widget-container"><div style="text-align:center"><div class="elementor-counter-number-wrapper">47%</div><div class="elementor-counter-title">average increase in leads</div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-e2e1c18 "><div class="elementor-element elementor-element-80ab515 elementor-widget elementor-widget-counter " style=""><div class="elementor-widget-container"><div style="text-align:center"><div class="elementor-counter-number-wrapper">1200</div><div class="elementor-counter-title">five-star reviews generated for partners</div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-41daaef "><div class="elementor-element elementor-element-9c48730 elementor-widget elementor-widget-counter " style=""><div class="elementor-widget-container"><div style="text-align:center"><div class="elementor-counter-number-wrapper">94%</div><div class="elementor-counter-title">partner retention rate</div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-e659d4b "><div class="elementor-element elementor-element-c0b667f elementor-widget elementor-widget-counter " style=""><div class="elementor-widget-container"><div style="text-align:center"><div class="elementor-counter-number-wrapper">10+</div><div class="elementor-counter-title">years building marketing systems</div></div></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-7aa9346 fs-geo"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-8fc4720 "><div class="e-con e-flex elementor-element elementor-element-b27058a "><div class="e-con e-flex elementor-element elementor-element-a4fef3e fs-purple-card fs-dark"><div class="elementor-element elementor-element-c44e78a elementor-widget elementor-widget-image fs-img-frame" style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><img src="../upload/first-search/design/case-dental.webp" alt="" style="max-width:100%;width:100%;height:auto;display:block"></div></div></div><div class="elementor-element elementor-element-79ce392 elementor-widget elementor-widget-heading fs-eyebrow" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">[Client name] · [Industry, NH town]</p></div></div><div class="elementor-element elementor-element-5b446e0 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">[From invisible on Google to booked out three weeks ahead]</h3></div></div><div class="elementor-element elementor-element-133d10c elementor-widget elementor-widget-eael-data-table fs-dtable" style=""><div class="elementor-widget-container"><div class="eael-data-table-wrap"><table class="tablesorter eael-data-table center" style="border-collapse:collapse"><thead><tr class="table-header"><th class="m"><span class="data-table-header-text">Metrics</span></th><th class="b"><span class="data-table-header-text">Before</span></th><th class="ar"><span class="data-table-header-text"></span></th><th class="a"><span class="data-table-header-text">After</span></th></tr></thead><tbody><tr><td class="m"><div class="td-content-wrapper"><div class="td-content">Monthly leads</div></div></td><td class="b"><div class="td-content-wrapper"><div class="td-content">12</div></div></td><td class="ar"><div class="td-content-wrapper"><div class="td-content">→</div></div></td><td class="a"><div class="td-content-wrapper"><div class="td-content">41</div></div></td></tr><tr><td class="m"><div class="td-content-wrapper"><div class="td-content">Map pack position</div></div></td><td class="b"><div class="td-content-wrapper"><div class="td-content">#9</div></div></td><td class="ar"><div class="td-content-wrapper"><div class="td-content">→</div></div></td><td class="a"><div class="td-content-wrapper"><div class="td-content">#1</div></div></td></tr><tr><td class="m"><div class="td-content-wrapper"><div class="td-content">Google reviews</div></div></td><td class="b"><div class="td-content-wrapper"><div class="td-content">18</div></div></td><td class="ar"><div class="td-content-wrapper"><div class="td-content">→</div></div></td><td class="a"><div class="td-content-wrapper"><div class="td-content">112</div></div></td></tr></tbody></table></div></div></div><div class="elementor-element elementor-element-085b0f0 elementor-widget elementor-widget-button fs-link-u" style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><a class="elementor-button" href="/case-studies/" style=""><span>Read the full story</span></a></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-77d467b "><div class="e-con e-flex elementor-element elementor-element-49d1b3f fs-gcard"><div class="elementor-element elementor-element-5d1e2cc elementor-widget elementor-widget-html " style=""><div class="elementor-widget-container"><div class="fs-review"><div class="fs-stars">★★★★★</div><blockquote>“We contacted Chris at First Search after a bad experience with a national brand company. He was able to fix our website and get our Google profile up and running. Chris and his team are very professional and always did what was right for our success.”</blockquote><cite>Steven McGibbon <span>· Posted on Google</span></cite></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-658c448 fs-gcard"><div class="elementor-element elementor-element-74c01d4 elementor-widget elementor-widget-html " style=""><div class="elementor-widget-container"><div class="fs-review"><div class="fs-stars">★★★★★</div><blockquote>“My business partner and I have been working with First Search for about six months and we were starting pretty much from ground zero with our marketing. We didn’t really even know where to start but the whole process has been easy and approachable and we couldn’t be happier with the results thus far.”</blockquote><cite>Patrick Wilson <span>· Posted on Google</span></cite></div></div></div></div><div class="elementor-element elementor-element-ffee9f7 elementor-widget elementor-widget-button fs-link-u" style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><a class="elementor-button" href="#" style=""><span>Read all [XX] Google reviews</span></a></div></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-c5eb056 fs-dark"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-bfbc20f "><div class="e-con e-flex elementor-element elementor-element-86bb576 fs-sec-head"><div class="elementor-element elementor-element-5041086 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h2 class="elementor-heading-title" style="text-align:center">How it works</h2></div></div><div class="elementor-element elementor-element-fb30d41 elementor-widget elementor-widget-text-editor fs-lead" style=""><div class="elementor-widget-container"><div style="text-align:center"><p>Four steps from “I don’t know what’s working” to a system you can see.</p></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-a7a501c fs-steps"><div class="e-con e-flex elementor-element elementor-element-6892557 fs-gcard fs-step"><div class="elementor-element elementor-element-710deef elementor-widget elementor-widget-heading fs-step-num" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">1</p></div></div><div class="elementor-element elementor-element-b09a4e7 elementor-widget elementor-widget-icon fs-step-icon" style=""><div class="elementor-widget-container"><div class="elementor-icon-wrapper" style="text-align:left"><span class="elementor-icon" style="font-size:44px;color:#3299D5;line-height:1">⌕</span></div></div></div><div class="elementor-element elementor-element-a77e2b8 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">Book your strategy call.</h3></div></div><div class="elementor-element elementor-element-67968c9 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>A [30-minute] conversation about where your marketing is today and where the gaps are. No pitch deck, no pressure.</p></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-340f783 fs-gcard fs-step"><div class="elementor-element elementor-element-2411229 elementor-widget elementor-widget-heading fs-step-num" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">2</p></div></div><div class="elementor-element elementor-element-b941e29 elementor-widget elementor-widget-icon fs-step-icon" style=""><div class="elementor-widget-container"><div class="elementor-icon-wrapper" style="text-align:left"><span class="elementor-icon" style="font-size:44px;color:#3299D5;line-height:1">⤳</span></div></div></div><div class="elementor-element elementor-element-3c78165 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">Get your roadmap.</h3></div></div><div class="elementor-element elementor-element-94fb581 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>We map your business against the FirstSearch Framework and lay out exactly what we’ll do, in what order, and what results we’re committing to.</p></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-e722a83 fs-gcard fs-step"><div class="elementor-element elementor-element-90ae3ff elementor-widget elementor-widget-heading fs-step-num" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">3</p></div></div><div class="elementor-element elementor-element-9ac8681 elementor-widget elementor-widget-icon fs-step-icon" style=""><div class="elementor-widget-container"><div class="elementor-icon-wrapper" style="text-align:left"><span class="elementor-icon" style="font-size:44px;color:#3299D5;line-height:1">⚙</span></div></div></div><div class="elementor-element elementor-element-6ee7d92 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">We build and run it.</h3></div></div><div class="elementor-element elementor-element-bcc5c10 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>Our team executes across every channel in your plan, from brand and website to ads, SEO, automation and reviews.</p></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-2a4d700 fs-gcard fs-step fs-step-hl"><div class="elementor-element elementor-element-514a387 elementor-widget elementor-widget-heading fs-step-num" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">4</p></div></div><div class="elementor-element elementor-element-8d21fe7 elementor-widget elementor-widget-icon fs-step-icon" style=""><div class="elementor-widget-container"><div class="elementor-icon-wrapper" style="text-align:left"><span class="elementor-icon" style="font-size:44px;color:#FFFFFF;line-height:1">📈</span></div></div></div><div class="elementor-element elementor-element-6b44b14 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">See the results.</h3></div></div><div class="elementor-element elementor-element-c8aef44 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>Monthly reporting in plain English, tied to leads and revenue, not vanity metrics. You’ll always know what’s working.</p></div></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-1ce2b3a fs-overlap"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="elementor-element elementor-element-564f3e3 elementor-widget elementor-widget-button fs-btn-lg fs-btn-grad" style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:center"><a class="elementor-button" href="/contact-us/" style=""><span>Let’s Talk!</span></a></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-5e3934a "><div class="e-con e-flex elementor-element elementor-element-c48e86a "><div class="elementor-element elementor-element-2784d6e elementor-widget elementor-widget-html " style=""><div class="elementor-widget-container"><!-- First Search component: ways. Exact copy of the approved design; edit text inside this HTML. -->
+
+.fsx-framework .fw-stage[hidden]{display:none !important;}</style></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-30fcb10 fs-geo"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-71e0372 "><div class="e-con e-flex elementor-element elementor-element-67fbb37 "><div class="e-con e-flex elementor-element elementor-element-582cc68 "><div class="elementor-element elementor-element-47abc37 elementor-widget elementor-widget-image " style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><img src="../upload/first-search/design/chris-cutout.webp" alt="" style="max-width:100%;width:100%;height:auto;display:block"></div></div></div><div class="elementor-element elementor-element-bb8ce6f elementor-widget elementor-widget-html " style=""><div class="elementor-widget-container"><blockquote class="fs-quote-chip">“I put our guarantee in writing because our clients deserve to know we’re as invested in their results as they are.”<cite>Chris Mitchell, Owner &amp; Digital Partner</cite></blockquote></div></div></div><div class="e-con e-flex elementor-element elementor-element-ecf9cef "><div class="e-con e-flex elementor-element elementor-element-5b9248c "><div class="elementor-element elementor-element-e52c241 elementor-widget elementor-widget-image " style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><img src="../upload/first-search/design/guarantee-seal.webp" alt="" style="max-width:100%;width:140px;height:auto;display:block"></div></div></div><div class="elementor-element elementor-element-933179d elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h2 class="elementor-heading-title" style="">Results, guaranteed.<br><span class="fs-gt">In writing.</span></h2></div></div></div><div class="elementor-element elementor-element-5840008 elementor-widget elementor-widget-text-editor fs-lead" style=""><div class="elementor-widget-container"><div style=""><p>If we don’t deliver [the lead growth we commit to in your roadmap], [we keep working at no cost until we do].</p></div></div></div><div class="elementor-element elementor-element-d072252 elementor-widget elementor-widget-icon-list fs-check-pills" style=""><div class="elementor-widget-container"><ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0"><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">Fixed monthly retainer. No surprise invoices.</span></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">Six-month partnership, not a long lock-in.</span></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">Results defined up front, measured monthly.</span></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/guarantee-terms/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">Read the full guarantee terms.</span></a></li></ul></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-b81cedd fs-grad fs-stats"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-dd75dc7 "><div class="e-con e-flex elementor-element elementor-element-49d48f9 "><div class="e-con e-flex elementor-element elementor-element-18c1067 "><div class="elementor-element elementor-element-f70f7b1 elementor-widget elementor-widget-counter " style=""><div class="elementor-widget-container"><div style="text-align:center"><div class="elementor-counter-number-wrapper">47%</div><div class="elementor-counter-title">average increase in leads</div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-e2e1c18 "><div class="elementor-element elementor-element-80ab515 elementor-widget elementor-widget-counter " style=""><div class="elementor-widget-container"><div style="text-align:center"><div class="elementor-counter-number-wrapper">1200</div><div class="elementor-counter-title">five-star reviews generated for partners</div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-41daaef "><div class="elementor-element elementor-element-9c48730 elementor-widget elementor-widget-counter " style=""><div class="elementor-widget-container"><div style="text-align:center"><div class="elementor-counter-number-wrapper">94%</div><div class="elementor-counter-title">partner retention rate</div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-e659d4b "><div class="elementor-element elementor-element-c0b667f elementor-widget elementor-widget-counter " style=""><div class="elementor-widget-container"><div style="text-align:center"><div class="elementor-counter-number-wrapper">10+</div><div class="elementor-counter-title">years building marketing systems</div></div></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-b09a4e7 fs-geo"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-7aa9346 "><div class="e-con e-flex elementor-element elementor-element-8fc4720 "><div class="e-con e-flex elementor-element elementor-element-a4fef3e fs-purple-card fs-dark"><div class="elementor-element elementor-element-c44e78a elementor-widget elementor-widget-image fs-img-frame" style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><img src="../upload/first-search/design/case-dental.webp" alt="" style="max-width:100%;width:100%;height:auto;display:block"></div></div></div><div class="elementor-element elementor-element-79ce392 elementor-widget elementor-widget-heading fs-eyebrow" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">[Client name] · [Industry, NH town]</p></div></div><div class="elementor-element elementor-element-5b446e0 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">[From invisible on Google to booked out three weeks ahead]</h3></div></div><div class="elementor-element elementor-element-133d10c elementor-widget elementor-widget-eael-data-table fs-dtable" style=""><div class="elementor-widget-container"><div class="eael-data-table-wrap"><table class="tablesorter eael-data-table center" style="border-collapse:collapse"><thead><tr class="table-header"><th class="m"><span class="data-table-header-text">Metrics</span></th><th class="b"><span class="data-table-header-text">Before</span></th><th class="ar"><span class="data-table-header-text"></span></th><th class="a"><span class="data-table-header-text">After</span></th></tr></thead><tbody><tr><td class="m"><div class="td-content-wrapper"><div class="td-content">Monthly leads</div></div></td><td class="b"><div class="td-content-wrapper"><div class="td-content">12</div></div></td><td class="ar"><div class="td-content-wrapper"><div class="td-content">→</div></div></td><td class="a"><div class="td-content-wrapper"><div class="td-content">41</div></div></td></tr><tr><td class="m"><div class="td-content-wrapper"><div class="td-content">Map pack position</div></div></td><td class="b"><div class="td-content-wrapper"><div class="td-content">#9</div></div></td><td class="ar"><div class="td-content-wrapper"><div class="td-content">→</div></div></td><td class="a"><div class="td-content-wrapper"><div class="td-content">#1</div></div></td></tr><tr><td class="m"><div class="td-content-wrapper"><div class="td-content">Google reviews</div></div></td><td class="b"><div class="td-content-wrapper"><div class="td-content">18</div></div></td><td class="ar"><div class="td-content-wrapper"><div class="td-content">→</div></div></td><td class="a"><div class="td-content-wrapper"><div class="td-content">112</div></div></td></tr></tbody></table></div></div></div><div class="elementor-element elementor-element-085b0f0 elementor-widget elementor-widget-button fs-link-u" style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><a class="elementor-button" href="/case-studies/" style=""><span>Read the full story</span></a></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-b27058a "><div class="e-con e-flex elementor-element elementor-element-49d1b3f fs-gcard fs-review-card"><div class="elementor-element elementor-element-5d1e2cc elementor-widget elementor-widget-eael-testimonial fs-testi" style=""><div class="elementor-widget-container"><div class="eael-testimonial-item clearfix default-style rating-five"><ul class="testimonial-star-rating"><li><i class="fas fa-star" aria-hidden="true">★</i></li><li><i class="fas fa-star" aria-hidden="true">★</i></li><li><i class="fas fa-star" aria-hidden="true">★</i></li><li><i class="fas fa-star" aria-hidden="true">★</i></li><li><i class="fas fa-star" aria-hidden="true">★</i></li></ul><div class="eael-testimonial-content"><div class="eael-testimonial-text">“We contacted Chris at First Search after a bad experience with a national brand company. He was able to fix our website and get our Google profile up and running. Chris and his team are very professional and always did what was right for our success.”</div><p class="eael-testimonial-user">Steven McGibbon</p><p class="eael-testimonial-user-company">Posted on Google</p></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-658c448 fs-gcard fs-review-card"><div class="elementor-element elementor-element-74c01d4 elementor-widget elementor-widget-eael-testimonial fs-testi" style=""><div class="elementor-widget-container"><div class="eael-testimonial-item clearfix default-style rating-five"><ul class="testimonial-star-rating"><li><i class="fas fa-star" aria-hidden="true">★</i></li><li><i class="fas fa-star" aria-hidden="true">★</i></li><li><i class="fas fa-star" aria-hidden="true">★</i></li><li><i class="fas fa-star" aria-hidden="true">★</i></li><li><i class="fas fa-star" aria-hidden="true">★</i></li></ul><div class="eael-testimonial-content"><div class="eael-testimonial-text">“My business partner and I have been working with First Search for about six months and we were starting pretty much from ground zero with our marketing. We didn’t really even know where to start but the whole process has been easy and approachable and we couldn’t be happier with the results thus far.”</div><p class="eael-testimonial-user">Patrick Wilson</p><p class="eael-testimonial-user-company">Posted on Google</p></div></div></div></div></div><div class="elementor-element elementor-element-ffee9f7 elementor-widget elementor-widget-button fs-link-u" style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><a class="elementor-button" href="#" style=""><span>Read all [XX] Google reviews</span></a></div></div></div><div class="elementor-element elementor-element-77d467b elementor-widget elementor-widget-html fs-hidden-script" style=""><div class="elementor-widget-container"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "First Search Marketing", "url": "https://befirstsearch.com/", "review": [{"@type": "Review", "author": {"@type": "Person", "name": "Steven McGibbon"}, "reviewRating": {"@type": "Rating", "ratingValue": 5, "bestRating": 5}, "reviewBody": "We contacted Chris at First Search after a bad experience with a national brand company. He was able to fix our website and get our Google profile up and running. Chris and his team are very professional and always did what was right for our success.", "publisher": {"@type": "Organization", "name": "Google"}}, {"@type": "Review", "author": {"@type": "Person", "name": "Patrick Wilson"}, "reviewRating": {"@type": "Rating", "ratingValue": 5, "bestRating": 5}, "reviewBody": "My business partner and I have been working with First Search for about six months and we were starting pretty much from ground zero with our marketing. We didn’t really even know where to start but the whole process has been easy and approachable and we couldn’t be happier with the results thus far.", "publisher": {"@type": "Organization", "name": "Google"}}]}</script></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-2784d6e fs-dark"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-c5eb056 "><div class="e-con e-flex elementor-element elementor-element-a7a501c fs-sec-head"><div class="elementor-element elementor-element-86bb576 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h2 class="elementor-heading-title" style="text-align:center">How it works</h2></div></div><div class="elementor-element elementor-element-5041086 elementor-widget elementor-widget-text-editor fs-lead" style=""><div class="elementor-widget-container"><div style="text-align:center"><p>Four steps from “I don’t know what’s working” to a system you can see.</p></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-bfbc20f fs-steps"><div class="e-con e-flex elementor-element elementor-element-b941e29 fs-gcard fs-step"><div class="elementor-element elementor-element-a77e2b8 elementor-widget elementor-widget-heading fs-step-num" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">1</p></div></div><div class="elementor-element elementor-element-710deef elementor-widget elementor-widget-icon fs-step-icon" style=""><div class="elementor-widget-container"><div class="elementor-icon-wrapper" style="text-align:left"><span class="elementor-icon" style="font-size:44px;color:#3299D5;line-height:1">⌕</span></div></div></div><div class="elementor-element elementor-element-67968c9 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">Book your strategy call.</h3></div></div><div class="elementor-element elementor-element-6892557 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>A [30-minute] conversation about where your marketing is today and where the gaps are. No pitch deck, no pressure.</p></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-9ac8681 fs-gcard fs-step"><div class="elementor-element elementor-element-3c78165 elementor-widget elementor-widget-heading fs-step-num" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">2</p></div></div><div class="elementor-element elementor-element-2411229 elementor-widget elementor-widget-icon fs-step-icon" style=""><div class="elementor-widget-container"><div class="elementor-icon-wrapper" style="text-align:left"><span class="elementor-icon" style="font-size:44px;color:#3299D5;line-height:1">⤳</span></div></div></div><div class="elementor-element elementor-element-94fb581 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">Get your roadmap.</h3></div></div><div class="elementor-element elementor-element-340f783 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>We map your business against the FirstSearch Framework and lay out exactly what we’ll do, in what order, and what results we’re committing to.</p></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-8d21fe7 fs-gcard fs-step"><div class="elementor-element elementor-element-6ee7d92 elementor-widget elementor-widget-heading fs-step-num" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">3</p></div></div><div class="elementor-element elementor-element-90ae3ff elementor-widget elementor-widget-icon fs-step-icon" style=""><div class="elementor-widget-container"><div class="elementor-icon-wrapper" style="text-align:left"><span class="elementor-icon" style="font-size:44px;color:#3299D5;line-height:1">⚙</span></div></div></div><div class="elementor-element elementor-element-bcc5c10 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">We build and run it.</h3></div></div><div class="elementor-element elementor-element-e722a83 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>Our team executes across every channel in your plan, from brand and website to ads, SEO, automation and reviews.</p></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-fb30d41 fs-gcard fs-step fs-step-hl"><div class="elementor-element elementor-element-6b44b14 elementor-widget elementor-widget-heading fs-step-num" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">4</p></div></div><div class="elementor-element elementor-element-514a387 elementor-widget elementor-widget-icon fs-step-icon" style=""><div class="elementor-widget-container"><div class="elementor-icon-wrapper" style="text-align:left"><span class="elementor-icon" style="font-size:44px;color:#FFFFFF;line-height:1">📈</span></div></div></div><div class="elementor-element elementor-element-c8aef44 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">See the results.</h3></div></div><div class="elementor-element elementor-element-2a4d700 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>Monthly reporting in plain English, tied to leads and revenue, not vanity metrics. You’ll always know what’s working.</p></div></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-f380c7d fs-overlap"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="elementor-element elementor-element-de12857 elementor-widget elementor-widget-button fs-btn-lg fs-btn-grad" style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:center"><a class="elementor-button" href="/contact-us/" style=""><span>Let’s Talk!</span></a></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-170f4c7 "><div class="e-con e-flex elementor-element elementor-element-5e3934a "><div class="elementor-element elementor-element-c48e86a elementor-widget elementor-widget-html " style=""><div class="elementor-widget-container"><!-- First Search component: ways. Exact copy of the approved design; edit text inside this HTML. -->
 <div class="fsx fsx-ways"><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="g-brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3299D5"></stop><stop offset="1" stop-color="#250762"></stop></linearGradient><linearGradient id="g-ico" gradientUnits="userSpaceOnUse" x1="3" y1="3" x2="21" y2="21"><stop offset="0" stop-color="#3299D5"></stop><stop offset="1" stop-color="#250762"></stop></linearGradient><linearGradient id="g-ico64" gradientUnits="userSpaceOnUse" x1="6" y1="6" x2="58" y2="58"><stop offset="0" stop-color="#3299D5"></stop><stop offset="1" stop-color="#250762"></stop></linearGradient></defs><symbol id="i-check--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"></path></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></symbol><symbol id="i-x--g" viewBox="0 0 24 24" fill="none" stroke="url(#g-ico)" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"></path></symbol></svg><section class="ways2 bg-geo" id="work-with-us" aria-labelledby="ways-title">
   <div class="fsx-con">
     <div class="ways2-head"><span class="eyebrow">Work with us</span><h2 class="h2" id="ways-title">Three ways to <span class="gt">become a FirstSearcher</span></h2><p class="lead">Work with our team, learn the system yourself, or get guided by us while you do the work.</p></div>
@@ -2202,4 +2594,4 @@ ROOT.addEventListener('click', e => { const v = e.target.closest('.vid-btn'); if
 .fsx-ways .wt-fit .n .icon { color: var(--navy); }
 .fsx-ways .wt-foot b { color: transparent; background: var(--grad-text); -webkit-background-clip: text; background-clip: text; font-size: 1.25em; }
 .fsx-ways .btn { background-origin: border-box !important; background-clip: border-box !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; }
-</style></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-d2efdf6 fs-geo"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-b9b670d "><div class="e-con e-flex elementor-element elementor-element-cf5dd22 fs-sec-head"><div class="elementor-element elementor-element-170f4c7 elementor-widget elementor-widget-heading fs-eyebrow" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="text-align:center">FAQ</p></div></div><div class="elementor-element elementor-element-943face elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h2 class="elementor-heading-title" style="text-align:center">Questions owners <span class="fs-gt">ask us</span></h2></div></div></div><div class="e-con e-flex elementor-element elementor-element-02d60b6 "><div class="elementor-element elementor-element-bbeb925 elementor-widget elementor-widget-accordion fs-faq" style=""><div class="elementor-widget-container"><div class="elementor-accordion-item"><div class="elementor-tab-title elementor-active"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">What exactly does the FirstSearch Guarantee cover?</a></div><div class="elementor-tab-content"><p>[Plain-English summary of the guarantee: what’s guaranteed, how it’s measured, and what happens if it’s missed.]</p></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">Why a six-month commitment?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">How much does a partnership cost?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">What kinds of businesses do you work with?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">Do I need to be in New Hampshire?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">Why do you only work with 25 businesses?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">How will I know if it’s working?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">Who owns my accounts, website and content?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">What if I’m not ready to hire an agency?</a></div></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-c596148 fs-final"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-51657d8 "><div class="e-con e-flex elementor-element elementor-element-81ca5a1 fs-grad fs-cta-banner"><div class="e-con e-flex elementor-element elementor-element-bc9daab "><div class="elementor-element elementor-element-f903d90 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h2 class="elementor-heading-title" style="text-align:center">Ready to unlock growth?</h2></div></div><div class="elementor-element elementor-element-8923841 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style="text-align:center"><p>[6] of 25 partner spots open. Let’s find out if you’re a fit.</p></div></div></div></div><div class="elementor-element elementor-element-924a334 elementor-widget elementor-widget-button fs-btn-lg" style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:center"><a class="elementor-button" href="/contact-us/" style=""><span>Let’s Talk!</span></a></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-73b2953 fs-footer"><div class="e-con e-flex elementor-element elementor-element-358a008 "><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-92e6b70 "><div class="e-con e-flex elementor-element elementor-element-b1affa4 "><div class="elementor-element elementor-element-00a6ce7 elementor-widget elementor-widget-image " style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><img src="../upload/first-search/design/footer-logo.png" alt="" style="max-width:100%;width:305px;height:auto;display:block"></div></div></div><div class="elementor-element elementor-element-c606b6c elementor-widget elementor-widget-heading fs-tagline" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">We put your <span class="fs-gt">business first.</span></p></div></div></div><div class="e-con e-flex elementor-element elementor-element-13dc14d fs-news"><div class="elementor-element elementor-element-8194fa2 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">The FirstSearcher monthly</h3></div></div><div class="elementor-element elementor-element-01600b3 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>One practical marketing play for local businesses, every month. No spam.</p></div></div></div><div class="elementor-element elementor-element-b6c7f85 elementor-widget elementor-widget-form fs-news-form" style=""><div class="elementor-widget-container"><form class="elementor-form"><div class="elementor-form-fields-wrapper" style="display:flex;flex-wrap:wrap;margin:0 -6px"><div class="elementor-field-group elementor-column" style="width:70%;padding:0 6px 12px;box-sizing:border-box"><input class="elementor-field elementor-field-textual" placeholder="you@business.com" style="width:100%;box-sizing:border-box"></div><div class="elementor-field-group elementor-column elementor-field-type-submit" style="width:30%;padding:0 6px 12px;box-sizing:border-box"><button class="elementor-button">Subscribe</button></div></div></form></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-b303cdb "><div class="e-con e-flex elementor-element elementor-element-cb9871f "><div class="elementor-element elementor-element-7b21aad elementor-widget elementor-widget-heading fs-col-title" style=""><div class="elementor-widget-container"><h4 class="elementor-heading-title" style="">About First Search</h4></div></div><div class="elementor-element elementor-element-baed326 elementor-widget elementor-widget-icon-list " style=""><div class="elementor-widget-container"><ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0"><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/about-us/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">About Us</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/why-choose-us/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Why Choose Us</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/contact-us/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Contact Us</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/careers/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Careers</span></a></li></ul></div></div></div><div class="e-con e-flex elementor-element elementor-element-12429f3 "><div class="elementor-element elementor-element-f16baff elementor-widget elementor-widget-heading fs-col-title" style=""><div class="elementor-widget-container"><h4 class="elementor-heading-title" style="">What We Do</h4></div></div><div class="elementor-element elementor-element-b16c665 elementor-widget elementor-widget-icon-list " style=""><div class="elementor-widget-container"><ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0"><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/services/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">All services</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/services/#framework" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">The FirstSearch Framework</span></a></li></ul></div></div><div class="elementor-element elementor-element-3378d63 elementor-widget elementor-widget-html " style=""><div class="elementor-widget-container"><div class="fs-stage-links"><a href="/firstbrand/"><span class="fs-plogo fs-plogo--light"><b>first</b>brand</span></a><br><a href="/firstthought/"><span class="fs-plogo fs-plogo--light"><b>first</b>thought</span></a><br><a href="/firstchoice/"><span class="fs-plogo fs-plogo--light"><b>first</b>choice</span></a><br><a href="/firstreferral/"><span class="fs-plogo fs-plogo--light"><b>first</b>referral</span></a></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-bb4f066 "><div class="elementor-element elementor-element-6e55224 elementor-widget elementor-widget-heading fs-col-title" style=""><div class="elementor-widget-container"><h4 class="elementor-heading-title" style="">Grow Your Marketing</h4></div></div><div class="elementor-element elementor-element-8b93f97 elementor-widget elementor-widget-icon-list " style=""><div class="elementor-widget-container"><ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0"><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/events/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Events</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/resources/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Resources</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/befirst-training/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">BeFirst Training</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/framework-quiz/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Framework Quiz</span></a></li></ul></div></div></div><div class="e-con e-flex elementor-element elementor-element-2cce8fa "><div class="elementor-element elementor-element-c361113 elementor-widget elementor-widget-heading fs-col-title" style=""><div class="elementor-widget-container"><h4 class="elementor-heading-title" style="">Get in touch</h4></div></div><div class="elementor-element elementor-element-c7841f8 elementor-widget elementor-widget-icon-list fs-ct" style=""><div class="elementor-widget-container"><ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0"><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="https://maps.google.com/?q=1+Merrill+Industrial+Drive+Unit+4+Hampton+NH+03842" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">1 Merrill Industrial Drive, Unit #4, Hampton, NH 03842</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="tel:+16035188090" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">603-518-8090</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="mailto:chris@befirstsearch.com" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">chris@befirstsearch.com</span></a></li></ul></div></div><div class="elementor-element elementor-element-481f7a7 elementor-widget elementor-widget-social-icons fs-social" style=""><div class="elementor-widget-container"><div style="display:flex;gap:8px"><span class="elementor-social-icon" style="width:40px;height:40px;display:inline-block"></span><span class="elementor-social-icon" style="width:40px;height:40px;display:inline-block"></span><span class="elementor-social-icon" style="width:40px;height:40px;display:inline-block"></span></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-6f6e7c6 fs-bottom"><div class="elementor-element elementor-element-6463e14 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>© 2026 First Search Marketing LLC · Family-owned in Hampton, NH</p></div></div></div><div class="elementor-element elementor-element-ff9c871 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><a href="/privacy-policy/">Privacy policy</a> &nbsp; <a href="/terms/">Terms</a></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-3b4a971 fs-stripe"></div></div></body></html>
+</style></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-f903d90 fs-geo"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-d2efdf6 "><div class="e-con e-flex elementor-element elementor-element-40c6cdd fs-sec-head"><div class="elementor-element elementor-element-943face elementor-widget elementor-widget-heading fs-eyebrow" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="text-align:center">FAQ</p></div></div><div class="elementor-element elementor-element-cf5dd22 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h2 class="elementor-heading-title" style="text-align:center">Questions owners <span class="fs-gt">ask us</span></h2></div></div></div><div class="e-con e-flex elementor-element elementor-element-b9b670d "><div class="elementor-element elementor-element-02d60b6 elementor-widget elementor-widget-accordion fs-faq" style=""><div class="elementor-widget-container"><div class="elementor-accordion-item"><div class="elementor-tab-title elementor-active"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">What exactly does the FirstSearch Guarantee cover?</a></div><div class="elementor-tab-content"><p>[Plain-English summary of the guarantee: what’s guaranteed, how it’s measured, and what happens if it’s missed.]</p></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">Why a six-month commitment?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">How much does a partnership cost?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">What kinds of businesses do you work with?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">Do I need to be in New Hampshire?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">Why do you only work with 25 businesses?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">How will I know if it’s working?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">Who owns my accounts, website and content?</a></div></div><div class="elementor-accordion-item"><div class="elementor-tab-title"><span class="elementor-accordion-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-accordion-title">What if I’m not ready to hire an agency?</a></div></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-2b81c5b fs-final"><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-c596148 "><div class="e-con e-flex elementor-element elementor-element-51657d8 fs-grad fs-cta-banner"><div class="e-con e-flex elementor-element elementor-element-924a334 "><div class="elementor-element elementor-element-8923841 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h2 class="elementor-heading-title" style="text-align:center">Ready to unlock growth?</h2></div></div><div class="elementor-element elementor-element-bc9daab elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style="text-align:center"><p>[6] of 25 partner spots open. Let’s find out if you’re a fit.</p></div></div></div></div><div class="elementor-element elementor-element-81ca5a1 elementor-widget elementor-widget-button fs-btn-lg" style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:center"><a class="elementor-button" href="/contact-us/" style=""><span>Let’s Talk!</span></a></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-73b2953 fs-footer"><div class="e-con e-flex elementor-element elementor-element-358a008 "><div class="e-con-inner" style="width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit"><div class="e-con e-flex elementor-element elementor-element-92e6b70 "><div class="e-con e-flex elementor-element elementor-element-b1affa4 "><div class="elementor-element elementor-element-00a6ce7 elementor-widget elementor-widget-image " style=""><div class="elementor-widget-container"><div style="display:flex;justify-content:flex-start"><img src="../upload/first-search/design/footer-logo.png" alt="" style="max-width:100%;width:305px;height:auto;display:block"></div></div></div><div class="elementor-element elementor-element-c606b6c elementor-widget elementor-widget-heading fs-tagline" style=""><div class="elementor-widget-container"><p class="elementor-heading-title" style="">We put your <span class="fs-gt">business first.</span></p></div></div></div><div class="e-con e-flex elementor-element elementor-element-13dc14d fs-news"><div class="elementor-element elementor-element-8194fa2 elementor-widget elementor-widget-heading " style=""><div class="elementor-widget-container"><h3 class="elementor-heading-title" style="">The FirstSearcher monthly</h3></div></div><div class="elementor-element elementor-element-01600b3 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>One practical marketing play for local businesses, every month. No spam.</p></div></div></div><div class="elementor-element elementor-element-b6c7f85 elementor-widget elementor-widget-form fs-news-form" style=""><div class="elementor-widget-container"><form class="elementor-form"><div class="elementor-form-fields-wrapper" style="display:flex;flex-wrap:wrap;margin:0 -6px"><div class="elementor-field-group elementor-column" style="width:70%;padding:0 6px 12px;box-sizing:border-box"><input class="elementor-field elementor-field-textual" placeholder="you@business.com" style="width:100%;box-sizing:border-box"></div><div class="elementor-field-group elementor-column elementor-field-type-submit" style="width:30%;padding:0 6px 12px;box-sizing:border-box"><button class="elementor-button">Subscribe</button></div></div></form></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-b303cdb "><div class="e-con e-flex elementor-element elementor-element-cb9871f "><div class="elementor-element elementor-element-7b21aad elementor-widget elementor-widget-heading fs-col-title" style=""><div class="elementor-widget-container"><h4 class="elementor-heading-title" style="">About First Search</h4></div></div><div class="elementor-element elementor-element-baed326 elementor-widget elementor-widget-icon-list " style=""><div class="elementor-widget-container"><ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0"><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/about-us/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">About Us</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/why-choose-us/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Why Choose Us</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/contact-us/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Contact Us</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/careers/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Careers</span></a></li></ul></div></div></div><div class="e-con e-flex elementor-element elementor-element-12429f3 "><div class="elementor-element elementor-element-f16baff elementor-widget elementor-widget-heading fs-col-title" style=""><div class="elementor-widget-container"><h4 class="elementor-heading-title" style="">What We Do</h4></div></div><div class="elementor-element elementor-element-b16c665 elementor-widget elementor-widget-icon-list " style=""><div class="elementor-widget-container"><ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0"><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/services/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">All services</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/services/#framework" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">The FirstSearch Framework</span></a></li></ul></div></div><div class="elementor-element elementor-element-3378d63 elementor-widget elementor-widget-html " style=""><div class="elementor-widget-container"><div class="fs-stage-links"><a href="/firstbrand/"><span class="fs-plogo fs-plogo--light"><b>first</b>brand</span></a><br><a href="/firstthought/"><span class="fs-plogo fs-plogo--light"><b>first</b>thought</span></a><br><a href="/firstchoice/"><span class="fs-plogo fs-plogo--light"><b>first</b>choice</span></a><br><a href="/firstreferral/"><span class="fs-plogo fs-plogo--light"><b>first</b>referral</span></a></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-bb4f066 "><div class="elementor-element elementor-element-6e55224 elementor-widget elementor-widget-heading fs-col-title" style=""><div class="elementor-widget-container"><h4 class="elementor-heading-title" style="">Grow Your Marketing</h4></div></div><div class="elementor-element elementor-element-8b93f97 elementor-widget elementor-widget-icon-list " style=""><div class="elementor-widget-container"><ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0"><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/events/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Events</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/resources/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Resources</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/befirst-training/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">BeFirst Training</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="/framework-quiz/" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-text">Framework Quiz</span></a></li></ul></div></div></div><div class="e-con e-flex elementor-element elementor-element-2cce8fa "><div class="elementor-element elementor-element-c361113 elementor-widget elementor-widget-heading fs-col-title" style=""><div class="elementor-widget-container"><h4 class="elementor-heading-title" style="">Get in touch</h4></div></div><div class="elementor-element elementor-element-c7841f8 elementor-widget elementor-widget-icon-list fs-ct" style=""><div class="elementor-widget-container"><ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0"><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="https://maps.google.com/?q=1+Merrill+Industrial+Drive+Unit+4+Hampton+NH+03842" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">1 Merrill Industrial Drive, Unit #4, Hampton, NH 03842</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="tel:+16035188090" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">603-518-8090</span></a></li><li class="elementor-icon-list-item" style="display:flex;gap:10px;align-items:baseline;padding:4px 0"><a href="mailto:chris@befirstsearch.com" style="display:flex;gap:10px;align-items:baseline"><span class="elementor-icon-list-icon"><i style="font-style:normal">✓</i></span><span class="elementor-icon-list-text">chris@befirstsearch.com</span></a></li></ul></div></div><div class="elementor-element elementor-element-481f7a7 elementor-widget elementor-widget-social-icons fs-social" style=""><div class="elementor-widget-container"><div style="display:flex;gap:8px"><span class="elementor-social-icon" style="width:40px;height:40px;display:inline-block"></span><span class="elementor-social-icon" style="width:40px;height:40px;display:inline-block"></span><span class="elementor-social-icon" style="width:40px;height:40px;display:inline-block"></span></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-6f6e7c6 fs-bottom"><div class="elementor-element elementor-element-6463e14 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><p>© 2026 First Search Marketing LLC · Family-owned in Hampton, NH</p></div></div></div><div class="elementor-element elementor-element-ff9c871 elementor-widget elementor-widget-text-editor " style=""><div class="elementor-widget-container"><div style=""><a href="/privacy-policy/">Privacy policy</a> &nbsp; <a href="/terms/">Terms</a></div></div></div></div></div></div></div><div class="e-con e-flex elementor-element elementor-element-3b4a971 fs-stripe"></div></div></body></html>
