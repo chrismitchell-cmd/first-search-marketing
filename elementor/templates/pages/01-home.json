@@ -3521,7 +3521,7 @@
          "settings": {
           "content_width": "full",
           "flex_direction": "column",
-          "css_classes": "fs-gcard fs-step",
+          "css_classes": "fs-gcard fs-step fs-step-hl",
           "flex_gap": {
            "unit": "px",
            "size": 10,
@@ -3601,7 +3601,7 @@
              "library": "fa-solid"
             },
             "align": "left",
-            "primary_color": "#3299D5",
+            "primary_color": "#FFFFFF",
             "size": {
              "unit": "px",
              "size": 44,
@@ -3618,9 +3618,7 @@
            "settings": {
             "title": "See the results.",
             "header_size": "h3",
-            "__globals__": {
-             "title_color": "globals/colors?id=primary"
-            },
+            "__globals__": {},
             "typography_typography": "custom",
             "typography_font_family": "Poppins",
             "typography_font_weight": "700",
@@ -3640,7 +3638,8 @@
              "sizes": []
             },
             "typography_text_transform": "none",
-            "typography_font_style": "normal"
+            "typography_font_style": "normal",
+            "title_color": "#FFFFFF"
            },
            "elements": []
           },
@@ -3650,9 +3649,7 @@
            "widgetType": "text-editor",
            "settings": {
             "editor": "<p>Monthly reporting in plain English, tied to leads and revenue, not vanity metrics. You’ll always know what’s working.</p>",
-            "__globals__": {
-             "text_color": "globals/colors?id=text"
-            },
+            "__globals__": {},
             "typography_typography": "custom",
             "typography_font_family": "Poppins",
             "typography_font_weight": "400",
@@ -3667,7 +3664,8 @@
              "sizes": []
             },
             "typography_text_transform": "none",
-            "typography_font_style": "normal"
+            "typography_font_style": "normal",
+            "text_color": "#FFFFFF"
            },
            "elements": []
           }
@@ -4100,6 +4098,7 @@
            "library": "fa-solid"
           },
           "icon_align": "left",
+          "tab_active_color": "#FFFFFF",
           "_css_classes": "fs-faq",
           "__globals__": {
            "content_color": "globals/colors?id=text"

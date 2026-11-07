@@ -101,7 +101,7 @@ def video(caption='', img=None, cls='fs-video', url='https://www.youtube.com/wat
 def accordion(qas, cls='fs-faq'):
     return w('accordion', {'tabs': [{'_id': uid(), 'tab_title': q, 'tab_content': f'<p>{a}</p>'} for q, a in qas], 'title_html_tag': 'h3',
                            'selected_icon': {'value': 'fas fa-plus', 'library': 'fa-solid'}, 'selected_active_icon': {'value': 'fas fa-minus', 'library': 'fa-solid'},
-                           'icon_align': 'left'}, cls)
+                           'icon_align': 'left', 'tab_active_color': '#FFFFFF'}, cls)
 def counter(end, title, suffix='', prefix=''):
     return w('counter', {'starting_number': 0, 'ending_number': end, 'suffix': suffix, 'prefix': prefix, 'title': title,
                          'duration': 1400, 'thousand_separator': 'yes', 'thousand_separator_char': ','})

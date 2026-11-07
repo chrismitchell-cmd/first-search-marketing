@@ -77,12 +77,17 @@ def _fix(e, in_step=False):
         if g.get('title_color'): g['hover_title_color'] = g['title_color']
         else: st['hover_title_color'] = st.get('title_color') or '#FFFFFF'
     if in_step and e.get('widgetType') == 'heading' and 'fs-step-num' not in st.get('_css_classes', ''):
-        st.pop('title_color', None); st.setdefault('__globals__', {})['title_color'] = 'globals/colors?id=primary'
+        g = st.setdefault('__globals__', {})
+        if in_step == 'hl': st['title_color'] = '#FFFFFF'; g.pop('title_color', None)
+        else: st.pop('title_color', None); g['title_color'] = 'globals/colors?id=primary'
     if in_step and e.get('widgetType') == 'text-editor':
-        st.pop('text_color', None); st.setdefault('__globals__', {})['text_color'] = 'globals/colors?id=text'
+        g = st.setdefault('__globals__', {})
+        if in_step == 'hl': st['text_color'] = '#FFFFFF'; g.pop('text_color', None)
+        else: st.pop('text_color', None); g['text_color'] = 'globals/colors?id=text'
     if in_step and e.get('widgetType') == 'icon':
-        st['primary_color'] = '#3299D5'
-    step = in_step or (e['elType'] == 'container' and 'fs-step' in st.get('css_classes', '').split())
+        st['primary_color'] = '#FFFFFF' if in_step == 'hl' else '#3299D5'
+    cls = st.get('css_classes', '').split() if e['elType'] == 'container' else []
+    step = in_step or (('hl' if 'fs-step-hl' in cls else True) if 'fs-step' in cls else False)
     for c in e.get('elements', []): _fix(c, step)
 for _, _, tpl in built:
     for e in tpl['content']: _fix(e)

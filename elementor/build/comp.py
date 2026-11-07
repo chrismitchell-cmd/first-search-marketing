@@ -160,7 +160,7 @@ def steps(eb, h2, sub, items):
     cards = []
     for n, it in enumerate(items, 1):
         lab, t, d = it if len(it) == 3 else (None, *it)
-        hl = False   # all four cards white
+        hl = n == len(items)   # last card: gradient, white text
         ic = w('icon', {'selected_icon': {'value': STEP_ICONS[(n - 1) % 4], 'library': 'fa-solid'}, 'align': 'left',
                         'primary_color': '#FFFFFF' if hl else '#3299D5', 'size': px(44)}, 'fs-step-icon')
         kids = [heading(str(n), 'p', 'fs-step-num'), ic]

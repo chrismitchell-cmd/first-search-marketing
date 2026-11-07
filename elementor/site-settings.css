@@ -908,3 +908,10 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 @media (max-width: 767px) { .fs-faq .elementor-accordion-icon, .fs-faq .elementor-toggle-icon { width: 42px !important; height: 42px !important; min-width: 42px; max-height: 42px; } }
 /* small script-only HTML widgets (e.g. the count-up) take no space */
 .elementor-widget.fs-hidden-script { position: absolute !important; width: 0 !important; height: 0 !important; overflow: hidden; margin: 0 !important; }
+
+/* FAQ: open question title in white on the purple bar */
+.fs-faq .elementor-tab-title.elementor-active .elementor-accordion-title,
+.fs-faq .elementor-tab-title.elementor-active .elementor-toggle-title { color: #fff !important; }
+/* How it works: the last card is the gradient card, with white text */
+.fs-step.fs-step-hl { background: var(--fs-grad-diag) !important; border-color: transparent !important; }
+.fs-step.fs-step-hl .elementor-heading-title:not(.fs-step-num *), .fs-step.fs-step-hl .elementor-widget-text-editor { color: #fff; }
