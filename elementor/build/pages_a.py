@@ -111,10 +111,7 @@ def about():
                           ('Growth is a system', 'Any business can scale by improving the entire customer journey.', 'Growth isn’t one moment. It’s momentum built over time.')], 1)],
                     gap_=28, align='stretch', cls='fs-steps'), cls='fs-dark', title='Beliefs'),
         section(sec_head('Our core values', 'Four values, and what they look like <span class="fs-gt">when you work with us.</span>'),
-                row(*[con(con(image(f'assets/img/icons/{i}', '', None, 'center', t), cls='fs-vtile', justify='center', align='center'),
-                          con(heading(t, 'h3'), text(d, 'fs-vtext'), text(f'<p><em>In practice:</em> {p}</p>', 'fs-vip'), cls='fs-vbody', gap_=0),
-                          d='row', cls='fs-vcard', gap_=24, align='flex-start', mobile_col=False, p=pad(24, 28, 26, 22), s={'padding_mobile': pad(20)})
-                      for i, t, d, p in values], gap_=24, wrap=True, align='stretch', cls='fs-vcards fs-nostyle'),
+                value_cards(values),
                 cls='fs-geo', title='Core values', bg_img=GEO),
         section(sec_head('Our team', 'The people behind <span class="fs-gt">your marketing.</span>', 'A full marketing team at a fraction of the cost of hiring one. Small in size, serious in results. [CONFIRM: current team members and titles]'),
                 row(*[con(flip(*t), cls='fs-tm-col') for t in TEAM], gap_=28, wrap=True, align='stretch', justify='center', cls='fs-team-grid fs-nostyle'),
@@ -142,29 +139,11 @@ def about():
     ]
 
 # ======================= WHY CHOOSE US =======================
-CMP = [('Strategy', 'x', 'Whatever there’s time to figure out', '~', 'Often channel by channel, each service run separately', 'A framework-driven plan across every stage of the customer journey'),
-       ('Results', 'x', 'Not guaranteed', 'x', 'Rarely guaranteed', 'Guaranteed in writing'),
-       ('Reporting', 'x', 'Usually none', '~', 'Varies, often impressions and clicks', 'Monthly, in plain English, tied to leads and revenue'),
-       ('Who does the work', '~', 'One person, or you', '~', 'Varies, often a rotating account team', 'A dedicated local team that knows your business'),
-       ('Pricing', '~', 'Hourly, or your own time', '~', 'Varies, add-ons are common', 'One fixed monthly retainer'),
-       ('Commitment', '~', 'None', '~', 'Varies by agency', 'Six-month partnership'),
-       ('Your accounts and assets', 'y', 'You own them', '~', 'Not always', 'You own them [CONFIRM]'),
-       ('Attention', 'x', 'Limited by one person’s time', 'x', 'No cap on clients', 'Capped at 25 partners')]
-MK = {'x': '<span class="no">✕</span>', '~': '<span class="no">~</span>', 'y': '✓'}
-def cmp_table():
-    t = ('<div class="fs-table-wrap"><table class="fs-table"><thead><tr><th>What matters</th><th>Freelancer or DIY</th><th>Typical agency</th>'
-         '<th class="a">First Search Marketing</th></tr></thead><tbody>')
-    for k, m1, a, m2, b, us in CMP:
-        t += f'<tr><th scope="row">{k}</th><td>{MK[m1]} {a}</td><td>{MK[m2]} {b}</td><td class="us"><b>✓ {us}</b></td></tr>'
-    return html(t + '</tbody></table></div>')
 def why():
     comp = [('network.webp', 'Customized and holistic', 'We tailor every strategy to your industry, your customers and your goals. No templates, no one-size-fits-all.', 'Your roadmap is built from your business, your market and your goals, not a pre-set package.'),
             ('growth.webp', 'Data-driven and results-oriented', 'Every decision is backed by data and measured against real growth and a positive return on investment.', 'Every monthly report ties our work to leads, calls and revenue.'),
             ('team.webp', 'An extension of your team', 'A full marketing team at a fraction of the cost of hiring one. Small in size, serious in results.', 'A strategist, designers and specialists for less than one in-house hire.'),
             ('local.webp', 'A local business you can trust', 'Family-owned and NH-based, bringing big-agency strategy with the personal attention only a local partner can offer.', 'We’re in Hampton, NH. Meet us in person, and always reach a real person.')]
-    paths = [('Learn it yourself', 'BeFirst Community', '$88<small>/month</small>', ['The full online course', 'The FirstSearch Blueprint', 'Live monthly webinars', 'Weekly content and templates'], 'you have time and want to learn the system.', ('See the Community', '/befirst-training/'), 'fs-gcard'),
-             ('Build it with us', '1:1 Coaching', '$500<small>/month and up</small>', ['Everything in the Community', 'Strategy sessions with our team', 'A plan built around your business', 'Direct access between sessions'], 'you’ll do the work but want an expert in your corner.', ('See coaching', '/befirst-training/#coaching'), 'fs-gcard'),
-             ('Let us run it', 'Strategic partnership', '[$X,XXX]<small>/month</small>', ['Our team runs your marketing', 'Every stage of the framework', 'Monthly plain-English reporting', 'Results guaranteed in writing'], 'you want it done right, without doing it yourself.', ('Let’s Talk!', '/contact-us/'), 'fs-purple-card fs-dark')]
     return [
         hero('Why First Search Marketing', 'You’ve heard the promises before. <span class="fs-gt">Here’s what’s different.</span>',
              'If you’ve been burned by an agency, you already know the pattern: a long contract, a report you can’t decode and results that never show up. We built First Search to be the opposite of that.',
@@ -172,13 +151,10 @@ def why():
         trust([('25', 'partner businesses, maximum'), ('6', 'month partnership, not a multi-year lock-in'), ('✓', 'results guaranteed in writing')]),
         section(sec_head('Side by side', 'Not all marketing help <span class="fs-gt">is created equal.</span>',
                          'You have three real options for growing your marketing: do it yourself, hire a typical agency, or partner with us. Here’s how they compare on the eight things that decide whether your marketing actually works.'),
-                cmp_table(), text('[CONFIRM: every comparison claim must be fair and defensible]', '', 'center'), cls='fs-geo', title='Comparison', bg_img=GEO),
-        section(sec_head('Our framework', 'A proven system, not a pile of tactics.', 'The FirstSearch Framework makes sure your business is the one customers find, trust and choose first, at every stage of their journey.'),
-                row(*[col(html(f'<a href="/first{k}/" class="fs-plogo-chip">{plogo(k, size=24)}</a>'), text(STAGES[k][0]), wpct=23, cls='fs-gcard', p=pad(24), gap_=10) for k in STAGES], gap_=20, align='stretch', wrap=True),
-                button('Explore all services', '/services/', 'fs-btn-lg', 'center'), cls='fs-dark fs-dark-round', title='Framework', gap_=32),
+                cmp_table(), text('[CONFIRM: every comparison claim must be fair and defensible]', 'fs-cmp-note', 'center'), cls='fs-geo', title='Comparison', bg_img=GEO, gap_=40),
+        stage_cards(),
         section(sec_head('Our core competencies', 'What we’re built <span class="fs-gt">to do well.</span>'),
-                row(*[col(image_box(f'assets/img/icons/{i}', t, f'{d}<br><br><em>In practice:</em> {p}', 'fs-pcard'), wpct=48) for i, t, d, p in comp], gap_=20, wrap=True, align='stretch'),
-                cls='fs-geo', title='Competencies', bg_img=GEO),
+                value_cards(comp), cls='fs-geo', title='Competencies', bg_img=GEO),
         guarantee(),
         stats([(47, 'average increase in leads', '%', ''), (1200, 'five-star reviews generated for partners', '', ''), (0, 'partner retention [CONFIRM]', '%', ''), (4.9, 'average Google rating', '★', '')]),
         section(sec_head('Proof', 'Don’t take our <span class="fs-gt">word for it.</span>'), row(*[col(review(q, n), wpct=48) for q, n in REVIEWS], gap_=28, align='stretch'), review_schema(REVIEWS),
@@ -188,15 +164,8 @@ def why():
             ('Your roadmap.', '<b>Month 1</b> · Your plan across all four stages, with the results we’re committing to.'),
             ('Progress updates.', '<b>Every week</b> · Updates on work and progress from our team by email. [CONFIRM cadence]'),
             ('Report and check-in.', '<b>Every month</b> · Results in plain English, what we learned, and what’s next.')]),
-        section(sec_head('Ways to work with us', 'There’s an option <span class="fs-gt">for you.</span>', 'Not ready for a partnership? Start where it makes sense and move up when you’re ready.'),
-                row(*[col(heading(k, 'p', 'fs-eyebrow'), heading(h, 'h3'), heading(pr, 'p', 'fs-price'), icon_list(items, cls='fs-checks'),
-                          text(f'<p><b>Best if:</b> {who}</p>'), button(b[0], b[1], 'fs-btn-white' if 'dark' in c else 'fs-btn-grad'), wpct=31, cls=c, p=pad(30), gap_=12)
-                      for k, h, pr, items, who, b, c in paths], gap_=24, align='stretch'),
-                text('<p>Not sure which fits? <a href="/framework-quiz/">Take the Framework Quiz</a> and we’ll point you to the right starting place.</p>', '', 'center'),
-                cls='fs-geo', title='Paths', bg_img=GEO),
-        section(heading('We work with 25 businesses. That’s it.', 'h2', '', 'center'), text('Capping our partner list means every client gets senior attention and a team that knows their business.', 'fs-lead', 'center'),
-                text('<p><b>[6]</b> of 25 partner spots open.</p>', 'fs-eyebrow', 'center'), cls='fs-dark', title='Capacity', align='center',
-                p={'unit': 'px', 'top': '64', 'right': '24', 'bottom': '64', 'left': '24', 'isLinked': False}),
+        paths(),
+        capacity(),
         faq('Questions before you <span class="fs-gt">choose us</span>', [
             ('What exactly does the guarantee cover?', '[Plain-English summary of the guarantee: what’s guaranteed, how it’s measured, and what happens if it’s missed.]'),
             ('Why a six-month partnership?', 'Real marketing compounds. SEO, brand recognition, reviews and automation take time to build momentum. Six months is enough to show measurable results, and short enough that you’re never locked in for years.'),

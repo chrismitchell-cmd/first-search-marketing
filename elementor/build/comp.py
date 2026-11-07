@@ -322,3 +322,101 @@ def overlap_cta(label='Let’s Talk!', url='/contact-us/'):
 def cards_grid(cards, per_row=3, gap_=24, cls='fs-gcard', p_=28):
     wp = {2: 48, 3: 31, 4: 23}[per_row]
     return row(*[col(*c, wpct=wp, cls=cls, p=pad(p_), gap_=12, align=None) for c in cards], gap_=gap_, align='stretch', wrap=True)
+
+
+# ======================= Shared design blocks (match the approved HTML; look comes from the Custom CSS) =======================
+# ---------- Comparison table (Essential Addons Data Table, class fs-cmp) ----------
+CMP_ROWS = [  # label, icon (webp in assets/img/icons or line icon name), DIY, agency, First Search; "x" = no, "~" = it varies
+    ('Strategy', 'roadmap', 'xWhatever there’s time to figure out', '~Often channel by channel, each service run separately', 'A framework-driven plan across every stage of the customer journey'),
+    ('Results', 'growth.webp', 'xNot guaranteed', 'xRarely guaranteed', 'Guaranteed in writing'),
+    ('Reporting', 'growth.webp', 'xUsually none', '~Varies, often impressions and clicks', 'Monthly, in plain English, tied to leads and revenue'),
+    ('Who does the work', 'team.webp', '~One person, or you', '~Varies, often a rotating account team', 'A dedicated local team that knows your business'),
+    ('Pricing', 'doc', '~Hourly, or your own time', '~Varies, add-ons are common', 'One fixed monthly retainer'),
+    ('Commitment', 'handshake.webp', '~None', '~Varies by agency', 'Six-month partnership'),
+    ('Your accounts and assets', 'trust.webp', 'You own them', '~Not always', 'You own them [CONFIRM]'),
+    ('Attention', 'eye', 'xLimited by one person’s time', 'xNo cap on clients', 'Capped at 25 partners')]
+def cmp_table(rows=CMP_ROWS):
+    """Comparison table as an Essential Addons Data Table: every cell is editable in the panel (Content > row > cell).
+    Cell CSS classes: k = what matters (navy), diy, ag, us (gradient). Marks: <span class="fs-mk fs-mk--no|mid|yes">."""
+    MK = {'x': ('no', '✕'), '~': ('mid', '~'), 'y': ('yes', '✓')}
+    head = [('What matters', 'k'), ('Freelancer or DIY', 'diy'), ('Typical agency', 'ag'), ('First Search Marketing', 'us')]
+    cols = []
+    for t, c in head:
+        col_ = {'_id': uid(), 'eael_data_table_header_col': t, 'eael_data_table_header_css_class': c, 'eael_data_table_header_col_icon_enabled': 'false'}
+        if c == 'us':
+            col_.update({'eael_data_table_header_col_icon_enabled': 'true', 'eael_data_table_header_icon_type': 'image',
+                         'eael_data_table_header_col_img': {'url': asset('assets/img/logo.png'), 'id': '', 'alt': 'First Search Marketing', 'source': 'library'},
+                         'eael_data_table_header_col_img_size': 150})
+        cols.append(col_)
+    def cell(html_, c):
+        return {'_id': uid(), 'eael_data_table_content_row_type': 'col', 'eael_data_table_content_type': 'editor', 'eael_data_table_content_row_colspan': 1,
+                'eael_data_table_content_row_content': html_, 'eael_data_table_content_row_title': '', 'eael_data_table_content_row_css_class': c}
+    cells = []
+    for label, ico, diy, ag, us in rows:
+        cells.append({'_id': uid(), 'eael_data_table_content_row_type': 'row'})
+        tile = (f'<span class="fs-ct-tile"><img src="{asset("assets/img/icons/" + ico)}" alt="" /></span>' if ico.endswith('.webp')
+                else f'<span class="fs-ct-tile fs-ct-tile--{ico}"></span>')
+        cells.append(cell(f'<span class="fs-ct-k">{tile}<b>{label}</b></span>', 'k'))
+        for v, c in ((diy, 'diy'), (ag, 'ag'), (us, 'us')):
+            m = 'y' if c == 'us' else (v[0] if v[0] in 'x~' else 'y')
+            t = v[1:] if v[0] in 'x~' else v
+            cells.append(cell(f'<span class="fs-mk fs-mk--{MK[m][0]}">{MK[m][1]}</span><span>{t}</span>', c))
+    return w('eael-data-table', {'eael_data_table_header_cols_data': cols, 'eael_data_table_content_rows': cells,
+                                 'table_alignment': 'center', 'eael_enable_responsive_header_styles': ''}, 'fs-cmp')
+
+# ---------- Framework stage cards (purple rounded block with the splash, four linked cards, overlapping button) ----------
+STAGE_NAME = {'brand': 'FirstBrand', 'thought': 'FirstThought', 'choice': 'FirstChoice', 'referral': 'FirstReferral'}
+def stage_cards(eb='Our framework', h2='A proven system, not a pile of tactics.',
+                lead='The FirstSearch Framework makes sure your business is the one customers find, trust and choose first, at every stage of their journey.',
+                btn=('Explore all services', '/services/'), title='Framework'):
+    cards = []
+    for n, k in enumerate(STAGES, 1):
+        cards.append(con(heading(f'Stage {n}', 'p', 'fs-stage-n'), heading(plogo(k), 'h3', 'fs-rel-logo'), text(STAGES[k][0], 'fs-rel-p'),
+                         heading(f'Explore {STAGE_NAME[k]}', 'p', 'fs-rel-why'),
+                         cls='fs-gcard fs-rel', gap_=12, p=pad(28), s={'html_tag': 'a', 'link': {'url': f'/first{k}/', 'is_external': '', 'nofollow': ''}}))
+    return section(sec_head(eb, h2, lead), row(*cards, gap_=24, align='stretch', wrap=True, cls='fs-rel-grid fs-nostyle'),
+                   button(btn[0], btn[1], 'fs-btn-lg', 'center'), cls='fs-dark fs-fwblock', title=title, gap_=56,
+                   p={'unit': 'px', 'top': '72', 'right': '24', 'bottom': '140', 'left': '24', 'isLinked': False},
+                   s={'padding_tablet': {'unit': 'px', 'top': '64', 'right': '24', 'bottom': '110', 'left': '24', 'isLinked': False},
+                      'padding_mobile': {'unit': 'px', 'top': '56', 'right': '16', 'bottom': '96', 'left': '16', 'isLinked': False}})
+
+# ---------- Value / competency cards (navy cards, glowing white icon tile, "In practice" under a gradient line) ----------
+def value_cards(items, cols=2):
+    """items: (icon webp in assets/img/icons, title, text[, in practice])"""
+    items = [(it + (None,))[:4] for it in items]
+    return row(*[con(con(image(f'assets/img/icons/{i}', '', None, 'center', t), cls='fs-vtile', justify='center', align='center'),
+                     con(heading(t, 'h3'), text(d, 'fs-vtext'), text(f'<p><em>In practice:</em> {p}</p>', 'fs-vip') if p else None, cls='fs-vbody', gap_=0),
+                     d='row', cls='fs-vcard', gap_=24, align='flex-start', mobile_col=False, p=pad(24, 28, 26, 22), s={'padding_mobile': pad(20)})
+                 for i, t, d, p in items], gap_=24, wrap=True, align='stretch', cls='fs-vcards fs-nostyle' + (' fs-vcards--3' if cols == 3 else ''))
+
+# ---------- Ways to work with us: three priced paths on a "you do it / we do it" scale ----------
+PATHS = [('Learn it yourself', 'BeFirst Community', '$88', '/month', ['The full online course', 'The FirstSearch Blueprint', 'Live monthly webinars', 'Weekly content and templates'],
+          'you have time and want to learn the system.', ('See the Community', '/befirst-training/')),
+         ('Build it with us', '1:1 Coaching', '$500', '/month and up', ['Everything in the Community', 'Strategy sessions with our team', 'A plan built around your business', 'Direct access between sessions'],
+          'you’ll do the work but want an expert in your corner.', ('See coaching', '/befirst-training/#coaching')),
+         ('Let us run it', 'Strategic partnership', '[$X,XXX]', '/month', ['Our team runs your marketing', 'Every stage of the framework', 'Monthly plain-English reporting', 'Results guaranteed in writing'],
+          'you want it done right, without doing it yourself.', ('Let’s Talk!', '/contact-us/'))]
+def paths(eb='Ways to work with us', h2='There’s an option <span class="fs-gt">for you.</span>',
+          lead='Not ready for a partnership? Start where it makes sense and move up when you’re ready.', items=PATHS,
+          quiz='<p>Not sure which fits? <a href="/framework-quiz/">Take the Framework Quiz</a> and we’ll point you to the right starting place.</p>'):
+    scale = con(text('<p>You do the work</p>', 'fs-p2-end'), con(cls='fs-p2-bar'), text('<p>We do the work</p>', 'fs-p2-end'),
+                d='row', gap_=14, align='center', mobile_col=False, cls='fs-p2-scale')
+    cards = []
+    for n, (k, h, pr, per, lst, who, b) in enumerate(items, 1):
+        head = con(heading(str(n), 'p', 'fs-p2-n'), con(heading(k, 'p', 'fs-p2-k'), heading(h, 'h3', 'fs-p2-h'), gap_=4, cls='fs-p2-titles'),
+                   d='row', gap_=14, align='center', mobile_col=False, cls='fs-p2-head')
+        cards.append(con(head, heading(f'{pr}<small>{per}</small>', 'p', 'fs-p2-pr'), icon_list(lst, 'fas fa-check', 'fs-p2-list'),
+                         text(f'<p><b>Best if:</b> {who}</p>', 'fs-p2-who'), button(b[0], b[1], 'fs-p2-btn'),
+                         cls=f'fs-p2 fs-p2--{n}' + (' fs-dark' if n == 3 else ''), gap_=16, p=pad(30), s={'padding_mobile': pad(24)}))
+    return section(sec_head(eb, h2, lead), scale, row(*cards, gap_=28, align='stretch', cls='fs-p2-grid fs-nostyle'), text(quiz, 'fs-p2-quiz', 'center'),
+                   cls='fs-geo fs-paths', title='Paths', bg_img='assets/img/design/bg-geometric.jpg', gap_=26)
+
+# ---------- Capacity band: "We work with 25 businesses" with the partner spots bar ----------
+def capacity(h2='We work with 25 businesses. That’s it.',
+             lead='Capping our partner list means every client gets senior attention and a team that knows their business.', spots_open=6):
+    spots = w('progress', {'title': '', 'percent': {'unit': '%', 'size': (25 - spots_open) * 4, 'sizes': []}, 'display_percentage': 'hide',
+                           'inner_text': '', 'progress_type': ''}, 'fs-cap-spots')
+    return section(row(col(heading(h2, 'h2', 'fs-band-h fs-cap-h'), text(lead, 'fs-band-p'), wpct=60, gap_=14),
+                       col(spots, text(f'<p><b>{spots_open}</b> of 25 partner spots open.</p>', 'fs-cap-label'), wpct=36, gap_=10),
+                       gap_=40, justify='space-between', cls='fs-cap-row fs-nostyle'),
+                   cls='fs-dark fs-band', title='Capacity', p={'unit': 'px', 'top': '56', 'right': '24', 'bottom': '56', 'left': '24', 'isLinked': False})

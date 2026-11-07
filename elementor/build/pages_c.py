@@ -161,10 +161,10 @@ def event():
                         text('<p><b>[8] of 30</b> seats left</p>'), cls='fs-purple-card fs-dark', p=pad(32), gap_=16), cls='fs-hero', gap_=56),
                 cls='fs-geo', title='Hero', bg_img=GEO),
         section(sec_head('Why come', 'You’ll leave with a <span class="fs-gt">plan, not just notes.</span>'),
-                row(*[col(image_box(f'assets/img/icons/{i}', t, d, 'fs-pcard'), wpct=31) for i, t, d in [
+                value_cards([
                     ('growth.webp', 'A scored audit', 'Score your own marketing across all four stages, with help in the room.'),
                     ('lead-gen.webp', 'A 90-day plan', 'Walk out with the three moves that will make the biggest difference first.'),
-                    ('team.webp', 'A local network', 'Meet other New Hampshire owners working on the same problems.')]], gap_=20, align='stretch'), title='Outcomes'),
+                    ('team.webp', 'A local network', 'Meet other New Hampshire owners working on the same problems.')], 3), cls='fs-geo', title='Outcomes', bg_img=GEO),
         section(row(col(eyebrow('The agenda'), heading('How the time <span class="fs-gt">is spent.</span>'), text('A full day, broken into short teaching blocks followed by hands-on time on your own business.', 'fs-lead'),
                         text('<p><small>[Agenda subject to small changes]</small></p>'), wpct=36), col(html(ag), wpct=60), gap_=48, align='flex-start'),
                 cls='fs-geo', title='Agenda', bg_img=GEO),

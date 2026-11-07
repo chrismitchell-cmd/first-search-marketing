@@ -149,14 +149,18 @@ def render(e, depth=0):
                     f'<div class="eael-testimonial-text">{s["eael_testimonial_description"]}</div><p class="eael-testimonial-user">{s["eael_testimonial_name"]}</p>'
                     f'<p class="eael-testimonial-user-company">{s["eael_testimonial_company_title"]}</p></div></div>')
     if k == 'eael-data-table':
-        th = ''.join(f'<th class="{c.get("eael_data_table_header_css_class", "")}"><span class="data-table-header-text">{c["eael_data_table_header_col"]}</span></th>' for c in s['eael_data_table_header_cols_data'])
+        def thimg(c):
+            if c.get('eael_data_table_header_col_icon_enabled') == 'true' and c.get('eael_data_table_header_icon_type') == 'image':
+                return f'<img src="{c["eael_data_table_header_col_img"]["url"].replace(ASSET, "../upload/first-search/")}" class="eael-data-table-th-img" style="width:{c.get("eael_data_table_header_col_img_size", 50)}px;" alt="">'
+            return ''
+        th = ''.join(f'<th class="{c.get("eael_data_table_header_css_class", "")}">{thimg(c)}<span class="data-table-header-text">{c["eael_data_table_header_col"]}</span></th>' for c in s['eael_data_table_header_cols_data'])
         body, row = '', None
         for c in s['eael_data_table_content_rows']:
             if c['eael_data_table_content_row_type'] == 'row':
                 if row is not None: body += f'<tr>{row}</tr>'
                 row = ''
             else:
-                row += f'<td class="{c.get("eael_data_table_content_row_css_class", "")}"><div class="td-content-wrapper"><div class="td-content">{c.get("eael_data_table_content_row_title", "")}</div></div></td>'
+                row += f'<td class="{c.get("eael_data_table_content_row_css_class", "")}"><div class="td-content-wrapper"><div class="td-content">{(c.get("eael_data_table_content_row_content", "") if c.get("eael_data_table_content_type") == "editor" else c.get("eael_data_table_content_row_title", "")).replace(ASSET, "../upload/first-search/")}</div></div></td>'
         if row is not None: body += f'<tr>{row}</tr>'
         return wrap(f'<div class="eael-data-table-wrap"><table class="tablesorter eael-data-table center" style="border-collapse:collapse"><thead><tr class="table-header">{th}</tr></thead><tbody>{body}</tbody></table></div>')
     if k == 'spacer': return wrap('<div style="height:20px"></div>')
