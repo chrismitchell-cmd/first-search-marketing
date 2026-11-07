@@ -201,6 +201,8 @@ ${W} a{color:inherit;text-decoration:none;background:none;} ${W} a:hover{color:i
 ${W} h1, ${W} h2, ${W} h3, ${W} h4, ${W} p, ${W} ul, ${W} ol, ${W} figure{margin:0;padding:0;} ${W} ul, ${W} ol{list-style:none;}
 ${W} img, ${W} svg{display:block;max-width:100%;height:auto;}`;
     css = reset + '\n' + css + '\n' + res.kf;
+    // the design page's body background must not paint the widget (it shows as a box around the phone)
+    css += `\n${W}{background:transparent !important;}`;
     let js = jsSeg.replace(/assets\/img\/([\w\/.-]+)/g, (m, f) => CDN + f).replace(/(['"`])([\w-]+\.html)(\?[^'"`]*)?\1/g, (m, q, f) => `${q}${LINKS[f] || '/'}${q}`)
       .replace(/pillars\.html\?pillar=\$\{([^}]+)\}/g, '/first${$1}/');
     if (C.name === 'framework') ({ html, css, js } = staticStages(html, css, js));
