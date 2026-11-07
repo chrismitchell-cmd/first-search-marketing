@@ -1135,8 +1135,16 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 
 /* Team (fs-team-grid > fs-tm-col > Flip Box with fs-team-card): 3 on top, 2 centred below */
 .fs-team-grid > .fs-tm-col { flex: 0 0 calc((100% - 56px) / 3) !important; width: auto !important; min-width: 0; }
-.fs-team-card .elementor-flip-box { height: 460px !important; border-radius: 30px;
-  background: radial-gradient(260px 220px at 50% 300px, rgba(50, 153, 213, .9), transparent 70%), var(--fs-purple); box-shadow: 0 20px 40px -24px rgba(28, 22, 72, .55); }
+.fs-team-card .elementor-flip-box { height: 460px !important; border-radius: 30px; perspective: 1000px; transform-style: preserve-3d; }
+/* The navy + glow behind the photo turns together with the front face (1px behind it) and hides once it faces away,
+   so nothing static sits in the card's plane to cut the turning face in half. */
+.fs-team-card .elementor-flip-box::before { content: ""; position: absolute; inset: 0; border-radius: 30px; pointer-events: none;
+  background: radial-gradient(260px 220px at 50% 300px, rgba(50, 153, 213, .9), transparent 70%), var(--fs-purple);
+  box-shadow: 0 20px 40px -24px rgba(28, 22, 72, .55); transform: rotateY(0deg) translateZ(-1px);
+  -webkit-backface-visibility: hidden; backface-visibility: hidden; transition: transform .7s cubic-bezier(.3, .7, .3, 1); }
+.fs-team-card.elementor-flip-box--direction-left .elementor-flip-box:hover::before { transform: rotateY(-180deg) translateZ(-1px); }
+.fs-team-card.elementor-flip-box--direction-right .elementor-flip-box:hover::before { transform: rotateY(180deg) translateZ(-1px); }
+.fs-team-card .elementor-flip-box__layer { transition: transform .7s cubic-bezier(.3, .7, .3, 1) !important; }
 .fs-team-card .elementor-flip-box__layer, .fs-team-card .elementor-flip-box__layer__overlay { border-radius: 30px !important; }
 .fs-team-card .elementor-flip-box__front { background-color: transparent !important; background-size: auto 322px !important; background-position: center bottom 150px !important;
   background-repeat: no-repeat !important; }
