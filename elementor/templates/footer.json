@@ -94,7 +94,7 @@
        },
        "elements": [
         {
-         "id": "b6c7f85",
+         "id": "b1affa4",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -130,25 +130,43 @@
           {
            "id": "00a6ce7",
            "elType": "widget",
-           "widgetType": "theme-site-logo",
+           "widgetType": "image",
            "settings": {
+            "image": {
+             "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/design/footer-logo.png",
+             "id": 778769,
+             "alt": "First Search Marketing",
+             "source": "library"
+            },
             "image_size": "full",
             "width": {
              "unit": "px",
-             "size": 240,
+             "size": 305,
              "sizes": []
             },
-            "link_to": "home",
-            "_css_classes": "fs-logo-box"
+            "link_to": "custom",
+            "link": {
+             "url": "/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "-36",
+             "right": "0",
+             "bottom": "-36",
+             "left": "-36",
+             "isLinked": false
+            }
            },
            "elements": []
           },
           {
-           "id": "3dffdc5",
+           "id": "c606b6c",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
-            "title": "We put your <span class=\"fs-sky\">business first.</span>",
+            "title": "We put your <span class=\"fs-gt\">business first.</span>",
             "header_size": "p",
             "_css_classes": "fs-tagline",
             "__globals__": {},
@@ -219,7 +237,7 @@
          },
          "elements": [
           {
-           "id": "c606b6c",
+           "id": "8194fa2",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -251,7 +269,7 @@
            "elements": []
           },
           {
-           "id": "b1affa4",
+           "id": "01600b3",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -277,26 +295,40 @@
            "elements": []
           },
           {
-           "id": "01600b3",
+           "id": "b6c7f85",
            "elType": "widget",
            "widgetType": "form",
            "settings": {
             "form_name": "Newsletter",
             "form_fields": [
              {
-              "_id": "8194fa2",
+              "_id": "3dffdc5",
               "custom_id": "email_address",
               "field_type": "email",
               "field_label": "Email address",
               "placeholder": "you@business.com",
               "required": "true",
-              "width": "70"
+              "width": "70",
+              "width_mobile": "100"
              }
             ],
             "button_text": "Subscribe",
             "button_size": "md",
-            "show_labels": "yes",
-            "success_message": "Thanks! We got your message and will reply within one business day."
+            "show_labels": "",
+            "success_message": "Thanks! You’re on the list.",
+            "_css_classes": "fs-news-form",
+            "button_width": "30",
+            "button_width_mobile": "100",
+            "column_gap": {
+             "unit": "px",
+             "size": 10,
+             "sizes": []
+            },
+            "row_gap": {
+             "unit": "px",
+             "size": 10,
+             "sizes": []
+            }
            },
            "elements": []
           }
@@ -839,6 +871,17 @@
            "elType": "widget",
            "widgetType": "icon-list",
            "settings": {
+            "icon_color": "#FFFFFF",
+            "icon_size": {
+             "unit": "px",
+             "size": 18,
+             "sizes": []
+            },
+            "text_indent": {
+             "unit": "px",
+             "size": 12,
+             "sizes": []
+            },
             "icon_list": [
              {
               "_id": "13d5467",
@@ -880,6 +923,7 @@
               }
              }
             ],
+            "_css_classes": "fs-ct",
             "__globals__": {},
             "icon_typography_typography": "custom",
             "icon_typography_font_family": "Inter",
@@ -943,10 +987,32 @@
             "shape": "circle",
             "icon_size": {
              "unit": "px",
-             "size": 16,
+             "size": 17,
              "sizes": []
             },
-            "align": "left"
+            "icon_padding": {
+             "unit": "em",
+             "size": 0.75,
+             "sizes": []
+            },
+            "icon_spacing": {
+             "unit": "px",
+             "size": 10,
+             "sizes": []
+            },
+            "align": "left",
+            "icon_color": "custom",
+            "icon_primary_color": "rgba(255,255,255,0.1)",
+            "icon_secondary_color": "#FFFFFF",
+            "_margin": {
+             "unit": "px",
+             "top": "22",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            },
+            "_css_classes": "fs-social"
            },
            "elements": []
           }

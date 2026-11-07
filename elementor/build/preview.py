@@ -85,12 +85,13 @@ def render(e, depth=0):
         return wrap(its)
     if k == 'counter': return wrap(f'<div style="text-align:center"><div class="elementor-counter-number-wrapper">{s.get("prefix","")}{s["ending_number"]}{s.get("suffix","")}</div><div class="elementor-counter-title">{s["title"]}</div></div>')
     if k == 'form':
-        f = ''.join(f'<div class="elementor-field-group" style="width:{it.get("width","100")}%;padding:0 6px 12px;box-sizing:border-box"><label class="elementor-field-label">{it["field_label"]}</label>' +
+        f = ''.join(f'<div class="elementor-field-group elementor-column" style="width:{it.get("width","100")}%;padding:0 6px 12px;box-sizing:border-box">' + (f'<label class="elementor-field-label">{it["field_label"]}</label>' if s.get('show_labels', 'yes') else '') +
                     ('<textarea class="elementor-field elementor-field-textual" style="width:100%;box-sizing:border-box"></textarea>' if it['field_type'] == 'textarea' else
                      f'<select class="elementor-field" style="width:100%"><option>{(it.get("field_options") or "").splitlines()[0] if it.get("field_options") else ""}</option></select>' if it['field_type'] == 'select' else
                      f'<label style="font-size:12px"><input type="checkbox"> {it.get("acceptance_text","")}</label>' if it['field_type'] == 'acceptance' else
                      f'<input class="elementor-field elementor-field-textual" placeholder="{it.get("placeholder","")}" style="width:100%;box-sizing:border-box">') + '</div>' for it in s['form_fields'])
-        return wrap(f'<form class="elementor-form"><div style="display:flex;flex-wrap:wrap;margin:0 -6px">{f}</div><div class="elementor-widget-button" style="padding:0 0"><button class="elementor-button">{s["button_text"]}</button></div></form>')
+        sub = f'<div class="elementor-field-group elementor-column elementor-field-type-submit" style="width:{s.get("button_width", "100")}%;padding:0 6px 12px;box-sizing:border-box"><button class="elementor-button">{s["button_text"]}</button></div>'
+        return wrap(f'<form class="elementor-form"><div class="elementor-form-fields-wrapper" style="display:flex;flex-wrap:wrap;margin:0 -6px">{f}{sub}</div></form>')
     if k == 'n-menu':
         t = ''.join(f'<div class="e-n-menu-title"><span class="e-n-menu-title-text">{it["item_title"]}</span>{" ▾" if it.get("item_dropdown_content") else ""}</div>' for it in s['menu_items'])
         return wrap(f'<nav style="display:flex;gap:28px">{t}</nav>')
@@ -215,7 +216,7 @@ def page(paths, out):
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
 <style>body{{margin:0;background:#fff}} img{{max-width:100%}} *{{box-sizing:border-box}} .e-con{{min-width:0}} .elementor-widget{{min-width:0}} p{{margin:0 0 .6em}}</style>
 <style>{kit_vars()}</style><style>{EL_DEFAULTS}</style><style>{css}</style><style>{EL_GLOBALS}</style><style>{rules}</style></head><body class="elementor-kit-5"><div class="elementor elementor-9">{body}</div></body></html>'''
-    doc = doc.replace('https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@218e548a5706c5b64bd0b77483dc2a4833e589e4/elementor/upload/first-search/', '../upload/first-search/')
+    doc = doc.replace('https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/', '../upload/first-search/')
     open(out, 'w').write(doc)
 if __name__ == '__main__':
     out = sys.argv[1]

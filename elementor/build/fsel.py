@@ -11,7 +11,7 @@ def uid():
 
 # Images are served from the public GitHub repo, pinned to a commit so the URLs never change.
 # Elementor downloads each one into the Media Library during import.
-ASSET_COMMIT = '218e548a5706c5b64bd0b77483dc2a4833e589e4'
+ASSET_COMMIT = '4d59b7976a0bacac8601ce9d2eba36ebb43a7779'
 ASSET = f'https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/{ASSET_COMMIT}/elementor/upload/first-search/'
 def asset(path):
     """Prototype asset path (assets/img/...) -> hosted URL."""

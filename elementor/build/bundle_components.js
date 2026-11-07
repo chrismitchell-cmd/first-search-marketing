@@ -7,7 +7,7 @@ const fs = require('fs'), path = require('path');
 const ROOT = '/home/user/first-search-marketing/';
 const OUT = path.join(__dirname, 'data', 'components');
 fs.mkdirSync(OUT, { recursive: true });
-const CDN = 'https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@218e548a5706c5b64bd0b77483dc2a4833e589e4/elementor/upload/first-search/';
+const CDN = 'https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/';
 const LINKS = { 'contact.html': '/contact-us/', 'about.html': '/about-us/', 'why-choose-us.html': '/why-choose-us/', 'services-overview.html': '/services/',
   'events-resources.html': '/events/', 'ways-to-learn.html': '/befirst-training/', 'pillars.html': '/firstbrand/', 'services.html': '/services/', 'rebrand-homepage.html': '/' };
 

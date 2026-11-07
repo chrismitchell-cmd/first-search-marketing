@@ -58,13 +58,22 @@ HEADER = template('First Search · Header', 'header', [header])
 # ---------------- Footer ----------------
 col = lambda title, *kids: con(heading(title, 'h4', 'fs-col-title'), *kids, gap_=14, s={'width': {'unit': '%', 'size': 22, 'sizes': []}, 'width_mobile': {'unit': '%', 'size': 100, 'sizes': []}})
 links = lambda pairs: icon_list([t for t, _ in pairs], icon='', links=[u for _, u in pairs])
+# Footer logo: the logo in its white glowing box, as one PNG (design/footer-logo.png). The PNG includes 36px of glow
+# around the box, so negative margins line the box up with the content edge.
+footer_logo = image('assets/img/design/footer-logo.png', '', 305, alt='First Search Marketing')
+footer_logo['settings'].update({'link_to': 'custom', 'link': {'url': '/', 'is_external': '', 'nofollow': ''},
+                                '_margin': {'unit': 'px', 'top': '-36', 'right': '0', 'bottom': '-36', 'left': '-36', 'isLinked': False}})
+# Newsletter: email field and Subscribe button on one line (stacked on phones), labels hidden, as in the design
+newsletter = form([('email', 'Email address', True, 'you@business.com', '70')], 'Subscribe', 'Newsletter', 'fs-news-form')
+newsletter['settings'].update({'show_labels': '', 'button_width': '30', 'button_width_mobile': '100', 'column_gap': px(10), 'row_gap': px(10),
+                               'success_message': 'Thanks! You’re on the list.'})
+newsletter['settings']['form_fields'][0]['width_mobile'] = '100'
 top = con(
-    con(w('theme-site-logo', {'image_size': 'full', 'width': px(240), 'link_to': 'home'}, 'fs-logo-box'),
-        heading('We put your <span class="fs-sky">business first.</span>', 'p', 'fs-tagline'), gap_=18,
+    con(footer_logo, heading('We put your <span class="fs-gt">business first.</span>', 'p', 'fs-tagline'), gap_=18,
         s={'width': {'unit': '%', 'size': 48, 'sizes': []}, 'width_mobile': {'unit': '%', 'size': 100, 'sizes': []}}),
     con(heading('The FirstSearcher monthly', 'h3'),
         text('One practical marketing play for local businesses, every month. No spam.'),
-        form([('email', 'Email address', True, 'you@business.com', '70')], 'Subscribe', 'Newsletter'),
+        newsletter,
         cls='fs-news', gap_=8, s={'width': {'unit': '%', 'size': 46, 'sizes': []}, 'width_mobile': {'unit': '%', 'size': 100, 'sizes': []}}),
     d='row', justify='space-between', align='center', gap_=40, p=pad(0, 0, 40, 0))
 cols = con(
@@ -73,15 +82,16 @@ cols = con(
         html('<div class="fs-stage-links">' + '<br>'.join(f'<a href="/first{k}/">{plogo(k, True)}</a>' for k in SVC) + '</div>')),
     col('Grow Your Marketing', links([('Events', '/events/'), ('Resources', '/resources/'), ('BeFirst Training', '/befirst-training/'), ('Framework Quiz', '/framework-quiz/')])),
     col('Get in touch',
-        w('icon-list', {'icon_list': [
+        w('icon-list', {'icon_color': '#FFFFFF', 'icon_size': px(18), 'text_indent': px(12), 'icon_list': [
             {'_id': uid(), 'text': '1 Merrill Industrial Drive, Unit #4, Hampton, NH 03842', 'selected_icon': {'value': 'fas fa-map-marker-alt', 'library': 'fa-solid'}, 'link': {'url': 'https://maps.google.com/?q=1+Merrill+Industrial+Drive+Unit+4+Hampton+NH+03842', 'is_external': 'on', 'nofollow': ''}},
             {'_id': uid(), 'text': '603-518-8090', 'selected_icon': {'value': 'fas fa-phone', 'library': 'fa-solid'}, 'link': {'url': 'tel:+16035188090', 'is_external': '', 'nofollow': ''}},
-            {'_id': uid(), 'text': 'chris@befirstsearch.com', 'selected_icon': {'value': 'fas fa-envelope', 'library': 'fa-solid'}, 'link': {'url': 'mailto:chris@befirstsearch.com', 'is_external': '', 'nofollow': ''}}]}),
+            {'_id': uid(), 'text': 'chris@befirstsearch.com', 'selected_icon': {'value': 'fas fa-envelope', 'library': 'fa-solid'}, 'link': {'url': 'mailto:chris@befirstsearch.com', 'is_external': '', 'nofollow': ''}}]}, 'fs-ct'),
         w('social-icons', {'social_icon_list': [
             {'_id': uid(), 'social_icon': {'value': 'fab fa-facebook-f', 'library': 'fa-brands'}, 'link': {'url': 'https://www.facebook.com/p/First-Search-Marketing-LLC-100063771473527/', 'is_external': 'on'}},
             {'_id': uid(), 'social_icon': {'value': 'fab fa-instagram', 'library': 'fa-brands'}, 'link': {'url': '#', 'is_external': 'on'}},
             {'_id': uid(), 'social_icon': {'value': 'fab fa-linkedin-in', 'library': 'fa-brands'}, 'link': {'url': '#', 'is_external': 'on'}}],
-            'shape': 'circle', 'icon_size': px(16), 'align': 'left'})),
+            'shape': 'circle', 'icon_size': px(17), 'icon_padding': {'unit': 'em', 'size': 0.75, 'sizes': []}, 'icon_spacing': px(10), 'align': 'left',
+            'icon_color': 'custom', 'icon_primary_color': 'rgba(255,255,255,0.1)', 'icon_secondary_color': '#FFFFFF', '_margin': {'unit': 'px', 'top': '22', 'right': '0', 'bottom': '0', 'left': '0', 'isLinked': False}}, 'fs-social')),
     d='row', justify='space-between', gap_=32, p=pad(40, 0), s={'border_border': 'solid', 'border_width': {'unit': 'px', 'top': '1', 'right': '0', 'bottom': '1', 'left': '0', 'isLinked': False}, 'border_color': 'rgba(255,255,255,0.14)'})
 bottom = con(text('© 2026 First Search Marketing LLC · Family-owned in Hampton, NH'),
              text('<a href="/privacy-policy/">Privacy policy</a> &nbsp; <a href="/terms/">Terms</a>'),
