@@ -38,13 +38,15 @@ def build(out_path, custom_typography, css):
     exp = {n: {'name': n, 'title': t, 'state': 'active', 'default': 'inactive', 'release_status': 'stable'}
            for n, t in (('container', 'Flexbox Container'), ('nested-elements', 'Nested Elements'), ('mega-menu', 'Menu'))}
     site_settings = {'content': [], 'settings': settings, 'experiments': exp}
+    # Manifest in Elementor's current export format (import/export format 3.0)
     manifest = {
         'name': 'first-search-site-settings', 'title': 'First Search Marketing - Site Settings',
-        'description': 'Global colors, global fonts, layout, background and custom CSS for the First Search Marketing templates.',
-        'author': 'First Search Marketing', 'version': '2.0', 'elementor_version': '3.30.0',
+        'description': 'Global colors, global fonts, typography, layout, background and custom CSS for the First Search Marketing templates.',
+        'author': 'First Search Marketing', 'version': '3.0', 'elementor_version': '3.30.0',
         'created': datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'), 'thumbnail': False, 'site': 'https://befirstsearch.com',
-        'site-settings': ['global-colors', 'global-typography', 'theme-style-typography', 'settings-layout', 'settings-background', 'settings-custom-css'],
-        'experiments': list(exp.keys()), 'templates': [], 'content': {}, 'wp-content': {}, 'plugins': [],
+        'site-settings': {'theme': False, 'globalColors': True, 'globalFonts': True, 'themeStyleSettings': True, 'generalSettings': True,
+                          'experiments': True, 'customCode': False, 'customIcons': False, 'customFonts': False, 'classes': False, 'variables': False},
+        'experiments': list(exp.keys()),
     }
     with zipfile.ZipFile(out_path, 'w', zipfile.ZIP_DEFLATED) as z:
         z.writestr('manifest.json', json.dumps(manifest, indent=1))

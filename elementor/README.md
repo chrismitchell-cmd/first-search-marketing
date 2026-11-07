@@ -2,25 +2,30 @@
 
 Built so the site matches the approved HTML exactly, **and** stays editable in Elementor:
 
-- **Colours and fonts live in Site Settings.** Every widget's colour and typography in the templates is linked to a Global Color or Global Font. Change one in Site Settings and every page that uses it updates.
-- **Each widget and section carries its own styling** in its Style and Layout tabs (sizes, colours, padding, gaps, alignment). Change any of it in the editor and your change wins.
-- **The Custom CSS only adds what Elementor can't do natively** (gradient card borders and gradient text, the purple glows, pills and stage logos, FAQ and tab styling, the overlapping buttons). Its colours and fonts read from your Global Colors and Fonts too.
+- **Every widget and section carries its own styling** in its Style and Layout tabs (font size per device, weight, line height, colour, padding, gaps, alignment), measured from the approved HTML. Change any of it in the editor and your change wins.
+- **Brand colours are linked to Elementor's four built-in Global Colors**: Primary `#250762`, Secondary `#3299D5`, Text `#1C1B22`, Accent `#174FA2`. Change one in Site Settings › Global Colors and every page updates.
+- **The Custom CSS only adds what Elementor can't do natively** (gradient card borders and gradient text, the purple glows, pills and stage logos, FAQ and tab styling, the overlapping buttons). Its colours read from your Global Colors.
+- **The templates don't depend on the Site Settings import.** They look right as long as the four Global Colors above are set and the Custom CSS is in place.
 
-## 1. Site Settings: one import
+## 1. Site Settings
 
-File: `first-search-site-settings.zip`
+File: `first-search-site-settings.zip` (Elementor Website Kit, current export format 3.0)
 
-1. **Elementor › Tools › Import / Export** (in newer versions: *Website Templates › Import*), choose `first-search-site-settings.zip`, and import **Site Settings** only.
-2. That one import sets:
-   - **Global Colors** and **Global Fonts** (lists below)
-   - **Typography**: body text Poppins 18px / 1.6, headings Poppins
-   - **Layout**: content width 1240px, default container padding **0** (so no hidden spacing), 20px gaps
-   - **Background**: page background `#F8F7F7`, as in the HTML
-   - **Custom CSS**: the contents of `site-settings.css` (Elementor Pro)
-   - **Features**: switches on *Flexbox Container*, *Nested Elements* and *Menu* (required by the templates)
-3. Check **Elementor › Settings › Features** afterwards. If *Flexbox Container* or *Nested Elements* still shows Inactive, set them to Active. Without containers the templates import blank.
+**Import it here:** *Elementor › Tools › Import / Export* (in newer versions: *Templates › Website Templates*, or the **Import** button on *Elementor › Website Templates*). Not in *Templates › Saved Templates*: that screen only takes page templates and will reject this file. Choose **Site Settings** when asked what to import.
 
-If you'd rather not import, you can set the same things by hand: the colours and fonts are listed below, and `site-settings.css` goes in *Site Settings › Custom CSS*.
+It sets:
+- **Global Colors** and **Global Fonts** (lists below)
+- **Typography**: body text Poppins 18px / 1.6, headings Poppins
+- **Layout**: content width 1240px, default container padding **0** (no hidden spacing), 20px gaps
+- **Background**: page background `#F8F7F7`, as in the HTML
+- **Custom CSS**: the contents of `site-settings.css` (needs Elementor Pro)
+- **Features**: *Flexbox Container*, *Nested Elements* and *Menu*
+
+**If the import doesn't take, set these four things by hand. That's all the templates need:**
+1. *Site Settings › Global Colors*: Primary `#250762`, Secondary `#3299D5`, Text `#1C1B22`, Accent `#174FA2`
+2. *Site Settings › Custom CSS*: paste `site-settings.css`
+3. *Site Settings › Layout*: Container Padding `0` on all sides
+4. *Elementor › Settings › Features*: *Flexbox Container* and *Nested Elements* set to Active
 
 ### Global Colors
 
@@ -50,7 +55,7 @@ If you'd rather not import, you can set the same things by hand: the colours and
 
 ### Global Fonts
 
-Measured from the approved HTML at desktop, tablet and phone sizes. Each one carries its tablet and phone sizes. These are the 24 most-used styles; rarer one-off styles are set directly on the widget.
+The 24 most-used text styles from the approved HTML, with their tablet and phone sizes, ready to pick when you build new sections. The templates set these values on each widget directly, so they don't depend on this list.
 
 | Name |
 |---|
@@ -84,7 +89,8 @@ Measured from the approved HTML at desktop, tablet and phone sizes. Each one car
 | To change… | Go to |
 |---|---|
 | A brand colour everywhere | Site Settings › Global Colors |
-| A text style everywhere (e.g. every H2) | Site Settings › Global Fonts |
+| A text style on one widget | That widget › Style tab › Typography |
+| A text style for new sections | Pick one of the Global Fonts from the list above |
 | One widget's colour or size | That widget › Style tab (unlink the global, or pick another) |
 | Spacing above/below a section | The section container › Layout › Padding (per device) |
 | Space between items | The container › Layout › Gaps |

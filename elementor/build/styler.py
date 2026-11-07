@@ -22,6 +22,8 @@ CUSTOM_COLORS = [
     ('fsgold', 'Star gold', '#F4B400'), ('fsdeep', 'Deep purple', '#1A0446'), ('fsbg', 'Page background', '#F8F7F7'),
     ('fssoft', 'Soft grey', '#F4F4F6'), ('fstint', 'Blue tint', '#EEF0F9'), ('fsgrey', 'Grey', '#D9D8D7'), ('fsline', 'Line', '#E3E2EA'),
 ]
+SYSTEM_IDS = {c[0] for c in SYSTEM_COLORS}
+HEX_OF = {i: hx for i, _, hx in SYSTEM_COLORS + CUSTOM_COLORS}
 def _rgba(c):
     m = re.match(r'rgba?\(([^)]+)\)', c or '')
     if not m: return None
@@ -252,12 +254,15 @@ def process(templates):
     for e, prefix, ckey, part, st in resolved:
         s = e['settings']; g = s.setdefault('__globals__', {})
         v = typo_values(st); k = typo_key(v)
-        if k in presets: g[f'{prefix}_typography'] = f'globals/typography?id={presets[k][0]}'
-        else: s.update(typo_settings(prefix, v))
+        # Typography is written on the widget itself (editable in its Style tab). It is not linked to a Global Font:
+        # Elementor ignores a widget's own values when its linked global is missing, so a link would break the page
+        # on any site where the Site Settings import hasn't landed.
+        s.update(typo_settings(prefix, v))
         if ckey and st['d'].get('col') and st['d']['col'] != 'gradient':
             ref = color_ref(st['d']['col'])
-            if ref and ref[0] == 'global': g[ckey] = f'globals/colors?id={ref[1]}'
-            elif ref: s[ckey] = ref[1]
+            # Link only to Elementor's four built-in Global Colors (they exist on every site); everything else inline.
+            if ref and ref[0] == 'global' and ref[1] in SYSTEM_IDS: g[ckey] = f'globals/colors?id={ref[1]}'
+            elif ref: s[ckey] = ref[1] if ref[0] == 'hex' else HEX_OF[ref[1]]
     # sections: padding per device + section-head width
     for page, tpl in templates:
         secs = {w: {x['h']: x for x in P.get(page, {}).get(w, {}).get('sections', [])} for w in ('d', 't', 'm')}

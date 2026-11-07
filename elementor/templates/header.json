@@ -442,9 +442,7 @@
                 "title": "What we do",
                 "header_size": "p",
                 "_css_classes": "fs-eyebrow",
-                "__globals__": {
-                 "title_color": "globals/colors?id=fswhite"
-                },
+                "__globals__": {},
                 "typography_typography": "custom",
                 "typography_font_family": "Poppins",
                 "typography_font_weight": "700",
@@ -462,7 +460,8 @@
                  "unit": "em",
                  "size": 0.02,
                  "sizes": []
-                }
+                },
+                "title_color": "#FFFFFF"
                },
                "elements": []
               },
@@ -587,8 +586,29 @@
           "size": "md",
           "_css_classes": "fs-header-cta",
           "hide_mobile": "hidden-mobile",
-          "__globals__": {
-           "typography_typography": "globals/typography?id=fs96f87f"
+          "__globals__": {},
+          "typography_typography": "custom",
+          "typography_font_family": "Poppins",
+          "typography_font_weight": "600",
+          "typography_font_size": {
+           "unit": "px",
+           "size": 22.0,
+           "sizes": []
+          },
+          "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 19.0,
+           "sizes": []
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.2,
+           "sizes": []
+          },
+          "typography_letter_spacing": {
+           "unit": "em",
+           "size": 0.005,
+           "sizes": []
           }
          },
          "elements": []
