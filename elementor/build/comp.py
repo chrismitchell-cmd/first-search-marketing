@@ -138,9 +138,18 @@ def stats(items):
 REVIEWS = [('“We contacted Chris at First Search after a bad experience with a national brand company. He was able to fix our website and get our Google profile up and running. Chris and his team are very professional and always did what was right for our success.”', 'Steven McGibbon'),
            ('“My business partner and I have been working with First Search for about six months and we were starting pretty much from ground zero with our marketing. We didn’t really even know where to start but the whole process has been easy and approachable and we couldn’t be happier with the results thus far.”', 'Patrick Wilson')]
 def table(rows, head=('Metrics', 'Before', 'After')):
-    t = f'<table class="fs-table"><thead><tr><th>{head[0]}</th><th class="b">{head[1]}</th><th aria-hidden="true"></th><th class="a">{head[2]}</th></tr></thead><tbody>'
-    t += ''.join(f'<tr><th scope="row">{m}</th><td class="b">{b}</td><td class="ar">→</td><td class="a">{a}</td></tr>' for m, b, a in rows)
-    return html(t + '</tbody></table>')
+    """Before / after results table as an Essential Addons Data Table (editable in the panel).
+    Cell CSS classes drive the design: m = metric name, b = before, ar = arrow, a = after (gradient)."""
+    cols = [{'_id': uid(), 'eael_data_table_header_col': t, 'eael_data_table_header_css_class': c, 'eael_data_table_header_col_icon_enabled': 'false'}
+            for t, c in ((head[0], 'm'), (head[1], 'b'), ('', 'ar'), (head[2], 'a'))]
+    cells = []
+    for m, bv, av in rows:
+        cells.append({'_id': uid(), 'eael_data_table_content_row_type': 'row'})
+        for txt, c in ((m, 'm'), (bv, 'b'), ('→', 'ar'), (av, 'a')):
+            cells.append({'_id': uid(), 'eael_data_table_content_row_type': 'col', 'eael_data_table_content_type': 'textarea',
+                          'eael_data_table_content_row_colspan': 1, 'eael_data_table_content_row_title': txt, 'eael_data_table_content_row_css_class': c})
+    return w('eael-data-table', {'eael_data_table_header_cols_data': cols, 'eael_data_table_content_rows': cells,
+                                 'table_alignment': 'center', 'eael_enable_responsive_header_styles': ''}, 'fs-dtable')
 def review(q, who):
     return con(html(f'<div class="fs-review"><div class="fs-stars">★★★★★</div><blockquote>{q}</blockquote><cite>{who} <span>· Posted on Google</span></cite></div>'),
                cls='fs-gcard', p=pad(26))

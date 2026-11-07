@@ -122,6 +122,17 @@ def render(e, depth=0):
     if k == 'icon':
         ic = {'fa-search': '⌕', 'fa-route': '⤳', 'fa-cogs': '⚙', 'fa-chart-line': '📈'}.get(s['selected_icon']['value'].split()[-1], '●')
         return wrap(f'<div class="elementor-icon-wrapper" style="text-align:{s.get("align", "center")}"><span class="elementor-icon" style="font-size:{u(s.get("size")) or "50px"};color:{s.get("primary_color", "#250762")};line-height:1">{ic}</span></div>')
+    if k == 'eael-data-table':
+        th = ''.join(f'<th class="{c.get("eael_data_table_header_css_class", "")}"><span class="data-table-header-text">{c["eael_data_table_header_col"]}</span></th>' for c in s['eael_data_table_header_cols_data'])
+        body, row = '', None
+        for c in s['eael_data_table_content_rows']:
+            if c['eael_data_table_content_row_type'] == 'row':
+                if row is not None: body += f'<tr>{row}</tr>'
+                row = ''
+            else:
+                row += f'<td class="{c.get("eael_data_table_content_row_css_class", "")}"><div class="td-content-wrapper"><div class="td-content">{c.get("eael_data_table_content_row_title", "")}</div></div></td>'
+        if row is not None: body += f'<tr>{row}</tr>'
+        return wrap(f'<div class="eael-data-table-wrap"><table class="tablesorter eael-data-table center" style="border-collapse:collapse"><thead><tr class="table-header">{th}</tr></thead><tbody>{body}</tbody></table></div>')
     if k == 'spacer': return wrap('<div style="height:20px"></div>')
     return wrap(f'<div style="color:red">[{k}]</div>')
 

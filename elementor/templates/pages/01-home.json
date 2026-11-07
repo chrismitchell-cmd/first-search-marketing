@@ -2401,7 +2401,7 @@
    ]
   },
   {
-   "id": "85c4e3b",
+   "id": "7aa9346",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -2449,7 +2449,7 @@
    },
    "elements": [
     {
-     "id": "6329107",
+     "id": "8fc4720",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -2473,7 +2473,7 @@
      },
      "elements": [
       {
-       "id": "7349bcc",
+       "id": "b27058a",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -2499,7 +2499,7 @@
        },
        "elements": [
         {
-         "id": "d0527b4",
+         "id": "a4fef3e",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -2631,16 +2631,154 @@
            "elements": []
           },
           {
-           "id": "ad0abd1",
+           "id": "133d10c",
            "elType": "widget",
-           "widgetType": "html",
+           "widgetType": "eael-data-table",
            "settings": {
-            "html": "<table class=\"fs-table\"><thead><tr><th>Metrics</th><th class=\"b\">Before</th><th aria-hidden=\"true\"></th><th class=\"a\">After</th></tr></thead><tbody><tr><th scope=\"row\">Monthly leads</th><td class=\"b\">12</td><td class=\"ar\">→</td><td class=\"a\">41</td></tr><tr><th scope=\"row\">Map pack position</th><td class=\"b\">#9</td><td class=\"ar\">→</td><td class=\"a\">#1</td></tr><tr><th scope=\"row\">Google reviews</th><td class=\"b\">18</td><td class=\"ar\">→</td><td class=\"a\">112</td></tr></tbody></table>"
+            "eael_data_table_header_cols_data": [
+             {
+              "_id": "ad0abd1",
+              "eael_data_table_header_col": "Metrics",
+              "eael_data_table_header_css_class": "m",
+              "eael_data_table_header_col_icon_enabled": "false"
+             },
+             {
+              "_id": "78d4055",
+              "eael_data_table_header_col": "Before",
+              "eael_data_table_header_css_class": "b",
+              "eael_data_table_header_col_icon_enabled": "false"
+             },
+             {
+              "_id": "d0527b4",
+              "eael_data_table_header_col": "",
+              "eael_data_table_header_css_class": "ar",
+              "eael_data_table_header_col_icon_enabled": "false"
+             },
+             {
+              "_id": "ed6e6ab",
+              "eael_data_table_header_col": "After",
+              "eael_data_table_header_css_class": "a",
+              "eael_data_table_header_col_icon_enabled": "false"
+             }
+            ],
+            "eael_data_table_content_rows": [
+             {
+              "_id": "f49b781",
+              "eael_data_table_content_row_type": "row"
+             },
+             {
+              "_id": "5c695ec",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "Monthly leads",
+              "eael_data_table_content_row_css_class": "m"
+             },
+             {
+              "_id": "0744d42",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "12",
+              "eael_data_table_content_row_css_class": "b"
+             },
+             {
+              "_id": "fc54d18",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "→",
+              "eael_data_table_content_row_css_class": "ar"
+             },
+             {
+              "_id": "870c266",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "41",
+              "eael_data_table_content_row_css_class": "a"
+             },
+             {
+              "_id": "7349bcc",
+              "eael_data_table_content_row_type": "row"
+             },
+             {
+              "_id": "6329107",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "Map pack position",
+              "eael_data_table_content_row_css_class": "m"
+             },
+             {
+              "_id": "85c4e3b",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "#9",
+              "eael_data_table_content_row_css_class": "b"
+             },
+             {
+              "_id": "5f2ea75",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "→",
+              "eael_data_table_content_row_css_class": "ar"
+             },
+             {
+              "_id": "1a3ad51",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "#1",
+              "eael_data_table_content_row_css_class": "a"
+             },
+             {
+              "_id": "b50347f",
+              "eael_data_table_content_row_type": "row"
+             },
+             {
+              "_id": "a74e8d1",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "Google reviews",
+              "eael_data_table_content_row_css_class": "m"
+             },
+             {
+              "_id": "5e4f6eb",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "18",
+              "eael_data_table_content_row_css_class": "b"
+             },
+             {
+              "_id": "3d0869b",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "→",
+              "eael_data_table_content_row_css_class": "ar"
+             },
+             {
+              "_id": "5c05d5c",
+              "eael_data_table_content_row_type": "col",
+              "eael_data_table_content_type": "textarea",
+              "eael_data_table_content_row_colspan": 1,
+              "eael_data_table_content_row_title": "112",
+              "eael_data_table_content_row_css_class": "a"
+             }
+            ],
+            "table_alignment": "center",
+            "eael_enable_responsive_header_styles": "",
+            "_css_classes": "fs-dtable"
            },
            "elements": []
           },
           {
-           "id": "78d4055",
+           "id": "085b0f0",
            "elType": "widget",
            "widgetType": "button",
            "settings": {
@@ -2674,7 +2812,7 @@
          ]
         },
         {
-         "id": "870c266",
+         "id": "77d467b",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -2708,7 +2846,7 @@
          },
          "elements": [
           {
-           "id": "f49b781",
+           "id": "49d1b3f",
            "elType": "container",
            "isInner": true,
            "settings": {
@@ -2726,7 +2864,7 @@
            },
            "elements": [
             {
-             "id": "ed6e6ab",
+             "id": "5d1e2cc",
              "elType": "widget",
              "widgetType": "html",
              "settings": {
@@ -2737,7 +2875,7 @@
            ]
           },
           {
-           "id": "0744d42",
+           "id": "658c448",
            "elType": "container",
            "isInner": true,
            "settings": {
@@ -2755,7 +2893,7 @@
            },
            "elements": [
             {
-             "id": "5c695ec",
+             "id": "74c01d4",
              "elType": "widget",
              "widgetType": "html",
              "settings": {
@@ -2766,7 +2904,7 @@
            ]
           },
           {
-           "id": "fc54d18",
+           "id": "ffee9f7",
            "elType": "widget",
            "widgetType": "button",
            "settings": {
@@ -2806,7 +2944,7 @@
    ]
   },
   {
-   "id": "2411229",
+   "id": "c5eb056",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -2853,7 +2991,7 @@
    },
    "elements": [
     {
-     "id": "b941e29",
+     "id": "bfbc20f",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -2877,7 +3015,7 @@
      },
      "elements": [
       {
-       "id": "67968c9",
+       "id": "86bb576",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -2918,7 +3056,7 @@
        },
        "elements": [
         {
-         "id": "a77e2b8",
+         "id": "5041086",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -2961,7 +3099,7 @@
          "elements": []
         },
         {
-         "id": "710deef",
+         "id": "fb30d41",
          "elType": "widget",
          "widgetType": "text-editor",
          "settings": {
@@ -3004,7 +3142,7 @@
        ]
       },
       {
-       "id": "6892557",
+       "id": "a7a501c",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -3038,7 +3176,7 @@
        },
        "elements": [
         {
-         "id": "5e4f6eb",
+         "id": "6892557",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3083,7 +3221,7 @@
          },
          "elements": [
           {
-           "id": "1a3ad51",
+           "id": "710deef",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3115,7 +3253,7 @@
            "elements": []
           },
           {
-           "id": "5f2ea75",
+           "id": "b09a4e7",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -3135,7 +3273,7 @@
            "elements": []
           },
           {
-           "id": "b50347f",
+           "id": "a77e2b8",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3168,7 +3306,7 @@
            "elements": []
           },
           {
-           "id": "a74e8d1",
+           "id": "67968c9",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -3197,7 +3335,7 @@
          ]
         },
         {
-         "id": "a4fef3e",
+         "id": "340f783",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3242,7 +3380,7 @@
          },
          "elements": [
           {
-           "id": "5c05d5c",
+           "id": "2411229",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3274,7 +3412,7 @@
            "elements": []
           },
           {
-           "id": "3d0869b",
+           "id": "b941e29",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -3294,7 +3432,7 @@
            "elements": []
           },
           {
-           "id": "133d10c",
+           "id": "3c78165",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3327,7 +3465,7 @@
            "elements": []
           },
           {
-           "id": "085b0f0",
+           "id": "94fb581",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -3356,7 +3494,7 @@
          ]
         },
         {
-         "id": "ffee9f7",
+         "id": "e722a83",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3401,7 +3539,7 @@
          },
          "elements": [
           {
-           "id": "49d1b3f",
+           "id": "90ae3ff",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3433,7 +3571,7 @@
            "elements": []
           },
           {
-           "id": "5d1e2cc",
+           "id": "9ac8681",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -3453,7 +3591,7 @@
            "elements": []
           },
           {
-           "id": "74c01d4",
+           "id": "6ee7d92",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3486,7 +3624,7 @@
            "elements": []
           },
           {
-           "id": "658c448",
+           "id": "bcc5c10",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -3515,7 +3653,7 @@
          ]
         },
         {
-         "id": "b09a4e7",
+         "id": "2a4d700",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3560,7 +3698,7 @@
          },
          "elements": [
           {
-           "id": "b27058a",
+           "id": "514a387",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3592,7 +3730,7 @@
            "elements": []
           },
           {
-           "id": "77d467b",
+           "id": "8d21fe7",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -3612,7 +3750,7 @@
            "elements": []
           },
           {
-           "id": "8fc4720",
+           "id": "6b44b14",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3644,7 +3782,7 @@
            "elements": []
           },
           {
-           "id": "7aa9346",
+           "id": "c8aef44",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -3678,7 +3816,7 @@
    ]
   },
   {
-   "id": "f4f8703",
+   "id": "1ce2b3a",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -3711,7 +3849,7 @@
    },
    "elements": [
     {
-     "id": "a5727cf",
+     "id": "564f3e3",
      "elType": "widget",
      "widgetType": "button",
      "settings": {
@@ -3731,7 +3869,7 @@
    ]
   },
   {
-   "id": "340f783",
+   "id": "5e3934a",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -3764,7 +3902,7 @@
    },
    "elements": [
     {
-     "id": "94fb581",
+     "id": "c48e86a",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -3788,7 +3926,7 @@
      },
      "elements": [
       {
-       "id": "3c78165",
+       "id": "2784d6e",
        "elType": "widget",
        "widgetType": "html",
        "settings": {
@@ -3801,7 +3939,7 @@
    ]
   },
   {
-   "id": "c5eb056",
+   "id": "d2efdf6",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -3857,7 +3995,7 @@
    },
    "elements": [
     {
-     "id": "bfbc20f",
+     "id": "b9b670d",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -3882,7 +4020,7 @@
      },
      "elements": [
       {
-       "id": "6ee7d92",
+       "id": "cf5dd22",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -3923,7 +4061,7 @@
        },
        "elements": [
         {
-         "id": "9ac8681",
+         "id": "170f4c7",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -3958,7 +4096,7 @@
          "elements": []
         },
         {
-         "id": "90ae3ff",
+         "id": "943face",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -4004,7 +4142,7 @@
        ]
       },
       {
-       "id": "a7a501c",
+       "id": "02d60b6",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -4037,53 +4175,53 @@
        },
        "elements": [
         {
-         "id": "86bb576",
+         "id": "bbeb925",
          "elType": "widget",
          "widgetType": "accordion",
          "settings": {
           "tabs": [
            {
-            "_id": "bcc5c10",
+            "_id": "40c6cdd",
             "tab_title": "What exactly does the FirstSearch Guarantee cover?",
             "tab_content": "<p>[Plain-English summary of the guarantee: what’s guaranteed, how it’s measured, and what happens if it’s missed.]</p>"
            },
            {
-            "_id": "e722a83",
+            "_id": "391669f",
             "tab_title": "Why a six-month commitment?",
             "tab_content": "<p>Real marketing compounds. SEO, brand recognition, reviews and automation take time to build momentum, and the first months lay the foundation for everything after. Six months is enough time to show real, measurable results, and short enough that you’re never locked in for years.</p>"
            },
            {
-            "_id": "8d21fe7",
+            "_id": "c80c750",
             "tab_title": "How much does a partnership cost?",
             "tab_content": "<p>Every partnership is a fixed monthly retainer, so you’ll never get a surprise invoice. Partnerships start at [$X,XXX]/month, and your exact investment is set in your roadmap based on your goals.</p>"
            },
            {
-            "_id": "514a387",
+            "_id": "aa2d9c1",
             "tab_title": "What kinds of businesses do you work with?",
             "tab_content": "<p>We work with established local and service businesses that are ready to invest in long-term growth. [List of core industries.]</p>"
            },
            {
-            "_id": "6b44b14",
+            "_id": "c55a889",
             "tab_title": "Do I need to be in New Hampshire?",
             "tab_content": "<p>[We’re based in Hampton and love working with NH businesses, but we partner with businesses across [region].]</p>"
            },
            {
-            "_id": "c8aef44",
+            "_id": "3a5ffa7",
             "tab_title": "Why do you only work with 25 businesses?",
             "tab_content": "<p>Because quality doesn’t scale infinitely. Capping our partner list means every client gets real strategy and senior attention, not a junior account manager juggling forty accounts.</p>"
            },
            {
-            "_id": "2a4d700",
+            "_id": "f02d307",
             "tab_title": "How will I know if it’s working?",
             "tab_content": "<p>You’ll get monthly reporting in plain English, tied to the numbers that matter: leads, calls, bookings and revenue. No vanity metrics and no black boxes.</p>"
            },
            {
-            "_id": "fb30d41",
+            "_id": "aa1019e",
             "tab_title": "Who owns my accounts, website and content?",
             "tab_content": "<p>[You do. Your website, ad accounts, content and data belong to your business, always.]</p>"
            },
            {
-            "_id": "5041086",
+            "_id": "af8200b",
             "tab_title": "What if I’m not ready to hire an agency?",
             "tab_content": "<p>Start with our DIY options. The FirstSearch Blueprint, online course and coaching program give you the same framework we use with our partners. Or take the Framework Quiz to see where your marketing stands today.</p>"
            }
@@ -4163,7 +4301,7 @@
    ]
   },
   {
-   "id": "40c6cdd",
+   "id": "c596148",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -4211,7 +4349,7 @@
    },
    "elements": [
     {
-     "id": "cf5dd22",
+     "id": "51657d8",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -4235,7 +4373,7 @@
      },
      "elements": [
       {
-       "id": "943face",
+       "id": "81ca5a1",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -4277,7 +4415,7 @@
        },
        "elements": [
         {
-         "id": "5e3934a",
+         "id": "bc9daab",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -4302,7 +4440,7 @@
          },
          "elements": [
           {
-           "id": "2784d6e",
+           "id": "f903d90",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -4345,7 +4483,7 @@
            "elements": []
           },
           {
-           "id": "c48e86a",
+           "id": "8923841",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -4379,7 +4517,7 @@
          ]
         },
         {
-         "id": "170f4c7",
+         "id": "924a334",
          "elType": "widget",
          "widgetType": "button",
          "settings": {
