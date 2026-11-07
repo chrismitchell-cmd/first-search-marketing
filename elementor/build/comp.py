@@ -196,44 +196,94 @@ def steps(eb, h2, sub, items):
 
 # ---------- Three ways to work with us ----------
 def three_ways(h2='Three ways to <span class="fs-gt">become a FirstSearcher</span>',
-               lead='Work with our team, learn the system yourself, or get guided by us while you do the work.', eb='Work with us'):
-    partner = row(
-        col(image('assets/img/logo.png', '', 220), heading('We work with 25 businesses. That’s it.', 'h3'),
-            text('Capping our partner list means every client gets senior attention, real strategy and a team that knows their business. When the spots are full, they’re full.'),
-            text('<p><b>[6]</b> of 25 partner spots open.</p>', 'fs-eyebrow'), vid('assets/img/design/team-group.webp'), wpct=46),
-        col(heading('Is a partnership right for you?', 'h3'),
-            row(col(heading('A fit if you:', 'h4'), icon_list(['Have an established business ready to grow', 'Want a long-term partner, not a vendor', 'Are ready to commit for six months', 'Care about leads and revenue, not likes'], cls='fs-checks'), wpct=50, cls='fs-purple-card fs-dark', p=pad(20), gap_=8),
-                col(heading('Not a fit if you:', 'h4'), icon_list(['Want overnight results', 'Are shopping for the cheapest option', 'Want marketing done to you, not with you'], 'fas fa-times'), wpct=50, cls='fs-soft-box', p=pad(20), gap_=8), gap_=14, align='stretch'),
-            icon_list(['Fixed monthly retainer', 'Six-month partnership', 'Results guaranteed in writing', 'A dedicated local team'], 'fas fa-check-circle', 'fs-check-pills'),
-            row(text('<p>Partnerships start at <b>$X,XXX</b>/month.</p>'), button('Let’s Talk!', '/contact-us/'), justify='space-between', s={'flex_direction_mobile': 'column'}),
-            wpct=54, cls='fs-gcard', p=pad(30), gap_=16), gap_=28, align='stretch')
-    def wt_res(img, h, p_, link, url, price):
-        return row(con(image(img, '', None, 'center'), cls='fs-wt-img'),
-                   con(heading(h, 'h4'), text(p_), link_u(link, url), gap_=4, cls='fs-wt-body'),
-                   html(f'<span class="fs-wt-price">{price}</span>'), gap_=18, cls='fs-wt-res', p=pad(16, 0, 16, 0), s={'flex_direction_mobile': 'row', 'flex_wrap_mobile': 'wrap'})
-    diy = row(col(image('assets/img/design/befirst-training.png', '', 240), heading('Learn the system. Run it yourself.', 'h3'),
-                  text('The same framework we use with our partners, packaged so you can implement it at your own pace. Start with an $8 workbook, or get everything in the Community.'),
-                  video('', 'assets/img/design/course-mockup.webp', 'fs-video'), wpct=46, gap_=16),
-              col(heading('Your DIY resources', 'h3'),
-                  wt_res('assets/img/design/blueprint-book.webp', 'The FirstSearch Blueprint', 'The exact SOPs, worksheets and checklists we use with every client.', 'Get the Blueprint', '/befirst-training/#blueprint', '$8'),
-                  wt_res('assets/img/design/course-mockup.webp', 'BeFirst Online Course', 'A founder-led video walkthrough of the entire framework, one stage at a time.', 'Explore the course', '/befirst-training/#course', '[$XX]'),
-                  wt_res('assets/img/design/befirst-training.png', 'BeFirst Community', 'The course, Blueprint, live webinars and weekly content, all in one membership.', 'Join the Community', '/befirst-training/#community', '$88/mo'),
-                  wt_res('assets/img/icons/team.webp', 'Live trainings and webinars', 'Hands-on workshops, online and in Hampton, on every stage of the framework.', 'See upcoming events', '/events/', '[Free to $XX]'),
-                  text('<p>Not sure where to start? <a href="/befirst-training/">Compare every option in BeFirst Training</a>.</p>', 'fs-wt-more'),
-                  wpct=54, cls='fs-gcard', p=pad(30), gap_=0), gap_=28, align='stretch')
-    coach = row(col(image('assets/img/design/befirst-coaching.png', '', 240), heading('You do the work. We guide every step.', 'h3'),
-                    text('1:1 strategy sessions with our team, built entirely around your business. You implement; we bring the plan, the expertise and the accountability.'),
-                    video('', 'assets/img/design/chris-cutout.webp', 'fs-video'), wpct=46, gap_=16),
-                col(heading('BeFirst Coaching', 'h3'),
-                    html('<div class="fs-coach-price"><div><b>$500</b><span>/month</span><small>One 1:1 session a month</small></div><div><b>$1,000</b><span>/month</span><small>A session every two weeks</small></div></div>'),
-                    icon_list(['A personalized action plan after each session', 'Between-session support by email or chat [CONFIRM]', 'Includes the BeFirst Community at 50% off'], cls='fs-checks'),
-                    text('<p><b>Best for:</b> owners who want an expert sounding board and accountability.</p>'),
-                    button('Book a coaching call', '/befirst-training/#coaching'), wpct=54, cls='fs-gcard', p=pad(30), gap_=16), gap_=28, align='stretch')
+               lead='Work with our team, learn the system yourself, or get guided by us while you do the work.', eb='Work with us',
+               spots_open=6):
+    """'Three ways to work with us', built from native widgets so text, images, prices and videos are edited in the panel.
+    Nested Tabs (tab titles: <i>number</i><span><b>title</b><small>subtitle</small></span>), each tab = intro column + gradient card.
+    All of the look comes from the fs-ways CSS (section 29 of the Custom CSS)."""
+    def intro(logo, logo_alt, h3, p_, vid_img, vid_fit, caption, length, extra=()):
+        return con(image(logo, 'fs-w-logo' + (' fs-w-logo--sm' if logo.endswith('logo.png') else ''), None, 'left', logo_alt), heading(h3, 'h3', 'fs-w-h3'), text(p_, 'fs-w-lead'), *extra,
+                   wvideo(vid_img, vid_fit, caption, length), gap_=16, cls='fs-w-intro')
+    def wvideo(img, fit, caption, length):
+        """Video widget with a cover image in a gradient frame, plus the caption chip and length (editable text)."""
+        v = video('', img, f'fs-w-video fs-w-video--{fit}')
+        v['settings'].update({'aspect_ratio': '32', 'lightbox': '', 'show_play_icon': 'yes'})
+        return con(v, text(f'<p><b>{caption}</b><span>{length}</span></p>', 'fs-w-cap'), cls='fs-w-vid')
+    def card(*kids):
+        return con(*kids, cls='fs-gcard fs-w-card', gap_=0, p={'unit': 'px', 'top': '40', 'right': '40', 'bottom': '40', 'left': '40', 'isLinked': True},
+                   s={'padding_tablet': pad(32), 'padding_mobile': pad(26)})
+    def foot(p_html, label, url):
+        return con(text(p_html, 'fs-w-foot-text'), button(label, url, 'fs-w-btn'), d='row', cls='fs-w-foot', gap_=gap(24, 14), wrap=True,
+                   justify='space-between', align='center', mobile_col=False)
+    def panel(left, right):
+        return con(left, right, d='row', gap_=28, align='stretch', cls='fs-w-panel', mobile_col=False, s={'flex_direction_tablet': 'column'})
+
+    # 1. Partner with our team
+    spots = w('progress', {'title': '', 'percent': {'unit': '%', 'size': (25 - spots_open) * 4, 'sizes': []}, 'display_percentage': 'hide',
+                           'inner_text': '', 'progress_type': ''}, 'fs-w-spots')
+    spots_label = text(f'<p><b>{spots_open}</b> of 25 partner spots open.</p>', 'fs-w-spots-label')
+    partner = panel(
+        intro('assets/img/logo.png', 'First Search Marketing', 'We work with 25 businesses. That’s it.',
+              'Capping our partner list means every client gets senior attention, real strategy and a team that knows their business. When the spots are full, they’re full.',
+              'assets/img/design/team-group.webp', 'wide', 'Meet the team behind your marketing', '[1:45]',
+              extra=(con(spots, spots_label, gap_=10, cls='fs-w-spotbox'),)),
+        card(heading('Is a partnership right for you?', 'h3', 'fs-w-card-h'),
+             con(con(heading('A fit if you:', 'h4'), icon_list(['Have an established business ready to grow', 'Want a long-term partner, not a vendor',
+                                                               'Are ready to commit for six months', 'Care about leads and revenue, not likes'], 'fas fa-check', 'fs-w-list'),
+                     cls='fs-w-fit fs-w-yes', gap_=10, p=pad(18, 18, 16, 18)),
+                 con(heading('Not a fit if you:', 'h4'), icon_list(['Want overnight results', 'Are shopping for the cheapest option',
+                                                                   'Want marketing done to you, not with you'], 'fas fa-times', 'fs-w-list'),
+                     cls='fs-w-fit fs-w-no', gap_=10, p=pad(18, 18, 16, 18)),
+                 d='row', gap_=14, align='stretch', cls='fs-w-fits'),
+             icon_list(['Fixed monthly retainer', 'Six-month partnership', 'Results guaranteed in writing', 'A dedicated local team'], 'fas fa-check', 'fs-w-pills'),
+             foot('<p>Partnerships start at <b>$X,XXX</b>/month.</p>', 'Let’s Talk!', '/contact-us/')))
+    partner['settings']['_title'] = 'Partner with our team'
+
+    # 2. Do it yourself
+    def res(img, h, p_, link, url, price, icon=None):
+        tile = con(w('icon', {'selected_icon': {'value': icon, 'library': 'fa-solid'}, 'primary_color': '#FFFFFF', 'size': px(40), 'align': 'center'}) if icon
+                   else image(img, '', None, 'center'), cls='fs-w-img' + (' fs-w-img--ico' if icon else ''), justify='center', align='center')
+        return con(tile, con(heading(h, 'h4'), text(p_), link_u(link, url), gap_=0, cls='fs-w-res-body'),
+                   text(f'<p>{price}</p>', 'fs-w-price'), d='row', gap_=18, align='center', cls='fs-w-res', mobile_col=False)
+    diy = panel(
+        intro('assets/img/design/befirst-training.png', 'BeFirst Marketing Training', 'Learn the system. Run it yourself.',
+              'The same framework we use with our partners, packaged so you can implement it at your own pace. Start with an $8 workbook, or get everything in the Community.',
+              'assets/img/design/course-mockup.webp', 'cover', 'Inside BeFirst Training: how the DIY path works', '[3:10]'),
+        card(heading('Your DIY resources', 'h3', 'fs-w-card-h'),
+             con(res('assets/img/design/blueprint-book.webp', 'The FirstSearch Blueprint', 'The exact SOPs, worksheets and checklists we use with every client.', 'Get the Blueprint', '/befirst-training/#blueprint', '$8'),
+                 res('assets/img/design/course-mockup.webp', 'BeFirst Online Course', 'A founder-led video walkthrough of the entire framework, one stage at a time.', 'Explore the course', '/befirst-training/#course', '[$XX]'),
+                 res('assets/img/design/befirst-training.png', 'BeFirst Community', 'The course, Blueprint, live webinars and weekly content, all in one membership.', 'Join the Community', '/befirst-training/#community', '$88/mo'),
+                 res(None, 'Live trainings and webinars', 'Hands-on workshops, online and in Hampton, on every stage of the framework.', 'See upcoming events', '/events/', '[Free to $XX]', icon='fas fa-users'),
+                 gap_=0, cls='fs-w-reslist'),
+             text('<p>Not sure where to start? <a href="/befirst-training/">Compare every option in BeFirst Training</a>.</p>', 'fs-w-more')))
+    diy['settings']['_title'] = 'Do it yourself'
+
+    # 3. Get guided by us
+    def price_box(amount, note, cls):
+        return text(f'<p><b>{amount}</b><span>/month</span></p><p><small>{note}</small></p>', 'fs-w-pbox ' + cls)
+    coach = panel(
+        intro('assets/img/design/befirst-coaching.png', 'BeFirst Marketing Coaching', 'You do the work. We guide every step.',
+              '1:1 strategy sessions with our team, built entirely around your business. You implement; we bring the plan, the expertise and the accountability.',
+              'assets/img/design/chris-cutout.webp', 'cut', 'What a BeFirst coaching session looks like', '[2:00]'),
+        card(heading('BeFirst Coaching', 'h3', 'fs-w-card-h'),
+             con(price_box('$500', 'One 1:1 session a month', 'fs-w-pbox--navy'), price_box('$1,000', 'A session every two weeks', 'fs-w-pbox--grad'),
+                 d='row', gap_=12, align='stretch', cls='fs-w-pboxes'),
+             icon_list(['A 1:1 strategy session with our team every month (or every two weeks)', 'A personalized action plan after each session',
+                        'Accountability on what you committed to', 'Between-session support by email or chat [CONFIRM]',
+                        'Includes the BeFirst Community at 50% off'], 'fas fa-check', 'fs-w-coach'),
+             foot('<p><b>Best for:</b> owners who want an expert sounding board and accountability.</p>', 'Book a coaching call', '/befirst-training/#coaching')))
+    coach['settings']['_title'] = 'Get guided by us'
+
     tt = lambda n, t, sub: f'<i>{n}</i><span><b>{t}</b><small>{sub}</small></span>'
-    tabs = nested_tabs([(tt(1, 'Partner with our team', 'We build and run it for you, results guaranteed'), con(partner, p=pad(0))),
-                        (tt(2, 'Do it yourself', 'BeFirst Training: learn the system at your pace'), con(diy, p=pad(0))),
-                        (tt(3, 'Get guided by us', '1:1 coaching while you do the work'), con(coach, p=pad(0)))], 'fs-ways-tabs')
-    return section(sec_head(eb, h2, lead), tabs, cls='fs-geo', title='Three ways', bg_img='assets/img/design/bg-geometric.jpg', gap_=32)
+    tabs = nested_tabs([(tt(1, 'Partner with our team', 'We build and run it for you, results guaranteed'), partner),
+                        (tt(2, 'Do it yourself', 'BeFirst Training: learn the system at your pace'), diy),
+                        (tt(3, 'Get guided by us', '1:1 coaching while you do the work'), coach)], 'fs-ways-tabs')
+    tabs['settings']['breakpoint_selector'] = 'none'   # keep tabs on phones (stacked), as in the design
+    head = sec_head(eb, h2, lead)
+    return section(head, tabs, cls='fs-geo fs-ways', title='Three ways', bg_img='assets/img/design/bg-geometric.jpg', gap_=34,
+                   p={'unit': 'px', 'top': '158', 'right': '24', 'bottom': '120', 'left': '24', 'isLinked': False},
+                   s={'padding_tablet': {'unit': 'px', 'top': '112', 'right': '24', 'bottom': '92', 'left': '24', 'isLinked': False},
+                      'padding_mobile': {'unit': 'px', 'top': '110', 'right': '16', 'bottom': '80', 'left': '16', 'isLinked': False}})
 
 # ---------- FAQ ----------
 def faq(h2, qas, eb='FAQ'):

@@ -38,6 +38,7 @@ def render(e, depth=0):
         rule(eid, css)
         t = ''
         if isinstance(s.get('padding_tablet'), dict): t += pv(s['padding_tablet'])
+        if s.get('flex_direction_tablet'): t += f"flex-direction:{s['flex_direction_tablet']};"
         rule(eid, t, '(max-width:1024px)')
         m = ''
         if s.get('flex_direction_mobile'): m += f"flex-direction:{s['flex_direction_mobile']};"
@@ -85,7 +86,10 @@ def render(e, depth=0):
         return wrap(f'<div class="elementor-image-box-wrapper" style="{lay}"><figure class="elementor-image-box-img" style="margin:0 0 10px;width:{"96px" if pos == "left" else "72px"};flex:none"><img src="{src}" style="width:100%;display:block"></figure><div class="elementor-image-box-content"><{t} class="elementor-image-box-title" style="margin:0 0 6px">{s["title_text"]}</{t}><p class="elementor-image-box-description" style="margin:0">{s["description_text"]}</p></div></div>')
     if k == 'video':
         img = s.get('image_overlay', {}).get('url', '').replace(ASSET, '../upload/first-search/')
-        return wrap(f'<div class="elementor-wrapper" style="aspect-ratio:16/9;background:#250762 url(\'{img}\') center bottom/contain no-repeat;display:grid;place-items:center;border-radius:28px"><span style="width:80px;height:80px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:30px;color:#250762">▶</span></div>')
+        ar = {'169': '1.77777', '219': '2.33333', '43': '1.33333', '32': '1.5', '11': '1', '916': '0.5625'}.get(s.get('aspect_ratio', '169'), '1.77777')
+        return wrap(f'<div class="elementor-wrapper elementor-open-inline"><div class="elementor-video"></div><div class="elementor-custom-embed-image-overlay" style="background-image: url({img});">'
+                    f'<div class="elementor-custom-embed-play" role="button" aria-label="Play Video" tabindex="0"><svg aria-hidden="true" class="e-font-icon-svg e-eicon-play" viewBox="0 0 1000 1000"><path d="M838 162C746 71 633 25 500 25 371 25 258 71 163 162 71 254 25 367 25 500 25 633 71 746 163 837 254 929 367 979 500 979 633 979 746 933 838 837 929 746 975 633 975 500 975 367 929 254 838 162M808 192C892 279 933 379 933 500 933 621 892 725 808 808 725 892 621 938 500 938 379 938 279 896 196 808 113 725 67 621 67 500 67 379 108 279 196 192 279 108 383 62 500 62 621 62 721 108 808 192M438 392V642L642 517 438 392Z"></path></svg><span class="elementor-screen-only">Play Video</span></div></div></div>',
+                    f'--video-aspect-ratio:{ar}')
     if k in ('accordion', 'toggle'):
         its = ''.join(f'<div class="elementor-accordion-item"><div class="elementor-tab-title{" elementor-active" if n == 0 else ""}"><span class="elementor-{'toggle' if k == 'toggle' else 'accordion'}-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-{'toggle' if k == 'toggle' else 'accordion'}-title">{t["tab_title"]}</a></div>' + (f'<div class="elementor-tab-content">{t["tab_content"]}</div>' if n == 0 else '') + '</div>' for n, t in enumerate(s['tabs']))
         return wrap(its)
@@ -102,8 +106,17 @@ def render(e, depth=0):
         t = ''.join(f'<div class="e-n-menu-title"><span class="e-n-menu-title-text">{it["item_title"]}</span>{" ▾" if it.get("item_dropdown_content") else ""}</div>' for it in s['menu_items'])
         return wrap(f'<nav style="display:flex;gap:28px">{t}</nav>')
     if k == 'nested-tabs':
-        t = ''.join(f'<div class="e-n-tab-title" aria-selected="{"true" if n == 0 else "false"}"><span class="e-n-tab-title-text">{it["tab_title"]}</span></div>' for n, it in enumerate(s['tabs']))
-        return wrap(f'<div class="e-n-tabs"><div class="e-n-tabs-heading" style="display:flex;gap:10px;margin-bottom:18px">{t}</div><div class="e-n-tabs-content">{render(e["elements"][0])}</div></div>')
+        t = ''.join(f'<button id="e-n-tab-title-{eid}{n}" class="e-n-tab-title" aria-selected="{"true" if n == 0 else "false"}" data-tab-index="{n + 1}" role="tab" tabindex="{0 if n == 0 else -1}" aria-controls="e-n-tab-content-{eid}{n}" style="--n-tabs-title-order: {n + 1};"><span class="e-n-tab-title-text">{it["tab_title"]}</span></button>' for n, it in enumerate(s['tabs']))
+        panels = ''
+        for n, c in enumerate(e['elements']):
+            h = render(c)
+            panels += h.replace('<div class="e-con e-flex ', f'<div id="e-n-tab-content-{eid}{n}" role="tabpanel" data-tab-index="{n + 1}" class="{"e-active " if n == 0 else ""}e-con e-flex ', 1)
+        js = ("<script>document.currentScript.parentNode.querySelectorAll('.e-n-tab-title').forEach(b=>b.addEventListener('click',()=>{const w=b.closest('.e-n-tabs');"
+              "w.querySelectorAll('.e-n-tab-title').forEach(x=>x.setAttribute('aria-selected',x===b));w.querySelectorAll('.e-n-tabs-content>.e-con').forEach(p=>p.classList.toggle('e-active',p.id===b.getAttribute('aria-controls')));}));</script>")
+        return wrap(f'<div class="e-n-tabs"><div class="e-n-tabs-heading" role="tablist">{t}</div><div class="e-n-tabs-content">{panels}</div>{js}</div>')
+    if k == 'progress':
+        pc = s.get('percent', {}).get('size', 50)
+        return wrap(f'<div class="elementor-progress-wrapper" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{pc}"><div class="elementor-progress-bar" data-max="{pc}" style="width:{pc}%"><span class="elementor-progress-text">{s.get("inner_text", "")}</span></div></div>')
     if k == 'flip-box':
         src = s['background_a_image']['url'].replace(ASSET, '../upload/first-search/')
         return wrap(f'<div class="elementor-flip-box"><div class="elementor-flip-box__front" style="height:420px;background:#250762 url(\'{src}\') bottom/contain no-repeat;display:flex;align-items:flex-end;padding:20px;box-sizing:border-box;position:relative"><div class="elementor-flip-box__layer__overlay" style="position:absolute;inset:0"></div><div style="position:relative"><h3 class="elementor-flip-box__layer__title" style="margin:0">{s["title_text_a"]}</h3><div class="elementor-flip-box__layer__description">{s["description_text_a"]}</div></div></div></div>')
@@ -143,6 +156,20 @@ def render(e, depth=0):
 
 # Elementor's own front-end defaults (container padding/gap) - loaded before the page's element CSS
 EL_DEFAULTS = """
+.elementor-widget-video .elementor-widget-container{overflow:hidden;transform:translateZ(0)}
+.elementor-widget-video .elementor-wrapper{position:relative;aspect-ratio:var(--video-aspect-ratio)}
+.elementor-custom-embed-image-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:50%;cursor:pointer;text-align:center}
+.elementor-custom-embed-play{position:absolute;top:50%;left:50%;transform:translate3d(-50%,-50%,0)}
+.elementor-custom-embed-play svg{height:100px;width:100px;fill:#fff;filter:drop-shadow(1px 0 6px rgba(0,0,0,.3))}
+.elementor-screen-only{position:absolute;top:-10000em;width:1px;height:1px;overflow:hidden}
+.elementor-progress-wrapper{position:relative;background-color:#eee;color:#fff;height:30px;line-height:30px;border-radius:2px}
+.elementor-progress-bar{display:flex;background-color:#69727d;width:0;font-size:11px;height:30px;line-height:30px;border-radius:2px;transition:width 1s ease-in-out}
+.e-n-tabs{display:flex;flex-direction:column;gap:var(--n-tabs-gap,10px)}
+.e-n-tabs-heading{display:flex;flex-wrap:wrap;gap:var(--n-tabs-title-gap,10px)}
+.e-n-tab-title{display:flex;align-items:center;cursor:pointer;background-color:#F1F2F3;border:0;padding:10px 20px;font:inherit}
+.e-n-tab-title[aria-selected=true]{background-color:#E6E9EC}
+.e-n-tabs-content>.e-con:not(.e-active){display:none}
+
 .e-con{--container-default-padding-top:0px;--container-default-padding-right:0px;--container-default-padding-bottom:0px;--container-default-padding-left:0px}
 .e-con{--width:100%;--padding-top:var(--container-default-padding-top,10px);--padding-right:var(--container-default-padding-right,10px);
  --padding-bottom:var(--container-default-padding-bottom,10px);--padding-left:var(--container-default-padding-left,10px);--row-gap:20px;--column-gap:20px;

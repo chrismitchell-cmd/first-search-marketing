@@ -39,7 +39,7 @@ def home():
             ('Get your roadmap.', 'We map your business against the FirstSearch Framework and lay out exactly what we’ll do, in what order, and what results we’re committing to.'),
             ('We build and run it.', 'Our team executes across every channel in your plan, from brand and website to ads, SEO, automation and reviews.'),
             ('See the results.', 'Monthly reporting in plain English, tied to leads and revenue, not vanity metrics. You’ll always know what’s working.')]),
-        section(component('ways'), boxed=False, title='Three ways (from the design)', p=pad(0)),
+        three_ways(),
         faq('Questions owners <span class="fs-gt">ask us</span>', [
             ('What exactly does the FirstSearch Guarantee cover?', '[Plain-English summary of the guarantee: what’s guaranteed, how it’s measured, and what happens if it’s missed.]'),
             ('Why a six-month commitment?', 'Real marketing compounds. SEO, brand recognition, reviews and automation take time to build momentum, and the first months lay the foundation for everything after. Six months is enough time to show real, measurable results, and short enough that you’re never locked in for years.'),
