@@ -542,3 +542,110 @@ def path_cards(left, right):
         return con(heading(k, 'p', 'fs-pth-k'), heading(h, 'h3', 'fs-pth-h'), text(p, 'fs-pth-p'), con(*acts, gap_=12, cls='fs-pth-acts'),
                    cls=('fs-pth fs-pth--navy fs-dark' if navy else 'fs-gcard fs-pth'), gap_=12, p=pad(32, 30, 32, 30))
     return row(card(left, True), card(right, False), gap_=28, align='stretch', cls='fs-pths fs-nostyle')
+
+
+# ======================= BeFirst Training blocks =======================
+# ---------- Three-ways comparison (Essential Addons Data Table, class fs-wtbl; cell classes k / c1 / c2 / us) ----------
+WAYS_ROWS = [
+    ('Who does the work', '<b>You do</b>', '<b>You do, with a coach</b>', '<b>Our team does</b>'),
+    ('Investment', '<b class="fs-wp">$88</b>/month<small>Or start with the $8 Blueprint</small>', '<b class="fs-wp">$500</b>/month<small>$1,000/month to meet every two weeks</small>',
+     '<b class="fs-wp">[$X,XXX]</b>/month<small>Fixed retainer, six-month partnership</small>'),
+    ('What’s included', 'Course, Blueprint, live webinars and weekly content', 'Everything in the Community, plus 1:1 strategy sessions', 'A full team running every stage, with monthly reporting'),
+    ('Your time', '<span class="fs-wmeter"><i class="on"></i><i class="on"></i><i class="on"></i></span>The most', '<span class="fs-wmeter"><i class="on"></i><i class="on"></i><i></i></span>Moderate',
+     '<span class="fs-wmeter"><i class="on"></i><i></i><i></i></span>The least'),
+    ('Results guaranteed', '<span class="fs-wno">No</span>', '<span class="fs-wno">No</span>', '<span class="fs-wy">✓</span><b>Yes, in writing</b>'),
+    ('Best for', 'Owners who like to learn, then do', 'Owners who want an expert sounding board and accountability', 'Owners who want it done right, without doing it themselves'),
+    ('', '<a class="fs-wbtn" href="#community">See the Community</a>', '<a class="fs-wbtn" href="#coaching">See coaching</a>', '<a class="fs-wbtn fs-wbtn--white" href="#partnership">See the partnership</a>')]
+def ways_table(rows=WAYS_ROWS):
+    head = [('<span class="fs-ctag fs-ctag--k">What matters</span>', 'k'),
+            ('<span class="fs-wh"><i>1</i><small class="fs-ctag fs-ctag--diy">You do it</small><b>Learn it yourself</b><em>BeFirst Community</em></span>', 'c1'),
+            ('<span class="fs-wh"><i>2</i><small class="fs-ctag fs-ctag--ag">We do it together</small><b>Build it with us</b><em>1:1 Coaching</em></span>', 'c2'),
+            ('<span class="fs-wh"><i>3</i><small class="fs-ctag fs-ctag--us">We do it for you</small><b>Let us run it</b><em>Strategic partnership</em></span>', 'us')]
+    cols = [{'_id': uid(), 'eael_data_table_header_col': t, 'eael_data_table_header_css_class': c, 'eael_data_table_header_col_icon_enabled': 'false'} for t, c in head]
+    def cell(h, c):
+        return {'_id': uid(), 'eael_data_table_content_row_type': 'col', 'eael_data_table_content_type': 'editor', 'eael_data_table_content_row_colspan': 1,
+                'eael_data_table_content_row_content': h, 'eael_data_table_content_row_title': '', 'eael_data_table_content_row_css_class': c}
+    cells = []
+    for r in rows:
+        cells.append({'_id': uid(), 'eael_data_table_content_row_type': 'row'})
+        for h, c in zip(r, ('k', 'c1', 'c2', 'us')): cells.append(cell(h, c + (' fs-wlast' if r[0] == '' else '')))
+    return w('eael-data-table', {'eael_data_table_header_cols_data': cols, 'eael_data_table_content_rows': cells,
+                                 'table_alignment': 'center', 'eael_enable_responsive_header_styles': ''}, 'fs-wtbl')
+
+# ---------- Segmented price toggle (monthly / annual etc.). Edit the buttons' data in this HTML widget;
+# the price and note are normal headings in the card (class fs-seg-price / fs-seg-note) ----------
+def seg_toggle(options, dark=False):
+    """options: [(label, price, unit, note, extra_badge)]"""
+    btns = ''.join(f'<button type="button" aria-pressed="{"true" if n == 0 else "false"}" data-price="{p}" data-unit="{u}" data-note="{nt}">{l}'
+                   + (f'<span class="fs-save">{x}</span>' if x else '') + '</button>' for n, (l, p, u, nt, x) in enumerate(options))
+    js = ("<script>(function(){var s=document.currentScript;if(!s)return;var g=s.previousElementSibling;"
+          "g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var box=g.closest('.fs-seg-scope');if(!box)return;"
+          "[].forEach.call(g.querySelectorAll('button'),function(x){x.setAttribute('aria-pressed',x===b);});"
+          "var p=box.querySelector('.fs-seg-price .elementor-heading-title'),n=box.querySelector('.fs-seg-note .elementor-heading-title');"
+          "if(p)p.innerHTML=b.getAttribute('data-price')+'<small>'+b.getAttribute('data-unit')+'</small>';if(n)n.textContent=b.getAttribute('data-note');});})();</script>")
+    return html(f'<div class="fs-seg{" fs-seg--dark" if dark else ""}" role="group">{btns}</div>{js}', 'fs-seg-w')
+
+FEAT_ICONS = ['play', 'doc', 'live', 'mail', 'cal']
+def community_block():
+    feats = ['<b>The BeFirst online course,</b> <span>with new modules released over time</span>', '<b>The FirstSearch Blueprint,</b> <span>every SOP, worksheet and checklist</span>',
+             '<b>Live webinars</b> <span>on every stage of the framework</span>', '<b>Weekly content,</b> <span>released to members before anyone else</span>',
+             '<b>First notice of workshops and events,</b> <span>before seats open to the public</span>']
+    flist = icon_list(feats, 'fas fa-check', 'fs-feat')
+    for it, ic in zip(flist['settings']['icon_list'], FEAT_ICONS): it['_css_classes'] = ic
+    left = con(image('assets/img/design/befirst-training.png', 'fs-comm-logo', None, 'left', 'BeFirst Marketing Training'),
+               con(heading('The BeFirst Community', 'h3', 'fs-comm-h'), text('The full framework, the tools to apply it, and new content every week, all for one flat monthly rate.', 'fs-comm-p'), gap_=10),
+               flist, cls='fs-comm-l', gap_=24, p=pad(52, 52, 52, 52), s={'padding_mobile': pad(30)})
+    right = con(seg_toggle([('Monthly', '$88', '/month', 'Founding member rate', ''), ('Annual', '$880', '/year', 'Two months free, billed once a year', '2 months free')], dark=True),
+                con(heading('$88<small>/month</small>', 'p', 'fs-seg-price fs-big-price'), heading('Founding member rate', 'p', 'fs-seg-note fs-price-note'), gap_=10),
+                text('<p><b>Lock in the founding rate.</b> Join now and keep this price for as long as you stay. The rate goes up as the Community grows.</p>', 'fs-lock'),
+                button('Join the Community', '#', 'fs-btn-white fs-btn-lg fs-full'), text('<p>[Cancel anytime. Access ends when your membership does.]</p>', 'fs-fine'),
+                cls='fs-comm-r fs-dark fs-seg-scope', gap_=22, p=pad(52, 52, 52, 52), s={'padding_mobile': pad(30)})
+    card = con(left, right, d='row', gap_=0, align='stretch', cls='fs-gcard fs-comm fs-nostyle')
+    def piece(img_widget, kicker, h, p_, action):
+        return con(con(img_widget, cls='fs-piece-img', justify='center', align='center'),
+                   con(heading(kicker, 'p', 'fs-kicker'), heading(h, 'h4', 'fs-piece-h'), text(p_, 'fs-piece-p'), action, gap_=0, cls='fs-piece-body'),
+                   d='row', gap_=24, align='center', cls='fs-gcard fs-piece fs-nostyle', p=pad(26))
+    bp = piece(image('assets/img/design/blueprint-book.webp', '', None, 'center', 'The Marketing Blueprint workbook'), 'Included with the Community', 'The FirstSearch Blueprint',
+               'The exact SOPs, worksheets and checklists we use with every client.',
+               con(heading('$8', 'p', 'fs-amt'), button('Get the Blueprint', '#', 'fs-btn-navy'), d='row', gap_=20, align='center', mobile_col=False, cls='fs-piece-row'))
+    wl = form([('email', 'Email address', True, 'you@business.com')], 'Join the waitlist', 'Book waitlist', 'fs-inline-form')
+    wl['settings'].update({'show_labels': '', 'button_width': '40'}); wl['settings']['form_fields'][0]['width'] = '60'
+    book = piece(text('<p><small>Coming soon</small><span>[Book title]</span><small>Chris Mitchell</small></p>', 'fs-book-ph'), 'Coming soon', '[Book title]',
+                 'The FirstSearch Framework, told through real stories. Join the waitlist to hear first.', wl)
+    return [card, heading('Or start with one piece', 'h3', 'fs-pieces-h'), row(bp, book, gap_=28, align='stretch', cls='fs-pieces fs-nostyle')]
+
+def coaching_block(events):
+    img = con(text('<p><i></i>1:1 strategy session</p>', 'fs-live'), image('assets/img/design/chris-cutout.webp', 'fs-coach-photo', None, 'center', 'Chris Mitchell, BeFirst coach'), cls='fs-coach-img')
+    body = con(image('assets/img/design/befirst-coaching.png', 'fs-coach-logo', None, 'left', 'BeFirst Marketing Coaching'),
+               con(heading('BeFirst Coaching', 'h3', 'fs-comm-h'), text('1:1 strategy sessions with our team, built entirely around your business. No course required. Every session works on your numbers, your plan and what’s next.', 'fs-comm-p'), gap_=10),
+               seg_toggle([('Meet monthly', '$500', '/month', 'One 1:1 session a month', ''), ('Meet every two weeks', '$1,000', '/month', 'Two 1:1 sessions a month', '')]),
+               con(heading('$500<small>/month</small>', 'p', 'fs-seg-price fs-big-price'), heading('One 1:1 session a month', 'p', 'fs-seg-note fs-coach-cad'),
+                   d='row', gap_=gap(24, 10), align='flex-end', wrap=True, mobile_col=False, cls='fs-coach-price'),
+               icon_list(['[XX]-minute 1:1 strategy sessions', 'A personalized action plan after each session', 'Accountability on what you committed to', '[Between-session support, e.g. email or chat]'],
+                         'far fa-check-circle', 'fs-checks2'),
+               text('<p><b>Coaching clients save 50% on the Community.</b> Add the course, Blueprint and weekly content for $44/month.</p>', 'fs-saver'),
+               button('Book a coaching call', '#', 'fs-btn-navy fs-btn-lg'), cls='fs-coach-body fs-seg-scope', gap_=22, p=pad(48), s={'padding_mobile': pad(28)})
+    card = con(img, body, d='row', gap_=0, align='stretch', cls='fs-gcard fs-coach fs-nostyle')
+    def ws(k, m, d, wd, t, meta, fmt):
+        tag = '<span class="fs-plogo-chip fs-plogo-chip--full">Full Framework</span>' if k == 'full' else f'<span class="fs-plogo-chip">{plogo(k)}</span>'
+        return con(con(text(f'<p><small>{m}</small><b>{d}</b></p>', 'fs-datebox'), text(f'<p>{tag}</p>', 'fs-ws-tag'), d='row', gap_=14, align='center', mobile_col=False, cls='fs-ws-top'),
+                   heading(t, 'h4', 'fs-ws-h'), text(f'<p>{meta}</p>', 'fs-ws-meta'), link_u('Reserve your seat', '/events/sample-event/' + ('?format=online' if fmt == 'online' else '')),
+                   cls='fs-gcard fs-ws', gap_=12, p=pad(24))
+    head = con(con(heading('Hands-on workshops', 'h3', 'fs-ws-head-h'), text('Work on your own business with our team in the room, online or in Hampton.', 'fs-ws-head-p'), gap_=6),
+               link_u('See the full calendar', '/events/'), d='row', justify='space-between', align='flex-end', wrap=True, gap_=14, cls='fs-ws-head')
+    return [card, head, row(*[ws(*e) for e in events], gap_=24, align='stretch', cls='fs-ws-grid fs-nostyle')]
+
+def partner_block():
+    main = con(con(image('assets/img/design/team-group.webp', 'fs-part-photo', None, 'center', 'The First Search Marketing team'), cls='fs-part-team'),
+               eyebrow('Partner with our team'), heading('Your marketing, run by our team. Results guaranteed in writing.', 'h2', 'fs-part-h'),
+               text('We work with 25 businesses. That’s it. Every partner gets real strategy, senior attention and a team that knows their business.', 'fs-part-p'),
+               icon_list(['Fixed monthly retainer', 'Six-month partnership', 'Guaranteed results'], 'fas fa-check', 'fs-del-chips'),
+               con(button('Book your strategy call', '/contact-us/', 'fs-btn-grad fs-btn-lg'), text('<p>From [$X,XXX]/month · [X] of 25 spots open</p>', 'fs-part-note'),
+                   d='row', gap_=gap(22, 14), align='center', wrap=True, cls='fs-part-cta'),
+               cls='fs-part-main fs-dark', gap_=0, p=pad(0, 56, 56, 56), s={'padding_mobile': pad(0, 28, 32, 28)})
+    seal = con(image('assets/img/design/guarantee-seal.webp', 'fs-seal-img', None, 'center', 'FirstSearch Guarantee: results in writing'),
+               con(heading('The FirstSearch Guarantee', 'h3', 'fs-seal-h'), text('If we don’t deliver [the lead growth in your roadmap], [we keep working at no cost until we do].', 'fs-seal-p'), gap_=8),
+               d='row', gap_=20, align='center', mobile_col=False, cls='fs-gcard fs-seal-card', p=pad(26))
+    rev = review(*REVIEWS[0]); rev['settings']['css_classes'] += ' fs-quote-card'
+    side = con(seal, rev, review_schema(REVIEWS[:1]), gap_=24, cls='fs-part-side')
+    return row(main, side, gap_=32, align='stretch', cls='fs-part fs-nostyle')

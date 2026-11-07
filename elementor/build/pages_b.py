@@ -196,58 +196,19 @@ def resources():
 
 # ======================= BEFIRST TRAINING =======================
 def training():
-    tbl = ('<div class="fs-table-wrap"><table class="fs-table"><thead><tr><th>What matters</th><th><span class="fs-pill">1 · You do it</span><br>Learn it yourself<br><small>BeFirst Community</small></th>'
-           '<th><span class="fs-pill">2 · We do it together</span><br>Build it with us<br><small>1:1 Coaching</small></th><th class="a"><span class="fs-pill">3 · We do it for you</span><br>Let us run it<br><small>Strategic partnership</small></th></tr></thead><tbody>'
-           '<tr><th>Who does the work</th><td>You do</td><td>You do, with a coach</td><td class="us"><b>Our team does</b></td></tr>'
-           '<tr><th>Investment</th><td><b>$88</b>/month<br><small>Or start with the $8 Blueprint</small></td><td><b>$500</b>/month<br><small>$1,000/month to meet every two weeks</small></td><td class="us"><b>[$X,XXX]</b>/month<br><small>Fixed retainer, six-month partnership</small></td></tr>'
-           '<tr><th>What’s included</th><td>Course, Blueprint, live webinars and weekly content</td><td>Everything in the Community, plus 1:1 strategy sessions</td><td class="us">A full team running every stage, with monthly reporting</td></tr>'
-           '<tr><th>Your time</th><td>The most</td><td>Moderate</td><td class="us">The least</td></tr>'
-           '<tr><th>Results guaranteed</th><td class="no">No</td><td class="no">No</td><td class="us"><b>✓ Yes, in writing</b></td></tr>'
-           '<tr><th>Best for</th><td>Owners who like to learn, then do</td><td>Owners who want an expert sounding board and accountability</td><td class="us">Owners who want it done right, without doing it themselves</td></tr>'
-           '<tr><th>Next step</th><td><a href="#community">See the Community</a></td><td><a href="#coaching">See coaching</a></td><td class="us"><a href="#partnership">See the partnership</a></td></tr>'
-           '</tbody></table></div>')
-    comm = section(sec_head('1 · Learn it yourself', 'Everything you need, <span class="fs-gt">in one membership.</span>'),
-                   row(col(image('assets/img/design/befirst-training.png', '', 220, alt='BeFirst Marketing Training'), heading('The BeFirst Community', 'h3'),
-                           text('The full framework, the tools to apply it, and new content every week, all for one flat monthly rate.'),
-                           icon_list(['<b>The BeFirst online course,</b> with new modules released over time', '<b>The FirstSearch Blueprint,</b> every SOP, worksheet and checklist',
-                                      '<b>Live webinars</b> on every stage of the framework', '<b>Weekly content,</b> released to members before anyone else',
-                                      '<b>First notice of workshops and events,</b> before seats open to the public'], cls='fs-checks'), wpct=55, gap_=14),
-                       col(heading('$88<small>/month</small>', 'p', 'fs-price'), text('<p><b>Founding member rate</b> · Annual: 2 months free</p>'),
-                           text('<p><b>Lock in the founding rate.</b> Join now and keep this price for as long as you stay. The rate goes up as the Community grows.</p>'),
-                           button('Join the Community', '#', 'fs-btn-white fs-btn-lg', 'justify'), text('<p><small>[Cancel anytime. Access ends when your membership does.]</small></p>'),
-                           wpct=40, cls='fs-purple-card fs-dark', p=pad(36), gap_=12), gap_=0, cls='fs-gcard', p=pad(0), align='stretch'),
-                   heading('Or start with one piece', 'h3', '', 'center'),
-                   row(col(row(image('assets/img/design/blueprint-book.webp', '', 120), con(heading('Included with the Community', 'p', 'fs-eyebrow'), heading('The FirstSearch Blueprint', 'h4'),
-                           text('The exact SOPs, worksheets and checklists we use with every client.'), button('Get the Blueprint', '#'), gap_=6), gap_=20, s={'flex_direction_mobile': 'row'}), wpct=48, cls='fs-gcard', p=pad(24)),
-                       col(heading('Coming soon', 'p', 'fs-eyebrow'), heading('[Book title]', 'h4'), text('The FirstSearch Framework, told through real stories. Join the waitlist to hear first.'),
-                           form([('email', 'Email address', True, 'you@business.com')], 'Join the waitlist', 'Book waitlist'), wpct=48, cls='fs-gcard', p=pad(24), gap_=8), gap_=24, align='stretch'),
-                   cls='fs-geo', title='Community', bg_img=GEO)
+    comm = section(sec_head('1 · Learn it yourself', 'Everything you need, <span class="fs-gt">in one membership.</span>'), *community_block(),
+                   cls='fs-geo', title='Community', bg_img=GEO, gap_=40)
     comm['settings']['_element_id'] = 'community'
-    coach = section(sec_head('2 · Build it with us', 'Your business. Your plan. A coach in your corner.'),
-                    row(col(image('assets/img/design/chris-cutout.webp', '', '100%', alt='Chris Mitchell, BeFirst coach'), wpct=40, cls='fs-purple-card', p=pad(0)),
-                        col(image('assets/img/design/befirst-coaching.png', '', 200, alt='BeFirst Marketing Coaching'), heading('BeFirst Coaching', 'h3'),
-                            text('1:1 strategy sessions with our team, built entirely around your business. No course required. Every session works on your numbers, your plan and what’s next.'),
-                            heading('$500<small>/month</small>', 'p', 'fs-price'), text('<p>One 1:1 session a month · <b>$1,000/month</b> to meet every two weeks</p>'),
-                            icon_list(['[XX]-minute 1:1 strategy sessions', 'A personalized action plan after each session', 'Accountability on what you committed to', '[Between-session support, e.g. email or chat]'], cls='fs-checks'),
-                            text('<p><b>Coaching clients save 50% on the Community.</b> Add the course, Blueprint and weekly content for $44/month.</p>', 'fs-soft-box'),
-                            button('Book a coaching call', '#', 'fs-btn-lg'), wpct=58, gap_=12), gap_=0, cls='fs-gcard', p=pad(0), align='stretch'),
-                    row(col(heading('Hands-on workshops', 'h3'), text('Work on your own business with our team in the room, online or in Hampton.'), wpct=60), link_u('See the full calendar', '/events/'), justify='space-between'),
-                    con(*[ev_row(*EVENTS[i]) for i in (1, 3, 4)], gap_=12),
-                    cls='fs-dark fs-dark-round', title='Coaching', gap_=28)
+    coach = section(sec_head('2 · Build it with us', 'Your business. Your plan. A coach in your corner.'), *coaching_block([EVENTS[i] for i in (1, 3, 4)]),
+                    cls='fs-dark fs-fwblock fs-coachwrap', title='Coaching', gap_=40,
+                    p={'unit': 'px', 'top': '110', 'right': '24', 'bottom': '140', 'left': '24', 'isLinked': False},
+                    s={'padding_mobile': {'unit': 'px', 'top': '72', 'right': '16', 'bottom': '96', 'left': '16', 'isLinked': False}})
     coach['settings']['_element_id'] = 'coaching'
-    part = section(sec_head('3 · Let us run it', 'Hand it off. Get <span class="fs-gt">results in writing.</span>'),
-                   row(col(image('assets/img/design/team-group.webp', '', '100%', alt='The First Search Marketing team'), eyebrow('Partner with our team'),
-                           heading('Your marketing, run by our team. Results guaranteed in writing.', 'h3'),
-                           text('We work with 25 businesses. That’s it. Every partner gets real strategy, senior attention and a team that knows their business.'),
-                           button('Book your strategy call', '/contact-us/', 'fs-btn-white fs-btn-lg'), text('<p>From [$X,XXX]/month · [X] of 25 spots open</p>'),
-                           wpct=56, cls='fs-purple-card fs-dark', p=pad(32), gap_=12),
-                       col(con(row(image('assets/img/design/guarantee-seal.webp', '', 100), con(heading('The FirstSearch Guarantee', 'h3'),
-                               text('If we don’t deliver [the lead growth in your roadmap], [we keep working at no cost until we do].'), gap_=6), gap_=18, s={'flex_direction_mobile': 'row'}), cls='fs-gcard', p=pad(24)),
-                           review(*REVIEWS[0]), review_schema(REVIEWS[:1]), wpct=40, gap_=20), gap_=28, align='stretch'),
-                   cls='fs-geo', title='Partnership', bg_img=GEO)
+    part = section(sec_head('3 · Let us run it', 'Hand it off. Get <span class="fs-gt">results in writing.</span>'), partner_block(),
+                   cls='fs-geo', title='Partnership', bg_img=GEO, gap_=40)
     part['settings']['_element_id'] = 'partnership'
-    compare = section(sec_head('Three ways to work with us', 'Pick how much you <span class="fs-gt">want to do yourself.</span>'), html(tbl),
-                      cls='fs-geo', title='Compare', bg_img=GEO)
+    compare = section(sec_head('Three ways to work with us', 'Pick how much you <span class="fs-gt">want to do yourself.</span>'), ways_table(),
+                      cls='fs-geo', title='Compare', bg_img=GEO, gap_=40)
     compare['settings']['_element_id'] = 'compare'
     return [
         hero('BeFirst Training', 'One proven system. <span class="fs-gt">Three ways to put it to work.</span>',
