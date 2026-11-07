@@ -1,22 +1,7 @@
 /* ==========================================================================
-   First Search Marketing - Elementor global CSS
-   Included in first-search-site-settings.zip (Elementor > Tools > Import/Export).
-   Or paste into: Elementor > Site Settings > Custom CSS
-   Typography, colours and spacing are set on each widget and section in the templates,
-   linked to Global Fonts / Global Colors. This file only adds what Elementor can't do natively
-   (gradient borders and text, glows, pills, stage logos, FAQ/tab styling) and fallbacks.
-   Matches the approved website prototype (v13). Brand purple: #250762.
-
-   HOW TO USE
-   - Most styles apply automatically (headings, buttons, forms, links).
-   - The rest are opt-in classes. Add them in Elementor under
-     Advanced > CSS Classes (no dot), e.g.  fs-gcard
-   - Inline pieces (gradient words, stage logos) go in a Heading or
-     Text Editor widget's HTML, e.g.
-       We put your span.fs-gt "business first."
-       span.fs-plogo "firstbrand"
-   - Also set the same values in Site Settings > Global Colors and
-     Global Fonts (listed in the README) so widgets pick them up too.
+   First Search Marketing - Elementor Site Settings > Custom CSS
+   Adds what Elementor can't do natively: gradient borders and text, glows,
+   pills, stage logos, tabs, FAQ, overlaps. Colours read your Global Colors.
    ========================================================================== */
 
 /* ---------- 1. Brand tokens ----------
