@@ -304,9 +304,8 @@ a.fs-link-u {
   white-space: nowrap;
   color: var(--fs-purple);
 }
-.fs-plogo b { font-weight: 800; color: #3299D5; }   /* sub-brand blue, on light backgrounds */
+.fs-plogo b { font-weight: 800; color: #3299D5 !important; }   /* sub-brand blue: the same on every background, as in the design */
 .fs-plogo--light { color: #fff; }
-.fs-plogo--light b { color: #6CC7EE; }   /* sub-brand blue, on purple backgrounds */
 .fs-dark .fs-plogo-chip .fs-plogo, .fs-dark .fs-gcard .fs-plogo:not(.fs-plogo--light) { color: #250762; }
 .fs-dark .fs-plogo-chip .fs-plogo b, .fs-dark .fs-gcard .fs-plogo:not(.fs-plogo--light) b { color: #3299D5; }
 /* White chip around a stage logo (stage pills) */
@@ -576,7 +575,6 @@ a.fs-link-u {
 .fs-stage-tabs .e-n-tab-title[aria-selected="true"] { background: #fff !important; border-color: #fff !important; }
 .fs-stage-tabs .e-n-tab-title-text { font-family: var(--fs-font); font-weight: 800; font-size: 19px; letter-spacing: -.02em; color: #fff; }
 .fs-stage-tabs .e-n-tab-title .fs-plogo { font-size: inherit; color: #fff; }
-.fs-stage-tabs .e-n-tab-title .fs-plogo b { color: #6CC7EE; }
 .fs-stage-tabs .e-n-tab-title[aria-selected="true"] .e-n-tab-title-text,
 .fs-stage-tabs .e-n-tab-title[aria-selected="true"] .fs-plogo { color: #250762; }
 .fs-stage-tabs .e-n-tab-title[aria-selected="true"] .fs-plogo b { color: #3299D5; }
