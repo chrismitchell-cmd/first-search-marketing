@@ -63,11 +63,21 @@ STRIPPED = {pk: {strip_ph(k): k for k in pg['d']['text']} for pk, pg in P.items(
 BTN_TAGS = ('a', 'button', 'span')
 def tag_ok(part, tag):
     if part == 'button': return tag in BTN_TAGS
-    if part in ('q', 'item'): return tag not in ('button', 'label')
+    if part == 'q': return True
+    if part == 'item': return tag not in ('button', 'label')
     return tag not in ('button', 'a', 'label', 'option', 'select', 'input')
 def lookup(page, txt, n=0, part=None):
     st = _lookup(page, txt, n, part)
     if st or not txt: return st
+    # the design shows placeholders without brackets: "[30-minute]" -> "30-minute"
+    nb = re.sub(r'\s+', ' ', txt.replace('[', '').replace(']', '')).strip()
+    if nb != txt:
+        st = _lookup(page, nb, n, part)
+        if st and st.get('d'): return st
+        for pk in P:
+            if pk != page:
+                st = _lookup(pk, nb, 0, part)
+                if st and st.get('d'): return st
     alt = strip_ph(txt)
     if alt and alt != txt and len(alt) > 3:
         k = STRIPPED.get(page, {}).get(alt) or next((v.get(alt) for v in STRIPPED.values() if v.get(alt)), None)
@@ -139,8 +149,8 @@ def typo_settings(prefix, v):
     if v['m'] != v['t']: s[f'{prefix}_font_size_mobile'] = {'unit': 'px', 'size': v['m'], 'sizes': []}
     if v['lh']: s[f'{prefix}_line_height'] = {'unit': 'em', 'size': v['lh'], 'sizes': []}
     if v['ls']: s[f'{prefix}_letter_spacing'] = {'unit': 'em', 'size': v['ls'], 'sizes': []}
-    if v['tt'] and v['tt'] != 'none': s[f'{prefix}_text_transform'] = v['tt']
-    if v['st'] and v['st'] != 'normal': s[f'{prefix}_font_style'] = v['st']
+    s[f'{prefix}_text_transform'] = v['tt'] or 'none'
+    s[f'{prefix}_font_style'] = v['st'] or 'normal'
     return s
 MAX_PRESETS, MIN_USES = 24, 10
 def label_for(w, part):

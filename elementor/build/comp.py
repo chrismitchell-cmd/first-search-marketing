@@ -2,6 +2,25 @@
 from fsel import *
 
 PCT = lambda n: {'unit': '%', 'size': n, 'sizes': []}
+
+import json as _json, os as _os
+_RUNTIME = '''if(!window.__fsxTH){window.__fsxTH=1;(function(){
+var SKIP=new Set(['i-chev','i-close','i-menu','i-arrow','i-left','i-right','i-play','i-google','i-facebook','i-instagram','i-linkedin','i-x','i-star','i-search']);
+var DARK='.on-dark, .note, .booked, .btn, .navy-card, .step--hl, .vid, .scorecard, [data-noswap]';
+function light(c){var m=c.match(/\\d+(\\.\\d+)?/g);if(!m)return false;return (m[0]*.299+m[1]*.587+m[2]*.114)>200;}
+function swap(){document.querySelectorAll('.fsx svg use').forEach(function(u){var h=u.getAttribute('href');if(!h||h.slice(-3)==='--g')return;var id=h.slice(1);
+if(SKIP.has(id)||!document.getElementById(id+'--g'))return;var svg=u.closest('svg');if(!svg||svg.closest(DARK)||light(getComputedStyle(svg).color))return;u.setAttribute('href',h+'--g');});}
+var q;new MutationObserver(function(){cancelAnimationFrame(q);q=requestAnimationFrame(swap);}).observe(document.body,{childList:true,subtree:true});swap();})();}'''
+def component(name, cls=''):
+    """An exact copy of an interactive part of the approved HTML (markup, scoped CSS, icons, script) in an HTML widget."""
+    d = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'data', 'components', name + '.json')))
+    js = ("(function(){var cs=document.currentScript;var ROOT=(cs&&cs.closest('.fsx'))||[].slice.call(document.querySelectorAll('.fsx-" + name + ":not([data-fsx-init])')).pop();"
+          "if(!ROOT||ROOT.getAttribute('data-fsx-init'))return;ROOT.setAttribute('data-fsx-init','1');" + _RUNTIME +
+          "try{(() => {'use strict';const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;const $=(s,el=ROOT)=>el.querySelector(s);"
+          "const $$=(s,el=ROOT)=>[...el.querySelectorAll(s)];const wait=ms=>new Promise(r=>setTimeout(r,ms));\n" + d['js'] + "\n})();}catch(e){console.error('fsx-" + name + "',e);}})();")
+    code = (f'<!-- First Search component: {name}. Exact copy of the approved design; edit text inside this HTML. -->\n'
+            f'<div class="fsx fsx-{name}">{d["html"]}<script>{js}</script></div>\n<style>{d["css"]}</style>')
+    return html(code, cls)
 def mobile_w(e, n):
     e['settings']['width_mobile'] = px(n); return e
 def col(*kids, wpct=50, gap_=20, cls='', align=None, justify=None, p=None, s=None):
@@ -90,7 +109,7 @@ def framework(eb='The FirstSearch Framework', h2='Marketing isn’t a pile of ta
         idt = text(f'<p><em>{identity}</em></p>', 'fs-identity', 'center')
         idt['settings']['_margin'] = {'unit': 'px', 'top': '8', 'right': '0', 'bottom': '0', 'left': '0', 'isLinked': False}
         head['elements'].append(idt)
-    tabs = nested_tabs([(f'first{k}', stage_panel(k)) for k in STAGES], 'fs-stage-tabs')
+    tabs = nested_tabs([(f'<span class="fs-plogo"><b>first</b>{k}</span>', stage_panel(k)) for k in STAGES], 'fs-stage-tabs')
     body = row(col(image('assets/img/framework-wheel.webp', '', '100%', 'center', 'The FirstSearch Framework wheel'), wpct=45),
                col(tabs, wpct=55), gap_=48)
     return section(head, body, button('Let’s Talk!', '/contact-us/', 'fs-btn-lg', 'center'),
@@ -111,8 +130,8 @@ def guarantee():
 
 # ---------- Stats band ----------
 def stats(items):
-    return section(row(*[col(counter(n, l, sfx, pre), wpct=23, align='center') for n, l, sfx, pre in items], justify='space-between'),
-                   cls='fs-grad', title='Stats', p={'unit': 'px', 'top': '64', 'right': '24', 'bottom': '64', 'left': '24', 'isLinked': False})
+    return section(row(*[col(counter(n, l, sfx, pre), wpct=23) for n, l, sfx, pre in items], justify='space-between'),
+                   cls='fs-grad fs-stats', title='Stats', p={'unit': 'px', 'top': '64', 'right': '24', 'bottom': '64', 'left': '24', 'isLinked': False})
 
 # ---------- Case study + reviews ----------
 REVIEWS = [('“We contacted Chris at First Search after a bad experience with a national brand company. He was able to fix our website and get our Google profile up and running. Chris and his team are very professional and always did what was right for our success.”', 'Steven McGibbon'),
@@ -147,6 +166,7 @@ def steps(eb, h2, sub, items):
         if lab: kids.append(heading(lab, 'p', 'fs-step-label'))
         kids += [heading(t, 'h3'), text(d)]
         cards.append(con(*kids, cls='fs-gcard fs-step' + (' fs-step-hl' if hl else ''), gap_=10, p=pad(64, 28, 32, 28),
+                         animation='fadeInUp', animation_delay=(n - 1) * 350,
                          s={'width': PCT(round(100 / len(items)) - 3), 'width_mobile': PCT(100), 'margin_mobile': {'unit': 'px', 'top': '70', 'right': '0', 'bottom': '0', 'left': '0', 'isLinked': False}}))
     return section(sec_head(eb, h2, sub), row(*cards, gap_=56, align='stretch', cls='fs-steps', s={'flex_gap_tablet': gap(28)}),
                    cls='fs-dark', title='How it works', gap_=24)
@@ -186,7 +206,10 @@ def three_ways(h2='Three ways to <span class="fs-gt">become a FirstSearcher</spa
                     icon_list(['A personalized action plan after each session', 'Between-session support by email or chat [CONFIRM]', 'Includes the BeFirst Community at 50% off'], cls='fs-checks'),
                     text('<p><b>Best for:</b> owners who want an expert sounding board and accountability.</p>'),
                     button('Book a coaching call', '/befirst-training/#coaching'), wpct=54, cls='fs-gcard', p=pad(30), gap_=16), gap_=28, align='stretch')
-    tabs = nested_tabs([('1 · Partner with our team', con(partner, p=pad(0))), ('2 · Do it yourself', con(diy, p=pad(0))), ('3 · Get guided by us', con(coach, p=pad(0)))], 'fs-ways-tabs')
+    tt = lambda n, t, sub: f'<i>{n}</i><span><b>{t}</b><small>{sub}</small></span>'
+    tabs = nested_tabs([(tt(1, 'Partner with our team', 'We build and run it for you, results guaranteed'), con(partner, p=pad(0))),
+                        (tt(2, 'Do it yourself', 'BeFirst Training: learn the system at your pace'), con(diy, p=pad(0))),
+                        (tt(3, 'Get guided by us', '1:1 coaching while you do the work'), con(coach, p=pad(0)))], 'fs-ways-tabs')
     return section(sec_head(eb, h2, lead), tabs, cls='fs-geo', title='Three ways', bg_img='assets/img/design/bg-geometric.jpg', gap_=32)
 
 # ---------- FAQ ----------
@@ -217,7 +240,7 @@ def cta_banner(h2='Ready to unlock growth?', sub='[6] of 25 partner spots open. 
 
 def overlap_cta(label='Let’s Talk!', url='/contact-us/'):
     """Big button straddling the edge between two sections (HTML .cta-overlap): -46px margins, on top."""
-    b = button(label, url, 'fs-btn-lg', 'center'); b['settings']['align_mobile'] = 'justify'
+    b = button(label, url, 'fs-btn-lg fs-btn-grad', 'center'); b['settings']['align_mobile'] = 'justify'   # gradient, as in the HTML
     return con(b, inner=False, boxed=True, title='Overlapping button', cls='fs-overlap',
                p={'unit': 'px', 'top': '0', 'right': '24', 'bottom': '0', 'left': '24', 'isLinked': False},
                s={'margin': {'unit': 'px', 'top': '-46', 'right': '0', 'bottom': '-46', 'left': '0', 'isLinked': False}, 'z_index': 3})

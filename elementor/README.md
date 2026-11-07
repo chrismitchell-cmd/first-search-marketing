@@ -84,6 +84,25 @@ The 24 most-used text styles from the approved HTML, with their tablet and phone
 | List · 15.5px 400 lh 1.45 |
 | List · 15.5px 400 lh 1.6 |
 
+## 1b. Interactive components (HTML widgets)
+
+Two parts of the home page are interactive in the design and can't be built from Elementor's standard widgets. They're included as **exact copies of the design** in HTML widgets:
+- **Hero phone demo**: types a search, then cycles Search, Social and Automation. Click a tab to jump.
+- **Framework section**: the wheel highlights the stage you hover, the stage pills switch the card, and it rotates every 5 seconds until someone interacts.
+
+Each one carries its own markup, styles (scoped so they can't affect anything else), icons and script.
+- **To edit the text,** open the HTML widget. The stage cards' text is in the `PILLARS` list inside the script.
+- **Images** load from the public repo through the jsDelivr CDN, pinned to a fixed version.
+- **Scripts in HTML widgets** run on the live page and in Elementor's preview. If an admin account can't save scripts, that's WordPress's *unfiltered_html* permission, which administrators have by default.
+
+Everything else is native Elementor:
+- The stage pills (two-colour **first**brand logos), the "Three ways" tabs (number, title and subtitle) and the FAQ are styled by the Custom CSS.
+- How it works uses Elementor's own entrance animation (*Advanced › Motion Effects*), with the dashed connector lines drawn by the CSS.
+
+## 1c. Full width
+
+Pages are meant to use **Page Layout › Elementor Full Width** (applied when you accept the template's page settings on insert). If a page still uses the theme's default boxed layout, the Custom CSS stretches every section edge to edge anyway, so there are no grey side strips.
+
 ## 2. Where to change things later
 
 | To change… | Go to |

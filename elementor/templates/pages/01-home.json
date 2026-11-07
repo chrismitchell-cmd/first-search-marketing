@@ -167,7 +167,9 @@
              "unit": "em",
              "size": 1.6,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
@@ -209,7 +211,9 @@
              "unit": "em",
              "size": -0.025,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
@@ -240,7 +244,9 @@
              "unit": "em",
              "size": 1.45,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
@@ -316,7 +322,9 @@
                "unit": "em",
                "size": 0.005,
                "sizes": []
-              }
+              },
+              "typography_text_transform": "none",
+              "typography_font_style": "normal"
              },
              "elements": []
             },
@@ -347,6 +355,7 @@
                "size": 1.6,
                "sizes": []
               },
+              "typography_text_transform": "none",
               "typography_font_style": "italic"
              },
              "elements": []
@@ -369,27 +378,30 @@
            "bottom": "0",
            "left": "0",
            "isLinked": true
+          },
+          "width": {
+           "unit": "px",
+           "size": 440,
+           "sizes": []
+          },
+          "width_tablet": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
+          },
+          "width_mobile": {
+           "unit": "%",
+           "size": 100,
+           "sizes": []
           }
          },
          "elements": [
           {
            "id": "5125cda",
            "elType": "widget",
-           "widgetType": "image",
+           "widgetType": "html",
            "settings": {
-            "image": {
-             "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/218e548a5706c5b64bd0b77483dc2a4833e589e4/elementor/upload/first-search/design/hero-search-demo.png",
-             "id": 786237,
-             "alt": "Search results with your business ranked first",
-             "source": "library"
-            },
-            "image_size": "full",
-            "width": {
-             "unit": "%",
-             "size": 100,
-             "sizes": []
-            },
-            "align": "center"
+            "html": "<!-- First Search component: hero-phone. Exact copy of the approved design; edit text inside this HTML. -->\n<div class=\"fsx fsx-hero-phone\"><svg width=\"0\" height=\"0\" style=\"position:absolute\" aria-hidden=\"true\" focusable=\"false\"><defs><linearGradient id=\"g-brand\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#3299D5\"></stop><stop offset=\"1\" stop-color=\"#250762\"></stop></linearGradient><linearGradient id=\"g-ico\" gradientUnits=\"userSpaceOnUse\" x1=\"3\" y1=\"3\" x2=\"21\" y2=\"21\"><stop offset=\"0\" stop-color=\"#3299D5\"></stop><stop offset=\"1\" stop-color=\"#250762\"></stop></linearGradient><linearGradient id=\"g-ico64\" gradientUnits=\"userSpaceOnUse\" x1=\"6\" y1=\"6\" x2=\"58\" y2=\"58\"><stop offset=\"0\" stop-color=\"#3299D5\"></stop><stop offset=\"1\" stop-color=\"#250762\"></stop></linearGradient></defs><symbol id=\"i-search\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"6.5\"></circle><path d=\"m16 16 4.5 4.5\"></path></symbol><symbol id=\"i-heart--g\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"url(#g-ico)\" stroke-width=\"1.8\" stroke-linejoin=\"round\"><path d=\"M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z\"></path></symbol><symbol id=\"i-mail--g\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"url(#g-ico)\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2.5\" y=\"5\" width=\"19\" height=\"14\" rx=\"2.5\"></rect><path d=\"m3.5 6.5 8.5 6.5 8.5-6.5\"></path></symbol><symbol id=\"i-map--g\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"url(#g-ico)\" stroke-width=\"1.8\" stroke-linejoin=\"round\"><path d=\"M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5Z\"></path><path d=\"M9 4.5v13M15 6.5v13\"></path></symbol><symbol id=\"i-sparkle--g\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"url(#g-ico)\" stroke-width=\"1.8\" stroke-linejoin=\"round\"><path d=\"M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7Z\"></path><path d=\"M19 15.5c.2 1.6 1 2.3 2.5 2.5-1.5.2-2.3.9-2.5 2.5-.2-1.6-1-2.3-2.5-2.5 1.5-.2 2.3-.9 2.5-2.5Z\"></path></symbol><symbol id=\"i-chat--g\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"url(#g-ico)\" stroke-width=\"1.8\" stroke-linejoin=\"round\"><path d=\"M20.5 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.6A8 8 0 1 1 20.5 11.5Z\"></path></symbol><symbol id=\"i-sms--g\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"url(#g-ico)\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"></rect><path d=\"M10.5 18.5h3\"></path><path d=\"M8.8 7.5h6.4M8.8 10.5h4.2\"></path></symbol><symbol id=\"i-phone--g\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"url(#g-ico)\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 16.4v2.8a1.9 1.9 0 0 1-2 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.7-5.7A18.6 18.6 0 0 1 2.3 4.4 1.9 1.9 0 0 1 4.2 2.4H7a1.9 1.9 0 0 1 1.9 1.6c.1.9.4 1.8.7 2.6a1.9 1.9 0 0 1-.4 2L8 9.8a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.3 1.7.6 2.6.7a1.9 1.9 0 0 1 1.5 1.8Z\"></path></symbol><symbol id=\"i-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m5 12.5 4.5 4.5L19 7.5\"></path></symbol><symbol id=\"i-search--g\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"url(#g-ico)\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"6.5\"></circle><path d=\"m16 16 4.5 4.5\"></path></symbol><symbol id=\"i-check--g\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"url(#g-ico)\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m5 12.5 4.5 4.5L19 7.5\"></path></symbol></svg><div class=\"gcard phone\">\n      <div class=\"gcard__in\" role=\"img\" aria-label=\"Illustration: Your Business showing up first in local search, in the social media feed, and in automatic follow-up by email, text and phone.\">\n        <div class=\"scn-tabs\" aria-hidden=\"true\"><span class=\"on\"><svg class=\"icon\"><use href=\"#i-search\"></use></svg>Search</span><span><svg class=\"icon\"><use href=\"#i-heart--g\"></use></svg>Social</span><span><svg class=\"icon\"><use href=\"#i-mail--g\"></use></svg>Automation</span></div>\n        <div class=\"scn is-on\" aria-hidden=\"true\">\n        <div class=\"sbar\" aria-hidden=\"true\"><svg class=\"icon\"><use href=\"#i-search\"></use></svg><span class=\"squery\" id=\"sq\"></span><span class=\"caret\"></span></div>\n        <div class=\"results\" aria-hidden=\"true\">\n          <div class=\"res\">\n            <div class=\"res-kind\"><svg class=\"icon\"><use href=\"#i-map--g\"></use></svg>Map results</div>\n            <div class=\"mp\">\n              <svg viewBox=\"0 0 90 90\"><rect width=\"90\" height=\"90\" fill=\"#EAF4FB\"></rect><path d=\"M0 32h90M0 66h90M26 0v90M62 0v90\" stroke=\"#fff\" stroke-width=\"7\"></path><circle cx=\"66\" cy=\"22\" r=\"4\" fill=\"#B9B6CC\"></circle><circle cx=\"16\" cy=\"72\" r=\"4\" fill=\"#B9B6CC\"></circle><path d=\"M43 26c-6.5 0-11 4.8-11 10.7 0 8.1 11 18.3 11 18.3s11-10.2 11-18.3C54 30.8 49.5 26 43 26Z\" fill=\"#4E98D8\"></path><circle cx=\"43\" cy=\"37\" r=\"4\" fill=\"#fff\"></circle></svg>\n              <div>\n                <div class=\"mp-row you\"><span class=\"rk\">1</span><b>Your Business</b><span class=\"st\">★★★★★</span></div>\n                <div class=\"mp-row\"><span class=\"rk\">2</span><b data-f=\"c1\">Seacoast Family Dental</b><span class=\"st\">★★★★</span></div>\n                <div class=\"mp-row\"><span class=\"rk\">3</span><b data-f=\"c2\">Harbor Smiles</b><span class=\"st\">★★★★</span></div>\n              </div>\n            </div>\n          </div>\n          <div class=\"res\">\n            <div class=\"res-kind\"><svg class=\"icon\"><use href=\"#i-sparkle--g\"></use></svg>AI answer</div>\n            <p class=\"ai\"><span class=\"yb\">Your Business</span> <span data-f=\"ai\">is the top-rated dentist near you, with hundreds of five-star reviews and new patient openings this week.</span></p>\n            <span class=\"src\">Your Business</span>\n          </div>\n          <div class=\"res\">\n            <div class=\"res-kind\"><svg class=\"icon\"><use href=\"#i-chat--g\"></use></svg>Community recommendations</div>\n            <div class=\"rv\"><span class=\"av\" data-f=\"ini\">M</span><div><div class=\"meta\"><b data-f=\"who\">Megan R.</b> · <span class=\"stars\">★★★★★</span></div><p data-f=\"rv\">Booked a cleaning with <span class=\"yb\">Your Business</span> and got in the same week. Best dental visit I've had.</p></div></div>\n          </div>\n        </div>\n        </div>\n        <div class=\"scn scn-social ig\" aria-hidden=\"true\" data-noswap=\"\">\n          <div class=\"ig-top\"><span class=\"ig-logo\">Instagram</span><span class=\"ig-tico\"><svg class=\"igi \" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"5\"></rect><path d=\"M12 8v8M8 12h8\"></path></svg><svg class=\"igi \" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z\"></path></svg><svg class=\"igi \" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21.5 3 10.2 14.3M21.5 3 15 21l-4.8-6.7L3 9.6Z\"></path></svg></span></div>\n          <div class=\"ig-stories\"><span class=\"ig-st you\"><i><b>YB</b></i><small>Your story</small></span><span class=\"ig-st\"><i><b>M</b></i><small>megan_r</small></span><span class=\"ig-st\"><i><b>D</b></i><small>dave.p</small></span><span class=\"ig-st\"><i><b>L</b></i><small>lisa.k</small></span><span class=\"ig-st\"><i><b>S</b></i><small>seacoast</small></span></div>\n          <div class=\"ig-view\"><div class=\"ig-track\">\n            <article class=\"ig-post\">\n              <div class=\"ig-ph\"><span class=\"ig-av\"><b>YB</b></span><div><b>yourbusiness</b><small>Hampton, New Hampshire</small></div><span class=\"ig-fol\" data-c=\"follow\">Follow</span><span class=\"ig-dots\">•••</span></div>\n              <div class=\"ig-img\"><span>Free system check</span><small>Book before Nov 1</small></div>\n              \n              <div class=\"ig-act\"><span class=\"ig-like\" data-c=\"like\"><svg class=\"igi \" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z\"></path></svg><svg class=\"igi ig-heartfull\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#FF3040\" d=\"M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z\"></path></svg></span><svg class=\"igi \" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20.6 12a8.6 8.6 0 0 1-12.7 7.6L3.4 21l1.4-4.4A8.6 8.6 0 1 1 20.6 12Z\"></path></svg><span class=\"ig-send\" data-c=\"send\"><svg class=\"igi \" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21.5 3 10.2 14.3M21.5 3 15 21l-4.8-6.7L3 9.6Z\"></path></svg></span><svg class=\"igi ig-save\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21 12 16l-7 5V4.5A1.5 1.5 0 0 1 6.5 3h11A1.5 1.5 0 0 1 19 4.5Z\"></path></svg></div>\n              <p class=\"ig-likes\">Liked by <b>megan_r</b> and <b data-c=\"likes\">128</b> others</p>\n              <p class=\"ig-cap\"><b>yourbusiness</b> Fall tune-up season is here. Book before Nov 1 and we'll check your whole system for free.</p>\n              <p class=\"ig-meta\">View all 24 comments · 2 hours ago</p>\n            </article>\n            <article class=\"ig-post ig-ad\">\n              <div class=\"ig-ph\"><span class=\"ig-av\"><b>YB</b></span><div><b>yourbusiness</b><small>Sponsored</small></div><span class=\"ig-dots\">•••</span></div>\n              <div class=\"ig-img ig-img--ad\"><span>Same-day repairs.<br>Upfront pricing.</span><small>Serving the Seacoast since [2012]</small></div>\n              <div class=\"ig-cta\"><span>Book now</span><span aria-hidden=\"true\">›</span></div>\n              <div class=\"ig-act\"><span class=\"ig-like\"><svg class=\"igi \" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z\"></path></svg><svg class=\"igi ig-heartfull\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#FF3040\" d=\"M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z\"></path></svg></span><svg class=\"igi \" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20.6 12a8.6 8.6 0 0 1-12.7 7.6L3.4 21l1.4-4.4A8.6 8.6 0 1 1 20.6 12Z\"></path></svg><span class=\"ig-send\"><svg class=\"igi \" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21.5 3 10.2 14.3M21.5 3 15 21l-4.8-6.7L3 9.6Z\"></path></svg></span><svg class=\"igi ig-save\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 21 12 16l-7 5V4.5A1.5 1.5 0 0 1 6.5 3h11A1.5 1.5 0 0 1 19 4.5Z\"></path></svg></div>\n              <p class=\"ig-likes\">Liked by <b>megan_r</b> and <b>312</b> others</p>\n              <p class=\"ig-cap\"><b>yourbusiness</b> Furnace acting up? We'll be there today, with the price upfront. Tap Book now.</p>\n              \n            </article>\n          </div>\n            <div class=\"ig-toasts\"><div class=\"ig-toast\"><span class=\"ig-av sm\"><b>M</b></span><span><b>megan_r</b> liked your post.</span><svg class=\"igi ig-heartfull\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#FF3040\" d=\"M12 20.5S3.5 15.2 3.5 9.2A4.6 4.6 0 0 1 12 6.6a4.6 4.6 0 0 1 8.5 2.6c0 6-8.5 11.3-8.5 11.3Z\"></path></svg></div><div class=\"ig-toast\"><span class=\"ig-av sm\"><b>D</b></span><span><b>dave.p</b> started following you.</span></div><div class=\"ig-toast\"><span class=\"ig-av sm\"><b>L</b></span><span><b>lisa.k</b> shared your post to their story.</span></div><div class=\"ig-toast\"><span class=\"ig-av sm\"><b>3</b></span><span><b>3 people</b> tapped <b>Book now</b> on your ad.</span></div></div>\n          </div>\n        </div>\n        <div class=\"scn scn-auto\" aria-hidden=\"true\">\n          <div class=\"lead-in res\"><span class=\"pav\">S</span><div><small>New lead · Website form</small><b>Sarah M.</b><span>\"Do you have any openings next week?\"</span></div><em>Just now</em></div>\n          <ol class=\"flow\">\n            <li class=\"fl res\"><i><svg class=\"icon\"><use href=\"#i-mail--g\"></use></svg></i><div><small>Email · sent instantly</small><b>Thanks for reaching out, Sarah!</b><p>Here's what happens next, plus a link to pick a time that works for you.</p></div></li>\n            <li class=\"fl res\"><i><svg class=\"icon\"><use href=\"#i-sms--g\"></use></svg></i><div><small>Text · 5 minutes later</small><p class=\"bub\">Hi Sarah, it's Your Business! Want us to hold Tuesday at 10 AM for you?</p><p class=\"bub me\">Yes please!</p></div></li>\n            <li class=\"fl res\"><i><svg class=\"icon\"><use href=\"#i-phone--g\"></use></svg></i><div><small>Call · from your team</small><b>Calling Sarah M.</b><p class=\"callst\" data-c=\"call\">Ringing…</p></div></li>\n          </ol>\n          <div class=\"booked res\"><svg class=\"icon\"><use href=\"#i-check\"></use></svg>Appointment booked · Tue 10:00 AM</div>\n        </div>\n      </div>\n    </div><script>(function(){var cs=document.currentScript;var ROOT=(cs&&cs.closest('.fsx'))||[].slice.call(document.querySelectorAll('.fsx-hero-phone:not([data-fsx-init])')).pop();if(!ROOT||ROOT.getAttribute('data-fsx-init'))return;ROOT.setAttribute('data-fsx-init','1');if(!window.__fsxTH){window.__fsxTH=1;(function(){\nvar SKIP=new Set(['i-chev','i-close','i-menu','i-arrow','i-left','i-right','i-play','i-google','i-facebook','i-instagram','i-linkedin','i-x','i-star','i-search']);\nvar DARK='.on-dark, .note, .booked, .btn, .navy-card, .step--hl, .vid, .scorecard, [data-noswap]';\nfunction light(c){var m=c.match(/\\d+(\\.\\d+)?/g);if(!m)return false;return (m[0]*.299+m[1]*.587+m[2]*.114)>200;}\nfunction swap(){document.querySelectorAll('.fsx svg use').forEach(function(u){var h=u.getAttribute('href');if(!h||h.slice(-3)==='--g')return;var id=h.slice(1);\nif(SKIP.has(id)||!document.getElementById(id+'--g'))return;var svg=u.closest('svg');if(!svg||svg.closest(DARK)||light(getComputedStyle(svg).color))return;u.setAttribute('href',h+'--g');});}\nvar q;new MutationObserver(function(){cancelAnimationFrame(q);q=requestAnimationFrame(swap);}).observe(document.body,{childList:true,subtree:true});swap();})();}try{(() => {'use strict';const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;const $=(s,el=ROOT)=>el.querySelector(s);const $$=(s,el=ROOT)=>[...el.querySelectorAll(s)];const wait=ms=>new Promise(r=>setTimeout(r,ms));\n/* 1. Hero demo: Search -> Social -> Automation, on a loop (click a tab to jump) */\n  const DEMO = [\n    { q: 'best dentist near me', c1: 'Seacoast Family Dental', c2: 'Harbor Smiles', ai: 'is the top-rated dentist near you, with hundreds of five-star reviews and new patient openings this week.', who: 'Megan R.', rv: 'Booked a cleaning with <span class=\"yb\">Your Business</span> and got in the same week. Best dental visit I\\'ve had.' },\n    { q: 'hvac repair near me', c1: 'Granite State Heating', c2: 'North Shore Air', ai: 'is the most-recommended HVAC company in your area, known for same-day service and upfront pricing.', who: 'Dave P.', rv: 'Furnace died on a Sunday. <span class=\"yb\">Your Business</span> had a tech here in two hours. Can\\'t recommend them enough.' },\n    { q: 'roofer near me', c1: 'Summit Roofing Co.', c2: 'Coastal Roof Pros', ai: 'is a highly rated local roofer with a 10-year workmanship warranty and free inspections.', who: 'Lisa K.', rv: '<span class=\"yb\">Your Business</span> replaced our roof in two days and left the yard cleaner than they found it.' }\n  ];\n  const sq = $('#sq'), scenes = $$('.scn'), tabs = $$('.scn-tabs span');\n  const fill = d => { $('[data-f=\"c1\"]').textContent = d.c1; $('[data-f=\"c2\"]').textContent = d.c2; $('[data-f=\"ai\"]').textContent = d.ai; $('[data-f=\"who\"]').textContent = d.who; $('[data-f=\"ini\"]').textContent = d.who[0]; $('[data-f=\"rv\"]').innerHTML = d.rv; };\n  let gen = 0, qi = 0;\n  const step = async (g, ms) => { await wait(ms); if (g !== gen) throw 0; };\n  const reset = sc => { $$('.res, .note', sc).forEach(c => c.classList.remove('is-in')); };\n  const showAll = sc => { $$('.res, .note', sc).forEach(c => c.classList.add('is-in')); };\n  const PLAY = [\n    async (g, sc) => { // Search + paid/organic results\n      const d = DEMO[qi++ % DEMO.length]; fill(d); sq.textContent = '';\n      for (let c = 1; c <= d.q.length; c++) { sq.textContent = d.q.slice(0, c); await step(g, 55 + Math.random() * 45); }\n      await step(g, 350);\n      for (const c of $$('.res', sc)) { c.classList.add('is-in'); await step(g, 420); }\n      await step(g, 3800);\n    },\n    async (g, sc) => { // Social: an Instagram post gets liked, followed and shared, then the feed scrolls to a sponsored post\n      const track = $('.ig-track', sc), like = $('[data-c=\"like\"]', sc), likes = $('[data-c=\"likes\"]', sc), fol = $('[data-c=\"follow\"]', sc), send = $('[data-c=\"send\"]', sc), toasts = $$('.ig-toast', sc), cta = $('.ig-cta', sc);\n      const toast = i => toasts.forEach((t, k) => t.classList.toggle('is-in', k === i));\n      track.style.transform = 'none'; like.classList.remove('on'); likes.textContent = 128; fol.textContent = 'Follow'; fol.classList.remove('on'); toast(-1); cta.classList.remove('pulse');\n      await step(g, 700);\n      like.classList.add('on'); likes.textContent = 129; toast(0); await step(g, 1300);\n      fol.textContent = 'Following'; fol.classList.add('on'); toast(1); await step(g, 1300);\n      send.classList.add('pop'); toast(2); await step(g, 900); send.classList.remove('pop');\n      for (let n = 130; n <= 141; n++) { likes.textContent = n; await step(g, 90); }\n      toast(-1); await step(g, 500);\n      track.style.transform = `translateY(-${$('.ig-post', sc).offsetHeight + 4}px)`; await step(g, 1100);\n      cta.classList.add('pulse'); toast(3); await step(g, 2600);\n    },\n    async (g, sc) => { // Automation: email -> text -> call -> booked\n      const call = $('[data-c=\"call\"]', sc); call.textContent = 'Ringing…'; call.classList.remove('ok');\n      for (const c of $$('.res', sc)) {\n        c.classList.add('is-in');\n        if (c.contains(call)) { await step(g, 1100); call.classList.add('ok'); for (let t = 0; t <= 4; t++) { call.textContent = `Connected · 00:0${t}`; await step(g, 380); } }\n        else await step(g, 900);\n      }\n      await step(g, 3200);\n    }\n  ];\n  const go = async i => {\n    const g = ++gen;\n    try {\n      for (;;) {\n        scenes.forEach((sc, k) => { sc.classList.toggle('is-on', k === i); reset(sc); });\n        tabs.forEach((t, k) => t.classList.toggle('on', k === i));\n        await PLAY[i](g, scenes[i]);\n        i = (i + 1) % scenes.length;\n      }\n    } catch (e) { if (e !== 0) throw e; }\n  };\n  tabs.forEach((t, k) => t.addEventListener('click', () => {\n    if (RM) { scenes.forEach((sc, n) => sc.classList.toggle('is-on', n === k)); tabs.forEach((x, n) => x.classList.toggle('on', n === k)); return; }\n    go(k);\n  }));\n  if (RM) { fill(DEMO[0]); sq.textContent = DEMO[0].q; scenes.forEach(showAll); $$('.ig-like').forEach(l => l.classList.add('on')); }\n  else wait(500).then(() => go(0));\n\n  \n})();}catch(e){console.error('fsx-hero-phone',e);}})();</script></div>\n<style>.fsx-hero-phone{--navy: #26275B; --navy-deep: #1D1E4A; --blue: #4E98D8; --blue-ink: #2F78BA; --teal: #7CD2D3; --mid: #528FC0; --royal: #2E4DA5; --ink: #221C1B; --body: #3A3650; --muted: #6A6880; --bg: #F8F7F7; --white: #FFFFFF; --line: #E3E2EA; --star: #F4B400; --ph: #FFE45C; --grad: linear-gradient(90deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%); --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%); --font: \"Poppins\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif; --font-ui: \"Inter\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif; --content: 1240px; --pad-x: 24px; --shadow-card: 0 18px 40px -18px rgba(38, 39, 91, .28); --shadow-btn: 0 14px 30px -12px rgba(46, 77, 165, .55); --navy: #250762; --navy-deep: #1A0446; --blue: #3299D5; --blue-ink: #1F78B4; --ink: #1C1B22; --body: #2F2E36; --muted: #6B6A72; --tint: #EEF0F9; --aqua: #72CCD8; --royal: #174FA2; --grey: #D9D8D7; --teal: #72CCD8; --mid: #3299D5; --grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%); --grad-diag: linear-gradient(120deg, #72CCD8 0%, #174FA2 100%); --grad-text: linear-gradient(90deg, #72CCD8 0%, #3299D5 45%, #174FA2 100%); --grad-primary: linear-gradient(135deg, #2B0A80 0%, #250762 55%, #200556 100%); --grad-icon: linear-gradient(135deg, #3299D5 0%, #250762 100%); --shadow-btn: 0 14px 30px -12px rgba(37, 7, 98, .55); font-family:Poppins, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif;font-size:18px;line-height:28.8px;color:rgb(28, 27, 34); display:block;} .fsx-hero-phone *, .fsx-hero-phone *::before, .fsx-hero-phone *::after{box-sizing:border-box;}\n.fsx-hero-phone button{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;border-radius:0;text-transform:none;letter-spacing:inherit;box-shadow:none;cursor:pointer;}\n.fsx-hero-phone button:hover, .fsx-hero-phone button:focus{background:none;color:inherit;}\n.fsx-hero-phone a{color:inherit;text-decoration:none;background:none;} .fsx-hero-phone a:hover{color:inherit;}\n.fsx-hero-phone h1, .fsx-hero-phone h2, .fsx-hero-phone h3, .fsx-hero-phone h4, .fsx-hero-phone p, .fsx-hero-phone ul, .fsx-hero-phone ol, .fsx-hero-phone figure{margin:0;padding:0;} .fsx-hero-phone ul, .fsx-hero-phone ol{list-style:none;}\n.fsx-hero-phone img, .fsx-hero-phone svg{display:block;max-width:100%;height:auto;}\n.fsx-hero-phone { --navy: #26275B; --navy-deep: #1D1E4A; --blue: #4E98D8; --blue-ink: #2F78BA; --teal: #7CD2D3; --mid: #528FC0; --royal: #2E4DA5; --ink: #221C1B; --body: #3A3650; --muted: #6A6880; --bg: #F8F7F7; --white: #FFFFFF; --line: #E3E2EA; --star: #F4B400; --ph: #FFE45C; --grad: linear-gradient(90deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%); --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%); --font: \"Poppins\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif; --font-ui: \"Inter\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif; --content: 1240px; --pad-x: 24px; --shadow-card: 0 18px 40px -18px rgba(38, 39, 91, .28); --shadow-btn: 0 14px 30px -12px rgba(46, 77, 165, .55); }\n.fsx-hero-phone * { box-sizing: border-box; }\n.fsx-hero-phone { scroll-behavior: smooth; text-size-adjust: 100%; }\n.fsx-hero-phone { margin: 0px; font-family: var(--font); font-size: 18px; line-height: 1.6; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }\n.fsx-hero-phone svg { display: block; max-width: 100%; }\n.fsx-hero-phone p { margin: 0px 0px 1em; }\n.fsx-hero-phone p:last-child { margin-bottom: 0px; }\n.fsx-hero-phone .icon { width: 24px; height: 24px; flex: 0 0 auto; }\n.fsx-hero-phone .fsx-con { width: 100%; max-width: calc(var(--content) + var(--pad-x) * 2); margin-inline: auto; padding-inline: var(--pad-x); }\n.fsx-hero-phone .bg-geo { background: var(--bg) url(\"https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@218e548a5706c5b64bd0b77483dc2a4833e589e4/elementor/upload/first-search/design/bg-geometric.jpg\") center / cover no-repeat; }\n.fsx-hero-phone .gcard { --bw: 8px; --r: 40px; padding: var(--bw); border-radius: var(--r); background: var(--grad-diag); box-shadow: var(--shadow-card); }\n.fsx-hero-phone .gcard__in { height: 100%; background: var(--white); border-radius: calc(var(--r) - var(--bw)); }\n.fsx-hero-phone .hero { padding-block: clamp(64px, 8vw, 120px) clamp(72px, 9vw, 140px); }\n.fsx-hero-phone .hero-grid { display: grid; grid-template-columns: minmax(0px, 1fr) 500px; gap: clamp(32px, 6vw, 96px); align-items: center; }\n.fsx-hero-phone h1 { font-weight: 700; font-size: clamp(44px, 5.4vw, 80px); line-height: 1; letter-spacing: -0.025em; margin-bottom: 26px; }\n.fsx-hero-phone h1 span { color: var(--blue); }\n.fsx-hero-phone .scn-tabs { display: flex; gap: 6px; margin: -14px 0px 16px; padding: 4px; border-radius: 999px; background: rgb(241, 240, 246); font-family: var(--font-ui); }\n.fsx-hero-phone .scn-tabs span { flex: 1 1 0%; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 4px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; transition: background 0.25s, color 0.25s; }\n.fsx-hero-phone .scn-tabs .icon { width: 15px; height: 15px; }\n.fsx-hero-phone .scn-tabs span.on { background: var(--white); color: var(--navy); box-shadow: rgba(37, 7, 98, 0.45) 0px 4px 12px -6px; }\n.fsx-hero-phone .scn { display: none; font-family: var(--font-ui); }\n.fsx-hero-phone .scn.is-on { display: block; animation: 0.45s ease 0s 1 normal none running scnIn; }\n.fsx-hero-phone .pav { width: 38px; height: 38px; flex: 0 0 auto; border-radius: 50%; display: grid; place-items: center; background: var(--grad-diag); color: rgb(255, 255, 255); font-size: 13px; font-weight: 700; }\n.fsx-hero-phone .ig { position: relative; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; color: rgb(0, 0, 0); }\n.fsx-hero-phone .ig-top { display: flex; align-items: center; justify-content: space-between; padding: 0px 4px 8px; }\n.fsx-hero-phone .ig-logo { font-family: \"Grand Hotel\", \"Brush Script MT\", \"Segoe Script\", cursive; font-size: 29px; line-height: 1; }\n.fsx-hero-phone .ig-tico { display: flex; gap: 14px; }\n.fsx-hero-phone .igi { width: 22px; height: 22px; color: rgb(0, 0, 0); display: block; }\n.fsx-hero-phone .ig-stories { display: flex; gap: 10px; padding: 4px 4px 10px; border-bottom: 1px solid rgb(239, 239, 239); overflow: hidden; }\n.fsx-hero-phone .ig-st { display: grid; justify-items: center; gap: 4px; flex: 0 0 auto; width: 58px; }\n.fsx-hero-phone .ig-st i { width: 54px; height: 54px; border-radius: 50%; padding: 2.5px; background: conic-gradient(from 210deg, rgb(254, 218, 117), rgb(250, 126, 30), rgb(214, 41, 118), rgb(150, 47, 191), rgb(79, 91, 213), rgb(254, 218, 117)); display: grid; }\n.fsx-hero-phone .ig-st i b { border-radius: 50%; border: 2.5px solid rgb(255, 255, 255); display: grid; place-items: center; background: linear-gradient(135deg, rgb(199, 211, 232), rgb(154, 169, 199)); color: rgb(255, 255, 255); font-size: 15px; font-weight: 700; }\n.fsx-hero-phone .ig-st.you i b { background: var(--grad-diag); }\n.fsx-hero-phone .ig-st small { font-size: 11px; color: rgb(38, 38, 38); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 58px; }\n.fsx-hero-phone .ig-view { position: relative; height: 446px; overflow: hidden; }\n.fsx-hero-phone .ig-track { transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }\n.fsx-hero-phone .ig-post { padding-top: 10px; }\n.fsx-hero-phone .ig-ph { display: flex; align-items: center; gap: 10px; padding: 0px 4px 8px; }\n.fsx-hero-phone .ig-ph > div { flex: 1 1 0%; min-width: 0px; display: grid; line-height: 1.2; }\n.fsx-hero-phone .ig-ph b { font-size: 13.5px; font-weight: 600; }\n.fsx-hero-phone .ig-ph small { font-size: 11.5px; color: rgb(115, 115, 115); }\n.fsx-hero-phone .ig-av { width: 34px; height: 34px; flex: 0 0 auto; border-radius: 50%; padding: 2px; background: conic-gradient(from 210deg, rgb(254, 218, 117), rgb(250, 126, 30), rgb(214, 41, 118), rgb(150, 47, 191), rgb(79, 91, 213), rgb(254, 218, 117)); display: grid; }\n.fsx-hero-phone .ig-av b { border-radius: 50%; border: 2px solid rgb(255, 255, 255); display: grid; place-items: center; background: var(--grad-diag); color: rgb(255, 255, 255); font-size: 10.5px; font-weight: 700; }\n.fsx-hero-phone .ig-av.sm { width: 28px; height: 28px; }\n.fsx-hero-phone .ig-fol { font-size: 13px; font-weight: 600; color: rgb(0, 149, 246); }\n.fsx-hero-phone .ig-fol.on { color: rgb(38, 38, 38); }\n.fsx-hero-phone .ig-dots { font-size: 11px; letter-spacing: 1px; color: rgb(38, 38, 38); }\n.fsx-hero-phone .ig-img { display: grid; align-content: end; height: 230px; padding: 16px; color: rgb(255, 255, 255); background: radial-gradient(220px 160px at 80% 15%, rgba(114, 204, 216, 0.9), transparent 70%), linear-gradient(140deg, rgb(50, 153, 213), rgb(37, 7, 98)); }\n.fsx-hero-phone .ig-img span { font-family: var(--font); font-weight: 700; font-size: 24px; line-height: 1.1; }\n.fsx-hero-phone .ig-img small { font-size: 12.5px; opacity: 0.9; }\n.fsx-hero-phone .ig-img--ad { height: 200px; background: radial-gradient(200px 150px at 15% 85%, rgba(114, 204, 216, 0.8), transparent 70%), linear-gradient(140deg, rgb(37, 7, 98), rgb(23, 79, 162)); }\n.fsx-hero-phone .ig-cta { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: rgb(0, 149, 246); color: rgb(255, 255, 255); font-size: 14px; font-weight: 600; }\n.fsx-hero-phone .ig-cta.pulse { animation: 0.9s ease 0s 2 normal none running igpulse; }\n.fsx-hero-phone .ig-act { display: flex; align-items: center; gap: 14px; padding: 10px 4px 6px; }\n.fsx-hero-phone .ig-act .igi { width: 24px; height: 24px; }\n.fsx-hero-phone .ig-save { margin-left: auto; }\n.fsx-hero-phone .ig-like { display: grid; }\n.fsx-hero-phone .ig-like > * { grid-area: 1 / 1; }\n.fsx-hero-phone .ig-heartfull { opacity: 0; transform: scale(0.4); transition: transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1), opacity 0.2s; }\n.fsx-hero-phone .ig-like.on .ig-heartfull { opacity: 1; transform: none; }\n.fsx-hero-phone .ig-send.pop .igi { animation: 0.5s ease 0s 1 normal none running pop; }\n.fsx-hero-phone .ig-likes, .fsx-hero-phone .ig-cap, .fsx-hero-phone .ig-meta { margin: 0px; padding: 0px 4px; font-size: 13px; line-height: 1.4; color: rgb(0, 0, 0); }\n.fsx-hero-phone .ig-likes b, .fsx-hero-phone .ig-cap b { font-weight: 600; }\n.fsx-hero-phone .ig-cap { margin-top: 3px; }\n.fsx-hero-phone .ig-meta { margin-top: 3px; color: rgb(115, 115, 115); }\n.fsx-hero-phone .ig-toasts { position: absolute; left: 6px; right: 6px; bottom: 10px; display: grid; }\n.fsx-hero-phone .ig-toast { grid-area: 1 / 1; display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 14px; background: rgba(38, 38, 38, 0.94); color: rgb(255, 255, 255); font-size: 13px; box-shadow: rgba(0, 0, 0, 0.6) 0px 10px 24px -10px; opacity: 0; transform: translateY(12px); transition: opacity 0.3s, transform 0.3s; }\n.fsx-hero-phone .ig-toast span:not(.ig-av) { flex: 1 1 0%; }\n.fsx-hero-phone .ig-toast .igi { width: 18px; height: 18px; flex: 0 0 auto; }\n.fsx-hero-phone .ig-toast .ig-heartfull { opacity: 1; transform: none; }\n.fsx-hero-phone .ig-toast.is-in { opacity: 1; transform: none; }\n@media (max-width: 767px) { .fsx-hero-phone .ig-view { height: 420px; } }\n@media (max-width: 767px) { .fsx-hero-phone .ig-img { height: 190px; } }\n@media (max-width: 767px) { .fsx-hero-phone .ig-img--ad { height: 170px; } }\n.fsx-hero-phone .scn .lead-in { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: rgb(241, 240, 246); margin-bottom: 14px; }\n.fsx-hero-phone .scn .lead-in > div { flex: 1 1 0%; min-width: 0px; display: grid; }\n.fsx-hero-phone .scn .lead-in small { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--blue-ink); }\n.fsx-hero-phone .scn .lead-in b { font-size: 15px; color: var(--navy); }\n.fsx-hero-phone .scn .lead-in span { font-size: 13.5px; color: var(--body); }\n.fsx-hero-phone .scn .lead-in em { font-style: normal; font-size: 11.5px; color: var(--muted); white-space: nowrap; }\n.fsx-hero-phone .flow { position: relative; display: grid; gap: 12px; margin: 0px; padding: 0px 0px 0px 4px; list-style: none; }\n.fsx-hero-phone .flow::before { content: \"\"; position: absolute; left: 22px; top: 10px; bottom: 10px; width: 2px; background: repeating-linear-gradient(rgb(201, 214, 238) 0px, rgb(201, 214, 238) 5px, transparent 5px, transparent 10px); }\n.fsx-hero-phone .scn .fl { position: relative; display: grid; grid-template-columns: 38px minmax(0px, 1fr); gap: 12px; padding: 0px; border: 0px; }\n.fsx-hero-phone .scn .fl > i { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(#fff, #fff) padding-box, var(--grad-diag) border-box; border: 2px solid transparent; color: var(--navy); }\n.fsx-hero-phone .scn .fl > i .icon { width: 18px; height: 18px; }\n.fsx-hero-phone .scn .fl > div { padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }\n.fsx-hero-phone .scn .fl small { display: block; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--blue-ink); margin-bottom: 3px; }\n.fsx-hero-phone .scn .fl b { font-size: 14px; color: var(--navy); }\n.fsx-hero-phone .scn .fl p { margin: 2px 0px 0px; font-size: 13px; line-height: 1.4; color: var(--body); }\n.fsx-hero-phone .bub { display: inline-block; max-width: 92%; border-radius: 14px 14px 14px 4px; background: rgb(241, 240, 246); padding: 7px 11px !important; }\n.fsx-hero-phone .bub.me { display: block; width: max-content; border-radius: 14px 14px 4px; background: var(--blue); margin: 6px 0px 0px auto !important; color: rgb(255, 255, 255) !important; }\n.fsx-hero-phone .callst { font-weight: 600; color: var(--blue-ink) !important; }\n.fsx-hero-phone .callst.ok { color: rgb(19, 138, 94) !important; }\n.fsx-hero-phone .scn .booked { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; padding: 12px; border: 0px; border-radius: 14px; background: var(--grad-diag); color: rgb(255, 255, 255); font-weight: 600; font-size: 14.5px; }\n.fsx-hero-phone .scn .booked .icon { width: 18px; height: 18px; }\n@media (max-width: 480px) { .fsx-hero-phone .scn-tabs span { font-size: 12px; } }\n@media (max-width: 480px) { .fsx-hero-phone .scn-tabs .icon { display: none; } }\n.fsx-hero-phone .phone { --bw: 16px; --r: 64px; height: 690px; }\n.fsx-hero-phone .phone .gcard__in { padding: 36px 18px 24px; overflow: hidden; }\n.fsx-hero-phone .sbar { display: flex; align-items: center; gap: 12px; height: 58px; padding: 0px 20px; border: 1.5px solid var(--line); border-radius: 999px; margin-bottom: 18px; font-family: var(--font-ui); }\n.fsx-hero-phone .sbar .icon { width: 20px; height: 20px; color: var(--muted); }\n.fsx-hero-phone .squery { min-width: 0px; white-space: nowrap; overflow: hidden; font-size: 17px; color: var(--ink); }\n.fsx-hero-phone .caret { width: 2px; height: 22px; margin-left: -8px; background: var(--blue); animation: 1s steps(1) 0s infinite normal none running blink; }\n.fsx-hero-phone .results { display: grid; gap: 12px; font-family: var(--font-ui); }\n.fsx-hero-phone .results > * { min-width: 0px; }\n.fsx-hero-phone .res { border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; opacity: 0; transform: translateY(8px); transition: opacity 0.35s, transform 0.35s; }\n.fsx-hero-phone .res.is-in { opacity: 1; transform: none; }\n.fsx-hero-phone .res-kind { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; font-size: 13px; font-weight: 500; color: var(--muted); }\n.fsx-hero-phone .res-kind .icon { width: 15px; height: 15px; }\n.fsx-hero-phone .mp { display: grid; grid-template-columns: 90px minmax(0px, 1fr); gap: 12px; align-items: center; }\n.fsx-hero-phone .mp svg { width: 90px; height: 90px; border-radius: 10px; }\n.fsx-hero-phone .mp > div { min-width: 0px; }\n.fsx-hero-phone .mp-row { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 8px; font-size: 14.5px; color: var(--muted); }\n.fsx-hero-phone .mp-row b { flex: 1 1 0%; min-width: 0px; font-weight: 500; color: rgb(70, 67, 90); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n.fsx-hero-phone .mp-row .rk { width: 20px; height: 20px; flex: 0 0 auto; border-radius: 50%; display: grid; place-items: center; font-size: 11.5px; font-weight: 600; background: rgb(236, 235, 242); }\n.fsx-hero-phone .mp-row .st { flex: 0 0 auto; font-size: 12px; letter-spacing: 1px; color: var(--star); }\n.fsx-hero-phone .mp-row.you { background: rgb(234, 244, 251); box-shadow: inset 3px 0 0 var(--blue); }\n.fsx-hero-phone .mp-row.you b { color: var(--navy); font-weight: 600; }\n.fsx-hero-phone .mp-row.you .rk { background: var(--royal); color: rgb(255, 255, 255); }\n.fsx-hero-phone .ai { font-size: 15px; line-height: 1.5; color: var(--body); margin-bottom: 10px; }\n.fsx-hero-phone .yb { color: var(--blue-ink); font-weight: 600; }\n.fsx-hero-phone .src { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 999px; background: rgb(234, 244, 251); font-size: 13px; font-weight: 600; color: var(--navy); }\n.fsx-hero-phone .src::before { content: \"\"; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }\n.fsx-hero-phone .rv { display: grid; grid-template-columns: 36px minmax(0px, 1fr); gap: 10px; }\n.fsx-hero-phone .av { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: rgb(255, 255, 255); font-weight: 600; font-size: 14px; }\n.fsx-hero-phone .rv .meta { font-size: 13.5px; color: var(--muted); }\n.fsx-hero-phone .rv .meta b { color: var(--ink); font-weight: 600; }\n.fsx-hero-phone .rv p { margin: 3px 0px 0px; font-size: 14.5px; line-height: 1.45; color: var(--body); }\n.fsx-hero-phone .stars { color: var(--star); letter-spacing: 1.5px; }\n@media (max-width: 1024px) { .fsx-hero-phone .hero-grid { grid-template-columns: 1fr; } }\n@media (max-width: 1024px) { .fsx-hero-phone .phone { max-width: 500px; width: 100%; margin-inline: auto; } }\n@media (max-width: 767px) { .fsx-hero-phone { --pad-x: 16px; } }\n@media (max-width: 767px) { .fsx-hero-phone { font-size: 16.5px; } }\n@media (max-width: 767px) { .fsx-hero-phone .phone { --bw: 10px; --r: 44px; height: 660px; } }\n@media (max-width: 767px) { .fsx-hero-phone .phone .results { min-height: 470px; align-content: start; } }\n@media (max-width: 767px) { .fsx-hero-phone .mp-row { font-size: 13.5px; gap: 6px; padding: 5px 6px; } }\n@media (max-width: 767px) { .fsx-hero-phone .mp-row .st { font-size: 10.5px; letter-spacing: 0px; } }\n@media (max-width: 767px) { .fsx-hero-phone .phone .gcard__in { padding: 22px 12px; } }\n@media (max-width: 767px) { .fsx-hero-phone .mp { grid-template-columns: 56px minmax(0px, 1fr); gap: 8px; } }\n@media (max-width: 767px) { .fsx-hero-phone .mp svg { width: 56px; height: 56px; } }\n@media (prefers-reduced-motion: reduce) { .fsx-hero-phone { scroll-behavior: auto; } }\n@media (prefers-reduced-motion: reduce) { .fsx-hero-phone * { transition-duration: 0.01ms !important; animation: auto ease 0s 1 normal none running none !important; } }\n@media (prefers-reduced-motion: reduce) { .fsx-hero-phone .caret { display: none; } }\n.fsx-hero-phone { --navy: #250762; --navy-deep: #1A0446; --blue: #3299D5; --blue-ink: #1F78B4; --ink: #1C1B22; --body: #2F2E36; --muted: #6B6A72; --tint: #EEF0F9; --aqua: #72CCD8; --royal: #174FA2; --grey: #D9D8D7; --teal: #72CCD8; --mid: #3299D5; --grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%); --grad-diag: linear-gradient(120deg, #72CCD8 0%, #174FA2 100%); --grad-text: linear-gradient(90deg, #72CCD8 0%, #3299D5 45%, #174FA2 100%); --grad-primary: linear-gradient(135deg, #2B0A80 0%, #250762 55%, #200556 100%); --grad-icon: linear-gradient(135deg, #3299D5 0%, #250762 100%); --shadow-btn: 0 14px 30px -12px rgba(37, 7, 98, .55); }\n.fsx-hero-phone h1 span { color: transparent; background-image: ; background-position-x: ; background-position-y: ; background-size: ; background-repeat: ; background-attachment: ; background-origin: ; background-color: ; background-clip: text; -webkit-box-decoration-break: clone; box-decoration-break: clone; }\n.fsx-hero-phone h1 { font-weight: 700; font-size: clamp(40px, 5vw, 72px); line-height: 1.04; letter-spacing: -0.025em; color: var(--navy); }\n.fsx-hero-phone h1::after { content: \"\"; display: block; width: clamp(96px, 10vw, 140px); height: 4px; margin-top: clamp(18px, 2vw, 26px); border-radius: 2px; background: rgb(114, 204, 216); }\n@media (min-width: 1025px) { .fsx-hero-phone .hero-grid { grid-template-columns: minmax(0px, 1fr) 440px !important; column-gap: clamp(40px, 4vw, 64px) !important; } }\n@media (min-width: 1025px) { .fsx-hero-phone .phone { max-width: 440px; margin-inline: auto; } }\n</style>"
            },
            "elements": []
           }
@@ -563,6 +575,8 @@
              "size": -0.03,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "title_color": "#FFFFFF"
            },
            "elements": []
@@ -599,6 +613,8 @@
              "size": 1.2,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "text_color": "#FFFFFF"
            },
            "elements": []
@@ -677,6 +693,8 @@
              "size": -0.03,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "title_color": "#FFFFFF"
            },
            "elements": []
@@ -713,6 +731,8 @@
              "size": 1.2,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "text_color": "#FFFFFF"
            },
            "elements": []
@@ -791,6 +811,8 @@
              "size": -0.03,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "title_color": "#FFFFFF"
            },
            "elements": []
@@ -827,6 +849,8 @@
              "size": 1.2,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "text_color": "#FFFFFF"
            },
            "elements": []
@@ -1057,7 +1081,9 @@
              "unit": "em",
              "size": 1.6,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
@@ -1098,7 +1124,9 @@
              "unit": "em",
              "size": -0.02,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
@@ -1146,6 +1174,8 @@
              "size": -0.015,
              "sizes": []
             },
+            "title_typography_text_transform": "none",
+            "title_typography_font_style": "normal",
             "title_color": "#FFFFFF",
             "description_typography_typography": "custom",
             "description_typography_font_family": "Poppins",
@@ -1165,6 +1195,8 @@
              "size": 1.4,
              "sizes": []
             },
+            "description_typography_text_transform": "none",
+            "description_typography_font_style": "normal",
             "description_color": "#FFFFFFEB"
            },
            "elements": []
@@ -1213,6 +1245,8 @@
              "size": -0.015,
              "sizes": []
             },
+            "title_typography_text_transform": "none",
+            "title_typography_font_style": "normal",
             "title_color": "#FFFFFF",
             "description_typography_typography": "custom",
             "description_typography_font_family": "Poppins",
@@ -1232,6 +1266,8 @@
              "size": 1.4,
              "sizes": []
             },
+            "description_typography_text_transform": "none",
+            "description_typography_font_style": "normal",
             "description_color": "#FFFFFFEB"
            },
            "elements": []
@@ -1280,6 +1316,8 @@
              "size": -0.015,
              "sizes": []
             },
+            "title_typography_text_transform": "none",
+            "title_typography_font_style": "normal",
             "title_color": "#FFFFFF",
             "description_typography_typography": "custom",
             "description_typography_font_family": "Poppins",
@@ -1299,6 +1337,8 @@
              "size": 1.4,
              "sizes": []
             },
+            "description_typography_text_transform": "none",
+            "description_typography_font_style": "normal",
             "description_color": "#FFFFFFEB"
            },
            "elements": []
@@ -1331,7 +1371,9 @@
              "unit": "em",
              "size": 1.3,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           }
@@ -1344,18 +1386,12 @@
    ]
   },
   {
-   "id": "67968c9",
+   "id": "d163e80",
    "elType": "container",
    "isInner": false,
    "settings": {
-    "content_width": "boxed",
+    "content_width": "full",
     "flex_direction": "column",
-    "boxed_width": {
-     "unit": "px",
-     "size": 1240,
-     "sizes": []
-    },
-    "css_classes": "fs-dark fs-dark-round",
     "flex_gap": {
      "unit": "px",
      "size": 0,
@@ -1365,33 +1401,25 @@
     },
     "padding": {
      "unit": "px",
-     "top": "72",
-     "right": "24",
+     "top": "0",
+     "right": "0",
      "bottom": "0",
-     "left": "24",
-     "isLinked": false
+     "left": "0",
+     "isLinked": true
     },
-    "_title": "Framework",
+    "_title": "Framework (interactive)",
     "padding_mobile": {
      "unit": "px",
-     "top": "56",
+     "top": "64",
      "right": "16",
-     "bottom": "0",
+     "bottom": "64",
      "left": "16",
-     "isLinked": false
-    },
-    "padding_tablet": {
-     "unit": "px",
-     "top": "61",
-     "right": "24",
-     "bottom": "0",
-     "left": "24",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "a77e2b8",
+     "id": "81c7c18",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -1399,9 +1427,9 @@
       "flex_direction": "column",
       "flex_gap": {
        "unit": "px",
-       "size": 40,
-       "column": "40",
-       "row": "40",
+       "size": 24,
+       "column": "24",
+       "row": "24",
        "isLinked": true
       },
       "padding": {
@@ -1415,1403 +1443,11 @@
      },
      "elements": [
       {
-       "id": "f60506a",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "fs-sec-head",
-        "flex_gap": {
-         "unit": "px",
-         "size": 14,
-         "column": "14",
-         "row": "14",
-         "isLinked": true
-        },
-        "padding": {
-         "unit": "px",
-         "top": "0",
-         "right": "0",
-         "bottom": "0",
-         "left": "0",
-         "isLinked": true
-        },
-        "max_width": {
-         "unit": "px",
-         "size": 760,
-         "sizes": []
-        }
-       },
-       "elements": [
-        {
-         "id": "81c7c18",
-         "elType": "widget",
-         "widgetType": "heading",
-         "settings": {
-          "title": "The FirstSearch Framework",
-          "header_size": "p",
-          "align": "center",
-          "_css_classes": "fs-eyebrow",
-          "__globals__": {
-           "title_color": "globals/colors?id=secondary"
-          },
-          "typography_typography": "custom",
-          "typography_font_family": "Poppins",
-          "typography_font_weight": "600",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 19.5,
-           "sizes": []
-          },
-          "typography_font_size_tablet": {
-           "unit": "px",
-           "size": 16.0,
-           "sizes": []
-          },
-          "typography_line_height": {
-           "unit": "em",
-           "size": 1.6,
-           "sizes": []
-          }
-         },
-         "elements": []
-        },
-        {
-         "id": "d163e80",
-         "elType": "widget",
-         "widgetType": "heading",
-         "settings": {
-          "title": "Marketing isn’t a pile of tactics. It’s a system.",
-          "header_size": "h2",
-          "align": "center",
-          "__globals__": {},
-          "typography_typography": "custom",
-          "typography_font_family": "Poppins",
-          "typography_font_weight": "700",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 52.0,
-           "sizes": []
-          },
-          "typography_font_size_tablet": {
-           "unit": "px",
-           "size": 37.0,
-           "sizes": []
-          },
-          "typography_font_size_mobile": {
-           "unit": "px",
-           "size": 32.0,
-           "sizes": []
-          },
-          "typography_line_height": {
-           "unit": "em",
-           "size": 1.08,
-           "sizes": []
-          },
-          "typography_letter_spacing": {
-           "unit": "em",
-           "size": -0.02,
-           "sizes": []
-          },
-          "title_color": "#FFFFFF"
-         },
-         "elements": []
-        },
-        {
-         "id": "7a57cad",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "settings": {
-          "editor": "<p>The businesses that win aren’t the ones with the biggest budgets. They’re the ones that show up at every stage, from the first time someone hears their name to the day that customer sends a friend their way. We call the owners who build that way FirstSearchers.</p>",
-          "align": "center",
-          "_css_classes": "fs-lead",
-          "_margin": {
-           "unit": "px",
-           "top": "4",
-           "right": "0",
-           "bottom": "0",
-           "left": "0",
-           "isLinked": false
-          },
-          "__globals__": {},
-          "typography_typography": "custom",
-          "typography_font_family": "Poppins",
-          "typography_font_weight": "400",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 22.0,
-           "sizes": []
-          },
-          "typography_font_size_tablet": {
-           "unit": "px",
-           "size": 17.0,
-           "sizes": []
-          },
-          "typography_line_height": {
-           "unit": "em",
-           "size": 1.4,
-           "sizes": []
-          },
-          "text_color": "#FFFFFFEB"
-         },
-         "elements": []
-        },
-        {
-         "id": "47abc37",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "settings": {
-          "editor": "<p><em>Done with hacks and trends. Focused on building a brand that lasts. If that sounds like you, you’re already one of us.</em></p>",
-          "align": "center",
-          "_css_classes": "fs-identity",
-          "_margin": {
-           "unit": "px",
-           "top": "8",
-           "right": "0",
-           "bottom": "0",
-           "left": "0",
-           "isLinked": false
-          },
-          "__globals__": {},
-          "typography_typography": "custom",
-          "typography_font_family": "Poppins",
-          "typography_font_weight": "400",
-          "typography_font_size": {
-           "unit": "px",
-           "size": 17.0,
-           "sizes": []
-          },
-          "typography_line_height": {
-           "unit": "em",
-           "size": 1.4,
-           "sizes": []
-          },
-          "typography_font_style": "italic",
-          "text_color": "#72CCD8"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "b09a4e7",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "row",
-        "flex_gap": {
-         "unit": "px",
-         "size": 48,
-         "column": "48",
-         "row": "48",
-         "isLinked": true
-        },
-        "flex_align_items": "center",
-        "padding": {
-         "unit": "px",
-         "top": "0",
-         "right": "0",
-         "bottom": "0",
-         "left": "0",
-         "isLinked": true
-        },
-        "flex_direction_mobile": "column"
-       },
-       "elements": [
-        {
-         "id": "8fc4720",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "column",
-          "flex_gap": {
-           "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
-           "isLinked": true
-          },
-          "padding": {
-           "unit": "px",
-           "top": "0",
-           "right": "0",
-           "bottom": "0",
-           "left": "0",
-           "isLinked": true
-          },
-          "width": {
-           "unit": "%",
-           "size": 45,
-           "sizes": []
-          },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
-           "sizes": []
-          }
-         },
-         "elements": [
-          {
-           "id": "b27058a",
-           "elType": "widget",
-           "widgetType": "image",
-           "settings": {
-            "image": {
-             "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/218e548a5706c5b64bd0b77483dc2a4833e589e4/elementor/upload/first-search/framework-wheel.webp",
-             "id": 768788,
-             "alt": "The FirstSearch Framework wheel",
-             "source": "library"
-            },
-            "image_size": "full",
-            "width": {
-             "unit": "%",
-             "size": 100,
-             "sizes": []
-            },
-            "align": "center"
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "7aa9346",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "column",
-          "flex_gap": {
-           "unit": "px",
-           "size": 20,
-           "column": "20",
-           "row": "20",
-           "isLinked": true
-          },
-          "padding": {
-           "unit": "px",
-           "top": "0",
-           "right": "0",
-           "bottom": "0",
-           "left": "0",
-           "isLinked": true
-          },
-          "width": {
-           "unit": "%",
-           "size": 55,
-           "sizes": []
-          },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
-           "sizes": []
-          }
-         },
-         "elements": [
-          {
-           "id": "49d1b3f",
-           "elType": "widget",
-           "widgetType": "nested-tabs",
-           "settings": {
-            "tabs": [
-             {
-              "_id": "74c01d4",
-              "tab_title": "firstbrand"
-             },
-             {
-              "_id": "658c448",
-              "tab_title": "firstthought"
-             },
-             {
-              "_id": "ffee9f7",
-              "tab_title": "firstchoice"
-             },
-             {
-              "_id": "77d467b",
-              "tab_title": "firstreferral"
-             }
-            ],
-            "_css_classes": "fs-stage-tabs"
-           },
-           "elements": [
-            {
-             "id": "67fbb37",
-             "elType": "container",
-             "isInner": true,
-             "settings": {
-              "content_width": "full",
-              "flex_direction": "column",
-              "padding": {
-               "unit": "px",
-               "top": "0",
-               "right": "0",
-               "bottom": "0",
-               "left": "0",
-               "isLinked": true
-              }
-             },
-             "elements": [
-              {
-               "id": "ecf9cef",
-               "elType": "container",
-               "isInner": true,
-               "settings": {
-                "content_width": "full",
-                "flex_direction": "column",
-                "css_classes": "fs-gcard",
-                "flex_gap": {
-                 "unit": "px",
-                 "size": 14,
-                 "column": "14",
-                 "row": "14",
-                 "isLinked": true
-                },
-                "padding": {
-                 "unit": "px",
-                 "top": "36",
-                 "right": "36",
-                 "bottom": "36",
-                 "left": "36",
-                 "isLinked": true
-                }
-               },
-               "elements": [
-                {
-                 "id": "bb8ce6f",
-                 "elType": "widget",
-                 "widgetType": "html",
-                 "settings": {
-                  "html": "<span class=\"fs-plogo-chip\"><span class=\"fs-plogo\" style=\"font-size:30px\"><b>first</b>brand</span></span>"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "582cc68",
-                 "elType": "widget",
-                 "widgetType": "heading",
-                 "settings": {
-                  "title": "Build a brand people trust on sight.",
-                  "header_size": "h3",
-                  "__globals__": {
-                   "title_color": "globals/colors?id=primary"
-                  },
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "700",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 32.0,
-                   "sizes": []
-                  },
-                  "typography_font_size_tablet": {
-                   "unit": "px",
-                   "size": 26.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.1,
-                   "sizes": []
-                  },
-                  "typography_letter_spacing": {
-                   "unit": "em",
-                   "size": -0.015,
-                   "sizes": []
-                  }
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "e52c241",
-                 "elType": "widget",
-                 "widgetType": "text-editor",
-                 "settings": {
-                  "editor": "<p>Your brand is the foundation everything else stands on. We define who you are, what makes you different, and how you show up, then make sure every touchpoint matches.</p>",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 16.5,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  },
-                  "text_color": "#2F2E36"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "933179d",
-                 "elType": "widget",
-                 "widgetType": "heading",
-                 "settings": {
-                  "title": "What’s included",
-                  "header_size": "p",
-                  "_css_classes": "fs-eyebrow",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "600",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 14.5,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  },
-                  "title_color": "#6B6A72"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "8a38a93",
-                 "elType": "widget",
-                 "widgetType": "icon-list",
-                 "settings": {
-                  "icon_list": [
-                   {
-                    "_id": "5b9248c",
-                    "text": "Brand strategy and messaging",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "5840008",
-                    "text": "Logo and visual identity",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "ff98e93",
-                    "text": "Website design and development",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "49e238a",
-                    "text": "Brand video",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   }
-                  ],
-                  "_css_classes": "fs-checks",
-                  "__globals__": {
-                   "text_color": "globals/colors?id=text"
-                  },
-                  "icon_typography_typography": "custom",
-                  "icon_typography_font_family": "Poppins",
-                  "icon_typography_font_weight": "400",
-                  "icon_typography_font_size": {
-                   "unit": "px",
-                   "size": 16.0,
-                   "sizes": []
-                  },
-                  "icon_typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  }
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "0641e54",
-                 "elType": "widget",
-                 "widgetType": "text-editor",
-                 "settings": {
-                  "editor": "<p><b>How strong is your brand foundation?</b> <a href=\"/framework-quiz/\">Find out in the quiz.</a></p>",
-                  "_css_classes": "fs-soft-box",
-                  "__globals__": {
-                   "text_color": "globals/colors?id=text"
-                  },
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 15.5,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  }
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "d072252",
-                 "elType": "widget",
-                 "widgetType": "button",
-                 "settings": {
-                  "text": "Explore brand and web services",
-                  "link": {
-                   "url": "/firstbrand/",
-                   "is_external": "",
-                   "nofollow": ""
-                  },
-                  "size": "md",
-                  "_css_classes": "fs-link-u",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "500",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 16.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  }
-                 },
-                 "elements": []
-                }
-               ]
-              }
-             ]
-            },
-            {
-             "id": "b81cedd",
-             "elType": "container",
-             "isInner": true,
-             "settings": {
-              "content_width": "full",
-              "flex_direction": "column",
-              "padding": {
-               "unit": "px",
-               "top": "0",
-               "right": "0",
-               "bottom": "0",
-               "left": "0",
-               "isLinked": true
-              }
-             },
-             "elements": [
-              {
-               "id": "dd75dc7",
-               "elType": "container",
-               "isInner": true,
-               "settings": {
-                "content_width": "full",
-                "flex_direction": "column",
-                "css_classes": "fs-gcard",
-                "flex_gap": {
-                 "unit": "px",
-                 "size": 14,
-                 "column": "14",
-                 "row": "14",
-                 "isLinked": true
-                },
-                "padding": {
-                 "unit": "px",
-                 "top": "36",
-                 "right": "36",
-                 "bottom": "36",
-                 "left": "36",
-                 "isLinked": true
-                }
-               },
-               "elements": [
-                {
-                 "id": "71e0372",
-                 "elType": "widget",
-                 "widgetType": "html",
-                 "settings": {
-                  "html": "<span class=\"fs-plogo-chip\"><span class=\"fs-plogo\" style=\"font-size:30px\"><b>first</b>thought</span></span>"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "30fcb10",
-                 "elType": "widget",
-                 "widgetType": "heading",
-                 "settings": {
-                  "title": "Get found wherever customers look.",
-                  "header_size": "h3",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 16.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.5,
-                   "sizes": []
-                  },
-                  "title_color": "#2F2E36"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "f70f7b1",
-                 "elType": "widget",
-                 "widgetType": "text-editor",
-                 "settings": {
-                  "editor": "<p>When someone needs what you do, you show up first: on Google, in the map pack, in AI answers and in their feed.</p>",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 20.0,
-                   "sizes": []
-                  },
-                  "typography_font_size_tablet": {
-                   "unit": "px",
-                   "size": 16.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.4,
-                   "sizes": []
-                  },
-                  "text_color": "#FFFFFFEB"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "18c1067",
-                 "elType": "widget",
-                 "widgetType": "heading",
-                 "settings": {
-                  "title": "What’s included",
-                  "header_size": "p",
-                  "_css_classes": "fs-eyebrow",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "600",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 14.5,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  },
-                  "title_color": "#6B6A72"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "c0b667f",
-                 "elType": "widget",
-                 "widgetType": "icon-list",
-                 "settings": {
-                  "icon_list": [
-                   {
-                    "_id": "80ab515",
-                    "text": "Local SEO and Google Business Profile",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "e2e1c18",
-                    "text": "Paid search and social ads",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "9c48730",
-                    "text": "Social media content",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "41daaef",
-                    "text": "Local ties and community presence",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   }
-                  ],
-                  "_css_classes": "fs-checks",
-                  "__globals__": {
-                   "text_color": "globals/colors?id=text"
-                  },
-                  "icon_typography_typography": "custom",
-                  "icon_typography_font_family": "Poppins",
-                  "icon_typography_font_weight": "400",
-                  "icon_typography_font_size": {
-                   "unit": "px",
-                   "size": 15.5,
-                   "sizes": []
-                  },
-                  "icon_typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  }
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "e659d4b",
-                 "elType": "widget",
-                 "widgetType": "text-editor",
-                 "settings": {
-                  "editor": "<p><b>How strong is your visibility?</b> <a href=\"/framework-quiz/\">Find out in the quiz.</a></p>",
-                  "_css_classes": "fs-soft-box",
-                  "__globals__": {
-                   "text_color": "globals/colors?id=text"
-                  },
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 18.0,
-                   "sizes": []
-                  },
-                  "typography_font_size_mobile": {
-                   "unit": "px",
-                   "size": 16.5,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  }
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "49d48f9",
-                 "elType": "widget",
-                 "widgetType": "button",
-                 "settings": {
-                  "text": "Explore SEO and advertising",
-                  "link": {
-                   "url": "/firstthought/",
-                   "is_external": "",
-                   "nofollow": ""
-                  },
-                  "size": "md",
-                  "_css_classes": "fs-link-u",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "500",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 16.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  },
-                  "typography_font_style": "italic"
-                 },
-                 "elements": []
-                }
-               ]
-              }
-             ]
-            },
-            {
-             "id": "7349bcc",
-             "elType": "container",
-             "isInner": true,
-             "settings": {
-              "content_width": "full",
-              "flex_direction": "column",
-              "padding": {
-               "unit": "px",
-               "top": "0",
-               "right": "0",
-               "bottom": "0",
-               "left": "0",
-               "isLinked": true
-              }
-             },
-             "elements": [
-              {
-               "id": "870c266",
-               "elType": "container",
-               "isInner": true,
-               "settings": {
-                "content_width": "full",
-                "flex_direction": "column",
-                "css_classes": "fs-gcard",
-                "flex_gap": {
-                 "unit": "px",
-                 "size": 14,
-                 "column": "14",
-                 "row": "14",
-                 "isLinked": true
-                },
-                "padding": {
-                 "unit": "px",
-                 "top": "36",
-                 "right": "36",
-                 "bottom": "36",
-                 "left": "36",
-                 "isLinked": true
-                }
-               },
-               "elements": [
-                {
-                 "id": "c44e78a",
-                 "elType": "widget",
-                 "widgetType": "html",
-                 "settings": {
-                  "html": "<span class=\"fs-plogo-chip\"><span class=\"fs-plogo\" style=\"font-size:30px\"><b>first</b>choice</span></span>"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "79ce392",
-                 "elType": "widget",
-                 "widgetType": "heading",
-                 "settings": {
-                  "title": "Turn attention into booked business.",
-                  "header_size": "h3",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 16.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.5,
-                   "sizes": []
-                  },
-                  "title_color": "#2F2E36"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "5b446e0",
-                 "elType": "widget",
-                 "widgetType": "text-editor",
-                 "settings": {
-                  "editor": "<p>Visitors become leads and leads become customers, through clear offers, fast follow-up and campaigns built to convert.</p>",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 20.0,
-                   "sizes": []
-                  },
-                  "typography_font_size_tablet": {
-                   "unit": "px",
-                   "size": 16.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.4,
-                   "sizes": []
-                  },
-                  "text_color": "#FFFFFFEB"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "ad0abd1",
-                 "elType": "widget",
-                 "widgetType": "heading",
-                 "settings": {
-                  "title": "What’s included",
-                  "header_size": "p",
-                  "_css_classes": "fs-eyebrow",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "600",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 14.5,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  },
-                  "title_color": "#6B6A72"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "5c695ec",
-                 "elType": "widget",
-                 "widgetType": "icon-list",
-                 "settings": {
-                  "icon_list": [
-                   {
-                    "_id": "78d4055",
-                    "text": "Lead generation offers and landing pages",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "d0527b4",
-                    "text": "Retargeting campaigns",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "ed6e6ab",
-                    "text": "Marketing automation and follow-up",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "f49b781",
-                    "text": "Conversion tracking",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   }
-                  ],
-                  "_css_classes": "fs-checks",
-                  "__globals__": {
-                   "text_color": "globals/colors?id=primary"
-                  },
-                  "icon_typography_typography": "custom",
-                  "icon_typography_font_family": "Poppins",
-                  "icon_typography_font_weight": "700",
-                  "icon_typography_font_size": {
-                   "unit": "px",
-                   "size": 20.0,
-                   "sizes": []
-                  },
-                  "icon_typography_line_height": {
-                   "unit": "em",
-                   "size": 1.25,
-                   "sizes": []
-                  },
-                  "icon_typography_letter_spacing": {
-                   "unit": "em",
-                   "size": -0.015,
-                   "sizes": []
-                  }
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "0744d42",
-                 "elType": "widget",
-                 "widgetType": "text-editor",
-                 "settings": {
-                  "editor": "<p><b>How strong is your conversion?</b> <a href=\"/framework-quiz/\">Find out in the quiz.</a></p>",
-                  "_css_classes": "fs-soft-box",
-                  "__globals__": {
-                   "text_color": "globals/colors?id=text"
-                  },
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 18.0,
-                   "sizes": []
-                  },
-                  "typography_font_size_mobile": {
-                   "unit": "px",
-                   "size": 16.5,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  }
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "fc54d18",
-                 "elType": "widget",
-                 "widgetType": "button",
-                 "settings": {
-                  "text": "Explore lead generation",
-                  "link": {
-                   "url": "/firstchoice/",
-                   "is_external": "",
-                   "nofollow": ""
-                  },
-                  "size": "md",
-                  "_css_classes": "fs-link-u",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "500",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 18.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  },
-                  "typography_font_style": "italic"
-                 },
-                 "elements": []
-                }
-               ]
-              }
-             ]
-            },
-            {
-             "id": "5d1e2cc",
-             "elType": "container",
-             "isInner": true,
-             "settings": {
-              "content_width": "full",
-              "flex_direction": "column",
-              "padding": {
-               "unit": "px",
-               "top": "0",
-               "right": "0",
-               "bottom": "0",
-               "left": "0",
-               "isLinked": true
-              }
-             },
-             "elements": [
-              {
-               "id": "a4fef3e",
-               "elType": "container",
-               "isInner": true,
-               "settings": {
-                "content_width": "full",
-                "flex_direction": "column",
-                "css_classes": "fs-gcard",
-                "flex_gap": {
-                 "unit": "px",
-                 "size": 14,
-                 "column": "14",
-                 "row": "14",
-                 "isLinked": true
-                },
-                "padding": {
-                 "unit": "px",
-                 "top": "36",
-                 "right": "36",
-                 "bottom": "36",
-                 "left": "36",
-                 "isLinked": true
-                }
-               },
-               "elements": [
-                {
-                 "id": "6329107",
-                 "elType": "widget",
-                 "widgetType": "html",
-                 "settings": {
-                  "html": "<span class=\"fs-plogo-chip\"><span class=\"fs-plogo\" style=\"font-size:30px\"><b>first</b>referral</span></span>"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "85c4e3b",
-                 "elType": "widget",
-                 "widgetType": "heading",
-                 "settings": {
-                  "title": "Make customers your best channel.",
-                  "header_size": "h3",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 16.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.5,
-                   "sizes": []
-                  },
-                  "title_color": "#2F2E36"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "5f2ea75",
-                 "elType": "widget",
-                 "widgetType": "text-editor",
-                 "settings": {
-                  "editor": "<p>Happy customers become your sales team, with review systems, loyalty programs and referral campaigns that keep them coming back.</p>",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 20.0,
-                   "sizes": []
-                  },
-                  "typography_font_size_tablet": {
-                   "unit": "px",
-                   "size": 16.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.4,
-                   "sizes": []
-                  },
-                  "text_color": "#FFFFFFEB"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "1a3ad51",
-                 "elType": "widget",
-                 "widgetType": "heading",
-                 "settings": {
-                  "title": "What’s included",
-                  "header_size": "p",
-                  "_css_classes": "fs-eyebrow",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "600",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 14.5,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  },
-                  "title_color": "#6B6A72"
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "5c05d5c",
-                 "elType": "widget",
-                 "widgetType": "icon-list",
-                 "settings": {
-                  "icon_list": [
-                   {
-                    "_id": "b50347f",
-                    "text": "Review generation",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "a74e8d1",
-                    "text": "Referral programs",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "5e4f6eb",
-                    "text": "Loyalty and retention campaigns",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   },
-                   {
-                    "_id": "3d0869b",
-                    "text": "Customer email and SMS",
-                    "selected_icon": {
-                     "value": "fas fa-check",
-                     "library": "fa-solid"
-                    }
-                   }
-                  ],
-                  "_css_classes": "fs-checks",
-                  "__globals__": {
-                   "text_color": "globals/colors?id=text"
-                  },
-                  "icon_typography_typography": "custom",
-                  "icon_typography_font_family": "Poppins",
-                  "icon_typography_font_weight": "400",
-                  "icon_typography_font_size": {
-                   "unit": "px",
-                   "size": 15.5,
-                   "sizes": []
-                  },
-                  "icon_typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  }
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "133d10c",
-                 "elType": "widget",
-                 "widgetType": "text-editor",
-                 "settings": {
-                  "editor": "<p><b>How strong is your referral engine?</b> <a href=\"/framework-quiz/\">Find out in the quiz.</a></p>",
-                  "_css_classes": "fs-soft-box",
-                  "__globals__": {
-                   "text_color": "globals/colors?id=text"
-                  },
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "400",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 18.0,
-                   "sizes": []
-                  },
-                  "typography_font_size_mobile": {
-                   "unit": "px",
-                   "size": 16.5,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  }
-                 },
-                 "elements": []
-                },
-                {
-                 "id": "085b0f0",
-                 "elType": "widget",
-                 "widgetType": "button",
-                 "settings": {
-                  "text": "Explore reviews and referrals",
-                  "link": {
-                   "url": "/firstreferral/",
-                   "is_external": "",
-                   "nofollow": ""
-                  },
-                  "size": "md",
-                  "_css_classes": "fs-link-u",
-                  "__globals__": {},
-                  "typography_typography": "custom",
-                  "typography_font_family": "Poppins",
-                  "typography_font_weight": "500",
-                  "typography_font_size": {
-                   "unit": "px",
-                   "size": 16.0,
-                   "sizes": []
-                  },
-                  "typography_line_height": {
-                   "unit": "em",
-                   "size": 1.6,
-                   "sizes": []
-                  },
-                  "typography_font_style": "italic"
-                 },
-                 "elements": []
-                }
-               ]
-              }
-             ]
-            }
-           ]
-          }
-         ]
-        }
-       ]
-      },
-      {
-       "id": "710deef",
+       "id": "7a57cad",
        "elType": "widget",
-       "widgetType": "button",
+       "widgetType": "html",
        "settings": {
-        "text": "Let’s Talk!",
-        "link": {
-         "url": "/contact-us/",
-         "is_external": "",
-         "nofollow": ""
-        },
-        "size": "md",
-        "align": "center",
-        "_css_classes": "fs-btn-lg",
-        "__globals__": {},
-        "typography_typography": "custom",
-        "typography_font_family": "Poppins",
-        "typography_font_weight": "600",
-        "typography_font_size": {
-         "unit": "px",
-         "size": 22.0,
-         "sizes": []
-        },
-        "typography_font_size_tablet": {
-         "unit": "px",
-         "size": 19.0,
-         "sizes": []
-        },
-        "typography_line_height": {
-         "unit": "em",
-         "size": 1.2,
-         "sizes": []
-        },
-        "typography_letter_spacing": {
-         "unit": "em",
-         "size": 0.005,
-         "sizes": []
-        },
-        "_z_index": 3,
-        "align_mobile": "justify"
+        "html": "<!-- First Search component: framework. Exact copy of the approved design; edit text inside this HTML. -->\n<div class=\"fsx fsx-framework\"><svg width=\"0\" height=\"0\" style=\"position:absolute\" aria-hidden=\"true\" focusable=\"false\"><defs><linearGradient id=\"g-brand\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#3299D5\"></stop><stop offset=\"1\" stop-color=\"#250762\"></stop></linearGradient><linearGradient id=\"g-ico\" gradientUnits=\"userSpaceOnUse\" x1=\"3\" y1=\"3\" x2=\"21\" y2=\"21\"><stop offset=\"0\" stop-color=\"#3299D5\"></stop><stop offset=\"1\" stop-color=\"#250762\"></stop></linearGradient><linearGradient id=\"g-ico64\" gradientUnits=\"userSpaceOnUse\" x1=\"6\" y1=\"6\" x2=\"58\" y2=\"58\"><stop offset=\"0\" stop-color=\"#3299D5\"></stop><stop offset=\"1\" stop-color=\"#250762\"></stop></linearGradient></defs><symbol id=\"i-check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m5 12.5 4.5 4.5L19 7.5\"></path></symbol><symbol id=\"i-check--g\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"url(#g-ico)\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m5 12.5 4.5 4.5L19 7.5\"></path></symbol></svg><section class=\"framework\" id=\"framework\" aria-labelledby=\"fw-title\">\n  <div class=\"fw-block on-dark\">\n    <div class=\"fsx-con\">\n      <div class=\"fw-head\">\n        <span class=\"eyebrow\">The FirstSearch Framework</span>\n        <h2 class=\"h2\" id=\"fw-title\">Marketing isn't a pile of tactics. It's a system.</h2>\n        <p>The businesses that win aren't the ones with the biggest budgets. They're the ones that show up at every stage, from the first time someone hears their name to the day that customer sends a friend their way. We call the owners who build that way FirstSearchers.</p>\n        <p class=\"identity\">Done with hacks and trends. Focused on building a brand that lasts. If that sounds like you, you're already one of us.</p>\n      </div>\n\n      <div class=\"fw-grid\">\n        <div>\n          <div class=\"wheel\">\n            <img src=\"https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@218e548a5706c5b64bd0b77483dc2a4833e589e4/elementor/upload/first-search/framework-wheel.webp\" alt=\"The FirstSearch Framework wheel: firstbrand at the centre, surrounded by firstthought (attract), firstchoice (engage) and firstreferral (delight).\" width=\"1100\" height=\"1100\">\n            <svg viewBox=\"0 0 1100 1100\" id=\"wheel-svg\">\n              <path class=\"wdim\" id=\"wdim\" fill-rule=\"evenodd\" d=\"\"></path>\n              <path class=\"wring\" id=\"wring\" d=\"\"></path>\n              <path class=\"wz\" data-i=\"1\" tabindex=\"-1\" role=\"tab\" aria-label=\"FirstThought\" d=\"\"></path>\n              <path class=\"wz\" data-i=\"2\" tabindex=\"-1\" role=\"tab\" aria-label=\"FirstChoice\" d=\"\"></path>\n              <path class=\"wz\" data-i=\"3\" tabindex=\"-1\" role=\"tab\" aria-label=\"FirstReferral\" d=\"\"></path>\n              <path class=\"wz\" data-i=\"0\" tabindex=\"-1\" role=\"tab\" aria-label=\"FirstBrand\" d=\"\"></path>\n            </svg>\n          </div>\n          <div class=\"pills\" role=\"tablist\" aria-label=\"Framework stages\">\n            <button class=\"pill\" type=\"button\" role=\"tab\" data-i=\"0\" id=\"tab-0\" aria-controls=\"fw-panel\" aria-selected=\"true\"><span class=\"plogo\" role=\"img\" aria-label=\"FirstBrand\"><b>first</b>brand</span></button>\n            <button class=\"pill\" type=\"button\" role=\"tab\" data-i=\"1\" id=\"tab-1\" aria-controls=\"fw-panel\" aria-selected=\"false\" tabindex=\"-1\"><span class=\"plogo\" role=\"img\" aria-label=\"FirstThought\"><b>first</b>thought</span></button>\n            <button class=\"pill\" type=\"button\" role=\"tab\" data-i=\"2\" id=\"tab-2\" aria-controls=\"fw-panel\" aria-selected=\"false\" tabindex=\"-1\"><span class=\"plogo\" role=\"img\" aria-label=\"FirstChoice\"><b>first</b>choice</span></button>\n            <button class=\"pill\" type=\"button\" role=\"tab\" data-i=\"3\" id=\"tab-3\" aria-controls=\"fw-panel\" aria-selected=\"false\" tabindex=\"-1\"><span class=\"plogo\" role=\"img\" aria-label=\"FirstReferral\"><b>first</b>referral</span></button>\n          </div>\n        </div>\n\n        <div class=\"gcard fw-card\">\n          <div class=\"gcard__in\" id=\"fw-panel\" role=\"tabpanel\" aria-labelledby=\"tab-0\" tabindex=\"0\">\n            <div class=\"fw-content\" id=\"fw-content\"></div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"cta-overlap\"><a class=\"btn btn--lg\" href=\"/contact-us/\">Let’s Talk!</a></div>\n</section><script>(function(){var cs=document.currentScript;var ROOT=(cs&&cs.closest('.fsx'))||[].slice.call(document.querySelectorAll('.fsx-framework:not([data-fsx-init])')).pop();if(!ROOT||ROOT.getAttribute('data-fsx-init'))return;ROOT.setAttribute('data-fsx-init','1');if(!window.__fsxTH){window.__fsxTH=1;(function(){\nvar SKIP=new Set(['i-chev','i-close','i-menu','i-arrow','i-left','i-right','i-play','i-google','i-facebook','i-instagram','i-linkedin','i-x','i-star','i-search']);\nvar DARK='.on-dark, .note, .booked, .btn, .navy-card, .step--hl, .vid, .scorecard, [data-noswap]';\nfunction light(c){var m=c.match(/\\d+(\\.\\d+)?/g);if(!m)return false;return (m[0]*.299+m[1]*.587+m[2]*.114)>200;}\nfunction swap(){document.querySelectorAll('.fsx svg use').forEach(function(u){var h=u.getAttribute('href');if(!h||h.slice(-3)==='--g')return;var id=h.slice(1);\nif(SKIP.has(id)||!document.getElementById(id+'--g'))return;var svg=u.closest('svg');if(!svg||svg.closest(DARK)||light(getComputedStyle(svg).color))return;u.setAttribute('href',h+'--g');});}\nvar q;new MutationObserver(function(){cancelAnimationFrame(q);q=requestAnimationFrame(swap);}).observe(document.body,{childList:true,subtree:true});swap();})();}try{(() => {'use strict';const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;const $=(s,el=ROOT)=>el.querySelector(s);const $$=(s,el=ROOT)=>[...el.querySelectorAll(s)];const wait=ms=>new Promise(r=>setTimeout(r,ms));\n/* 4. Framework wheel */\n  const PILLARS = [\n    { name: 'Brand', icon: 'i-web', outcome: 'Build a brand people trust on sight.', desc: 'Your brand is the foundation everything else stands on. We define who you are, what makes you different, and how you show up, then make sure every touchpoint matches.', inc: ['Brand strategy and messaging', 'Logo and visual identity', 'Website design and development', 'Brand video'], quiz: 'How strong is your brand foundation?', link: 'Explore brand and web services' },\n    { name: 'Thought', icon: 'i-search', outcome: 'Get found wherever customers are looking.', desc: 'When someone needs what you sell, your name should be the first one they see on Google, in AI search, on the map, and in their feed.', inc: ['SEO and AI search visibility', 'Local and map pack rankings', 'Paid advertising', 'Social media', 'Community and local partnerships'], quiz: 'Are customers finding you first?', link: 'Explore visibility services' },\n    { name: 'Choice', icon: 'i-magnet', outcome: 'Turn attention into booked business.', desc: 'Getting seen is only half of it. We build the offers, lead magnets and follow-up that turn a visitor into a lead and a lead into a customer.', inc: ['Lead generation and lead magnets', 'Conversion-focused advertising', 'Marketing automation', 'CRM setup'], quiz: 'Is your marketing converting?', link: 'Explore lead generation services' },\n    { name: 'Referral', icon: 'i-star', outcome: 'Make your customers your best marketing channel.', desc: 'Happy customers are the most trusted ad you\\'ll ever run. We build the review, referral and loyalty systems that keep them coming back and bringing friends.', inc: ['Review generation', 'Referral programs', 'Loyalty programs', 'Retention email and automation'], quiz: 'Are your customers selling for you?', link: 'Explore loyalty and referral services' }\n  ];\n  // Wheel geometry (image is 1100×1100, centre 550, outer radius 545, core radius 168)\n  const C = 550, RO = 545, RI = 168;\n  const pt = (r, a) => { const t = a * Math.PI / 180; return [(C + r * Math.sin(t)).toFixed(1), (C - r * Math.cos(t)).toFixed(1)]; };\n  const sector = (a0, a1) => { const [x1, y1] = pt(RO, a0), [x2, y2] = pt(RO, a1), [x3, y3] = pt(RI, a1), [x4, y4] = pt(RI, a0); return `M${x1} ${y1}A${RO} ${RO} 0 0 1 ${x2} ${y2}L${x3} ${y3}A${RI} ${RI} 0 0 0 ${x4} ${y4}Z`; };\n  const circle = r => `M${C - r} ${C}a${r} ${r} 0 1 0 ${r * 2} 0a${r} ${r} 0 1 0 ${-r * 2} 0Z`;\n  const SHAPES = [circle(RI), sector(0, 118), sector(118, 240), sector(240, 360)];\n  $$('.wz').forEach(z => z.setAttribute('d', SHAPES[+z.dataset.i]));\n  const wdim = $('#wdim'), wring = $('#wring');\n  const pills = $$('.pill'), panel = $('#fw-panel'), content = $('#fw-content');\n  let locked = 0, shown = -1, timer = null, stopped = RM, ft;\n\n  const html = p => `\n    <div class=\"ptag-logo\"><span class=\"plogo\" role=\"img\" aria-label=\"First${p.name}\"><b>first</b>${p.name.toLowerCase()}</span></div>\n    <h3>${p.outcome}</h3>\n    <p class=\"fw-desc\">${p.desc}</p>\n    <p class=\"inc-label\">What's included</p>\n    <ul class=\"checks\">${p.inc.map(x => `<li><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-check\"/></svg>${x}</li>`).join('')}</ul>\n    <p class=\"quizbox\"><b>${p.quiz}</b> <a href=\"#\" data-ph-link=\"Framework Quiz\">Find out in the quiz.</a></p>\n    <a class=\"svc-link\" href=\"/firstbrand/\">${p.link}</a>`;\n\n  const show = (i, instant) => {\n    wdim.setAttribute('d', circle(RO) + SHAPES[i]);\n    wring.setAttribute('d', SHAPES[i]);\n    pills.forEach((p, k) => { p.setAttribute('aria-selected', k === i); p.tabIndex = k === i ? 0 : -1; });\n    panel.setAttribute('aria-labelledby', 'tab-' + i);\n    if (i === shown) return; shown = i;\n    clearTimeout(ft);\n    if (instant || RM) { content.innerHTML = html(PILLARS[i]); return; }\n    content.classList.add('is-fading');\n    ft = setTimeout(() => { content.innerHTML = html(PILLARS[i]); content.classList.remove('is-fading'); }, 200);\n  };\n  const stop = () => { stopped = true; clearInterval(timer); };\n  const select = i => { stop(); locked = i; show(i); };\n  show(0, true);\n\n  const hover = matchMedia('(hover: hover) and (pointer: fine)');\n  $$('.wz').forEach(z => {\n    const i = +z.dataset.i;\n    z.addEventListener('click', () => select(i));\n    z.addEventListener('mouseenter', () => { if (hover.matches) { stop(); show(i); } });\n  });\n  $('#wheel-svg').addEventListener('mouseleave', () => hover.matches && show(locked));\n  pills.forEach((p, i) => {\n    p.addEventListener('click', () => select(i));\n    p.addEventListener('focus', stop);\n    p.addEventListener('keydown', e => {\n      let n = null;\n      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % 4;\n      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i + 3) % 4;\n      if (e.key === 'Home') n = 0;\n      if (e.key === 'End') n = 3;\n      if (n !== null) { e.preventDefault(); select(n); pills[n].focus(); }\n    });\n  });\n  content.addEventListener('click', e => { if (e.target.closest('a')) stop(); });\n  if (!RM && 'IntersectionObserver' in window) {\n    new IntersectionObserver((es, ob) => es.forEach(e => {\n      if (!e.isIntersecting || stopped) return;\n      ob.disconnect();\n      timer = setInterval(() => { if (!stopped) { locked = (locked + 1) % 4; show(locked); } }, 5000);\n    }), { threshold: 0.4 }).observe($('.fw-grid'));\n  }\n\n  \n})();}catch(e){console.error('fsx-framework',e);}})();</script></div>\n<style>.fsx-framework{--navy: #26275B; --navy-deep: #1D1E4A; --blue: #4E98D8; --blue-ink: #2F78BA; --teal: #7CD2D3; --mid: #528FC0; --royal: #2E4DA5; --ink: #221C1B; --body: #3A3650; --muted: #6A6880; --bg: #F8F7F7; --white: #FFFFFF; --line: #E3E2EA; --star: #F4B400; --ph: #FFE45C; --grad: linear-gradient(90deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%); --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%); --font: \"Poppins\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif; --font-ui: \"Inter\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif; --content: 1240px; --pad-x: 24px; --shadow-card: 0 18px 40px -18px rgba(38, 39, 91, .28); --shadow-btn: 0 14px 30px -12px rgba(46, 77, 165, .55); --navy: #250762; --navy-deep: #1A0446; --blue: #3299D5; --blue-ink: #1F78B4; --ink: #1C1B22; --body: #2F2E36; --muted: #6B6A72; --tint: #EEF0F9; --aqua: #72CCD8; --royal: #174FA2; --grey: #D9D8D7; --teal: #72CCD8; --mid: #3299D5; --grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%); --grad-diag: linear-gradient(120deg, #72CCD8 0%, #174FA2 100%); --grad-text: linear-gradient(90deg, #72CCD8 0%, #3299D5 45%, #174FA2 100%); --grad-primary: linear-gradient(135deg, #2B0A80 0%, #250762 55%, #200556 100%); --grad-icon: linear-gradient(135deg, #3299D5 0%, #250762 100%); --shadow-btn: 0 14px 30px -12px rgba(37, 7, 98, .55); font-family:Poppins, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif;font-size:18px;line-height:28.8px;color:rgb(28, 27, 34); display:block;} .fsx-framework *, .fsx-framework *::before, .fsx-framework *::after{box-sizing:border-box;}\n.fsx-framework button{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;border-radius:0;text-transform:none;letter-spacing:inherit;box-shadow:none;cursor:pointer;}\n.fsx-framework button:hover, .fsx-framework button:focus{background:none;color:inherit;}\n.fsx-framework a{color:inherit;text-decoration:none;background:none;} .fsx-framework a:hover{color:inherit;}\n.fsx-framework h1, .fsx-framework h2, .fsx-framework h3, .fsx-framework h4, .fsx-framework p, .fsx-framework ul, .fsx-framework ol, .fsx-framework figure{margin:0;padding:0;} .fsx-framework ul, .fsx-framework ol{list-style:none;}\n.fsx-framework img, .fsx-framework svg{display:block;max-width:100%;height:auto;}\n.fsx-framework { --navy: #26275B; --navy-deep: #1D1E4A; --blue: #4E98D8; --blue-ink: #2F78BA; --teal: #7CD2D3; --mid: #528FC0; --royal: #2E4DA5; --ink: #221C1B; --body: #3A3650; --muted: #6A6880; --bg: #F8F7F7; --white: #FFFFFF; --line: #E3E2EA; --star: #F4B400; --ph: #FFE45C; --grad: linear-gradient(90deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%); --grad-diag: linear-gradient(120deg, #7CD2D3 0%, #528FC0 50%, #2E4DA5 100%); --font: \"Poppins\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif; --font-ui: \"Inter\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif; --content: 1240px; --pad-x: 24px; --shadow-card: 0 18px 40px -18px rgba(38, 39, 91, .28); --shadow-btn: 0 14px 30px -12px rgba(46, 77, 165, .55); }\n.fsx-framework * { box-sizing: border-box; }\n.fsx-framework { scroll-behavior: smooth; text-size-adjust: 100%; }\n.fsx-framework { margin: 0px; font-family: var(--font); font-size: 18px; line-height: 1.6; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }\n.fsx-framework img, .fsx-framework svg { display: block; max-width: 100%; }\n.fsx-framework img { height: auto; }\n.fsx-framework h2, .fsx-framework h3 { margin: 0px; font-family: var(--font); color: var(--navy); line-height: 1.1; letter-spacing: -0.015em; }\n.fsx-framework p { margin: 0px 0px 1em; }\n.fsx-framework p:last-child { margin-bottom: 0px; }\n.fsx-framework ul { margin: 0px; padding: 0px; list-style: none; }\n.fsx-framework a { color: inherit; }\n.fsx-framework button { font: inherit; color: inherit; }\n.fsx-framework .on-dark :focus-visible { outline-color: var(--white); }\n.fsx-framework .icon { width: 24px; height: 24px; flex: 0 0 auto; }\n.fsx-framework .fsx-con { width: 100%; max-width: calc(var(--content) + var(--pad-x) * 2); margin-inline: auto; padding-inline: var(--pad-x); }\n.fsx-framework .eyebrow { display: block; margin-bottom: 14px; font-weight: 600; font-size: 17px; color: var(--blue-ink); letter-spacing: 0px; }\n.fsx-framework .h2 { font-weight: 700; font-size: clamp(34px, 3.9vw, 56px); line-height: 1.08; }\n.fsx-framework .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 28px; border: 0px; border-radius: 10px; cursor: pointer; font-family: var(--font); font-weight: 500; font-size: 20px; line-height: 1.2; text-decoration: none; text-align: center; color: var(--white); background-image: ; background-repeat: ; background-attachment: ; background-origin: ; background-clip: ; background-color: ; background-size: 140% 100%; background-position: 0% 0px; box-shadow: var(--shadow-btn); text-shadow: rgba(20, 30, 80, 0.35) 0px 1px 2px; transition: background-position 0.35s, transform 0.2s, box-shadow 0.2s; }\n.fsx-framework .btn:hover { background-position: 100% 0px; transform: translateY(-2px); box-shadow: rgba(46, 77, 165, 0.65) 0px 18px 34px -12px; }\n.fsx-framework .btn--lg { padding: 18px 40px; font-size: clamp(24px, 2.6vw, 38px); border-radius: 14px; }\n.fsx-framework .cta-overlap { position: relative; z-index: 3; display: flex; justify-content: center; margin-top: -46px; margin-bottom: -46px; padding-inline: var(--pad-x); }\n.fsx-framework .gcard { --bw: 8px; --r: 40px; padding: var(--bw); border-radius: var(--r); background: var(--grad-diag); box-shadow: var(--shadow-card); }\n.fsx-framework .gcard__in { height: 100%; background: var(--white); border-radius: calc(var(--r) - var(--bw)); }\n.fsx-framework .framework { position: relative; padding-inline: 0px; }\n.fsx-framework .fw-block { position: relative; overflow: hidden; color: var(--white); border-radius: clamp(40px, 9vw, 130px); padding: clamp(56px, 6vw, 72px) 0px clamp(96px, 9vw, 140px); background: radial-gradient(640px 520px at 6% 82%, rgba(91, 186, 232, .9), rgba(78, 152, 216, .35) 45%, transparent 72%), var(--navy); }\n.fsx-framework .fw-head { max-width: 760px; margin: 0px auto 64px; text-align: center; }\n.fsx-framework .fw-head .eyebrow { color: var(--blue); }\n.fsx-framework .fw-head h2 { color: var(--white); margin-bottom: 18px; }\n.fsx-framework .fw-head p { font-size: clamp(17px, 1.6vw, 22px); line-height: 1.4; color: rgba(255, 255, 255, 0.92); }\n.fsx-framework .fw-head .identity { margin-top: 18px; font-style: italic; font-size: 17px; color: var(--teal); }\n.fsx-framework .fw-grid { display: grid; grid-template-columns: minmax(0px, 1fr) 500px; gap: clamp(32px, 5vw, 80px); align-items: center; }\n.fsx-framework .wheel { position: relative; width: 100%; max-width: 540px; margin-inline: auto; }\n.fsx-framework .wheel img { width: 100%; border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.45) 0px 30px 60px -20px; }\n.fsx-framework .wheel svg { position: absolute; inset: 0px; width: 100%; height: 100%; }\n.fsx-framework .wz { cursor: pointer; fill: transparent; outline: none; }\n.fsx-framework .wz:focus-visible { stroke: var(--white); stroke-width: 10; }\n.fsx-framework .wdim { fill: rgba(29, 30, 74, 0.4); pointer-events: none; transition: d 0.3s; }\n.fsx-framework .wring { fill: none; stroke: var(--white); stroke-width: 9; pointer-events: none; filter: drop-shadow(rgba(124, 210, 211, 0.95) 0px 0px 14px); }\n.fsx-framework .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }\n.fsx-framework .pill { padding: 10px 18px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.35); background: rgba(255, 255, 255, 0.06); color: var(--white); font-size: 15.5px; cursor: pointer; transition: 0.2s; }\n.fsx-framework .pill b { font-weight: 700; }\n.fsx-framework .pill:hover { border-color: var(--teal); }\n.fsx-framework .pill[aria-selected=\"true\"] { background: var(--white); color: var(--navy); border-color: var(--white); }\n.fsx-framework .fw-card { --bw: 16px; --r: 56px; color: var(--ink); }\n.fsx-framework .fw-card .gcard__in { padding: 40px 38px 44px; min-height: 600px; }\n.fsx-framework .fw-content { transition: opacity 0.2s; }\n.fsx-framework .fw-content.is-fading { opacity: 0; }\n.fsx-framework .fw-card h3 { font-weight: 700; font-size: clamp(26px, 2.4vw, 32px); margin-bottom: 16px; }\n.fsx-framework .fw-desc { font-size: 16.5px; color: var(--body); margin-bottom: 20px; }\n.fsx-framework .inc-label { font-weight: 600; font-size: 14.5px; color: var(--muted); margin-bottom: 8px; }\n.fsx-framework .checks li { display: flex; gap: 10px; padding: 5px 0px; font-size: 16px; }\n.fsx-framework .checks .icon { width: 19px; height: 19px; margin-top: 3px; color: var(--blue-ink); }\n.fsx-framework .quizbox { margin-top: 22px; padding: 14px 16px; border-radius: 12px; background: rgb(244, 243, 247); font-size: 15.5px; }\n.fsx-framework .quizbox b { font-weight: 600; color: var(--navy); }\n.fsx-framework .quizbox a, .fsx-framework .svc-link { color: var(--blue-ink); font-weight: 500; text-underline-offset: 3px; }\n.fsx-framework .svc-link { display: inline-block; margin-top: 22px; font-size: 16px; }\n@media (max-width: 1024px) { .fsx-framework .fw-grid { grid-template-columns: 1fr; } }\n@media (max-width: 1024px) { .fsx-framework .fw-card { max-width: 620px; width: 100%; margin-inline: auto; } }\n@media (max-width: 1024px) { .fsx-framework .fw-card .gcard__in { min-height: 0px; } }\n@media (max-width: 767px) { .fsx-framework { --pad-x: 16px; } }\n@media (max-width: 767px) { .fsx-framework { font-size: 16.5px; } }\n@media (max-width: 767px) { .fsx-framework .fw-block { border-radius: 36px; } }\n@media (max-width: 767px) { .fsx-framework .fw-card { --bw: 10px; --r: 40px; } }\n@media (max-width: 767px) { .fsx-framework .fw-card .gcard__in { padding: 28px 22px 30px; } }\n@media (max-width: 767px) { .fsx-framework .cta-overlap .btn { width: 100%; } }\n@media (prefers-reduced-motion: reduce) { .fsx-framework { scroll-behavior: auto; } }\n@media (prefers-reduced-motion: reduce) { .fsx-framework * { transition-duration: 0.01ms !important; animation: auto ease 0s 1 normal none running none !important; } }\n.fsx-framework { --navy: #250762; --navy-deep: #1A0446; --blue: #3299D5; --blue-ink: #1F78B4; --ink: #1C1B22; --body: #2F2E36; --muted: #6B6A72; --tint: #EEF0F9; --aqua: #72CCD8; --royal: #174FA2; --grey: #D9D8D7; --teal: #72CCD8; --mid: #3299D5; --grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%); --grad-diag: linear-gradient(120deg, #72CCD8 0%, #174FA2 100%); --grad-text: linear-gradient(90deg, #72CCD8 0%, #3299D5 45%, #174FA2 100%); --grad-primary: linear-gradient(135deg, #2B0A80 0%, #250762 55%, #200556 100%); --grad-icon: linear-gradient(135deg, #3299D5 0%, #250762 100%); --shadow-btn: 0 14px 30px -12px rgba(37, 7, 98, .55); }\n.fsx-framework h2, .fsx-framework h3 { color: var(--navy); }\n.fsx-framework .fw-desc { color: var(--body); }\n.fsx-framework .eyebrow { color: var(--blue-ink); font-weight: 600; letter-spacing: 0.01em; }\n.fsx-framework .on-dark .eyebrow, .fsx-framework .fw-block .eyebrow { color: rgb(143, 213, 238); }\n.fsx-framework .btn { border-radius: 10px; font-weight: 600; font-size: 18px; letter-spacing: 0.005em; color: var(--white); background-image: ; background-position-x: ; background-position-y: ; background-repeat: ; background-attachment: ; background-origin: ; background-clip: ; background-color: ; background-size: 100% 100%; text-shadow: none; border: 2px solid rgb(74, 166, 220); box-shadow: rgba(114, 204, 216, 0.35) 0px 0px 0px 1px, rgba(50, 153, 213, 0.55) 0px 10px 22px -8px; }\n.fsx-framework .btn:hover { color: var(--white); background: linear-gradient(135deg, rgb(48, 12, 140) 0%, rgb(42, 8, 116) 100%); box-shadow: rgba(114, 204, 216, 0.35) 0px 0px 0px 3px, rgba(50, 153, 213, 0.65) 0px 14px 28px -8px; }\n.fsx-framework .btn--lg { font-size: clamp(19px, 1.6vw, 22px); }\n.fsx-framework .btn--lg { border-radius: 16px; }\n.fsx-framework .plogo { display: inline-flex; align-items: baseline; font-family: var(--font); font-weight: 800; letter-spacing: -0.03em; line-height: 1; text-transform: lowercase; color: rgb(37, 7, 98); white-space: nowrap; font-size: 1em; }\n.fsx-framework .plogo b { font-weight: 800; color: rgb(50, 153, 213); }\n.fsx-framework .on-dark .plogo { color: var(--white); }\n.fsx-framework .on-dark .plogo b { color: rgb(108, 199, 238); }\n.fsx-framework .on-dark .gcard__in .plogo, .fsx-framework .on-dark .ptag-logo .plogo { color: rgb(37, 7, 98); }\n.fsx-framework .on-dark .gcard__in .plogo b, .fsx-framework .on-dark .ptag-logo .plogo b { color: rgb(50, 153, 213); }\n.fsx-framework .pills .pill { padding: 10px 18px 12px; }\n.fsx-framework .pills .pill .plogo { font-size: 20px; }\n.fsx-framework .pill[aria-selected=\"true\"] .plogo { color: rgb(37, 7, 98); }\n.fsx-framework .pill[aria-selected=\"true\"] .plogo b { color: rgb(50, 153, 213); }\n.fsx-framework .ptag-logo { display: inline-flex; margin-bottom: 18px; padding: 10px 18px 12px; border-radius: 18px; background: var(--tint); }\n.fsx-framework .ptag-logo .plogo { font-size: clamp(28px, 2.6vw, 36px); }\n.fsx-framework .eyebrow { font-family: var(--font); font-size: clamp(16px, 1.35vw, 20px); font-weight: 600; letter-spacing: 0px; color: rgb(50, 153, 213); }\n.fsx-framework .on-dark .eyebrow, .fsx-framework .fw-block .eyebrow { color: rgb(114, 204, 216); }\n.fsx-framework .h2 { font-weight: 700; font-size: clamp(32px, 3.6vw, 52px); line-height: 1.08; letter-spacing: -0.02em; }\n.fsx-framework .fw-block .h2, .fsx-framework .fw-head .h2 { color: var(--white); }\n.fsx-framework .btn { font-family: var(--font); }\n.fsx-framework .on-dark .eyebrow, .fsx-framework .fw-block .eyebrow { color: rgb(50, 153, 213) !important; }\n.fsx-framework .on-dark .checks .icon { color: rgb(50, 153, 213); }\n.fsx-framework .on-dark .plogo b { color: rgb(50, 153, 213); }\n.fsx-framework .btn { background-origin: border-box; }\n.fsx-framework .cta-overlap .btn { text-shadow: rgba(20, 30, 80, 0.25) 0px 1px 2px; box-shadow: rgba(23, 79, 162, 0.55) 0px 14px 30px -12px; background: var(--grad) !important; border-color: transparent !important; color: var(--white) !important; }\n.fsx-framework .cta-overlap .btn:hover { background: linear-gradient(90deg, rgb(122, 212, 223) 0%, rgb(28, 91, 181) 100%) !important; }\n.fsx-framework .btn { background-origin: border-box !important; background-clip: border-box !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; }\n.fsx-framework .cta-overlap .btn { outline: 0px; border-color: transparent !important; }\n.fsx-framework .fw-card .ptag-logo { background-color: rgb(244, 244, 246) !important; }\n.fsx-framework .cta-overlap .btn, .fsx-framework .cta-overlap .btn:hover { background-origin: border-box !important; background-clip: border-box !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; border-color: transparent !important; }\n</style>"
        },
        "elements": []
       }
@@ -2820,7 +1456,7 @@
    ]
   },
   {
-   "id": "2a4d700",
+   "id": "71e0372",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -2872,19 +1508,11 @@
      "bottom": "0",
      "left": "24",
      "isLinked": false
-    },
-    "margin": {
-     "unit": "px",
-     "top": "-46",
-     "right": "0",
-     "bottom": "0",
-     "left": "0",
-     "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "c8aef44",
+     "id": "67fbb37",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -2908,7 +1536,7 @@
      },
      "elements": [
       {
-       "id": "6b44b14",
+       "id": "ecf9cef",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -2934,7 +1562,7 @@
        },
        "elements": [
         {
-         "id": "2411229",
+         "id": "bb8ce6f",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -2969,7 +1597,7 @@
          },
          "elements": [
           {
-           "id": "6892557",
+           "id": "f60506a",
            "elType": "widget",
            "widgetType": "image",
            "settings": {
@@ -2989,7 +1617,7 @@
            "elements": []
           },
           {
-           "id": "b941e29",
+           "id": "47abc37",
            "elType": "widget",
            "widgetType": "html",
            "settings": {
@@ -3000,7 +1628,7 @@
          ]
         },
         {
-         "id": "514a387",
+         "id": "d072252",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3034,7 +1662,7 @@
          },
          "elements": [
           {
-           "id": "340f783",
+           "id": "933179d",
            "elType": "container",
            "isInner": true,
            "settings": {
@@ -3068,7 +1696,7 @@
            },
            "elements": [
             {
-             "id": "3c78165",
+             "id": "582cc68",
              "elType": "widget",
              "widgetType": "image",
              "settings": {
@@ -3093,7 +1721,7 @@
              "elements": []
             },
             {
-             "id": "94fb581",
+             "id": "e52c241",
              "elType": "widget",
              "widgetType": "heading",
              "settings": {
@@ -3129,14 +1757,16 @@
                "unit": "em",
                "size": -0.02,
                "sizes": []
-              }
+              },
+              "typography_text_transform": "none",
+              "typography_font_style": "normal"
              },
              "elements": []
             }
            ]
           },
           {
-           "id": "9ac8681",
+           "id": "5b9248c",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -3150,30 +1780,32 @@
             "typography_font_weight": "400",
             "typography_font_size": {
              "unit": "px",
-             "size": 19.0,
+             "size": 18.0,
              "sizes": []
             },
             "typography_font_size_tablet": {
              "unit": "px",
-             "size": 17.0,
+             "size": 16.0,
              "sizes": []
             },
             "typography_line_height": {
              "unit": "em",
              "size": 1.6,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
           {
-           "id": "8d21fe7",
+           "id": "0641e54",
            "elType": "widget",
            "widgetType": "icon-list",
            "settings": {
             "icon_list": [
              {
-              "_id": "90ae3ff",
+              "_id": "5840008",
               "text": "Fixed monthly retainer. No surprise invoices.",
               "selected_icon": {
                "value": "fas fa-check-circle",
@@ -3181,7 +1813,7 @@
               }
              },
              {
-              "_id": "6ee7d92",
+              "_id": "ff98e93",
               "text": "Six-month partnership, not a long lock-in.",
               "selected_icon": {
                "value": "fas fa-check-circle",
@@ -3189,7 +1821,7 @@
               }
              },
              {
-              "_id": "bcc5c10",
+              "_id": "49e238a",
               "text": "Results defined up front, measured monthly.",
               "selected_icon": {
                "value": "fas fa-check-circle",
@@ -3197,7 +1829,7 @@
               }
              },
              {
-              "_id": "e722a83",
+              "_id": "8a38a93",
               "text": "Read the full guarantee terms.",
               "selected_icon": {
                "value": "fas fa-check-circle",
@@ -3225,6 +1857,7 @@
              "size": 1.3,
              "sizes": []
             },
+            "icon_typography_text_transform": "none",
             "icon_typography_font_style": "italic",
             "text_color": "#FFFFFF"
            },
@@ -3239,7 +1872,7 @@
    ]
   },
   {
-   "id": "943face",
+   "id": "dd75dc7",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -3250,7 +1883,7 @@
      "size": 1240,
      "sizes": []
     },
-    "css_classes": "fs-grad",
+    "css_classes": "fs-grad fs-stats",
     "flex_gap": {
      "unit": "px",
      "size": 0,
@@ -3278,7 +1911,7 @@
    },
    "elements": [
     {
-     "id": "170f4c7",
+     "id": "49d48f9",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -3302,7 +1935,7 @@
      },
      "elements": [
       {
-       "id": "5e3934a",
+       "id": "e659d4b",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -3329,7 +1962,7 @@
        },
        "elements": [
         {
-         "id": "5041086",
+         "id": "f70f7b1",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3342,7 +1975,6 @@
            "row": "20",
            "isLinked": true
           },
-          "flex_align_items": "center",
           "padding": {
            "unit": "px",
            "top": "0",
@@ -3364,7 +1996,7 @@
          },
          "elements": [
           {
-           "id": "fb30d41",
+           "id": "30fcb10",
            "elType": "widget",
            "widgetType": "counter",
            "settings": {
@@ -3402,6 +2034,8 @@
              "size": -0.03,
              "sizes": []
             },
+            "typography_number_text_transform": "none",
+            "typography_number_font_style": "normal",
             "number_color": "#FFFFFF",
             "typography_title_typography": "custom",
             "typography_title_font_family": "Poppins",
@@ -3421,6 +2055,8 @@
              "size": 1.25,
              "sizes": []
             },
+            "typography_title_text_transform": "none",
+            "typography_title_font_style": "normal",
             "title_color": "#FFFFFF"
            },
            "elements": []
@@ -3428,7 +2064,7 @@
          ]
         },
         {
-         "id": "a7a501c",
+         "id": "80ab515",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3441,7 +2077,6 @@
            "row": "20",
            "isLinked": true
           },
-          "flex_align_items": "center",
           "padding": {
            "unit": "px",
            "top": "0",
@@ -3463,7 +2098,7 @@
          },
          "elements": [
           {
-           "id": "86bb576",
+           "id": "18c1067",
            "elType": "widget",
            "widgetType": "counter",
            "settings": {
@@ -3501,6 +2136,8 @@
              "size": -0.03,
              "sizes": []
             },
+            "typography_number_text_transform": "none",
+            "typography_number_font_style": "normal",
             "number_color": "#FFFFFF",
             "typography_title_typography": "custom",
             "typography_title_font_family": "Poppins",
@@ -3520,6 +2157,8 @@
              "size": 1.25,
              "sizes": []
             },
+            "typography_title_text_transform": "none",
+            "typography_title_font_style": "normal",
             "title_color": "#FFFFFF"
            },
            "elements": []
@@ -3527,7 +2166,7 @@
          ]
         },
         {
-         "id": "c5eb056",
+         "id": "9c48730",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3540,7 +2179,6 @@
            "row": "20",
            "isLinked": true
           },
-          "flex_align_items": "center",
           "padding": {
            "unit": "px",
            "top": "0",
@@ -3562,7 +2200,7 @@
          },
          "elements": [
           {
-           "id": "bfbc20f",
+           "id": "e2e1c18",
            "elType": "widget",
            "widgetType": "counter",
            "settings": {
@@ -3600,6 +2238,8 @@
              "size": -0.03,
              "sizes": []
             },
+            "typography_number_text_transform": "none",
+            "typography_number_font_style": "normal",
             "number_color": "#FFFFFF",
             "typography_title_typography": "custom",
             "typography_title_font_family": "Poppins",
@@ -3619,6 +2259,8 @@
              "size": 1.25,
              "sizes": []
             },
+            "typography_title_text_transform": "none",
+            "typography_title_font_style": "normal",
             "title_color": "#FFFFFF"
            },
            "elements": []
@@ -3626,7 +2268,7 @@
          ]
         },
         {
-         "id": "c48e86a",
+         "id": "c0b667f",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3639,7 +2281,6 @@
            "row": "20",
            "isLinked": true
           },
-          "flex_align_items": "center",
           "padding": {
            "unit": "px",
            "top": "0",
@@ -3661,7 +2302,7 @@
          },
          "elements": [
           {
-           "id": "2784d6e",
+           "id": "41daaef",
            "elType": "widget",
            "widgetType": "counter",
            "settings": {
@@ -3699,6 +2340,8 @@
              "size": -0.03,
              "sizes": []
             },
+            "typography_number_text_transform": "none",
+            "typography_number_font_style": "normal",
             "number_color": "#FFFFFF",
             "typography_title_typography": "custom",
             "typography_title_font_family": "Poppins",
@@ -3718,6 +2361,8 @@
              "size": 1.25,
              "sizes": []
             },
+            "typography_title_text_transform": "none",
+            "typography_title_font_style": "normal",
             "title_color": "#FFFFFF"
            },
            "elements": []
@@ -3731,7 +2376,7 @@
    ]
   },
   {
-   "id": "f903d90",
+   "id": "6329107",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -3779,7 +2424,7 @@
    },
    "elements": [
     {
-     "id": "d2efdf6",
+     "id": "7349bcc",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -3803,7 +2448,7 @@
      },
      "elements": [
       {
-       "id": "b9b670d",
+       "id": "870c266",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -3829,7 +2474,7 @@
        },
        "elements": [
         {
-         "id": "c55a889",
+         "id": "78d4055",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -3864,7 +2509,7 @@
          },
          "elements": [
           {
-           "id": "cf5dd22",
+           "id": "b81cedd",
            "elType": "widget",
            "widgetType": "image",
            "settings": {
@@ -3885,7 +2530,7 @@
            "elements": []
           },
           {
-           "id": "40c6cdd",
+           "id": "c44e78a",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3900,7 +2545,7 @@
             "typography_font_weight": "600",
             "typography_font_size": {
              "unit": "px",
-             "size": 19.5,
+             "size": 20.0,
              "sizes": []
             },
             "typography_font_size_tablet": {
@@ -3912,12 +2557,14 @@
              "unit": "em",
              "size": 1.6,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
           {
-           "id": "391669f",
+           "id": "79ce392",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -3952,12 +2599,14 @@
              "size": -0.015,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "title_color": "#FFFFFF"
            },
            "elements": []
           },
           {
-           "id": "c80c750",
+           "id": "5b446e0",
            "elType": "widget",
            "widgetType": "html",
            "settings": {
@@ -3966,7 +2615,7 @@
            "elements": []
           },
           {
-           "id": "aa2d9c1",
+           "id": "ad0abd1",
            "elType": "widget",
            "widgetType": "button",
            "settings": {
@@ -3992,6 +2641,7 @@
              "size": 1.6,
              "sizes": []
             },
+            "typography_text_transform": "none",
             "typography_font_style": "italic"
            },
            "elements": []
@@ -3999,7 +2649,7 @@
          ]
         },
         {
-         "id": "02d60b6",
+         "id": "fc54d18",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -4033,7 +2683,7 @@
          },
          "elements": [
           {
-           "id": "f02d307",
+           "id": "ed6e6ab",
            "elType": "container",
            "isInner": true,
            "settings": {
@@ -4051,7 +2701,7 @@
            },
            "elements": [
             {
-             "id": "3a5ffa7",
+             "id": "d0527b4",
              "elType": "widget",
              "widgetType": "html",
              "settings": {
@@ -4062,7 +2712,7 @@
            ]
           },
           {
-           "id": "af8200b",
+           "id": "5c695ec",
            "elType": "container",
            "isInner": true,
            "settings": {
@@ -4080,7 +2730,7 @@
            },
            "elements": [
             {
-             "id": "aa1019e",
+             "id": "f49b781",
              "elType": "widget",
              "widgetType": "html",
              "settings": {
@@ -4091,7 +2741,7 @@
            ]
           },
           {
-           "id": "bbeb925",
+           "id": "0744d42",
            "elType": "widget",
            "widgetType": "button",
            "settings": {
@@ -4109,7 +2759,7 @@
             "typography_font_weight": "500",
             "typography_font_size": {
              "unit": "px",
-             "size": 16.0,
+             "size": 18.0,
              "sizes": []
             },
             "typography_line_height": {
@@ -4117,6 +2767,7 @@
              "size": 1.6,
              "sizes": []
             },
+            "typography_text_transform": "none",
             "typography_font_style": "italic"
            },
            "elements": []
@@ -4130,7 +2781,7 @@
    ]
   },
   {
-   "id": "4b2b589",
+   "id": "b941e29",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -4177,7 +2828,7 @@
    },
    "elements": [
     {
-     "id": "c1a80f3",
+     "id": "6892557",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -4201,7 +2852,7 @@
      },
      "elements": [
       {
-       "id": "fdd039f",
+       "id": "a77e2b8",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -4231,7 +2882,7 @@
        },
        "elements": [
         {
-         "id": "ad19259",
+         "id": "710deef",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -4267,12 +2918,14 @@
            "size": -0.02,
            "sizes": []
           },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal",
           "title_color": "#FFFFFF"
          },
          "elements": []
         },
         {
-         "id": "c5bdee2",
+         "id": "b09a4e7",
          "elType": "widget",
          "widgetType": "text-editor",
          "settings": {
@@ -4306,6 +2959,8 @@
            "size": 1.6,
            "sizes": []
           },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal",
           "text_color": "#FFFFFFEB"
          },
          "elements": []
@@ -4313,7 +2968,7 @@
        ]
       },
       {
-       "id": "4c9afac",
+       "id": "67968c9",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -4347,7 +3002,7 @@
        },
        "elements": [
         {
-         "id": "51657d8",
+         "id": "a74e8d1",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -4386,11 +3041,13 @@
            "bottom": "0",
            "left": "0",
            "isLinked": false
-          }
+          },
+          "animation": "fadeInUp",
+          "animation_delay": 0
          },
          "elements": [
           {
-           "id": "bc9daab",
+           "id": "5f2ea75",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -4415,12 +3072,14 @@
              "unit": "em",
              "size": -0.04,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
           {
-           "id": "8923841",
+           "id": "85c4e3b",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -4440,7 +3099,7 @@
            "elements": []
           },
           {
-           "id": "924a334",
+           "id": "1a3ad51",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -4466,43 +3125,43 @@
              "unit": "em",
              "size": -0.015,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
           {
-           "id": "81ca5a1",
+           "id": "b50347f",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
             "editor": "<p>A [30-minute] conversation about where your marketing is today and where the gaps are. No pitch deck, no pressure.</p>",
-            "__globals__": {},
+            "__globals__": {
+             "text_color": "globals/colors?id=text"
+            },
             "typography_typography": "custom",
             "typography_font_family": "Poppins",
             "typography_font_weight": "400",
             "typography_font_size": {
              "unit": "px",
-             "size": 20.0,
-             "sizes": []
-            },
-            "typography_font_size_tablet": {
-             "unit": "px",
-             "size": 16.0,
+             "size": 15.5,
              "sizes": []
             },
             "typography_line_height": {
              "unit": "em",
-             "size": 1.4,
+             "size": 1.45,
              "sizes": []
             },
-            "text_color": "#FFFFFFEB"
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           }
          ]
         },
         {
-         "id": "d19c98d",
+         "id": "085b0f0",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -4541,11 +3200,13 @@
            "bottom": "0",
            "left": "0",
            "isLinked": false
-          }
+          },
+          "animation": "fadeInUp",
+          "animation_delay": 350
          },
          "elements": [
           {
-           "id": "2b81c5b",
+           "id": "3d0869b",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -4570,12 +3231,14 @@
              "unit": "em",
              "size": -0.04,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
           {
-           "id": "c596148",
+           "id": "5e4f6eb",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -4595,7 +3258,7 @@
            "elements": []
           },
           {
-           "id": "1ff20aa",
+           "id": "5c05d5c",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -4621,12 +3284,14 @@
              "unit": "em",
              "size": -0.015,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
           {
-           "id": "0cb5fbd",
+           "id": "133d10c",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -4646,14 +3311,16 @@
              "unit": "em",
              "size": 1.45,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           }
          ]
         },
         {
-         "id": "af7539c",
+         "id": "658c448",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -4692,11 +3359,13 @@
            "bottom": "0",
            "left": "0",
            "isLinked": false
-          }
+          },
+          "animation": "fadeInUp",
+          "animation_delay": 700
          },
          "elements": [
           {
-           "id": "0443400",
+           "id": "5d1e2cc",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -4721,12 +3390,14 @@
              "unit": "em",
              "size": -0.04,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
           {
-           "id": "a7fa1a3",
+           "id": "a4fef3e",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -4746,7 +3417,7 @@
            "elements": []
           },
           {
-           "id": "1564a8b",
+           "id": "49d1b3f",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -4772,12 +3443,14 @@
              "unit": "em",
              "size": -0.015,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
           {
-           "id": "5ea0783",
+           "id": "74c01d4",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -4797,14 +3470,16 @@
              "unit": "em",
              "size": 1.45,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           }
          ]
         },
         {
-         "id": "f6f407b",
+         "id": "7aa9346",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -4843,11 +3518,13 @@
            "bottom": "0",
            "left": "0",
            "isLinked": false
-          }
+          },
+          "animation": "fadeInUp",
+          "animation_delay": 1050
          },
          "elements": [
           {
-           "id": "5f01528",
+           "id": "77d467b",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -4872,12 +3549,14 @@
              "unit": "em",
              "size": -0.04,
              "sizes": []
-            }
+            },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal"
            },
            "elements": []
           },
           {
-           "id": "eb39ae2",
+           "id": "ffee9f7",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -4897,7 +3576,7 @@
            "elements": []
           },
           {
-           "id": "ec9b45b",
+           "id": "b27058a",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -4922,12 +3601,14 @@
              "size": -0.015,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "title_color": "#FFFFFF"
            },
            "elements": []
           },
           {
-           "id": "76b9c45",
+           "id": "8fc4720",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -4946,6 +3627,8 @@
              "size": 1.45,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "text_color": "#FFFFFF"
            },
            "elements": []
@@ -4959,7 +3642,7 @@
    ]
   },
   {
-   "id": "594394a",
+   "id": "14b2009",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -4992,7 +3675,7 @@
    },
    "elements": [
     {
-     "id": "f1bb981",
+     "id": "775d650",
      "elType": "widget",
      "widgetType": "button",
      "settings": {
@@ -5004,7 +3687,7 @@
       },
       "size": "md",
       "align": "center",
-      "_css_classes": "fs-btn-lg",
+      "_css_classes": "fs-btn-lg fs-btn-grad",
       "align_mobile": "justify"
      },
      "elements": []
@@ -5012,7 +3695,7 @@
    ]
   },
   {
-   "id": "9bbb401",
+   "id": "f296766",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -5068,7 +3751,7 @@
    },
    "elements": [
     {
-     "id": "0d712a5",
+     "id": "e76aa2b",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -5092,7 +3775,7 @@
      },
      "elements": [
       {
-       "id": "238bbbf",
+       "id": "a3f5d02",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -5122,7 +3805,7 @@
        },
        "elements": [
         {
-         "id": "2ba43c9",
+         "id": "c9a830d",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -5150,12 +3833,14 @@
            "unit": "em",
            "size": 1.6,
            "sizes": []
-          }
+          },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal"
          },
          "elements": []
         },
         {
-         "id": "9ccc348",
+         "id": "9fd75b8",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -5192,12 +3877,14 @@
            "unit": "em",
            "size": -0.02,
            "sizes": []
-          }
+          },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal"
          },
          "elements": []
         },
         {
-         "id": "55d908a",
+         "id": "cdd00a8",
          "elType": "widget",
          "widgetType": "text-editor",
          "settings": {
@@ -5232,36 +3919,38 @@
            "unit": "em",
            "size": 1.6,
            "sizes": []
-          }
+          },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal"
          },
          "elements": []
         }
        ]
       },
       {
-       "id": "fb2f067",
+       "id": "69da7ad",
        "elType": "widget",
        "widgetType": "nested-tabs",
        "settings": {
         "tabs": [
          {
-          "_id": "14334ff",
-          "tab_title": "1 · Partner with our team"
+          "_id": "766fa65",
+          "tab_title": "<i>1</i><span><b>Partner with our team</b><small>We build and run it for you, results guaranteed</small></span>"
          },
          {
-          "_id": "5d1e49a",
-          "tab_title": "2 · Do it yourself"
+          "_id": "2803299",
+          "tab_title": "<i>2</i><span><b>Do it yourself</b><small>BeFirst Training: learn the system at your pace</small></span>"
          },
          {
-          "_id": "62efb1f",
-          "tab_title": "3 · Get guided by us"
+          "_id": "bcfb89d",
+          "tab_title": "<i>3</i><span><b>Get guided by us</b><small>1:1 coaching while you do the work</small></span>"
          }
         ],
         "_css_classes": "fs-ways-tabs"
        },
        "elements": [
         {
-         "id": "389f0f1",
+         "id": "77fcea1",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -5278,7 +3967,7 @@
          },
          "elements": [
           {
-           "id": "9fd75b8",
+           "id": "3a5ffa7",
            "elType": "container",
            "isInner": true,
            "settings": {
@@ -5304,7 +3993,7 @@
            },
            "elements": [
             {
-             "id": "9e9612f",
+             "id": "6ee7d92",
              "elType": "container",
              "isInner": true,
              "settings": {
@@ -5338,7 +4027,7 @@
              },
              "elements": [
               {
-               "id": "2296410",
+               "id": "2411229",
                "elType": "widget",
                "widgetType": "image",
                "settings": {
@@ -5358,7 +4047,7 @@
                "elements": []
               },
               {
-               "id": "aea211a",
+               "id": "3c78165",
                "elType": "widget",
                "widgetType": "heading",
                "settings": {
@@ -5394,12 +4083,14 @@
                  "unit": "em",
                  "size": -0.015,
                  "sizes": []
-                }
+                },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal"
                },
                "elements": []
               },
               {
-               "id": "5872f85",
+               "id": "94fb581",
                "elType": "widget",
                "widgetType": "text-editor",
                "settings": {
@@ -5418,24 +4109,28 @@
                  "size": 1.6,
                  "sizes": []
                 },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal",
                 "text_color": "#2F2E36"
                },
                "elements": []
               },
               {
-               "id": "c729e7e",
+               "id": "340f783",
                "elType": "widget",
                "widgetType": "text-editor",
                "settings": {
                 "editor": "<p><b>[6]</b> of 25 partner spots open.</p>",
                 "_css_classes": "fs-eyebrow",
-                "__globals__": {},
+                "__globals__": {
+                 "text_color": "globals/colors?id=primary"
+                },
                 "typography_typography": "custom",
                 "typography_font_family": "Poppins",
-                "typography_font_weight": "500",
+                "typography_font_weight": "600",
                 "typography_font_size": {
                  "unit": "px",
-                 "size": 16.0,
+                 "size": 14.5,
                  "sizes": []
                 },
                 "typography_line_height": {
@@ -5443,12 +4138,13 @@
                  "size": 1.6,
                  "sizes": []
                 },
-                "text_color": "#1F78B4"
+                "typography_text_transform": "none",
+                "typography_font_style": "normal"
                },
                "elements": []
               },
               {
-               "id": "7aaf4f2",
+               "id": "90ae3ff",
                "elType": "container",
                "isInner": true,
                "settings": {
@@ -5467,7 +4163,7 @@
                },
                "elements": [
                 {
-                 "id": "7098ca8",
+                 "id": "9ac8681",
                  "elType": "widget",
                  "widgetType": "video",
                  "settings": {
@@ -5487,7 +4183,7 @@
              ]
             },
             {
-             "id": "c9a830d",
+             "id": "c55a889",
              "elType": "container",
              "isInner": true,
              "settings": {
@@ -5522,7 +4218,7 @@
              },
              "elements": [
               {
-               "id": "e9fe940",
+               "id": "bcc5c10",
                "elType": "widget",
                "widgetType": "heading",
                "settings": {
@@ -5553,12 +4249,14 @@
                  "unit": "em",
                  "size": -0.015,
                  "sizes": []
-                }
+                },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal"
                },
                "elements": []
               },
               {
-               "id": "51e3e86",
+               "id": "c48e86a",
                "elType": "container",
                "isInner": true,
                "settings": {
@@ -5584,7 +4282,7 @@
                },
                "elements": [
                 {
-                 "id": "d0e4401",
+                 "id": "fb30d41",
                  "elType": "container",
                  "isInner": true,
                  "settings": {
@@ -5619,7 +4317,7 @@
                  },
                  "elements": [
                   {
-                   "id": "7b4fc57",
+                   "id": "e722a83",
                    "elType": "widget",
                    "widgetType": "heading",
                    "settings": {
@@ -5645,18 +4343,20 @@
                      "unit": "em",
                      "size": -0.015,
                      "sizes": []
-                    }
+                    },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal"
                    },
                    "elements": []
                   },
                   {
-                   "id": "8f391ba",
+                   "id": "2a4d700",
                    "elType": "widget",
                    "widgetType": "icon-list",
                    "settings": {
                     "icon_list": [
                      {
-                      "_id": "4321ccb",
+                      "_id": "8d21fe7",
                       "text": "Have an established business ready to grow",
                       "selected_icon": {
                        "value": "fas fa-check",
@@ -5664,7 +4364,7 @@
                       }
                      },
                      {
-                      "_id": "0cef4a2",
+                      "_id": "514a387",
                       "text": "Want a long-term partner, not a vendor",
                       "selected_icon": {
                        "value": "fas fa-check",
@@ -5672,7 +4372,7 @@
                       }
                      },
                      {
-                      "_id": "6a692fc",
+                      "_id": "6b44b14",
                       "text": "Are ready to commit for six months",
                       "selected_icon": {
                        "value": "fas fa-check",
@@ -5680,7 +4380,7 @@
                       }
                      },
                      {
-                      "_id": "79238d3",
+                      "_id": "c8aef44",
                       "text": "Care about leads and revenue, not likes",
                       "selected_icon": {
                        "value": "fas fa-check",
@@ -5703,6 +4403,8 @@
                      "size": 1.45,
                      "sizes": []
                     },
+                    "icon_typography_text_transform": "none",
+                    "icon_typography_font_style": "normal",
                     "text_color": "#FFFFFFEB"
                    },
                    "elements": []
@@ -5710,7 +4412,7 @@
                  ]
                 },
                 {
-                 "id": "c623a24",
+                 "id": "2784d6e",
                  "elType": "container",
                  "isInner": true,
                  "settings": {
@@ -5745,7 +4447,7 @@
                  },
                  "elements": [
                   {
-                   "id": "2346c45",
+                   "id": "5041086",
                    "elType": "widget",
                    "widgetType": "heading",
                    "settings": {
@@ -5771,18 +4473,20 @@
                      "unit": "em",
                      "size": -0.015,
                      "sizes": []
-                    }
+                    },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal"
                    },
                    "elements": []
                   },
                   {
-                   "id": "cc203ea",
+                   "id": "c5eb056",
                    "elType": "widget",
                    "widgetType": "icon-list",
                    "settings": {
                     "icon_list": [
                      {
-                      "_id": "7ff7ae0",
+                      "_id": "86bb576",
                       "text": "Want overnight results",
                       "selected_icon": {
                        "value": "fas fa-times",
@@ -5790,7 +4494,7 @@
                       }
                      },
                      {
-                      "_id": "47dbf00",
+                      "_id": "a7a501c",
                       "text": "Are shopping for the cheapest option",
                       "selected_icon": {
                        "value": "fas fa-times",
@@ -5798,7 +4502,7 @@
                       }
                      },
                      {
-                      "_id": "6bdd99c",
+                      "_id": "bfbc20f",
                       "text": "Want marketing done to you, not with you",
                       "selected_icon": {
                        "value": "fas fa-times",
@@ -5820,6 +4524,8 @@
                      "size": 1.45,
                      "sizes": []
                     },
+                    "icon_typography_text_transform": "none",
+                    "icon_typography_font_style": "normal",
                     "text_color": "#2F2E36"
                    },
                    "elements": []
@@ -5829,13 +4535,13 @@
                ]
               },
               {
-               "id": "766fa65",
+               "id": "40c6cdd",
                "elType": "widget",
                "widgetType": "icon-list",
                "settings": {
                 "icon_list": [
                  {
-                  "_id": "77fcea1",
+                  "_id": "5e3934a",
                   "text": "Fixed monthly retainer",
                   "selected_icon": {
                    "value": "fas fa-check-circle",
@@ -5843,7 +4549,7 @@
                   }
                  },
                  {
-                  "_id": "367f3d7",
+                  "_id": "170f4c7",
                   "text": "Six-month partnership",
                   "selected_icon": {
                    "value": "fas fa-check-circle",
@@ -5851,7 +4557,7 @@
                   }
                  },
                  {
-                  "_id": "2d32fa1",
+                  "_id": "943face",
                   "text": "Results guaranteed in writing",
                   "selected_icon": {
                    "value": "fas fa-check-circle",
@@ -5859,7 +4565,7 @@
                   }
                  },
                  {
-                  "_id": "69da7ad",
+                  "_id": "cf5dd22",
                   "text": "A dedicated local team",
                   "selected_icon": {
                    "value": "fas fa-check-circle",
@@ -5882,12 +4588,14 @@
                  "size": 1.6,
                  "sizes": []
                 },
+                "icon_typography_text_transform": "none",
+                "icon_typography_font_style": "normal",
                 "text_color": "#FFFFFF"
                },
                "elements": []
               },
               {
-               "id": "cdd00a8",
+               "id": "aa2d9c1",
                "elType": "container",
                "isInner": true,
                "settings": {
@@ -5914,7 +4622,7 @@
                },
                "elements": [
                 {
-                 "id": "2803299",
+                 "id": "391669f",
                  "elType": "widget",
                  "widgetType": "text-editor",
                  "settings": {
@@ -5933,12 +4641,14 @@
                    "size": 1.6,
                    "sizes": []
                   },
+                  "typography_text_transform": "none",
+                  "typography_font_style": "normal",
                   "text_color": "#2F2E36"
                  },
                  "elements": []
                 },
                 {
-                 "id": "bcfb89d",
+                 "id": "c80c750",
                  "elType": "widget",
                  "widgetType": "button",
                  "settings": {
@@ -5972,7 +4682,9 @@
                    "unit": "em",
                    "size": 0.005,
                    "sizes": []
-                  }
+                  },
+                  "typography_text_transform": "none",
+                  "typography_font_style": "normal"
                  },
                  "elements": []
                 }
@@ -5985,7 +4697,7 @@
          ]
         },
         {
-         "id": "eef83bb",
+         "id": "367f3d7",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -6002,7 +4714,7 @@
          },
          "elements": [
           {
-           "id": "7d62a87",
+           "id": "9e9612f",
            "elType": "container",
            "isInner": true,
            "settings": {
@@ -6028,7 +4740,7 @@
            },
            "elements": [
             {
-             "id": "49279fe",
+             "id": "02d60b6",
              "elType": "container",
              "isInner": true,
              "settings": {
@@ -6062,7 +4774,7 @@
              },
              "elements": [
               {
-               "id": "a3f5d02",
+               "id": "f02d307",
                "elType": "widget",
                "widgetType": "image",
                "settings": {
@@ -6082,7 +4794,7 @@
                "elements": []
               },
               {
-               "id": "e76aa2b",
+               "id": "aa1019e",
                "elType": "widget",
                "widgetType": "heading",
                "settings": {
@@ -6108,12 +4820,14 @@
                  "unit": "em",
                  "size": -0.015,
                  "sizes": []
-                }
+                },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal"
                },
                "elements": []
               },
               {
-               "id": "f296766",
+               "id": "af8200b",
                "elType": "widget",
                "widgetType": "text-editor",
                "settings": {
@@ -6137,12 +4851,14 @@
                  "size": 1.4,
                  "sizes": []
                 },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal",
                 "text_color": "#FFFFFFEB"
                },
                "elements": []
               },
               {
-               "id": "886783d",
+               "id": "bbeb925",
                "elType": "widget",
                "widgetType": "video",
                "settings": {
@@ -6161,7 +4877,7 @@
              ]
             },
             {
-             "id": "150532a",
+             "id": "7aaf4f2",
              "elType": "container",
              "isInner": true,
              "settings": {
@@ -6196,7 +4912,7 @@
              },
              "elements": [
               {
-               "id": "8cb3ea3",
+               "id": "b9b670d",
                "elType": "widget",
                "widgetType": "heading",
                "settings": {
@@ -6222,12 +4938,14 @@
                  "unit": "em",
                  "size": -0.015,
                  "sizes": []
-                }
+                },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal"
                },
                "elements": []
               },
               {
-               "id": "560995b",
+               "id": "c596148",
                "elType": "container",
                "isInner": true,
                "settings": {
@@ -6255,7 +4973,7 @@
                },
                "elements": [
                 {
-                 "id": "4772b0c",
+                 "id": "f903d90",
                  "elType": "container",
                  "isInner": true,
                  "settings": {
@@ -6273,7 +4991,7 @@
                  },
                  "elements": [
                   {
-                   "id": "b20620c",
+                   "id": "d2efdf6",
                    "elType": "widget",
                    "widgetType": "image",
                    "settings": {
@@ -6291,7 +5009,7 @@
                  ]
                 },
                 {
-                 "id": "1b3b7c4",
+                 "id": "81ca5a1",
                  "elType": "container",
                  "isInner": true,
                  "settings": {
@@ -6316,7 +5034,7 @@
                  },
                  "elements": [
                   {
-                   "id": "5d0c20d",
+                   "id": "8923841",
                    "elType": "widget",
                    "widgetType": "heading",
                    "settings": {
@@ -6336,12 +5054,14 @@
                      "size": 1.6,
                      "sizes": []
                     },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal",
                     "title_color": "#2F2E36"
                    },
                    "elements": []
                   },
                   {
-                   "id": "787afcf",
+                   "id": "bc9daab",
                    "elType": "widget",
                    "widgetType": "text-editor",
                    "settings": {
@@ -6360,12 +5080,14 @@
                      "size": 1.55,
                      "sizes": []
                     },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal",
                     "text_color": "#2F2E36"
                    },
                    "elements": []
                   },
                   {
-                   "id": "efee24f",
+                   "id": "924a334",
                    "elType": "widget",
                    "widgetType": "button",
                    "settings": {
@@ -6395,14 +5117,16 @@
                      "unit": "em",
                      "size": 0.005,
                      "sizes": []
-                    }
+                    },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal"
                    },
                    "elements": []
                   }
                  ]
                 },
                 {
-                 "id": "c0987b3",
+                 "id": "51657d8",
                  "elType": "widget",
                  "widgetType": "html",
                  "settings": {
@@ -6413,7 +5137,7 @@
                ]
               },
               {
-               "id": "e2b82e3",
+               "id": "5ea0783",
                "elType": "container",
                "isInner": true,
                "settings": {
@@ -6441,7 +5165,7 @@
                },
                "elements": [
                 {
-                 "id": "5e3d496",
+                 "id": "1ff20aa",
                  "elType": "container",
                  "isInner": true,
                  "settings": {
@@ -6459,7 +5183,7 @@
                  },
                  "elements": [
                   {
-                   "id": "21ba12c",
+                   "id": "2b81c5b",
                    "elType": "widget",
                    "widgetType": "image",
                    "settings": {
@@ -6477,7 +5201,7 @@
                  ]
                 },
                 {
-                 "id": "501e699",
+                 "id": "0443400",
                  "elType": "container",
                  "isInner": true,
                  "settings": {
@@ -6502,7 +5226,7 @@
                  },
                  "elements": [
                   {
-                   "id": "0f434f0",
+                   "id": "0cb5fbd",
                    "elType": "widget",
                    "widgetType": "heading",
                    "settings": {
@@ -6528,12 +5252,14 @@
                      "unit": "em",
                      "size": -0.015,
                      "sizes": []
-                    }
+                    },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal"
                    },
                    "elements": []
                   },
                   {
-                   "id": "a68783c",
+                   "id": "d19c98d",
                    "elType": "widget",
                    "widgetType": "text-editor",
                    "settings": {
@@ -6557,12 +5283,14 @@
                      "size": 1.4,
                      "sizes": []
                     },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal",
                     "text_color": "#FFFFFFEB"
                    },
                    "elements": []
                   },
                   {
-                   "id": "b592344",
+                   "id": "a7fa1a3",
                    "elType": "widget",
                    "widgetType": "button",
                    "settings": {
@@ -6588,6 +5316,7 @@
                      "size": 1.6,
                      "sizes": []
                     },
+                    "typography_text_transform": "none",
                     "typography_font_style": "italic"
                    },
                    "elements": []
@@ -6595,7 +5324,7 @@
                  ]
                 },
                 {
-                 "id": "4ff52ee",
+                 "id": "1564a8b",
                  "elType": "widget",
                  "widgetType": "html",
                  "settings": {
@@ -6606,7 +5335,7 @@
                ]
               },
               {
-               "id": "1d86825",
+               "id": "ad19259",
                "elType": "container",
                "isInner": true,
                "settings": {
@@ -6634,7 +5363,7 @@
                },
                "elements": [
                 {
-                 "id": "d65fb6b",
+                 "id": "eb39ae2",
                  "elType": "container",
                  "isInner": true,
                  "settings": {
@@ -6652,7 +5381,7 @@
                  },
                  "elements": [
                   {
-                   "id": "5c40ca8",
+                   "id": "af7539c",
                    "elType": "widget",
                    "widgetType": "image",
                    "settings": {
@@ -6670,7 +5399,7 @@
                  ]
                 },
                 {
-                 "id": "486d5ae",
+                 "id": "f6f407b",
                  "elType": "container",
                  "isInner": true,
                  "settings": {
@@ -6695,7 +5424,7 @@
                  },
                  "elements": [
                   {
-                   "id": "cdd9f06",
+                   "id": "5f01528",
                    "elType": "widget",
                    "widgetType": "heading",
                    "settings": {
@@ -6721,12 +5450,14 @@
                      "unit": "em",
                      "size": -0.015,
                      "sizes": []
-                    }
+                    },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal"
                    },
                    "elements": []
                   },
                   {
-                   "id": "ce35499",
+                   "id": "ec9b45b",
                    "elType": "widget",
                    "widgetType": "text-editor",
                    "settings": {
@@ -6750,12 +5481,14 @@
                      "size": 1.4,
                      "sizes": []
                     },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal",
                     "text_color": "#FFFFFFEB"
                    },
                    "elements": []
                   },
                   {
-                   "id": "53253f7",
+                   "id": "76b9c45",
                    "elType": "widget",
                    "widgetType": "button",
                    "settings": {
@@ -6790,14 +5523,16 @@
                      "unit": "em",
                      "size": 0.005,
                      "sizes": []
-                    }
+                    },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal"
                    },
                    "elements": []
                   }
                  ]
                 },
                 {
-                 "id": "ba61b4e",
+                 "id": "c5bdee2",
                  "elType": "widget",
                  "widgetType": "html",
                  "settings": {
@@ -6808,7 +5543,7 @@
                ]
               },
               {
-               "id": "264d243",
+               "id": "c729e7e",
                "elType": "container",
                "isInner": true,
                "settings": {
@@ -6836,7 +5571,7 @@
                },
                "elements": [
                 {
-                 "id": "d630128",
+                 "id": "4c9afac",
                  "elType": "container",
                  "isInner": true,
                  "settings": {
@@ -6854,7 +5589,7 @@
                  },
                  "elements": [
                   {
-                   "id": "fca29ae",
+                   "id": "fdd039f",
                    "elType": "widget",
                    "widgetType": "image",
                    "settings": {
@@ -6872,7 +5607,7 @@
                  ]
                 },
                 {
-                 "id": "85a59b3",
+                 "id": "aea211a",
                  "elType": "container",
                  "isInner": true,
                  "settings": {
@@ -6897,7 +5632,7 @@
                  },
                  "elements": [
                   {
-                   "id": "9f12deb",
+                   "id": "c1a80f3",
                    "elType": "widget",
                    "widgetType": "heading",
                    "settings": {
@@ -6923,12 +5658,14 @@
                      "unit": "em",
                      "size": -0.015,
                      "sizes": []
-                    }
+                    },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal"
                    },
                    "elements": []
                   },
                   {
-                   "id": "ce2d873",
+                   "id": "4b2b589",
                    "elType": "widget",
                    "widgetType": "text-editor",
                    "settings": {
@@ -6952,12 +5689,14 @@
                      "size": 1.4,
                      "sizes": []
                     },
+                    "typography_text_transform": "none",
+                    "typography_font_style": "normal",
                     "text_color": "#FFFFFFEB"
                    },
                    "elements": []
                   },
                   {
-                   "id": "48df1af",
+                   "id": "2296410",
                    "elType": "widget",
                    "widgetType": "button",
                    "settings": {
@@ -6983,6 +5722,7 @@
                      "size": 1.6,
                      "sizes": []
                     },
+                    "typography_text_transform": "none",
                     "typography_font_style": "italic"
                    },
                    "elements": []
@@ -6990,7 +5730,7 @@
                  ]
                 },
                 {
-                 "id": "3fef6cc",
+                 "id": "5872f85",
                  "elType": "widget",
                  "widgetType": "html",
                  "settings": {
@@ -7001,7 +5741,7 @@
                ]
               },
               {
-               "id": "302f2a4",
+               "id": "7098ca8",
                "elType": "widget",
                "widgetType": "text-editor",
                "settings": {
@@ -7026,6 +5766,8 @@
                  "size": 1.4,
                  "sizes": []
                 },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal",
                 "text_color": "#FFFFFFEB"
                },
                "elements": []
@@ -7037,7 +5779,7 @@
          ]
         },
         {
-         "id": "72c4f62",
+         "id": "2d32fa1",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -7054,7 +5796,7 @@
          },
          "elements": [
           {
-           "id": "497e2a7",
+           "id": "51e3e86",
            "elType": "container",
            "isInner": true,
            "settings": {
@@ -7080,7 +5822,7 @@
            },
            "elements": [
             {
-             "id": "273aba0",
+             "id": "6a692fc",
              "elType": "container",
              "isInner": true,
              "settings": {
@@ -7114,7 +5856,7 @@
              },
              "elements": [
               {
-               "id": "5df9d99",
+               "id": "e9fe940",
                "elType": "widget",
                "widgetType": "image",
                "settings": {
@@ -7134,7 +5876,7 @@
                "elements": []
               },
               {
-               "id": "a3dc0da",
+               "id": "7b4fc57",
                "elType": "widget",
                "widgetType": "heading",
                "settings": {
@@ -7160,12 +5902,14 @@
                  "unit": "em",
                  "size": -0.015,
                  "sizes": []
-                }
+                },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal"
                },
                "elements": []
               },
               {
-               "id": "be737ee",
+               "id": "4321ccb",
                "elType": "widget",
                "widgetType": "text-editor",
                "settings": {
@@ -7189,12 +5933,14 @@
                  "size": 1.4,
                  "sizes": []
                 },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal",
                 "text_color": "#FFFFFFEB"
                },
                "elements": []
               },
               {
-               "id": "4d852f6",
+               "id": "0cef4a2",
                "elType": "widget",
                "widgetType": "video",
                "settings": {
@@ -7213,7 +5959,7 @@
              ]
             },
             {
-             "id": "029d975",
+             "id": "c623a24",
              "elType": "container",
              "isInner": true,
              "settings": {
@@ -7248,7 +5994,7 @@
              },
              "elements": [
               {
-               "id": "2307fe8",
+               "id": "79238d3",
                "elType": "widget",
                "widgetType": "heading",
                "settings": {
@@ -7284,12 +6030,14 @@
                  "unit": "em",
                  "size": -0.015,
                  "sizes": []
-                }
+                },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal"
                },
                "elements": []
               },
               {
-               "id": "a60fb63",
+               "id": "8f391ba",
                "elType": "widget",
                "widgetType": "html",
                "settings": {
@@ -7298,13 +6046,13 @@
                "elements": []
               },
               {
-               "id": "d8640ac",
+               "id": "47dbf00",
                "elType": "widget",
                "widgetType": "icon-list",
                "settings": {
                 "icon_list": [
                  {
-                  "_id": "a35b6f4",
+                  "_id": "d0e4401",
                   "text": "A personalized action plan after each session",
                   "selected_icon": {
                    "value": "fas fa-check",
@@ -7312,7 +6060,7 @@
                   }
                  },
                  {
-                  "_id": "19d4a27",
+                  "_id": "2346c45",
                   "text": "Between-session support by email or chat [CONFIRM]",
                   "selected_icon": {
                    "value": "fas fa-check",
@@ -7320,7 +6068,7 @@
                   }
                  },
                  {
-                  "_id": "a11d9f2",
+                  "_id": "7ff7ae0",
                   "text": "Includes the BeFirst Community at 50% off",
                   "selected_icon": {
                    "value": "fas fa-check",
@@ -7344,12 +6092,14 @@
                  "unit": "em",
                  "size": 1.6,
                  "sizes": []
-                }
+                },
+                "icon_typography_text_transform": "none",
+                "icon_typography_font_style": "normal"
                },
                "elements": []
               },
               {
-               "id": "4b2b5f9",
+               "id": "6bdd99c",
                "elType": "widget",
                "widgetType": "text-editor",
                "settings": {
@@ -7373,12 +6123,14 @@
                  "size": 1.4,
                  "sizes": []
                 },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal",
                 "text_color": "#FFFFFFEB"
                },
                "elements": []
               },
               {
-               "id": "11c9515",
+               "id": "cc203ea",
                "elType": "widget",
                "widgetType": "button",
                "settings": {
@@ -7412,7 +6164,9 @@
                  "unit": "em",
                  "size": 0.005,
                  "sizes": []
-                }
+                },
+                "typography_text_transform": "none",
+                "typography_font_style": "normal"
                },
                "elements": []
               }
@@ -7429,7 +6183,7 @@
    ]
   },
   {
-   "id": "3cb8032",
+   "id": "b592344",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -7485,7 +6239,7 @@
    },
    "elements": [
     {
-     "id": "3f9a18f",
+     "id": "a68783c",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -7510,7 +6264,7 @@
      },
      "elements": [
       {
-       "id": "b275dad",
+       "id": "8cb3ea3",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -7540,7 +6294,7 @@
        },
        "elements": [
         {
-         "id": "40ebccd",
+         "id": "886783d",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -7568,12 +6322,14 @@
            "unit": "em",
            "size": 1.6,
            "sizes": []
-          }
+          },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal"
          },
          "elements": []
         },
         {
-         "id": "b7b7d7e",
+         "id": "49279fe",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -7610,14 +6366,16 @@
            "unit": "em",
            "size": -0.02,
            "sizes": []
-          }
+          },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal"
          },
          "elements": []
         }
        ]
       },
       {
-       "id": "8041da6",
+       "id": "0f434f0",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -7647,62 +6405,96 @@
        },
        "elements": [
         {
-         "id": "c67b055",
+         "id": "5e3d496",
          "elType": "widget",
          "widgetType": "accordion",
          "settings": {
           "tabs": [
            {
-            "_id": "7186eee",
+            "_id": "b20620c",
             "tab_title": "What exactly does the FirstSearch Guarantee cover?",
             "tab_content": "<p>[Plain-English summary of the guarantee: what’s guaranteed, how it’s measured, and what happens if it’s missed.]</p>"
            },
            {
-            "_id": "1bf59c1",
+            "_id": "4772b0c",
             "tab_title": "Why a six-month commitment?",
             "tab_content": "<p>Real marketing compounds. SEO, brand recognition, reviews and automation take time to build momentum, and the first months lay the foundation for everything after. Six months is enough time to show real, measurable results, and short enough that you’re never locked in for years.</p>"
            },
            {
-            "_id": "fb8102d",
+            "_id": "5d0c20d",
             "tab_title": "How much does a partnership cost?",
             "tab_content": "<p>Every partnership is a fixed monthly retainer, so you’ll never get a surprise invoice. Partnerships start at [$X,XXX]/month, and your exact investment is set in your roadmap based on your goals.</p>"
            },
            {
-            "_id": "1e19222",
+            "_id": "787afcf",
             "tab_title": "What kinds of businesses do you work with?",
             "tab_content": "<p>We work with established local and service businesses that are ready to invest in long-term growth. [List of core industries.]</p>"
            },
            {
-            "_id": "3a5d0a2",
+            "_id": "efee24f",
             "tab_title": "Do I need to be in New Hampshire?",
             "tab_content": "<p>[We’re based in Hampton and love working with NH businesses, but we partner with businesses across [region].]</p>"
            },
            {
-            "_id": "7894adb",
+            "_id": "1b3b7c4",
             "tab_title": "Why do you only work with 25 businesses?",
             "tab_content": "<p>Because quality doesn’t scale infinitely. Capping our partner list means every client gets real strategy and senior attention, not a junior account manager juggling forty accounts.</p>"
            },
            {
-            "_id": "2b1d136",
+            "_id": "c0987b3",
             "tab_title": "How will I know if it’s working?",
             "tab_content": "<p>You’ll get monthly reporting in plain English, tied to the numbers that matter: leads, calls, bookings and revenue. No vanity metrics and no black boxes.</p>"
            },
            {
-            "_id": "b4aca4c",
+            "_id": "560995b",
             "tab_title": "Who owns my accounts, website and content?",
             "tab_content": "<p>[You do. Your website, ad accounts, content and data belong to your business, always.]</p>"
            },
            {
-            "_id": "aaed660",
+            "_id": "21ba12c",
             "tab_title": "What if I’m not ready to hire an agency?",
             "tab_content": "<p>Start with our DIY options. The FirstSearch Blueprint, online course and coaching program give you the same framework we use with our partners. Or take the Framework Quiz to see where your marketing stands today.</p>"
            }
           ],
           "title_html_tag": "h3",
+          "selected_icon": {
+           "value": "fas fa-plus",
+           "library": "fa-solid"
+          },
+          "selected_active_icon": {
+           "value": "fas fa-minus",
+           "library": "fa-solid"
+          },
+          "icon_align": "left",
           "_css_classes": "fs-faq",
           "__globals__": {
            "content_color": "globals/colors?id=text"
           },
+          "title_typography_typography": "custom",
+          "title_typography_font_family": "Poppins",
+          "title_typography_font_weight": "700",
+          "title_typography_font_size": {
+           "unit": "px",
+           "size": 25.0,
+           "sizes": []
+          },
+          "title_typography_font_size_tablet": {
+           "unit": "px",
+           "size": 18.5,
+           "sizes": []
+          },
+          "title_typography_font_size_mobile": {
+           "unit": "px",
+           "size": 18.0,
+           "sizes": []
+          },
+          "title_typography_line_height": {
+           "unit": "em",
+           "size": 1.25,
+           "sizes": []
+          },
+          "title_typography_text_transform": "none",
+          "title_typography_font_style": "normal",
           "content_typography_typography": "custom",
           "content_typography_font_family": "Poppins",
           "content_typography_font_weight": "400",
@@ -7725,7 +6517,9 @@
            "unit": "em",
            "size": 1.6,
            "sizes": []
-          }
+          },
+          "content_typography_text_transform": "none",
+          "content_typography_font_style": "normal"
          },
          "elements": []
         }
@@ -7736,7 +6530,7 @@
    ]
   },
   {
-   "id": "74f3868",
+   "id": "ce35499",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -7784,7 +6578,7 @@
    },
    "elements": [
     {
-     "id": "b3967dc",
+     "id": "cdd9f06",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -7808,7 +6602,7 @@
      },
      "elements": [
       {
-       "id": "5ad1123",
+       "id": "d65fb6b",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -7850,7 +6644,7 @@
        },
        "elements": [
         {
-         "id": "99cb83e",
+         "id": "e2b82e3",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -7875,7 +6669,7 @@
          },
          "elements": [
           {
-           "id": "ef78f0c",
+           "id": "501e699",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -7911,12 +6705,14 @@
              "size": -0.03,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "title_color": "#FFFFFF"
            },
            "elements": []
           },
           {
-           "id": "2aa611d",
+           "id": "4ff52ee",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -7941,6 +6737,8 @@
              "size": 1.6,
              "sizes": []
             },
+            "typography_text_transform": "none",
+            "typography_font_style": "normal",
             "text_color": "#FFFFFFEB"
            },
            "elements": []
@@ -7948,7 +6746,7 @@
          ]
         },
         {
-         "id": "b8b24f9",
+         "id": "5c40ca8",
          "elType": "widget",
          "widgetType": "button",
          "settings": {
@@ -7972,7 +6770,7 @@
           },
           "typography_font_size_tablet": {
            "unit": "px",
-           "size": 18.0,
+           "size": 19.0,
            "sizes": []
           },
           "typography_line_height": {
@@ -7984,7 +6782,9 @@
            "unit": "em",
            "size": 0.005,
            "sizes": []
-          }
+          },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal"
          },
          "elements": []
         }

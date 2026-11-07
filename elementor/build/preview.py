@@ -81,7 +81,7 @@ def render(e, depth=0):
         img = s.get('image_overlay', {}).get('url', '').replace(ASSET, '../upload/first-search/')
         return wrap(f'<div class="elementor-wrapper" style="aspect-ratio:16/9;background:#250762 url(\'{img}\') center bottom/contain no-repeat;display:grid;place-items:center;border-radius:28px"><span style="width:80px;height:80px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:30px;color:#250762">▶</span></div>')
     if k in ('accordion', 'toggle'):
-        its = ''.join(f'<div class="elementor-accordion-item"><div class="elementor-tab-title{" elementor-active" if n == 0 else ""}"><a class="elementor-{'toggle' if k == 'toggle' else 'accordion'}-title">{t["tab_title"]}</a></div>' + (f'<div class="elementor-tab-content">{t["tab_content"]}</div>' if n == 0 else '') + '</div>' for n, t in enumerate(s['tabs']))
+        its = ''.join(f'<div class="elementor-accordion-item"><div class="elementor-tab-title{" elementor-active" if n == 0 else ""}"><span class="elementor-{'toggle' if k == 'toggle' else 'accordion'}-icon elementor-accordion-icon-left"><span class="elementor-accordion-icon-closed"><i class="fas fa-plus"></i></span></span><a class="elementor-{'toggle' if k == 'toggle' else 'accordion'}-title">{t["tab_title"]}</a></div>' + (f'<div class="elementor-tab-content">{t["tab_content"]}</div>' if n == 0 else '') + '</div>' for n, t in enumerate(s['tabs']))
         return wrap(its)
     if k == 'counter': return wrap(f'<div style="text-align:center"><div class="elementor-counter-number-wrapper">{s.get("prefix","")}{s["ending_number"]}{s.get("suffix","")}</div><div class="elementor-counter-title">{s["title"]}</div></div>')
     if k == 'form':
@@ -215,6 +215,7 @@ def page(paths, out):
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
 <style>body{{margin:0;background:#fff}} img{{max-width:100%}} *{{box-sizing:border-box}} .e-con{{min-width:0}} .elementor-widget{{min-width:0}} p{{margin:0 0 .6em}}</style>
 <style>{kit_vars()}</style><style>{EL_DEFAULTS}</style><style>{css}</style><style>{EL_GLOBALS}</style><style>{rules}</style></head><body class="elementor-kit-5"><div class="elementor elementor-9">{body}</div></body></html>'''
+    doc = doc.replace('https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@218e548a5706c5b64bd0b77483dc2a4833e589e4/elementor/upload/first-search/', '../upload/first-search/')
     open(out, 'w').write(doc)
 if __name__ == '__main__':
     out = sys.argv[1]

@@ -180,9 +180,10 @@ a.fs-link-u {
 .elementor-button:hover,
 .elementor-button:focus-visible {
   color: #fff;
-  background: var(--fs-grad-purple-hover);
-  box-shadow: var(--fs-shadow-btn-hover);
-  transform: translateY(-1px);
+  background: var(--fs-grad);
+  border-color: transparent;
+  box-shadow: 0 14px 30px -12px rgba(23, 79, 162, .55);
+  transform: translateY(-2px);
 }
 .elementor-button:focus-visible { outline: 3px solid var(--fs-aqua); outline-offset: 3px; }
 
@@ -336,54 +337,41 @@ a.fs-link-u {
 }
 .fs-nav .elementor-nav-menu--dropdown a:hover { background: var(--fs-tint); color: var(--fs-purple); }
 
-/* ---------- 11. FAQ (Accordion / Toggle widget: add fs-faq) ---------- */
-/* Classic Accordion & Toggle */
-.fs-faq .elementor-accordion-item,
-.fs-faq .elementor-toggle-item {
-  margin-bottom: 18px;
-  border: 0 !important;
-  border-radius: 18px;
-  background: #fff;
+/* ---------- 11. FAQ (Accordion widget: add fs-faq; icons set to plus / minus) ---------- */
+.fs-faq .elementor-accordion-item, .fs-faq .elementor-toggle-item {
+  position: relative; margin-bottom: 28px; border: 0 !important; border-radius: 18px; background: #fff; overflow: hidden;
   box-shadow: 0 12px 28px -20px rgba(28, 22, 72, .55);
-  overflow: hidden;
 }
-.fs-faq .elementor-tab-title {
-  padding: 22px 28px !important;
-  border: 0 !important;
-  font-family: var(--fs-font);
-  font-weight: 700;
-  font-size: clamp(17px, 1.6vw, 22px);
-  color: var(--fs-purple);
+.fs-faq .elementor-accordion-item::before, .fs-faq .elementor-toggle-item::before {
+  content: ""; position: absolute; z-index: 1; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, var(--fs-aqua), var(--fs-royal));
 }
-.fs-faq .elementor-tab-title.elementor-active { background: var(--fs-purple); color: #fff; }
-.fs-faq .elementor-tab-title.elementor-active a,
-.fs-faq .elementor-tab-title.elementor-active .elementor-accordion-icon,
-.fs-faq .elementor-tab-title.elementor-active .elementor-toggle-icon { color: #fff; }
-.fs-faq .elementor-tab-content {
-  padding: 18px 28px 26px !important;
-  border: 0 !important;
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--fs-ink);
+.fs-faq .elementor-tab-title { display: flex; align-items: center; gap: 30px; padding: 24px 40px !important; border: 0 !important; cursor: pointer; }
+.fs-faq .elementor-tab-title:hover .elementor-accordion-title { color: var(--fs-royal); }
+.fs-faq .elementor-tab-title.elementor-active { background: var(--fs-purple); }
+.fs-faq .elementor-tab-title.elementor-active a, .fs-faq .elementor-tab-title.elementor-active:hover a { color: #fff; }
+.fs-faq .elementor-item-active, .fs-faq .elementor-accordion-item:has(.elementor-active) { box-shadow: 0 20px 40px -22px rgba(28, 22, 72, .6); }
+/* the round + / - button */
+.fs-faq .elementor-accordion-icon, .fs-faq .elementor-toggle-icon {
+  position: relative; flex: none; float: none !important; width: 56px; height: 56px; border-radius: 50%; background: var(--fs-grad-diag); order: -1;
 }
-/* Nested Accordion (newer Elementor) */
-.fs-faq .e-n-accordion-item {
-  margin-bottom: 18px;
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: 0 12px 28px -20px rgba(28, 22, 72, .55);
-  overflow: hidden;
+.fs-faq .elementor-accordion-icon > *, .fs-faq .elementor-toggle-icon > * { display: none !important; }
+.fs-faq .elementor-accordion-icon::before, .fs-faq .elementor-accordion-icon::after,
+.fs-faq .elementor-toggle-icon::before, .fs-faq .elementor-toggle-icon::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 22px; height: 3px; margin: -1.5px 0 0 -11px; border-radius: 2px; background: #fff; transition: transform .25s ease;
 }
-.fs-faq .e-n-accordion-item-title {
-  padding: 22px 28px;
-  border: 0;
-  font-family: var(--fs-font);
-  font-weight: 700;
-  color: var(--fs-purple);
+.fs-faq .elementor-accordion-icon::after, .fs-faq .elementor-toggle-icon::after { transform: rotate(90deg); }
+.fs-faq .elementor-active .elementor-accordion-icon, .fs-faq .elementor-active .elementor-toggle-icon { background: #fff; }
+.fs-faq .elementor-active .elementor-accordion-icon::before, .fs-faq .elementor-active .elementor-accordion-icon::after,
+.fs-faq .elementor-active .elementor-toggle-icon::before, .fs-faq .elementor-active .elementor-toggle-icon::after { background: var(--fs-purple); }
+.fs-faq .elementor-active .elementor-accordion-icon::after, .fs-faq .elementor-active .elementor-toggle-icon::after { transform: rotate(0); }
+.fs-faq .elementor-tab-content { padding: 24px 48px 30px 126px !important; border: 0 !important; }
+.fs-faq .elementor-tab-content p:last-child { margin-bottom: 0; }
+@media (max-width: 767px) {
+  .fs-faq .elementor-tab-title { gap: 16px; padding: 18px 20px !important; }
+  .fs-faq .elementor-accordion-icon, .fs-faq .elementor-toggle-icon { width: 42px; height: 42px; }
+  .fs-faq .elementor-accordion-icon::before, .fs-faq .elementor-accordion-icon::after { width: 16px; margin-left: -8px; }
+  .fs-faq .elementor-tab-content { padding: 18px 20px 22px 78px !important; }
 }
-.fs-faq .e-n-accordion-item[open] > .e-n-accordion-item-title { background: var(--fs-purple); }
-.fs-faq .e-n-accordion-item[open] > .e-n-accordion-item-title,
-.fs-faq .e-n-accordion-item[open] > .e-n-accordion-item-title * { color: #fff; }
 
 /* ---------- 12. Forms (Elementor Pro Form widget) ---------- */
 .elementor-form .elementor-field-group > label,
@@ -532,6 +520,13 @@ a.fs-link-u {
 .fs-step-hl { background: var(--fs-grad-diag) !important; border-color: transparent !important; }
 .fs-step-hl .elementor-heading-title:not(.fs-step-num *), .fs-step-hl .elementor-widget-text-editor { color: #fff; }
 .fs-steps { padding-top: 90px; }
+.fs-steps > .fs-step:not(:last-child)::after {
+  content: ""; position: absolute; top: 130px; left: 100%; width: 56px; height: 0; border-top: 3px dashed rgba(255, 255, 255, .9);
+  transform-origin: left; animation: fs-draw .35s ease both; animation-delay: calc(var(--fs-i, 0) * .35s + .6s);
+}
+.fs-steps > .fs-step:nth-child(1) { --fs-i: 0; } .fs-steps > .fs-step:nth-child(2) { --fs-i: 1; } .fs-steps > .fs-step:nth-child(3) { --fs-i: 2; }
+@keyframes fs-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (max-width: 1024px) { .fs-steps > .fs-step::after { display: none; } }
 
 /* Stats band (Counter widget inside fs-grad) */
 .fs-grad .elementor-counter-number-wrapper { font-family: var(--fs-font); font-weight: 800; font-size: clamp(48px, 5vw, 76px); color: #fff; }
@@ -577,7 +572,11 @@ a.fs-link-u {
 .fs-stage-tabs .e-n-tab-title { border: 1px solid rgba(255, 255, 255, .35) !important; border-radius: 999px !important; background: transparent !important; padding: 10px 20px !important; }
 .fs-stage-tabs .e-n-tab-title[aria-selected="true"] { background: #fff !important; border-color: #fff !important; }
 .fs-stage-tabs .e-n-tab-title-text { font-family: var(--fs-font); font-weight: 800; font-size: 19px; letter-spacing: -.02em; color: #fff; }
-.fs-stage-tabs .e-n-tab-title[aria-selected="true"] .e-n-tab-title-text { color: var(--fs-purple); }
+.fs-stage-tabs .e-n-tab-title .fs-plogo { font-size: inherit; color: #fff; }
+.fs-stage-tabs .e-n-tab-title .fs-plogo b { color: var(--fs-sky); }
+.fs-stage-tabs .e-n-tab-title[aria-selected="true"] .e-n-tab-title-text,
+.fs-stage-tabs .e-n-tab-title[aria-selected="true"] .fs-plogo { color: var(--fs-purple); }
+.fs-stage-tabs .e-n-tab-title:hover { border-color: #fff !important; }
 .fs-stage-tabs .e-n-tabs-content > .e-con { background: transparent; }
 
 /* Quiz callout */
@@ -720,10 +719,19 @@ a.fs-link-u {
 .fs-svc-row .elementor-image-box-title { margin: 0; font-size: 16px; }
 
 /* "Three ways" tabs */
-.fs-ways-tabs .e-n-tabs-heading { gap: 10px; padding: 8px; border-radius: 22px; background: #fff; box-shadow: 0 16px 34px -22px rgba(28, 22, 72, .4); }
-.fs-ways-tabs .e-n-tab-title { flex: 1; border: 0 !important; border-radius: 16px !important; background: transparent !important; }
-.fs-ways-tabs .e-n-tab-title[aria-selected="true"] { background: #ECECEC !important; box-shadow: inset 4px 0 0 var(--fs-sky); }
-.fs-ways-tabs .e-n-tab-title-text { font-family: var(--fs-font); font-weight: 700; font-size: 17px; color: var(--fs-purple); }
+.fs-ways-tabs .e-n-tabs-heading { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 30px; padding: 8px; border-radius: 30px; background: #fff; box-shadow: var(--fs-shadow-card); }
+.fs-ways-tabs .e-n-tab-title { display: flex !important; justify-content: flex-start !important; align-items: center; gap: 16px; padding: 16px 20px !important; border: 0 !important; border-left: 4px solid transparent !important;
+  border-radius: 22px !important; background: transparent !important; text-align: left; color: var(--fs-purple); }
+.fs-ways-tabs .e-n-tab-title:hover, .fs-ways-tabs .e-n-tab-title[aria-selected="true"] {
+  background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, var(--fs-aqua), var(--fs-royal)) border-box !important; }
+.fs-ways-tabs .e-n-tab-title-text { display: flex; align-items: center; gap: 16px; font-family: var(--fs-font); color: var(--fs-purple); text-align: left; }
+.fs-ways-tabs .e-n-tab-title-text i { width: 46px; height: 46px; flex: none; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-weight: 800; font-size: 20px; background: var(--fs-tint); color: var(--fs-purple); }
+.fs-ways-tabs .e-n-tab-title[aria-selected="true"] .e-n-tab-title-text i { background: var(--fs-grad-diag); color: #fff; }
+.fs-ways-tabs .e-n-tab-title:hover:not([aria-selected="true"]) .e-n-tab-title-text i { background: #fff; }
+.fs-ways-tabs .e-n-tab-title-text b { display: block; font-size: clamp(18px, 1.7vw, 22px); font-weight: 700; line-height: 1.2; }
+.fs-ways-tabs .e-n-tab-title-text small { display: block; margin-top: 2px; font-family: var(--fs-font-ui); font-size: 14px; font-weight: 400; color: var(--fs-muted); }
+.fs-ways-tabs .e-n-tab-title[aria-selected="true"] .e-n-tab-title-text small { color: var(--fs-ink); }
+@media (max-width: 1024px) { .fs-ways-tabs .e-n-tabs-heading { grid-template-columns: minmax(0, 1fr); } .fs-ways-tabs .e-n-tab-title { padding: 12px 14px !important; } }
 
 /* Posts widget cards */
 .fs-posts .elementor-post__card { border-radius: 24px; border: 0; box-shadow: var(--fs-shadow-card); }
@@ -817,3 +825,18 @@ a.fs-link-u {
 /* "Covers / Deliverables / Platforms" bar under the included grid (Text Editor: fs-platforms) */
 .fs-platforms { margin-top: 14px; padding: 20px 28px; border-radius: 10px; background: var(--fs-purple); box-shadow: 0 16px 28px -14px rgba(46, 77, 165, .6); }
 .fs-platforms b { font-style: normal; font-weight: 600; }
+
+/* ---------- 23. Full-width sections ----------
+   With Page Layout "Elementor Full Width" this does nothing. With the theme's default (boxed) layout it lets
+   every top-level section run edge to edge, like the HTML. */
+html, body { overflow-x: clip; }
+body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.elementor[data-elementor-type="wp-page"], .elementor[data-elementor-type="wp-post"], .elementor[data-elementor-type="single-post"], .elementor[data-elementor-type="single-page"], .elementor[data-elementor-type="single"]) > .e-con.e-parent {
+  --width: 100vw; width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+}
+/* HTML components (exact copies of interactive parts of the design) sit above the next section when they overlap it */
+.elementor-widget-html:has(.fsx) { position: relative; z-index: 3; }
+/* Stats band: numbers left-aligned with thin dividers, as in the HTML */
+.fs-stats .elementor-counter { align-items: flex-start; text-align: left; }
+.fs-stats .elementor-counter-number-wrapper { justify-content: flex-start; }
+.fs-stats .e-con-inner > .e-con > .e-con:not(:first-child), .fs-stats > .e-con > .e-con > .e-con:not(:first-child) { border-left: 1px solid rgba(255, 255, 255, .45); padding-left: 24px; }
+@media (max-width: 767px) { .fs-stats .e-con .e-con:not(:first-child) { border-left: 0; padding-left: 0; border-top: 1px solid rgba(255, 255, 255, .45); padding-top: 24px; } }
