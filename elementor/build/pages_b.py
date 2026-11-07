@@ -281,30 +281,26 @@ def contact():
                    'Send message', 'Contact'), wpct=48, cls='fs-gcard', p=pad(32), gap_=14)
     two = section(sec_head('Two easy ways to start', 'Book a time, or drop us a line.'), row(book, msg, gap_=28, align='flex-start'), cls='fs-dark', title='Book + message')
     two['settings']['_element_id'] = 'book'
-    find = [('local.webp', 'Call', '603-518-8090', 'Talk to a real person on our team', 'Call now', 'tel:+16035188090'),
-            ('email.webp', 'Email', 'chris@befirstsearch.com', '[CONFIRM: general inbox, e.g. hello@]', 'Send an email', 'mailto:chris@befirstsearch.com'),
+    find = [('phone', 'Call', '603-518-8090', 'Talk to a real person on our team', 'Call now', 'tel:+16035188090'),
+            ('email.webp', 'Email', 'chris<wbr>@befirstsearch.com', '[CONFIRM: general inbox, e.g. hello@]', 'Send an email', 'mailto:chris@befirstsearch.com'),
             ('local.webp', 'Visit', '1 Merrill Industrial Drive, Unit #4', 'Hampton, NH 03842', 'Get directions', 'https://maps.google.com/?q=1+Merrill+Industrial+Drive+Unit+4+Hampton+NH+03842'),
-            ('team.webp', 'Office hours', 'Monday to Thursday', '[9:00 AM to 5:00 PM] [CONFIRM] · Closed Friday to Sunday', '', '')]
+            ('clock', 'Office hours', 'Monday to Thursday', '[9:00 AM to 5:00 PM] [CONFIRM]', 'Closed Friday to Sunday', '')]
     return [
         hero('Contact us', 'Let’s talk about <span class="fs-gt">your marketing.</span>',
              'Book a free 30-minute consultation, or send us a message. We reply within [one business day].',
              cta=('Book a call', '#book'), link=('Send a message', '#book'), media=vid()),
         two,
-        section(sec_head('Find us', 'Prefer to reach <span class="fs-gt">out directly?</span>'),
-                row(*[col(image_box(f'assets/img/icons/{i}', f'<small>{k}</small><br>{v}', s, 'fs-tile', 'top', 'p'), link_u(c, u) if c else None,
-                          wpct=23, cls='fs-gcard', p=pad(26), gap_=8) for i, k, v, s, c, u in find], gap_=20, align='stretch', wrap=True),
-                w('google_maps', {'address': '1 Merrill Industrial Drive, Unit 4, Hampton, NH 03842', 'zoom': px(14), 'height': px(320)}, 'fs-map'),
-                cls='fs-dark fs-office', title='Find us', bg_img='assets/img/design/team-group.webp',
-                s={'background_position': 'center center', 'background_overlay_background': 'classic', 'background_overlay_color': '#250762',
-                   'background_overlay_opacity': {'unit': 'px', 'size': 0.92, 'sizes': []}}),
+        find_cards(find, map_address='1 Merrill Industrial Drive, Unit 4, Hampton, NH 03842'),
         steps('After you book', 'What happens next.', '', [
             ('You get a confirmation.', 'A calendar invite and a reminder before the call, by email and text if you opted in.'),
             ('A quick questionnaire.', 'A few short questions about your business, so we can come prepared. [CONFIRM]'),
             ('Your 30-minute call.', 'We look at what’s working, what isn’t and the best path forward. No pitch deck, no pressure.')]),
-        section(row(col(heading('Already a partner?', 'p', 'fs-eyebrow'), heading('Get support on your account.', 'h3'),
-                        text('Contact your team directly so your request goes straight to the right person.'), button('Client support', '#', 'fs-btn-white'), wpct=48, cls='fs-purple-card fs-dark', p=pad(36), gap_=12),
-                    col(heading('Not ready to talk yet?', 'p', 'fs-eyebrow'), heading('Start learning on your own.', 'h3'),
-                        text('Take the free Framework Quiz to see where your marketing stands, or start learning in the BeFirst Community.'),
-                        link_u('Take the Framework Quiz', '/framework-quiz/'), link_u('Explore BeFirst Training', '/befirst-training/'), wpct=48, cls='fs-gcard', p=pad(36), gap_=12), gap_=28, align='stretch'),
-                cls='fs-geo', title='Other ways', bg_img=GEO),
+        section(path_cards(('Already a partner?', 'Get support on your account.', 'Contact your team directly so your request goes straight to the right person.', [('Client support', '#', 'btn')]),
+                           ('Not ready to talk yet?', 'Start learning on your own.', 'Take the free Framework Quiz to see where your marketing stands, or start learning in the BeFirst Community.',
+                            [('Take the Framework Quiz', '/framework-quiz/', 'link'), ('Explore BeFirst Training', '/befirst-training/', 'link')])),
+                cls='fs-geo', title='Other ways', bg_img=GEO, p={'unit': 'px', 'top': '100', 'right': '24', 'bottom': '0', 'left': '24', 'isLinked': False},
+                s={'padding_mobile': {'unit': 'px', 'top': '64', 'right': '16', 'bottom': '0', 'left': '16', 'isLinked': False}}),
+        con(cls='fs-geo fs-band-spacer', inner=False, title='Spacer (under the last section)', bg_img=GEO, minh=230,
+            s={'min_height_tablet': px(200), 'min_height_mobile': px(170)}),
+        cta_banner('Prefer to just pick up the phone?', 'Call 603-518-8090, Monday to Thursday. You’ll talk to a real person on our team.', 'Call us', 'tel:+16035188090'),
     ]

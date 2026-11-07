@@ -1488,3 +1488,54 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 .e-con.fs-ps-row { flex-direction: row !important; flex-wrap: nowrap !important; }
 .fs-ps-row > .fs-ps-n { flex: 1 1 auto !important; width: auto !important; min-width: 0; }
 .fs-ps-row > .fs-ps-more { flex: none !important; width: auto !important; }
+
+/* ---------- 33. Contact: "Find us" cards + map, and the two path cards ---------- */
+.fs-fcards > .fs-fcard { flex: 0 0 calc((100% - 66px) / 4) !important; width: auto !important; min-width: 0; }
+.e-con.fs-fcard { border-radius: 28px; color: inherit; text-decoration: none; box-shadow: var(--fs-shadow-card); transition: transform .2s ease, box-shadow .2s ease;
+  background: radial-gradient(240px 180px at 100% 100%, rgba(50, 153, 213, .45), transparent 70%), var(--fs-purple); }
+a.e-con.fs-fcard:hover { transform: translateY(-4px); box-shadow: 0 26px 46px -22px rgba(38, 39, 91, .55); }
+.fs-fcard > .elementor-widget { margin: 0 !important; }
+.e-con.fs-fc-tile { flex: none !important; width: 64px !important; height: 64px; min-height: 64px; margin-bottom: 14px; border-radius: 18px; background: #fff;
+  box-shadow: 0 0 0 4px #3299D5, 0 0 20px 4px rgba(50, 153, 213, .55); }
+.fs-fc-tile img { width: 50px !important; height: 50px !important; object-fit: contain; }
+.fs-fc-tile[class*="--"]::before { content: ""; width: 28px; height: 28px; margin: auto; background: linear-gradient(135deg, #3299D5, #250762); }
+.e-con.fs-fc-tile[class*="--"] { display: flex !important; }
+.fs-fc-tile--phone::before { -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M21 16.4v2.8a1.9 1.9 0 0 1-2 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.7-5.7A18.6 18.6 0 0 1 2.3 4.4 1.9 1.9 0 0 1 4.2 2.4H7a1.9 1.9 0 0 1 1.9 1.6c.1.9.4 1.8.7 2.6a1.9 1.9 0 0 1-.4 2L8 9.8a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.3 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 1.9Z%22/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M21 16.4v2.8a1.9 1.9 0 0 1-2 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.7-5.7A18.6 18.6 0 0 1 2.3 4.4 1.9 1.9 0 0 1 4.2 2.4H7a1.9 1.9 0 0 1 1.9 1.6c.1.9.4 1.8.7 2.6a1.9 1.9 0 0 1-.4 2L8 9.8a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.3 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 1.9Z%22/%3E%3C/svg%3E") center / contain no-repeat; }
+.fs-fc-tile--clock::before { -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%229%22/%3E%3Cpath d=%22M12 7v5l3.5 2%22/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%229%22/%3E%3Cpath d=%22M12 7v5l3.5 2%22/%3E%3C/svg%3E") center / contain no-repeat; }
+.fs-fc-k .elementor-heading-title { font-family: var(--fs-font) !important; font-size: clamp(16px, 1.35vw, 20px) !important; font-weight: 600 !important; line-height: 1.3 !important; color: #3299D5 !important; }
+.fs-fc-v .elementor-heading-title { font-family: var(--fs-font) !important; font-size: clamp(17px, 1.5vw, 20px) !important; font-weight: 700 !important; line-height: 1.3 !important; color: #fff !important; overflow-wrap: anywhere; }
+.fs-fc-s, .fs-fc-s p { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 14px !important; line-height: 1.6 !important; color: rgba(255, 255, 255, .78) !important; }
+.fs-fcard > .fs-fc-go { margin-top: auto !important; padding-top: 16px; }
+.fs-fc-go .elementor-heading-title { display: inline-flex; align-items: center; gap: 8px; font-family: var(--fs-font) !important; font-size: 15px !important; font-weight: 600 !important;
+  line-height: 1.4 !important; color: #fff !important; text-decoration: underline; text-decoration-color: #3299D5; text-underline-offset: 5px; }
+.fs-fc-go .elementor-heading-title::after { content: ""; width: 16px; height: 16px; background: #fff; transition: transform .2s ease; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M5 12h14M13 6l6 6-6 6%22/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M5 12h14M13 6l6 6-6 6%22/%3E%3C/svg%3E") center / contain no-repeat; }
+a.e-con.fs-fcard:hover .fs-fc-go .elementor-heading-title::after { transform: translateX(4px); }
+.fs-fc-go--static .elementor-heading-title { color: rgba(255, 255, 255, .75) !important; font-weight: 500 !important; text-decoration: none; }
+.fs-fc-go--static .elementor-heading-title::after { display: none; }
+.fs-gcard.fs-map-card { --fs-bw: 8px; border-radius: 44px !important; overflow: hidden; }
+.fs-map-card .elementor-widget-google_maps, .fs-map-card iframe { display: block; margin: 0 !important; border-radius: 36px; }
+.fs-map-card iframe { height: 340px !important; width: 100%; }
+@media (max-width: 1024px) { .fs-fcards > .fs-fcard { flex-basis: calc((100% - 22px) / 2) !important; } }
+@media (max-width: 767px) { .fs-fcards > .fs-fcard { flex-basis: 100% !important; } }
+
+.fs-pths > .fs-pth { flex: 1 1 0 !important; width: auto !important; min-width: 0; }
+.e-con.fs-pth--navy { border-radius: 40px; color: #fff; box-shadow: var(--fs-shadow-card);
+  background: radial-gradient(380px 300px at 100% 100%, rgba(91, 186, 232, .75), transparent 70%), var(--fs-purple) !important; }
+.fs-gcard.fs-pth { --fs-bw: 8px; border-radius: 40px !important; }
+.fs-pth > .elementor-widget { margin: 0 !important; }
+.fs-pth-k .elementor-heading-title { font-family: var(--fs-font) !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.5 !important; color: var(--fs-sky-ink) !important;
+  text-transform: none !important; letter-spacing: 0 !important; }
+.fs-pth--navy .fs-pth-k .elementor-heading-title { color: #3299D5 !important; font-size: 20px !important; }
+.fs-pth-h .elementor-heading-title { font-family: var(--fs-font) !important; font-size: 26px !important; font-weight: 700 !important; line-height: 1.2 !important; letter-spacing: -0.015em !important; color: var(--fs-purple) !important; }
+.fs-pth--navy .fs-pth-h .elementor-heading-title { color: #fff !important; }
+.fs-pth-p, .fs-pth-p p { margin: 0; font-family: var(--fs-font) !important; font-size: 16px !important; line-height: 1.6 !important; color: var(--fs-body) !important; }
+.fs-pth--navy .fs-pth-p, .fs-pth--navy .fs-pth-p p { color: rgba(255, 255, 255, .88) !important; }
+.fs-pth > .fs-pth-acts { margin-top: auto !important; padding-top: 12px !important; align-items: flex-start !important; }
+.fs-pth-acts > .elementor-widget { margin: 0 !important; width: auto !important; }
+.fs-pth-acts .fs-link-u .elementor-button { padding: 0 !important; text-align: left; }
+.fs-pth-btn .elementor-button { font-family: var(--fs-font) !important; font-size: 18px !important; font-weight: 600 !important; color: #fff !important; border: 0 !important;
+  background: var(--fs-grad) !important; background-size: 100% 100% !important; box-shadow: 0 14px 26px -14px rgba(50, 153, 213, .9) !important; }
+.fs-pth-btn .elementor-button:hover { background: var(--fs-grad-purple-hover) !important; }
+@media (max-width: 767px) { .fs-pths { flex-direction: column !important; } .fs-pths > .fs-pth { flex: none !important; width: 100% !important; } }
+.fs-pth-acts .fs-link-u .elementor-button { font-family: var(--fs-font) !important; font-size: 20px !important; font-style: italic !important; font-weight: 500 !important; line-height: 1.5 !important; }
+.fs-pth-acts { row-gap: 12px; }

@@ -1032,7 +1032,7 @@
    ]
   },
   {
-   "id": "1146d0f",
+   "id": "bd91d8a",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -1043,7 +1043,7 @@
      "size": 1240,
      "sizes": []
     },
-    "css_classes": "fs-dark fs-office",
+    "css_classes": "fs-geo",
     "flex_gap": {
      "unit": "px",
      "size": 0,
@@ -1062,8 +1062,8 @@
     "_title": "Find us",
     "background_background": "classic",
     "background_image": {
-     "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/design/team-group.webp",
-     "id": 768430,
+     "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/design/bg-geometric.jpg",
+     "id": 748040,
      "source": "library"
     },
     "background_position": "center center",
@@ -1077,13 +1077,6 @@
      "left": "16",
      "isLinked": false
     },
-    "background_overlay_background": "classic",
-    "background_overlay_color": "#250762",
-    "background_overlay_opacity": {
-     "unit": "px",
-     "size": 0.92,
-     "sizes": []
-    },
     "padding_tablet": {
      "unit": "px",
      "top": "92",
@@ -1095,7 +1088,7 @@
    },
    "elements": [
     {
-     "id": "79ce543",
+     "id": "2b4cad5",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -1103,9 +1096,9 @@
       "flex_direction": "column",
       "flex_gap": {
        "unit": "px",
-       "size": 24,
-       "column": "24",
-       "row": "24",
+       "size": 36,
+       "column": "36",
+       "row": "36",
        "isLinked": true
       },
       "padding": {
@@ -1119,7 +1112,7 @@
      },
      "elements": [
       {
-       "id": "5bb7222",
+       "id": "a64408d",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -1160,7 +1153,7 @@
        },
        "elements": [
         {
-         "id": "f1bb866",
+         "id": "f7b4baf",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -1195,7 +1188,7 @@
          "elements": []
         },
         {
-         "id": "73dbd4d",
+         "id": "4aff7f4",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -1241,17 +1234,18 @@
        ]
       },
       {
-       "id": "41ab4a4",
+       "id": "eadc76f",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
+        "css_classes": "fs-fcards fs-nostyle",
         "flex_gap": {
          "unit": "px",
-         "size": 20,
-         "column": "20",
-         "row": "20",
+         "size": 22,
+         "column": "22",
+         "row": "22",
          "isLinked": true
         },
         "flex_align_items": "stretch",
@@ -1274,490 +1268,406 @@
          "settings": {
           "content_width": "full",
           "flex_direction": "column",
-          "css_classes": "fs-gcard",
+          "css_classes": "fs-fcard",
           "flex_gap": {
            "unit": "px",
-           "size": 8,
-           "column": "8",
-           "row": "8",
+           "size": 6,
+           "column": "6",
+           "row": "6",
            "isLinked": true
           },
           "padding": {
            "unit": "px",
-           "top": "26",
-           "right": "26",
-           "bottom": "26",
-           "left": "26",
-           "isLinked": true
+           "top": "28",
+           "right": "24",
+           "bottom": "28",
+           "left": "24",
+           "isLinked": false
           },
-          "width": {
-           "unit": "%",
-           "size": 23,
-           "sizes": []
-          },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
-           "sizes": []
+          "html_tag": "a",
+          "link": {
+           "url": "tel:+16035188090",
+           "is_external": "",
+           "nofollow": ""
           }
          },
          "elements": [
           {
+           "id": "f1bb866",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "css_classes": "fs-fc-tile fs-fc-tile--phone",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "73dbd4d",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Call",
+            "header_size": "p",
+            "_css_classes": "fs-fc-k"
+           },
+           "elements": []
+          },
+          {
+           "id": "5bb7222",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "603-518-8090",
+            "header_size": "p",
+            "_css_classes": "fs-fc-v"
+           },
+           "elements": []
+          },
+          {
            "id": "59db1b1",
            "elType": "widget",
-           "widgetType": "image-box",
+           "widgetType": "text-editor",
            "settings": {
-            "image": {
-             "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/icons/local.webp",
-             "id": 732371,
-             "source": "library"
-            },
-            "title_text": "<small>Call</small><br>603-518-8090",
-            "description_text": "Talk to a real person on our team",
-            "position": "top",
-            "title_size": "p",
-            "image_size": {
-             "unit": "%",
-             "size": 30,
-             "sizes": []
-            },
-            "_css_classes": "fs-tile",
-            "__globals__": {
-             "title_color": "globals/colors?id=primary",
-             "hover_title_color": "globals/colors?id=primary"
-            },
-            "title_typography_typography": "custom",
-            "title_typography_font_family": "Poppins",
-            "title_typography_font_weight": "700",
-            "title_typography_font_size": {
-             "unit": "px",
-             "size": 20.0,
-             "sizes": []
-            },
-            "title_typography_line_height": {
-             "unit": "em",
-             "size": 1.25,
-             "sizes": []
-            },
-            "title_typography_letter_spacing": {
-             "unit": "em",
-             "size": -0.015,
-             "sizes": []
-            },
-            "title_typography_text_transform": "none",
-            "title_typography_font_style": "normal",
-            "description_typography_typography": "custom",
-            "description_typography_font_family": "Inter",
-            "description_typography_font_weight": "400",
-            "description_typography_font_size": {
-             "unit": "px",
-             "size": 14.0,
-             "sizes": []
-            },
-            "description_typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "description_typography_text_transform": "none",
-            "description_typography_font_style": "normal",
-            "description_color": "#FFFFFFCC"
+            "editor": "<p>Talk to a real person on our team</p>",
+            "_css_classes": "fs-fc-s"
            },
            "elements": []
           },
           {
            "id": "bb9f3b6",
            "elType": "widget",
-           "widgetType": "button",
+           "widgetType": "heading",
            "settings": {
-            "text": "Call now",
-            "link": {
-             "url": "tel:+16035188090",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "_css_classes": "fs-link-u",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 15.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
+            "title": "Call now",
+            "header_size": "p",
+            "_css_classes": "fs-fc-go"
            },
            "elements": []
           }
          ]
         },
         {
-         "id": "5c5666d",
+         "id": "33e4059",
          "elType": "container",
          "isInner": true,
          "settings": {
           "content_width": "full",
           "flex_direction": "column",
-          "css_classes": "fs-gcard",
+          "css_classes": "fs-fcard",
           "flex_gap": {
            "unit": "px",
-           "size": 8,
-           "column": "8",
-           "row": "8",
+           "size": 6,
+           "column": "6",
+           "row": "6",
            "isLinked": true
           },
           "padding": {
            "unit": "px",
-           "top": "26",
-           "right": "26",
-           "bottom": "26",
-           "left": "26",
-           "isLinked": true
+           "top": "28",
+           "right": "24",
+           "bottom": "28",
+           "left": "24",
+           "isLinked": false
           },
-          "width": {
-           "unit": "%",
-           "size": 23,
-           "sizes": []
-          },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
-           "sizes": []
+          "html_tag": "a",
+          "link": {
+           "url": "mailto:chris@befirstsearch.com",
+           "is_external": "",
+           "nofollow": ""
           }
          },
          "elements": [
-          {
-           "id": "989dba4",
-           "elType": "widget",
-           "widgetType": "image-box",
-           "settings": {
-            "image": {
-             "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/icons/email.webp",
-             "id": 755380,
-             "source": "library"
-            },
-            "title_text": "<small>Email</small><br>chris@befirstsearch.com",
-            "description_text": "[CONFIRM: general inbox, e.g. hello@]",
-            "position": "top",
-            "title_size": "p",
-            "image_size": {
-             "unit": "%",
-             "size": 30,
-             "sizes": []
-            },
-            "_css_classes": "fs-tile",
-            "__globals__": {
-             "title_color": "globals/colors?id=primary",
-             "hover_title_color": "globals/colors?id=primary"
-            },
-            "title_typography_typography": "custom",
-            "title_typography_font_family": "Poppins",
-            "title_typography_font_weight": "700",
-            "title_typography_font_size": {
-             "unit": "px",
-             "size": 20.0,
-             "sizes": []
-            },
-            "title_typography_line_height": {
-             "unit": "em",
-             "size": 1.25,
-             "sizes": []
-            },
-            "title_typography_letter_spacing": {
-             "unit": "em",
-             "size": -0.015,
-             "sizes": []
-            },
-            "title_typography_text_transform": "none",
-            "title_typography_font_style": "normal",
-            "description_typography_typography": "custom",
-            "description_typography_font_family": "Inter",
-            "description_typography_font_weight": "400",
-            "description_typography_font_size": {
-             "unit": "px",
-             "size": 14.0,
-             "sizes": []
-            },
-            "description_typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "description_typography_text_transform": "none",
-            "description_typography_font_style": "normal",
-            "description_color": "#FFFFFFCC"
-           },
-           "elements": []
-          },
           {
            "id": "a4a2927",
-           "elType": "widget",
-           "widgetType": "button",
+           "elType": "container",
+           "isInner": true,
            "settings": {
-            "text": "Send an email",
-            "link": {
-             "url": "mailto:chris@befirstsearch.com",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "_css_classes": "fs-link-u",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "css_classes": "fs-fc-tile",
+            "flex_justify_content": "center",
+            "flex_align_items": "center",
+            "padding": {
              "unit": "px",
-             "size": 15.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "989dba4",
+             "elType": "widget",
+             "widgetType": "image",
+             "settings": {
+              "image": {
+               "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/icons/email.webp",
+               "id": 755380,
+               "alt": "",
+               "source": "library"
+              },
+              "image_size": "full",
+              "align": "center"
+             },
+             "elements": []
+            }
+           ]
+          },
+          {
+           "id": "5c5666d",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Email",
+            "header_size": "p",
+            "_css_classes": "fs-fc-k"
            },
            "elements": []
-          }
-         ]
-        },
-        {
-         "id": "92beedd",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "column",
-          "css_classes": "fs-gcard",
-          "flex_gap": {
-           "unit": "px",
-           "size": 8,
-           "column": "8",
-           "row": "8",
-           "isLinked": true
           },
-          "padding": {
-           "unit": "px",
-           "top": "26",
-           "right": "26",
-           "bottom": "26",
-           "left": "26",
-           "isLinked": true
-          },
-          "width": {
-           "unit": "%",
-           "size": 23,
-           "sizes": []
-          },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
-           "sizes": []
-          }
-         },
-         "elements": [
           {
            "id": "152b073",
            "elType": "widget",
-           "widgetType": "image-box",
+           "widgetType": "heading",
            "settings": {
-            "image": {
-             "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/icons/local.webp",
-             "id": 732371,
-             "source": "library"
-            },
-            "title_text": "<small>Visit</small><br>1 Merrill Industrial Drive, Unit #4",
-            "description_text": "Hampton, NH 03842",
-            "position": "top",
-            "title_size": "p",
-            "image_size": {
-             "unit": "%",
-             "size": 30,
-             "sizes": []
-            },
-            "_css_classes": "fs-tile",
-            "__globals__": {
-             "title_color": "globals/colors?id=primary",
-             "hover_title_color": "globals/colors?id=primary"
-            },
-            "title_typography_typography": "custom",
-            "title_typography_font_family": "Poppins",
-            "title_typography_font_weight": "700",
-            "title_typography_font_size": {
-             "unit": "px",
-             "size": 20.0,
-             "sizes": []
-            },
-            "title_typography_line_height": {
-             "unit": "em",
-             "size": 1.25,
-             "sizes": []
-            },
-            "title_typography_letter_spacing": {
-             "unit": "em",
-             "size": -0.015,
-             "sizes": []
-            },
-            "title_typography_text_transform": "none",
-            "title_typography_font_style": "normal",
-            "description_typography_typography": "custom",
-            "description_typography_font_family": "Inter",
-            "description_typography_font_weight": "400",
-            "description_typography_font_size": {
-             "unit": "px",
-             "size": 14.0,
-             "sizes": []
-            },
-            "description_typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "description_typography_text_transform": "none",
-            "description_typography_font_style": "normal",
-            "description_color": "#FFFFFFCC"
+            "title": "chris<wbr>@befirstsearch.com",
+            "header_size": "p",
+            "_css_classes": "fs-fc-v"
            },
            "elements": []
           },
           {
            "id": "6a6a3da",
            "elType": "widget",
-           "widgetType": "button",
+           "widgetType": "text-editor",
            "settings": {
-            "text": "Get directions",
-            "link": {
-             "url": "https://maps.google.com/?q=1+Merrill+Industrial+Drive+Unit+4+Hampton+NH+03842",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "_css_classes": "fs-link-u",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 15.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
+            "editor": "<p>[CONFIRM: general inbox, e.g. hello@]</p>",
+            "_css_classes": "fs-fc-s"
+           },
+           "elements": []
+          },
+          {
+           "id": "92beedd",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Send an email",
+            "header_size": "p",
+            "_css_classes": "fs-fc-go"
            },
            "elements": []
           }
          ]
         },
         {
-         "id": "289e58b",
+         "id": "2ef0fbf",
          "elType": "container",
          "isInner": true,
          "settings": {
           "content_width": "full",
           "flex_direction": "column",
-          "css_classes": "fs-gcard",
+          "css_classes": "fs-fcard",
           "flex_gap": {
            "unit": "px",
-           "size": 8,
-           "column": "8",
-           "row": "8",
+           "size": 6,
+           "column": "6",
+           "row": "6",
            "isLinked": true
           },
           "padding": {
            "unit": "px",
-           "top": "26",
-           "right": "26",
-           "bottom": "26",
-           "left": "26",
-           "isLinked": true
+           "top": "28",
+           "right": "24",
+           "bottom": "28",
+           "left": "24",
+           "isLinked": false
           },
-          "width": {
-           "unit": "%",
-           "size": 23,
-           "sizes": []
-          },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
-           "sizes": []
+          "html_tag": "a",
+          "link": {
+           "url": "https://maps.google.com/?q=1+Merrill+Industrial+Drive+Unit+4+Hampton+NH+03842",
+           "is_external": "",
+           "nofollow": ""
           }
          },
          "elements": [
           {
-           "id": "33e4059",
-           "elType": "widget",
-           "widgetType": "image-box",
+           "id": "41ab4a4",
+           "elType": "container",
+           "isInner": true,
            "settings": {
-            "image": {
-             "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/icons/team.webp",
-             "id": 790115,
-             "source": "library"
-            },
-            "title_text": "<small>Office hours</small><br>Monday to Thursday",
-            "description_text": "[9:00 AM to 5:00 PM] [CONFIRM] · Closed Friday to Sunday",
-            "position": "top",
-            "title_size": "p",
-            "image_size": {
-             "unit": "%",
-             "size": 30,
-             "sizes": []
-            },
-            "_css_classes": "fs-tile",
-            "__globals__": {
-             "title_color": "globals/colors?id=primary",
-             "hover_title_color": "globals/colors?id=primary"
-            },
-            "title_typography_typography": "custom",
-            "title_typography_font_family": "Poppins",
-            "title_typography_font_weight": "700",
-            "title_typography_font_size": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "css_classes": "fs-fc-tile",
+            "flex_justify_content": "center",
+            "flex_align_items": "center",
+            "padding": {
              "unit": "px",
-             "size": 20.0,
-             "sizes": []
-            },
-            "title_typography_line_height": {
-             "unit": "em",
-             "size": 1.25,
-             "sizes": []
-            },
-            "title_typography_letter_spacing": {
-             "unit": "em",
-             "size": -0.015,
-             "sizes": []
-            },
-            "title_typography_text_transform": "none",
-            "title_typography_font_style": "normal",
-            "description_typography_typography": "custom",
-            "description_typography_font_family": "Poppins",
-            "description_typography_font_weight": "400",
-            "description_typography_font_size": {
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "289e58b",
+             "elType": "widget",
+             "widgetType": "image",
+             "settings": {
+              "image": {
+               "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/icons/local.webp",
+               "id": 732371,
+               "alt": "",
+               "source": "library"
+              },
+              "image_size": "full",
+              "align": "center"
+             },
+             "elements": []
+            }
+           ]
+          },
+          {
+           "id": "56c7f71",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Visit",
+            "header_size": "p",
+            "_css_classes": "fs-fc-k"
+           },
+           "elements": []
+          },
+          {
+           "id": "79ce543",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "1 Merrill Industrial Drive, Unit #4",
+            "header_size": "p",
+            "_css_classes": "fs-fc-v"
+           },
+           "elements": []
+          },
+          {
+           "id": "1146d0f",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Hampton, NH 03842</p>",
+            "_css_classes": "fs-fc-s"
+           },
+           "elements": []
+          },
+          {
+           "id": "7fd89a8",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Get directions",
+            "header_size": "p",
+            "_css_classes": "fs-fc-go"
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "7cae595",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-fcard",
+          "flex_gap": {
+           "unit": "px",
+           "size": 6,
+           "column": "6",
+           "row": "6",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "28",
+           "right": "24",
+           "bottom": "28",
+           "left": "24",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "491efac",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "css_classes": "fs-fc-tile fs-fc-tile--clock",
+            "padding": {
              "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "description_typography_line_height": {
-             "unit": "em",
-             "size": 1.5,
-             "sizes": []
-            },
-            "description_typography_text_transform": "none",
-            "description_typography_font_style": "normal",
-            "description_color": "#2F2E36"
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "7ae0e27",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Office hours",
+            "header_size": "p",
+            "_css_classes": "fs-fc-k"
+           },
+           "elements": []
+          },
+          {
+           "id": "5e02b7e",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Monday to Thursday",
+            "header_size": "p",
+            "_css_classes": "fs-fc-v"
+           },
+           "elements": []
+          },
+          {
+           "id": "a9b5b78",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>[9:00 AM to 5:00 PM] [CONFIRM]</p>",
+            "_css_classes": "fs-fc-s"
+           },
+           "elements": []
+          },
+          {
+           "id": "b8d1826",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Closed Friday to Sunday",
+            "header_size": "p",
+            "_css_classes": "fs-fc-go fs-fc-go--static"
            },
            "elements": []
           }
@@ -1766,31 +1676,51 @@
        ]
       },
       {
-       "id": "56c7f71",
-       "elType": "widget",
-       "widgetType": "google_maps",
+       "id": "b0f2e4b",
+       "elType": "container",
+       "isInner": true,
        "settings": {
-        "address": "1 Merrill Industrial Drive, Unit 4, Hampton, NH 03842",
-        "zoom": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "fs-gcard fs-map-card",
+        "padding": {
          "unit": "px",
-         "size": 14,
-         "sizes": []
-        },
-        "height": {
-         "unit": "px",
-         "size": 320,
-         "sizes": []
-        },
-        "_css_classes": "fs-map"
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": true
+        }
        },
-       "elements": []
+       "elements": [
+        {
+         "id": "afc9614",
+         "elType": "widget",
+         "widgetType": "google_maps",
+         "settings": {
+          "address": "1 Merrill Industrial Drive, Unit 4, Hampton, NH 03842",
+          "zoom": {
+           "unit": "px",
+           "size": 14,
+           "sizes": []
+          },
+          "height": {
+           "unit": "px",
+           "size": 340,
+           "sizes": []
+          },
+          "_css_classes": "fs-map"
+         },
+         "elements": []
+        }
+       ]
       }
      ]
     }
    ]
   },
   {
-   "id": "25393bf",
+   "id": "a671ebd",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -1837,7 +1767,7 @@
    },
    "elements": [
     {
-     "id": "248eb6c",
+     "id": "4e36844",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -1861,7 +1791,7 @@
      },
      "elements": [
       {
-       "id": "fbab4a5",
+       "id": "fc661ce",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -1902,7 +1832,7 @@
        },
        "elements": [
         {
-         "id": "bd91d8a",
+         "id": "0f01c7a",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -1937,7 +1867,7 @@
          "elements": []
         },
         {
-         "id": "633a7e0",
+         "id": "0629575",
          "elType": "widget",
          "widgetType": "heading",
          "settings": {
@@ -1982,7 +1912,7 @@
        ]
       },
       {
-       "id": "a6c44a9",
+       "id": "404fa82",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -2016,7 +1946,7 @@
        },
        "elements": [
         {
-         "id": "5e02b7e",
+         "id": "25393bf",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -2061,7 +1991,7 @@
          },
          "elements": [
           {
-           "id": "2ef0fbf",
+           "id": "fbab4a5",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -2093,7 +2023,7 @@
            "elements": []
           },
           {
-           "id": "7fd89a8",
+           "id": "633a7e0",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -2113,7 +2043,7 @@
            "elements": []
           },
           {
-           "id": "491efac",
+           "id": "a6c44a9",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -2146,7 +2076,7 @@
            "elements": []
           },
           {
-           "id": "7ae0e27",
+           "id": "248eb6c",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -2175,7 +2105,7 @@
          ]
         },
         {
-         "id": "4aff7f4",
+         "id": "1e63f86",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -2220,7 +2150,7 @@
          },
          "elements": [
           {
-           "id": "b8d1826",
+           "id": "cb3aa41",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -2252,7 +2182,7 @@
            "elements": []
           },
           {
-           "id": "a9b5b78",
+           "id": "a9e782c",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -2272,7 +2202,7 @@
            "elements": []
           },
           {
-           "id": "7cae595",
+           "id": "9696340",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -2305,7 +2235,7 @@
            "elements": []
           },
           {
-           "id": "f7b4baf",
+           "id": "0233066",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -2334,7 +2264,7 @@
          ]
         },
         {
-         "id": "2b4cad5",
+         "id": "d31c26f",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -2379,7 +2309,7 @@
          },
          "elements": [
           {
-           "id": "eadc76f",
+           "id": "727194d",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -2411,7 +2341,7 @@
            "elements": []
           },
           {
-           "id": "a64408d",
+           "id": "582f9d4",
            "elType": "widget",
            "widgetType": "icon",
            "settings": {
@@ -2431,7 +2361,7 @@
            "elements": []
           },
           {
-           "id": "afc9614",
+           "id": "4bd23f3",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
@@ -2463,7 +2393,7 @@
            "elements": []
           },
           {
-           "id": "b0f2e4b",
+           "id": "1dbf237",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
@@ -2497,7 +2427,7 @@
    ]
   },
   {
-   "id": "404fa82",
+   "id": "f3d56a1",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -2520,7 +2450,7 @@
      "unit": "px",
      "top": "100",
      "right": "24",
-     "bottom": "100",
+     "bottom": "0",
      "left": "24",
      "isLinked": false
     },
@@ -2538,14 +2468,14 @@
      "unit": "px",
      "top": "64",
      "right": "16",
-     "bottom": "64",
+     "bottom": "0",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "fc661ce",
+     "id": "6b45252",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -2569,12 +2499,13 @@
      },
      "elements": [
       {
-       "id": "0629575",
+       "id": "a3654ce",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
         "flex_direction": "row",
+        "css_classes": "fs-pths fs-nostyle",
         "flex_gap": {
          "unit": "px",
          "size": 28,
@@ -2595,13 +2526,13 @@
        },
        "elements": [
         {
-         "id": "1e63f86",
+         "id": "b35876d",
          "elType": "container",
          "isInner": true,
          "settings": {
           "content_width": "full",
           "flex_direction": "column",
-          "css_classes": "fs-purple-card fs-dark",
+          "css_classes": "fs-pth fs-pth--navy fs-dark",
           "flex_gap": {
            "unit": "px",
            "size": 12,
@@ -2611,82 +2542,433 @@
           },
           "padding": {
            "unit": "px",
-           "top": "36",
-           "right": "36",
-           "bottom": "36",
-           "left": "36",
-           "isLinked": true
-          },
-          "width": {
-           "unit": "%",
-           "size": 48,
-           "sizes": []
-          },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
-           "sizes": []
+           "top": "32",
+           "right": "30",
+           "bottom": "32",
+           "left": "30",
+           "isLinked": false
           }
          },
          "elements": [
           {
-           "id": "a9e782c",
+           "id": "c922760",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
             "title": "Already a partner?",
             "header_size": "p",
-            "_css_classes": "fs-eyebrow",
-            "__globals__": {
-             "title_color": "globals/colors?id=secondary"
-            },
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 19.5,
-             "sizes": []
-            },
-            "typography_font_size_tablet": {
-             "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
+            "_css_classes": "fs-pth-k"
            },
            "elements": []
           },
           {
-           "id": "cb3aa41",
+           "id": "5bc06a8",
            "elType": "widget",
            "widgetType": "heading",
            "settings": {
             "title": "Get support on your account.",
             "header_size": "h3",
+            "_css_classes": "fs-pth-h"
+           },
+           "elements": []
+          },
+          {
+           "id": "0d8a49c",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Contact your team directly so your request goes straight to the right person.</p>",
+            "_css_classes": "fs-pth-p"
+           },
+           "elements": []
+          },
+          {
+           "id": "abfddb4",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "css_classes": "fs-pth-acts",
+            "flex_gap": {
+             "unit": "px",
+             "size": 12,
+             "column": "12",
+             "row": "12",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "851337f",
+             "elType": "widget",
+             "widgetType": "button",
+             "settings": {
+              "text": "Client support",
+              "link": {
+               "url": "#",
+               "is_external": "",
+               "nofollow": ""
+              },
+              "size": "md",
+              "_css_classes": "fs-pth-btn"
+             },
+             "elements": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "id": "51882dd",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "css_classes": "fs-gcard fs-pth",
+          "flex_gap": {
+           "unit": "px",
+           "size": 12,
+           "column": "12",
+           "row": "12",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "32",
+           "right": "30",
+           "bottom": "32",
+           "left": "30",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "e0ad584",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Not ready to talk yet?",
+            "header_size": "p",
+            "_css_classes": "fs-pth-k"
+           },
+           "elements": []
+          },
+          {
+           "id": "6ef41d9",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Start learning on your own.",
+            "header_size": "h3",
+            "_css_classes": "fs-pth-h"
+           },
+           "elements": []
+          },
+          {
+           "id": "4915e86",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Take the free Framework Quiz to see where your marketing stands, or start learning in the BeFirst Community.</p>",
+            "_css_classes": "fs-pth-p"
+           },
+           "elements": []
+          },
+          {
+           "id": "aa2bca2",
+           "elType": "container",
+           "isInner": true,
+           "settings": {
+            "content_width": "full",
+            "flex_direction": "column",
+            "css_classes": "fs-pth-acts",
+            "flex_gap": {
+             "unit": "px",
+             "size": 12,
+             "column": "12",
+             "row": "12",
+             "isLinked": true
+            },
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
+           },
+           "elements": [
+            {
+             "id": "59bf4b5",
+             "elType": "widget",
+             "widgetType": "button",
+             "settings": {
+              "text": "Take the Framework Quiz",
+              "link": {
+               "url": "/framework-quiz/",
+               "is_external": "",
+               "nofollow": ""
+              },
+              "size": "md",
+              "_css_classes": "fs-link-u"
+             },
+             "elements": []
+            },
+            {
+             "id": "edeed68",
+             "elType": "widget",
+             "widgetType": "button",
+             "settings": {
+              "text": "Explore BeFirst Training",
+              "link": {
+               "url": "/befirst-training/",
+               "is_external": "",
+               "nofollow": ""
+              },
+              "size": "md",
+              "_css_classes": "fs-link-u"
+             },
+             "elements": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "e3a2552",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "full",
+    "flex_direction": "column",
+    "css_classes": "fs-geo fs-band-spacer",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": true
+    },
+    "_title": "Spacer (under the last section)",
+    "min_height": {
+     "unit": "px",
+     "size": 230,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_image": {
+     "url": "https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/design/bg-geometric.jpg",
+     "id": 748040,
+     "source": "library"
+    },
+    "background_position": "center center",
+    "background_size": "cover",
+    "background_repeat": "no-repeat",
+    "min_height_tablet": {
+     "unit": "px",
+     "size": 200,
+     "sizes": []
+    },
+    "min_height_mobile": {
+     "unit": "px",
+     "size": 170,
+     "sizes": []
+    }
+   },
+   "elements": []
+  },
+  {
+   "id": "6686f17",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "css_classes": "fs-final",
+    "flex_gap": {
+     "unit": "px",
+     "size": 0,
+     "column": "0",
+     "row": "0",
+     "isLinked": true
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "0",
+     "left": "24",
+     "isLinked": false
+    },
+    "_title": "CTA banner",
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    },
+    "margin": {
+     "unit": "px",
+     "top": "-110",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": false
+    },
+    "z_index": 2
+   },
+   "elements": [
+    {
+     "id": "770c295",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "flex_gap": {
+       "unit": "px",
+       "size": 24,
+       "column": "24",
+       "row": "24",
+       "isLinked": true
+      },
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": true
+      }
+     },
+     "elements": [
+      {
+       "id": "1add062",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "fs-grad fs-cta-banner",
+        "flex_gap": {
+         "unit": "px",
+         "size": 26,
+         "column": "26",
+         "row": "26",
+         "isLinked": true
+        },
+        "flex_align_items": "center",
+        "padding": {
+         "unit": "px",
+         "top": "56",
+         "right": "86",
+         "bottom": "56",
+         "left": "86",
+         "isLinked": false
+        },
+        "padding_tablet": {
+         "unit": "px",
+         "top": "48",
+         "right": "48",
+         "bottom": "48",
+         "left": "48",
+         "isLinked": true
+        },
+        "padding_mobile": {
+         "unit": "px",
+         "top": "40",
+         "right": "28",
+         "bottom": "40",
+         "left": "28",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "c6edf00",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "flex_gap": {
+           "unit": "px",
+           "size": 10,
+           "column": "10",
+           "row": "10",
+           "isLinked": true
+          },
+          "flex_align_items": "center",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": true
+          }
+         },
+         "elements": [
+          {
+           "id": "e48e35e",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Prefer to just pick up the phone?",
+            "header_size": "h2",
+            "align": "center",
             "__globals__": {},
             "typography_typography": "custom",
             "typography_font_family": "Poppins",
             "typography_font_weight": "700",
             "typography_font_size": {
              "unit": "px",
-             "size": 26.0,
+             "size": 66.0,
+             "sizes": []
+            },
+            "typography_font_size_tablet": {
+             "unit": "px",
+             "size": 47.0,
+             "sizes": []
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 36.0,
              "sizes": []
             },
             "typography_line_height": {
              "unit": "em",
-             "size": 1.1,
+             "size": 1.04,
              "sizes": []
             },
             "typography_letter_spacing": {
              "unit": "em",
-             "size": -0.015,
+             "size": -0.03,
              "sizes": []
             },
             "typography_text_transform": "none",
@@ -2696,16 +2978,22 @@
            "elements": []
           },
           {
-           "id": "9696340",
+           "id": "59d42ca",
            "elType": "widget",
            "widgetType": "text-editor",
            "settings": {
-            "editor": "<p>Contact your team directly so your request goes straight to the right person.</p>",
+            "editor": "<p>Call 603-518-8090, Monday to Thursday. You’ll talk to a real person on our team.</p>",
+            "align": "center",
             "__globals__": {},
             "typography_typography": "custom",
             "typography_font_family": "Poppins",
             "typography_font_weight": "400",
             "typography_font_size": {
+             "unit": "px",
+             "size": 18.0,
+             "sizes": []
+            },
+            "typography_font_size_tablet": {
              "unit": "px",
              "size": 16.0,
              "sizes": []
@@ -2720,233 +3008,51 @@
             "text_color": "#FFFFFFEB"
            },
            "elements": []
-          },
-          {
-           "id": "0233066",
-           "elType": "widget",
-           "widgetType": "button",
-           "settings": {
-            "text": "Client support",
-            "link": {
-             "url": "#",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "_css_classes": "fs-btn-white",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 18.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.2,
-             "sizes": []
-            },
-            "typography_letter_spacing": {
-             "unit": "em",
-             "size": 0.005,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
           }
          ]
         },
         {
-         "id": "0f01c7a",
-         "elType": "container",
-         "isInner": true,
+         "id": "99c7079",
+         "elType": "widget",
+         "widgetType": "button",
          "settings": {
-          "content_width": "full",
-          "flex_direction": "column",
-          "css_classes": "fs-gcard",
-          "flex_gap": {
-           "unit": "px",
-           "size": 12,
-           "column": "12",
-           "row": "12",
-           "isLinked": true
+          "text": "Call us",
+          "link": {
+           "url": "tel:+16035188090",
+           "is_external": "",
+           "nofollow": ""
           },
-          "padding": {
+          "size": "md",
+          "align": "center",
+          "_css_classes": "fs-btn-lg",
+          "__globals__": {},
+          "typography_typography": "custom",
+          "typography_font_family": "Poppins",
+          "typography_font_weight": "600",
+          "typography_font_size": {
            "unit": "px",
-           "top": "36",
-           "right": "36",
-           "bottom": "36",
-           "left": "36",
-           "isLinked": true
-          },
-          "width": {
-           "unit": "%",
-           "size": 48,
+           "size": 22.0,
            "sizes": []
           },
-          "width_mobile": {
-           "unit": "%",
-           "size": 100,
+          "typography_font_size_tablet": {
+           "unit": "px",
+           "size": 19.0,
            "sizes": []
-          }
+          },
+          "typography_line_height": {
+           "unit": "em",
+           "size": 1.2,
+           "sizes": []
+          },
+          "typography_letter_spacing": {
+           "unit": "em",
+           "size": 0.005,
+           "sizes": []
+          },
+          "typography_text_transform": "none",
+          "typography_font_style": "normal"
          },
-         "elements": [
-          {
-           "id": "582f9d4",
-           "elType": "widget",
-           "widgetType": "heading",
-           "settings": {
-            "title": "Not ready to talk yet?",
-            "header_size": "p",
-            "_css_classes": "fs-eyebrow",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "600",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 15.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal",
-            "title_color": "#1F78B4"
-           },
-           "elements": []
-          },
-          {
-           "id": "727194d",
-           "elType": "widget",
-           "widgetType": "heading",
-           "settings": {
-            "title": "Start learning on your own.",
-            "header_size": "h3",
-            "__globals__": {
-             "title_color": "globals/colors?id=primary"
-            },
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "700",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 26.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.1,
-             "sizes": []
-            },
-            "typography_letter_spacing": {
-             "unit": "em",
-             "size": -0.015,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal"
-           },
-           "elements": []
-          },
-          {
-           "id": "4bd23f3",
-           "elType": "widget",
-           "widgetType": "text-editor",
-           "settings": {
-            "editor": "<p>Take the free Framework Quiz to see where your marketing stands, or start learning in the BeFirst Community.</p>",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "400",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 16.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "normal",
-            "text_color": "#2F2E36"
-           },
-           "elements": []
-          },
-          {
-           "id": "1dbf237",
-           "elType": "widget",
-           "widgetType": "button",
-           "settings": {
-            "text": "Take the Framework Quiz",
-            "link": {
-             "url": "/framework-quiz/",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "_css_classes": "fs-link-u",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "500",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 20.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "italic"
-           },
-           "elements": []
-          },
-          {
-           "id": "d31c26f",
-           "elType": "widget",
-           "widgetType": "button",
-           "settings": {
-            "text": "Explore BeFirst Training",
-            "link": {
-             "url": "/befirst-training/",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "_css_classes": "fs-link-u",
-            "__globals__": {},
-            "typography_typography": "custom",
-            "typography_font_family": "Poppins",
-            "typography_font_weight": "500",
-            "typography_font_size": {
-             "unit": "px",
-             "size": 20.0,
-             "sizes": []
-            },
-            "typography_line_height": {
-             "unit": "em",
-             "size": 1.6,
-             "sizes": []
-            },
-            "typography_text_transform": "none",
-            "typography_font_style": "italic"
-           },
-           "elements": []
-          }
-         ]
+         "elements": []
         }
        ]
       }

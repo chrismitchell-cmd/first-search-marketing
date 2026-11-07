@@ -300,11 +300,11 @@ def quiz(h2='Not sure which stage is holding you back?',
     return section(card, cls='fs-geo', title='Quiz callout', bg_img='assets/img/design/bg-geometric.jpg')
 
 # ---------- CTA banner above the footer ----------
-def cta_banner(h2='Ready to unlock growth?', sub='[6] of 25 partner spots open. Let’s find out if you’re a fit.', label='Let’s Talk!'):
+def cta_banner(h2='Ready to unlock growth?', sub='[6] of 25 partner spots open. Let’s find out if you’re a fit.', label='Let’s Talk!', url='/contact-us/'):
     """Final call to action, as in the HTML: a gradient card pulled 110px up into the section above,
     with the footer purple behind its lower part (class fs-final). Spacing is set here, not in CSS."""
     card = con(con(heading(h2, 'h2', '', 'center'), text(sub, '', 'center'), gap_=10, align='center'),
-               button(label, '/contact-us/', 'fs-btn-lg', 'center'),
+               button(label, url, 'fs-btn-lg', 'center'),
                cls='fs-grad fs-cta-banner', gap_=26, align='center', p=pad(56, 86), s={'padding_tablet': pad(48, 48), 'padding_mobile': pad(40, 28)})
     sec = section(card, title='CTA banner', cls='fs-final', p={'unit': 'px', 'top': '0', 'right': '24', 'bottom': '0', 'left': '24', 'isLinked': False},
                   s={'margin': {'unit': 'px', 'top': '-110', 'right': '0', 'bottom': '0', 'left': '0', 'isLinked': False}, 'z_index': 2,
@@ -515,3 +515,30 @@ def delivery_band(eb='How it’s delivered', h2='No à la carte menu. One partne
     return section(con(left, box, d='row', gap_=40, align='center', cls='fs-del-row fs-nostyle'), cls='fs-dark fs-band', title='Delivery',
                    p={'unit': 'px', 'top': '80', 'right': '24', 'bottom': '80', 'left': '24', 'isLinked': False},
                    s={'padding_mobile': {'unit': 'px', 'top': '56', 'right': '16', 'bottom': '56', 'left': '16', 'isLinked': False}})
+
+
+# ---------- Contact: "Find us" cards (navy, glowing icon tile, label, value, note, link) + map in a gradient frame ----------
+def find_cards(items, eb='Find us', h2='Prefer to reach <span class="fs-gt">out directly?</span>', map_address=None):
+    """items: (icon: webp in assets/img/icons or 'phone'/'clock' line icon, label, value, note, link text, url)"""
+    cards = []
+    for ico, k, v, note, go, url in items:
+        tile = (con(image(f'assets/img/icons/{ico}', '', None, 'center', ''), cls='fs-fc-tile', justify='center', align='center') if ico.endswith('.webp')
+                else con(cls=f'fs-fc-tile fs-fc-tile--{ico}'))
+        kids = [tile, heading(k, 'p', 'fs-fc-k'), heading(v, 'p', 'fs-fc-v'), text(note, 'fs-fc-s'),
+                heading(go, 'p', 'fs-fc-go' + ('' if url else ' fs-fc-go--static'))]
+        s = {'html_tag': 'a', 'link': {'url': url, 'is_external': '', 'nofollow': ''}} if url else None
+        cards.append(con(*kids, cls='fs-fcard', gap_=6, p=pad(28, 24, 28, 24), s=s))
+    kids = [sec_head(eb, h2), row(*cards, gap_=22, wrap=True, align='stretch', cls='fs-fcards fs-nostyle')]
+    if map_address:
+        kids.append(con(w('google_maps', {'address': map_address, 'zoom': px(14), 'height': px(340)}, 'fs-map'), cls='fs-gcard fs-map-card'))
+    return section(*kids, cls='fs-geo', title='Find us', bg_img='assets/img/design/bg-geometric.jpg', gap_=36)
+
+# ---------- Two "path" cards: navy card + gradient-border card (eyebrow, heading, text, button or links) ----------
+def path_cards(left, right):
+    """each: (eyebrow, heading, text, [(label, url, kind)]) - kind 'btn' or 'link'"""
+    def card(spec, navy):
+        k, h, p, actions = spec
+        acts = [button(l, u, 'fs-pth-btn') if kind == 'btn' else link_u(l, u) for l, u, kind in actions]
+        return con(heading(k, 'p', 'fs-pth-k'), heading(h, 'h3', 'fs-pth-h'), text(p, 'fs-pth-p'), con(*acts, gap_=12, cls='fs-pth-acts'),
+                   cls=('fs-pth fs-pth--navy fs-dark' if navy else 'fs-gcard fs-pth'), gap_=12, p=pad(32, 30, 32, 30))
+    return row(card(left, True), card(right, False), gap_=28, align='stretch', cls='fs-pths fs-nostyle')
