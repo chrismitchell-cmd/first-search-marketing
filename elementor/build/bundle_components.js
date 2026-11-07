@@ -15,6 +15,18 @@ const LINKS = { 'contact.html': '/contact-us/', 'about.html': '/about-us/', 'why
 const COMPONENTS = [
   { name: 'hero-phone', page: 'rebrand-homepage.html', root: '.hero .phone', js: ['/* 1. Hero demo', '/* 4. Framework wheel'] },
   { name: 'framework', page: 'rebrand-homepage.html', root: 'section.framework', js: ['/* 4. Framework wheel', '/* 5. Guarantee popup'] },
+  // "Three ways": tabs (click + arrow keys), partner-spots bar, video placeholders - from the design's shared script
+  { name: 'ways', page: 'rebrand-homepage.html', root: 'section.ways2', jsCustom: [
+    "$$('.wt-tabs').forEach(tl => {",
+    "  const tabs = [...tl.querySelectorAll('[role=\"tab\"]')];",
+    "  const sel = (t, focus) => { tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;",
+    "    const pnl = ROOT.querySelector('#' + x.getAttribute('aria-controls')); if (pnl) pnl.hidden = !on; }); if (focus) t.focus(); };",
+    "  tabs.forEach((t, i) => { t.addEventListener('click', () => sel(t));",
+    "    t.addEventListener('keydown', e => { const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key]; if (d) { e.preventDefault(); sel(tabs[(i + d + tabs.length) % tabs.length], true); } }); });",
+    "});",
+    "$$('.spots-bar[data-filled]').forEach(b => { if (!b.children.length) b.innerHTML = Array.from({ length: 25 }, (_, i) => '<span' + (i < +b.dataset.filled ? ' class=\"on\"' : '') + '></span>').join(''); });",
+    "ROOT.addEventListener('click', e => { const v = e.target.closest('.vid-btn'); if (v) v.classList.toggle('is-playing'); });",
+  ].join('\n') },
 ];
 
 function mainScript(src) {
@@ -28,7 +40,7 @@ function mainScript(src) {
   for (const C of COMPONENTS) {
     const src = fs.readFileSync(ROOT + C.page, 'utf8');
     const ms = mainScript(src);
-    const jsSeg = ms.text.slice(ms.text.indexOf(C.js[0]), ms.text.indexOf(C.js[1]));
+    const jsSeg = C.jsCustom || ms.text.slice(ms.text.indexOf(C.js[0]), ms.text.indexOf(C.js[1]));
     // page copy without the main script: shared theme script still runs (gradient icons, brand icons, headings)
     const tmp = ROOT + '.__bundle_tmp.html';
     fs.writeFileSync(tmp, src.slice(0, ms.a) + src.slice(ms.b));
@@ -82,23 +94,60 @@ function mainScript(src) {
         s = toks.join('');
         return W + ' ' + s;
       };
-      const out = [], frames = new Set(), keep = [];
-      const walk = (rules, media) => {
-        for (const r of rules) {
-          if (r.type === 1) {
-            const parts = r.selectorText.split(/,(?![^(]*\))/);
-            const kept = parts.filter(x => relevant(x));
-            if (!kept.length) continue;
-            const body = r.style.cssText;
-            (body.match(/animation(?:-name)?:\s*([\w-]+)/g) || []).forEach(m => frames.add(m.split(':')[1].trim().split(/\s/)[0]));
-            const rule = kept.map(scope).join(', ') + ' { ' + body + ' }';
-            out.push(media ? `@media ${media} { ${rule} }` : rule);
-          } else if (r.type === 4) walk(r.cssRules, r.conditionText || r.media.mediaText);
-          else if (r.type === 7) keep.push(r);
+      // Rebuild a rule's declarations. The browser serialises shorthands that use var() (e.g. "background: var(--grad)")
+      // as empty longhands, so take the shorthand's own value whenever a longhand comes back empty.
+      const SH = ['background', 'border-radius', 'border-top', 'border-right', 'border-bottom', 'border-left', 'border-color', 'border-width', 'border-style', 'border',
+        'margin', 'padding', 'inset', 'font', 'flex', 'grid-template', 'grid-area', 'grid', 'gap', 'transition', 'animation', 'text-decoration', 'outline',
+        'list-style', 'overflow', 'place-items', 'place-content', 'columns', 'mask', 'border-image'];
+      const belongs = (sh, n) => sh === 'border-radius' ? n.endsWith('-radius') : sh === 'inset' ? ['top', 'right', 'bottom', 'left'].includes(n)
+        : sh === 'gap' ? ['row-gap', 'column-gap'].includes(n) : sh === 'font' ? (n.startsWith('font') || n === 'line-height')
+        : sh === 'place-items' ? ['align-items', 'justify-items'].includes(n) : sh === 'place-content' ? ['align-content', 'justify-content'].includes(n)
+        : sh === 'border' ? (n.startsWith('border-') && !n.endsWith('-radius')) : n === sh || n.startsWith(sh + '-');
+      const declText = st => {
+        const out = [], done = new Set();
+        for (const n of st) {
+          const v = st.getPropertyValue(n), imp = st.getPropertyPriority(n) ? ' !important' : '';
+          if (v !== '') { out.push(`${n}: ${v}${imp}`); continue; }
+          const sh = SH.find(x => belongs(x, n) && st.getPropertyValue(x) !== '');
+          if (sh && !done.has(sh)) { done.add(sh); out.push(`${sh}: ${st.getPropertyValue(sh)}${st.getPropertyPriority(sh) ? ' !important' : ''}`); }
         }
+        return out.join('; ') + ';';
       };
-      for (const sh of document.styleSheets) { try { walk(sh.cssRules); } catch (e) {} }
-      const kf = keep.filter(k => frames.has(k.name)).map(k => k.cssText);
+      // Read the design's own CSS text (not the browser's re-serialised version, which drops var() shorthands)
+      const parseCSS = css => {
+        css = css.replace(/\/\*[\s\S]*?\*\//g, '');
+        const rules = [], frames = []; let i = 0;
+        const skipBlock = () => { let d = 1, j = i; while (d && j < css.length) { if (css[j] === '{') d++; else if (css[j] === '}') d--; j++; } const t = css.slice(i, j - 1); i = j; return t; };
+        const block = at => {
+          while (i < css.length) {
+            const open = css.indexOf('{', i), close = css.indexOf('}', i);
+            if (close !== -1 && (open === -1 || close < open)) { i = close + 1; return; }
+            if (open === -1) { i = css.length; return; }
+            const head = css.slice(i, open).trim(); i = open + 1;
+            if (/^@(media|supports|container)\b/.test(head)) block(head);
+            else if (/^@(-webkit-)?keyframes\b/.test(head)) frames.push({ name: head.split(/\s+/)[1], text: head + ' {' + skipBlock() + '}' });
+            else if (head.startsWith('@')) skipBlock();
+            else { const end = css.indexOf('}', i); rules.push({ at, sel: head, body: css.slice(i, end).trim() }); i = end + 1; }
+          }
+        };
+        block(null);
+        return { rules, frames };
+      };
+      const out = [], frames = new Set(), allFrames = [];
+      for (const st of document.querySelectorAll('style')) {
+        const { rules, frames: kfs } = parseCSS(st.textContent);
+        allFrames.push(...kfs);
+        for (const r of rules) {
+          const parts = r.sel.split(/,(?![^(]*\))/);
+          const kept = parts.filter(x => { try { return relevant(x); } catch (e) { return false; } });
+          if (!kept.length) continue;
+          let body = r.body.trim(); if (body && !body.endsWith(';')) body += ';';
+          (body.match(/animation(?:-name)?:\s*([\w-]+)/g) || []).forEach(m => frames.add(m.split(':')[1].trim().split(/\s/)[0]));
+          const rule = kept.map(scope).join(', ') + ' { ' + body + ' }';
+          out.push(r.at ? `${r.at} { ${rule} }` : rule);
+        }
+      }
+      const kf = allFrames.filter(k => frames.has(k.name)).map(k => k.text);
       // custom properties + base text styles from :root / body
       const vars = []; for (const sh of document.styleSheets) { let rs; try { rs = sh.cssRules; } catch (e) { continue; } for (const r of rs) if (r.type === 1 && /(^|,)\s*:root\s*(,|$)/.test(r.selectorText)) for (const n of r.style) if (n.startsWith('--')) vars.push(`${n}: ${r.style.getPropertyValue(n).trim()};`); }
       const bcs = getComputedStyle(document.body);

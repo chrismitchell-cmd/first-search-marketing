@@ -68,6 +68,24 @@ def _foot(e):
         e['settings']['text_color'] = '#FFFFFFDB'; e['settings'].get('__globals__', {}).pop('text_color', None)
     for c in e.get('elements', []): _foot(c)
 for e in header_footer.FOOTER['content']: _foot(e)
+# Image boxes: no colour change on hover (Elementor turns the title Primary purple by default)
+# How it works: four white cards with dark text
+def _fix(e, in_step=False):
+    st = e['settings']
+    if e.get('widgetType') == 'image-box':
+        g = st.setdefault('__globals__', {})
+        if g.get('title_color'): g['hover_title_color'] = g['title_color']
+        else: st['hover_title_color'] = st.get('title_color') or '#FFFFFF'
+    if in_step and e.get('widgetType') == 'heading' and 'fs-step-num' not in st.get('_css_classes', ''):
+        st.pop('title_color', None); st.setdefault('__globals__', {})['title_color'] = 'globals/colors?id=primary'
+    if in_step and e.get('widgetType') == 'text-editor':
+        st.pop('text_color', None); st.setdefault('__globals__', {})['text_color'] = 'globals/colors?id=text'
+    if in_step and e.get('widgetType') == 'icon':
+        st['primary_color'] = '#3299D5'
+    step = in_step or (e['elType'] == 'container' and 'fs-step' in st.get('css_classes', '').split())
+    for c in e.get('elements', []): _fix(c, step)
+for _, _, tpl in built:
+    for e in tpl['content']: _fix(e)
 for path, _, tpl in built:
     save(f'../templates/{path}.json', tpl)
 css = open('../site-settings.css', encoding='utf-8').read()

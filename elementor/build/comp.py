@@ -58,7 +58,8 @@ def trust(items):
     # as in the HTML: three equal columns, 24px apart, label 14px under the number, small gold star
     cells = [col(heading(n.replace('★', '<small class="fs-star">★</small>'), 'p', 'fs-trust-num', 'center'), text(l, 'fs-trust-label', 'center'),
                  wpct=round(100 / len(items), 2), gap_=14) for n, l in items]
-    return section(row(*cells, gap_=24, justify='space-between'), cls='fs-dark', title='Trust band',
+    counter_js = html("<script>(function(){function run(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.querySelectorAll('.fs-trust-num .elementor-heading-title').forEach(function(h){if(h.getAttribute('data-fsc'))return;h.setAttribute('data-fsc','1');var t=h.firstChild;if(!t||t.nodeType!==3)return;var m=t.textContent.match(/^(\\\\d+(?:\\\\.\\\\d+)?)(.*)$/);if(!m)return;var end=parseFloat(m[1]),dec=(m[1].split('.')[1]||'').length,rest=m[2];t.textContent=(0).toFixed(dec)+rest;var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.disconnect();var t0=performance.now();(function tick(now){var p=Math.min((now-t0)/1400,1),k=1-Math.pow(1-p,3);t.textContent=(end*k).toFixed(dec)+rest;if(p<1)requestAnimationFrame(tick);})(t0);});},{threshold:.4});io.observe(h);});}if(document.readyState!=='loading')run();else document.addEventListener('DOMContentLoaded',run);})();</script>", 'fs-hidden-script')
+    return section(row(*cells, gap_=24, justify='space-between'), counter_js, cls='fs-dark', title='Trust band',
                    p={'unit': 'px', 'top': '52', 'right': '24', 'bottom': '56', 'left': '24', 'isLinked': False})
 
 # ---------- Problem cards ("Sound familiar?") ----------
@@ -71,7 +72,7 @@ def problem(eb, h2, cards, close, art=None, numbered=False):
                      cls='fs-pcard fs-pcard-n', p=pad(22, 26)) for n, (i, t, d) in enumerate(cards, 1)]
     else:
         items = [image_box(f'assets/img/icons/{i}', t, d, 'fs-pcard') for i, t, d in cards]
-    right = con(eyebrow(eb), heading(h2), *items, heading(close, 'p', 'fs-close'), gap_=16)
+    right = con(eyebrow(eb), heading(h2), *items, heading(close.replace('class="fs-sky"', 'class="fs-gt"'), 'p', 'fs-close'), gap_=16)
     if isinstance(art, dict):
         left = art
     else:
@@ -124,7 +125,7 @@ def guarantee():
                    heading('Results, guaranteed.<br><span class="fs-gt">In writing.</span>', 'h2'), gap_=24, s={'flex_direction_mobile': 'row', 'flex_wrap_mobile': 'nowrap', 'flex_gap_mobile': gap(14)}),
                text('If we don’t deliver [the lead growth we commit to in your roadmap], [we keep working at no cost until we do].', 'fs-lead'),
                icon_list(['Fixed monthly retainer. No surprise invoices.', 'Six-month partnership, not a long lock-in.', 'Results defined up front, measured monthly.', 'Read the full guarantee terms.'],
-                         'fas fa-check-circle', 'fs-check-pills', links=['', '', '', '/guarantee-terms/']), wpct=65)
+                         'fas fa-check', 'fs-check-pills', links=['', '', '', '/guarantee-terms/']), wpct=65)
     photo['settings']['flex_justify_content'] = 'flex-end'   # photo sits on the section's bottom edge, copy starts at the top (as in the HTML)
     return section(row(photo, copy, gap_=48, align='stretch', s={'flex_direction_mobile': 'column-reverse'}), cls='fs-geo', title='Guarantee', bg_img='assets/img/design/bg-geometric.jpg')
 
@@ -159,7 +160,7 @@ def steps(eb, h2, sub, items):
     cards = []
     for n, it in enumerate(items, 1):
         lab, t, d = it if len(it) == 3 else (None, *it)
-        hl = n == len(items)
+        hl = False   # all four cards white
         ic = w('icon', {'selected_icon': {'value': STEP_ICONS[(n - 1) % 4], 'library': 'fa-solid'}, 'align': 'left',
                         'primary_color': '#FFFFFF' if hl else '#3299D5', 'size': px(44)}, 'fs-step-icon')
         kids = [heading(str(n), 'p', 'fs-step-num'), ic]

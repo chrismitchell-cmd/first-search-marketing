@@ -31,15 +31,15 @@ def home():
                 'None of that is a you problem. <span class="fs-sky">It’s a system problem.</span>'),
         section(component('framework'), boxed=False, title='Framework (interactive)', p=pad(0)),
         guarantee(),
-        stats([(0, 'average increase in leads [CONFIRM]', '%', ''), (0, 'five-star reviews generated for partners [CONFIRM]', '', ''),
-               (0, 'partner retention rate [CONFIRM]', '%', ''), (0, 'years building marketing systems [CONFIRM]', '+', '')]),
+        stats([(47, 'average increase in leads', '%', ''), (1200, 'five-star reviews generated for partners', '', ''),
+               (94, 'partner retention rate', '%', ''), (10, 'years building marketing systems', '+', '')]),
         case_reviews(),
         steps('', 'How it works', 'Four steps from “I don’t know what’s working” to a system you can see.', [
             ('Book your strategy call.', 'A [30-minute] conversation about where your marketing is today and where the gaps are. No pitch deck, no pressure.'),
             ('Get your roadmap.', 'We map your business against the FirstSearch Framework and lay out exactly what we’ll do, in what order, and what results we’re committing to.'),
             ('We build and run it.', 'Our team executes across every channel in your plan, from brand and website to ads, SEO, automation and reviews.'),
             ('See the results.', 'Monthly reporting in plain English, tied to leads and revenue, not vanity metrics. You’ll always know what’s working.')]),
-        three_ways(),
+        section(component('ways'), boxed=False, title='Three ways (from the design)', p=pad(0)),
         faq('Questions owners <span class="fs-gt">ask us</span>', [
             ('What exactly does the FirstSearch Guarantee cover?', '[Plain-English summary of the guarantee: what’s guaranteed, how it’s measured, and what happens if it’s missed.]'),
             ('Why a six-month commitment?', 'Real marketing compounds. SEO, brand recognition, reviews and automation take time to build momentum, and the first months lay the foundation for everything after. Six months is enough time to show real, measurable results, and short enough that you’re never locked in for years.'),
@@ -166,7 +166,7 @@ def why():
                 row(*[col(image_box(f'assets/img/icons/{i}', t, f'{d}<br><br><em>In practice:</em> {p}', 'fs-pcard'), wpct=48) for i, t, d, p in comp], gap_=20, wrap=True, align='stretch'),
                 cls='fs-geo', title='Competencies', bg_img=GEO),
         guarantee(),
-        stats([(0, 'average increase in leads [CONFIRM]', '%', ''), (0, 'five-star reviews generated for partners [CONFIRM]', '', ''), (0, 'partner retention [CONFIRM]', '%', ''), (4.9, 'average Google rating', '★', '')]),
+        stats([(47, 'average increase in leads', '%', ''), (1200, 'five-star reviews generated for partners', '', ''), (0, 'partner retention [CONFIRM]', '%', ''), (4.9, 'average Google rating', '★', '')]),
         section(sec_head('Proof', 'Don’t take our <span class="fs-gt">word for it.</span>'), row(*[col(review(q, n), wpct=48) for q, n in REVIEWS], gap_=28, align='stretch'),
                 link_u('Read all [XX] Google reviews', '#'), cls='fs-geo', title='Reviews', bg_img=GEO, align='center'),
         steps('', 'What working with us looks like', 'No black boxes. You always know what’s happening.', [

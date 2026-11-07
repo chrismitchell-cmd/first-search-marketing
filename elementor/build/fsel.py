@@ -103,7 +103,8 @@ def accordion(qas, cls='fs-faq'):
                            'selected_icon': {'value': 'fas fa-plus', 'library': 'fa-solid'}, 'selected_active_icon': {'value': 'fas fa-minus', 'library': 'fa-solid'},
                            'icon_align': 'left'}, cls)
 def counter(end, title, suffix='', prefix=''):
-    return w('counter', {'starting_number': 0, 'ending_number': end, 'suffix': suffix, 'prefix': prefix, 'title': title})
+    return w('counter', {'starting_number': 0, 'ending_number': end, 'suffix': suffix, 'prefix': prefix, 'title': title,
+                         'duration': 1400, 'thousand_separator': 'yes', 'thousand_separator_char': ','})
 def spacer(h): return w('spacer', {'space': px(h)})
 def divider(): return w('divider', {})
 def form(fields, button_text='Send message', name='Contact', cls=''):
@@ -144,6 +145,20 @@ def _stable_ids(o):
         for v in o.values(): _stable_ids(v)
     elif isinstance(o, list):
         for v in o: _stable_ids(v)
+def _real_widths(o):
+    """Containers have no max-width setting: use width (px) + 100% on tablet/phone + align-self centre."""
+    if isinstance(o, dict):
+        st = o.get('settings') if o.get('elType') == 'container' else None
+        if st and 'max_width' in st:
+            st['width'] = st.pop('max_width')
+            st.setdefault('width_tablet', {'unit': '%', 'size': 100, 'sizes': []})
+            st['width_mobile'] = {'unit': '%', 'size': 100, 'sizes': []}
+            st['_flex_align_self'] = 'center'
+            st.pop('margin', None)
+        for v in o.values(): _real_widths(v)
+    elif isinstance(o, list):
+        for v in o: _real_widths(v)
 def save(path, tpl):
     _stable_ids(tpl)
+    _real_widths(tpl)
     with open(path, 'w', encoding='utf-8') as f: json.dump(tpl, f, ensure_ascii=False, indent=1)

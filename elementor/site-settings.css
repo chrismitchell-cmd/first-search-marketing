@@ -563,7 +563,9 @@ a.fs-link-u {
 .fs-check-pills .elementor-icon-list-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .fs-check-pills .elementor-icon-list-item { padding: 12px 16px !important; margin: 0 !important; border-radius: 14px; background: var(--fs-purple); }
 .fs-check-pills .elementor-icon-list-text { color: #fff; font-weight: 500; }
-.fs-check-pills .elementor-icon-list-icon i, .fs-check-pills .elementor-icon-list-icon svg { color: var(--fs-sky); fill: var(--fs-sky); }
+.fs-check-pills .elementor-icon-list-item { align-items: center !important; gap: 12px; min-height: 56px; }
+.fs-check-pills .elementor-icon-list-icon { width: 26px !important; height: 26px; flex: none; display: grid !important; place-items: center; padding: 0 !important; border-radius: 50%; background: #3299D5; }
+.fs-check-pills .elementor-icon-list-icon i, .fs-check-pills .elementor-icon-list-icon svg { color: #fff !important; fill: #fff !important; font-size: 13px; width: 13px; height: 13px; }
 @media (max-width: 767px) { .fs-check-pills .elementor-icon-list-items { grid-template-columns: minmax(0, 1fr); } }
 /* Plain check list */
 .fs-checks .elementor-icon-list-icon i, .fs-checks .elementor-icon-list-icon svg { color: var(--fs-sky); fill: var(--fs-sky); }
@@ -892,3 +894,17 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 /* stage logos in the footer: gentle fade on hover, as in the design */
 .fs-footer .fs-stage-links a { transition: opacity .15s ease; }
 .fs-footer .fs-stage-links a:hover { opacity: .85; }
+
+/* ---------- 26. Home page details ---------- */
+/* How it works: the big gradient numbers sit above each card (positioned on the widget, so Elementor's wrappers can't move them) */
+.fs-step > .elementor-element.fs-step-num { position: absolute !important; top: -92px; left: 50%; transform: translateX(-50%); z-index: 2; width: auto !important; max-width: none !important; margin: 0 !important; }
+.fs-step-num .elementor-heading-title { position: static !important; transform: none !important; top: auto !important; left: auto !important;
+  font-size: 120px !important; font-weight: 800 !important; line-height: 1 !important; letter-spacing: -0.04em !important; text-align: center;
+  color: transparent !important; background: linear-gradient(180deg, #5FB0E6, #4E98D8 60%, #3B6FC0); -webkit-background-clip: text; background-clip: text;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .25)); }
+@media (max-width: 767px) { .fs-step > .elementor-element.fs-step-num { top: -70px; } .fs-step-num .elementor-heading-title { font-size: 90px !important; } }
+/* FAQ: the +/- button stays a perfect circle */
+.fs-faq .elementor-accordion-icon, .fs-faq .elementor-toggle-icon { width: 56px !important; height: 56px !important; min-width: 56px; max-height: 56px; align-self: center; aspect-ratio: 1 / 1; line-height: 0 !important; padding: 0 !important; }
+@media (max-width: 767px) { .fs-faq .elementor-accordion-icon, .fs-faq .elementor-toggle-icon { width: 42px !important; height: 42px !important; min-width: 42px; max-height: 42px; } }
+/* small script-only HTML widgets (e.g. the count-up) take no space */
+.elementor-widget.fs-hidden-script { position: absolute !important; width: 0 !important; height: 0 !important; overflow: hidden; margin: 0 !important; }

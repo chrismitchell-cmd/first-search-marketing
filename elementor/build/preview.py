@@ -26,6 +26,7 @@ def render(e, depth=0):
         if s.get('max_width'): css += f"max-width:{u(s['max_width'])};margin-left:auto;margin-right:auto;"
         if s.get('min_height'): css += f"min-height:{u(s['min_height'])};"
         if s.get('flex_grow'): css += f"flex-grow:{s['flex_grow']};"
+        if s.get('_flex_align_self'): css += f"align-self:{s['_flex_align_self']};"
         if s.get('background_image'):
             ov = ''
             if s.get('background_overlay_color'):
