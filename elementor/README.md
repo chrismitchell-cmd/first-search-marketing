@@ -1,32 +1,99 @@
 # Elementor setup: First Search Marketing
 
-## 1. Global Colors (Site Settings › Global Colors)
+Built so the site matches the approved HTML exactly, **and** stays editable in Elementor:
 
-| Name | Hex | Used for |
-|---|---|---|
-| Primary | **#250762** | Headings, buttons, purple sections, menu |
-| Secondary | #3299D5 | Accent words, eyebrows, links |
-| Text | #1C1B22 | Body copy |
-| Accent | #174FA2 | Royal blue, gradient end |
-| Aqua | #72CCD8 | Gradient start, focus rings, title rules |
-| Grey | #D9D8D7 | Dividers |
-| Soft grey | #F4F4F6 | Light backgrounds, callout boxes |
-| White | #FFFFFF | Cards |
+- **Colours and fonts live in Site Settings.** Every widget's colour and typography in the templates is linked to a Global Color or Global Font. Change one in Site Settings and every page that uses it updates.
+- **Each widget and section carries its own styling** in its Style and Layout tabs (sizes, colours, padding, gaps, alignment). Change any of it in the editor and your change wins.
+- **The Custom CSS only adds what Elementor can't do natively** (gradient card borders and gradient text, the purple glows, pills and stage logos, FAQ and tab styling, the overlapping buttons). Its colours and fonts read from your Global Colors and Fonts too.
 
-Gradient (for backgrounds that take a gradient): linear, 90°, **#72CCD8 → #174FA2**.
+## 1. Site Settings: one import
 
-## 2. Global Fonts (Site Settings › Global Fonts)
+File: `first-search-site-settings.zip`
 
-| Name | Font | Weight |
-|---|---|---|
-| Primary (headings) | Poppins | 700 |
-| Secondary (subheads) | Poppins | 600 |
-| Text (body) | Poppins | 400, 18px, line height 1.6 |
-| Accent (menu, labels, small UI) | Inter | 500 |
+1. **Elementor › Tools › Import / Export** (in newer versions: *Website Templates › Import*), choose `first-search-site-settings.zip`, and import **Site Settings** only.
+2. That one import sets:
+   - **Global Colors** and **Global Fonts** (lists below)
+   - **Typography**: body text Poppins 18px / 1.6, headings Poppins
+   - **Layout**: content width 1240px, default container padding **0** (so no hidden spacing), 20px gaps
+   - **Background**: page background `#F8F7F7`, as in the HTML
+   - **Custom CSS**: the contents of `site-settings.css` (Elementor Pro)
+   - **Features**: switches on *Flexbox Container*, *Nested Elements* and *Menu* (required by the templates)
+3. Check **Elementor › Settings › Features** afterwards. If *Flexbox Container* or *Nested Elements* still shows Inactive, set them to Active. Without containers the templates import blank.
 
-## 3. Custom CSS
+If you'd rather not import, you can set the same things by hand: the colours and fonts are listed below, and `site-settings.css` goes in *Site Settings › Custom CSS*.
 
-Paste `site-settings.css` into **Site Settings › Custom CSS**. Buttons, headings, forms and links are styled automatically. Everything else is an opt-in class, added under a widget's or container's **Advanced › CSS Classes**:
+### Global Colors
+
+| Name | Value |
+|---|---|
+| Primary | `#250762` |
+| Secondary | `#3299D5` |
+| Text | `#1C1B22` |
+| Accent | `#174FA2` |
+| Body text | `#2F2E36` |
+| Muted text | `#6B6A72` |
+| Sky (small text) | `#1F78B4` |
+| White | `#FFFFFF` |
+| White 92% | `#FFFFFFEB` |
+| White 80% | `#FFFFFFCC` |
+| White 70% | `#FFFFFFB3` |
+| Aqua | `#72CCD8` |
+| Light sky (on purple) | `#8FD5EE` |
+| Lilac (on purple) | `#D8D6EE` |
+| Star gold | `#F4B400` |
+| Deep purple | `#1A0446` |
+| Page background | `#F8F7F7` |
+| Soft grey | `#F4F4F6` |
+| Blue tint | `#EEF0F9` |
+| Grey | `#D9D8D7` |
+| Line | `#E3E2EA` |
+
+### Global Fonts
+
+Measured from the approved HTML at desktop, tablet and phone sizes. Each one carries its tablet and phone sizes. These are the 24 most-used styles; rarer one-off styles are set directly on the widget.
+
+| Name |
+|---|
+| Step number · 120px 800 |
+| Big number · 86.5px 700 |
+| H1 · 72px 700 |
+| H2 · 52px 700 |
+| Big number label · 29px 400 |
+| H3 · 28px 700 |
+| Button · 22px 600 |
+| Hero lead · 22px 400 |
+| FAQ answer · 21px 400 |
+| H3 · 21px 700 |
+| Body · 20px 400 |
+| Button · 20px 500 italic |
+| Card title · 20px 700 |
+| Eyebrow · 19.5px 600 |
+| H3 · 19px 600 |
+| Lead · 19px 400 |
+| Button · 18px 500 italic |
+| Button · 16px 500 italic |
+| Card text · 16px 400 |
+| FAQ question · 16px 700 |
+| H4 · 16px 700 |
+| Label · 15.5px 600 |
+| List · 15.5px 400 lh 1.45 |
+| List · 15.5px 400 lh 1.6 |
+
+## 2. Where to change things later
+
+| To change… | Go to |
+|---|---|
+| A brand colour everywhere | Site Settings › Global Colors |
+| A text style everywhere (e.g. every H2) | Site Settings › Global Fonts |
+| One widget's colour or size | That widget › Style tab (unlink the global, or pick another) |
+| Spacing above/below a section | The section container › Layout › Padding (per device) |
+| Space between items | The container › Layout › Gaps |
+| Page background | Site Settings › Background |
+| Decorative pieces (gradient borders, pills, glows) | Custom CSS (`site-settings.css`) |
+
+## 3. CSS classes used by the templates
+
+These are already applied in the templates. Add them under **Advanced › CSS Classes** when you build new sections.
 
 | Class | Add to | What it does |
 |---|---|---|
@@ -74,17 +141,9 @@ Every image and background in the templates is hosted in the public GitHub repo,
 - If an image still comes in as a grey placeholder, your host is blocking WordPress from downloading files. Ask the host to allow outgoing requests to `raw.githubusercontent.com`. Or upload `elementor/upload/first-search/` to `wp-content/uploads/first-search/` and swap the images in by hand.
 - If you imported templates before this change, delete them and import them again to pick up the images.
 
-### Step 2: turn on the required Elementor features (do this before importing)
-Go to **Elementor › Settings › Features** and set these to **Active**, then save:
-- **Flexbox Container** (also called *Container*). Every template is built from containers. If this is off, Elementor silently drops every container during import, and the template comes in **completely blank**.
-- **Nested Elements**. Needed for the tabs (framework stages, "Three ways", multi-stage services).
-- **Menu** (Elementor Pro). Needed for the header's mega menu.
-
-Turning these on doesn't change any existing pages built with sections and columns.
-If you already imported a template while these were off, it was saved empty. Delete it from Templates › Saved Templates and import the JSON again.
-
-### Step 2b: Site Settings
-Complete sections 1–3 above (global colors, global fonts, custom CSS) before you import. The templates depend on the `fs-*` classes.
+### Step 2: Site Settings first
+Import `first-search-site-settings.zip` (section 1 above) **before** the templates. It switches on the required features and adds the Global Colors and Global Fonts that every template links to. Templates imported before it will show unstyled text.
+If you already imported templates while *Flexbox Container* was off, they were saved empty: delete them and import them again.
 
 ### Step 3: import
 Go to **Templates › Saved Templates › Import Templates** and import the files one at a time. They are not a zip.
@@ -96,7 +155,9 @@ Go to **Templates › Saved Templates › Import Templates** and import the file
 | `header.json` | Theme Builder › Header › display on **Entire Site** |
 | `footer.json` | Theme Builder › Footer › display on **Entire Site** |
 
-**Main pages** (`pages/`): for each one, create the WordPress page, set Template to **Elementor Full Width**, choose Edit with Elementor, then use the folder icon › My Templates › Insert.
+**Main pages** (`pages/`): for each one, create the WordPress page, choose Edit with Elementor, then use the folder icon › My Templates › Insert. When Elementor asks whether to **apply the template's page settings**, choose **Yes**. That sets the page layout to **Elementor Full Width** and hides the WordPress page title, so every section runs edge to edge like the HTML. If you missed the prompt, open the page's settings (gear icon) and set Page Layout to *Elementor Full Width* and turn on *Hide Title*.
+
+> Seeing a grey or white strip down the left and right of the page? That's the theme's boxed page layout. Switch the page to *Elementor Full Width* as described above.
 
 | File | Page | Suggested URL |
 |---|---|---|
@@ -158,4 +219,7 @@ If you'd rather use plain pages than Theme Builder for these, insert them into a
 - **Resources page:** the Posts and Taxonomy Filter widgets need categories called Blog, Case Study, Podcast and Video, or your own equivalents.
 
 ### Rebuilding
-The JSON is generated by `elementor/build/build_all.py` (Python 3, no dependencies). `elementor/preview/` contains rough HTML renders (one per template) I used for visual QA. They are not exactly how Elementor will render.
+`python3 elementor/build/build_all.py` (Python 3, no dependencies) regenerates every template plus `first-search-site-settings.zip`.
+- `build/data/proto-styles.json` holds the typography, colours and section spacing measured from the approved HTML at 1440 / 1024 / 390px.
+- `build/styler.py` writes those values into the templates as native Elementor settings, grouped into Global Fonts and Global Colors.
+- `elementor/preview/` has HTML renders of every template, used for QA. They mimic Elementor's container defaults, global styles and per-widget settings, but they're not a substitute for checking the real site.

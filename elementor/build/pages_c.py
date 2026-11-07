@@ -25,7 +25,7 @@ def case_study():
               ('referral', 'Get referred.', 'Automated review requests after every visit, and a simple referral thank-you that patients actually use.', 'Reviews & Referrals · Automation')]
     approach = section(sec_head('Our approach', 'What we did, stage by stage.'),
                        row(*[con(heading(str(n), 'p', 'fs-step-num'), html(f'<p style="text-align:center">{plogo(k, n == 3, 22)}</p>'), heading(h, 'h3'), text(d, '', 'center'),
-                                 text(f'<p><small>{sv}</small></p>', 'fs-eyebrow', 'center'), cls='fs-gcard fs-step' + (' fs-step-hl' if n == 3 else ''), gap_=8,
+                                 text(f'<p><small>{sv}</small></p>', 'fs-eyebrow', 'center'), cls='fs-gcard fs-step' + (' fs-step-hl' if n == 3 else ''), gap_=8, p=pad(64, 28, 32, 28),
                                  s={'width': PCT(31), 'width_mobile': PCT(100)}) for n, (k, h, d, sv) in enumerate(stages, 1)], gap_=28, align='stretch', cls='fs-steps'),
                        cls='fs-dark', title='Approach')
     chart = ('<div class="fs-bars" role="img" aria-label="New-patient leads per month rose from 12 before the partnership to 41 in month six.">'

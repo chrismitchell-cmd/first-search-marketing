@@ -7,18 +7,23 @@ def box(v):
     if not isinstance(v, dict): return None
     un = v.get('unit', 'px'); return ' '.join(f"{v.get(k,'0') or 0}{un}" for k in ('top', 'right', 'bottom', 'left'))
 def rule(eid, css, media=None):
-    if css: CSSV.append((media, f'.elementor-element-{eid}{{{css}}}'))
+    if css: CSSV.append((media, f'.elementor-9 .elementor-element.elementor-element-{eid}{{{css}}}'))
 def render(e, depth=0):
     s, eid = e['settings'], e['id']
     if e['elType'] == 'container':
-        css = f"display:flex;flex-direction:{s.get('flex_direction','column')};"
-        g = s.get('flex_gap');  css += f"gap:{g['row']}px {g['column']}px;" if g else 'gap:20px;'
+        # Same mechanics as Elementor: padding, gaps and width go through CSS variables on the element,
+        # and .e-con reads them (so class rules in the Custom CSS behave exactly as on the live site).
+        def pv(d):
+            return f"--padding-top:{d.get('top','0') or 0}{d.get('unit','px')};--padding-right:{d.get('right','0') or 0}{d.get('unit','px')};--padding-bottom:{d.get('bottom','0') or 0}{d.get('unit','px')};--padding-left:{d.get('left','0') or 0}{d.get('unit','px')};"
+        css = f"flex-direction:{s.get('flex_direction','column')};"
+        g = s.get('flex_gap')
+        if g: css += f"--row-gap:{g.get('row', g.get('size', 20))}px;--column-gap:{g.get('column', g.get('size', 20))}px;"
         if s.get('flex_justify_content'): css += f"justify-content:{s['flex_justify_content']};"
         if s.get('flex_align_items'): css += f"align-items:{s['flex_align_items']};"
         if s.get('flex_wrap'): css += 'flex-wrap:wrap;'
-        p = box(s.get('padding')); css += f'padding:{p};' if p else ('padding:10px;' if not e['isInner'] else '')
-        if s.get('width'): css += f"width:{u(s['width'])};" + ('flex:0 0 auto;' if s['width']['unit'] == 'px' else '')
-        if s.get('max_width'): css += f"max-width:{u(s['max_width'])};width:100%;"
+        if isinstance(s.get('padding'), dict): css += pv(s['padding'])
+        if s.get('width'): css += f"--width:{u(s['width'])};" + ('flex:0 0 auto;' if s['width']['unit'] == 'px' else '')
+        if s.get('max_width'): css += f"max-width:{u(s['max_width'])};margin-left:auto;margin-right:auto;"
         if s.get('min_height'): css += f"min-height:{u(s['min_height'])};"
         if s.get('flex_grow'): css += f"flex-grow:{s['flex_grow']};"
         if s.get('background_image'):
@@ -26,23 +31,30 @@ def render(e, depth=0):
             if s.get('background_overlay_color'):
                 c = s['background_overlay_color'].lstrip('#'); a = s.get('background_overlay_opacity', {}).get('size', .5)
                 ov = f"linear-gradient(rgba({int(c[0:2],16)},{int(c[2:4],16)},{int(c[4:6],16)},{a}),rgba({int(c[0:2],16)},{int(c[2:4],16)},{int(c[4:6],16)},{a})),"
-            css += f"background-image:{ov}url('{s['background_image']['url'].replace(ASSET, '../upload/first-search/')}') !important;background-size:cover;background-position:center;"
+            css += f"background-image:{ov}url('{s['background_image']['url'].replace(ASSET, '../upload/first-search/')}');background-size:cover;background-position:{s.get('background_position','center center')};"
         if s.get('background_color'): css += f"background-color:{s['background_color']};"
-        if s.get('sticky'): css += 'position:sticky;top:0;'
+        if s.get('sticky'): css += 'position:sticky;top:0;z-index:50;'
         rule(eid, css)
+        t = ''
+        if isinstance(s.get('padding_tablet'), dict): t += pv(s['padding_tablet'])
+        rule(eid, t, '(max-width:1024px)')
         m = ''
         if s.get('flex_direction_mobile'): m += f"flex-direction:{s['flex_direction_mobile']};"
-        if s.get('width_mobile'): m += f"width:{u(s['width_mobile'])};"
-        if s.get('padding_mobile'): m += f"padding:{box(s['padding_mobile'])};"
+        if s.get('width_mobile'): m += f"--width:{u(s['width_mobile'])};"
+        if isinstance(s.get('padding_mobile'), dict): m += pv(s['padding_mobile'])
         if s.get('margin_mobile'): m += f"margin:{box(s['margin_mobile'])};"
+        if s.get('flex_wrap_mobile'): m += 'flex-wrap:wrap;'
+        if s.get('flex_align_items_mobile'): m += f"align-items:{s['flex_align_items_mobile']};"
+        if s.get('flex_gap_mobile'): m += f"--row-gap:{s['flex_gap_mobile'].get('row', 20)}px;--column-gap:{s['flex_gap_mobile'].get('column', 20)}px;"
         rule(eid, m, '(max-width:767px)')
-        if s.get('flex_direction') == 'row': rule(eid, 'min-width:0', None)
         inner = ''.join(render(c, depth + 1) for c in e['elements'])
         if s.get('content_width') == 'boxed':
-            inner = f'<div class="e-con-inner" style="width:100%;max-width:1288px;margin:0 auto;display:flex;flex-direction:inherit;gap:inherit">{inner}</div>'
+            bw = u(s.get('boxed_width')) or '1140px'
+            inner = f'<div class="e-con-inner" style="width:100%;max-width:{bw};margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit">{inner}</div>'
         idattr = f' id="{s["_element_id"]}"' if s.get('_element_id') else ''
-        return f'<div class="e-con elementor-element elementor-element-{eid} {s.get("css_classes","")}"{idattr}>{inner}</div>'
+        return f'<div class="e-con e-flex elementor-element elementor-element-{eid} {s.get("css_classes","")}"{idattr}>{inner}</div>'
     k = e['widgetType']; cls = s.get('_css_classes', '')
+    widget_style(e)
     def wrap(body, extra=''): return f'<div class="elementor-element elementor-element-{eid} elementor-widget elementor-widget-{k} {cls}" style="{extra}"><div class="elementor-widget-container">{body}</div></div>'
     al = s.get('align')
     if k == 'heading':
@@ -69,7 +81,7 @@ def render(e, depth=0):
         img = s.get('image_overlay', {}).get('url', '').replace(ASSET, '../upload/first-search/')
         return wrap(f'<div class="elementor-wrapper" style="aspect-ratio:16/9;background:#250762 url(\'{img}\') center bottom/contain no-repeat;display:grid;place-items:center;border-radius:28px"><span style="width:80px;height:80px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:30px;color:#250762">▶</span></div>')
     if k in ('accordion', 'toggle'):
-        its = ''.join(f'<div class="elementor-accordion-item"><div class="elementor-tab-title{" elementor-active" if n == 0 else ""}">{t["tab_title"]}</div>' + (f'<div class="elementor-tab-content">{t["tab_content"]}</div>' if n == 0 else '') + '</div>' for n, t in enumerate(s['tabs']))
+        its = ''.join(f'<div class="elementor-accordion-item"><div class="elementor-tab-title{" elementor-active" if n == 0 else ""}"><a class="elementor-{'toggle' if k == 'toggle' else 'accordion'}-title">{t["tab_title"]}</a></div>' + (f'<div class="elementor-tab-content">{t["tab_content"]}</div>' if n == 0 else '') + '</div>' for n, t in enumerate(s['tabs']))
         return wrap(its)
     if k == 'counter': return wrap(f'<div style="text-align:center"><div class="elementor-counter-number-wrapper">{s.get("prefix","")}{s["ending_number"]}{s.get("suffix","")}</div><div class="elementor-counter-title">{s["title"]}</div></div>')
     if k == 'form':
@@ -100,19 +112,109 @@ def render(e, depth=0):
     if k == 'share-buttons': return wrap('<div style="display:flex;gap:8px"><span style="width:40px;height:40px;border-radius:50%;border:1px solid #ddd;display:inline-block"></span><span style="width:40px;height:40px;border-radius:50%;border:1px solid #ddd;display:inline-block"></span></div>')
     if k.startswith('theme-post') or k in ('post-info', 'author-box'):
         return wrap(f'<div style="padding:14px;border:1px dashed #9FB7D9;border-radius:12px;color:#174FA2;font-size:14px">[{k}: filled from the post]</div>')
+    if k == 'icon':
+        ic = {'fa-search': '⌕', 'fa-route': '⤳', 'fa-cogs': '⚙', 'fa-chart-line': '📈'}.get(s['selected_icon']['value'].split()[-1], '●')
+        return wrap(f'<div class="elementor-icon-wrapper" style="text-align:{s.get("align", "center")}"><span class="elementor-icon" style="font-size:{u(s.get("size")) or "50px"};color:{s.get("primary_color", "#250762")};line-height:1">{ic}</span></div>')
     if k == 'spacer': return wrap('<div style="height:20px"></div>')
     return wrap(f'<div style="color:red">[{k}]</div>')
 
+# Elementor's own front-end defaults (container padding/gap) - loaded before the page's element CSS
+EL_DEFAULTS = """
+.e-con{--container-default-padding-top:0px;--container-default-padding-right:0px;--container-default-padding-bottom:0px;--container-default-padding-left:0px}
+.e-con{--width:100%;--padding-top:var(--container-default-padding-top,10px);--padding-right:var(--container-default-padding-right,10px);
+ --padding-bottom:var(--container-default-padding-bottom,10px);--padding-left:var(--container-default-padding-left,10px);--row-gap:20px;--column-gap:20px;
+ display:flex;position:relative;min-width:0;width:var(--width);padding:var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
+ gap:var(--row-gap) var(--column-gap)}
+.e-con>.elementor-widget,.e-con-inner>.elementor-widget{max-width:100%}
+@media (max-width:767px){.e-con.e-flex{--width:100%;flex-wrap:wrap}}
+.elementor-heading-title{padding:0;margin:0;line-height:1}
+.elementor-widget-text-editor p{margin-top:0;margin-bottom:.9rem}
+"""
+# Global Colors / Fonts as set in the README, emitted by Elementor in every page's post CSS (loads after the kit CSS)
+P, T_ = '"Poppins",sans-serif', '"Inter",sans-serif'
+EL_GLOBALS = f"""
+.elementor-widget-heading .elementor-heading-title{{color:#250762;font-family:{P};font-weight:700}}
+.elementor-widget-text-editor{{color:#1C1B22;font-family:{P};font-size:18px;font-weight:400;line-height:1.6em}}
+.elementor-widget-button .elementor-button{{background-color:#174FA2;font-family:{T_};font-weight:500}}
+.elementor-widget-image-box .elementor-image-box-title{{color:#250762;font-family:{P};font-weight:700}}
+.elementor-widget-image-box .elementor-image-box-description{{color:#1C1B22;font-family:{P};font-size:18px;font-weight:400;line-height:1.6em}}
+.elementor-widget-icon-list .elementor-icon-list-icon i,.elementor-widget-icon-list .elementor-icon-list-icon svg{{color:#250762;fill:#250762}}
+.elementor-widget-icon-list .elementor-icon-list-item > .elementor-icon-list-text,.elementor-widget-icon-list .elementor-icon-list-item > a{{font-family:{P};font-size:18px;font-weight:400;line-height:1.6em}}
+.elementor-widget-icon-list .elementor-icon-list-text{{color:#3299D5}}
+.elementor-widget-accordion .elementor-accordion-title{{color:#250762;font-family:{P};font-weight:700}}
+.elementor-widget-accordion .elementor-active .elementor-accordion-title{{color:#174FA2}}
+.elementor-widget-accordion .elementor-tab-content{{color:#1C1B22;font-family:{P};font-size:18px;font-weight:400;line-height:1.6em}}
+.elementor-widget-toggle .elementor-toggle-title{{color:#250762;font-family:{P};font-weight:700}}
+.elementor-widget-toggle .elementor-tab-content{{color:#1C1B22;font-family:{P};font-size:18px;font-weight:400;line-height:1.6em}}
+.elementor-widget-counter .elementor-counter-number-wrapper{{color:#250762;font-family:{P};font-weight:700}}
+.elementor-widget-counter .elementor-counter-title{{color:#3299D5;font-family:{P};font-weight:600}}
+"""
+KIT = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'kit-preview.json')))
+COLORS = {c['_id']: c['color'] for c in KIT['system_colors'] + KIT['custom_colors']}
+TYPO = {t['_id']: t for t in KIT['system_typography'] + KIT['custom_typography']}
+def kit_vars():
+    out = ':root{' + ''.join(f'--e-global-color-{i}:{c};' for i, c in COLORS.items())
+    tab, mob = '', ''
+    for i, t in TYPO.items():
+        for k, v in t.items():
+            if not k.startswith('typography_') or k == 'typography_typography': continue
+            prop = k[len('typography_'):]
+            dev = ''
+            if prop.endswith('_tablet'): prop, dev = prop[:-7], 't'
+            elif prop.endswith('_mobile'): prop, dev = prop[:-7], 'm'
+            val = f"{v['size']}{v.get('unit','px')}" if isinstance(v, dict) else v
+            decl = f'--e-global-typography-{i}-{prop.replace("_", "-")}:{val};'
+            if dev == 't': tab += decl
+            elif dev == 'm': mob += decl
+            else: out += decl
+    return out + '}' + f'@media (max-width:1024px){{:root{{{tab}}}}}@media (max-width:767px){{:root{{{mob}}}}}'
+SUB = {('heading', 'typography'): '.elementor-heading-title', ('heading', 'title_color'): '.elementor-heading-title',
+       ('text-editor', 'typography'): '', ('text-editor', 'text_color'): '',
+       ('button', 'typography'): '.elementor-button',
+       ('icon-list', 'icon_typography'): '.elementor-icon-list-item > .elementor-icon-list-text', ('icon-list', 'text_color'): '.elementor-icon-list-text',
+       ('image-box', 'title_typography'): '.elementor-image-box-title', ('image-box', 'title_color'): '.elementor-image-box-title',
+       ('image-box', 'description_typography'): '.elementor-image-box-description', ('image-box', 'description_color'): '.elementor-image-box-description',
+       ('accordion', 'title_typography'): '.elementor-accordion-title', ('accordion', 'content_typography'): '.elementor-tab-content', ('accordion', 'content_color'): '.elementor-tab-content',
+       ('counter', 'typography_number'): '.elementor-counter-number-wrapper', ('counter', 'number_color'): '.elementor-counter-number-wrapper', ('counter', 'typography_title'): '.elementor-counter-title', ('counter', 'title_color'): '.elementor-counter-title',
+       ('toggle', 'title_typography'): '.elementor-toggle-title', ('toggle', 'content_typography'): '.elementor-tab-content', ('toggle', 'content_color'): '.elementor-tab-content'}
+PROPS = {'font_family': 'font-family', 'font_size': 'font-size', 'font_weight': 'font-weight', 'line_height': 'line-height',
+         'letter_spacing': 'letter-spacing', 'text_transform': 'text-transform', 'font_style': 'font-style'}
+def widget_style(e):
+    s, k, eid = e['settings'], e.get('widgetType'), e['id']
+    g = s.get('__globals__', {})
+    for (wk, key), sub in SUB.items():
+        if wk != k: continue
+        sel = f'.elementor-9 .elementor-element.elementor-element-{eid}' + (' ' + sub if sub else '')
+        if key.endswith('_color'):
+            ref = g.get(key)
+            col = f"var(--e-global-color-{ref.split('=')[1]})" if ref else s.get(key)
+            if col: CSSV.append((None, f'{sel}{{color:{col}}}'))
+            continue
+        ref = g.get(f'{key}_typography')
+        if ref:
+            i = ref.split('=')[1]
+            CSSV.append((None, sel + '{' + ''.join(f'{css}:var(--e-global-typography-{i}-{p.replace("_", "-")})' + (', sans-serif' if p == 'font_family' else '') + ';'
+                                                  for p, css in PROPS.items() if f'typography_{p}' in TYPO.get(i, {}) or f'typography_{p}_tablet' in TYPO.get(i, {})) + '}'))
+        elif s.get(f'{key}_typography') == 'custom':
+            for dev, mq in (('', None), ('_tablet', '(max-width:1024px)'), ('_mobile', '(max-width:767px)')):
+                decl = ''
+                for p, css in PROPS.items():
+                    v = s.get(f'{key}_{p}{dev}')
+                    if v in (None, ''): continue
+                    decl += f"{css}:{v['size']}{v.get('unit','px')};" if isinstance(v, dict) else f'{css}:{v}' + (', sans-serif' if p == 'font_family' else '') + ';'
+                if decl: CSSV.append((mq, f'{sel}{{{decl}}}'))
 def page(paths, out):
     CSSV.clear()
     body = ''
     for pth in paths: body += ''.join(render(e) for e in json.load(open(pth))['content'])
     css = open('../site-settings.css').read()
-    rules = '\n'.join(r for m, r in CSSV if not m) + '\n@media (max-width:767px){' + '\n'.join(r for m, r in CSSV if m) + '}'
+    rules = '\n'.join(r for m, r in CSSV if not m)
+    for mq in ('(max-width:1024px)', '(max-width:767px)'):
+        rules += f'\n@media {mq}{{' + '\n'.join(r for m, r in CSSV if m == mq) + '}'
     doc = f'''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
 <style>body{{margin:0;background:#fff}} img{{max-width:100%}} *{{box-sizing:border-box}} .e-con{{min-width:0}} .elementor-widget{{min-width:0}} p{{margin:0 0 .6em}}</style>
-<style>{rules}</style><style>{css}</style></head><body class="elementor-kit-5">{body}</body></html>'''
+<style>{kit_vars()}</style><style>{EL_DEFAULTS}</style><style>{css}</style><style>{EL_GLOBALS}</style><style>{rules}</style></head><body class="elementor-kit-5"><div class="elementor elementor-9">{body}</div></body></html>'''
     open(out, 'w').write(doc)
 if __name__ == '__main__':
     out = sys.argv[1]

@@ -1,6 +1,10 @@
 /* ==========================================================================
    First Search Marketing - Elementor global CSS
-   Paste into: Elementor > Site Settings > Custom CSS
+   Included in first-search-site-settings.zip (Elementor > Tools > Import/Export).
+   Or paste into: Elementor > Site Settings > Custom CSS
+   Typography, colours and spacing are set on each widget and section in the templates,
+   linked to Global Fonts / Global Colors. This file only adds what Elementor can't do natively
+   (gradient borders and text, glows, pills, stage logos, FAQ/tab styling) and fallbacks.
    Matches the approved website prototype (v13). Brand purple: #250762.
 
    HOW TO USE
@@ -15,31 +19,33 @@
      Global Fonts (listed in the README) so widgets pick them up too.
    ========================================================================== */
 
-/* ---------- 1. Brand tokens ---------- */
+/* ---------- 1. Brand tokens ----------
+   Every colour and font here reads from Elementor's Site Settings (Global Colors / Global Fonts),
+   with the brand value as a fallback. Change a Global Color in Elementor and this CSS follows it. */
 :root {
-  --fs-purple: #250762;          /* primary brand purple */
-  --fs-purple-deep: #1A0446;
-  --fs-sky: #3299D5;             /* accent words, links, icon glow */
-  --fs-sky-ink: #1F78B4;         /* sky blue for small text on white (AA) */
-  --fs-aqua: #72CCD8;
-  --fs-royal: #174FA2;
-  --fs-grey: #D9D8D7;
-  --fs-ink: #1C1B22;             /* body copy */
-  --fs-body: #2F2E36;
-  --fs-muted: #6B6A72;
-  --fs-line: #E3E2EA;
-  --fs-tint: #EEF0F9;
-  --fs-soft: #F4F4F6;
+  --fs-purple: var(--e-global-color-primary, #250762);        /* Primary */
+  --fs-sky: var(--e-global-color-secondary, #3299D5);         /* Secondary */
+  --fs-ink: var(--e-global-color-text, #1C1B22);              /* Text */
+  --fs-royal: var(--e-global-color-accent, #174FA2);          /* Accent */
+  --fs-body: var(--e-global-color-fsbody, #2F2E36);
+  --fs-muted: var(--e-global-color-fsmuted, #6B6A72);
+  --fs-sky-ink: var(--e-global-color-fsskyink, #1F78B4);
+  --fs-aqua: var(--e-global-color-fsaqua, #72CCD8);
+  --fs-purple-deep: var(--e-global-color-fsdeep, #1A0446);
+  --fs-grey: var(--e-global-color-fsgrey, #D9D8D7);
+  --fs-line: var(--e-global-color-fsline, #E3E2EA);
+  --fs-tint: var(--e-global-color-fstint, #EEF0F9);
+  --fs-soft: var(--e-global-color-fssoft, #F4F4F6);
 
-  --fs-grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);
-  --fs-grad-diag: linear-gradient(120deg, #72CCD8 0%, #174FA2 100%);
-  --fs-grad-text: linear-gradient(90deg, #72CCD8 0%, #3299D5 45%, #174FA2 100%);
-  --fs-grad-purple: linear-gradient(135deg, #2B0A80 0%, #250762 55%, #200556 100%);
+  --fs-grad: linear-gradient(90deg, var(--fs-aqua) 0%, var(--fs-royal) 100%);
+  --fs-grad-diag: linear-gradient(120deg, var(--fs-aqua) 0%, var(--fs-royal) 100%);
+  --fs-grad-text: linear-gradient(90deg, var(--fs-aqua) 0%, var(--fs-sky) 45%, var(--fs-royal) 100%);
+  --fs-grad-purple: linear-gradient(135deg, #2B0A80 0%, var(--fs-purple) 55%, #200556 100%);
   --fs-grad-purple-hover: linear-gradient(135deg, #300C8C 0%, #2A0874 100%);
   --fs-glow: radial-gradient(90% 80% at 100% 0%, rgba(50, 153, 213, .5) 0%, transparent 60%);
 
-  --fs-font: "Poppins", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --fs-font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --fs-font: var(--e-global-typography-primary-font-family, "Poppins"), system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --fs-font-ui: var(--e-global-typography-accent-font-family, "Inter"), system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 
   --fs-shadow-card: 0 18px 40px -18px rgba(37, 7, 98, .28);
   --fs-shadow-btn: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55);
@@ -50,6 +56,7 @@
 body {
   font-family: var(--fs-font);
   color: var(--fs-ink);
+  background-color: var(--e-global-color-fsbg, #F8F7F7);   /* page background, as in the HTML */
   -webkit-font-smoothing: antialiased;
 }
 h1, h2, h3, h4, h5, h6,
@@ -66,7 +73,7 @@ h3.elementor-heading-title { font-weight: 700; font-size: clamp(22px, 2vw, 28px)
 /* Text on dark sections */
 .fs-dark h1, .fs-dark h2, .fs-dark h3, .fs-dark h4,
 .fs-dark .elementor-heading-title { color: #fff; }
-.fs-dark, .fs-dark p, .fs-dark li, .fs-dark .elementor-widget-text-editor { color: rgba(255, 255, 255, .9); }
+.fs-dark, .fs-dark .elementor-widget-text-editor { color: rgba(255, 255, 255, .9); }
 
 /* Gradient words inside a heading: span.fs-gt "..." */
 .fs-gt {
@@ -112,6 +119,9 @@ h3.elementor-heading-title { font-weight: 700; font-size: clamp(22px, 2vw, 28px)
   max-width: 42ch;
   color: var(--fs-ink);
 }
+
+/* No trailing space under the last paragraph of a Text Editor (as in the HTML) */
+.elementor-widget-text-editor p:last-child { margin-bottom: 0; }
 
 /* ---------- 3. Links ---------- */
 .elementor-widget-text-editor a:not(.elementor-button) {
@@ -218,7 +228,7 @@ a.fs-link-u {
 
 /* Gradient band (stats band, gradient CTA banner) */
 .fs-grad { background: var(--fs-grad); color: #fff; }
-.fs-grad .elementor-heading-title, .fs-grad p { color: #fff; }
+.fs-grad .elementor-heading-title, .fs-grad .elementor-widget-text-editor { color: #fff; }
 
 /* Header: gradient stripe under the header (add to an empty Container or Divider, 8-14px tall) */
 .fs-stripe { height: 10px; min-height: 0; padding: 0; background: var(--fs-grad); }
@@ -243,7 +253,7 @@ a.fs-link-u {
   background: radial-gradient(380px 300px at 100% 100%, rgba(91, 186, 232, .7), transparent 70%), var(--fs-purple);
   box-shadow: var(--fs-shadow-card);
 }
-.fs-purple-card .elementor-heading-title, .fs-purple-card p, .fs-purple-card li { color: #fff; }
+.fs-purple-card, .fs-purple-card .elementor-heading-title, .fs-purple-card .elementor-widget-text-editor { color: #fff; }
 
 /* Soft grey box (callouts, metric boxes) */
 .fs-soft-box { background: var(--fs-soft); border-radius: 18px; }
@@ -281,10 +291,10 @@ a.fs-link-u {
 .fs-pill--purple { background: var(--fs-purple); color: #fff; }
 /* Resource type pills (Loop Grid cards) */
 .fs-type { display: inline-flex; width: max-content; padding: 4px 12px; border-radius: 999px; font-family: var(--fs-font); font-size: 12.5px; font-weight: 700; letter-spacing: .02em; color: #fff !important; }
-.fs-type--blog { background: #3299D5; }
+.fs-type--blog { background: var(--fs-sky); }
 .fs-type--case { background: var(--fs-purple); }
 .fs-type--podcast { background: var(--fs-grad); }
-.fs-type--video { background: #174FA2; }
+.fs-type--video { background: var(--fs-royal); }
 
 /* ---------- 9. FirstSearch stage logos ---------- */
 /* span.fs-plogo "firstbrand"  (add fs-plogo--light on dark backgrounds) */
@@ -504,22 +514,23 @@ a.fs-link-u {
 /* ---------- 18. Page sections (used by the page templates) ---------- */
 /* Section header: eyebrow + H2 + lead, centred */
 .fs-sec-head { text-align: center; max-width: 880px; margin-inline: auto; }
-.fs-lead, .fs-lead p { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; color: var(--fs-body); }
-.fs-dark .fs-lead, .fs-dark .fs-lead p { color: rgba(255, 255, 255, .88); }
+.fs-lead { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; color: var(--fs-body); }
+.fs-dark .fs-lead { color: rgba(255, 255, 255, .88); }
 
 /* Problem cards: purple row card with a white icon tile (Image Box, position left) */
-.fs-pcard { padding: 22px 26px; border-radius: 24px; background: var(--fs-purple); box-shadow: 0 22px 40px -24px rgba(28, 22, 72, .8); }
+.elementor-widget.fs-pcard { padding: 22px 26px; }
+.fs-pcard { border-radius: 24px; background: var(--fs-purple); box-shadow: 0 22px 40px -24px rgba(28, 22, 72, .8); }
 .fs-pcard .elementor-image-box-img img { background: #fff; border-radius: 16px; padding: 12px; box-shadow: 0 0 0 4px var(--fs-sky), 0 0 20px 4px rgba(50, 153, 213, .55); }
-.fs-pcard .elementor-image-box-title { color: #fff !important; font-size: clamp(20px, 1.8vw, 26px); margin-bottom: 6px; }
+.fs-pcard .elementor-image-box-title { color: #fff; font-size: clamp(20px, 1.8vw, 26px); margin-bottom: 6px; }
 .fs-pcard .elementor-image-box-description { color: rgba(255, 255, 255, .92); font-size: 17px; line-height: 1.45; }
 .fs-close .elementor-heading-title { font-size: clamp(20px, 1.9vw, 26px); font-weight: 600; color: var(--fs-purple); }
 
 /* "How it works" steps: big gradient number above a white card */
-.fs-step { position: relative; padding: 64px 26px 30px !important; }
-.fs-step-num .elementor-heading-title { position: absolute; top: -78px; left: 50%; transform: translateX(-50%); font-size: 110px; font-weight: 800; line-height: 1; color: transparent; background: linear-gradient(180deg, #8FD5EE, #3299D5 55%, #174FA2); -webkit-background-clip: text; background-clip: text; }
-.fs-step .elementor-heading-title { text-align: center; }
+.fs-step { position: relative; }  /* padding is set on the container in Elementor */
+.fs-step-num .elementor-heading-title { position: absolute; top: -78px; left: 50%; transform: translateX(-50%); font-size: 110px; font-weight: 800; line-height: 1; color: transparent; background: linear-gradient(180deg, #8FD5EE, var(--fs-sky) 55%, var(--fs-royal)); -webkit-background-clip: text; background-clip: text; }
+.fs-step-num .elementor-heading-title { text-align: center; }
 .fs-step-hl { background: var(--fs-grad-diag) !important; border-color: transparent !important; }
-.fs-step-hl .elementor-heading-title:not(.fs-step-num *), .fs-step-hl p { color: #fff !important; }
+.fs-step-hl .elementor-heading-title:not(.fs-step-num *), .fs-step-hl .elementor-widget-text-editor { color: #fff; }
 .fs-steps { padding-top: 90px; }
 
 /* Stats band (Counter widget inside fs-grad) */
@@ -554,7 +565,7 @@ a.fs-link-u {
 /* Check pills (Icon List widget): purple pills with a sky check */
 .fs-check-pills .elementor-icon-list-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .fs-check-pills .elementor-icon-list-item { padding: 12px 16px !important; margin: 0 !important; border-radius: 14px; background: var(--fs-purple); }
-.fs-check-pills .elementor-icon-list-text { color: #fff; font-style: italic; font-weight: 500; }
+.fs-check-pills .elementor-icon-list-text { color: #fff; font-weight: 500; }
 .fs-check-pills .elementor-icon-list-icon i, .fs-check-pills .elementor-icon-list-icon svg { color: var(--fs-sky); fill: var(--fs-sky); }
 @media (max-width: 767px) { .fs-check-pills .elementor-icon-list-items { grid-template-columns: minmax(0, 1fr); } }
 /* Plain check list */
@@ -570,12 +581,11 @@ a.fs-link-u {
 .fs-stage-tabs .e-n-tabs-content > .e-con { background: transparent; }
 
 /* Quiz callout */
-.fs-quiz-card { padding: clamp(28px, 4vw, 56px) !important; }
 
 /* Gradient CTA banner above the footer */
-.fs-cta-banner { border-radius: 40px; padding: clamp(36px, 5vw, 64px) !important; text-align: center; }
+.fs-cta-banner { border-radius: 40px; text-align: center; }  /* padding is set on the container */
 .fs-cta-banner .elementor-heading-title { color: #fff; font-size: clamp(36px, 4.6vw, 64px); }
-.fs-cta-banner p { color: rgba(255, 255, 255, .92); font-size: 18px; }
+.fs-cta-banner .elementor-widget-text-editor { color: rgba(255, 255, 255, .92); font-size: 18px; }
 
 /* Team cards */
 .fs-team .elementor-image-box-img img { border-radius: 24px 24px 0 0; background: radial-gradient(260px 220px at 50% 100%, rgba(50, 153, 213, .9), transparent 70%), var(--fs-purple); }
@@ -590,8 +600,9 @@ a.fs-link-u {
 .fs-table .no { color: #9B98B3; }
 
 /* ---------- 19. Page template details ---------- */
-.fs-trust-num .elementor-heading-title { font-size: clamp(44px, 4.6vw, 68px); font-weight: 800; color: #fff; line-height: 1; }
-.fs-identity p { color: var(--fs-aqua); font-size: 17px; }
+.fs-trust-num .elementor-heading-title { color: #fff; line-height: 1; text-shadow: 0 0 22px rgba(255, 255, 255, .55), 0 0 4px rgba(255, 255, 255, .4); }
+.fs-trust-num small, .fs-star { font-size: .55em; vertical-align: .55em; margin-left: 4px; color: var(--e-global-color-fsgold, #F4B400); text-shadow: none; }
+.fs-identity { color: var(--fs-aqua); font-size: 17px; }
 .fs-sig .elementor-heading-title { font-family: var(--fs-font); font-size: 20px; font-weight: 700; color: var(--fs-purple); margin: 0; }
 .fs-dark .fs-sig .elementor-heading-title { color: #fff; }
 .fs-belief .elementor-heading-title { max-width: 980px; margin-inline: auto; font-size: clamp(22px, 2.4vw, 32px); font-weight: 700; line-height: 1.35; color: #fff; }
@@ -665,7 +676,7 @@ a.fs-link-u {
 /* Case study: simple bar chart */
 .fs-bars { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; align-items: end; height: 260px; padding-top: 24px; }
 .fs-bar { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
-.fs-bar i { display: block; width: min(34px, 70%); border-radius: 4px 4px 0 0; background: #3299D5; }
+.fs-bar i { display: block; width: min(34px, 70%); border-radius: 4px 4px 0 0; background: var(--fs-sky); }
 .fs-bar--base i { background: #B9B8C6; }
 .fs-bar span { font: 700 13px var(--fs-font-ui); color: var(--fs-purple); margin-bottom: 4px; }
 .fs-bar small { margin-top: 6px; font: 500 12px var(--fs-font-ui); color: var(--fs-muted); }
@@ -722,16 +733,16 @@ a.fs-link-u {
 .fs-map iframe { border-radius: 20px; }
 
 /* White cards sitting inside purple sections keep dark text */
-.fs-dark .fs-gcard:not(.fs-step-hl) .elementor-heading-title,
-.fs-dark .fs-gcard:not(.fs-step-hl) h1, .fs-dark .fs-gcard:not(.fs-step-hl) h2, .fs-dark .fs-gcard:not(.fs-step-hl) h3, .fs-dark .fs-gcard:not(.fs-step-hl) h4 { color: var(--fs-purple); }
-.fs-dark .fs-gcard:not(.fs-step-hl) p, .fs-dark .fs-gcard:not(.fs-step-hl) li,
-.fs-dark .fs-gcard:not(.fs-step-hl) .elementor-widget-text-editor,
-.fs-dark .fs-gcard:not(.fs-step-hl) .elementor-icon-list-text,
-.fs-dark .fs-gcard:not(.fs-step-hl) .elementor-image-box-description { color: var(--fs-body); }
-.fs-dark .fs-gcard .fs-eyebrow .elementor-heading-title, .fs-dark .fs-gcard .fs-eyebrow p { color: var(--fs-sky); }
+:where(.fs-dark .fs-gcard:not(.fs-step-hl)) .elementor-heading-title,
+:where(.fs-dark .fs-gcard:not(.fs-step-hl)) :is(h1, h2, h3, h4) { color: var(--fs-purple); }
+:where(.fs-dark .fs-gcard:not(.fs-step-hl)) .elementor-widget-text-editor,
+:where(.fs-dark .fs-gcard:not(.fs-step-hl)) .elementor-widget-html,
+:where(.fs-dark .fs-gcard:not(.fs-step-hl)) .elementor-icon-list-text,
+:where(.fs-dark .fs-gcard:not(.fs-step-hl)) .elementor-image-box-description { color: var(--fs-body); }
+:where(.fs-dark .fs-gcard .fs-eyebrow) .elementor-heading-title { color: var(--fs-sky); }
 .fs-dark .fs-gcard .fs-link-u .elementor-button, .fs-dark .fs-gcard .fs-link-u a { color: var(--fs-purple) !important; }
-.fs-dark .fs-gcard .fs-soft-box p { color: var(--fs-ink); }
-.fs-dark .fs-gcard .elementor-image-box-title { color: var(--fs-purple) !important; }
+:where(.fs-dark .fs-gcard) .fs-soft-box { color: var(--fs-ink); }
+:where(.fs-dark .fs-gcard) .elementor-image-box-title { color: var(--fs-purple); }
 .fs-dark .fs-gcard .fs-step-num .elementor-heading-title { color: transparent; }
 
 /* ---------- 20. Media details (resource cards, DIY resources, coaching) ---------- */
@@ -744,7 +755,7 @@ a.fs-link-u {
 .fs-rm-case { flex-direction: column; align-items: flex-start; padding: 0 26px; color: #fff; background: radial-gradient(260px 180px at 100% 100%, rgba(78, 152, 216, .7), transparent 70%), var(--fs-purple); }
 .fs-rm-case b { font-weight: 800; font-size: 46px; line-height: 1; color: #8ED8F0; }
 .fs-rm-case span { margin-top: 6px; font-size: 14.5px; }
-.fs-rm-pod { gap: 18px; padding: 0 24px; justify-content: flex-start; background: linear-gradient(135deg, #72CCD8, #3299D5 45%, #174FA2); }
+.fs-rm-pod { gap: 18px; padding: 0 24px; justify-content: flex-start; background: linear-gradient(135deg, var(--fs-aqua), var(--fs-sky) 45%, var(--fs-royal)); }
 .e-con.fs-rm-vid { background-color: var(--fs-purple-deep); background-position: 50% 15% !important; }
 .e-con.fs-rm-vid::before { content: ""; position: absolute; inset: 0; background: rgba(26, 4, 70, .45); }
 .fs-rm-vid > .elementor-widget { position: static; }
@@ -753,15 +764,17 @@ a.fs-link-u {
 .fs-rdur { position: absolute; z-index: 1; right: 12px; bottom: 12px; padding: 3px 8px; border-radius: 6px; background: rgba(0, 0, 0, .75); color: #fff; font-family: var(--fs-font-ui); font-size: 12px; font-weight: 600; }
 
 /* DIY resource rows (Three ways > Do it yourself) */
-.fs-wt-res { padding: 16px 0 !important; border-bottom: 1px solid var(--fs-line); }
+.fs-wt-res { border-bottom: 1px solid var(--fs-line); }
 .fs-wt-res:last-of-type { border-bottom: 0; }
 .e-con.fs-wt-img { --width: 92px; width: 92px !important; height: 92px; flex: none; border-radius: 20px; overflow: hidden; background: var(--fs-tint); justify-content: center; align-items: center; padding: 8px !important; }
 .fs-wt-img img { max-width: 100%; max-height: 76px; width: auto !important; height: auto; object-fit: contain; }
 .e-con.fs-wt-body { --width: auto; flex: 1 1 0; min-width: 0; width: auto !important; }
 .fs-wt-body h4.elementor-heading-title { font-size: 19px; }
-.fs-wt-body p { margin: 0; font-size: 15px; line-height: 1.45; }
+.fs-wt-body p { margin: 0; }
+.fs-wt-body .elementor-widget-text-editor { font-size: 15px; line-height: 1.45; }
 .fs-wt-price { display: inline-block; padding: 6px 12px; border-radius: 999px; background: var(--fs-tint); font-family: var(--fs-font); font-weight: 700; font-size: 15px; color: var(--fs-purple); white-space: nowrap; }
-.fs-wt-more p { margin: 16px 0 0; font-size: 15px; }
+.fs-wt-more { margin-top: 16px; font-size: 15px; }
+.fs-wt-more p { margin: 0; }
 @media (max-width: 767px) {
   .e-con.fs-wt-img { --width: 70px; width: 70px !important; height: 70px; }
   .e-con.fs-wt-body { flex-basis: calc(100% - 88px); }
@@ -781,3 +794,26 @@ a.fs-link-u {
   .elementor-button, .fs-gcard--hover { transition: none; }
   .elementor-button:hover, .fs-gcard--hover:hover { transform: none; }
 }
+
+/* ---------- 21. Edge overlaps (final call to action, overlapping buttons) ---------- */
+/* Final CTA: the card is pulled up into the section above (margin set in Elementor);
+   below the overlap the footer purple shows behind it. */
+.fs-final { background: linear-gradient(to bottom, transparent 110px, var(--fs-purple) 110px); }
+.fs-cta-banner { box-shadow: 0 30px 60px -30px rgba(29, 30, 74, .6); }
+.fs-cta-banner .elementor-button { border: 2px solid #4AA6DC; }
+.fs-overlap { pointer-events: none; }
+.fs-overlap .elementor-button { pointer-events: auto; }
+
+/* ---------- 22. Service / stage problem section ---------- */
+/* Numbered problem cards (container fs-pcard fs-pcard-n; padding set in Elementor) */
+.fs-num-tile { display: grid; place-items: center; width: 72px; height: 72px; flex: none; border-radius: 16px; background: #fff;
+  box-shadow: 0 0 0 4px var(--fs-sky), 0 0 20px 4px rgba(50, 153, 213, .55); font-family: var(--fs-font); font-weight: 800; font-size: 34px; line-height: 1; color: var(--fs-purple); }
+.fs-pcard-n .elementor-heading-title { color: #fff; }
+.fs-pcard-n .elementor-widget-text-editor { color: rgba(255, 255, 255, .92); }
+/* Left card: service icon in a gradient tile, or the stage number */
+.fs-art-tile img { width: 150px; height: 150px; padding: 26px; border-radius: 36px; background: var(--fs-grad-diag); box-shadow: 0 24px 40px -18px rgba(46, 77, 165, .7); object-fit: contain; }
+.fs-art-num { display: grid; place-items: center; width: 150px; height: 150px; margin: 0 auto; border-radius: 36px; background: var(--fs-grad-diag);
+  box-shadow: 0 24px 40px -18px rgba(46, 77, 165, .7); font-family: var(--fs-font); font-weight: 800; font-size: 76px; line-height: 1; color: #fff; }
+/* "Covers / Deliverables / Platforms" bar under the included grid (Text Editor: fs-platforms) */
+.fs-platforms { margin-top: 14px; padding: 20px 28px; border-radius: 10px; background: var(--fs-purple); box-shadow: 0 16px 28px -14px rgba(46, 77, 165, .6); }
+.fs-platforms b { font-style: normal; font-weight: 600; }

@@ -94,8 +94,10 @@ def about():
                         wpct=48, cls='fs-gcard', p=pad(40), gap_=12), gap_=28, align='stretch'), title='Mission and vision'),
         section(sec_head('What we believe', 'Our point of view.'),
                 heading('“Marketing success comes from clear strategy, authentic brand alignment, and continuous improvement of the entire customer journey, <span class="fs-gt">not hacks, trends, or oversized budgets.</span>”', 'p', 'fs-belief', 'center'),
-                row(*[con(heading(f'0{n}', 'p', 'fs-step-num'), heading(t, 'h3'), text(f'<p><b>{k}</b></p><p>{d}</p>', '', 'center'),
-                          cls='fs-gcard fs-step' + (' fs-step-hl' if n == 3 else ''), gap_=10, s={'width': PCT(31), 'width_mobile': PCT(100)})
+                row(*[con(heading(f'0{n}', 'p', 'fs-step-num'),
+                          w('icon', {'selected_icon': {'value': STEP_ICONS[n % 4], 'library': 'fa-solid'}, 'align': 'left', 'primary_color': '#FFFFFF' if n == 3 else '#3299D5', 'size': px(44)}, 'fs-step-icon'),
+                          heading(t, 'h3'), text(f'<p><b>{k}</b></p>'), text(d),
+                          cls='fs-gcard fs-step' + (' fs-step-hl' if n == 3 else ''), gap_=10, p=pad(64, 28, 32, 28), s={'width': PCT(31), 'width_mobile': PCT(100)})
                       for n, (t, k, d) in enumerate([
                           ('Strategy beats size', 'You don’t need a massive budget to win. You need a proven strategy.', 'Most businesses don’t fail from lack of effort. They fail from lack of clarity.'),
                           ('Authenticity always wins', 'Trust isn’t built through gimmicks. It’s built through consistency.', 'Businesses that stay true to their brand, their purpose and their people don’t just grow. They endure.'),

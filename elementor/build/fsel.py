@@ -28,7 +28,7 @@ def gap(n, row=None):
 def con(*children, d='column', cls='', w=None, inner=True, boxed=False, gap_=None, justify=None, align=None,
         wrap=False, p=None, mobile_col=True, title=None, minh=None, bg_img=None, s=None, **extra):
     st = {'content_width': 'boxed' if boxed else 'full', 'flex_direction': d}
-    if boxed: st['boxed_width'] = px(1288)
+    if boxed: st['boxed_width'] = px(1240)  # same as the HTML: 1240px content + 24px side gutters
     if cls: st['css_classes'] = cls
     if w is not None:
         st['width'] = {'unit': '%', 'size': w, 'sizes': []} if isinstance(w, (int, float)) and w <= 100 and not isinstance(w, str) else w
@@ -37,7 +37,8 @@ def con(*children, d='column', cls='', w=None, inner=True, boxed=False, gap_=Non
     if justify: st['flex_justify_content'] = justify
     if align: st['flex_align_items'] = align
     if wrap: st['flex_wrap'] = 'wrap'
-    if p is not None: st['padding'] = p if isinstance(p, dict) else pad(p)
+    # Explicit padding everywhere: Elementor otherwise adds 10px to every container that has none.
+    st['padding'] = (p if isinstance(p, dict) else pad(p)) if p is not None else pad(0)
     if d == 'row' and mobile_col: st['flex_direction_mobile'] = 'column'
     if title: st['_title'] = title
     if minh: st['min_height'] = px(minh)
@@ -125,8 +126,10 @@ def nested_tabs(tabs, cls=''):
         'elements': [c for _, c in tabs]}
 
 def template(title, kind, content, page_css=''):
-    t = {'version': '0.4', 'title': title, 'type': kind, 'content': content, 'page_settings': {}}
-    if page_css: t['page_settings'] = {'custom_css': page_css}
+    # Page layout "Elementor Full Width" + hidden page title, so sections run edge to edge like the HTML.
+    ps = {'template': 'elementor_header_footer', 'hide_title': 'yes'} if kind in ('page', 'single-post') else {}
+    if page_css: ps['custom_css'] = page_css
+    t = {'version': '0.4', 'title': title, 'type': kind, 'content': content, 'page_settings': ps}
     return t
 
 def _stable_ids(o):

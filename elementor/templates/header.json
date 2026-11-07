@@ -46,7 +46,7 @@
       "flex_direction": "column",
       "boxed_width": {
        "unit": "px",
-       "size": 1288,
+       "size": 1240,
        "sizes": []
       },
       "padding": {
@@ -76,6 +76,14 @@
         },
         "flex_justify_content": "space-between",
         "flex_align_items": "center",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "24",
+         "bottom": "0",
+         "left": "24",
+         "isLinked": false
+        },
         "min_height": {
          "unit": "px",
          "size": 112,
@@ -85,14 +93,6 @@
          "unit": "px",
          "size": 76,
          "sizes": []
-        },
-        "padding": {
-         "unit": "px",
-         "top": "0",
-         "right": "24",
-         "bottom": "0",
-         "left": "24",
-         "isLinked": false
         },
         "padding_mobile": {
          "unit": "px",
@@ -253,6 +253,14 @@
                "row": "8",
                "isLinked": true
               },
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": true
+              },
               "flex_direction_mobile": "column",
               "flex_grow": 1
              },
@@ -264,6 +272,14 @@
                "settings": {
                 "content_width": "full",
                 "flex_direction": "column",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                },
                 "flex_grow": 1,
                 "width": {
                  "unit": "%",
@@ -290,6 +306,14 @@
                "settings": {
                 "content_width": "full",
                 "flex_direction": "column",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                },
                 "flex_grow": 1,
                 "width": {
                  "unit": "%",
@@ -316,6 +340,14 @@
                "settings": {
                 "content_width": "full",
                 "flex_direction": "column",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                },
                 "flex_grow": 1,
                 "width": {
                  "unit": "%",
@@ -342,6 +374,14 @@
                "settings": {
                 "content_width": "full",
                 "flex_direction": "column",
+                "padding": {
+                 "unit": "px",
+                 "top": "0",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": true
+                },
                 "flex_grow": 1,
                 "width": {
                  "unit": "%",
@@ -401,7 +441,28 @@
                "settings": {
                 "title": "What we do",
                 "header_size": "p",
-                "_css_classes": "fs-eyebrow"
+                "_css_classes": "fs-eyebrow",
+                "__globals__": {
+                 "title_color": "globals/colors?id=fswhite"
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "700",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 17.0,
+                 "sizes": []
+                },
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1.1,
+                 "sizes": []
+                },
+                "typography_letter_spacing": {
+                 "unit": "em",
+                 "size": 0.02,
+                 "sizes": []
+                }
                },
                "elements": []
               },
@@ -426,7 +487,31 @@
                  "nofollow": ""
                 },
                 "size": "md",
-                "_css_classes": "fs-btn-white"
+                "_css_classes": "fs-btn-white",
+                "__globals__": {},
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "600",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 18.0,
+                 "sizes": []
+                },
+                "typography_font_size_tablet": {
+                 "unit": "px",
+                 "size": 22.0,
+                 "sizes": []
+                },
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1.2,
+                 "sizes": []
+                },
+                "typography_letter_spacing": {
+                 "unit": "em",
+                 "size": 0.005,
+                 "sizes": []
+                }
                },
                "elements": []
               }
@@ -474,7 +559,15 @@
            "isInner": true,
            "settings": {
             "content_width": "full",
-            "flex_direction": "column"
+            "flex_direction": "column",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            }
            },
            "elements": []
           }
@@ -493,7 +586,10 @@
           },
           "size": "md",
           "_css_classes": "fs-header-cta",
-          "hide_mobile": "hidden-mobile"
+          "hide_mobile": "hidden-mobile",
+          "__globals__": {
+           "typography_typography": "globals/typography?id=fs96f87f"
+          }
          },
          "elements": []
         }
@@ -509,11 +605,6 @@
       "content_width": "full",
       "flex_direction": "column",
       "css_classes": "fs-stripe",
-      "min_height": {
-       "unit": "px",
-       "size": 10,
-       "sizes": []
-      },
       "padding": {
        "unit": "px",
        "top": "0",
@@ -521,6 +612,11 @@
        "bottom": "0",
        "left": "0",
        "isLinked": true
+      },
+      "min_height": {
+       "unit": "px",
+       "size": 10,
+       "sizes": []
       }
      },
      "elements": []

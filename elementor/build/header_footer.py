@@ -87,6 +87,8 @@ bottom = con(text('© 2026 First Search Marketing LLC · Family-owned in Hampton
              text('<a href="/privacy-policy/">Privacy policy</a> &nbsp; <a href="/terms/">Terms</a>'),
              d='row', justify='space-between', align='center', cls='fs-bottom', p=pad(22, 0, 0, 0))
 footer = con(con(top, cols, bottom, boxed=True, inner=True, s={'padding': pad(0)}),
-             inner=False, cls='fs-footer', p={'unit': 'px', 'top': '100', 'right': '24', 'bottom': '34', 'left': '24', 'isLinked': False}, gap_=0)
+             inner=False, cls='fs-footer', p={'unit': 'px', 'top': '140', 'right': '24', 'bottom': '40', 'left': '24', 'isLinked': False}, gap_=0,
+             s={'padding_tablet': {'unit': 'px', 'top': '110', 'right': '24', 'bottom': '40', 'left': '24', 'isLinked': False},
+                'padding_mobile': {'unit': 'px', 'top': '110', 'right': '16', 'bottom': '40', 'left': '16', 'isLinked': False}})
 footer_bar = con(cls='fs-stripe', inner=False, minh=10, p=pad(0))
 FOOTER = template('First Search · Footer', 'footer', [footer, footer_bar])
