@@ -214,7 +214,7 @@ def process(templates):
         def visit(e, stack, page=page, occ=occ):
             if e['elType'] != 'widget': return
             # "Three ways" tabs: the whole look comes from the fs-ways CSS, so nothing is written on its widgets
-            if any('fs-ways-tabs' in x for x in stack): return
+            if any('fs-ways-tabs' in x or 'fs-nostyle' in x for x in stack): return
             for part, prefix, ckey, texts in parts(e):
                 st = PROSE if part == 'prose' else None
                 for t in texts:

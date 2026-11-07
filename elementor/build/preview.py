@@ -35,6 +35,8 @@ def render(e, depth=0):
             css += f"background-image:{ov}url('{s['background_image']['url'].replace(ASSET, '../upload/first-search/')}');background-size:cover;background-position:{s.get('background_position','center center')};"
         if s.get('background_color'): css += f"background-color:{s['background_color']};"
         if s.get('sticky'): css += 'position:sticky;top:0;z-index:50;'
+        if isinstance(s.get('margin'), dict): css += f"margin:{box(s['margin'])};"
+        if s.get('z_index') is not None: css += f"position:relative;z-index:{s['z_index']};"
         rule(eid, css)
         t = ''
         if isinstance(s.get('padding_tablet'), dict): t += pv(s['padding_tablet'])
@@ -55,8 +57,9 @@ def render(e, depth=0):
             inner = f'<div class="e-con-inner" style="width:100%;max-width:{bw};margin:0 auto;display:flex;flex-direction:inherit;gap:inherit;align-items:inherit;justify-content:inherit">{inner}</div>'
         idattr = f' id="{s["_element_id"]}"' if s.get('_element_id') else ''
         return f'<div class="e-con e-flex elementor-element elementor-element-{eid} {s.get("css_classes","")}"{idattr}>{inner}</div>'
-    k = e['widgetType']; cls = s.get('_css_classes', '')
+    k = e['widgetType']; cls = s.get('_css_classes', '') + (' elementor-flip-box--effect-flip elementor-flip-box--direction-left' if e['widgetType'] == 'flip-box' else '')
     widget_style(e)
+    if s.get('_z_index') is not None: rule(eid, f"position:relative;z-index:{s['_z_index']};")
     def wrap(body, extra=''): return f'<div class="elementor-element elementor-element-{eid} elementor-widget elementor-widget-{k} {cls}" style="{extra}"><div class="elementor-widget-container">{body}</div></div>'
     al = s.get('align')
     if k == 'heading':
@@ -119,7 +122,12 @@ def render(e, depth=0):
         return wrap(f'<div class="elementor-progress-wrapper" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{pc}"><div class="elementor-progress-bar" data-max="{pc}" style="width:{pc}%"><span class="elementor-progress-text">{s.get("inner_text", "")}</span></div></div>')
     if k == 'flip-box':
         src = s['background_a_image']['url'].replace(ASSET, '../upload/first-search/')
-        return wrap(f'<div class="elementor-flip-box"><div class="elementor-flip-box__front" style="height:420px;background:#250762 url(\'{src}\') bottom/contain no-repeat;display:flex;align-items:flex-end;padding:20px;box-sizing:border-box;position:relative"><div class="elementor-flip-box__layer__overlay" style="position:absolute;inset:0"></div><div style="position:relative"><h3 class="elementor-flip-box__layer__title" style="margin:0">{s["title_text_a"]}</h3><div class="elementor-flip-box__layer__description">{s["description_text_a"]}</div></div></div></div>')
+        h = u(s.get('height')) or '280px'
+        btn = f'<a class="elementor-flip-box__button elementor-button elementor-size-sm">{s["button_text"]}</a>' if s.get('button_text') else ''
+        rule(eid, f"--fb-h:{h}")
+        return wrap(f'<div class="elementor-flip-box" style="height:{h}"><div class="elementor-flip-box__layer elementor-flip-box__front" style="background-image:url({src});background-size:{s.get('background_a_size', 'cover')};background-position:{s.get('background_a_position', 'center center')};background-repeat:no-repeat">'
+                    f'<div class="elementor-flip-box__layer__overlay"><div class="elementor-flip-box__layer__inner"><h3 class="elementor-flip-box__layer__title">{s["title_text_a"]}</h3><div class="elementor-flip-box__layer__description">{s["description_text_a"]}</div></div></div></div>'
+                    f'<div class="elementor-flip-box__layer elementor-flip-box__back" style="background-color:{s.get("background_b_color", "#5A6C7E")}"><div class="elementor-flip-box__layer__overlay"><div class="elementor-flip-box__layer__inner"><h3 class="elementor-flip-box__layer__title">{s["title_text_b"]}</h3><div class="elementor-flip-box__layer__description">{s["description_text_b"]}</div>{btn}</div></div></div></div>')
     if k in ('posts',):
         c = ''.join('<div class="elementor-post__card" style="background:#fff;padding:20px;height:220px"><span class="elementor-post__badge" style="color:#fff;padding:2px 10px">Blog</span><h3 class="elementor-post__title"><a>Post title</a></h3><a class="elementor-post__read-more">Read more »</a></div>' for _ in range(3))
         return wrap(f'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">{c}</div>')
@@ -156,6 +164,17 @@ def render(e, depth=0):
 
 # Elementor's own front-end defaults (container padding/gap) - loaded before the page's element CSS
 EL_DEFAULTS = """
+.elementor-flip-box{position:relative;perspective:1000px;transform-style:preserve-3d}
+.elementor-flip-box__layer{position:absolute;width:100%;height:100%;transition:all .6s ease-in-out;transform-origin:center}
+.elementor-flip-box__front{background-color:#4054b2}
+.elementor-flip-box__layer__overlay{display:flex;height:100%;justify-content:center;align-items:stretch;text-align:center;padding:35px}
+.elementor-flip-box__layer__inner{width:100%}
+.elementor-flip-box__layer__title{margin:0 0 10px;font-size:1.5em}
+.elementor-flip-box--effect-flip .elementor-flip-box__layer{transform-style:preserve-3d;backface-visibility:hidden}
+.elementor-flip-box--effect-flip.elementor-flip-box--direction-left .elementor-flip-box__back{transform:rotateY(180deg)}
+.elementor-flip-box--effect-flip.elementor-flip-box--direction-left .elementor-flip-box:hover .elementor-flip-box__front{transform:rotateY(-180deg)}
+.elementor-flip-box--effect-flip.elementor-flip-box--direction-left .elementor-flip-box:hover .elementor-flip-box__back{transform:rotateY(0)}
+
 .elementor-widget-video .elementor-widget-container{overflow:hidden;transform:translateZ(0)}
 .elementor-widget-video .elementor-wrapper{position:relative;aspect-ratio:var(--video-aspect-ratio)}
 .elementor-custom-embed-image-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:50%;cursor:pointer;text-align:center}
