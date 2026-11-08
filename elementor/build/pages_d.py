@@ -64,53 +64,86 @@ def latest(pred, n=3):
 def case_rows(proof): return tuple((q(s), '[XX]', q(b)) for b, s in proof)
 
 # ======================= SERVICE (one per service) =======================
+INC_FILTER = """<div class="fs-incf" role="group" aria-label="Filter by framework stage"></div>
+<script>(function(){var sc=document.currentScript;if(!sc)return;function init(){var box=sc.parentNode.querySelector('.fs-incf'),sec=sc.closest('.fs-incsec');if(!sec)return;
+var cards=[].slice.call(sec.querySelectorAll('.fs-inc'));cards.forEach(function(c){c._st=[].map.call(c.querySelectorAll('.fs-inc-tags .fs-plogo'),function(p){return p.textContent.trim().toLowerCase().replace(/^first/,'');});});
+var ks=[];cards.forEach(function(c){c._st.forEach(function(k){if(ks.indexOf(k)<0)ks.push(k);});});var O=['brand','thought','choice','referral'];ks.sort(function(a,b){return O.indexOf(a)-O.indexOf(b);});
+if(ks.length<2){box.hidden=true;return;}var f='all';
+function render(){cards.forEach(function(c){c.hidden=!(f==='all'||c._st.indexOf(f)>-1);});
+box.innerHTML=['all'].concat(ks).map(function(k){var n=k==='all'?cards.length:cards.filter(function(c){return c._st.indexOf(k)>-1;}).length;
+return '<button type="button" class="fs-fpill" data-f="'+k+'" aria-pressed="'+(f===k)+'">'+(k==='all'?'All':'<span class="fs-plogo"><b>first</b>'+k+'</span>')+'<span class="n">'+n+'</span></button>';}).join('');}
+box.addEventListener('click',function(e){var b=e.target.closest('.fs-fpill');if(!b)return;f=b.dataset.f;render();});render();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();</script>"""
+
 def service(slug):
+    """Service page, as in services.html."""
     s = SDATA[slug]; name = s['name']; st = s['stages']; multi = len(st) > 1
     h1 = H1[slug]
+    icon = lambda x: f'assets/img/icons/{svc_icon(x).split("/")[-1]}'
+    # 3. Sound familiar: gradient icon card + three navy number cards + closing line
+    art = con(con(image(icon(slug), 'fs-art-img', None, 'center', ''), cls='fs-art-tile2', justify='center', align='center'),
+              heading(q(s['close'][1]), 'h3', 'fs-art-h', 'center'),
+              text(f'{q(s["close"][0])} We give {lc(name)} a clear job, and a number to hit.', 'fs-art-p', 'center'),
+              text('<p>' + ' '.join(f'<span class="fs-plogo-chip fs-art-chip--light">{plogo(k)}</span>' for k in st) + '</p>', 'fs-art-chipw', 'center'),
+              cls='fs-gcard fs-art-card', gap_=22, align='center', justify='center', p=pad(40, 28))
+    pcards = [con(heading(str(i), 'p', 'fs-pn-tile'), con(heading(q(h), 'h3', 'fs-pn-h'), text(q(t), 'fs-pn-p'), gap_=8, cls='fs-pn-txt'),
+                  d='row', gap_=26, align='center', mobile_col=False, cls='fs-pn-card', p=pad(26)) for i, (h, t) in enumerate(s['problems'], 1)]
+    problem_sec = section(con(art, con(eyebrow('Sound familiar?'), heading(q(s['probTitle']), 'h2', 'fs-signs-h'), con(*pcards, gap_=30),
+                                       heading(f'{q(s["close"][0])} <span class="fs-gt">{q(s["close"][1])}</span>', 'p', 'fs-close fs-close2'), gap_=0, cls='fs-signs-r'),
+                              d='row', gap_=56, align='stretch', cls='fs-signs fs-nostyle'),
+                          cls='fs-geo fs-pad-fixed', title='Problem', bg_img=GEO, p={'unit': 'px', 'top': '150', 'right': '24', 'bottom': '150', 'left': '24', 'isLinked': False},
+                          s={'padding_mobile': {'unit': 'px', 'top': '80', 'right': '16', 'bottom': '80', 'left': '16', 'isLinked': False}})
+    # 4. Where this fits: wheel with the service's spots raised, stage pill(s) under it, the stage card on the right
     def stage_card(k):
         R = s['role'][k]
-        return con(con(html(f'<span class="fs-plogo-chip">{q(name)} in {plogo(k, size=24)}</span>'), heading(q(R['h']), 'h3'), text(q(R['d'])),
-                       heading('What we do', 'p', 'fs-eyebrow'), icon_list([q(x) for x in R['items']], cls='fs-checks'),
-                       text(f'<p><small>The number it moves</small><br><b>{q(R["metric"])}</b></p>', 'fs-soft-box'),
-                       link_u(f'Explore the {ST[k][1]} stage', f'/first{k}/'), cls='fs-gcard', p=pad(36), gap_=14), p=pad(0))
-    right = nested_tabs([(f'first{k}', stage_card(k)) for k in st], 'fs-stage-tabs') if multi else stage_card(st[0])
-    fw = section(sec_head('Where this fits in your framework', q(s['roleTitle']), q(s['roleLead'])),
-                 row(col(image(f'wheels/service-{slug}.webp', '', '100%', 'center',
-                               f'The FirstSearch Framework wheel with the {name} spots highlighted'), wpct=45),
-                     col(right, wpct=55), gap_=48),
-                 button('Let’s Talk!', '/contact-us/', 'fs-btn-lg', 'center'), cls='fs-dark fs-dark-round', title='Framework fit', gap_=40)
-    fw['settings']['_element_id'] = 'framework'
-    inc_cards = []
+        return con(heading(f'<span class="fs-ptag-svc">{q(name)} in</span>{plogo(k)}', 'p', 'fs-ex-logo fs-ex-logo--svc'), heading(q(R['h']), 'h3', 'fs-ex-h'),
+                   text(q(R['d']), 'fs-ex-desc'), heading('What we do', 'p', 'fs-ex-label'), icon_list([q(x) for x in R['items']], 'fas fa-check', 'fs-ex-checks'),
+                   text(f'<p><span class="ic"></span><span><small>The number it moves</small><b>{q(R["metric"])}</b></span></p>', 'fs-metricbox'),
+                   link_u(f'Explore the {ST[k][1]} stage', f'/first{k}/'), cls='fs-gcard fs-ex-card', gap_=0)
+    tabs = nested_tabs([(plogo(k), stage_card(k)) for k in st], 'fs-explorer-tabs')
+    tabs['settings']['breakpoint_selector'] = 'none'
+    wheel = con(image(f'wheels/service-{slug}.webp', 'fs-wheel-img', '100%', 'center', f'The FirstSearch Framework wheel with the {name} spots highlighted'), cls='fs-wheel fs-wheel--svc')
+    fw = section(sec_head('Where this fits in your framework', q(s['roleTitle']), q(s['roleLead'])), con(wheel, tabs, cls='fs-explorer fs-nostyle'),
+                 button('Let’s Talk!', '/contact-us/', 'fs-btn-lg', 'center'), cls='fs-dark fs-fwblock', title='Framework fit', gap_=56,
+                 p={'unit': 'px', 'top': '72', 'right': '24', 'bottom': '140', 'left': '24', 'isLinked': False},
+                 s={'_element_id': 'framework', 'padding_mobile': {'unit': 'px', 'top': '56', 'right': '16', 'bottom': '96', 'left': '16', 'isLinked': False}})
+    # 5. What's included: icon tile + title + text (+ stage chips and a stage filter when the service spans stages)
+    inc = []
     for i, (t, d, ks) in enumerate(s['included']):
-        kids = [image_box(icon_for(t + ' ' + d, i), q(t), q(d), 'fs-tile', 'left')]
-        if multi: kids.append(html(f'<p>{chips(ks, 13)}</p>'))
-        inc_cards.append(col(*kids, wpct=31, cls='fs-gcard fs-gcard--thin', p=pad(20), gap_=8))
+        kids = [con(image(icon_for(t + ' ' + d, i), '', None, 'center', ''), cls='fs-inc-tile', justify='center', align='center'),
+                con(heading(q(t), 'h3', 'fs-inc-h'), text(q(d), 'fs-inc-p'), gap_=6, cls='fs-inc-txt')]
+        card = con(con(*kids, d='row', gap_=18, align='flex-start', mobile_col=False, cls='fs-inc-top'),
+                   text('<p>' + ''.join(f'<span class="fs-plogo-chip fs-plogo-chip--sm">{plogo(k)}</span>' for k in ks) + '</p>', 'fs-inc-tags') if multi else None,
+                   cls='fs-gcard fs-inc', gap_=10, p=pad(26, 26, 24, 26))
+        inc.append(card)
+    head = con(con(eyebrow('What’s included'), heading(f'Everything it takes to <span class="fs-gt">do {lc(name)} properly.</span>', 'h2'), gap_=14),
+               html(INC_FILTER, 'fs-incf-w') if multi else None, d='row', justify='space-between', align='flex-end', wrap=True, gap_=18, cls='fs-inc-head')
+    included = section(head, row(*inc, gap_=28, wrap=True, align='stretch', cls='fs-inc-grid fs-nostyle'),
+                       text(f'<p><b>{q(s["platforms"][0])}:</b> {q(s["platforms"][1])}</p>', 'fs-platforms'),
+                       cls='fs-geo fs-incsec fs-pad-fixed', title='What’s included', bg_img=GEO, gap_=40,
+                       p={'unit': 'px', 'top': '150', 'right': '24', 'bottom': '100', 'left': '24', 'isLinked': False},
+                       s={'padding_mobile': {'unit': 'px', 'top': '110', 'right': '16', 'bottom': '64', 'left': '16', 'isLinked': False}})
+    # 9. Works best with: linked cards (icon tile, stage chips, name, text, "Explore ...")
     rel = [SDATA[r] for r in s['related']]
+    relcards = [con(con(image(icon(r['slug']), '', None, 'center', ''), cls='fs-rel-tile', justify='center', align='center'),
+                    text('<p>' + ' '.join(f'<span class="fs-plogo-chip fs-plogo-chip--sm">{plogo(k)}</span>' for k in r['stages']) + '</p>', 'fs-rel-chips'),
+                    heading(r['name'], 'h3', 'fs-rel-name'), text(q(r['short']), 'fs-rel-p'), heading(f'Explore {r["name"]}', 'p', 'fs-rel-why'),
+                    cls='fs-gcard fs-rel', gap_=12, p=pad(28), s={'html_tag': 'a', 'link': {'url': svc_url(r['slug']), 'is_external': '', 'nofollow': ''}}) for r in rel]
+    related = section(sec_head('Works best with', f'{name} is stronger as part of the system.'), row(*relcards, gap_=28, align='stretch', wrap=True, cls='fs-rel-grid fs-rel-grid--3 fs-nostyle'),
+                      cls='fs-dark fs-relsec', title='Related services', gap_=40)
+    res = section(con(con(eyebrow('From our resources'), heading(f'Learn more <span class="fs-gt">about {lc(name)}</span>', 'h2'), gap_=14),
+                      link_u(f'See all {name} resources', '/resources/'), d='row', justify='space-between', align='flex-end', wrap=True, gap_=14, cls='fs-res-head'),
+                  res_cards(latest(lambda r: s['tag'] in r['tags'])), cls='fs-geo', title='Resources', bg_img=GEO, gap_=40)
     return [
         hero(f'{name} · {stages_text(st)}', f'{q(h1[0])} <span class="fs-gt">{q(h1[1])}</span>', q(s['lead']),
-             link=('See how it fits the framework', '#framework'), media=vid(caption='Chris walks through this service', length='[2:30]')),
+             link=('See how it fits the framework', '#framework'), media=vid(caption=f'{name}, explained by Chris', length='[2:30]')),
         trust([('4.9★', 'on Google · [XX] reviews'), ('10+', 'years in digital marketing'), ('NH', 'Family-owned in Hampton')]),
-        problem('Sound familiar?', q(s['probTitle']),
-                [(icon_for(h + ' ' + p, i).split('/')[-1], q(h), q(p)) for i, (h, p) in enumerate(s['problems'])],
-                f'{q(s["close"][0])} <span class="fs-sky">{q(s["close"][1])}</span>', numbered=True,
-                art=art_card(image(svc_icon(slug), 'fs-art-tile', 150, 'center', ''), q(s['close'][1]),
-                             f'{q(s["close"][0])} We give {lc(name)} a clear job, and a number to hit.', st)),
-        fw,
-        section(sec_head('What’s included', f'Everything it takes to <span class="fs-gt">do {lc(name)} properly.</span>', align='left'),
-                row(*inc_cards, gap_=20, wrap=True, align='stretch'),
-                text(f'<p><b>{q(s["platforms"][0])}:</b> {q(s["platforms"][1])}</p>', 'fs-platforms'),
-                cls='fs-geo', title='What’s included', bg_img=GEO),
+        problem_sec, fw, included,
         steps('', 'Your first 90 days.', f'What the first three months of {lc(name)} look like with our team.',
               [(w, q(h), q(p)) for w, h, p in s['process']]),
         case_reviews(h3=q(s['proofH']), rows=case_rows(s['proof'])),
         three_ways('Three ways to <span class="fs-gt">get it done.</span>', 'Have our team run it, learn to do it yourself, or do it yourself with a coach in your corner.', eb='Ways to get this done'),
-        section(sec_head('Works best with', f'{name} is stronger as part of the system.'),
-                row(*[col(image_box(svc_icon(r['slug']), r['name'], q(r['short']), 'fs-tile', 'top'), html(f'<p>{chips(r["stages"], 13)}</p>'),
-                          link_u(f'Explore {r["name"]}', svc_url(r['slug'])), wpct=31, cls='fs-gcard', p=pad(26), gap_=8) for r in rel],
-                    gap_=24, align='stretch'), cls='fs-dark', title='Related services'),
-        section(sec_head('From our resources', f'Learn more <span class="fs-gt">about {lc(name)}</span>'),
-                res_cards(latest(lambda r: s['tag'] in r['tags'])),
-                link_u(f'See all {name} resources', '/resources/'), cls='fs-geo', title='Resources', bg_img=GEO, align='center'),
+        related, res,
         faq(f'{name} <span class="fs-gt">questions</span>', [(q(a), q(b)) for a, b in s['faq']] + [
             (f'Can I buy {name} on its own?', f'No. Every service is delivered as part of a FirstSearch partnership, because {lc(name)} works best alongside the rest of your marketing system. Your plan includes every service your business needs for one fixed monthly retainer.')]),
         cta_banner(q(s['final'][0]), q(s['final'][1])),

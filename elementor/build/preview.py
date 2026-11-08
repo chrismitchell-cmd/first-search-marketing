@@ -60,7 +60,10 @@ def render(e, depth=0):
     k = e['widgetType']; cls = s.get('_css_classes', '') + (' elementor-flip-box--effect-flip elementor-flip-box--direction-left' if e['widgetType'] == 'flip-box' else '')
     widget_style(e)
     if s.get('_z_index') is not None: rule(eid, f"position:relative;z-index:{s['_z_index']};")
-    def wrap(body, extra=''): return f'<div class="elementor-element elementor-element-{eid} elementor-widget elementor-widget-{k} {cls}" style="{extra}"><div class="elementor-widget-container">{body}</div></div>'
+    def wrap(body, extra=''):
+        if os.environ.get('NOWRAP'):   # Elementor "optimized markup": no widget-container wrapper
+            return f'<div class="elementor-element elementor-element-{eid} elementor-widget elementor-widget-{k} {cls}" style="{extra}">{body}</div>'
+        return f'<div class="elementor-element elementor-element-{eid} elementor-widget elementor-widget-{k} {cls}" style="{extra}"><div class="elementor-widget-container">{body}</div></div>'
     al = s.get('align')
     if k == 'heading':
         t = s.get('header_size', 'h2'); return wrap(f'<{t} class="elementor-heading-title" style="{"text-align:" + al if al else ""}">{s["title"]}</{t}>')
