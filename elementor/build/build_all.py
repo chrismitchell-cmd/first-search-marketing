@@ -121,7 +121,10 @@ for path, _, tpl in built:
     for e in tpl['content']: _alts(e)
 for path, _, tpl in built:
     save(f'../templates/{path}.json', _renamed(tpl))
-css = open('../site-settings.css', encoding='utf-8').read()
+# split the stylesheet: small global CSS for Site Settings, the rest onto each template that uses it
+import subprocess
+subprocess.run(['node', 'split_css.js'], check=True)
+css = open('../global.css', encoding='utf-8').read()
 kit_settings = kit.build('../first-search-site-settings.zip', styler.kit_typography(presets), css)
 json.dump(kit_settings, open('data/kit-preview.json', 'w'))
 print('global font presets', len(presets))

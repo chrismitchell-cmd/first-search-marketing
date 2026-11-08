@@ -310,8 +310,15 @@ EA_CSS = ''.join(open(f).read() for f in ['/tmp/claude-0/-home-user-first-search
 def page(paths, out):
     CSSV.clear()
     body = ''
-    for pth in paths: body += ''.join(render(e) for e in json.load(open(pth))['content'])
-    css = open('../site-settings.css').read()
+    page_css = ''
+    for pth in paths:
+        content = json.load(open(pth))['content']
+        body += ''.join(render(e) for e in content)
+        page_css += ''.join(e.get('settings', {}).get('custom_css', '') for e in content)
+    # live setup: global CSS in Site Settings, each template's own CSS on its first container (loads after the kit CSS)
+    if os.environ.get('CSS_OVERRIDE'): page_css = ''
+    css = open(os.environ['CSS_OVERRIDE']).read() if os.environ.get('CSS_OVERRIDE') else (open('../global.css').read() if os.path.exists('../global.css') else open('../site-settings.css').read())
+    css = (page_css + '\n' + css) if os.environ.get('PAGE_FIRST') else css + '\n' + page_css
     rules = '\n'.join(r for m, r in CSSV if not m)
     for mq in ('(max-width:1024px)', '(max-width:767px)'):
         rules += f'\n@media {mq}{{' + '\n'.join(r for m, r in CSSV if m == mq) + '}'

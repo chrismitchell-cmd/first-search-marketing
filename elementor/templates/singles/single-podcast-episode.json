@@ -56,7 +56,8 @@
      "bottom": "61",
      "left": "24",
      "isLinked": false
-    }
+    },
+    "custom_css": ".fs-btn-white .elementor-button{background:#fff;border-color:transparent;box-shadow:0 14px 30px -14px rgba(16,12,48,.45);color:var(--fs-purple)}.fs-btn-white .elementor-button:hover{background:#fff;color:var(--fs-royal)}.fs-gcard--thin{--fs-bw:4px;border-radius:24px!important}.fs-gcard--hover{transition:transform .2s ease,box-shadow .2s ease}.fs-gcard--hover:hover{box-shadow:0 26px 46px -22px rgba(37,7,98,.45);transform:translateY(-4px)}.fs-type{border-radius:999px;color:#fff!important;display:inline-flex;font-family:var(--fs-font);font-size:12.5px;font-weight:700;letter-spacing:.02em;padding:4px 12px;width:max-content}.fs-type--podcast{background:var(--fs-grad)}.fs-checks .elementor-icon-list-icon i,.fs-checks .elementor-icon-list-icon svg{color:var(--fs-sky);fill:var(--fs-sky)}.fs-checks .elementor-icon-list-text{color:inherit}.fs-card-meta,.fs-card-meta p{align-items:center;color:var(--fs-muted);display:flex;flex-wrap:wrap;font-family:var(--fs-font-ui);font-size:14px;gap:8px;margin:0}.fs-back{color:var(--fs-sky-ink);font-family:var(--fs-font-ui);font-size:14.5px;font-weight:600;text-decoration:none}.fs-back:hover{color:var(--fs-royal)}.fs-chapters{display:grid;gap:8px;list-style:none;margin:0;padding:0}.fs-chapters li{border:1px solid var(--fs-line);border-radius:14px;display:grid;font-family:var(--fs-font-ui);gap:14px;grid-template-columns:64px minmax(0,1fr);padding:12px 16px}.fs-chapters span{color:var(--fs-sky-ink);font-weight:700}.fs-embed-ph{background:#eef4fb;border:2px dashed #9fb7d9;border-radius:16px;color:var(--fs-royal);display:grid;font-family:var(--fs-font-ui);font-size:14px;min-height:220px;padding:20px;place-items:center;text-align:center}.fs-rcard{overflow:hidden}.fs-rmedia{align-items:center;display:flex;height:172px;justify-content:center;overflow:hidden;position:relative}.e-con.fs-rmedia{--min-height:172px;min-height:172px}.fs-rm-pod{background:linear-gradient(135deg,var(--fs-aqua),var(--fs-sky) 45%,var(--fs-royal));gap:18px;justify-content:flex-start;padding:0 24px}.fs-rplay{background:#fff;border-radius:50%;box-shadow:0 10px 20px -8px rgba(0,0,0,.45);color:var(--fs-purple);display:grid;flex:none;height:58px;place-items:center;position:relative;width:58px;z-index:1}.fs-rplay svg{margin-left:3px}@media (prefers-reduced-motion:reduce){.fs-gcard--hover{transition:none}.fs-gcard--hover:hover{transform:none}}.fs-rcard[hidden]{display:none!important}.fs-gcard.fs-rcard{--fs-bw:4px;border-radius:28px!important;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}.fs-gcard.fs-rcard:hover{box-shadow:0 26px 46px -22px rgba(38,39,91,.45);transform:translateY(-4px)}"
    },
    "elements": [
     {
@@ -158,17 +159,17 @@
           "typography_font_weight": "700",
           "typography_font_size": {
            "unit": "px",
-           "size": 72.0,
+           "size": 72,
            "sizes": []
           },
           "typography_font_size_tablet": {
            "unit": "px",
-           "size": 51.0,
+           "size": 51,
            "sizes": []
           },
           "typography_font_size_mobile": {
            "unit": "px",
-           "size": 40.0,
+           "size": 40,
            "sizes": []
           },
           "typography_line_height": {
@@ -201,12 +202,12 @@
           "typography_font_weight": "400",
           "typography_font_size": {
            "unit": "px",
-           "size": 22.0,
+           "size": 22,
            "sizes": []
           },
           "typography_font_size_tablet": {
            "unit": "px",
-           "size": 17.0,
+           "size": 17,
            "sizes": []
           },
           "typography_line_height": {
@@ -373,7 +374,7 @@
                 "typography_font_weight": "700",
                 "typography_font_size": {
                  "unit": "px",
-                 "size": 28.0,
+                 "size": 28,
                  "sizes": []
                 },
                 "typography_font_size_tablet": {
@@ -383,7 +384,7 @@
                 },
                 "typography_font_size_mobile": {
                  "unit": "px",
-                 "size": 22.0,
+                 "size": 22,
                  "sizes": []
                 },
                 "typography_line_height": {
@@ -576,7 +577,7 @@
             "typography_font_weight": "700",
             "typography_font_size": {
              "unit": "px",
-             "size": 32.0,
+             "size": 32,
              "sizes": []
             },
             "typography_font_size_tablet": {
@@ -586,7 +587,7 @@
             },
             "typography_font_size_mobile": {
              "unit": "px",
-             "size": 26.0,
+             "size": 26,
              "sizes": []
             },
             "typography_line_height": {
@@ -618,7 +619,7 @@
             "typography_font_weight": "400",
             "typography_font_size": {
              "unit": "px",
-             "size": 18.0,
+             "size": 18,
              "sizes": []
             },
             "typography_font_size_mobile": {
@@ -651,7 +652,7 @@
             "typography_font_weight": "700",
             "typography_font_size": {
              "unit": "px",
-             "size": 21.0,
+             "size": 21,
              "sizes": []
             },
             "typography_line_height": {
@@ -736,7 +737,7 @@
             "typography_font_weight": "700",
             "typography_font_size": {
              "unit": "px",
-             "size": 21.0,
+             "size": 21,
              "sizes": []
             },
             "typography_line_height": {
@@ -784,7 +785,7 @@
             "title_typography_font_weight": "700",
             "title_typography_font_size": {
              "unit": "px",
-             "size": 16.0,
+             "size": 16,
              "sizes": []
             },
             "title_typography_text_transform": "none",
@@ -924,7 +925,7 @@
               "title_typography_font_weight": "700",
               "title_typography_font_size": {
                "unit": "px",
-               "size": 16.0,
+               "size": 16,
                "sizes": []
               },
               "title_typography_text_transform": "none",
@@ -971,7 +972,7 @@
               "title_typography_font_weight": "400",
               "title_typography_font_size": {
                "unit": "px",
-               "size": 18.0,
+               "size": 18,
                "sizes": []
               },
               "title_typography_font_size_mobile": {
@@ -1109,7 +1110,7 @@
               "icon_typography_font_weight": "600",
               "icon_typography_font_size": {
                "unit": "px",
-               "size": 15.0,
+               "size": 15,
                "sizes": []
               },
               "icon_typography_text_transform": "none",
@@ -1165,7 +1166,7 @@
               },
               "typography_font_size_tablet": {
                "unit": "px",
-               "size": 16.0,
+               "size": 16,
                "sizes": []
               },
               "typography_text_transform": "none",
@@ -1186,7 +1187,7 @@
               "typography_font_weight": "700",
               "typography_font_size": {
                "unit": "px",
-               "size": 22.0,
+               "size": 22,
                "sizes": []
               },
               "typography_line_height": {
@@ -1217,7 +1218,7 @@
               "typography_font_weight": "400",
               "typography_font_size": {
                "unit": "px",
-               "size": 15.0,
+               "size": 15,
                "sizes": []
               },
               "typography_line_height": {
@@ -1250,7 +1251,7 @@
               "typography_font_weight": "600",
               "typography_font_size": {
                "unit": "px",
-               "size": 18.0,
+               "size": 18,
                "sizes": []
               },
               "typography_line_height": {
@@ -1422,7 +1423,7 @@
           },
           "typography_font_size_tablet": {
            "unit": "px",
-           "size": 16.0,
+           "size": 16,
            "sizes": []
           },
           "typography_line_height": {
@@ -1451,17 +1452,17 @@
           "typography_font_weight": "700",
           "typography_font_size": {
            "unit": "px",
-           "size": 52.0,
+           "size": 52,
            "sizes": []
           },
           "typography_font_size_tablet": {
            "unit": "px",
-           "size": 37.0,
+           "size": 37,
            "sizes": []
           },
           "typography_font_size_mobile": {
            "unit": "px",
-           "size": 32.0,
+           "size": 32,
            "sizes": []
           },
           "typography_line_height": {
@@ -1599,7 +1600,7 @@
               "typography_font_weight": "600",
               "typography_font_size": {
                "unit": "px",
-               "size": 19.0,
+               "size": 19,
                "sizes": []
               },
               "typography_line_height": {
@@ -1636,7 +1637,7 @@
               "typography_font_weight": "500",
               "typography_font_size": {
                "unit": "px",
-               "size": 16.0,
+               "size": 16,
                "sizes": []
               },
               "typography_line_height": {
@@ -1745,7 +1746,7 @@
               "typography_font_weight": "600",
               "typography_font_size": {
                "unit": "px",
-               "size": 19.0,
+               "size": 19,
                "sizes": []
               },
               "typography_line_height": {
@@ -1782,7 +1783,7 @@
               "typography_font_weight": "500",
               "typography_font_size": {
                "unit": "px",
-               "size": 16.0,
+               "size": 16,
                "sizes": []
               },
               "typography_line_height": {
@@ -1891,7 +1892,7 @@
               "typography_font_weight": "600",
               "typography_font_size": {
                "unit": "px",
-               "size": 19.0,
+               "size": 19,
                "sizes": []
               },
               "typography_line_height": {
@@ -1928,7 +1929,7 @@
               "typography_font_weight": "500",
               "typography_font_size": {
                "unit": "px",
-               "size": 16.0,
+               "size": 16,
                "sizes": []
               },
               "typography_line_height": {
@@ -1966,7 +1967,7 @@
         "typography_font_weight": "500",
         "typography_font_size": {
          "unit": "px",
-         "size": 20.0,
+         "size": 20,
          "sizes": []
         },
         "typography_line_height": {
@@ -2161,7 +2162,7 @@
             },
             "typography_font_size_tablet": {
              "unit": "px",
-             "size": 16.0,
+             "size": 16,
              "sizes": []
             },
             "typography_line_height": {
@@ -2189,17 +2190,17 @@
             "typography_font_weight": "700",
             "typography_font_size": {
              "unit": "px",
-             "size": 46.0,
+             "size": 46,
              "sizes": []
             },
             "typography_font_size_tablet": {
              "unit": "px",
-             "size": 33.0,
+             "size": 33,
              "sizes": []
             },
             "typography_font_size_mobile": {
              "unit": "px",
-             "size": 30.0,
+             "size": 30,
              "sizes": []
             },
             "typography_line_height": {
@@ -2232,7 +2233,7 @@
             "typography_font_weight": "400",
             "typography_font_size": {
              "unit": "px",
-             "size": 18.0,
+             "size": 18,
              "sizes": []
             },
             "typography_line_height": {
@@ -2372,7 +2373,7 @@
             "typography_font_weight": "600",
             "typography_font_size": {
              "unit": "px",
-             "size": 20.0,
+             "size": 20,
              "sizes": []
             },
             "typography_line_height": {
@@ -2578,17 +2579,17 @@
             "typography_font_weight": "700",
             "typography_font_size": {
              "unit": "px",
-             "size": 66.0,
+             "size": 66,
              "sizes": []
             },
             "typography_font_size_tablet": {
              "unit": "px",
-             "size": 47.0,
+             "size": 47,
              "sizes": []
             },
             "typography_font_size_mobile": {
              "unit": "px",
-             "size": 36.0,
+             "size": 36,
              "sizes": []
             },
             "typography_line_height": {
@@ -2620,12 +2621,12 @@
             "typography_font_weight": "400",
             "typography_font_size": {
              "unit": "px",
-             "size": 18.0,
+             "size": 18,
              "sizes": []
             },
             "typography_font_size_tablet": {
              "unit": "px",
-             "size": 16.0,
+             "size": 16,
              "sizes": []
             },
             "typography_line_height": {
@@ -2661,12 +2662,12 @@
           "typography_font_weight": "600",
           "typography_font_size": {
            "unit": "px",
-           "size": 18.0,
+           "size": 18,
            "sizes": []
           },
           "typography_font_size_tablet": {
            "unit": "px",
-           "size": 22.0,
+           "size": 22,
            "sizes": []
           },
           "typography_line_height": {
