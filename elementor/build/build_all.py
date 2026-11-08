@@ -91,8 +91,27 @@ def _fix(e, in_step=False):
     for c in e.get('elements', []): _fix(c, step)
 for _, _, tpl in built:
     for e in tpl['content']: _fix(e)
+# Final URLs (SEO plan): the Website service lives at /services/web-design/
+URL_RENAMES = {'/services/website/': '/services/web-design/'}
+def _renamed(t):
+    j = json.dumps(t)
+    for a, b in URL_RENAMES.items(): j = j.replace(a, b)
+    return json.loads(j)
+# Alt text on content images (icons stay decorative, empty alt)
+ALT = {'befirst-training.png': 'BeFirst Marketing Training logo', 'befirst-coaching.png': 'BeFirst Marketing Coaching logo',
+       'blueprint-book.webp': 'The FirstSearch Marketing Blueprint workbook', 'case-dental.webp': 'Client case study: a local dental practice',
+       'course-mockup.webp': 'The BeFirst online marketing course on laptop and tablet', 'problem-art.png': 'Illustration of a business owner overwhelmed by marketing tasks',
+       'chris-cutout.webp': 'Chris Mitchell, Owner and Digital Partner at First Search Marketing', 'scorecard.png': 'Sample FirstSearch Framework scorecard',
+       'team-group.webp': 'The First Search Marketing team', 'logo.png': 'First Search Marketing'}
+def _alts(e):
+    if e.get('widgetType') == 'image':
+        im = e['settings']['image']; fn = im['url'].rsplit('/', 1)[-1]
+        if not im.get('alt') and fn in ALT: im['alt'] = ALT[fn]
+    for c in e.get('elements', []): _alts(c)
 for path, _, tpl in built:
-    save(f'../templates/{path}.json', tpl)
+    for e in tpl['content']: _alts(e)
+for path, _, tpl in built:
+    save(f'../templates/{path}.json', _renamed(tpl))
 css = open('../site-settings.css', encoding='utf-8').read()
 kit_settings = kit.build('../first-search-site-settings.zip', styler.kit_typography(presets), css)
 json.dump(kit_settings, open('data/kit-preview.json', 'w'))

@@ -172,11 +172,11 @@ def review_schema(items, business='First Search Marketing', url='https://befirst
                         'reviewBody': q.strip('“”"'), 'publisher': {'@type': 'Organization', 'name': 'Google'}} for q, who in items]}
     return html('<script type="application/ld+json">' + _json.dumps(data, ensure_ascii=False) + '</script>', 'fs-hidden-script')
 def case_reviews(client='[Client name] · [Industry, NH town]', h3='[From invisible on Google to booked out three weeks ahead]',
-                 rows=(('Monthly leads', '12', '41'), ('Map pack position', '#9', '#1'), ('Google reviews', '18', '112'))):
+                 rows=(('Monthly leads', '12', '41'), ('Map pack position', '#9', '#1'), ('Google reviews', '18', '112')), schema=False):
     case = col(image('assets/img/design/case-dental.webp', 'fs-img-frame', '100%'),
                heading(client, 'p', 'fs-eyebrow'), heading(h3, 'h3'), table(rows), link_u('Read the full story', '/case-studies/'),
                wpct=56, cls='fs-purple-card fs-dark', p=pad(24), gap_=16)
-    revs = col(*[review(q, n) for q, n in REVIEWS], link_u('Read all [XX] Google reviews', '#'), review_schema(REVIEWS), wpct=40, gap_=22)
+    revs = col(*[review(q, n) for q, n in REVIEWS], link_u('Read all [XX] Google reviews', '#'), review_schema(REVIEWS) if schema else None, wpct=40, gap_=22)
     return section(row(case, revs, gap_=40, align='flex-start'), cls='fs-geo', title='Case study + reviews', bg_img='assets/img/design/bg-geometric.jpg')
 
 # ---------- How it works ----------
@@ -652,7 +652,7 @@ def partner_block():
                con(heading('The FirstSearch Guarantee', 'h3', 'fs-seal-h'), text('If we don’t deliver [the lead growth in your roadmap], [we keep working at no cost until we do].', 'fs-seal-p'), gap_=8),
                d='row', gap_=20, align='center', mobile_col=False, cls='fs-gcard fs-seal-card', p=pad(26))
     rev = review(*REVIEWS[0]); rev['settings']['css_classes'] += ' fs-quote-card'
-    side = con(seal, rev, review_schema(REVIEWS[:1]), gap_=24, cls='fs-part-side')
+    side = con(seal, rev, gap_=24, cls='fs-part-side')
     return row(main, side, gap_=32, align='stretch', cls='fs-part fs-nostyle')
 
 

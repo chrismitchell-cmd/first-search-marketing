@@ -33,7 +33,7 @@ def home():
         guarantee(),
         stats([(47, 'average increase in leads', '%', ''), (1200, 'five-star reviews generated for partners', '', ''),
                (94, 'partner retention rate', '%', ''), (10, 'years building marketing systems', '+', '')]),
-        case_reviews(),
+        case_reviews(schema=True),
         steps('', 'How it works', 'Four steps from “I don’t know what’s working” to a system you can see.', [
             ('Book your strategy call.', 'A [30-minute] conversation about where your marketing is today and where the gaps are. No pitch deck, no pressure.'),
             ('Get your roadmap.', 'We map your business against the FirstSearch Framework and lay out exactly what we’ll do, in what order, and what results we’re committing to.'),
@@ -157,7 +157,7 @@ def why():
                 value_cards(comp), cls='fs-geo', title='Competencies', bg_img=GEO),
         guarantee(),
         stats([(47, 'average increase in leads', '%', ''), (1200, 'five-star reviews generated for partners', '', ''), (0, 'partner retention [CONFIRM]', '%', ''), (4.9, 'average Google rating', '★', '')]),
-        section(sec_head('Proof', 'Don’t take our <span class="fs-gt">word for it.</span>'), row(*[col(review(q, n), wpct=48) for q, n in REVIEWS], gap_=28, align='stretch'), review_schema(REVIEWS),
+        section(sec_head('Proof', 'Don’t take our <span class="fs-gt">word for it.</span>'), row(*[col(review(q, n), wpct=48) for q, n in REVIEWS], gap_=28, align='stretch'),
                 link_u('Read all [XX] Google reviews', '#'), cls='fs-geo', title='Reviews', bg_img=GEO, align='center'),
         steps('', 'What working with us looks like', 'No black boxes. You always know what’s happening.', [
             ('Kickoff and onboarding.', '<b>Week 1</b> · Your welcome kit, account access, goals and the people you’ll work with.'),
