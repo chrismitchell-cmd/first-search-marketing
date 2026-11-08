@@ -2300,3 +2300,111 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 .fsx-header .site-header { position: relative !important; }
 .fsx-header .sn-top { text-transform: none !important; letter-spacing: 0 !important; box-shadow: none !important; }
 .fsx-header .sn-top:hover, .fsx-header .sn-top:focus { background: none !important; }
+
+/* ---------- 41. Header: Elementor Mega Menu styled as the design ---------- */
+.e-con.fs-header { position: relative; }
+.fs-header-row > .fs-hdr-logo { flex: none !important; width: auto !important; margin: 0 !important; }
+.fs-hdr-logo img { height: 62px !important; width: auto !important; max-width: none !important; transition: height .25s ease; }
+.fs-header.elementor-sticky--effects .fs-hdr-logo img { height: 50px !important; }
+.fs-header-row > .fs-nav { flex: 1 1 auto !important; width: auto !important; min-width: 0; margin: 0 !important; }
+.fs-header-row > .fs-header-cta { flex: none !important; width: auto !important; margin: 0 !important; }
+.fs-header-cta .elementor-button { white-space: nowrap; font-size: 22px !important; padding: 12px 30px !important; }
+.e-con.fs-stripe2 { min-height: 14px; }
+@media (max-width: 767px) { .fs-hdr-logo img { height: 44px !important; } .e-con.fs-stripe2 { min-height: 8px; } }
+@media (min-width: 768px) and (max-width: 1024px) { .fs-hdr-logo img { height: 52px !important; } }
+
+/* desktop: titles, chevrons, underline, dropdown panels */
+@media (min-width: 1025px) {
+  .fs-nav .e-n-menu-heading { justify-content: flex-end !important; gap: clamp(16px, 2vw, 30px) !important; }
+  .fs-nav .e-n-menu-title { padding: 8px 0 !important; gap: 6px; background: none !important; border: 0 !important; }
+  .fs-nav .e-n-menu-title::after { bottom: 0 !important; }
+  .fs-nav .e-n-menu-title-text, .fs-nav .e-n-menu-title-container { font-family: var(--fs-font-ui) !important; font-size: 18px !important; font-weight: 500 !important; color: var(--fs-purple) !important;
+    white-space: nowrap; text-decoration: none !important; text-transform: none !important; letter-spacing: 0 !important; }
+  .fs-nav .e-n-menu-title:hover .e-n-menu-title-text, .fs-nav .e-n-menu-item:has(.e-active) .e-n-menu-title-text { color: var(--fs-royal) !important; }
+  .fs-nav .e-n-menu-dropdown-icon { padding: 0 !important; background: none !important; border: 0 !important; color: var(--fs-purple) !important; }
+  .fs-nav .e-n-menu-dropdown-icon i, .fs-nav .e-n-menu-dropdown-icon svg { font-size: 13px !important; width: 13px !important; height: 13px !important; fill: currentColor; }
+  /* the dropdowns hang from their menu item; the mega panel spans the whole header */
+  .fs-header .e-con-inner, .fs-header-row, .fs-nav, .fs-nav .e-n-menu, .fs-nav .e-n-menu-wrapper, .fs-nav .e-n-menu-heading { position: static !important; }
+  .fs-nav .e-n-menu-item { position: relative !important; }
+  .fs-nav .e-n-menu-item:nth-child(2) { position: static !important; }
+  .fs-nav .e-n-menu-content { position: absolute !important; top: calc(100% + 18px) !important; left: -22px !important; right: auto !important; bottom: auto !important;
+    width: auto !important; min-width: 0 !important; max-width: none !important; margin: 0 !important; padding: 0 !important; background: none !important; }
+  .fs-nav .e-n-menu-item:nth-child(2) > .e-n-menu-content { top: 100% !important; left: 0 !important; right: 0 !important; }
+  .fs-nav .e-n-menu-content { pointer-events: none; }
+  .fs-nav .e-n-menu-content:has(> .e-active) { pointer-events: auto; }
+  .fs-nav .e-n-menu-content:has(> .e-active)::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 20px; }
+  .fs-nav .e-n-menu-item:nth-child(2) > .e-n-menu-content:has(> .e-active)::before { top: -40px; height: 40px; }
+}
+
+/* small dropdown cards */
+.e-con.fs-dd { width: 380px !important; max-width: 92vw; border-radius: 28px; background: #fff !important;
+  box-shadow: 0 30px 60px -22px rgba(28, 22, 72, .45), 0 0 0 1px rgba(37, 7, 98, .05) !important; }
+.fs-dd .elementor-widget { margin: 0 !important; }
+.e-con.fs-dd-item { border-radius: 16px; text-decoration: none !important; transition: background .15s ease; }
+.e-con.fs-dd-item:hover { background: #F1F0F6; }
+.fs-dd-t .elementor-heading-title { font-family: var(--fs-font) !important; font-weight: 700 !important; font-size: 18px !important; line-height: 1.3 !important; color: var(--fs-purple) !important; }
+.fs-dd-d, .fs-dd-d p { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 14px !important; line-height: 1.4 !important; color: var(--fs-muted) !important; }
+
+/* What We Do mega panel */
+.e-con.fs-mm { width: 100% !important; border-radius: 0 0 32px 32px; box-shadow: 0 30px 60px -22px rgba(28, 22, 72, .45);
+  background: radial-gradient(520px 340px at 100% 100%, rgba(50, 153, 213, .35), transparent 70%), var(--fs-purple) !important; }
+.e-con.fs-mm-in { width: 100%; max-width: 1288px; margin-inline: auto; }
+.fs-mm-in > .fs-mm-cols { flex: 1 1 0 !important; width: auto !important; min-width: 0; }
+.fs-mm-in > .fs-mm-cta { flex: 0 0 300px !important; width: 300px !important; }
+.fs-mm-cols > .fs-mm-col { flex: 1 1 0 !important; width: auto !important; min-width: 0; }
+.fs-mm .elementor-widget { margin: 0 !important; }
+.fs-mm-stage .elementor-heading-title { font-size: 26px !important; line-height: 1.1 !important; }
+.fs-mm-stage .elementor-heading-title a { text-decoration: none !important; }
+.fs-mm-stage .fs-plogo { color: #fff; } .fs-mm-stage .fs-plogo b { color: #3299D5; }
+.fs-mm-stage a:hover .fs-plogo { text-decoration: underline; text-decoration-color: var(--fs-aqua); text-decoration-thickness: 3px; text-underline-offset: 5px; }
+.fs-mm-col > .fs-mm-job { margin-top: 4px !important; padding-bottom: 12px; margin-bottom: 14px !important; border-bottom: 3px solid transparent; border-image: linear-gradient(90deg, #3299D5, #174FA2) 1; }
+.fs-mm-job, .fs-mm-job p { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 13px !important; color: rgba(255, 255, 255, .75) !important; }
+.fs-mm-svcs .elementor-icon-list-items { margin: 0; padding: 0; }
+.fs-mm-svcs .elementor-icon-list-item { margin: 0 !important; padding: 0 !important; }
+.fs-mm-svcs .elementor-icon-list-item::after { display: none !important; }
+.fs-mm-svcs .elementor-icon-list-item a { display: block; width: 100%; margin: 0 -10px; padding: 8px 10px; border-radius: 10px; transition: background .15s ease; }
+.fs-mm-svcs .elementor-icon-list-item a:hover { background: rgba(255, 255, 255, .1); }
+.fs-mm-svcs .elementor-icon-list-icon { display: none !important; }
+.fs-mm-svcs .elementor-icon-list-text { padding: 0 !important; font-family: var(--fs-font-ui) !important; font-size: 15.5px !important; line-height: 1.4 !important; color: rgba(255, 255, 255, .9) !important; }
+.fs-mm-svcs .elementor-icon-list-item a:hover .elementor-icon-list-text { color: #fff !important; }
+.e-con.fs-mm-cta { border-radius: 28px; background: rgba(255, 255, 255, .06) !important; border: 1px solid rgba(255, 255, 255, .14) !important; }
+.fs-mm-k .elementor-heading-title { margin-bottom: 4px; font-family: var(--fs-font) !important; font-weight: 600 !important; font-size: 20px !important; color: #3299D5 !important; text-transform: none !important; }
+.e-con.fs-mm-big { border-radius: 16px; border-left: 4px solid transparent !important; text-decoration: none !important;
+  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; transition: background .15s ease; }
+.e-con.fs-mm-big:hover { background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; }
+.fs-mm-big-t .elementor-heading-title { font-family: var(--fs-font) !important; font-weight: 700 !important; font-size: 17px !important; line-height: 1.3 !important; color: var(--fs-purple) !important; }
+.fs-mm-big-s, .fs-mm-big-s p { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 13.5px !important; line-height: 1.4 !important; color: var(--fs-body) !important; }
+.fs-mm-btn { margin-top: 6px !important; }
+.fs-mm-btn .elementor-button { width: 100%; justify-content: center; font-size: 17px !important; color: #fff !important; border: 0 !important;
+  background: var(--fs-grad) !important; background-size: 100% 100% !important; }
+.fs-mm-btn .elementor-button:hover { background: var(--fs-grad-purple-hover) !important; }
+
+/* tablet / phone: Elementor's own dropdown menu, styled like the design's mobile menu */
+@media (max-width: 1024px) {
+  .fs-header-row > .fs-nav { flex: 0 0 auto !important; margin-left: auto !important; order: 3; }
+  .fs-nav .e-n-menu-toggle { width: 48px; height: 48px; border-radius: 12px !important; border: 1px solid var(--fs-line) !important; background: #fff !important; color: var(--fs-purple) !important; }
+  .fs-nav .e-n-menu-toggle i, .fs-nav .e-n-menu-toggle svg { font-size: 20px; color: var(--fs-purple); fill: var(--fs-purple); }
+  .fs-nav .e-n-menu-wrapper { background: #fff !important; box-shadow: 0 30px 60px -22px rgba(28, 22, 72, .45); }
+  .fs-nav .e-n-menu-heading { padding: 8px 24px 24px !important; }
+  .fs-nav .e-n-menu-item { border-bottom: 1px solid var(--fs-line); }
+  .fs-nav .e-n-menu-title { padding: 18px 0 !important; justify-content: space-between !important; }
+  .fs-nav .e-n-menu-title-text, .fs-nav .e-n-menu-title-container { font-family: var(--fs-font) !important; font-weight: 600 !important; font-size: 22px !important; color: var(--fs-purple) !important; text-decoration: none !important; }
+  .fs-nav .e-n-menu-dropdown-icon { background: none !important; border: 0 !important; color: var(--fs-purple) !important; }
+  .e-con.fs-dd, .e-con.fs-mm { width: 100% !important; max-width: none; border-radius: 0; box-shadow: none !important; background: transparent !important; padding: 0 0 12px !important; }
+  .e-con.fs-mm-in { padding: 0 !important; gap: 18px; }
+  .fs-mm-in > .fs-mm-cta, .fs-mm-cols > .fs-mm-col { flex: none !important; width: 100% !important; }
+  .fs-mm-stage .fs-plogo { color: var(--fs-purple); }
+  .fs-mm-job, .fs-mm-job p { color: var(--fs-muted) !important; }
+  .fs-mm-svcs .elementor-icon-list-text { color: var(--fs-ink) !important; }
+  .e-con.fs-mm-cta { background: var(--fs-purple) !important; }
+}
+/* header fixes: panel anchors to the full header, gradient stripe backup, sizes as in the design */
+@media (min-width: 1025px) { .fs-header .fs-header-box { position: static !important; } }
+.e-con.fs-stripe2 { background: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%) !important; }
+.fs-header-cta .elementor-button { font-size: 17px !important; padding: 12px 30px !important; }
+.fs-mm-svcs a, .fs-mm-svcs a:hover, .fs-mm a, .fs-dd a { text-decoration: none !important; }
+.fs-mm-stage .elementor-heading-title { font-size: 23px !important; }
+.fs-mm-btn .elementor-button-content-wrapper { justify-content: center; width: 100%; }
+.fs-mm-btn .elementor-button { display: flex !important; justify-content: center !important; text-align: center; }
+.e-con.fs-header-row { flex-wrap: nowrap !important; }
+@media (max-width: 767px) { .fs-header-row > .fs-header-cta { display: none !important; } }

@@ -7,58 +7,58 @@ SVC = {
  'choice':   ('Get chosen',           [('Advertising', 'advertising'), ('Social Media', 'social-media'), ('Lead Generation', 'lead-generation'), ('Marketing Automation', 'marketing-automation')]),
  'referral': ('Get referred',         [('Social Media', 'social-media'), ('Marketing Automation', 'marketing-automation'), ('Loyalty', 'loyalty'), ('Reviews & Referrals', 'reviews-referrals')]),
 }
-def menu_list(items):
-    return '<ul class="fs-menu-list">' + ''.join(f'<li><a href="{u}"><b>{t}</b><span>{d}</span></a></li>' for t, d, u in items) + '</ul>'
+def _link(u): return {'url': u, 'is_external': '', 'nofollow': ''}
+def dd_item(title, desc, url):
+    """One row in a small dropdown: bold page name + one-line description, the whole row is the link."""
+    return con(heading(title, 'p', 'fs-dd-t'), text(desc, 'fs-dd-d'), cls='fs-dd-item', gap_=2, p=pad(14, 16), s={'html_tag': 'a', 'link': _link(url)})
+def dd_panel(*items):
+    return con(*items, cls='fs-dd', gap_=2, p=pad(12), s={'width': px(380)})
 
 def stage_col(k):
     job, svcs = SVC[k]
-    h = (f'<a class="fs-stage-link" href="/first{k}/">{plogo(k)}<small>{job}</small></a>'
-         '<ul class="fs-svc-list">' + ''.join(f'<li><a href="/services/{s}/">{n}</a></li>' for n, s in svcs) + '</ul>')
-    return con(html(h), w=None, s={'flex_grow': 1, 'width': {'unit': '%', 'size': 24, 'sizes': []}})
+    h = heading(plogo(k), 'p', 'fs-mm-stage'); h['settings']['link'] = _link(f'/first{k}/')
+    lst = icon_list([n for n, _ in svcs], icon='', cls='fs-mm-svcs', links=[f'/services/{x}/' for _, x in svcs])
+    return con(h, text(job, 'fs-mm-job'), lst, cls='fs-mm-col', gap_=0)
 
-panel_about = con(html(menu_list([('About Us', 'Our story, values and the team behind your marketing', '/about-us/'),
-                                  ('Why Choose Us', 'How we compare, and the FirstSearch Guarantee', '/why-choose-us/')])),
-                  cls='fs-mega', p=pad(14), s={'width': px(380)})
-mega_cta = con(
-    heading('What we do', 'p', 'fs-eyebrow'),
-    html('<div class="fs-mega-cta"><a class="fs-big" href="/services/">All services<span>12 services, one system</span></a>'
-         '<a class="fs-big" href="/services/#framework">The FirstSearch Framework<span>Four stages, one customer journey</span></a></div>'),
-    button('Let’s Talk!', '/contact-us/', 'fs-btn-white'),
-    cls='fs-purple-card fs-mega-cta', p=pad(26), gap_=12, s={'width': px(280), 'flex_shrink': 0})
-panel_do = con(con(*[stage_col(k) for k in SVC], d='row', gap_=8, mobile_col=True, s={'flex_grow': 1}),
-               mega_cta, d='row', cls='fs-mega', p=pad(22), gap_=22, s={'width': px(1180), 'width_tablet': {'unit': '%', 'size': 100, 'sizes': []}})
-panel_grow = con(html(menu_list([('Events', 'Workshops and live trainings, online and in Hampton', '/events/'),
-                                 ('Resources', 'Articles, client stories, podcasts and videos', '/resources/'),
-                                 ('BeFirst Training', 'The Community, Blueprint and 1:1 coaching to grow it yourself', '/befirst-training/')])),
-                 cls='fs-mega', p=pad(14), s={'width': px(420)})
-panel_contact = con()
+def big_link(title, sub, url):
+    return con(heading(title, 'p', 'fs-mm-big-t'), text(sub, 'fs-mm-big-s'), cls='fs-mm-big', gap_=2, p=pad(12, 14), s={'html_tag': 'a', 'link': _link(url)})
 
-items = [('About First Search', True, ''), ('What We Do', True, '/services/'), ('Grow Your Marketing', True, ''), ('Contact Us', False, '/contact-us/')]
-menu = {'id': uid(), 'elType': 'widget', 'widgetType': 'n-menu', 'settings': {
+panel_about = dd_panel(dd_item('About Us', 'Our story, values and the team behind your marketing', '/about-us/'),
+                       dd_item('Why Choose Us', 'How we compare, and the FirstSearch Guarantee', '/why-choose-us/'))
+mega_cta = con(heading('What we do', 'p', 'fs-mm-k'), big_link('All services', '12 services, one system', '/services/'),
+               big_link('The FirstSearch Framework', 'Four stages, one customer journey', '/services/#framework'),
+               button('Let’s Talk!', '/contact-us/', 'fs-mm-btn'), cls='fs-mm-cta', gap_=10, p=pad(24))
+panel_do = con(con(con(*[stage_col(k) for k in SVC], d='row', gap_=26, cls='fs-mm-cols', mobile_col=True), mega_cta,
+                   d='row', gap_=30, cls='fs-mm-in', mobile_col=True, p=pad(34, 24, 38, 24)),
+               cls='fs-mm', gap_=0, p=pad(0))
+panel_grow = dd_panel(dd_item('Events', 'Workshops and live trainings, online and in Hampton', '/events/'),
+                      dd_item('Resources', 'Articles, client stories, podcasts and videos', '/resources/'),
+                      dd_item('BeFirst Training', 'The Community, Blueprint and 1:1 coaching to grow it yourself', '/befirst-training/'))
+panel_contact = con(p=pad(0))
+
+items = [('About First Search', True, ''), ('What We Do', True, ''), ('Grow Your Marketing', True, ''), ('Contact Us', False, '/contact-us/')]
+CHEV = {'value': 'fas fa-chevron-down', 'library': 'fa-solid'}
+menu = {'id': uid(), 'elType': 'widget', 'widgetType': 'mega-menu', 'settings': {
     'menu_items': [dict({'_id': uid(), 'item_title': t, 'item_dropdown_content': 'yes' if dd else ''},
-                        **({'item_link': {'url': u, 'is_external': '', 'nofollow': ''}} if u else {})) for t, dd, u in items],
+                        **({'item_link': _link(u)} if u else {})) for t, dd, u in items],
     'item_layout': 'horizontal', 'open_on': 'hover', 'content_width': 'fit_to_content', 'breakpoint_selector': 'tablet',
-    'menu_item_title_distance_from_content': px(14), '_css_classes': 'fs-nav'},
+    'menu_item_icon': CHEV, 'menu_item_icon_active': {'value': 'fas fa-chevron-up', 'library': 'fa-solid'},
+    'menu_item_title_distance_from_content': px(18), 'menu_toggle_icon_normal': {'value': 'fas fa-bars', 'library': 'fa-solid'},
+    '_css_classes': 'fs-nav'},
     'elements': [panel_about, panel_do, panel_grow, panel_contact]}
 
-header_row = con(
-    w('theme-site-logo', {'image_size': 'full', 'width': px(220), 'link_to': 'home'}),
-    menu,
-    button('Let’s Talk!', '/contact-us/', 'fs-header-cta'),
-    d='row', mobile_col=False, cls='fs-header-row', justify='space-between', align='center', gap_=32, minh=112,
-    s={'min_height_mobile': px(76), 'padding': pad(0, 24), 'padding_mobile': pad(0, 16), 'flex_wrap': 'nowrap'})
-header = con(con(header_row, boxed=True, inner=True, s={'padding': pad(0)}),
-             con(cls='fs-stripe', minh=10, s={'padding': pad(0)}),
-             inner=False, cls='fs-header', gap_=0, p=pad(0),
-             s={'sticky': 'top', 'sticky_on': ['desktop', 'tablet', 'mobile'], 'sticky_effects_offset': 30, 'background_background': 'classic', 'background_color': '#FFFFFF'})
-# Hide the header CTA on phones (the mobile menu has Contact Us)
-header_row['elements'][2]['settings'].update({'hide_mobile': 'hidden-mobile'})
-# The header is an exact copy of the design's header (logo, mega nav, CTA, mobile menu, stripe) in one HTML widget,
-# so it doesn't depend on Elementor's Menu feature. Edit menu text and links inside that widget.
-from comp import component
-header = con(component('header', 'fs-site-header-w'), inner=False, cls='fs-site-header', gap_=0, p=pad(0), title='Header (design)',
+logo = image('assets/img/logo.png', 'fs-hdr-logo', None, 'left', 'First Search Marketing')
+logo['settings'].update({'link_to': 'custom', 'link': _link('/')})
+header_row = con(logo, menu, button('Let’s Talk!', '/contact-us/', 'fs-header-cta'),
+                 d='row', mobile_col=False, cls='fs-header-row', align='center', gap_=32, minh=112,
+                 s={'min_height_tablet': px(88), 'min_height_mobile': px(76), 'padding': pad(0), 'padding_tablet': pad(0, 24), 'padding_mobile': pad(0, 16), 'flex_wrap': 'nowrap'})
+stripe = con(cls='fs-stripe2', minh=14, p=pad(0),
+             s={'min_height_mobile': px(8), 'background_background': 'gradient', 'background_color': '#72CCD8', 'background_color_b': '#174FA2',
+                'background_gradient_type': 'linear', 'background_gradient_angle': {'unit': 'deg', 'size': 90, 'sizes': []}})
+header = con(con(header_row, boxed=True, inner=True, cls='fs-header-box', s={'padding': pad(0)}), stripe, inner=False, cls='fs-header', gap_=0, p=pad(0), title='Header',
              s={'sticky': 'top', 'sticky_on': ['desktop', 'tablet', 'mobile'], 'sticky_effects_offset': 30, 'z_index': 100,
                 'background_background': 'classic', 'background_color': '#FFFFFF'})
+header_row['elements'][2]['settings'].update({'hide_mobile': 'hidden-mobile'})
 HEADER = template('First Search · Header', 'header', [header])
 
 # ---------------- Footer ----------------

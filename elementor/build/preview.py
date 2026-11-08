@@ -108,6 +108,24 @@ def render(e, depth=0):
                      f'<input class="elementor-field elementor-field-textual" placeholder="{it.get("placeholder","")}" style="width:100%;box-sizing:border-box">') + '</div>' for it in s['form_fields'])
         sub = f'<div class="elementor-field-group elementor-column elementor-field-type-submit" style="width:{s.get("button_width", "100")}%;padding:0 6px 12px;box-sizing:border-box"><button class="elementor-button">{s["button_text"]}</button></div>'
         return wrap(f'<form class="elementor-form"><div class="elementor-form-fields-wrapper" style="display:flex;flex-wrap:wrap;margin:0 -6px">{f}{sub}</div></form>')
+    if k == 'mega-menu':
+        # Elementor Pro Mega Menu markup (horizontal layout), with a small hover script standing in for Pro's JS
+        lis = ''
+        for n, (it, c) in enumerate(zip(s['menu_items'], e['elements']), 1):
+            dd = it.get('item_dropdown_content') == 'yes'
+            href = (it.get('item_link') or {}).get('url')
+            title = (f'<a class="e-n-menu-title-container e-focus e-link" href="{href}"><span class="e-n-menu-title-text">{it["item_title"]}</span></a>' if href
+                     else f'<div class="e-n-menu-title-container"><span class="e-n-menu-title-text">{it["item_title"]}</span></div>')
+            icon = (f'<button id="e-n-menu-dropdown-icon-{eid}{n}" class="e-n-menu-dropdown-icon e-focus" aria-haspopup="true" aria-expanded="false">'
+                    f'<span class="e-n-menu-dropdown-icon-opened"><i class="fas fa-chevron-up">&#8963;</i></span><span class="e-n-menu-dropdown-icon-closed"><i class="fas fa-chevron-down">&#8964;</i></span></button>') if dd else ''
+            content = render(c).replace('<div class="e-con e-flex ', f'<div id="e-n-menu-content-{eid}{n}" class="e-con e-flex ', 1) if dd else ''
+            lis += f'<li class="e-n-menu-item"><div id="e-n-menu-title-{eid}{n}" class="e-n-menu-title">{title}{icon}</div>' + (f'<div class="e-n-menu-content">{content}</div>' if dd else '') + '</li>'
+        js = ("<script>(function(){var nav=document.currentScript.previousElementSibling;[].forEach.call(nav.querySelectorAll('.e-n-menu-item'),function(li){"
+              "var c=li.querySelector('.e-n-menu-content > .e-con'),b=li.querySelector('.e-n-menu-dropdown-icon');if(!c)return;"
+              "li.addEventListener('mouseenter',function(){c.classList.add('e-active');b.setAttribute('aria-expanded','true');});"
+              "li.addEventListener('mouseleave',function(){c.classList.remove('e-active');b.setAttribute('aria-expanded','false');});});})();</script>")
+        return wrap(f'<nav class="e-n-menu" aria-label="Menu"><button class="e-n-menu-toggle" aria-expanded="false"><i class="fas fa-bars">&#9776;</i></button>'
+                    f'<div class="e-n-menu-wrapper"><ul class="e-n-menu-heading">{lis}</ul></div></nav>{js}')
     if k == 'n-menu':
         t = ''.join(f'<div class="e-n-menu-title"><span class="e-n-menu-title-text">{it["item_title"]}</span>{" ▾" if it.get("item_dropdown_content") else ""}</div>' for it in s['menu_items'])
         return wrap(f'<nav style="display:flex;gap:28px">{t}</nav>')
@@ -171,6 +189,15 @@ def render(e, depth=0):
 
 # Elementor's own front-end defaults (container padding/gap) - loaded before the page's element CSS
 EL_DEFAULTS = """
+.e-n-menu-heading{display:flex;list-style:none;margin:0;padding:0;align-items:center}
+.e-n-menu-title{display:flex;align-items:center}
+.e-n-menu-dropdown-icon{background:none;border:0;padding:0 0 0 6px;cursor:pointer}
+.e-n-menu-dropdown-icon-opened{display:none}.e-n-menu-dropdown-icon[aria-expanded=true] .e-n-menu-dropdown-icon-opened{display:inline}.e-n-menu-dropdown-icon[aria-expanded=true] .e-n-menu-dropdown-icon-closed{display:none}
+.e-n-menu-content{position:absolute;z-index:2147483620}
+.e-n-menu-content>.e-con:not(.e-active){display:none}
+.e-n-menu-toggle{display:none}
+@media (max-width:1024px){.e-n-menu-toggle{display:block}.e-n-menu-wrapper{display:none}}
+
 .elementor-flip-box{position:relative;perspective:1000px;transform-style:preserve-3d}
 .elementor-flip-box__layer{position:absolute;width:100%;height:100%;transition:all .6s ease-in-out;transform-origin:center}
 .elementor-flip-box__front{background-color:#4054b2}
