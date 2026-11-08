@@ -2330,9 +2330,7 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
   .fs-nav .e-n-menu-content { position: absolute !important; top: calc(100% + 18px) !important; left: -22px !important; right: auto !important; bottom: auto !important;
     width: auto !important; min-width: 0 !important; max-width: none !important; margin: 0 !important; padding: 0 !important; background: none !important; }
   .fs-nav .e-n-menu-item:nth-child(2) > .e-n-menu-content { top: 100% !important; left: 0 !important; right: 0 !important; }
-  /* hover bridge: while a menu item is hovered, an invisible strip joins it to its dropdown, so the menu stays open on the way down */
-  .fs-nav .e-n-menu-item:hover > .e-n-menu-content::before { content: ""; position: absolute; left: 0; right: 0; top: -24px; height: 24px; }
-  .fs-nav .e-n-menu-item:nth-child(2):hover > .e-n-menu-content::before { top: -72px; height: 72px; }
+
 }
 
 /* small dropdown cards */
@@ -2416,3 +2414,55 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
     width: auto !important; height: 2px !important; min-height: 0 !important; border: 0 !important; border-radius: 2px !important; background: linear-gradient(90deg, #72CCD8, #174FA2) !important; }
   .fs-nav .e-n-menu-title-container, .fs-nav .e-n-menu-title-container:hover, .fs-nav .e-n-menu-title-container *, .fs-nav .e-n-menu-title a { text-decoration: none !important; border: 0 !important; box-shadow: none !important; background: none !important; }
 }
+/* header round 3: pillar headings and service hovers as in the design */
+.e-con.fs-mm-head { margin: 0 -10px 12px !important; border-radius: 12px; border-left: 4px solid transparent !important; text-decoration: none !important;
+  background: linear-gradient(90deg, #72CCD8, #174FA2) 10px 100% / calc(100% - 20px) 3px no-repeat; transition: background .15s ease; }
+.e-con.fs-mm-head:hover { background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; }
+.fs-mm-head .fs-mm-stage .elementor-heading-title { display: inline-block; }
+.fs-mm-head:hover .fs-mm-stage .fs-plogo { color: var(--fs-purple) !important; padding-bottom: 6px; background: linear-gradient(90deg, #72CCD8, #174FA2) left bottom / 100% 3px no-repeat; text-decoration: none !important; }
+.fs-mm-head:hover .fs-mm-stage .fs-plogo b { color: #3299D5 !important; }
+.fs-mm-col > .fs-mm-head .fs-mm-job { margin: 0 !important; padding: 0 !important; border: 0 !important; }
+.fs-mm-head:hover .fs-mm-job, .fs-mm-head:hover .fs-mm-job p { color: var(--fs-ink) !important; }
+.fs-mm-svcs .elementor-icon-list-item a { margin: 0 -10px !important; width: calc(100% + 20px) !important; padding: 8px 10px !important; border-radius: 10px; border-left: 3px solid transparent !important; }
+.fs-mm-svcs .elementor-icon-list-item a:hover { background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box !important; }
+.fs-mm-svcs .elementor-icon-list-item a:hover .elementor-icon-list-text { color: var(--fs-purple) !important; }
+@media (max-width: 1024px) { .e-con.fs-mm-head { background: linear-gradient(90deg, #72CCD8, #174FA2) 10px 100% / calc(100% - 20px) 3px no-repeat; } }
+
+/* header round 4: no gap between a menu item and its dropdown.
+   Each item's hover area fills the header height and runs down through the stripe; dropdowns start right where it ends. */
+@media (min-width: 1025px) {
+  .e-con.fs-header-row { align-items: stretch !important; }
+  .fs-header-row > .fs-hdr-logo, .fs-header-row > .fs-header-cta { align-self: center !important; }
+  .fs-header-row > .fs-nav { display: flex !important; flex-direction: column !important; align-self: stretch !important; }
+  .fs-nav > .elementor-widget-container, .fs-nav .e-n-menu, .fs-nav .e-n-menu-wrapper { display: flex !important; flex-direction: column !important; flex: 1 1 auto !important; height: auto !important; }
+  .fs-nav .e-n-menu-heading { display: flex !important; flex: 1 1 auto !important; align-items: stretch !important; height: auto !important; }
+  .fs-nav .e-n-menu-item { display: flex !important; align-items: center !important; height: auto !important; padding-bottom: 14px !important; margin-bottom: -14px !important; }
+  .fs-nav .e-n-menu-content, .fs-nav .e-n-menu-item:nth-child(2) > .e-n-menu-content { top: 100% !important; }
+  .fs-nav .e-n-menu-content::before { display: none !important; content: none !important; }
+  .e-con.fs-stripe2 { pointer-events: none; }
+  .e-con.fs-dd { border-radius: 0 0 28px 28px; }
+}
+
+/* 42. Header round 5: invisible hover bridge so a diagonal move from a title to the panel keeps it open.
+   It sits on the open panel only (hidden with it), spans the band between the title text and the panel,
+   and stays below the titles so they remain clickable. */
+@media (min-width: 1025px) {
+  .e-con.fs-mm, .e-con.fs-dd { position: relative; overflow: visible !important; }
+  .e-con.fs-mm::after, .e-con.fs-dd::after { content: "" !important; position: absolute !important; left: 0; right: 0; bottom: 100%; height: 44px; background: transparent !important; z-index: 1; pointer-events: auto; display: block !important; }
+  .e-con.fs-dd::after { left: -60px; right: -60px; }
+}
+
+/* 43. Header round 6: a short close delay (pure CSS, works whatever class Elementor Pro toggles).
+   Panels open on :hover and stay visible for a quarter second after the cursor leaves the item,
+   so a diagonal move from a title toward the panel no longer closes it. Not applied in the editor. */
+@media (min-width: 1025px) {
+  body:not(.elementor-editor-active) .fs-nav .e-n-menu-item > .e-n-menu-content { display: flex !important; z-index: 2; }
+  body:not(.elementor-editor-active) .fs-nav .e-n-menu-item > .e-n-menu-content > .e-con {
+    display: flex !important; visibility: hidden; opacity: 0;
+    transition: opacity .12s ease .25s, visibility 0s linear .37s; }
+  body:not(.elementor-editor-active) .fs-nav .e-n-menu-item:hover > .e-n-menu-content { z-index: 3; }
+  body:not(.elementor-editor-active) .fs-nav .e-n-menu-item:hover > .e-n-menu-content > .e-con {
+    visibility: visible; opacity: 1; transition: opacity .12s ease 0s, visibility 0s linear 0s; }
+  .e-con.fs-mm::after, .e-con.fs-dd::after { height: 50px; }
+}
+@media (min-width: 1025px) { .fs-nav .e-n-menu-item:hover > .e-n-menu-title::after { transform: scaleX(1); } }

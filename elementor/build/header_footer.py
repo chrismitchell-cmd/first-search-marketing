@@ -16,9 +16,10 @@ def dd_panel(*items):
 
 def stage_col(k):
     job, svcs = SVC[k]
-    h = heading(plogo(k), 'p', 'fs-mm-stage'); h['settings']['link'] = _link(f'/first{k}/')
+    head = con(heading(plogo(k), 'p', 'fs-mm-stage'), text(job, 'fs-mm-job'), cls='fs-mm-head', gap_=4, p=pad(8, 10, 14, 10),
+               s={'html_tag': 'a', 'link': _link(f'/first{k}/')})
     lst = icon_list([n for n, _ in svcs], icon='', cls='fs-mm-svcs', links=[f'/services/{x}/' for _, x in svcs])
-    return con(h, text(job, 'fs-mm-job'), lst, cls='fs-mm-col', gap_=0)
+    return con(head, lst, cls='fs-mm-col', gap_=0)
 
 def big_link(title, sub, url):
     return con(heading(title, 'p', 'fs-mm-big-t'), text(sub, 'fs-mm-big-s'), cls='fs-mm-big', gap_=2, p=pad(12, 14), s={'html_tag': 'a', 'link': _link(url)})
