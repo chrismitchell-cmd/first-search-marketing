@@ -13,7 +13,51 @@ const LINKS = { 'contact.html': '/contact-us/', 'about.html': '/about-us/', 'why
   'events-resources.html': '/events/', 'ways-to-learn.html': '/befirst-training/', 'pillars.html': '/firstbrand/', 'services.html': '/services/', 'rebrand-homepage.html': '/' };
 
 // Components: name, page, root selector, JS segment markers in the page's main script (start comment, end comment)
+// Header: the design's whole header (logo, mega nav, CTA, menu button, stripe) plus its mobile menu, moved inside it
+const HEADER_JS = [
+  "const header = $('#site-header');",
+  "const onScroll = () => header.classList.toggle('is-scrolled', scrollY > 30);",
+  "onScroll(); addEventListener('scroll', onScroll, { passive: true });",
+  "const mBtn = $('.menu-btn'), mNav = $('#mobile-nav');",
+  "const setMenu = open => {",
+  "  document.documentElement.style.setProperty('--mh', header.getBoundingClientRect().bottom + 'px');",
+  "  mNav.classList.toggle('is-open', open); mBtn.setAttribute('aria-expanded', open); mBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');",
+  "  $('use', mBtn).setAttribute('href', open ? \"#i-close\" : \"#i-menu\");",
+  "  document.body.classList.toggle('menu-open', open); document.body.style.overflow = open ? 'hidden' : '';",
+  "};",
+  "mBtn.addEventListener('click', () => setMenu(!mNav.classList.contains('is-open')));",
+  "$$('a', mNav).forEach(a => a.addEventListener('click', () => setMenu(false)));",
+  "addEventListener('keydown', e => { if (e.key === 'Escape' && mNav.classList.contains('is-open')) { setMenu(false); mBtn.focus(); } });",
+  "matchMedia('(min-width: 1025px)').addEventListener('change', e => e.matches && setMenu(false));",
+  "const dds = $$('.sn-dd'), fine = matchMedia('(hover: hover) and (pointer: fine)');",
+  "const set = (dd, open) => { const b = dd.querySelector('.sn-top'), p = dd.querySelector('.sn-panel'); b.setAttribute('aria-expanded', open); p.hidden = !open; };",
+  "const closeAll = except => dds.forEach(d => d !== except && set(d, false));",
+  "dds.forEach(dd => { const b = dd.querySelector('.sn-top'); let t;",
+  "  b.addEventListener('click', e => { e.stopPropagation(); const open = (fine.matches && dd.matches(':hover')) || b.getAttribute('aria-expanded') !== 'true'; closeAll(dd); set(dd, open); });",
+  "  dd.addEventListener('mouseenter', () => { if (!fine.matches) return; clearTimeout(t); closeAll(dd); set(dd, true); });",
+  "  dd.addEventListener('mouseleave', () => { if (!fine.matches) return; t = setTimeout(() => set(dd, false), 160); }); });",
+  "document.addEventListener('click', e => { if (!e.target.closest('.sn-dd')) closeAll(); });",
+  "addEventListener('keydown', e => { if (e.key === 'Escape') { const o = dds.find(d => d.querySelector('.sn-top').getAttribute('aria-expanded') === 'true'); if (o) { set(o, false); o.querySelector('.sn-top').focus(); } } });",
+  "const norm = u => { try { const x = new URL(u, location.href); return x.pathname.replace(/\\/?$/, '/') + x.hash; } catch (e) { return ''; } };",
+  "const here = norm(location.href);",
+  "$$('[aria-current]').forEach(a => a.removeAttribute('aria-current')); $$('.sn-top').forEach(e => e.classList.remove('is-current'));",
+  "$$('a[href]').forEach(a => { if (a.classList.contains('logo') || a.classList.contains('btn')) return; if (norm(a.getAttribute('href')) === here) { a.setAttribute('aria-current', 'page'); const dd = a.closest('.sn-dd'); if (dd) dd.querySelector('.sn-top').classList.add('is-current'); } });",
+].join('\n');
+const SVC_SLUG = { branding: 'branding-content-creation', website: 'web-design' };
+const headerLinks = h => h
+  .replace(/href="services\.html\?service=([\w-]+)[^"]*"/g, (m, s) => `href="/services/${SVC_SLUG[s] || s}/"`)
+  .replace(/href="pillars\.html\?pillar=(\w+)"/g, (m, k) => `href="/first${k}/"`)
+  .replace(/href="events-resources\.html#resources"/g, 'href="/resources/"')
+  .replace(/href="services-overview\.html#framework"/g, 'href="/services/#framework"');
+const moveMobileNav = src => {
+  const a = src.indexOf('<div class="mobile-nav" id="mobile-nav">'), b = src.indexOf('<main', a);
+  const block = src.slice(a, b);
+  src = src.slice(0, a) + src.slice(b);
+  return src.replace('</header>', block + '</header>');
+};
+
 const COMPONENTS = [
+  { name: 'header', page: 'rebrand-homepage.html', root: 'header.site-header', jsCustom: HEADER_JS, prep: moveMobileNav, links: headerLinks },
   { name: 'hero-phone', page: 'rebrand-homepage.html', root: '.hero .phone', js: ['/* 1. Hero demo', '/* 4. Framework wheel'] },
   { name: 'framework', page: 'rebrand-homepage.html', root: 'section.framework', js: ['/* 4. Framework wheel', '/* 5. Guarantee popup'] },
   // "Three ways": tabs (click + arrow keys), partner-spots bar, video placeholders - from the design's shared script
@@ -71,7 +115,7 @@ function mainScript(src) {
     const jsSeg = C.jsCustom || ms.text.slice(ms.text.indexOf(C.js[0]), ms.text.indexOf(C.js[1]));
     // page copy without the main script: shared theme script still runs (gradient icons, brand icons, headings)
     const tmp = ROOT + '.__bundle_tmp.html';
-    fs.writeFileSync(tmp, src.slice(0, ms.a) + src.slice(ms.b));
+    fs.writeFileSync(tmp, (C.prep || (x => x))(src.slice(0, ms.a) + src.slice(ms.b)));
     const p = await b.newPage({ viewport: { width: 1440, height: 1000 } });
     await p.goto('file://' + tmp); await p.waitForTimeout(800);
     const res = await p.evaluate(({ rootSel, name, jsSeg }) => {
@@ -191,7 +235,7 @@ function mainScript(src) {
     }, { rootSel: C.root, name: C.name, jsSeg });
     await p.close(); fs.unlinkSync(tmp);
     // post-process: rename the design's "e-con" class (Elementor uses it), absolute asset URLs, real page links
-    let html = res.html.replace(/\be-con\b/g, 'fsx-con').replace(/(src|href)="assets\/img\/([^"]+)"/g, (m, a, f) => `${a}="${f === 'framework-wheel.webp' ? CDN2 : CDN}${f}"`)
+    let html = (C.links || (x => x))(res.html).replace(/\be-con\b/g, 'fsx-con').replace(/(src|href)="assets\/img\/([^"]+)"/g, (m, a, f) => `${a}="${f === 'framework-wheel.webp' ? CDN2 : CDN}${f}"`)
       .replace(/href="([\w-]+\.html)(\?[^"#]*)?(#[^"]*)?"/g, (m, f, q, h) => `href="${(LINKS[f] || '/') + (h || '')}"`);
     let css = res.css.replace(/\be-con\b/g, 'fsx-con').replace(/url\(["']?(?:\.\.\/)?assets\/img\/([^"')]+)["']?\)/g, (m, f) => `url("${CDN}${f}")`);
     const W = '.fsx-' + C.name;

@@ -53,6 +53,12 @@ header = con(con(header_row, boxed=True, inner=True, s={'padding': pad(0)}),
              s={'sticky': 'top', 'sticky_on': ['desktop', 'tablet', 'mobile'], 'sticky_effects_offset': 30, 'background_background': 'classic', 'background_color': '#FFFFFF'})
 # Hide the header CTA on phones (the mobile menu has Contact Us)
 header_row['elements'][2]['settings'].update({'hide_mobile': 'hidden-mobile'})
+# The header is an exact copy of the design's header (logo, mega nav, CTA, mobile menu, stripe) in one HTML widget,
+# so it doesn't depend on Elementor's Menu feature. Edit menu text and links inside that widget.
+from comp import component
+header = con(component('header', 'fs-site-header-w'), inner=False, cls='fs-site-header', gap_=0, p=pad(0), title='Header (design)',
+             s={'sticky': 'top', 'sticky_on': ['desktop', 'tablet', 'mobile'], 'sticky_effects_offset': 30, 'z_index': 100,
+                'background_background': 'classic', 'background_color': '#FFFFFF'})
 HEADER = template('First Search · Header', 'header', [header])
 
 # ---------------- Footer ----------------
