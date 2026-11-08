@@ -124,48 +124,86 @@ SELFCHECK = '''<div class="fs-selfcheck" data-verdicts='%s'>
 <script>(function(){var r=document.currentScript.previousElementSibling,v=JSON.parse(r.getAttribute('data-verdicts')),b=r.querySelector('.fs-sc-score b'),h=r.querySelector('.fs-sc-result h3'),p=r.querySelector('.fs-sc-sub');
 r.addEventListener('change',function(){var n=r.querySelectorAll('input:checked').length,x=v[n<=2?0:n<=4?1:2];b.textContent=n;h.textContent=x[0];p.textContent=x[1];});})();</script>'''
 def stage(k):
+    """Framework stage page (FirstBrand / FirstThought / FirstChoice / FirstReferral), as in pillars.html."""
     P = D['P'][k]; n, label, sub = ST[k]
     nav = [s for s in SDATA if k in SDATA[s]['stages']]
+    # 2. You are here: numbered wheel + the four stages as linked rows, current one white with a "You are here" pill
+    rows = []
+    for o in ORDER:
+        on = o == k
+        rows.append(con(heading(str(ST[o][0]), 'p', 'fs-here-n'), con(heading(plogo(o), 'p', 'fs-here-logo'), text(ST[o][2], 'fs-here-sub'), gap_=4, cls='fs-here-txt'),
+                        text('<p>You are here</p>', 'fs-here-pill') if on else None, d='row', gap_=16, align='center', mobile_col=False,
+                        cls='fs-here-row' + (' is-on' if on else ''), p=pad(14, 18),
+                        s=None if on else {'html_tag': 'a', 'link': {'url': f'/first{o}/', 'is_external': '', 'nofollow': ''}}))
+    here = section(con(con(image(f'wheels/stage-{k}-numbered.webp', 'fs-here-wheel', '100%', 'center', f'The FirstSearch Framework, stage {n} of 4 ({label}) highlighted'), cls='fs-here-l'),
+                       con(eyebrow('You are here'), heading(f'Stage {n} of 4 in the FirstSearch Framework.', 'h2', 'fs-here-h'), con(*rows, gap_=10, cls='fs-here-list'), gap_=0, cls='fs-here-r'),
+                       d='row', gap_=64, align='center', cls='fs-here-grid fs-nostyle'),
+                   cls='fs-dark fs-here-sec', title='You are here', p={'unit': 'px', 'top': '90', 'right': '24', 'bottom': '90', 'left': '24', 'isLinked': False},
+                   s={'padding_mobile': {'unit': 'px', 'top': '56', 'right': '16', 'bottom': '56', 'left': '16', 'isLinked': False}})
+    # 3. Signs it's holding you back: big gradient number card + three navy cards with glowing number tiles
+    art = con(heading(str(n), 'p', 'fs-art-bignum', 'center'), heading(q(P['jTitle']), 'h3', 'fs-art-h', 'center'), text(q(P['jLead']), 'fs-art-p', 'center'),
+              text(f'<p><span class="fs-art-chip">{plogo(k)}</span></p>', 'fs-art-chipw', 'center'), cls='fs-gcard fs-art-card', gap_=22, align='center', justify='center', p=pad(40, 28))
+    pcards = [con(heading(str(i), 'p', 'fs-pn-tile'), con(heading(q(h), 'h3', 'fs-pn-h'), text(q(t), 'fs-pn-p'), gap_=8, cls='fs-pn-txt'),
+                  d='row', gap_=26, align='center', mobile_col=False, cls='fs-pn-card', p=pad(26)) for i, (h, t) in enumerate(P['weak'], 1)]
+    signs = section(con(art, con(eyebrow('What it looks like when this stage is weak'), heading(f'Signs {label} is <span class="fs-gt">holding you back.</span>', 'h2', 'fs-signs-h'),
+                                 con(*pcards, gap_=30), gap_=0, cls='fs-signs-r'),
+                        d='row', gap_=56, align='stretch', cls='fs-signs fs-nostyle'),
+                    cls='fs-geo', title='Signs', bg_img=GEO, p={'unit': 'px', 'top': '150', 'right': '24', 'bottom': '150', 'left': '24', 'isLinked': False},
+                    s={'padding_mobile': {'unit': 'px', 'top': '80', 'right': '16', 'bottom': '80', 'left': '16', 'isLinked': False}})
+    # 4. Self-check: statements (left) and a live score (right)
     verd = json.dumps([[q(a), q(b)] for a, b in P['verdicts']]).replace("'", '&#39;')
-    sc = SELFCHECK % (verd, ''.join(f'<li><label><input type="checkbox"> <span>{q(x)}</span></label></li>' for x in P['stmts']),
-                      len(P['stmts']), q(P['verdicts'][0][0]), q(P['verdicts'][0][1]))
-    here = '<ol class="fs-here">' + ''.join(
-        f'<li class="{"on" if o == k else ""}"><a href="/first{o}/"><i>{ST[o][0]}</i>{plogo(o)}<small>{ST[o][2]}</small></a></li>' for o in ORDER) + '</ol>'
-    check = section(con(row(col(eyebrow('Self-check'), heading(f'How strong is <span class="fs-gt">your {label}?</span>'),
-                                text('Tick every statement that’s true for your business today.'), wpct=40),
-                            col(html(sc), wpct=58), gap_=40, align='flex-start'), cls='fs-gcard', p=pad(56), s={'padding_mobile': pad(28)}),
-                    cls='fs-geo', title='Self-check', bg_img=GEO)
-    check['settings']['_element_id'] = 'check'
-    j1, _, j2 = q(P['jTitle']).partition('. ')
+    stm = ''.join(f'<li class="fs-stmt"><input type="checkbox" id="fs-st-{k}{i}"><label for="fs-st-{k}{i}"><span class="box" aria-hidden="true"></span><span>{q(x)}</span></label></li>'
+                  for i, x in enumerate(P['stmts']))
+    js = ("<script>(function(){var s=document.currentScript;if(!s)return;var list=s.previousElementSibling;function go(){var box=list.closest('.fs-check');if(!box)return;"
+          "var V=JSON.parse(list.getAttribute('data-v'));var n=list.querySelectorAll('input:checked').length,v=V[n<=2?0:n<=4?1:2];"
+          "box.querySelector('.fs-score b').textContent=n;[].forEach.call(box.querySelectorAll('.fs-meter i'),function(m,i){m.className=i<n?'on':'';});"
+          "var h=box.querySelector('.fs-verdict .elementor-heading-title'),p=box.querySelector('.fs-verdict-sub');if(h)h.textContent=v[0];if(p)p.innerHTML='<p>'+v[1]+'</p>';}"
+          "list.addEventListener('change',go);})();</script>")
+    left = con(eyebrow('Self-check'), heading(f'How strong is <span class="fs-gt">your {label}?</span>', 'h2', 'fs-check-h'), text('Tick every statement that’s true for your business today.', 'fs-check-p'),
+               html(f'<ul class="fs-stmts" data-v=\'{verd}\'>{stm}</ul>{js}', 'fs-stmts-w'), cls='fs-check-l', gap_=0, p=pad(52), s={'padding_mobile': pad(28)})
+    right = con(html(f'<p class="fs-score"><b>0</b><span>of {len(P["stmts"])}</span></p><p class="fs-meter" aria-hidden="true">' + '<i></i>' * len(P['stmts']) + '</p>', 'fs-score-w'),
+                heading(q(P['verdicts'][0][0]), 'h3', 'fs-verdict'), text(q(P['verdicts'][0][1]), 'fs-verdict-sub'),
+                button('Take the full Framework Quiz', '/framework-quiz/', 'fs-btn-grad'), text('<p>The full quiz scores all four stages in about 5 minutes. [CONFIRM]</p>', 'fs-fine'),
+                cls='fs-check-r fs-dark', gap_=18, justify='center', p=pad(52), s={'padding_mobile': pad(28)})
+    check = section(con(left, right, d='row', gap_=0, align='stretch', cls='fs-gcard fs-check fs-nostyle'), cls='fs-geo', title='Self-check', bg_img=GEO,
+                    p={'unit': 'px', 'top': '0', 'right': '24', 'bottom': '100', 'left': '24', 'isLinked': False},
+                    s={'_element_id': 'check', 'padding_mobile': {'unit': 'px', 'top': '0', 'right': '16', 'bottom': '64', 'left': '16', 'isLinked': False}})
+    # 5. Services in this stage: white service cards (gradient edge) in the rounded purple block
+    cards = [con(image(f'assets/img/icons/{svc_icon(s).split("/")[-1]}', 'fs-sv-ico', None, 'left', ''), heading(SDATA[s]['name'], 'h3', 'fs-sv-h'), text(q(P['svc'][s]), 'fs-sv-p'),
+                 text('<p><small>Also in</small> ' + ' '.join(f'<span class="fs-plogo-chip fs-plogo-chip--sm">{plogo(o)}</span>' for o in SDATA[s]['stages'] if o != k) + '</p>', 'fs-sv-pl')
+                 if len(SDATA[s]['stages']) > 1 else None,
+                 cls='fs-sv', gap_=8, p=pad(24, 24, 22, 30), s={'html_tag': 'a', 'link': {'url': svc_url(s), 'is_external': '', 'nofollow': ''}}) for s in nav]
+    services = section(sec_head('Services in this stage', q(P['sTitle']), f'Each one has a specific job in {label}. Select a service to see everything it includes.'),
+                       row(*cards, gap_=24, align='stretch', wrap=True, cls=f'fs-sv-grid fs-sv-grid--{min(len(nav), 4)} fs-nostyle'),
+                       button('Let’s Talk!', '/contact-us/', 'fs-btn-lg', 'center'), cls='fs-dark fs-fwblock', title='Services in this stage', gap_=56,
+                       p={'unit': 'px', 'top': '72', 'right': '24', 'bottom': '140', 'left': '24', 'isLinked': False},
+                       s={'margin': {'unit': 'px', 'top': '0', 'right': '0', 'bottom': '0', 'left': '0', 'isLinked': True},
+                          'padding_mobile': {'unit': 'px', 'top': '56', 'right': '16', 'bottom': '96', 'left': '16', 'isLinked': False}})
+    # 6. How they work together: two navy panels with service rows, the stage wheel in the middle
     def tog_col(t):
-        h, p, items = t
-        return col(heading(h, 'h3'), text(q(p)), *[image_box(svc_icon(s), SDATA[s]['name'], q(d), 'fs-tile') for s, d in items],
-                   wpct=32, cls='fs-gcard', p=pad(26), gap_=12)
-    center = col(image(f'wheels/stage-{k}.webp', '', '100%', 'center', f'You are here: {label} on the FirstSearch Framework'),
-                 heading(q(P['tog'][1][0]), 'h3', '', 'center'), text(q(P['tog'][1][1]), '', 'center'), wpct=28, gap_=8)
-    per = {2: 48, 3: 31, 4: 23}.get(len(nav), 23)
+        h, p_, items = t
+        return con(heading(q(h), 'h3', 'fs-tog-h'), text(q(p_), 'fs-tog-p'),
+                   *[con(con(image(f'assets/img/icons/{svc_icon(s).split("/")[-1]}', '', None, 'center', ''), cls='fs-tog-tile', justify='center', align='center'),
+                         con(heading(SDATA[s]['name'], 'p', 'fs-tog-n'), text(q(d), 'fs-tog-d'), gap_=2), d='row', gap_=18, align='center', mobile_col=False, cls='fs-tog-item', p=pad(16))
+                     for s, d in items], cls='fs-tog-col', gap_=14, p=pad(30))
+    center = con(image(f'wheels/stage-{k}.webp', 'fs-tog-wheel', None, 'center', f'You are here: {label} on the FirstSearch Framework'),
+                 heading(q(P['tog'][1][0]), 'p', 'fs-tog-ch', 'center'), text(q(P['tog'][1][1]), 'fs-tog-cs', 'center'), cls='fs-tog-center', gap_=8, align='center')
+    together = section(sec_head('How they work together', q(P['tTitle']), q(P['tLead'])),
+                       con(tog_col(P['tog'][0]), center, tog_col(P['tog'][2]), d='row', gap_=32, align='center', cls='fs-tog fs-nostyle'),
+                       cls='fs-geo', title='How they work together', bg_img=GEO, gap_=52,
+                       p={'unit': 'px', 'top': '150', 'right': '24', 'bottom': '100', 'left': '24', 'isLinked': False},
+                       s={'padding_mobile': {'unit': 'px', 'top': '110', 'right': '16', 'bottom': '64', 'left': '16', 'isLinked': False}})
+    # 7. What we measure: gradient band, icon + metric + text + source, white dividers
+    measure = section(eyebrow('What we measure'), heading(q(P['mTitle']), 'h2', 'fs-mx-title'),
+                      con(*[con(text('<p><span class="fs-mx-ic"></span></p>', 'fs-mx-icw'), heading(q(h), 'h3', 'fs-mx-h'), text(q(d), 'fs-mx-p'), text(f'<p>{q(src)}</p>', 'fs-mx-src'),
+                                gap_=0, cls='fs-mx') for h, d, src in P['metrics']], d='row', gap_=0, align='stretch', cls='fs-mx-row fs-nostyle'),
+                      cls='fs-grad fs-mx-band', title='What we measure', gap_=10,
+                      p={'unit': 'px', 'top': '64', 'right': '24', 'bottom': '70', 'left': '24', 'isLinked': False},
+                      s={'padding_mobile': {'unit': 'px', 'top': '56', 'right': '16', 'bottom': '56', 'left': '16', 'isLinked': False}})
     return [
         hero(f'The FirstSearch Framework · Stage {n}: {label}', f'{q(P["h1"][0])} <span class="fs-gt">{q(P["h1"][1])}</span>', q(P['lead']),
-             link=('Take the 60-second self-check', '#check'), media=vid(caption='Chris explains this stage', length='[2:30]')),
-        section(row(col(image(f'wheels/stage-{k}-numbered.webp', '', '100%', alt=f'The FirstSearch Framework, stage {n} of 4 ({label}) highlighted'), wpct=36),
-                    col(eyebrow('You are here'), heading(f'Stage {n} of 4 in the FirstSearch Framework.'), html(here), wpct=60), gap_=48),
-                cls='fs-dark', title='You are here'),
-        problem('What it looks like when this stage is weak', f'Signs {label} is <span class="fs-gt">holding you back.</span>',
-                [(icon_for(h + ' ' + p, i).split('/')[-1], q(h), q(p)) for i, (h, p) in enumerate(P['weak'])],
-                f'{j1}.{" <span class=\"fs-sky\">" + j2 + "</span>" if j2 else ""}', numbered=True,
-                art=art_card(html(f'<span class="fs-art-num">{n}</span>'), q(P['jTitle']), q(P['jLead']), [k])),
-        check,
-        section(sec_head('Services in this stage', q(P['sTitle']), f'Each one has a specific job in {label}. Select a service to see everything it includes.'),
-                row(*[col(image_box(svc_icon(s), SDATA[s]['name'], q(P['svc'][s]), 'fs-tile', 'top'),
-                          html(f'<p><small>Also in</small> {chips([o for o in SDATA[s]["stages"] if o != k], 13)}</p>') if len(SDATA[s]['stages']) > 1 else None,
-                          link_u(f'See {SDATA[s]["name"]}', svc_url(s)), wpct=per, cls='fs-gcard', p=pad(24), gap_=8) for s in nav],
-                    gap_=20, align='stretch', wrap=True),
-                button('Let’s Talk!', '/contact-us/', 'fs-btn-lg', 'center'), cls='fs-dark fs-dark-round', title='Services in this stage', gap_=32),
-        section(sec_head('How they work together', q(P['tTitle']), q(P['tLead'])),
-                row(tog_col(P['tog'][0]), center, tog_col(P['tog'][2]), gap_=24), cls='fs-geo', title='How they work together', bg_img=GEO),
-        section(sec_head('What we measure', q(P['mTitle'])),
-                row(*[col(heading(q(h), 'h3'), text(q(d)), text(f'<p><small>{q(src)}</small></p>', 'fs-eyebrow'), wpct=23, gap_=6) for h, d, src in P['metrics']],
-                    gap_=24, align='stretch', wrap=True), cls='fs-grad', title='What we measure'),
+             link=('Take the 60-second self-check', '#check'), media=vid(caption=f'{label}, explained by Chris', length='[2:30]')),
+        here, signs, check, services, together, measure,
         case_reviews(h3=q(P['proofH']), rows=case_rows(P['proof'])),
         three_ways('Three ways to get <span class="fs-gt">this stage working.</span>', 'Have our team build it for you, learn the system yourself, or get guided by us.', eb='Ways to get this done'),
         faq('Questions about <span class="fs-gt">this stage</span>', [(q(a), q(b)) for a, b in P['faq']] + [
