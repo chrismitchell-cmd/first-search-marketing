@@ -148,7 +148,7 @@ def stage(k):
     signs = section(con(art, con(eyebrow('What it looks like when this stage is weak'), heading(f'Signs {label} is <span class="fs-gt">holding you back.</span>', 'h2', 'fs-signs-h'),
                                  con(*pcards, gap_=30), gap_=0, cls='fs-signs-r'),
                         d='row', gap_=56, align='stretch', cls='fs-signs fs-nostyle'),
-                    cls='fs-geo', title='Signs', bg_img=GEO, p={'unit': 'px', 'top': '150', 'right': '24', 'bottom': '150', 'left': '24', 'isLinked': False},
+                    cls='fs-geo fs-pad-fixed', title='Signs', bg_img=GEO, p={'unit': 'px', 'top': '150', 'right': '24', 'bottom': '150', 'left': '24', 'isLinked': False},
                     s={'padding_mobile': {'unit': 'px', 'top': '80', 'right': '16', 'bottom': '80', 'left': '16', 'isLinked': False}})
     # 4. Self-check: statements (left) and a live score (right)
     verd = json.dumps([[q(a), q(b)] for a, b in P['verdicts']]).replace("'", '&#39;')
@@ -197,7 +197,7 @@ def stage(k):
     measure = section(eyebrow('What we measure'), heading(q(P['mTitle']), 'h2', 'fs-mx-title'),
                       con(*[con(text('<p><span class="fs-mx-ic"></span></p>', 'fs-mx-icw'), heading(q(h), 'h3', 'fs-mx-h'), text(q(d), 'fs-mx-p'), text(f'<p>{q(src)}</p>', 'fs-mx-src'),
                                 gap_=0, cls='fs-mx') for h, d, src in P['metrics']], d='row', gap_=0, align='stretch', cls='fs-mx-row fs-nostyle'),
-                      cls='fs-grad fs-mx-band', title='What we measure', gap_=10,
+                      cls='fs-grad fs-mx-band fs-pad-fixed', title='What we measure', gap_=10,
                       p={'unit': 'px', 'top': '64', 'right': '24', 'bottom': '70', 'left': '24', 'isLinked': False},
                       s={'padding_mobile': {'unit': 'px', 'top': '56', 'right': '16', 'bottom': '56', 'left': '16', 'isLinked': False}})
     return [

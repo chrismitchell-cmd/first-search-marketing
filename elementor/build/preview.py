@@ -1,4 +1,4 @@
-from fsel import ASSET
+from fsel import ASSET, ASSET_V2
 """Approximate Elementor front-end rendering of the templates, for visual QA only (not shipped)."""
 import json, sys, html as H, os
 CSSV = []
@@ -32,7 +32,7 @@ def render(e, depth=0):
             if s.get('background_overlay_color'):
                 c = s['background_overlay_color'].lstrip('#'); a = s.get('background_overlay_opacity', {}).get('size', .5)
                 ov = f"linear-gradient(rgba({int(c[0:2],16)},{int(c[2:4],16)},{int(c[4:6],16)},{a}),rgba({int(c[0:2],16)},{int(c[2:4],16)},{int(c[4:6],16)},{a})),"
-            css += f"background-image:{ov}url('{s['background_image']['url'].replace(ASSET, '../upload/first-search/')}');background-size:cover;background-position:{s.get('background_position','center center')};"
+            css += f"background-image:{ov}url('{s['background_image']['url'].replace(ASSET, '../upload/first-search/').replace(ASSET_V2, '../upload/first-search/')}');background-size:cover;background-position:{s.get('background_position','center center')};"
         if s.get('background_color'): css += f"background-color:{s['background_color']};"
         if s.get('sticky'): css += 'position:sticky;top:0;z-index:50;'
         if isinstance(s.get('margin'), dict): css += f"margin:{box(s['margin'])};"
@@ -69,7 +69,7 @@ def render(e, depth=0):
         j = {'center': 'center', 'right': 'flex-end', 'justify': 'stretch'}.get(al, 'flex-start')
         return wrap(f'<div style="display:flex;justify-content:{j}"><a class="elementor-button" href="{s["link"]["url"]}" style="{"width:100%;text-align:center" if al == "justify" else ""}"><span>{s["text"]}</span></a></div>')
     if k == 'image':
-        wv = u(s.get('width')); src = s['image']['url'].replace(ASSET, '../upload/first-search/')
+        wv = u(s.get('width')); src = s['image']['url'].replace(ASSET, '../upload/first-search/').replace(ASSET_V2, '../upload/first-search/')
         j = {'center': 'center', 'right': 'flex-end'}.get(al, 'flex-start')
         return wrap(f'<div style="display:flex;justify-content:{j}"><img src="{src}" alt="" style="max-width:100%;{"width:" + wv if wv else ""};height:auto;display:block"></div>')
     if k == 'theme-site-logo': return wrap('<img src="../../assets/img/logo.png" style="width:220px;height:auto;display:block" alt="logo">')
@@ -83,12 +83,12 @@ def render(e, depth=0):
         items = ''.join(li(it) for it in s['icon_list'])
         return wrap(f'<ul class="elementor-icon-list-items" style="list-style:none;margin:0;padding:0">{items}</ul>')
     if k == 'image-box':
-        src = s['image']['url'].replace(ASSET, '../upload/first-search/')
+        src = s['image']['url'].replace(ASSET, '../upload/first-search/').replace(ASSET_V2, '../upload/first-search/')
         pos = s.get('position', 'top'); t = s.get('title_size', 'h3')
         lay = 'display:flex;gap:20px;align-items:center' if pos == 'left' else 'text-align:left'
         return wrap(f'<div class="elementor-image-box-wrapper" style="{lay}"><figure class="elementor-image-box-img" style="margin:0 0 10px;width:{"96px" if pos == "left" else "72px"};flex:none"><img src="{src}" style="width:100%;display:block"></figure><div class="elementor-image-box-content"><{t} class="elementor-image-box-title" style="margin:0 0 6px">{s["title_text"]}</{t}><p class="elementor-image-box-description" style="margin:0">{s["description_text"]}</p></div></div>')
     if k == 'video':
-        img = s.get('image_overlay', {}).get('url', '').replace(ASSET, '../upload/first-search/')
+        img = s.get('image_overlay', {}).get('url', '').replace(ASSET, '../upload/first-search/').replace(ASSET_V2, '../upload/first-search/')
         ar = {'169': '1.77777', '219': '2.33333', '43': '1.33333', '32': '1.5', '11': '1', '916': '0.5625'}.get(s.get('aspect_ratio', '169'), '1.77777')
         return wrap(f'<div class="elementor-wrapper elementor-open-inline"><div class="elementor-video"></div><div class="elementor-custom-embed-image-overlay" style="background-image: url({img});">'
                     f'<div class="elementor-custom-embed-play" role="button" aria-label="Play Video" tabindex="0"><svg aria-hidden="true" class="e-font-icon-svg e-eicon-play" viewBox="0 0 1000 1000"><path d="M838 162C746 71 633 25 500 25 371 25 258 71 163 162 71 254 25 367 25 500 25 633 71 746 163 837 254 929 367 979 500 979 633 979 746 933 838 837 929 746 975 633 975 500 975 367 929 254 838 162M808 192C892 279 933 379 933 500 933 621 892 725 808 808 725 892 621 938 500 938 379 938 279 896 196 808 113 725 67 621 67 500 67 379 108 279 196 192 279 108 383 62 500 62 621 62 721 108 808 192M438 392V642L642 517 438 392Z"></path></svg><span class="elementor-screen-only">Play Video</span></div></div></div>',
@@ -121,7 +121,7 @@ def render(e, depth=0):
         pc = s.get('percent', {}).get('size', 50)
         return wrap(f'<div class="elementor-progress-wrapper" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{pc}"><div class="elementor-progress-bar" data-max="{pc}" style="width:{pc}%"><span class="elementor-progress-text">{s.get("inner_text", "")}</span></div></div>')
     if k == 'flip-box':
-        src = s['background_a_image']['url'].replace(ASSET, '../upload/first-search/')
+        src = s['background_a_image']['url'].replace(ASSET, '../upload/first-search/').replace(ASSET_V2, '../upload/first-search/')
         h = u(s.get('height')) or '280px'
         btn = f'<a class="elementor-flip-box__button elementor-button elementor-size-sm">{s["button_text"]}</a>' if s.get('button_text') else ''
         rule(eid, f"--fb-h:{h}")
@@ -290,6 +290,7 @@ def page(paths, out):
 <style>body{{margin:0;background:#fff}} img{{max-width:100%}} *{{box-sizing:border-box}} .e-con{{min-width:0}} .elementor-widget{{min-width:0}} p{{margin:0 0 .6em}}</style>
 <style>{kit_vars()}</style><style>{EL_DEFAULTS}</style><style>{EA_CSS}</style><style>{css}</style><style>{EL_GLOBALS}</style><style>{rules}</style></head><body class="elementor-kit-5"><div class="elementor elementor-9">{body}</div></body></html>'''
     doc = doc.replace('https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/', '../upload/first-search/')
+    doc = doc.replace(ASSET_V2, '../upload/first-search/').replace('https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@f978e9f0c6a066562155908c1524a093df652243/elementor/upload/first-search/', '../upload/first-search/')
     open(out, 'w').write(doc)
 if __name__ == '__main__':
     out = sys.argv[1]

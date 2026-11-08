@@ -13,9 +13,13 @@ def uid():
 # Elementor downloads each one into the Media Library during import.
 ASSET_COMMIT = '4d59b7976a0bacac8601ce9d2eba36ebb43a7779'
 ASSET = f'https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/{ASSET_COMMIT}/elementor/upload/first-search/'
+# Images re-exported after the first pin (the framework wheel fix) load from the commit that holds them.
+WHEEL_COMMIT = 'f978e9f0c6a066562155908c1524a093df652243'
+ASSET_V2 = f'https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/{WHEEL_COMMIT}/elementor/upload/first-search/'
 def asset(path):
     """Prototype asset path (assets/img/...) -> hosted URL."""
-    return ASSET + re.sub(r'^assets/img/', '', path)
+    rel = re.sub(r'^assets/img/', '', path)
+    return (ASSET_V2 if rel == 'framework-wheel.webp' or rel.startswith('wheels/') else ASSET) + rel
 
 def px(n): return {'unit': 'px', 'size': n, 'sizes': []}
 def pad(t, r=None, b=None, l=None, unit='px'):

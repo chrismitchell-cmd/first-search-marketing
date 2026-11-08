@@ -2198,3 +2198,11 @@ a.e-con.fs-here-row:hover { background: rgba(255, 255, 255, .12); transform: tra
   .fs-mx-row > .fs-mx { flex: none !important; width: 100% !important; border-left: 0; padding: 22px 0 !important; border-top: 2px solid rgba(255, 255, 255, .5); }
   .fs-mx-row > .fs-mx:first-child { border-top: 0; }
 }
+/* ---------- 37. Fixes: headings never inherit a Capitalize/Uppercase setting from the site's global typography ---------- */
+body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-text-editor :is(h1, h2, h3, h4) { text-transform: none; }
+.fs-signs-r > .fs-signs-h { margin-bottom: 36px !important; }
+.fs-signs-r > .fs-eyebrow { margin-bottom: 14px !important; }
+/* underlined text links inside cards sit on the left, as in the design */
+:is(.fs-w-res-body, .fs-rc-body, .fs-ws, .fs-pth-acts, .fs-sv, .fs-rel) > .fs-link-u { align-self: flex-start !important; width: auto !important; }
+:is(.fs-w-res-body, .fs-rc-body, .fs-ws, .fs-pth-acts) .fs-link-u .elementor-button-wrapper { text-align: left !important; justify-content: flex-start !important; }
+.fs-w-res-body .fs-link-u .elementor-button { padding: 0 !important; }

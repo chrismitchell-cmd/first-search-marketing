@@ -280,6 +280,7 @@ def process(templates):
         secs = {w: {x['h']: x for x in P.get(page, {}).get(w, {}).get('sections', [])} for w in ('d', 't', 'm')}
         for e in tpl['content']:
             if e['elType'] != 'container': continue
+            if 'fs-pad-fixed' in e['settings'].get('css_classes', ''): continue   # spacing set in the builder
             h = first_heading(e)
             if not h: continue
             key = next((x for x in secs['d'] if x == h[:80] or x.startswith(h[:40])), None)

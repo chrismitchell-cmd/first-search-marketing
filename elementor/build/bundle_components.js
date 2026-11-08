@@ -8,6 +8,7 @@ const ROOT = '/home/user/first-search-marketing/';
 const OUT = path.join(__dirname, 'data', 'components');
 fs.mkdirSync(OUT, { recursive: true });
 const CDN = 'https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/';
+const CDN2 = 'https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@f978e9f0c6a066562155908c1524a093df652243/elementor/upload/first-search/';
 const LINKS = { 'contact.html': '/contact-us/', 'about.html': '/about-us/', 'why-choose-us.html': '/why-choose-us/', 'services-overview.html': '/services/',
   'events-resources.html': '/events/', 'ways-to-learn.html': '/befirst-training/', 'pillars.html': '/firstbrand/', 'services.html': '/services/', 'rebrand-homepage.html': '/' };
 
@@ -190,7 +191,7 @@ function mainScript(src) {
     }, { rootSel: C.root, name: C.name, jsSeg });
     await p.close(); fs.unlinkSync(tmp);
     // post-process: rename the design's "e-con" class (Elementor uses it), absolute asset URLs, real page links
-    let html = res.html.replace(/\be-con\b/g, 'fsx-con').replace(/(src|href)="assets\/img\/([^"]+)"/g, (m, a, f) => `${a}="${CDN}${f}"`)
+    let html = res.html.replace(/\be-con\b/g, 'fsx-con').replace(/(src|href)="assets\/img\/([^"]+)"/g, (m, a, f) => `${a}="${f === 'framework-wheel.webp' ? CDN2 : CDN}${f}"`)
       .replace(/href="([\w-]+\.html)(\?[^"#]*)?(#[^"]*)?"/g, (m, f, q, h) => `href="${(LINKS[f] || '/') + (h || '')}"`);
     let css = res.css.replace(/\be-con\b/g, 'fsx-con').replace(/url\(["']?(?:\.\.\/)?assets\/img\/([^"')]+)["']?\)/g, (m, f) => `url("${CDN}${f}")`);
     const W = '.fsx-' + C.name;
