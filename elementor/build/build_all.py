@@ -91,6 +91,15 @@ def _fix(e, in_step=False):
     for c in e.get('elements', []): _fix(c, step)
 for _, _, tpl in built:
     for e in tpl['content']: _fix(e)
+# The CTA banner is pulled 110px up: the section right above it always gets the FAQ spacing (230px, 170px on phones)
+for path, pk, tpl in built:
+    c = tpl['content']
+    for i, e in enumerate(c[:-1]):
+        if 'fs-final' not in c[i + 1]['settings'].get('css_classes', '') or e['settings'].get('min_height'): continue
+        for suf, v in (('', 230), ('_tablet', 200), ('_mobile', 170)):
+            pd = e['settings'].get('padding' + suf) or dict(e['settings'].get('padding') or {})
+            if pd and int(float(pd.get('bottom') or 0)) < v:
+                pd = dict(pd, bottom=str(v), isLinked=False); e['settings']['padding' + suf] = pd
 # Final URLs (SEO plan): the Website service lives at /services/web-design/
 URL_RENAMES = {'/services/website/': '/services/web-design/'}
 def _renamed(t):

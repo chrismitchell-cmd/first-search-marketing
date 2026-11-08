@@ -2290,3 +2290,7 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 .fs-res-head > .fs-link-u { flex: none !important; width: auto !important; }
 .fs-res-head .fs-link-u .elementor-button { font-size: 18px !important; padding: 0 !important; }
 .fs-art-chip--light { border: 1px solid #DCE3F3; } .fs-art-chip--light .fs-plogo { font-size: 15px; color: var(--fs-purple); }
+/* Event rows: always keep space between "Details" and the booking block */
+.e-con.fs-evact { column-gap: 18px !important; gap: 18px !important; }
+.fs-evact > .fs-evtoggle { margin-right: 4px !important; }
+.fs-evact > .fs-evtoggle { flex: none !important; width: max-content !important; min-width: max-content; }
