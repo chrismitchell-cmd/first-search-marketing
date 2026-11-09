@@ -66,7 +66,9 @@ def render(e, depth=0):
         return f'<div class="elementor-element elementor-element-{eid} elementor-widget elementor-widget-{k} {cls}" style="{extra}"><div class="elementor-widget-container">{body}</div></div>'
     al = s.get('align')
     if k == 'heading':
-        t = s.get('header_size', 'h2'); return wrap(f'<{t} class="elementor-heading-title" style="{"text-align:" + al if al else ""}">{s["title"]}</{t}>')
+        t = s.get('header_size', 'h2'); ttl = s['title']
+        if (s.get('link') or {}).get('url'): ttl = f'<a href="{s["link"]["url"]}">{ttl}</a>'
+        return wrap(f'<{t} class="elementor-heading-title" style="{"text-align:" + al if al else ""}">{ttl}</{t}>')
     if k == 'text-editor': return wrap(f'<div style="{"text-align:" + al if al else ""}">{s["editor"]}</div>')
     if k == 'button':
         j = {'center': 'center', 'right': 'flex-end', 'justify': 'stretch'}.get(al, 'flex-start')
@@ -228,6 +230,7 @@ EL_DEFAULTS = """
  --padding-bottom:var(--container-default-padding-bottom,10px);--padding-left:var(--container-default-padding-left,10px);--row-gap:20px;--column-gap:20px;
  display:flex;position:relative;min-width:0;width:var(--width);padding:var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
  gap:var(--row-gap) var(--column-gap)}
+.elementor-widget{position:relative}
 .e-con>.elementor-widget,.e-con-inner>.elementor-widget{max-width:100%}
 @media (max-width:767px){.e-con.e-flex{--width:100%;flex-wrap:wrap}}
 .elementor-heading-title{padding:0;margin:0;line-height:1}
@@ -313,7 +316,9 @@ def page(paths, out):
     page_css = ''
     for pth in paths:
         content = json.load(open(pth))['content']
-        body += ''.join(render(e) for e in content)
+        html_ = ''.join(render(e) for e in content)
+        # Theme Builder wraps a header template in <header class="... elementor-location-header">
+        body += f'<header class="elementor elementor-location-header">{html_}</header>' if pth.endswith('header.json') else html_
         page_css += ''.join(e.get('settings', {}).get('custom_css', '') for e in content)
     # live setup: global CSS in Site Settings, each template's own CSS on its first container (loads after the kit CSS)
     if os.environ.get('CSS_OVERRIDE'): page_css = ''

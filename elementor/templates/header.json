@@ -27,13 +27,6 @@
      "isLinked": true
     },
     "_title": "Header",
-    "sticky": "top",
-    "sticky_on": [
-     "desktop",
-     "tablet",
-     "mobile"
-    ],
-    "sticky_effects_offset": 30,
     "z_index": 100,
     "background_background": "classic",
     "background_color": "#FFFFFF"
@@ -189,7 +182,7 @@
           },
           "menu_item_title_distance_from_content": {
            "unit": "px",
-           "size": 18,
+           "size": 0,
            "sizes": []
           },
           "menu_toggle_icon_normal": {
@@ -236,7 +229,7 @@
              "settings": {
               "content_width": "full",
               "flex_direction": "column",
-              "css_classes": "fs-dd-item",
+              "css_classes": "fs-dd-item fs-card-link",
               "flex_gap": {
                "unit": "px",
                "size": 2,
@@ -251,12 +244,6 @@
                "bottom": "14",
                "left": "16",
                "isLinked": false
-              },
-              "html_tag": "a",
-              "link": {
-               "url": "/about-us/",
-               "is_external": "",
-               "nofollow": ""
               }
              },
              "elements": [
@@ -268,6 +255,11 @@
                 "title": "About Us",
                 "header_size": "p",
                 "_css_classes": "fs-dd-t",
+                "link": {
+                 "url": "/about-us/",
+                 "is_external": "",
+                 "nofollow": ""
+                },
                 "__globals__": {
                  "title_color": "globals/colors?id=secondary"
                 },
@@ -331,7 +323,7 @@
              "settings": {
               "content_width": "full",
               "flex_direction": "column",
-              "css_classes": "fs-dd-item",
+              "css_classes": "fs-dd-item fs-card-link",
               "flex_gap": {
                "unit": "px",
                "size": 2,
@@ -346,12 +338,6 @@
                "bottom": "14",
                "left": "16",
                "isLinked": false
-              },
-              "html_tag": "a",
-              "link": {
-               "url": "/why-choose-us/",
-               "is_external": "",
-               "nofollow": ""
               }
              },
              "elements": [
@@ -363,6 +349,11 @@
                 "title": "Why Choose Us",
                 "header_size": "p",
                 "_css_classes": "fs-dd-t",
+                "link": {
+                 "url": "/why-choose-us/",
+                 "is_external": "",
+                 "nofollow": ""
+                },
                 "__globals__": {
                  "title_color": "globals/colors?id=secondary"
                 },
@@ -530,7 +521,7 @@
                    "settings": {
                     "content_width": "full",
                     "flex_direction": "column",
-                    "css_classes": "fs-mm-head",
+                    "css_classes": "fs-mm-head fs-card-link",
                     "flex_gap": {
                      "unit": "px",
                      "size": 4,
@@ -545,12 +536,6 @@
                      "bottom": "14",
                      "left": "10",
                      "isLinked": false
-                    },
-                    "html_tag": "a",
-                    "link": {
-                     "url": "/firstbrand/",
-                     "is_external": "",
-                     "nofollow": ""
                     }
                    },
                    "elements": [
@@ -562,6 +547,11 @@
                       "title": "<span class=\"fs-plogo\"><b>first</b>brand</span>",
                       "header_size": "p",
                       "_css_classes": "fs-mm-stage",
+                      "link": {
+                       "url": "/firstbrand/",
+                       "is_external": "",
+                       "nofollow": ""
+                      },
                       "__globals__": {
                        "title_color": "globals/colors?id=primary"
                       },
@@ -737,7 +727,7 @@
                    "settings": {
                     "content_width": "full",
                     "flex_direction": "column",
-                    "css_classes": "fs-mm-head",
+                    "css_classes": "fs-mm-head fs-card-link",
                     "flex_gap": {
                      "unit": "px",
                      "size": 4,
@@ -752,12 +742,6 @@
                      "bottom": "14",
                      "left": "10",
                      "isLinked": false
-                    },
-                    "html_tag": "a",
-                    "link": {
-                     "url": "/firstthought/",
-                     "is_external": "",
-                     "nofollow": ""
                     }
                    },
                    "elements": [
@@ -769,6 +753,11 @@
                       "title": "<span class=\"fs-plogo\"><b>first</b>thought</span>",
                       "header_size": "p",
                       "_css_classes": "fs-mm-stage",
+                      "link": {
+                       "url": "/firstthought/",
+                       "is_external": "",
+                       "nofollow": ""
+                      },
                       "__globals__": {},
                       "typography_typography": "custom",
                       "typography_font_family": "Poppins",
@@ -943,7 +932,7 @@
                    "settings": {
                     "content_width": "full",
                     "flex_direction": "column",
-                    "css_classes": "fs-mm-head",
+                    "css_classes": "fs-mm-head fs-card-link",
                     "flex_gap": {
                      "unit": "px",
                      "size": 4,
@@ -958,12 +947,6 @@
                      "bottom": "14",
                      "left": "10",
                      "isLinked": false
-                    },
-                    "html_tag": "a",
-                    "link": {
-                     "url": "/firstchoice/",
-                     "is_external": "",
-                     "nofollow": ""
                     }
                    },
                    "elements": [
@@ -975,6 +958,11 @@
                       "title": "<span class=\"fs-plogo\"><b>first</b>choice</span>",
                       "header_size": "p",
                       "_css_classes": "fs-mm-stage",
+                      "link": {
+                       "url": "/firstchoice/",
+                       "is_external": "",
+                       "nofollow": ""
+                      },
                       "__globals__": {},
                       "typography_typography": "custom",
                       "typography_font_family": "Poppins",
@@ -1149,7 +1137,7 @@
                    "settings": {
                     "content_width": "full",
                     "flex_direction": "column",
-                    "css_classes": "fs-mm-head",
+                    "css_classes": "fs-mm-head fs-card-link",
                     "flex_gap": {
                      "unit": "px",
                      "size": 4,
@@ -1164,12 +1152,6 @@
                      "bottom": "14",
                      "left": "10",
                      "isLinked": false
-                    },
-                    "html_tag": "a",
-                    "link": {
-                     "url": "/firstreferral/",
-                     "is_external": "",
-                     "nofollow": ""
                     }
                    },
                    "elements": [
@@ -1181,6 +1163,11 @@
                       "title": "<span class=\"fs-plogo\"><b>first</b>referral</span>",
                       "header_size": "p",
                       "_css_classes": "fs-mm-stage",
+                      "link": {
+                       "url": "/firstreferral/",
+                       "is_external": "",
+                       "nofollow": ""
+                      },
                       "__globals__": {},
                       "typography_typography": "custom",
                       "typography_font_family": "Poppins",
@@ -1390,7 +1377,7 @@
                  "settings": {
                   "content_width": "full",
                   "flex_direction": "column",
-                  "css_classes": "fs-mm-big",
+                  "css_classes": "fs-mm-big fs-card-link",
                   "flex_gap": {
                    "unit": "px",
                    "size": 2,
@@ -1405,12 +1392,6 @@
                    "bottom": "12",
                    "left": "14",
                    "isLinked": false
-                  },
-                  "html_tag": "a",
-                  "link": {
-                   "url": "/services/",
-                   "is_external": "",
-                   "nofollow": ""
                   }
                  },
                  "elements": [
@@ -1422,6 +1403,11 @@
                     "title": "All services",
                     "header_size": "p",
                     "_css_classes": "fs-mm-big-t",
+                    "link": {
+                     "url": "/services/",
+                     "is_external": "",
+                     "nofollow": ""
+                    },
                     "__globals__": {
                      "title_color": "globals/colors?id=secondary"
                     },
@@ -1485,7 +1471,7 @@
                  "settings": {
                   "content_width": "full",
                   "flex_direction": "column",
-                  "css_classes": "fs-mm-big",
+                  "css_classes": "fs-mm-big fs-card-link",
                   "flex_gap": {
                    "unit": "px",
                    "size": 2,
@@ -1500,12 +1486,6 @@
                    "bottom": "12",
                    "left": "14",
                    "isLinked": false
-                  },
-                  "html_tag": "a",
-                  "link": {
-                   "url": "/services/#framework",
-                   "is_external": "",
-                   "nofollow": ""
                   }
                  },
                  "elements": [
@@ -1517,6 +1497,11 @@
                     "title": "The FirstSearch Framework",
                     "header_size": "p",
                     "_css_classes": "fs-mm-big-t",
+                    "link": {
+                     "url": "/services/#framework",
+                     "is_external": "",
+                     "nofollow": ""
+                    },
                     "__globals__": {
                      "title_color": "globals/colors?id=secondary"
                     },
@@ -1658,7 +1643,7 @@
              "settings": {
               "content_width": "full",
               "flex_direction": "column",
-              "css_classes": "fs-dd-item",
+              "css_classes": "fs-dd-item fs-card-link",
               "flex_gap": {
                "unit": "px",
                "size": 2,
@@ -1673,12 +1658,6 @@
                "bottom": "14",
                "left": "16",
                "isLinked": false
-              },
-              "html_tag": "a",
-              "link": {
-               "url": "/events/",
-               "is_external": "",
-               "nofollow": ""
               }
              },
              "elements": [
@@ -1690,6 +1669,11 @@
                 "title": "Events",
                 "header_size": "p",
                 "_css_classes": "fs-dd-t",
+                "link": {
+                 "url": "/events/",
+                 "is_external": "",
+                 "nofollow": ""
+                },
                 "__globals__": {
                  "title_color": "globals/colors?id=secondary"
                 },
@@ -1753,7 +1737,7 @@
              "settings": {
               "content_width": "full",
               "flex_direction": "column",
-              "css_classes": "fs-dd-item",
+              "css_classes": "fs-dd-item fs-card-link",
               "flex_gap": {
                "unit": "px",
                "size": 2,
@@ -1768,12 +1752,6 @@
                "bottom": "14",
                "left": "16",
                "isLinked": false
-              },
-              "html_tag": "a",
-              "link": {
-               "url": "/resources/",
-               "is_external": "",
-               "nofollow": ""
               }
              },
              "elements": [
@@ -1785,6 +1763,11 @@
                 "title": "Resources",
                 "header_size": "p",
                 "_css_classes": "fs-dd-t",
+                "link": {
+                 "url": "/resources/",
+                 "is_external": "",
+                 "nofollow": ""
+                },
                 "__globals__": {
                  "title_color": "globals/colors?id=secondary"
                 },
@@ -1848,7 +1831,7 @@
              "settings": {
               "content_width": "full",
               "flex_direction": "column",
-              "css_classes": "fs-dd-item",
+              "css_classes": "fs-dd-item fs-card-link",
               "flex_gap": {
                "unit": "px",
                "size": 2,
@@ -1863,12 +1846,6 @@
                "bottom": "14",
                "left": "16",
                "isLinked": false
-              },
-              "html_tag": "a",
-              "link": {
-               "url": "/befirst-training/",
-               "is_external": "",
-               "nofollow": ""
               }
              },
              "elements": [
@@ -1880,6 +1857,11 @@
                 "title": "BeFirst Training",
                 "header_size": "p",
                 "_css_classes": "fs-dd-t",
+                "link": {
+                 "url": "/befirst-training/",
+                 "is_external": "",
+                 "nofollow": ""
+                },
                 "__globals__": {
                  "title_color": "globals/colors?id=secondary"
                 },

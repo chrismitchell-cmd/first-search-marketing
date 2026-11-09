@@ -8,21 +8,24 @@ SVC = {
  'referral': ('Get referred',         [('Social Media', 'social-media'), ('Marketing Automation', 'marketing-automation'), ('Loyalty', 'loyalty'), ('Reviews & Referrals', 'reviews-referrals')]),
 }
 def _link(u): return {'url': u, 'is_external': '', 'nofollow': ''}
+def linked(title, tag, cls, url):
+    """Heading whose link is stretched over its whole card by CSS (fs-card-link), so the card is clickable
+    without making the container itself an <a> (a link container around widgets gets split by the browser)."""
+    h = heading(title, tag, cls); h['settings']['link'] = _link(url); return h
 def dd_item(title, desc, url):
     """One row in a small dropdown: bold page name + one-line description, the whole row is the link."""
-    return con(heading(title, 'p', 'fs-dd-t'), text(desc, 'fs-dd-d'), cls='fs-dd-item', gap_=2, p=pad(14, 16), s={'html_tag': 'a', 'link': _link(url)})
+    return con(linked(title, 'p', 'fs-dd-t', url), text(desc, 'fs-dd-d'), cls='fs-dd-item fs-card-link', gap_=2, p=pad(14, 16))
 def dd_panel(*items):
     return con(*items, cls='fs-dd', gap_=2, p=pad(12), s={'width': px(380)})
 
 def stage_col(k):
     job, svcs = SVC[k]
-    head = con(heading(plogo(k), 'p', 'fs-mm-stage'), text(job, 'fs-mm-job'), cls='fs-mm-head', gap_=4, p=pad(8, 10, 14, 10),
-               s={'html_tag': 'a', 'link': _link(f'/first{k}/')})
+    head = con(linked(plogo(k), 'p', 'fs-mm-stage', f'/first{k}/'), text(job, 'fs-mm-job'), cls='fs-mm-head fs-card-link', gap_=4, p=pad(8, 10, 14, 10))
     lst = icon_list([n for n, _ in svcs], icon='', cls='fs-mm-svcs', links=[f'/services/{x}/' for _, x in svcs])
     return con(head, lst, cls='fs-mm-col', gap_=0)
 
 def big_link(title, sub, url):
-    return con(heading(title, 'p', 'fs-mm-big-t'), text(sub, 'fs-mm-big-s'), cls='fs-mm-big', gap_=2, p=pad(12, 14), s={'html_tag': 'a', 'link': _link(url)})
+    return con(linked(title, 'p', 'fs-mm-big-t', url), text(sub, 'fs-mm-big-s'), cls='fs-mm-big fs-card-link', gap_=2, p=pad(12, 14))
 
 panel_about = dd_panel(dd_item('About Us', 'Our story, values and the team behind your marketing', '/about-us/'),
                        dd_item('Why Choose Us', 'How we compare, and the FirstSearch Guarantee', '/why-choose-us/'))
@@ -44,7 +47,7 @@ menu = {'id': uid(), 'elType': 'widget', 'widgetType': 'mega-menu', 'settings': 
                         **({'item_link': _link(u)} if u else {})) for t, dd, u in items],
     'item_layout': 'horizontal', 'open_on': 'hover', 'content_width': 'fit_to_content', 'breakpoint_selector': 'tablet',
     'menu_item_icon': CHEV, 'menu_item_icon_active': {'value': 'fas fa-chevron-up', 'library': 'fa-solid'},
-    'menu_item_title_distance_from_content': px(18), 'menu_toggle_icon_normal': {'value': 'fas fa-bars', 'library': 'fa-solid'},
+    'menu_item_title_distance_from_content': px(0), 'menu_toggle_icon_normal': {'value': 'fas fa-bars', 'library': 'fa-solid'},
     '_css_classes': 'fs-nav'},
     'elements': [panel_about, panel_do, panel_grow, panel_contact]}
 
@@ -57,8 +60,7 @@ stripe = con(cls='fs-stripe2', minh=14, p=pad(0),
              s={'min_height_mobile': px(8), 'background_background': 'gradient', 'background_color': '#72CCD8', 'background_color_b': '#174FA2',
                 'background_gradient_type': 'linear', 'background_gradient_angle': {'unit': 'deg', 'size': 90, 'sizes': []}})
 header = con(con(header_row, boxed=True, inner=True, cls='fs-header-box', s={'padding': pad(0)}), stripe, inner=False, cls='fs-header', gap_=0, p=pad(0), title='Header',
-             s={'sticky': 'top', 'sticky_on': ['desktop', 'tablet', 'mobile'], 'sticky_effects_offset': 30, 'z_index': 100,
-                'background_background': 'classic', 'background_color': '#FFFFFF'})
+             s={'z_index': 100, 'background_background': 'classic', 'background_color': '#FFFFFF'})   # sticky via CSS on the header location
 header_row['elements'][2]['settings'].update({'hide_mobile': 'hidden-mobile'})
 HEADER = template('First Search · Header', 'header', [header])
 
