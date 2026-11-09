@@ -2467,6 +2467,11 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 }
 @media (min-width: 1025px) { .fs-nav .e-n-menu-item:hover > .e-n-menu-title::after { transform: scaleX(1); } }
 
+/* 45. Header: About + Grow dropdown items hover like the design (grey card, gradient left border) */
+.e-con.fs-dd-item { border-style: solid !important; border-width: 0 0 0 3px !important; border-color: transparent !important; border-radius: 18px !important; background: transparent; }
+.e-con.fs-dd-item:hover, .e-con.fs-dd-item:focus-visible {
+  background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box !important; box-shadow: none; }
+
 /* 44. Header round 7: About + Grow dropdowns sit under their own titles.
    Elementor Pro offsets "fit to content" panels sideways (left / inset / margin / transform on the
    panel or its inner container); cancel every one of those and hang the panel from its menu item. */
