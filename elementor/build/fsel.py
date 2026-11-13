@@ -162,7 +162,26 @@ def _real_widths(o):
         for v in o.values(): _real_widths(v)
     elif isinstance(o, list):
         for v in o: _real_widths(v)
+def _card_links(e):
+    """A container rendered as <a> (html_tag 'a') gets split by the browser around the widgets inside it.
+    Turn each one into a plain container with class fs-card-link and put its link on the card's title heading,
+    which CSS stretches over the whole card. Title = first h3 heading, else a heading named *-n / *-logo, else the first heading."""
+    st = e.get('settings', {})
+    if e.get('elType') == 'container' and st.get('html_tag') == 'a' and (st.get('link') or {}).get('url'):
+        heads = []
+        def find(x):
+            if x.get('widgetType') == 'heading': heads.append(x)
+            for c in x.get('elements', []): find(c)
+        for c in e.get('elements', []): find(c)
+        pick = ([h for h in heads if h['settings'].get('header_size') == 'h3'] +
+                [h for h in heads if any(k.endswith(('-n', '-logo')) for k in h['settings'].get('_css_classes', '').split())] + heads)
+        if pick:
+            pick[0]['settings']['link'] = st.pop('link'); st.pop('html_tag')
+            st['css_classes'] = (st.get('css_classes', '') + ' fs-card-link').strip()
+    for c in e.get('elements', []): _card_links(c)
+
 def save(path, tpl):
+    for e in tpl['content']: _card_links(e)
     _stable_ids(tpl)
     _real_widths(tpl)
     with open(path, 'w', encoding='utf-8') as f: json.dump(tpl, f, ensure_ascii=False, indent=1)
