@@ -529,10 +529,14 @@ def find_cards(items, eb='Find us', h2='Prefer to reach <span class="fs-gt">out 
     for ico, k, v, note, go, url in items:
         tile = (con(image(f'assets/img/icons/{ico}', '', None, 'center', ''), cls='fs-fc-tile', justify='center', align='center') if ico.endswith('.webp')
                 else con(cls=f'fs-fc-tile fs-fc-tile--{ico}'))
-        kids = [tile, heading(k, 'p', 'fs-fc-k'), heading(v, 'p', 'fs-fc-v'), text(note, 'fs-fc-s'),
-                heading(go, 'p', 'fs-fc-go' + ('' if url else ' fs-fc-go--static'))]
-        s = {'html_tag': 'a', 'link': {'url': url, 'is_external': '', 'nofollow': ''}} if url else None
-        cards.append(con(*kids, cls='fs-fcard', gap_=6, p=pad(28, 24, 28, 24), s=s))
+        kids = [tile, heading(k, 'p', 'fs-fc-k'), heading(v, 'p', 'fs-fc-v'), text(note, 'fs-fc-s')]
+        if go:
+            g = heading(go, 'p', 'fs-fc-go' + ('' if url else ' fs-fc-go--static'))
+            # the footer link is stretched over the whole card (fs-card-link); the card itself is not an <a>,
+            # which the browser would split into pieces around the widgets inside it
+            if url: g['settings']['link'] = {'url': url, 'is_external': 'on' if url.startswith('http') else '', 'nofollow': ''}
+            kids.append(g)
+        cards.append(con(*kids, cls='fs-fcard' + (' fs-card-link' if url else ''), gap_=6, p=pad(28, 24, 28, 24)))
     kids = [sec_head(eb, h2), row(*cards, gap_=22, wrap=True, align='stretch', cls='fs-fcards fs-nostyle')]
     if map_address:
         kids.append(con(w('google_maps', {'address': map_address, 'zoom': px(14), 'height': px(340)}, 'fs-map'), cls='fs-gcard fs-map-card'))

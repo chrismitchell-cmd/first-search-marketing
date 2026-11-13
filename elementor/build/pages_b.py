@@ -222,9 +222,9 @@ def contact():
     two = section(sec_head('Two easy ways to start', 'Book a time, or drop us a line.'), row(book, msg, gap_=28, align='flex-start'), cls='fs-dark', title='Book + message')
     two['settings']['_element_id'] = 'book'
     find = [('phone', 'Call', '603-518-8090', 'Talk to a real person on our team', 'Call now', 'tel:+16035188090'),
-            ('email.webp', 'Email', 'chris<wbr>@befirstsearch.com', '[CONFIRM: general inbox, e.g. hello@]', 'Send an email', 'mailto:chris@befirstsearch.com'),
+            ('email.webp', 'Email', 'chris<wbr>@befirstsearch.com', 'Email a member of our team', 'Send an email', 'mailto:chris@befirstsearch.com'),
             ('local.webp', 'Visit', '1 Merrill Industrial Drive, Unit #4', 'Hampton, NH 03842', 'Get directions', 'https://maps.google.com/?q=1+Merrill+Industrial+Drive+Unit+4+Hampton+NH+03842'),
-            ('clock', 'Office hours', 'Monday to Thursday', '[9:00 AM to 5:00 PM] [CONFIRM]', 'Closed Friday to Sunday', '')]
+            ('clock', 'Office hours', 'Our Phone Is Always On', 'Call us at anytime', '', '')]
     return [
         hero('Contact us', 'Let’s talk about <span class="fs-gt">your marketing.</span>',
              'Book a free 30-minute consultation, or send us a message. We reply within [one business day].',
