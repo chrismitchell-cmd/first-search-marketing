@@ -27,16 +27,28 @@ T += [('singles/single-blog-post', 'Single · Blog post', 'single-post', pages_c
       ('singles/single-case-study', 'Single · Case study', 'single-post', pages_c.case_study),
       ('location/location-page-seo-portsmouth-sample', 'Location page · SEO Portsmouth (sample)', 'page', pages_c.location)]
 
+# workshop pages last, so adding or changing one never shifts element IDs in the other templates
+import pages_e
+for i, slug in ([] if os.environ.get('NO_EVENTS') else enumerate(pages_e.EVENT_SLUGS, 1)):
+    T.append((f'events/{i:02d}-{slug}', f'Event · {pages_e.EVENT_LIST[i - 1][4]}', 'page', lambda i=i: pages_e.event_page(i - 1)))
+
 for f in glob.glob('../templates/**/*.json', recursive=True): os.remove(f)
-for d in ('pages', 'services', 'framework', 'singles', 'location'): os.makedirs(f'../templates/{d}', exist_ok=True)
+for d in ('pages', 'services', 'framework', 'singles', 'location', 'events'): os.makedirs(f'../templates/{d}', exist_ok=True)
 def proto_key(path):
     if path in PROTO: return PROTO[path]
     if path.startswith('services/'): return 'service:' + {'branding-content-creation': 'branding'}.get(path.split('-', 1)[1], path.split('-', 1)[1])
     if path.startswith('framework/'): return 'stage:' + path.split('first', 1)[1]
+    if path.startswith('events/'): return 'event'
     return 'home'
 built = [('header', 'home', header_footer.HEADER), ('footer', 'home', header_footer.FOOTER)]
+import random
+_rs = None
 for path, title, kind, fn in T:
+    if path.startswith('events/') and _rs is None: _rs = random.getstate(); random.seed('workshops')   # see below
     built.append((path, proto_key(path), template('First Search · ' + title, kind, fn())))
+# the workshop pages draw element IDs from their own random sequence, and the main one is put back afterwards, so every
+# other template keeps exactly the same IDs whenever a workshop is added or changed
+if _rs is not None: random.setstate(_rs)
 presets = styler.process([(pk, tpl) for _, pk, tpl in built])
 # Overlapping buttons, as in the HTML:
 #  - a big "Let's Talk!" that ends a section sits on the edge: section bottom padding 0, button on top, next section 46px up

@@ -146,7 +146,7 @@ def ev_row(k, m, d, wd, t, meta, fmt):
     tag = '<span class="fs-pill fs-pill--purple">Full Framework</span>' if k == 'full' else f'<span class="fs-plogo-chip">{plogo(k, size=17)}</span>'
     return row(html(f'<div class="fs-date"><small>{m}</small><b>{d}</b><span>{wd}</span></div>'),
                con(html(tag), heading(t, 'h3'), text(f'<p>{meta}</p>', 'fs-card-meta'), gap_=6, s={'flex_grow': 1}),
-               button('Reserve your seat', '/events/sample-event/' + ('?format=online' if fmt == 'online' else '')),
+               button('Reserve your seat', next((event_url(e) for e in EVENT_LIST if e[4] == t), '/events/')),
                cls='fs-gcard fs-gcard--thin fs-gcard--hover', p=pad(18, 24), gap_=20)
 def events():
     return [

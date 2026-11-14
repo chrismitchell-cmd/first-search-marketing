@@ -688,6 +688,10 @@ EVENT_LIST = [  # stage, month, day, weekday, title, time, format, location, pri
     ('choice', 'Jan', '13', 'Wed', 'Marketing automation for busy owners', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
      'The handful of automations every local business should have running, and how to set them up without a tech team.',
      ['Your first three automations mapped', 'Email list segments to build', 'A welcome journey outline'])]
+# each workshop's page is /events/<slug>/ (pages_e.py builds them), in EVENT_LIST order
+EVENT_SLUGS = ['framework-in-60-minutes', 'build-a-brand-people-trust', 'local-seo-and-ai-search', 'befirst-live-full-day-workshop',
+               'website-lead-machine', 'reviews-referrals-loyalty', 'ads-that-pay-for-themselves', 'marketing-automation-for-busy-owners']
+def event_url(e): return f'/events/{EVENT_SLUGS[EVENT_LIST.index(e)]}/' if e in EVENT_LIST else '/events/'
 def stage_chip(k):
     return '<span class="fs-plogo-chip fs-plogo-chip--full">Full Framework</span>' if k == 'full' else f'<span class="fs-plogo-chip">{plogo(k)}</span>'
 
@@ -726,7 +730,7 @@ def featured_event(e):
                heading(t, 'h2', 'fs-feat-h'), text(desc, 'fs-feat-desc'),
                con(fact('When', f'{wd}, {"October" if m == "Oct" else m} {d}', tm), fact('Where', fm, loc), fact('Investment', pr, seats), d='row', gap_=0, mobile_col=True, cls='fs-facts2'),
                text(f'<p>{fm} · {loc}</p>', 'fs-evmeta fs-sr'),
-               con(button('Reserve your seat', '/events/sample-event/?format=online', 'fs-btn-navy fs-btn-lg'), button('Add to calendar', '#', 'fs-btn-grad fs-btn-lg fs-ical'),
+               con(button('Reserve your seat', event_url(e), 'fs-btn-navy fs-btn-lg'), button('Add to calendar', '#', 'fs-btn-grad fs-btn-lg fs-ical'),
                    d='row', gap_=10, wrap=True, cls='fs-feat-btns'),
                cls='fs-feat-l', gap_=22, p=pad(48), s={'padding_mobile': pad(28)})
     right = con(text(f'<p><b>{d}</b><span><span class="m">{m}</span><span class="w">{wd}</span></span></p>', 'fs-bigdate'),
@@ -740,7 +744,7 @@ def event_row(e):
     info = con(text(f'<p>{stage_chip(k).replace("fs-plogo-chip", "fs-plogo-chip fs-evchip", 1)}</p>', 'fs-evchip-w'), heading(t, 'h3', 'fs-ev-h'),
                text(f'<p>{tm} · {fm} · {loc}</p>', 'fs-evmeta'), gap_=6, cls='fs-evinfo')
     act = con(heading('Details', 'p', 'fs-evtoggle'),
-              con(heading(pr, 'p', 'fs-evprice'), button('Reserve your seat', '/events/sample-event/' + ('?format=online' if fm == 'Online' else ''), 'fs-btn-navy'),
+              con(heading(pr, 'p', 'fs-evprice'), button('Reserve your seat', event_url(e), 'fs-btn-navy'),
                   text(f'<p>{seats}</p>', 'fs-evseats'), gap_=6, align='center', cls='fs-evbook'),
               d='row', gap_=18, align='center', mobile_col=False, cls='fs-evact')
     det = con(text(desc, 'fs-evdet-p'), con(heading('You’ll leave with', 'p', 'fs-evdet-h'), icon_list(outs, 'fas fa-check', 'fs-evdet-list'), gap_=10),

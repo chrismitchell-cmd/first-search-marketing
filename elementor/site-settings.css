@@ -2375,3 +2375,11 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
   .e-con.fs-stripe2 { min-height: 8px; }
   .fs-header-row > .fs-header-cta { display: none !important; }
 }
+
+/* ---------- 46. Workshop pages: seats line under the countdown, readable on the purple card ---------- */
+.fs-ev-seats, .fs-ev-seats p { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 15px !important; color: rgba(255, 255, 255, .85) !important; }
+.fs-ev-seats b { color: #fff !important; font-weight: 700; }
+.fs-evo-h .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 21px !important; font-weight: 700 !important; line-height: 1.25 !important; letter-spacing: -.015em; color: var(--fs-purple) !important; }
+@media (max-width: 767px) { .fs-evo-h .elementor-heading-title { font-size: 18px !important; } }
+.e-con:has(> .e-con > .fs-evo-h) > .elementor-widget-button { flex: none !important; width: auto !important; max-width: none !important; }
+.e-con:has(> .e-con > .fs-evo-h) .elementor-button { white-space: nowrap; }
