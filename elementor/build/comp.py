@@ -663,35 +663,57 @@ def partner_block():
 # ======================= Events page: filter band + featured event + workshop rows =======================
 # Each workshop is a normal container (date box, stage chip, title, details, price, button). The filter script in the
 # band reads each row's stage chip and its details line ("Online" / "In person"), so editing a row is all it takes.
-EVENT_LIST = [  # stage, month, day, weekday, title, time, format, location, price, seats, desc, outcomes
-    ('full', 'Oct', '22', 'Thursday', 'The FirstSearch Framework in 60 minutes', '12:00 to 1:00 PM', 'Online', 'Live on Zoom', 'Free', 'Open registration',
-     'A fast, founder-led walkthrough of how the four stages fit together, and how to spot which one is holding your business back right now.',
-     ['A clear picture of the full framework', 'Your weakest stage, identified', 'Three quick wins to try this week']),
-    ('brand', 'Oct', '27', 'Tue', 'Build a brand people trust on sight', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
-     'Define what makes you different, write a value statement you can actually use, and audit every touchpoint for consistency.',
-     ['A finished value statement', 'Your core values and competitive edge', 'A brand consistency checklist']),
-    ('thought', 'Nov', '4', 'Wed', 'Get found first: local SEO and AI search', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
-     'How Google, the map pack and AI search tools decide who shows up first, and what you can fix in your profile and site this month.',
-     ['A Google Business Profile tune-up list', 'Your top local keywords', 'An AI search visibility check']),
-    ('full', 'Nov', '12', 'Thu', 'BeFirst Live: the full-day framework workshop', '9:00 AM to 4:00 PM', 'In person', '[Venue], Hampton, NH', '[Price]', '[XX] of [XX] seats left',
-     'An immersive day working through every stage of the framework with our team. Bring your laptop and your real numbers. You leave with the plan finished, not homework.',
-     ['A completed marketing roadmap', 'Your KPIs for every stage', 'Confidence to execute on Monday']),
-    ('choice', 'Nov', '17', 'Tue', 'Turn your website into a lead machine', '8:30 to 10:30 AM', 'In person', '[Venue], Hampton, NH', '[Price]', '[XX] seats left',
-     'Lead magnets, offers and follow-up that turn visitors into booked calls. We review real websites in the room, so bring yours.',
-     ['A lead magnet idea and outline', 'An offer strategy that closes', 'A follow-up sequence map']),
-    ('referral', 'Dec', '2', 'Wed', 'Reviews, referrals and loyalty that sell for you', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
-     'Build the systems that turn happy customers into your best marketing channel, without awkward asks.',
-     ['A review request automation', 'A referral reward structure', 'A simple loyalty program outline']),
-    ('thought', 'Dec', '8', 'Tue', 'Ads that actually pay for themselves', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
-     'How to plan, launch and measure Google and Meta ads around real leads and cost per acquisition, not impressions.',
-     ['A campaign plan for one offer', 'The metrics that matter', 'A budget you can defend']),
-    ('choice', 'Jan', '13', 'Wed', 'Marketing automation for busy owners', '12:00 to 1:30 PM', 'Online', 'Live on Zoom', '[Price]', '[XX] seats left',
-     'The handful of automations every local business should have running, and how to set them up without a tech team.',
-     ['Your first three automations mapped', 'Email list segments to build', 'A welcome journey outline'])]
-# each workshop's page is /events/<slug>/ (pages_e.py builds them), in EVENT_LIST order
-EVENT_SLUGS = ['framework-in-60-minutes', 'build-a-brand-people-trust', 'local-seo-and-ai-search', 'befirst-live-full-day-workshop',
-               'website-lead-machine', 'reviews-referrals-loyalty', 'ads-that-pay-for-themselves', 'marketing-automation-for-busy-owners']
+# The workshop calendar, in date order (from the live Events page). Every session is free, in person at the office, 3:00 to 5:00 PM.
+VENUE = ('Our Office', '1 Merrill Industrial Drive, Unit #4, Hampton, NH 03842')
+_LOC = '1 Merrill Industrial Drive Unit #4, Hampton, NH'
+_TM = '3:00 to 5:00 PM'
+WS = {  # per workshop: stage, title, description, outcomes
+    'framework-in-2-hours': ('full', 'The FirstSearch Framework in 2 Hours',
+        'A fast, founder-led walkthrough of how the four stages fit together, and how to spot which one is holding your business back right now.',
+        ['A clear picture of the full framework', 'Your weakest stage, identified', 'Three quick wins to try this week']),
+    'build-a-brand-people-trust': ('brand', 'Build a brand people trust on sight',
+        'Define what makes you different, write a value statement you can actually use, and audit every touchpoint for consistency.',
+        ['A finished value statement', 'Your core values and competitive edge', 'A brand consistency checklist']),
+    'befirst-live-framework-workshop': ('full', 'BeFirst Live: the full framework workshop',
+        'Two hands-on hours working through every stage of the framework with our team. Bring your laptop and your real numbers, and leave with your plan started, not homework.',
+        ['A marketing roadmap for all four stages', 'Your KPIs for every stage', 'Confidence to execute on Monday']),
+    'local-seo-and-ai-search': ('thought', 'Get found first: local SEO and AI search',
+        'How Google, the map pack and AI search tools decide who shows up first, and what you can fix in your profile and site this month.',
+        ['A Google Business Profile tune-up list', 'Your top local keywords', 'An AI search visibility check']),
+    'website-lead-machine': ('choice', 'Turn your website into a lead machine',
+        'Lead magnets, offers and follow-up that turn visitors into booked calls. We review real websites in the room, so bring yours.',
+        ['A lead magnet idea and outline', 'An offer strategy that closes', 'A follow-up sequence map']),
+    'reviews-referrals-loyalty': ('referral', 'Reviews, referrals and loyalty that sell for you',
+        'Build the systems that turn happy customers into your best marketing channel, without awkward asks.',
+        ['A review request automation', 'A referral reward structure', 'A simple loyalty program outline']),
+    'ads-that-pay-for-themselves': ('thought', 'Ads that actually pay for themselves',
+        'How to plan, launch and measure Google and Meta ads around real leads and cost per acquisition, not impressions.',
+        ['A campaign plan for one offer', 'The metrics that matter', 'A budget you can defend']),
+    'marketing-automation-for-busy-owners': ('choice', 'Marketing automation for busy owners',
+        'The handful of automations every local business should have running, and how to set them up without a tech team.',
+        ['Your first three automations mapped', 'Email list segments to build', 'A welcome journey outline']),
+}
+# (workshop, year, month, day, weekday, seats)
+CALENDAR = [('framework-in-2-hours', 2026, 'Dec', '17', 'Thursday', 'Open registration'),
+            ('build-a-brand-people-trust', 2027, 'Jan', '14', 'Thu', '6 of 8 seats left'),
+            ('befirst-live-framework-workshop', 2027, 'Jan', '28', 'Thu', '5 of 8 seats left'),
+            ('local-seo-and-ai-search', 2027, 'Feb', '11', 'Thu', '7 of 8 seats left'),
+            ('befirst-live-framework-workshop', 2027, 'Feb', '18', 'Thu', '6 of 8 seats left'),
+            ('website-lead-machine', 2027, 'Mar', '18', 'Thu', '7 of 8 seats left'),
+            ('befirst-live-framework-workshop', 2027, 'Mar', '25', 'Thu', '8 of 8 seats left'),
+            ('reviews-referrals-loyalty', 2027, 'Apr', '8', 'Thu', '8 of 8 seats left'),
+            ('befirst-live-framework-workshop', 2027, 'Apr', '22', 'Thu', '8 of 8 seats left'),
+            ('ads-that-pay-for-themselves', 2027, 'May', '6', 'Thu', '8 of 8 seats left'),
+            ('befirst-live-framework-workshop', 2027, 'May', '20', 'Thu', '8 of 8 seats left'),
+            ('marketing-automation-for-busy-owners', 2027, 'Jun', '3', 'Thu', '8 of 8 seats left')]
+# stage, month, day, weekday, title, time, format, location, price, seats, desc, outcomes  (one row per date, as the Events page lists them)
+EVENT_LIST = [(WS[w][0], m, d, wd, WS[w][1], _TM, 'In person', _LOC, 'Free', seats, WS[w][2], WS[w][3]) for w, y, m, d, wd, seats in CALENDAR]
+# each date's page is /events/<workshop>/ (pages_e.py builds one page per workshop; repeat dates share it)
+EVENT_SLUGS = [w for w, *_ in CALENDAR]
+WORKSHOPS = list(dict.fromkeys(EVENT_SLUGS))
 def event_url(e): return f'/events/{EVENT_SLUGS[EVENT_LIST.index(e)]}/' if e in EVENT_LIST else '/events/'
+MONTH_NAME = {'Jan': 'January', 'Feb': 'February', 'Mar': 'March', 'Apr': 'April', 'May': 'May', 'Jun': 'June',
+              'Jul': 'July', 'Aug': 'August', 'Sep': 'September', 'Oct': 'October', 'Nov': 'November', 'Dec': 'December'}
 def stage_chip(k):
     return '<span class="fs-plogo-chip fs-plogo-chip--full">Full Framework</span>' if k == 'full' else f'<span class="fs-plogo-chip">{plogo(k)}</span>'
 
@@ -728,7 +750,7 @@ def featured_event(e):
     fact = lambda a, b, c: text(f'<p class="k">{a}</p><p class="v">{b}</p><p class="s">{c}</p>', 'fs-fact')
     left = con(text(f'<p><span class="fs-chip-next">Next up</span> {stage_chip(k).replace("fs-plogo-chip", "fs-plogo-chip fs-evchip", 1)}</p>', 'fs-feat-chips'),
                heading(t, 'h2', 'fs-feat-h'), text(desc, 'fs-feat-desc'),
-               con(fact('When', f'{wd}, {"October" if m == "Oct" else m} {d}', tm), fact('Where', fm, loc), fact('Investment', pr, seats), d='row', gap_=0, mobile_col=True, cls='fs-facts2'),
+               con(fact('When', f'{wd}, {MONTH_NAME[m]} {d}', tm), fact('Where', *VENUE), fact('Investment', pr, seats), d='row', gap_=0, mobile_col=True, cls='fs-facts2'),
                text(f'<p>{fm} · {loc}</p>', 'fs-evmeta fs-sr'),
                con(button('Reserve your seat', event_url(e), 'fs-btn-navy fs-btn-lg'), button('Add to calendar', '#', 'fs-btn-grad fs-btn-lg fs-ical'),
                    d='row', gap_=10, wrap=True, cls='fs-feat-btns'),

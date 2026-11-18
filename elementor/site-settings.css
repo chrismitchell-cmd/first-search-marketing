@@ -2376,10 +2376,53 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
   .fs-header-row > .fs-header-cta { display: none !important; }
 }
 
-/* ---------- 46. Workshop pages: seats line under the countdown, readable on the purple card ---------- */
-.fs-ev-seats, .fs-ev-seats p { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 15px !important; color: rgba(255, 255, 255, .85) !important; }
-.fs-ev-seats b { color: #fff !important; font-weight: 700; }
-.fs-evo-h .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 21px !important; font-weight: 700 !important; line-height: 1.25 !important; letter-spacing: -.015em; color: var(--fs-purple) !important; }
-@media (max-width: 767px) { .fs-evo-h .elementor-heading-title { font-size: 18px !important; } }
-.e-con:has(> .e-con > .fs-evo-h) > .elementor-widget-button { flex: none !important; width: auto !important; max-width: none !important; }
-.e-con:has(> .e-con > .fs-evo-h) .elementor-button { white-space: nowrap; }
+/* ---------- 46. Workshop pages (templates/events): everything is Heading / Text widgets, styled here ---------- */
+.fs-nostyle .fs-evp-back, .fs-evp-back .elementor-heading-title, .fs-evp-back a { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 14.5px !important; font-weight: 600 !important; color: var(--fs-sky-ink) !important; text-decoration: none !important; }
+.fs-evp-back a:hover { color: var(--fs-royal) !important; }
+.e-con.fs-evp-chips { flex-wrap: wrap !important; }
+.fs-evp-chips > .elementor-widget, .fs-evp-row .fs-evp-tag { width: auto !important; flex: none !important; }
+.fs-evp-type .elementor-heading-title { display: inline-flex; padding: 4px 12px; border-radius: 999px; background: var(--fs-purple); font-family: var(--fs-font) !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .02em; line-height: 1.5 !important; color: #fff !important; }
+.fs-evp-tag--full .elementor-heading-title { display: inline-flex; padding: 8px 16px; border-radius: 999px; background: var(--fs-tint); font-family: var(--fs-font-ui) !important; font-size: 14px !important; font-weight: 600 !important; line-height: 1.2 !important; color: var(--fs-purple) !important; }
+.fs-evp-row .fs-evp-tag--full .elementor-heading-title { background: var(--fs-purple); color: #fff !important; padding: 5px 12px; font-size: 13px !important; }
+.fs-evp-tag--stage .elementor-heading-title { display: inline-flex; padding: 7px 16px 8px; border-radius: 999px; background: #fff; box-shadow: 0 8px 20px -12px rgba(37, 7, 98, .45); line-height: 1 !important; }
+.fs-evp-row .fs-evp-tag--stage .elementor-heading-title { padding: 5px 12px 6px; }
+.fs-evp-row .fs-evp-tag--stage .fs-plogo { font-size: 17px; }
+/* When / Where / Investment */
+.e-con.fs-evp-facts { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px !important; padding: 16px 0 !important; border-block: 1px solid var(--fs-line); }
+.fs-evp-facts > .fs-evp-fact { width: auto !important; }
+.fs-evp-fk .elementor-heading-title { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .06em; text-transform: uppercase !important; line-height: 1.4 !important; color: var(--fs-sky-ink) !important; }
+.fs-evp-fv .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 16px !important; font-weight: 700 !important; line-height: 1.3 !important; color: var(--fs-purple) !important; }
+.fs-evp-fs .elementor-heading-title { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 14px !important; font-weight: 400 !important; line-height: 1.45 !important; color: var(--fs-muted) !important; }
+@media (max-width: 767px) { .e-con.fs-evp-facts { grid-template-columns: minmax(0, 1fr); } }
+/* big date on the purple card */
+.fs-evp-date > .elementor-widget, .fs-evp-date > .e-con { width: auto !important; flex: none !important; }
+.fs-evp-dd .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: clamp(76px, 8vw, 104px) !important; font-weight: 800 !important; line-height: 1 !important;
+  color: transparent !important; background: var(--fs-grad-text); -webkit-background-clip: text; background-clip: text; }
+.fs-evp-dm .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 26px !important; font-weight: 700 !important; line-height: 1.1 !important; color: #fff !important; }
+.fs-evp-dw .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 15px !important; font-weight: 500 !important; line-height: 1.3 !important; color: #C9C6EA !important; }
+.fs-evp-seats .elementor-heading-title { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 15px !important; font-weight: 700 !important; color: #fff !important; }
+/* agenda */
+.e-con.fs-evp-ag { border-radius: 16px; background: #fff; box-shadow: 0 14px 30px -20px rgba(28, 22, 72, .45); }
+.fs-evp-ag > .fs-evp-at { flex: 0 0 84px !important; width: 84px !important; }
+.fs-evp-ag > .fs-evp-al { flex: 1 1 0 !important; width: auto !important; min-width: 0; }
+.fs-evp-ag > .fs-evp-as { flex: none !important; width: auto !important; }
+.fs-evp-at .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 20px !important; font-weight: 800 !important; line-height: 1.2 !important; color: var(--fs-sky-ink) !important; }
+.fs-evp-al .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 17px !important; font-weight: 700 !important; line-height: 1.35 !important; color: var(--fs-purple) !important; }
+.e-con.fs-evp-ag.is-break { background: transparent; box-shadow: none; border: 1.5px dashed #C9C8D3; }
+.fs-evp-ag.is-break .fs-evp-al .elementor-heading-title { font-weight: 500 !important; color: var(--fs-muted) !important; }
+@media (max-width: 767px) { .e-con.fs-evp-ag { flex-wrap: wrap !important; row-gap: 4px !important; } .fs-evp-ag > .fs-evp-al { flex-basis: 100% !important; } }
+/* calendar rows: mini date, tag, title, time and place, seats, button */
+.e-con.fs-evp-mini { flex: none !important; width: 78px !important; padding: 10px 0 !important; border-radius: 16px; background: var(--fs-grad); text-align: center; }
+.fs-evp-sm .elementor-heading-title, .fs-evp-sw .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 12px !important; line-height: 1.2 !important; color: #fff !important; }
+.fs-evp-sm .elementor-heading-title { font-weight: 700 !important; letter-spacing: .06em; text-transform: uppercase !important; }
+.fs-evp-sw .elementor-heading-title { font-weight: 400 !important; opacity: .9; }
+.fs-evp-sd .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 30px !important; font-weight: 800 !important; line-height: 1.1 !important; color: #fff !important; }
+.fs-evp-rh .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 21px !important; font-weight: 700 !important; line-height: 1.25 !important; letter-spacing: -.015em; color: var(--fs-purple) !important; }
+.fs-evp-rmeta .elementor-heading-title { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 14px !important; font-weight: 400 !important; line-height: 1.5 !important; color: var(--fs-muted) !important; }
+.fs-evp-rseats .elementor-heading-title { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 13.5px !important; font-weight: 600 !important; color: var(--fs-sky-ink) !important; }
+.fs-evp-row > .fs-evp-rbtn { flex: none !important; width: auto !important; max-width: none !important; }
+.fs-evp-rbtn .elementor-button { white-space: nowrap; }
+@media (max-width: 767px) {
+  .fs-evp-rh .elementor-heading-title { font-size: 18px !important; }
+  .e-con.fs-evp-row { align-items: flex-start !important; }
+}
