@@ -1,43 +1,43 @@
-/* First Search Marketing: paste into the calendar's Custom CSS field in GoHighLevel. Plain CSS only (no @import, no variables). */
-body,.hl_wrapper,.booking-widget,.calendar-widget{background:transparent!important;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif!important;color:#1C1B22}
-h1,h2,h3,h4,h5,.title,[class*="calendar-name"],[class*="event-title"]{font-family:"Poppins",system-ui,Arial,sans-serif!important;font-weight:700!important;color:#250762!important;letter-spacing:-.01em}
-[class*="description"],[class*="subtitle"],.text-muted,small{color:#6B6A72!important}
-a{color:#1F78B4}a:hover{color:#174FA2}
-.card,.hl-card,[class*="booking-info"],[class*="info-panel"]{border:1px solid #E3E2EA!important;border-radius:18px!important;box-shadow:none!important;background:#fff!important}
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap");
 
-/* month and arrows */
-.vdpPeriodControl>button,[class*="month-name"],[class*="current-month"],[class*="calendar-header"]{font-family:"Poppins",Arial,sans-serif!important;font-weight:700!important;font-size:18px!important;color:#250762!important}
-.vdpArrow,[class*="arrow-prev"],[class*="arrow-next"],[class*="nav-prev"],[class*="nav-next"]{border-radius:50%!important;color:#250762!important}
-.vdpArrow:hover,[class*="arrow-prev"]:hover,[class*="arrow-next"]:hover,[class*="nav-prev"]:hover,[class*="nav-next"]:hover{background:#EEF0F9!important}
-.vdpArrowPrev:after{border-right-color:#250762!important}.vdpArrowNext:after{border-left-color:#250762!important}
+/* Text: brand fonts */
+body, p, span, label, input, select, textarea, button {
+  font-family: "Inter", Arial, sans-serif !important;
+}
 
-/* weekday names */
-.vdpHeadCellContent,[class*="weekday"],[class*="day-name"]{font-size:12.5px!important;font-weight:700!important;letter-spacing:.06em;text-transform:uppercase;color:#1F78B4!important}
+/* Headings ("Select Date & Time", workshop title): Poppins, brand purple */
+h1, h2, h3, h4 {
+  font-family: "Poppins", Arial, sans-serif !important;
+  font-weight: 700 !important;
+  color: #250762 !important;
+}
 
-/* days: available = soft tint, selected = brand gradient, today = aqua ring, unavailable = grey */
-.vdpCell .vdpCellContent,[class*="calendar-day"],[class*="day-cell"]{font-family:"Poppins",Arial,sans-serif!important;font-weight:600!important;border-radius:12px!important}
-.vdpCell.selectable .vdpCellContent,[class*="calendar-day"][class*="available"],[class*="day-cell"][class*="available"]{background:#EEF0F9!important;color:#250762!important}
-.vdpCell.selectable:hover .vdpCellContent,[class*="calendar-day"][class*="available"]:hover,[class*="day-cell"][class*="available"]:hover{background:#DDEFF6!important;color:#174FA2!important}
-.vdpCell.selected .vdpCellContent,[class*="calendar-day"][class*="selected"],[class*="day-cell"][class*="selected"],[aria-selected="true"][class*="day"]{background:linear-gradient(90deg,#72CCD8 0%,#174FA2 100%)!important;color:#fff!important;box-shadow:0 10px 22px -10px rgba(23,79,162,.6)!important}
-.vdpCell.today .vdpCellContent,[class*="calendar-day"][class*="today"],[class*="day-cell"][class*="today"]{box-shadow:inset 0 0 0 2px #72CCD8!important}
-.vdpCell.disabled .vdpCellContent,.vdpCell.outOfRange .vdpCellContent,[class*="calendar-day"][class*="disabled"],[class*="day-cell"][class*="disabled"]{background:transparent!important;color:#B9B8C4!important;box-shadow:none!important}
+/* Form fields: same as the website's forms */
+input, select, textarea {
+  border: 2px solid #E3E2EA !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #72CCD8 !important;
+  box-shadow: 0 0 0 4px rgba(114, 204, 216, 0.3) !important;
+  outline: none !important;
+}
 
-/* time slots */
-.widgets-time-slot,.time-slot,[class*="time-slot"],[class*="timeslot"],[class*="slot-item"]{font-family:"Poppins",Arial,sans-serif!important;font-weight:600!important;font-size:15px!important;color:#250762!important;background:#fff!important;border:2px solid #E3E2EA!important;border-radius:12px!important;box-shadow:none!important}
-.widgets-time-slot:hover,.time-slot:hover,[class*="time-slot"]:hover,[class*="timeslot"]:hover,[class*="slot-item"]:hover{border-color:#72CCD8!important;background:#EEF0F9!important}
-.widgets-time-slot.active,.widgets-time-slot.selected,.time-slot.active,.time-slot.selected,[class*="time-slot"][class*="active"],[class*="time-slot"][class*="selected"],[class*="timeslot"][class*="selected"],[class*="slot-item"][class*="selected"]{border-color:transparent!important;background:linear-gradient(90deg,#72CCD8 0%,#174FA2 100%)!important;color:#fff!important}
-
-/* form fields (same as the website's forms) */
-label,.form-label,[class*="field-label"]{font-weight:600!important;font-size:15px!important;color:#250762!important}
-input[type="text"],input[type="email"],input[type="tel"],input[type="number"],select,textarea,.form-control{min-height:52px!important;padding:12px 16px!important;border:2px solid #E3E2EA!important;border-radius:12px!important;background:#fff!important;font-size:16px!important;color:#1C1B22!important;box-shadow:none!important}
-textarea{min-height:130px!important}
-input:focus,select:focus,textarea:focus,.form-control:focus{outline:none!important;border-color:#72CCD8!important;box-shadow:0 0 0 4px rgba(114,204,216,.3)!important}
-input[type="checkbox"],input[type="radio"]{accent-color:#174FA2}
-
-/* main button (Book / Schedule / Continue): the website's purple button, gradient on hover */
-button[type="submit"],.btn-primary,.btn-schedule,[class*="btn-schedule"],[class*="book-btn"],[class*="submit-btn"]{font-family:"Poppins",Arial,sans-serif!important;font-weight:600!important;font-size:18px!important;line-height:1.2!important;padding:16px 30px!important;min-height:56px;border:2px solid #4AA6DC!important;border-radius:10px!important;color:#fff!important;background:linear-gradient(135deg,#2B0A80 0%,#250762 55%,#200556 100%)!important;box-shadow:0 0 0 1px rgba(114,204,216,.35),0 10px 22px -8px rgba(50,153,213,.55)!important;text-shadow:none!important;cursor:pointer;transition:background .2s ease,box-shadow .2s ease,transform .2s ease}
-button[type="submit"]:hover,.btn-primary:hover,.btn-schedule:hover,[class*="btn-schedule"]:hover,[class*="book-btn"]:hover,[class*="submit-btn"]:hover{background:linear-gradient(90deg,#72CCD8 0%,#174FA2 100%)!important;border-color:transparent!important;box-shadow:0 14px 30px -12px rgba(23,79,162,.55)!important;transform:translateY(-2px)}
-button:focus-visible{outline:3px solid #72CCD8!important;outline-offset:3px}
-
-/* secondary buttons (Back, Change): underlined text link, as on the website */
-.btn-secondary,.btn-link,.btn-light,[class*="back-btn"],[class*="btn-back"]{background:none!important;border:0!important;box-shadow:none!important;font-style:italic;font-weight:500!important;color:#250762!important;text-decoration:underline;text-decoration-color:#72CCD8;text-decoration-thickness:2px;text-underline-offset:6px}
+/* Book / Schedule button: same as the website's main button */
+button[type="submit"] {
+  font-family: "Poppins", Arial, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 17px !important;
+  padding: 14px 28px !important;
+  border: 2px solid #4AA6DC !important;
+  border-radius: 10px !important;
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #2B0A80 0%, #250762 55%, #200556 100%) !important;
+}
+button[type="submit"]:hover {
+  border-color: transparent !important;
+  background: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%) !important;
+}
+</style>
