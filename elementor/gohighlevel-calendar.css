@@ -1,171 +1,43 @@
-/* First Search Marketing: GoHighLevel calendar (booking widget), on brand with the website
-   Paste into GoHighLevel: Calendars > Calendar Settings > (your calendar) > Customizations / Widget > Custom CSS.
-   The calendar runs inside its own frame, so the website's CSS can't reach it: this file repeats the site's
-   colours, fonts, fields and buttons. Element rules (button, input, select...) carry most of the look, so it
-   still holds if GoHighLevel renames its classes; the class rules cover the date picker and time slots. */
+/* First Search Marketing: paste into the calendar's Custom CSS field in GoHighLevel. Plain CSS only (no @import, no variables). */
+body,.hl_wrapper,.booking-widget,.calendar-widget{background:transparent!important;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif!important;color:#1C1B22}
+h1,h2,h3,h4,h5,.title,[class*="calendar-name"],[class*="event-title"]{font-family:"Poppins",system-ui,Arial,sans-serif!important;font-weight:700!important;color:#250762!important;letter-spacing:-.01em}
+[class*="description"],[class*="subtitle"],.text-muted,small{color:#6B6A72!important}
+a{color:#1F78B4}a:hover{color:#174FA2}
+.card,.hl-card,[class*="booking-info"],[class*="info-panel"]{border:1px solid #E3E2EA!important;border-radius:18px!important;box-shadow:none!important;background:#fff!important}
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap");
+/* month and arrows */
+.vdpPeriodControl>button,[class*="month-name"],[class*="current-month"],[class*="calendar-header"]{font-family:"Poppins",Arial,sans-serif!important;font-weight:700!important;font-size:18px!important;color:#250762!important}
+.vdpArrow,[class*="arrow-prev"],[class*="arrow-next"],[class*="nav-prev"],[class*="nav-next"]{border-radius:50%!important;color:#250762!important}
+.vdpArrow:hover,[class*="arrow-prev"]:hover,[class*="arrow-next"]:hover,[class*="nav-prev"]:hover,[class*="nav-next"]:hover{background:#EEF0F9!important}
+.vdpArrowPrev:after{border-right-color:#250762!important}.vdpArrowNext:after{border-left-color:#250762!important}
 
-:root {
-  --fs-purple: #250762;
-  --fs-royal: #174FA2;
-  --fs-sky: #3299D5;
-  --fs-sky-ink: #1F78B4;
-  --fs-aqua: #72CCD8;
-  --fs-ink: #1C1B22;
-  --fs-muted: #6B6A72;
-  --fs-line: #E3E2EA;
-  --fs-tint: #EEF0F9;
-  --fs-soft: #F4F4F6;
-  --fs-grad: linear-gradient(90deg, #72CCD8 0%, #174FA2 100%);
-  --fs-grad-purple: linear-gradient(135deg, #2B0A80 0%, #250762 55%, #200556 100%);
-  --fs-font: "Poppins", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --fs-font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --fs-shadow-btn: 0 0 0 1px rgba(114, 204, 216, .35), 0 10px 22px -8px rgba(50, 153, 213, .55);
-}
+/* weekday names */
+.vdpHeadCellContent,[class*="weekday"],[class*="day-name"]{font-size:12.5px!important;font-weight:700!important;letter-spacing:.06em;text-transform:uppercase;color:#1F78B4!important}
 
-/* ---------- base: transparent, so the white card on the website shows through ---------- */
-html, body, #app, .hl_wrapper, .booking-widget, .calendar-widget, [class*="appointment_widgets"], [class*="booking"] {
-  background: transparent !important;
-  font-family: var(--fs-font-ui) !important;
-  color: var(--fs-ink);
-}
-h1, h2, h3, h4, h5, .title, [class*="heading"], [class*="calendar-name"], [class*="event-title"] {
-  font-family: var(--fs-font) !important;
-  font-weight: 700 !important;
-  color: var(--fs-purple) !important;
-  letter-spacing: -.01em;
-}
-p, span, li, small, [class*="description"] { font-family: var(--fs-font-ui); }
-[class*="description"], [class*="subtitle"], .text-muted, small { color: var(--fs-muted) !important; }
-a { color: var(--fs-sky-ink); }
-a:hover { color: var(--fs-royal); }
+/* days: available = soft tint, selected = brand gradient, today = aqua ring, unavailable = grey */
+.vdpCell .vdpCellContent,[class*="calendar-day"],[class*="day-cell"]{font-family:"Poppins",Arial,sans-serif!important;font-weight:600!important;border-radius:12px!important}
+.vdpCell.selectable .vdpCellContent,[class*="calendar-day"][class*="available"],[class*="day-cell"][class*="available"]{background:#EEF0F9!important;color:#250762!important}
+.vdpCell.selectable:hover .vdpCellContent,[class*="calendar-day"][class*="available"]:hover,[class*="day-cell"][class*="available"]:hover{background:#DDEFF6!important;color:#174FA2!important}
+.vdpCell.selected .vdpCellContent,[class*="calendar-day"][class*="selected"],[class*="day-cell"][class*="selected"],[aria-selected="true"][class*="day"]{background:linear-gradient(90deg,#72CCD8 0%,#174FA2 100%)!important;color:#fff!important;box-shadow:0 10px 22px -10px rgba(23,79,162,.6)!important}
+.vdpCell.today .vdpCellContent,[class*="calendar-day"][class*="today"],[class*="day-cell"][class*="today"]{box-shadow:inset 0 0 0 2px #72CCD8!important}
+.vdpCell.disabled .vdpCellContent,.vdpCell.outOfRange .vdpCellContent,[class*="calendar-day"][class*="disabled"],[class*="day-cell"][class*="disabled"]{background:transparent!important;color:#B9B8C4!important;box-shadow:none!important}
 
-/* panels / cards inside the widget: rounded and soft, no hard borders */
-.card, .hl-card, [class*="widget-card"], [class*="booking-info"], [class*="info-panel"] {
-  border: 1px solid var(--fs-line) !important;
-  border-radius: 18px !important;
-  box-shadow: none !important;
-  background: #fff !important;
-}
+/* time slots */
+.widgets-time-slot,.time-slot,[class*="time-slot"],[class*="timeslot"],[class*="slot-item"]{font-family:"Poppins",Arial,sans-serif!important;font-weight:600!important;font-size:15px!important;color:#250762!important;background:#fff!important;border:2px solid #E3E2EA!important;border-radius:12px!important;box-shadow:none!important}
+.widgets-time-slot:hover,.time-slot:hover,[class*="time-slot"]:hover,[class*="timeslot"]:hover,[class*="slot-item"]:hover{border-color:#72CCD8!important;background:#EEF0F9!important}
+.widgets-time-slot.active,.widgets-time-slot.selected,.time-slot.active,.time-slot.selected,[class*="time-slot"][class*="active"],[class*="time-slot"][class*="selected"],[class*="timeslot"][class*="selected"],[class*="slot-item"][class*="selected"]{border-color:transparent!important;background:linear-gradient(90deg,#72CCD8 0%,#174FA2 100%)!important;color:#fff!important}
 
-/* ---------- month header and arrows ---------- */
-.vdpPeriodControl > button, [class*="month-name"], [class*="current-month"], [class*="calendar-header"] {
-  font-family: var(--fs-font) !important; font-weight: 700 !important; font-size: 18px !important; color: var(--fs-purple) !important;
-}
-.vdpArrow, .vdpArrowPrev, .vdpArrowNext, [class*="arrow-prev"], [class*="arrow-next"], [class*="nav-prev"], [class*="nav-next"] {
-  border-radius: 50% !important; color: var(--fs-purple) !important; transition: background .15s ease;
-}
-.vdpArrow:hover, [class*="arrow-prev"]:hover, [class*="arrow-next"]:hover, [class*="nav-prev"]:hover, [class*="nav-next"]:hover { background: var(--fs-tint) !important; }
-.vdpArrowPrev::after { border-right-color: var(--fs-purple) !important; }
-.vdpArrowNext::after { border-left-color: var(--fs-purple) !important; }
+/* form fields (same as the website's forms) */
+label,.form-label,[class*="field-label"]{font-weight:600!important;font-size:15px!important;color:#250762!important}
+input[type="text"],input[type="email"],input[type="tel"],input[type="number"],select,textarea,.form-control{min-height:52px!important;padding:12px 16px!important;border:2px solid #E3E2EA!important;border-radius:12px!important;background:#fff!important;font-size:16px!important;color:#1C1B22!important;box-shadow:none!important}
+textarea{min-height:130px!important}
+input:focus,select:focus,textarea:focus,.form-control:focus{outline:none!important;border-color:#72CCD8!important;box-shadow:0 0 0 4px rgba(114,204,216,.3)!important}
+input[type="checkbox"],input[type="radio"]{accent-color:#174FA2}
 
-/* ---------- weekday names ---------- */
-.vdpHeadCellContent, [class*="weekday"], [class*="day-name"] {
-  font-family: var(--fs-font-ui) !important; font-size: 12.5px !important; font-weight: 700 !important;
-  letter-spacing: .06em; text-transform: uppercase; color: var(--fs-sky-ink) !important;
-}
+/* main button (Book / Schedule / Continue): the website's purple button, gradient on hover */
+button[type="submit"],.btn-primary,.btn-schedule,[class*="btn-schedule"],[class*="book-btn"],[class*="submit-btn"]{font-family:"Poppins",Arial,sans-serif!important;font-weight:600!important;font-size:18px!important;line-height:1.2!important;padding:16px 30px!important;min-height:56px;border:2px solid #4AA6DC!important;border-radius:10px!important;color:#fff!important;background:linear-gradient(135deg,#2B0A80 0%,#250762 55%,#200556 100%)!important;box-shadow:0 0 0 1px rgba(114,204,216,.35),0 10px 22px -8px rgba(50,153,213,.55)!important;text-shadow:none!important;cursor:pointer;transition:background .2s ease,box-shadow .2s ease,transform .2s ease}
+button[type="submit"]:hover,.btn-primary:hover,.btn-schedule:hover,[class*="btn-schedule"]:hover,[class*="book-btn"]:hover,[class*="submit-btn"]:hover{background:linear-gradient(90deg,#72CCD8 0%,#174FA2 100%)!important;border-color:transparent!important;box-shadow:0 14px 30px -12px rgba(23,79,162,.55)!important;transform:translateY(-2px)}
+button:focus-visible{outline:3px solid #72CCD8!important;outline-offset:3px}
 
-/* ---------- days ---------- */
-.vdpCell .vdpCellContent, [class*="calendar-day"], [class*="day-cell"] {
-  font-family: var(--fs-font) !important; font-weight: 600 !important; color: var(--fs-ink);
-  border-radius: 12px !important; transition: background .15s ease, color .15s ease, box-shadow .15s ease;
-}
-/* available days: soft tint so they read as clickable */
-.vdpCell.selectable .vdpCellContent, [class*="calendar-day"][class*="available"], [class*="day-cell"][class*="available"] {
-  background: var(--fs-tint) !important; color: var(--fs-purple) !important;
-}
-.vdpCell.selectable:hover .vdpCellContent, [class*="calendar-day"][class*="available"]:hover, [class*="day-cell"][class*="available"]:hover {
-  background: #DDEFF6 !important; color: var(--fs-royal) !important;
-}
-/* selected day: brand gradient */
-.vdpCell.selected .vdpCellContent, [class*="calendar-day"][class*="selected"], [class*="day-cell"][class*="selected"],
-[class*="calendar-day"][aria-selected="true"], [class*="day-cell"][aria-selected="true"] {
-  background: var(--fs-grad) !important; color: #fff !important; box-shadow: 0 10px 22px -10px rgba(23, 79, 162, .6) !important;
-}
-/* today: thin aqua ring */
-.vdpCell.today .vdpCellContent, [class*="calendar-day"][class*="today"], [class*="day-cell"][class*="today"] { box-shadow: inset 0 0 0 2px var(--fs-aqua) !important; }
-/* unavailable / other month */
-.vdpCell.disabled .vdpCellContent, .vdpCell.outOfRange .vdpCellContent, [class*="calendar-day"][class*="disabled"], [class*="day-cell"][class*="disabled"] {
-  background: transparent !important; color: #B9B8C4 !important; box-shadow: none !important;
-}
-
-/* ---------- time slots ---------- */
-.widgets-time-slot, .time-slot, .slot, [class*="time-slot"], [class*="timeslot"], [class*="slot-item"] {
-  font-family: var(--fs-font) !important; font-weight: 600 !important; font-size: 15px !important;
-  color: var(--fs-purple) !important; background: #fff !important;
-  border: 2px solid var(--fs-line) !important; border-radius: 12px !important;
-  box-shadow: none !important; transition: border-color .15s ease, background .15s ease, color .15s ease;
-}
-.widgets-time-slot:hover, .time-slot:hover, .slot:hover, [class*="time-slot"]:hover, [class*="timeslot"]:hover, [class*="slot-item"]:hover {
-  border-color: var(--fs-aqua) !important; background: var(--fs-tint) !important;
-}
-.widgets-time-slot.active, .widgets-time-slot.selected, .time-slot.active, .time-slot.selected, .slot.active, .slot.selected,
-[class*="time-slot"][class*="active"], [class*="time-slot"][class*="selected"], [class*="timeslot"][class*="selected"], [class*="slot-item"][class*="selected"] {
-  border-color: transparent !important; background: var(--fs-grad) !important; color: #fff !important;
-}
-
-/* ---------- form fields (same as the website's forms) ---------- */
-label, .form-label, [class*="field-label"], .hl-text-input-label {
-  font-family: var(--fs-font-ui) !important; font-weight: 600 !important; font-size: 15px !important; color: var(--fs-purple) !important;
-}
-input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="url"], input[type="date"],
-select, textarea, .form-control, .hl-text-input, [class*="phone-input"] input {
-  min-height: 52px !important;
-  padding: 12px 16px !important;
-  border: 2px solid var(--fs-line) !important;
-  border-radius: 12px !important;
-  background: #fff !important;
-  font-family: var(--fs-font) !important;
-  font-size: 16px !important;
-  color: var(--fs-ink) !important;
-  box-shadow: none !important;
-  transition: border-color .15s ease, box-shadow .15s ease;
-}
-textarea { min-height: 130px !important; }
-input::placeholder, textarea::placeholder { color: #9C9BA8 !important; }
-input:focus, select:focus, textarea:focus, .form-control:focus {
-  outline: none !important; border-color: var(--fs-aqua) !important; box-shadow: 0 0 0 4px rgba(114, 204, 216, .3) !important;
-}
-input[type="checkbox"], input[type="radio"] { accent-color: var(--fs-royal); }
-.error, .invalid-feedback, [class*="error"] { color: #B42318 !important; }
-
-/* ---------- buttons (Book / Schedule / Continue: same as the website's main button) ---------- */
-button[type="submit"], .btn-primary, .btn-schedule, .hl-btn-primary, [class*="btn-schedule"], [class*="book-btn"], [class*="submit-btn"], [class*="confirm"] button {
-  font-family: var(--fs-font) !important;
-  font-weight: 600 !important;
-  font-size: 18px !important;
-  letter-spacing: .005em;
-  line-height: 1.2 !important;
-  padding: 16px 30px !important;
-  min-height: 56px;
-  border: 2px solid #4AA6DC !important;
-  border-radius: 10px !important;
-  color: #fff !important;
-  background: var(--fs-grad-purple) !important;
-  background-origin: border-box !important;
-  box-shadow: var(--fs-shadow-btn) !important;
-  text-shadow: none !important;
-  cursor: pointer;
-  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
-}
-button[type="submit"]:hover, .btn-primary:hover, .btn-schedule:hover, .hl-btn-primary:hover, [class*="btn-schedule"]:hover,
-[class*="book-btn"]:hover, [class*="submit-btn"]:hover, [class*="confirm"] button:hover {
-  background: var(--fs-grad) !important; border-color: transparent !important;
-  box-shadow: 0 14px 30px -12px rgba(23, 79, 162, .55) !important; transform: translateY(-2px);
-}
-button:focus-visible { outline: 3px solid var(--fs-aqua) !important; outline-offset: 3px; }
-/* secondary buttons (Back, Change time): text link look, as on the website */
-.btn-secondary, .btn-link, .btn-light, [class*="back-btn"], [class*="btn-back"] {
-  background: none !important; border: 0 !important; box-shadow: none !important;
-  font-family: var(--fs-font) !important; font-style: italic; font-weight: 500 !important; color: var(--fs-purple) !important;
-  text-decoration: underline; text-decoration-color: var(--fs-aqua); text-decoration-thickness: 2px; text-underline-offset: 6px;
-}
-
-/* ---------- confirmation ---------- */
-[class*="confirmation"] h1, [class*="confirmation"] h2, [class*="thank"] h1, [class*="thank"] h2 { color: var(--fs-purple) !important; }
-[class*="confirmation"] svg, [class*="thank"] svg, [class*="success"] svg { color: var(--fs-sky) !important; fill: currentColor; }
-
-/* ---------- branding footer and scrollbars ---------- */
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-thumb { background: #C9C8D3; border-radius: 8px; }
+/* secondary buttons (Back, Change): underlined text link, as on the website */
+.btn-secondary,.btn-link,.btn-light,[class*="back-btn"],[class*="btn-back"]{background:none!important;border:0!important;box-shadow:none!important;font-style:italic;font-weight:500!important;color:#250762!important;text-decoration:underline;text-decoration-color:#72CCD8;text-decoration-thickness:2px;text-underline-offset:6px}
