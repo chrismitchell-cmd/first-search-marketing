@@ -25,13 +25,14 @@ PAGE = {
         ('idea.webp', 'trust.webp', 'social.webp'),
         [('3:00', 'Welcome and a quick brand check', ''), ('3:15', 'What makes a brand trusted on sight', 'brand'),
          ('3:45', 'Hands-on: write your value statement', 'brand'), ('4:15', 'Audit your touchpoints', 'brand'), ('4:40', 'Q&amp;A and next steps', '-')]),
-    'befirst-live-framework-workshop': (
-        ['A plan for all four stages, built on your own business with our team in the room.',
+    'befirst-live-full-day-workshop': (
+        ['A plan for all four stages, finished in the room with our team.',
          'The numbers to watch at every stage, so you know what is working.',
          'Three clear first moves and the confidence to start them on Monday.'],
         ('growth.webp', 'analytics.webp', 'team.webp'),
-        [('3:00', 'Welcome and your starting score', ''), ('3:10', 'Build the foundation', 'brand'), ('3:35', 'Get found first', 'thought'),
-         ('4:00', 'Get chosen', 'choice'), ('4:25', 'Get referred', 'referral'), ('4:45', 'Your 90-day plan, Q&amp;A and next steps', '-')]),
+        [('9:00', 'Welcome, coffee and your starting score', ''), ('9:30', 'Build the foundation', 'brand'), ('10:45', 'Get found first', 'thought'),
+         ('12:00', 'Lunch and networking', '-'), ('12:45', 'Get chosen', 'choice'), ('2:00', 'Get referred', 'referral'),
+         ('3:00', 'Build your 90-day plan, one on one', ''), ('3:45', 'Q&amp;A and next steps', '-')]),
     'local-seo-and-ai-search': (
         ['The profile settings, photos and posts that move you up the map pack.',
          'The handful of searches that actually bring local customers, and where you rank for them.',
@@ -68,8 +69,8 @@ PAGE = {
         [('3:00', 'Welcome and what to automate first', ''), ('3:15', 'The three automations that pay off fastest', 'choice'),
          ('3:45', 'Hands-on: map your first automations', 'choice'), ('4:15', 'Segments and a welcome journey', 'referral'), ('4:40', 'Q&amp;A and next steps', '-')]),
 }
-assert set(PAGE) == set(WORKSHOPS), 'every workshop in comp.CALENDAR needs an entry here'
-EVENT_SLUGS_UNIQUE = WORKSHOPS
+PAGES = WORKSHOPS + list(UPCOMING)   # one page each: calendar workshops, then coming-soon ones
+assert set(PAGE) == set(PAGES), 'every workshop in comp.CALENDAR / UPCOMING needs an entry here'
 
 def H(t, cls, tag='p', url=None):
     h = heading(t, tag, cls)
@@ -100,26 +101,41 @@ def date_row(idx, btn_url, btn='Reserve your seat'):
                cls='fs-gcard fs-gcard--thin fs-gcard--hover fs-evp-row', p=pad(18, 24))
 
 def event_page(slug):
+    """A dated workshop from CALENDAR, or (soon) a workshop in UPCOMING: no date yet, paid, takes waitlist sign-ups."""
+    soon = slug in UPCOMING
     dates = [i for i, w in enumerate(EVENT_SLUGS) if w == slug]
-    first = dates[0]
-    k, m, d, wd, t, tm, fm, loc, pr, seats, desc, outs = EVENT_LIST[first]
-    year = CALENDAR[first][1]
+    first = dates[0] if dates else 0
     outtxt, icons, agenda = PAGE[slug]
-    day = DAYS.get(wd, wd); month = MONTH_NAME[m]
     many = len(dates) > 1
-    when_s = f'{tm}' + (f' · also {len(dates) - 1} more dates' if many else '')
+    if soon:
+        k, t, desc, outs = UPCOMING[slug]
+        fact_rows = [('When', 'Date coming soon', 'A full day, 9:00 AM to 4:00 PM'), ('Where', VENUE[0], VENUE[1]), ('Investment', '[Price] per seat', 'Paid workshop · waitlist gets early-bird pricing')]
+    else:
+        k, m, d, wd, t, tm, fm, loc, pr, seats, desc, outs = EVENT_LIST[first]
+        year = CALENDAR[first][1]
+        day = DAYS.get(wd, wd); month = MONTH_NAME[m]
+        fact_rows = [('When', f'{day}, {month} {d}', f'{tm}' + (f' · also {len(dates) - 1} more dates' if many else '')), ('Where', VENUE[0], VENUE[1]), ('Investment', pr, seats)]
 
-    facts = nostyle(*[con(H(a, 'fs-evp-fk'), H(b, 'fs-evp-fv'), H(c, 'fs-evp-fs'), gap_=4, cls='fs-evp-fact')
-                      for a, b, c in [('When', f'{day}, {month} {d}', when_s), ('Where', VENUE[0], VENUE[1]), ('Investment', pr, seats)]],
+    facts = nostyle(*[con(H(a, 'fs-evp-fk'), H(b, 'fs-evp-fv'), H(c, 'fs-evp-fs'), gap_=4, cls='fs-evp-fact') for a, b, c in fact_rows],
                     d='row', gap_=0, cls='fs-evp-facts')
+    if soon:
+        card = con(nostyle(H('Coming soon', 'fs-evp-soon')), nostyle(H('A full-day, paid version of the workshop, with our team in the room all day.', 'fs-evp-soon-p')),
+                   nostyle(H('Join the waitlist to hear the date first and get early-bird pricing.', 'fs-evp-seats')), cls='fs-purple-card fs-dark', p=pad(32), gap_=14)
+        wl = button('Join the waitlist', '#register', 'fs-btn-lg')
+        # same look as the other pages' "Reserve your seat"; the row is fs-nostyle so the typography pass leaves it alone
+        wl['settings'].update({'typography_typography': 'custom', 'typography_font_family': 'Poppins', 'typography_font_weight': '600',
+                               'typography_font_size': {'unit': 'px', 'size': 22, 'sizes': []}, 'typography_line_height': {'unit': 'em', 'size': 1.2, 'sizes': []}})
+        ctas = row(wl, link_u('See the free workshops', '/events/'), gap_=24, cls='fs-nostyle')
+    else:
+        card = con(big_date(m, d, day),
+                   w('countdown', {'countdown_type': 'due_date', 'due_date': f'{year}-{MNUM[m]:02d}-{int(d):02d} 15:00', 'show_seconds': '',
+                                   'label_days': 'days', 'label_hours': 'hours', 'label_minutes': 'mins'}, 'fs-countdown'),
+                   nostyle(H(seats, 'fs-evp-seats')), cls='fs-purple-card fs-dark', p=pad(32), gap_=16)
+        ctas = row(button('Reserve your seat', '#register', 'fs-btn-lg'), link_u('See all dates' if many else 'Add to calendar', '#dates' if many else '#'), gap_=24)
     hero = section(row(con(nostyle(H('← All workshops', 'fs-evp-back', url='/events/'), cls='fs-evp-backw'),
                            nostyle(H('In-person workshop', 'fs-evp-type'), stage_tag(k), d='row', gap_=8, align='center', mobile_col=False, wrap=True, cls='fs-evp-chips'),
-                           heading(title_html(t), 'h1', 'fs-h1-rule'), text(desc, 'fs-hero-lead'), facts,
-                           row(button('Reserve your seat', '#register', 'fs-btn-lg'), link_u('See all dates' if many else 'Add to calendar', '#dates' if many else '#'), gap_=24), gap_=18),
-                       con(big_date(m, d, day),
-                           w('countdown', {'countdown_type': 'due_date', 'due_date': f'{year}-{MNUM[m]:02d}-{int(d):02d} 15:00', 'show_seconds': '',
-                                           'label_days': 'days', 'label_hours': 'hours', 'label_minutes': 'mins'}, 'fs-countdown'),
-                           nostyle(H(seats, 'fs-evp-seats')), cls='fs-purple-card fs-dark', p=pad(32), gap_=16), cls='fs-hero', gap_=56),
+                           heading(title_html(t), 'h1', 'fs-h1-rule'), text(desc, 'fs-hero-lead'), facts, ctas, gap_=18),
+                       card, cls='fs-hero', gap_=56),
                    cls='fs-geo', title='Hero', bg_img=GEO)
 
     outcomes = section(sec_head('Why come', 'You’ll leave with a <span class="fs-gt">plan, not just notes.</span>'),
@@ -129,7 +145,7 @@ def event_page(slug):
                     d='row', gap_=16, align='center', mobile_col=False, cls='fs-evp-ag' + (' is-break' if st == '-' else ''), p=pad(16, 20))
             for a, l, st in agenda]
     agenda_sec = section(row(col(eyebrow('The agenda'), heading('How the time <span class="fs-gt">is spent.</span>'),
-                                 text('Two hours, broken into short teaching blocks followed by hands-on time on your own business.', 'fs-lead'),
+                                 text(('A full day' if soon else 'Two hours') + ', broken into short teaching blocks followed by hands-on time on your own business.', 'fs-lead'),
                                  text('<p><small>Agenda subject to small changes.</small></p>'), wpct=36),
                              col(con(*rows, gap_=10, cls='fs-evp-agenda'), wpct=60), gap_=48, align='flex-start'),
                          cls='fs-geo', title='Agenda', bg_img=GEO)
@@ -137,7 +153,7 @@ def event_page(slug):
     pick = None
     if many:
         pick = section(sec_head('Pick your date', f'{len(dates)} dates to <span class="fs-gt">choose from.</span>',
-                                'Same workshop, same two hours. Choose the Thursday that works for you, then reserve below.'),
+                                                'Same free workshop, same two hours. Choose the Thursday that works for you, then reserve below.'),
                        con(*[date_row(i, '#register', 'Choose this date') for i in dates], gap_=12), cls='fs-geo', title='Dates', bg_img=GEO)
         pick['settings']['_element_id'] = 'dates'
 
@@ -156,18 +172,29 @@ def event_page(slug):
 
     place = section(row(col(eyebrow('Getting there'), heading('Where we’ll <span class="fs-gt">be.</span>'),
                             text(f'<p><b>First Search Marketing</b><br>{VENUE[1]}</p>'),
-                            icon_list(['<b>Parking</b> [Free parking on site]', '<b>Doors open</b> 2:45 PM. Coffee is on.',
+                            icon_list(['<b>Parking</b> [Free parking on site]', '<b>Doors open</b> ' + ('8:30 AM' if soon else '2:45 PM') + '. Coffee is on.',
                                        '<b>Bring</b> a laptop and, if you have them, your last three months of marketing numbers.'], 'fas fa-map-marker-alt', 'fs-checks'),
                             link_u('Get directions', 'https://maps.google.com/?q=1+Merrill+Industrial+Drive+Unit+4+Hampton+NH+03842'), wpct=44),
                         col(w('google_maps', {'address': '1 Merrill Industrial Drive, Unit 4, Hampton, NH 03842', 'zoom': px(15), 'height': px(340)}, 'fs-map'),
                             wpct=52, cls='fs-gcard', p=pad(0)), gap_=40), title='Location')
 
     fields = [('text', 'Full name', True, '', '50'), ('email', 'Email', True, '', '50'), ('text', 'Business name', True, '', '50'), ('tel', 'Phone (optional)', False, '', '50')]
+    if soon:
+        fields.append(('textarea', 'What would you most want to get out of a full day? (optional)', False, ''))
+        reg = section(row(col(eyebrow('Join the waitlist'), heading('Be first to <span class="fs-gt">hear the date.</span>'),
+                              text('Seats will be limited. Waitlist members hear about the date first and get early-bird pricing.', 'fs-lead'),
+                              icon_list(['Printed FirstSearch workbook', 'Breakfast, lunch and coffee', 'Your scored Framework audit', 'A 90-day plan to take home',
+                                         'Recording of the teaching sessions'], cls='fs-checks'), wpct=44),
+                          col(form(fields, 'Join the waitlist', f'Waitlist: {t}'),
+                              text('<p><small>No payment now. We’ll email you when registration opens.</small></p>', '', 'center'),
+                              wpct=52, cls='fs-gcard', p=pad(30), gap_=10), gap_=40, align='flex-start'), cls='fs-dark', title='Waitlist')
+        fields = None
     if many:
         fields.append(('select', 'Which date?', True, '', '50', [f'{DAYS.get(EVENT_LIST[i][3], EVENT_LIST[i][3])}, {MONTH_NAME[EVENT_LIST[i][1]]} {EVENT_LIST[i][2]}' for i in dates]))
-    fields.append(('number', 'Seats', True, '1', '50'))
-    fields.append(('textarea', 'What do you most want to get out of it? (optional)', False, ''))
-    reg = section(row(col(eyebrow('Reserve your seat'), heading('Save your spot.'),
+    if fields is not None:
+      fields.append(('number', 'Seats', True, '1', '50'))
+      fields.append(('textarea', 'What do you most want to get out of it? (optional)', False, ''))
+      reg = section(row(col(eyebrow('Reserve your seat'), heading('Save your spot.'),
                           text(f'Free to attend. Only 8 seats per session, so reserve yours now.', 'fs-lead'),
                           icon_list(['Printed FirstSearch workbook', 'Coffee and snacks', 'Hands-on help from our team', 'A plan to take home'], cls='fs-checks'), wpct=44),
                       col(form(fields, 'Reserve my free seat', f'Registration: {t}'),
@@ -175,7 +202,14 @@ def event_page(slug):
                           wpct=52, cls='fs-gcard', p=pad(30), gap_=10), gap_=40, align='flex-start'), cls='fs-dark', title='Register')
     reg['settings']['_element_id'] = 'register'
 
-    qas = [('Is this a sales pitch?', 'No. You’ll learn the same framework we use with partners and leave with a plan you can run yourself. If you want help afterwards, you know where we are.'),
+    if soon:
+        qas = [('When is it?', 'We’re setting the first date now. Join the waitlist and you’ll hear it before anyone else, with early-bird pricing.'),
+               ('How is it different from the free workshop?', 'The free two-hour workshop walks you through the framework. BeFirst Live is a full day with our team in the room, so you finish your plan for all four stages before you leave.'),
+               ('Is this a sales pitch?', 'No. You’ll learn the same framework we use with partners and leave with a plan you can run yourself.'),
+               ('Can I bring someone from my team?', 'Yes. Owners and the person who handles marketing get the most out of it together.'),
+               ('Is it right for my industry?', 'The framework works for any local, service-based business: trades, health and wellness, professional services, retail and more. The examples are all from New Hampshire businesses.')]
+    else:
+      qas = [('Is this a sales pitch?', 'No. You’ll learn the same framework we use with partners and leave with a plan you can run yourself. If you want help afterwards, you know where we are.'),
            ('Is it really free?', 'Yes. There’s no cost to attend. Seats are limited to 8 per session so everyone gets hands-on help, which is why we ask you to reserve.'),
            ('Do I need to prepare anything?', 'Bring a laptop. If you have them, your last three months of marketing numbers (website visits, calls, leads) make the hands-on parts more useful.'),
            ('Can I bring someone from my team?', 'Yes. Add more seats in the registration form. Owners and the person who handles marketing get the most out of it together.'),
@@ -184,9 +218,9 @@ def event_page(slug):
 
     # next four other workshops on the calendar after this one's first date (one row per workshop)
     seen, nxt = {slug}, []
-    for i in list(range(first + 1, len(EVENT_LIST))) + list(range(0, first)):
+    for i in (list(range(len(EVENT_LIST))) if soon else list(range(first + 1, len(EVENT_LIST))) + list(range(0, first))):
         if EVENT_SLUGS[i] not in seen: seen.add(EVENT_SLUGS[i]); nxt.append(i)
-    more = section(sec_head('Can’t make this one?', 'More upcoming <span class="fs-gt">workshops.</span>'),
+    more = section(sec_head('Start with a free one' if soon else 'Can’t make this one?', ('Free workshops' if soon else 'More upcoming') + ' <span class="fs-gt">on the calendar.</span>' if soon else 'More upcoming <span class="fs-gt">workshops.</span>'),
                    con(*[date_row(i, event_url(EVENT_LIST[i])) for i in nxt[:4]], gap_=12),
                    link_u('See the full calendar', '/events/'), title='More workshops', align='center')
     return [x for x in [hero, outcomes, agenda_sec, pick, fit, host, place, reg, faq('Good questions before <span class="fs-gt">you sign up.</span>', qas), more,

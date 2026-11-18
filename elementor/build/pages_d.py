@@ -266,7 +266,7 @@ MD = {
      chapters=[('0:00', 'Why most marketing feels random'), ('1:12', 'FirstBrand: build the foundation'), ('3:35', 'FirstThought: get found first'),
                ('5:58', 'FirstChoice: get chosen'), ('8:00', 'FirstReferral: get referred'), ('9:30', 'Finding your weakest stage')],
      people=[('assets/img/team/chris.webp', 'Chris Mitchell', 'Owner & Digital Partner')],
-     ment=[('The FirstSearch Framework', '/services/#framework'), ('Upcoming workshop: the Framework in 60 minutes', '/events/'), ('Free Framework Quiz', '/framework-quiz/')],
+     ment=[('The FirstSearch Framework', '/services/#framework'), ('Free workshop: the Framework in 2 hours', '/events/framework-in-2-hours/'), ('Free Framework Quiz', '/framework-quiz/')],
      sub=('More like this', 'Subscribe on YouTube.', 'Short, practical marketing videos for local business owners, every [week].', 'Subscribe on YouTube'),
      more=('More videos', 'Keep <span class="fs-gt">watching.</span>')),
 }

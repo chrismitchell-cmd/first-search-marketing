@@ -29,7 +29,7 @@ T += [('singles/single-blog-post', 'Single · Blog post', 'single-post', pages_c
 
 # workshop pages last, so adding or changing one never shifts element IDs in the other templates
 import pages_e
-for i, slug in ([] if os.environ.get('NO_EVENTS') else enumerate(pages_e.WORKSHOPS, 1)):
+for i, slug in ([] if os.environ.get('NO_EVENTS') else enumerate(pages_e.PAGES, 1)):
     T.append((f'events/{i:02d}-{slug}', f'Event · {pages_e.WS[slug][1]}', 'page', lambda slug=slug: pages_e.event_page(slug)))
 
 for f in glob.glob('../templates/**/*.json', recursive=True): os.remove(f)

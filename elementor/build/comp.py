@@ -674,9 +674,6 @@ WS = {  # per workshop: stage, title, description, outcomes
     'build-a-brand-people-trust': ('brand', 'Build a brand people trust on sight',
         'Define what makes you different, write a value statement you can actually use, and audit every touchpoint for consistency.',
         ['A finished value statement', 'Your core values and competitive edge', 'A brand consistency checklist']),
-    'befirst-live-framework-workshop': ('full', 'BeFirst Live: the full framework workshop',
-        'Two hands-on hours working through every stage of the framework with our team. Bring your laptop and your real numbers, and leave with your plan started, not homework.',
-        ['A marketing roadmap for all four stages', 'Your KPIs for every stage', 'Confidence to execute on Monday']),
     'local-seo-and-ai-search': ('thought', 'Get found first: local SEO and AI search',
         'How Google, the map pack and AI search tools decide who shows up first, and what you can fix in your profile and site this month.',
         ['A Google Business Profile tune-up list', 'Your top local keywords', 'An AI search visibility check']),
@@ -693,18 +690,23 @@ WS = {  # per workshop: stage, title, description, outcomes
         'The handful of automations every local business should have running, and how to set them up without a tech team.',
         ['Your first three automations mapped', 'Email list segments to build', 'A welcome journey outline']),
 }
+# Coming soon: workshops with a page but no date yet (not on the calendar; their page takes waitlist sign-ups)
+UPCOMING = {'befirst-live-full-day-workshop': ('full', 'BeFirst Live: the full-day framework workshop',
+    'An immersive day working through every stage of the framework with our team. Bring your laptop and your real numbers. You leave with the plan finished, not homework.',
+    ['A completed marketing roadmap', 'Your KPIs for every stage', 'Confidence to execute on Monday'])}
+WS.update(UPCOMING)
 # (workshop, year, month, day, weekday, seats)
 CALENDAR = [('framework-in-2-hours', 2026, 'Dec', '17', 'Thursday', 'Open registration'),
             ('build-a-brand-people-trust', 2027, 'Jan', '14', 'Thu', '6 of 8 seats left'),
-            ('befirst-live-framework-workshop', 2027, 'Jan', '28', 'Thu', '5 of 8 seats left'),
+            ('framework-in-2-hours', 2027, 'Jan', '28', 'Thu', '5 of 8 seats left'),
             ('local-seo-and-ai-search', 2027, 'Feb', '11', 'Thu', '7 of 8 seats left'),
-            ('befirst-live-framework-workshop', 2027, 'Feb', '18', 'Thu', '6 of 8 seats left'),
+            ('framework-in-2-hours', 2027, 'Feb', '18', 'Thu', '6 of 8 seats left'),
             ('website-lead-machine', 2027, 'Mar', '18', 'Thu', '7 of 8 seats left'),
-            ('befirst-live-framework-workshop', 2027, 'Mar', '25', 'Thu', '8 of 8 seats left'),
+            ('framework-in-2-hours', 2027, 'Mar', '25', 'Thu', '8 of 8 seats left'),
             ('reviews-referrals-loyalty', 2027, 'Apr', '8', 'Thu', '8 of 8 seats left'),
-            ('befirst-live-framework-workshop', 2027, 'Apr', '22', 'Thu', '8 of 8 seats left'),
+            ('framework-in-2-hours', 2027, 'Apr', '22', 'Thu', '8 of 8 seats left'),
             ('ads-that-pay-for-themselves', 2027, 'May', '6', 'Thu', '8 of 8 seats left'),
-            ('befirst-live-framework-workshop', 2027, 'May', '20', 'Thu', '8 of 8 seats left'),
+            ('framework-in-2-hours', 2027, 'May', '20', 'Thu', '8 of 8 seats left'),
             ('marketing-automation-for-busy-owners', 2027, 'Jun', '3', 'Thu', '8 of 8 seats left')]
 # stage, month, day, weekday, title, time, format, location, price, seats, desc, outcomes  (one row per date, as the Events page lists them)
 EVENT_LIST = [(WS[w][0], m, d, wd, WS[w][1], _TM, 'In person', _LOC, 'Free', seats, WS[w][2], WS[w][3]) for w, y, m, d, wd, seats in CALENDAR]
