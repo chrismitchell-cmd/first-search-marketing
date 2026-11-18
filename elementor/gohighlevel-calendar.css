@@ -1,6 +1,15 @@
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap");
 
+/* GoHighLevel's blue -> brand purple (selected day, time slots, arrows, links).
+   The calendar's colours come from these variables; every shade is mapped to the purple scale. */
+:root, html, body, #app, .hl-app, [class*="calendar"] {
+  --primary-25: #F7F6FC;  --primary-50: #EEF0F9;  --primary-100: #E4E0F5; --primary-200: #C9C1EA;
+  --primary-300: #A496D8; --primary-400: #6E58B8; --primary-500: #3D1D8A; --primary-600: #250762;
+  --primary-700: #1F0552; --primary-800: #1A0446; --primary-900: #13033A;
+  --primary: #250762; --primary-color: #250762; --color-primary: #250762; --brand-color: #250762;
+}
+
 /* Text: brand fonts */
 body, p, span, label, input, select, textarea, button {
   font-family: "Inter", Arial, sans-serif !important;
