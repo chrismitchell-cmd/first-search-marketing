@@ -91,7 +91,11 @@ def render(e, depth=0):
         src = s['image']['url'].replace(ASSET, '../upload/first-search/').replace(ASSET_V2, '../upload/first-search/')
         pos = s.get('position', 'top'); t = s.get('title_size', 'h3')
         lay = 'display:flex;gap:20px;align-items:center' if pos == 'left' else 'text-align:left'
-        return wrap(f'<div class="elementor-image-box-wrapper" style="{lay}"><figure class="elementor-image-box-img" style="margin:0 0 10px;width:{"96px" if pos == "left" else "72px"};flex:none"><img src="{src}" style="width:100%;display:block"></figure><div class="elementor-image-box-content"><{t} class="elementor-image-box-title" style="margin:0 0 6px">{s["title_text"]}</{t}><p class="elementor-image-box-description" style="margin:0">{s["description_text"]}</p></div></div>')
+        lk = (s.get('link') or {}).get('url')   # Elementor links the image and the title separately when a link is set
+        img_h = f'<a href="{lk}" tabindex="-1"><img src="{src}" style="width:100%;display:block"></a>' if lk else f'<img src="{src}" style="width:100%;display:block">'
+        ttl = f'<a href="{lk}">{s["title_text"]}</a>' if lk else s['title_text']
+        desc = f'<p class="elementor-image-box-description" style="margin:0">{s["description_text"]}</p>' if s.get('description_text') else ''
+        return wrap(f'<div class="elementor-image-box-wrapper" style="{lay}"><figure class="elementor-image-box-img" style="margin:0 0 10px;width:{"96px" if pos == "left" else "72px"};flex:none">{img_h}</figure><div class="elementor-image-box-content"><{t} class="elementor-image-box-title" style="margin:0 0 6px">{ttl}</{t}>{desc}</div></div>')
     if k == 'video':
         img = s.get('image_overlay', {}).get('url', '').replace(ASSET, '../upload/first-search/').replace(ASSET_V2, '../upload/first-search/')
         ar = {'169': '1.77777', '219': '2.33333', '43': '1.33333', '32': '1.5', '11': '1', '916': '0.5625'}.get(s.get('aspect_ratio', '169'), '1.77777')

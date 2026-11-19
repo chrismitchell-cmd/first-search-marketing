@@ -1336,15 +1336,6 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 .fs-ex-label .elementor-heading-title { font-family: var(--fs-font) !important; font-weight: 600 !important; font-size: 14.5px !important; line-height: 1.6 !important; color: var(--fs-muted) !important;
   text-transform: none !important; letter-spacing: 0 !important; }
 .fs-ex-card > .fs-ps-list { margin: 10px 0 22px; }
-.e-con.fs-ps-row { padding: 12px 14px !important; border-radius: 16px; border-left: 4px solid transparent !important; color: var(--fs-purple); text-decoration: none;
-  background: linear-gradient(#F6F6F8, #F6F6F8) padding-box, linear-gradient(#F6F6F8, #F6F6F8) border-box; transition: background .15s ease; }
-.e-con.fs-ps-row:hover { background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; }
-.fs-ps-row > .elementor-widget { margin: 0 !important; }
-.e-con.fs-ps-ico { flex: none !important; width: 40px !important; height: 40px; border-radius: 10px; background: #fff; box-shadow: 0 10px 22px -14px rgba(37, 7, 98, .55); }
-.fs-ps-ico img { width: 34px !important; height: 34px !important; object-fit: contain; }
-.fs-ps-n .elementor-heading-title { font-family: var(--fs-font) !important; font-weight: 600 !important; font-size: 17px !important; line-height: 1.3 !important; color: var(--fs-purple) !important; }
-.fs-ps-row > .fs-ps-more { margin-left: auto !important; }
-.fs-ps-more .elementor-heading-title { font-family: var(--fs-font-ui) !important; font-size: 12px !important; font-weight: 500 !important; color: var(--fs-muted) !important; }
 .fs-ex-btn .elementor-button { font-size: 18px !important; }
 @media (max-width: 1024px) {
   .e-con.fs-explorer { grid-template-columns: minmax(0, 1fr); grid-template-areas: "wheel" "pills" "card"; }
@@ -1421,9 +1412,6 @@ body:not(.elementor-template-full-width):not(.elementor-template-canvas) :is(.el
 .fs-ex-btn .elementor-button:hover { background: var(--fs-grad-purple-hover) !important; }
 .fs-pricebox .elementor-button { font-family: var(--fs-font) !important; font-weight: 600 !important; font-size: 18px !important; }
 .fs-pricebox > .fs-pb-per { margin-top: 18px !important; }
-.e-con.fs-ps-row { flex-direction: row !important; flex-wrap: nowrap !important; }
-.fs-ps-row > .fs-ps-n { flex: 1 1 auto !important; width: auto !important; min-width: 0; }
-.fs-ps-row > .fs-ps-more { flex: none !important; width: auto !important; }
 
 /* ---------- 33. Contact: "Find us" cards + map, and the two path cards ---------- */
 .fs-fcards > .fs-fcard { flex: 0 0 calc((100% - 66px) / 4) !important; width: auto !important; min-width: 0; }
@@ -2429,3 +2417,18 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
   .fs-evp-rh .elementor-heading-title { font-size: 18px !important; }
   .e-con.fs-evp-row { align-items: flex-start !important; }
 }
+
+/* ---------- 47. Services page, Framework explorer: service rows are Image Box widgets (fs-ps-item) ---------- */
+.fs-ps-item { position: relative; margin: 0 !important; padding: 12px 14px; border-radius: 16px; border-left: 4px solid transparent; transition: background .15s ease;
+  background: linear-gradient(#F6F6F8, #F6F6F8) padding-box, linear-gradient(#F6F6F8, #F6F6F8) border-box; }
+.fs-ps-item:hover { background: linear-gradient(#ECECEC, #ECECEC) padding-box, linear-gradient(180deg, #72CCD8, #174FA2) border-box; }
+.fs-ps-item .elementor-image-box-wrapper { display: flex !important; flex-direction: row !important; align-items: center !important; gap: 14px; text-align: left !important; }
+.fs-ps-item .elementor-image-box-img { flex: none !important; width: 40px !important; height: 40px; margin: 0 !important; display: grid; place-items: center;
+  border-radius: 10px; background: #fff; box-shadow: 0 10px 22px -14px rgba(37, 7, 98, .55); }
+.fs-ps-item .elementor-image-box-img img { width: 34px !important; height: 34px !important; object-fit: contain; }
+.fs-ps-item .elementor-image-box-content { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.fs-ps-item .elementor-image-box-title { margin: 0 !important; font-family: var(--fs-font) !important; font-weight: 600 !important; font-size: 17px !important; line-height: 1.3 !important; color: var(--fs-purple) !important; }
+.fs-ps-item .elementor-image-box-title a { color: inherit !important; text-decoration: none !important; }
+.fs-ps-item .elementor-image-box-title a::after { content: ""; position: absolute; inset: 0; z-index: 1; }   /* whole row is the link */
+.fs-ps-item .elementor-image-box-description { flex: none; margin: 0 !important; font-family: var(--fs-font-ui) !important; font-size: 12px !important; font-weight: 500 !important; color: var(--fs-muted) !important; }
+.fs-ps-item:focus-within { outline: 2px solid var(--fs-sky); outline-offset: 2px; }

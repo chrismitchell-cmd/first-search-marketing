@@ -452,10 +452,11 @@ def stage_explorer(services, eb='The four stages', h2='Every service has a job i
     def card(k):
         rows = []
         for slug, n, i, _, st in [s for s in services if k in s[4]]:
-            rows.append(con(con(image(f'assets/img/icons/{i}.webp', '', None, 'center', ''), cls='fs-ps-ico', justify='center', align='center'),
-                            heading(n, 'p', 'fs-ps-n'), heading(f'{len(st)} stages', 'p', 'fs-ps-more') if len(st) > 1 else None,
-                            d='row', gap_=14, align='center', mobile_col=False, cls='fs-ps-row',
-                            s={'html_tag': 'a', 'link': {'url': f'/services/{slug}/', 'is_external': '', 'nofollow': ''}}))
+            # one native Image Box per service (icon left, linked name, "2 stages" note): no containers to break apart
+            b = image_box(f'assets/img/icons/{i}.webp', n, f'{len(st)} stages' if len(st) > 1 else '', 'fs-ps-item', 'left', 'p')
+            b['settings'].update({'link': {'url': f'/services/{slug}/', 'is_external': '', 'nofollow': ''}, 'position_mobile': 'left',
+                                  'image_size': {'unit': 'px', 'size': 40, 'sizes': []}})
+            rows.append(b)
         return con(heading(plogo(k), 'p', 'fs-ex-logo'), heading(STAGES[k][0], 'h3', 'fs-ex-h'), text(STAGE_DESC[k], 'fs-ex-desc'),
                    heading(f'Services that power {STAGE_NAME[k]}', 'p', 'fs-ex-label'), con(*rows, gap_=8, cls='fs-ps-list'),
                    button(f'Explore {STAGE_NAME[k]}', f'/first{k}/', 'fs-ex-btn'), cls='fs-gcard fs-ex-card', gap_=0)
