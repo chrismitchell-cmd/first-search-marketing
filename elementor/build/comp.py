@@ -386,11 +386,11 @@ def stage_cards(eb='Our framework', h2='A proven system, not a pile of tactics.'
                       'padding_mobile': {'unit': 'px', 'top': '56', 'right': '16', 'bottom': '96', 'left': '16', 'isLinked': False}})
 
 # ---------- Value / competency cards (navy cards, glowing white icon tile, "In practice" under a gradient line) ----------
-def value_cards(items, cols=2):
-    """items: (icon webp in assets/img/icons, title, text[, in practice])"""
+def value_cards(items, cols=2, label='In practice'):
+    """items: (icon webp in assets/img/icons, title, text[, in practice]); label = the word before the last line"""
     items = [(it + (None,))[:4] for it in items]
     return row(*[con(con(image(f'assets/img/icons/{i}', '', None, 'center', t), cls='fs-vtile', justify='center', align='center'),
-                     con(heading(t, 'h3'), text(d, 'fs-vtext'), text(f'<p><em>In practice:</em> {p}</p>', 'fs-vip') if p else None, cls='fs-vbody', gap_=0),
+                     con(heading(t, 'h3'), text(d, 'fs-vtext'), text(f'<p><em>{label}:</em> {p}</p>', 'fs-vip') if p else None, cls='fs-vbody', gap_=0),
                      d='row', cls='fs-vcard', gap_=24, align='flex-start', mobile_col=False, p=pad(24, 28, 26, 22), s={'padding_mobile': pad(20)})
                  for i, t, d, p in items], gap_=24, wrap=True, align='stretch', cls='fs-vcards fs-nostyle' + (' fs-vcards--3' if cols == 3 else ''))
 

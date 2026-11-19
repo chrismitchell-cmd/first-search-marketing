@@ -1,4 +1,4 @@
-from fsel import ASSET, ASSET_V2
+from fsel import ASSET, ASSET_V2, ASSET_CASE
 """Approximate Elementor front-end rendering of the templates, for visual QA only (not shipped)."""
 import json, sys, html as H, os
 CSSV = []
@@ -336,6 +336,7 @@ def page(paths, out):
 <style>body{{margin:0;background:#fff}} img{{max-width:100%}} *{{box-sizing:border-box}} .e-con{{min-width:0}} .elementor-widget{{min-width:0}} p{{margin:0 0 .6em}}</style>
 <style>{kit_vars()}</style><style>{EL_DEFAULTS}</style><style>{EA_CSS}</style><style>{css}</style><style>{EL_GLOBALS}</style><style>{rules}</style></head><body class="elementor-kit-5"><div class="elementor elementor-9">{body}</div></body></html>'''
     doc = doc.replace('https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@4d59b7976a0bacac8601ce9d2eba36ebb43a7779/elementor/upload/first-search/', '../upload/first-search/')
+    doc = doc.replace(ASSET_CASE, '../upload/first-search/')
     doc = doc.replace(ASSET_V2, '../upload/first-search/').replace('https://cdn.jsdelivr.net/gh/chrismitchell-cmd/first-search-marketing@f978e9f0c6a066562155908c1524a093df652243/elementor/upload/first-search/', '../upload/first-search/')
     open(out, 'w').write(doc)
 if __name__ == '__main__':
