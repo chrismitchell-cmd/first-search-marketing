@@ -60,10 +60,12 @@ def case_study_page(c):
                ns(H('Case study', 'fs-cs-type'), H(f'{c["industry"]} · {c["location"]}', 'fs-cs-meta'), d='row', gap_=10, align='center', mobile_col=False, wrap=True),
                heading(f'{c["h1"][0]} <span class="fs-gt">{c["h1"][1]}</span>', 'h1', 'fs-h1-rule'), text(c['lead'], 'fs-hero-lead'),
                ns(H('Framework stages in this project', 'fs-cs-k'), stages, gap_=10), gap_=18)
-    photo = con(image(c['photo'], 'fs-cs-photo-img', '100%', 'center', c['photo_alt']),
+    # right: the client video (Video widget on the practice photo), the logo chip under it
+    v_img, v_cap, v_len = c['video']
+    media = con(vid(v_img, v_cap, v_len),
                 ns(image(c['logo'], 'fs-cs-logo-img', None, 'left', f'{name} logo'), H(f'Partner since {c["since"]}', 'fs-cs-since'), d='row', gap_=12, align='center',
-                   mobile_col=False, cls='fs-cs-logo'), cls='fs-gcard fs-cs-photo', p=pad(0))
-    hero = section(row(left, photo, cls='fs-hero', gap_=56), cls='fs-geo', title='Hero', bg_img=GEO,
+                   mobile_col=False, cls='fs-cs-logo'), gap_=14)
+    hero = section(row(left, media, cls='fs-hero', gap_=56), cls='fs-geo', title='Hero', bg_img=GEO,
                    p={'unit': 'px', 'top': '90', 'right': '24', 'bottom': '100', 'left': '24', 'isLinked': False})
 
     # 3. the client + goals (light)
@@ -132,12 +134,8 @@ def case_study_page(c):
                    nested_tabs([(t['tab'], proof_panel(dict(t, name=name))) for t in c['proof']], 'fs-cs-tabs fs-nostyle'),
                    cls='fs-geo', title='See the work', bg_img=GEO, gap_=32)
 
-    # 8. in their words (purple): video + quote, then the client's Google reviews
-    v_img, v_cap, v_len = c['video']; q, long_q, who, role = c['voice']
-    voice = section(row(vid(v_img, v_cap, v_len), con(eyebrow('In their words'), heading(q, 'h2', 'fs-cs-voice-h'), text(long_q, 'fs-lead'),
-                                                      heading(who, 'p', 'fs-sig'), text(role, 'fs-eyebrow'), gap_=12), cls='fs-hero', gap_=48),
-                    row(con(eyebrow('Their Google reviews'), heading(c['reviews_h3'], 'h3', 'fs-cs-rev-h'), gap_=8), H(c['reviews_note'], 'fs-cs-soon') if c.get('reviews_note') else None,
-                        justify='space-between', align='flex-end', gap_=20),
+    # 8. in their words (purple): the owners' Google reviews
+    voice = section(sec_head('In their words', c['reviews_h3'], align='left'),
                     row(*[review(rq, rw) for rq, rw in c['reviews']], gap_=24, align='stretch'),
                     cls='fs-dark fs-cs-voice', title='In their words', gap_=40)
 

@@ -2442,10 +2442,8 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
   margin: 0; font-family: var(--fs-font-ui) !important; font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .06em; text-transform: uppercase !important; line-height: 1.4 !important; color: var(--fs-sky-ink) !important; }
 .fs-cs-stage .elementor-heading-title { display: inline-flex; padding: 7px 16px; border-radius: 999px; background: #fff; box-shadow: 0 8px 20px -12px rgba(37, 7, 98, .45); line-height: 1 !important; }
 .fs-cs-stage a { text-decoration: none !important; } .fs-cs-stage .fs-plogo { font-size: 17px; }
-/* hero photo card with the logo chip */
-.e-con.fs-cs-photo { position: relative; overflow: hidden; }
-.fs-cs-photo-img img { display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: 60% 100%; }
-.e-con.fs-cs-logo { position: absolute !important; left: 18px; bottom: 18px; width: auto !important; padding: 10px 18px 10px 12px !important; border-radius: 16px; background: rgba(255, 255, 255, .96); box-shadow: 0 14px 30px -14px rgba(28, 22, 72, .5); }
+/* hero: logo chip under the client video */
+.e-con.fs-cs-logo { position: relative; width: auto !important; align-self: flex-start; padding: 10px 18px 10px 12px !important; border-radius: 16px; background: rgba(255, 255, 255, .96); box-shadow: 0 14px 30px -14px rgba(28, 22, 72, .5); }
 .fs-cs-logo > .elementor-widget { width: auto !important; flex: none !important; }
 .fs-cs-logo-img img { width: 140px !important; height: auto; }
 .fs-cs-since .elementor-heading-title { font-family: var(--fs-font-ui) !important; font-size: 13px !important; font-weight: 500 !important; color: var(--fs-muted) !important; white-space: nowrap; }
@@ -2560,10 +2558,6 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 .fs-cs-pcap .elementor-heading-title { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 12px !important; font-weight: 700 !important; letter-spacing: .06em; text-transform: uppercase !important; color: #fff !important; }
 .fs-cs-phone img { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 22px; }
 
-/* in their words: quote and the reviews heading on purple */
-.fs-cs-voice-h .elementor-heading-title { font-size: clamp(28px, 3vw, 44px) !important; line-height: 1.12 !important; color: #fff !important; }
-.fs-cs-rev-h .elementor-heading-title { font-family: var(--fs-font) !important; font-size: clamp(28px, 3vw, 44px) !important; font-weight: 700 !important; line-height: 1.12 !important; color: #fff !important; }
-.fs-cs-soon .elementor-heading-title { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 14px !important; font-weight: 600 !important; color: rgba(255, 255, 255, .8) !important; }
 .fs-cs-voice .fs-review-card { box-shadow: 0 30px 50px -28px rgba(0, 0, 0, .6); }
 
 .fs-cs-trust .fs-trust-num .elementor-heading-title { font-family: var(--fs-font) !important; font-size: 86px !important; font-weight: 700 !important; line-height: 1 !important; letter-spacing: -.03em !important; }
@@ -2574,8 +2568,6 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 .fs-cs-goals .fs-vcard > .fs-vbody { width: 100% !important; }
 .fs-cs-goals .fs-vtile { width: 84px !important; height: 80px !important; min-height: 80px; }
 .fs-cs-goals .fs-vtile img { width: 50px !important; height: 50px !important; }
-.fs-cs-soon .elementor-heading-title { white-space: nowrap; }
-.fs-cs-voice .fs-nostyle > .fs-cs-soon, .fs-cs-voice .e-con > .fs-cs-soon { flex: none !important; width: auto !important; }
 @media (max-width: 1024px) { .e-con.fs-cs-glance { position: static; } }
 @media (max-width: 767px) {
   .fs-cs-ba-head { display: none !important; }

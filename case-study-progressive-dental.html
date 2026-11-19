@@ -2711,7 +2711,7 @@ h1, h2, h3, h4 { color: var(--navy); }
 .pd-next .ticks { margin: 0 0 26px; }
 
 /* 8. their Google reviews, under the video and quote */
-.pd-reviews { margin-top: clamp(64px, 7vw, 96px); }
+.pd-reviews { margin-top: 0; }
 .pd-rev-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-bottom: 32px; }
 .pd-rev-head .h2 { color: #fff; font-size: clamp(30px, 3.2vw, 46px); }
 .pd-rating { display: flex; align-items: center; gap: 14px; padding: 14px 22px; border-radius: 20px; background: #fff; box-shadow: 0 20px 40px -24px rgba(0, 0, 0, .55); }
@@ -2754,6 +2754,10 @@ h1, h2, h3, h4 { color: var(--navy); }
 .pd-gr-r span { margin-top: 4px; font: 500 14px/1.4 var(--font-ui); color: var(--muted); }
 .vcards--3 .vtile img { width: 56px; height: 56px; object-fit: contain; }
 @media (max-width: 1024px) { .pd-goalres { grid-template-columns: minmax(0, 1fr) !important; } }
+.pd-hero-media { display: grid; gap: 14px; justify-items: start; }
+.pd-hero-media > .vid { width: 100%; }
+.pd-logo-chip { display: flex; align-items: center; gap: 14px; padding: 10px 18px 10px 12px; border-radius: 16px; background: #fff; box-shadow: 0 14px 30px -14px rgba(28, 22, 72, .4); }
+.pd-logo-chip img { width: 140px; height: auto; } .pd-logo-chip small { font: 500 13px var(--font-ui); color: var(--muted); white-space: nowrap; }
 @media (max-width: 1024px) {
   .pd-client, .pd-panel .gcard__in, .pd-next .gcard__in { grid-template-columns: minmax(0, 1fr); }
   .pd-client .glance { position: static; }
@@ -2912,10 +2916,10 @@ h1, h2, h3, h4 { color: var(--navy); }
       <p class="hero-lead">After a change in ownership and an agency that never delivered, Progressive Dental Care came to us for a rebrand, a digital marketing engine and a social strategy. For the first time in the practice's history, more new patients now come from digital marketing than from referrals.</p>
       <div class="dt-stages" aria-label="Framework stages in this project"><span class="k">Framework stages in this project</span><a href="pillars.html?pillar=brand"><span class="plogo" role="img" aria-label="FirstBrand"><b>first</b>brand</span></a><a href="pillars.html?pillar=thought"><span class="plogo" role="img" aria-label="FirstThought"><b>first</b>thought</span></a><a href="pillars.html?pillar=choice"><span class="plogo" role="img" aria-label="FirstChoice"><b>first</b>choice</span></a><a href="pillars.html?pillar=referral"><span class="plogo" role="img" aria-label="FirstReferral"><b>first</b>referral</span></a></div>
     </div>
-    <figure class="gcard cs-photo"><div class="gcard__in">
-      <img src="assets/img/design/case-dental.webp" alt="A Progressive Dental Care dentist with a patient, with the practice's 4.9-star Google profile overlaid" width="1400" height="830">
-      <figcaption class="cs-logo"><img class="pd-cs-logo" src="assets/img/case/progressive-dental-logo-new.webp" alt="Progressive Dental Care logo" width="498" height="156"><span><small>Partner since late 2025</small></span></figcaption>
-    </div></figure>
+    <div class="pd-hero-media">
+      <!--VIDEO:Progressive Dental Care on working with First Search|[1:20]|assets/img/design/case-dental.webp|cover--><div class="gcard vid"><div class="gcard__in"><button type="button" class="vid-btn" aria-label="Play video: Progressive Dental Care on working with First Search"><img class=cover src="assets/img/design/case-dental.webp" alt=""><span class="vid-tag"><i></i>Video</span><span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></svg></span><span class="vid-cap"><b>Progressive Dental Care on working with First Search</b><span class="ph">[1:20]</span></span></button></div></div><!--/VIDEO-->
+      <div class="pd-logo-chip"><img src="assets/img/case/progressive-dental-logo-new.webp" alt="Progressive Dental Care logo" width="498" height="156"><small>Partner since late 2025</small></div>
+    </div>
   </div>
 </section>
 
@@ -3152,23 +3156,12 @@ h1, h2, h3, h4 { color: var(--navy); }
   </div>
 </section>
 
-<!-- 8. IN THEIR WORDS (purple)  ·  Elementor: video card (Video widget, gradient frame) + quote -->
+<!-- 8. IN THEIR WORDS (purple)  ·  Elementor: the owners' Google reviews (Essential Addons Testimonial cards) -->
 <section class="section on-dark pd-voice" aria-labelledby="voice-title">
-  <div class="e-con hero-grid">
-    <!--VIDEO:Progressive Dental Care on working with First Search|[1:20]|assets/img/design/case-dental.webp|cover--><div class="gcard vid"><div class="gcard__in"><button type="button" class="vid-btn" aria-label="Play video: Progressive Dental Care on working with First Search"><img class=cover src="assets/img/design/case-dental.webp" alt=""><span class="vid-tag"><i></i>Video</span><span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></svg></span><span class="vid-cap"><b>Progressive Dental Care on working with First Search</b><span class="ph">[1:20]</span></span></button></div></div><!--/VIDEO-->
-    <div>
-      <span class="eyebrow">In their words</span>
-      <h2 class="h2" id="voice-title">"Together, we've significantly improved our SEO, built a new website, and tackled social media."</h2>
-      <p class="lead">"First Search Marketing has done a phenomenal job with our business. Their approach is comprehensive and respectful of our nuanced requests. I would recommend First Search to anybody looking to improve their business through marketing services."</p>
-      <p class="sig"><span>Ned Gold</span><span>Owner, Progressive Dental Care</span></p>
-    </div>
-  </div>
   <div class="e-con">
-    <!-- Their Google reviews  ·  Elementor: heading row, 2 review cards (Essential Addons Testimonial, the site's Google review card style, fs-testi) -->
     <div class="pd-reviews">
       <div class="pd-rev-head">
-        <div><span class="eyebrow">Their Google reviews</span><h3 class="h2">What the owners say <span class="gt">about working with us.</span></h3></div>
-        <p class="pd-video-soon"><span class="ph">Client video coming soon</span></p>
+        <div><span class="eyebrow">In their words</span><h2 class="h2" id="voice-title">What the owners say <span class="gt">about working with us.</span></h2></div>
       </div>
       <div class="grid2 reviews">
         <figure class="gcard review"><div class="gcard__in">

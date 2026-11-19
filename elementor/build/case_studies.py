@@ -13,8 +13,8 @@ PROGRESSIVE_DENTAL = {
     'since': 'late 2025',
     'partnership': 'Since late 2025 · ongoing',
     'logo': 'assets/img/case/progressive-dental-logo-new.webp',
-    'photo': 'assets/img/design/case-dental.webp',
-    'photo_alt': 'A Progressive Dental Care dentist with a patient, with the practice’s 4.9-star Google profile overlaid',
+    # hero: the client video (paste the link in the Video widget); cover image, caption, length
+    'video': ('assets/img/design/case-dental.webp', 'Progressive Dental Care on working with First Search', '[1:20]'),
     'h1': ('Progressive Dental Care:', 'from 12 leads a month to 100+.'),
     'lead': 'After a change in ownership and an agency that never delivered, Progressive Dental Care came to us for a rebrand, a digital marketing engine '
             'and a social strategy. For the first time in the practice’s history, more new patients now come from digital marketing than from referrals.',
@@ -105,14 +105,8 @@ PROGRESSIVE_DENTAL = {
          'kpis': [('1K+', 'average views, from 110'), ('9x', 'the views'), ('+40%', 'followers')]},
     ],
 
-    # in their words
-    'video': ('assets/img/design/case-dental.webp', 'Progressive Dental Care on working with First Search', '[Coming soon]'),
-    'voice': ('“Together, we’ve significantly improved our SEO, built a new website, and tackled social media.”',
-              '“First Search Marketing has done a phenomenal job with our business. Their approach is comprehensive and respectful of our nuanced requests. '
-              'I would recommend First Search to anybody looking to improve their business through marketing services.”',
-              'Ned Gold', 'Owner, Progressive Dental Care'),
+    # in their words: the owners' Google reviews
     'reviews_h3': 'What the owners say <span class="fs-gt">about working with us.</span>',
-    'reviews_note': 'Client video coming soon',
     'reviews': [('First Search Marketing has done a phenomenal job with our business. Their approach is comprehensive and respectful of our nuanced requests — '
                  'together, we’ve significantly improved our SEO, built a new website, and tackled social media (my least favorite). I would recommend First Search '
                  'to anybody looking to improve their business through marketing services.', 'Ned Gold, Owner'),
