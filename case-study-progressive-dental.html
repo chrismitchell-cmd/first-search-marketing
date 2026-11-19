@@ -4,17 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Progressive Dental Care Case Study | First Search Marketing</title>
-<meta name="description" content="How Progressive Dental Care used the FirstSearch Framework to get found first, win new patients and build a brand that matches the practice. [Update with the headline result.]">
+<meta name="description" content="How Progressive Dental Care in South Portland, Maine used the FirstSearch Framework to get found first, win new patients and build a brand that matches the practice.">
 <meta name="theme-color" content="#250762">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
 <!--
-  CASE STUDY: PROGRESSIVE DENTAL CARE (first case study page, same design system as case-study.html)
-  Sections (each = one Elementor section): 1 Hero · 2 Results band · 3 Client, challenge and goals · 4 The plan: framework
-  services (in / not in the plan) · 5 How we did it (3 phases) · 6 Results: goal -> result scorecard, leads chart, before/after
-  · 7 See the work: tabs for SEO heatmap, website, branding, ad results, leads · 8 In their words (video + quote)
-  · 9 What's next · 10 More case studies · Framework Quiz CTA. Yellow-highlighted [brackets] = client data to fill in.
+  CASE STUDY: PROGRESSIVE DENTAL CARE (same design system as case-study.html; light and purple sections alternate)
+  Sections: 1 Hero (light) · 2 Results band (purple) · 3 The client + goals as value cards (light) · 4 The plan: the framework
+  block with service lists per stage (purple block) · 5 How we did it (light) · 6 Results: goal -> result scorecard, leads chart,
+  before/after (purple) · 7 See the work: before/after tabs with KPIs for branding, SEO heatmap, reviews, leads, website and
+  social (light) · 8 In their words (purple) · 9 What's next (light) · 10 More case studies (purple) · Quiz CTA (light).
+  Yellow-highlighted [brackets] = client data to fill in.
 
   ELEMENTOR BUILD NOTES (Individual case study)
   - ONE Theme Builder "Single" template for a "Case study" CPT. ACF fields: client, industry, town, partner since,
@@ -2586,48 +2587,54 @@ h1, h2, h3, h4 { color: var(--navy); }
 /*/HERO-FIX*/
 
 /* ============ Progressive Dental Care case study: page-specific blocks ============ */
-.pd-photo { min-height: 300px; border-radius: 30px 30px 0 0; }
+/* purple sections share the site's navy + splash */
+.pd-results, .pd-voice, .pd-more { background: radial-gradient(560px 420px at 100% 0%, rgba(50, 153, 213, .45), transparent 70%), radial-gradient(460px 340px at 0% 100%, rgba(124, 210, 211, .2), transparent 70%), var(--navy); color: #fff; }
+.pd-voice .h2, .pd-more .h2 { color: #fff; } .pd-voice .lead { color: rgba(255, 255, 255, .88); } .pd-voice .eyebrow { color: var(--teal); }
+.pd-voice .sig span { color: rgba(255, 255, 255, .85) !important; }
+.pd-more .dt-all .link-u { color: #fff; }
 
-/* goals (section 3) */
-.pd-goals { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; }
-.pd-goals li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: start; padding: 18px 20px; border-radius: 18px; background: var(--bg); }
-.pd-goals .n { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--grad); font: 800 20px var(--font); color: #fff; }
-.pd-goals b { display: block; font: 700 17.5px/1.4 var(--font); color: var(--navy); }
-.pd-target { display: inline-flex; margin-top: 8px; padding: 4px 12px; border-radius: 999px; background: #fff; box-shadow: 0 6px 16px -10px rgba(38, 39, 91, .4);
-  font: 600 13.5px var(--font-ui); color: var(--blue-ink); }
+/* 3. the client: story | At a glance, then the goals as the site's purple value cards */
+.pd-client { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: clamp(32px, 5vw, 80px); align-items: start; }
+.pd-client .glance { position: sticky; top: 120px; }
+.pd-client .prose .h2 { margin-bottom: 18px; font-size: clamp(34px, 3.9vw, 56px); line-height: 1.08; }
+.pd-client .prose h3 { margin-top: 26px; }
+.pd-goals-head { margin: clamp(56px, 6vw, 80px) 0 32px; }
+.vcards--3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+.vcards--3 .vcard { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 28px 26px 30px; }
+.vcards--3 .vtile { width: 84px; height: 80px; border-radius: 18px; } .vcards--3 .vtile .icon { width: 46px; height: 46px; }
 
-/* the plan (section 4) */
-.pd-plan-sec { background: var(--navy); padding-bottom: clamp(40px, 5vw, 70px); }
-.pd-plan-sec + .how { padding-top: clamp(30px, 4vw, 50px); }   /* two navy sections read as one block */
-.pd-plan { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
-.pd-stage { padding: 26px 22px 24px; border-radius: 26px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .14); }
-.pd-stage-logo { margin: 0 0 6px; } .pd-stage-logo .plogo { font-size: 24px; color: #fff; }
-.pd-stage h3 { margin: 0 0 16px; padding-bottom: 14px; font: 500 14px var(--font-ui); color: rgba(255, 255, 255, .75);
-  background: var(--grad) left bottom / 100% 3px no-repeat; }
-.pd-stage ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.pd-stage li { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; background: #fff; font: 600 15px var(--font); color: var(--navy); }
-.pd-stage li::before { content: ""; flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--grad) center / cover;
-  -webkit-mask: radial-gradient(circle, #000 64%, transparent 66%); mask: radial-gradient(circle, #000 64%, transparent 66%); }
-.pd-stage li a { color: inherit; text-decoration: none; } .pd-stage li a:hover { color: var(--royal); }
-.pd-stage li.is-off { background: transparent; border: 1.5px dashed rgba(255, 255, 255, .28); font-weight: 500; color: rgba(255, 255, 255, .6); }
-.pd-stage li.is-off::before { background: rgba(255, 255, 255, .3); }
-.pd-legend { display: flex; justify-content: center; gap: 26px; margin-top: 26px; font: 500 14px var(--font-ui); color: rgba(255, 255, 255, .8); }
+/* 4. the plan: framework block, service lists in the stage cards */
+.pd-plan { padding-top: clamp(30px, 4vw, 50px); }
+.pd-plan .rel { cursor: default; } .pd-plan .rel:hover { transform: none; }
+.pd-plan .rel .gcard__in > p { font-weight: 600; color: var(--navy); }
+.pd-svcs { list-style: none; margin: 4px 0 6px; padding: 0; display: grid; gap: 8px; }
+.pd-svcs li { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; background: var(--bg); font: 600 14.5px/1.3 var(--font); color: var(--navy); }
+.pd-svcs li::before { content: "✓"; flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--grad); font-size: 12px; color: #fff; }
+.pd-svcs li.off { background: transparent; border: 1.5px dashed #CFCDDA; font-weight: 500; color: var(--muted); }
+.pd-svcs li.off::before { content: ""; background: #E3E2EA; }
+.pd-legend { display: flex; justify-content: center; gap: 26px; margin: 30px 0 0; font: 500 14.5px var(--font-ui); color: rgba(255, 255, 255, .88); }
 .pd-legend span { display: inline-flex; align-items: center; gap: 8px; }
-.pd-legend span::before { content: ""; width: 16px; height: 16px; border-radius: 6px; }
-.pd-legend .on::before { background: #fff; } .pd-legend .off::before { border: 1.5px dashed rgba(255, 255, 255, .5); }
-.pd-when { margin: -4px 0 10px; font: 600 13.5px var(--font-ui); color: var(--blue-ink); }
+.pd-legend span::before { content: ""; width: 18px; height: 18px; border-radius: 50%; }
+.pd-legend .on::before { background: var(--grad); } .pd-legend .off::before { border: 1.5px dashed rgba(255, 255, 255, .6); }
 
-/* goal -> result scorecard (section 6) */
+/* 5. how we did it, on the light background */
+.how.pd-light { color: var(--ink); background: var(--bg) url("assets/img/design/bg-geometric.jpg") center / cover no-repeat; padding-top: clamp(130px, 12vw, 170px); }
+.how.pd-light .h2 { color: var(--navy); } .how.pd-light .eyebrow { color: var(--blue-ink); }
+.pd-when { margin: -4px 0 10px; font: 600 13.5px var(--font-ui); color: var(--blue-ink); }
+.step--hl .pd-when { color: rgba(255, 255, 255, .9); }
+
+/* 6. results: goal -> result scorecard */
 .pd-score { display: grid; gap: 10px; margin-bottom: 36px; }
-.pd-score-row { display: grid; grid-template-columns: 80px minmax(0, 1fr) 180px 220px auto; gap: 18px; align-items: center; padding: 16px 22px; border-radius: 18px;
-  background: #fff; box-shadow: var(--shadow-card); font-family: var(--font-ui); font-size: 14.5px; color: var(--muted); }
+.pd-score-row { display: grid; grid-template-columns: 80px minmax(0, 1fr) 180px 230px auto; gap: 18px; align-items: center; padding: 16px 22px; border-radius: 18px;
+  background: #fff; box-shadow: 0 20px 40px -24px rgba(0, 0, 0, .55); font-family: var(--font-ui); font-size: 14.5px; color: var(--muted); }
 .pd-score-row .g { font: 700 12.5px var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--blue-ink); }
 .pd-score-row b { font: 700 16.5px/1.35 var(--font); color: var(--navy); }
 .pd-score-row .r { font-weight: 600; color: var(--navy); }
 .pd-hit { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: var(--grad); font: 700 13px var(--font); color: #fff; }
 .pd-hit::before { content: "✓"; }
+.pd-results .cs-ba { box-shadow: 0 0 0 1px rgba(255, 255, 255, .18), 0 30px 50px -28px rgba(0, 0, 0, .6); }
 
-/* see the work (section 7) */
+/* 7. see the work */
 .pd-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 26px; }
 .pd-tabs button { padding: 12px 22px; border: 2px solid var(--line); border-radius: 999px; background: #fff; font: 600 16px var(--font); color: var(--navy); cursor: pointer;
   transition: border-color .15s ease, background .15s ease, color .15s ease; }
@@ -2637,60 +2644,82 @@ h1, h2, h3, h4 { color: var(--navy); }
 .pd-copy h3 { margin: 0 0 10px; font: 700 clamp(24px, 2.4vw, 32px)/1.15 var(--font); color: var(--navy); }
 .pd-copy > p { margin: 0 0 18px; font-size: 16.5px; line-height: 1.65; color: var(--body); }
 .pd-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 16px; }
-.pd-stats > div { padding: 14px 12px; border-radius: 16px; background: var(--bg); text-align: center; }
-.pd-stats b { display: block; font: 800 24px var(--font); color: var(--navy); }
-.pd-stats span { display: block; margin-top: 4px; font: 500 12.5px/1.35 var(--font-ui); color: var(--muted); }
+.pd-stats > div { padding: 16px 12px; border-radius: 16px; background: var(--navy); text-align: center; }
+.pd-stats b { display: block; font: 800 26px var(--font); color: transparent; background: var(--grad); -webkit-background-clip: text; background-clip: text; }
+.pd-stats b.ph { color: #fff; background: none; }
+.pd-stats span { display: block; margin-top: 4px; font: 500 12.5px/1.35 var(--font-ui); color: rgba(255, 255, 255, .85); }
 .pd-note { font-size: 13px !important; color: var(--muted) !important; }
+.pd-arrow { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--grad); font: 700 16px var(--font); color: #fff; }
+.phbox.is-before, .is-before .phbox { background: #EEEDF2; border-color: #C9C8D3; color: var(--muted); }
+/* branding: three before -> after rows */
+.pd-ba-h, .pd-ba-row { display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); gap: 12px; align-items: center; }
+.pd-ba-h { margin-bottom: 8px; font: 700 12.5px var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--blue-ink); }
+.pd-ba-row { margin-bottom: 14px; } .pd-ba-row .phbox { min-height: 92px; padding: 10px; font-size: 13px; }
+.pd-ba-row p { grid-column: 1 / -1; margin: -6px 0 0; font: 600 13px var(--font-ui); color: var(--navy); text-align: center; }
 /* heatmap */
 .pd-heat-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .pd-heat-pair figure { margin: 0; }
 .pd-heat-pair figcaption { margin-bottom: 8px; font: 700 13px var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--blue-ink); }
-.pd-heat { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 14px; border-radius: 18px; aspect-ratio: 1;
-  background: #E9EEF3 radial-gradient(circle at 50% 50%, #fff 0 8%, transparent 9%); }
+.pd-heat { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 14px; border-radius: 18px; aspect-ratio: 1; background: #E9EEF3; }
 .pd-heat i { display: grid; place-items: center; border-radius: 50%; font: 700 11px var(--font-ui); font-style: normal; color: #fff; aspect-ratio: 1; }
 .pd-heat i.k1 { background: #2EA66B; } .pd-heat i.k2 { background: #F2A93B; } .pd-heat i.k3 { background: #D9534F; }
 .pd-heat i.c { outline: 3px solid var(--navy); outline-offset: 2px; }
 .pd-key { display: flex; gap: 18px; margin: 14px 0 0; font: 500 13px var(--font-ui); color: var(--muted); }
 .pd-key span::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 6px; border-radius: 50%; vertical-align: -1px; }
 .pd-key .k1::before { background: #2EA66B; } .pd-key .k2::before { background: #F2A93B; } .pd-key .k3::before { background: #D9534F; }
-/* website: browser frames */
-.pd-browsers { display: grid; grid-template-columns: 1fr 1.2fr; gap: 14px; align-items: end; }
-.pd-browser { margin: 0; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 18px 40px -20px rgba(38, 39, 91, .45); border: 1px solid var(--line); }
-.pd-browser .bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: var(--bg); border-bottom: 1px solid var(--line); }
-.pd-browser .bar i { width: 9px; height: 9px; border-radius: 50%; background: #C9C8D3; }
-.pd-browser .bar span { margin-left: auto; font: 700 11.5px var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--blue-ink); }
-.pd-browser .phbox { min-height: 260px; border: 0; border-radius: 0; }
-.pd-browser.is-before { opacity: .85; } .pd-browser.is-before .phbox { min-height: 200px; background: #EEEDF2; color: var(--muted); }
-/* branding board */
-.pd-board { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.pd-logo-slot { min-height: 150px; }
-.pd-swatches { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.pd-swatches .phbox { min-height: 70px; padding: 6px; font-size: 12px; }
-.pd-apps { grid-column: 1 / -1; min-height: 170px; }
-/* ads */
-.pd-ads { display: grid; gap: 12px; } .pd-ads .phbox { min-height: 150px; }
-/* leads by source */
+/* reviews */
+.pd-revs { display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); gap: 12px; align-items: center; }
+.pd-rev { padding: 18px 18px 16px; border-radius: 18px; background: #fff; box-shadow: 0 18px 40px -22px rgba(38, 39, 91, .45); border: 1px solid var(--line); }
+.pd-rev.is-before { background: #F4F4F6; box-shadow: none; }
+.pd-rev p { margin: 0; } .pd-rev .lbl { font: 700 12px var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--blue-ink); }
+.pd-rev .name { margin-top: 8px; font: 600 15px var(--font); color: var(--navy); }
+.pd-rev .score { display: flex; align-items: center; gap: 8px; margin-top: 6px; } .pd-rev .score b { font: 800 34px var(--font); color: var(--navy); }
+.pd-rev .stars { font-size: 18px; letter-spacing: 1px; color: #F4B400; } .pd-rev.is-before .stars { color: #C9C8D3; }
+.pd-rev .cnt { margin-top: 2px; font: 500 13.5px var(--font-ui); color: var(--muted); }
+.pd-rev-shot { grid-column: 1 / -1; min-height: 130px; }
+/* leads */
+.pd-lba { display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); gap: 12px; align-items: center; margin-bottom: 22px; }
+.pd-lba > div { padding: 16px; border-radius: 18px; background: var(--navy); text-align: center; color: #fff; }
+.pd-lba > div.is-before { background: #EEEDF2; color: var(--muted); }
+.pd-lba > div span { display: block; font: 700 12px var(--font-ui); letter-spacing: .06em; text-transform: uppercase; }
+.pd-lba > div b { display: block; margin-top: 4px; font: 800 38px/1 var(--font); }
+.pd-lba > div small { font: 500 13px var(--font-ui); opacity: .85; }
 .pd-src-h { margin: 0 0 14px; font: 700 15px var(--font); color: var(--navy); }
 .pd-src { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .pd-src li { display: grid; grid-template-columns: 190px minmax(0, 1fr) 44px; gap: 12px; align-items: center; font: 500 14px var(--font-ui); color: var(--body); }
 .pd-src i { height: 14px; border-radius: 999px; background: var(--bg); position: relative; overflow: hidden; }
 .pd-src i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: inherit; background: var(--grad); }
 .pd-src b { font: 700 15px var(--font); color: var(--navy); text-align: right; }
+/* website: browser frames */
+.pd-browsers { display: grid; grid-template-columns: 1fr 1.2fr; gap: 14px; align-items: end; }
+.pd-browser { margin: 0; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 18px 40px -20px rgba(38, 39, 91, .45); border: 1px solid var(--line); }
+.pd-browser .pd-bbar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: var(--bg); border-bottom: 1px solid var(--line); }
+.pd-browser .pd-bbar i { width: 9px; height: 9px; border-radius: 50%; background: #C9C8D3; }
+.pd-browser .pd-bbar span { margin-left: auto; font: 700 11.5px var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--blue-ink); }
+.pd-browser .phbox { min-height: 260px; border: 0; border-radius: 0; }
+.pd-browser.is-before .phbox { min-height: 200px; }
+/* social: phone frames */
+.pd-phones { display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); gap: 14px; align-items: center; justify-items: center; }
+.pd-phone { width: 100%; max-width: 230px; margin: 0; padding: 10px; border-radius: 30px; background: var(--navy); box-shadow: 0 20px 40px -20px rgba(38, 39, 91, .55); }
+.pd-phone.is-before { background: #C9C8D3; }
+.pd-phone figcaption { padding: 4px 0 8px; text-align: center; font: 700 12px var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: #fff; }
+.pd-phone .phbox { min-height: 300px; border-radius: 22px; }
 
-/* what's next (section 9) */
-.pd-next { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 70px); align-items: center; padding: clamp(34px, 5vw, 64px);
-  border-radius: 40px; background: radial-gradient(420px 320px at 100% 100%, rgba(124, 210, 211, .25), transparent 70%), var(--navy); }
-.pd-next .eyebrow { color: var(--teal); } .pd-next .h2 { color: #fff; font-size: clamp(30px, 3.2vw, 46px); } .pd-next .lead { margin-top: 14px; color: rgba(255, 255, 255, .85); }
-.pd-next .ticks { margin: 0 0 26px; } .pd-next .ticks li { color: #fff; }
+/* 9. what's next */
+.pd-next .gcard__in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 70px); align-items: center; padding: clamp(30px, 4vw, 56px); }
+.pd-next .h2 { font-size: clamp(30px, 3.2vw, 46px); } .pd-next .lead { margin-top: 14px; }
+.pd-next .ticks { margin: 0 0 26px; }
 
 @media (max-width: 1024px) {
-  .pd-plan { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pd-client, .pd-panel .gcard__in, .pd-next .gcard__in { grid-template-columns: minmax(0, 1fr); }
+  .pd-client .glance { position: static; }
+  .vcards--3 { grid-template-columns: minmax(0, 1fr) !important; }
+  .vcards--3 .vcard { grid-template-columns: 84px minmax(0, 1fr); }
   .pd-score-row { grid-template-columns: 70px minmax(0, 1fr) auto; }
   .pd-score-row .t, .pd-score-row .r { grid-column: 2; }
-  .pd-panel .gcard__in, .pd-next { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 767px) {
-  .pd-plan { grid-template-columns: minmax(0, 1fr); }
+  .vcards--3 .vcard { grid-template-columns: minmax(0, 1fr); }
   .pd-score-row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .pd-score-row .t, .pd-score-row .r { grid-column: auto; }
   .pd-tabs { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; margin-inline: -16px; padding: 0 16px 6px; scrollbar-width: none; }
@@ -2699,6 +2728,10 @@ h1, h2, h3, h4 { color: var(--navy); }
   .pd-stats { grid-template-columns: minmax(0, 1fr); }
   .pd-src li { grid-template-columns: minmax(0, 1fr) 40px; } .pd-src i { grid-column: 1 / -1; grid-row: 2; }
   .pd-legend { flex-direction: column; align-items: center; gap: 10px; }
+  .pd-arrow { transform: rotate(90deg); }
+  .pd-revs, .pd-lba, .pd-phones, .pd-ba-row, .pd-ba-h { grid-template-columns: minmax(0, 1fr); justify-items: stretch; }
+  .pd-ba-h { display: none; } .pd-ba-row .pd-arrow, .pd-phones .pd-arrow, .pd-revs .pd-arrow, .pd-lba .pd-arrow { justify-self: center; }
+  .pd-phone { margin-inline: auto; }
 }
 </style>
 </head>
@@ -2823,9 +2856,9 @@ h1, h2, h3, h4 { color: var(--navy); }
 </div>
 
 <main id="main">
+<!-- Colour rhythm: light (geometric) and purple sections alternate down the page. -->
 
-<!-- 1. HERO  ·  Elementor: 2-column container. Left: back link (Heading w/ link), pills (Headings), H1, lead (Text Editor),
-     stage logos (Headings w/ links). Right: gradient-frame card with the practice photo (Image) + logo row (Image + Headings). -->
+<!-- 1. HERO (light)  ·  Elementor: 2-column container. Left: back link, pills, H1, lead, stage logos. Right: gradient-frame photo card + logo row. -->
 <section class="hero bg-geo dt-hero" aria-labelledby="h1">
   <div class="e-con hero-grid">
     <div>
@@ -2842,91 +2875,99 @@ h1, h2, h3, h4 { color: var(--navy); }
   </div>
 </section>
 
-<!-- 2. RESULTS BAND  ·  Elementor: the homepage trust band, 4 Counter widgets -->
+<!-- 2. RESULTS BAND (purple)  ·  Elementor: the homepage trust band, 4 Counter widgets -->
 <section class="trust on-dark" aria-label="Results at a glance">
   <div class="e-con trust-row cs-stats">
-    <div><div class="trust-num"><span class="ph">+XX%</span></div><div class="trust-label">new-patient calls</div></div>
+    <div><div class="trust-num"><span class="ph">+XX%</span></div><div class="trust-label">new-patient leads</div></div>
     <div><div class="trust-num"><span class="ph">#X</span></div><div class="trust-label">in the Google map pack</div></div>
-    <div><div class="trust-num"><span class="ph">XXX</span></div><div class="trust-label">Google reviews</div></div>
+    <div><div class="trust-num"><span class="ph">4.9★</span></div><div class="trust-label"><span class="ph">165</span> Google reviews</div></div>
     <div><div class="trust-num"><span class="ph">$XX</span></div><div class="trust-label">cost per new patient</div></div>
   </div>
 </section>
 
-<!-- 3. THE CLIENT + THE GOAL  ·  Elementor: 2 columns. Left: sticky "At a glance" card (Heading + Icon List / Text).
-     Right: eyebrow, H2, Text Editor paragraphs, Blockquote (Text Editor), then 3 goal cards (container per goal: number,
-     goal, target pill). Each goal card is answered by the "Goal → result" scorecard in section 6. -->
-<section class="section" aria-labelledby="ch-title" style="background:var(--white)">
-  <div class="e-con dt-split">
-    <aside class="gcard glance no-gt"><div class="gcard__in">
-      <h2 class="k">At a glance</h2>
-      <dl>
-        <div><dt>Client</dt><dd>Progressive Dental Care</dd></div>
-        <div><dt>Industry</dt><dd>Dental practice</dd></div>
-        <div><dt>Location</dt><dd>South Portland, ME</dd></div>
-        <div><dt>Partnership</dt><dd><span class="ph">[Since Month Year · ongoing]</span></dd></div>
-        <div><dt>Services</dt><dd class="glance-svcs"><a href="services.html?service=branding">Branding</a><a href="services.html?service=website">Website</a><a href="services.html?service=seo">SEO</a><a href="services.html?service=advertising">Advertising</a><a href="services.html?service=lead-generation">Lead Generation</a><a href="services.html?service=reviews-referrals">Reviews &amp; Referrals</a></dd></div>
-      </dl>
-      <a class="btn" href="contact.html">Get results like these</a>
-    </div></aside>
-    <div class="prose">
-      <span class="eyebrow">The client</span>
-      <h2 class="h2" id="ch-title">Meet Progressive <span class="gt">Dental Care.</span></h2>
-      <p><span class="ph">[Two or three sentences about the practice: who they are, what they're known for, the kind of patients they want more of, how long they've served the area.]</span></p>
-      <h3>Where they were</h3>
-      <p><span class="ph">[The challenge in their words: e.g. great care and loyal patients, but new patients weren't finding them online; an outdated website; ads that cost money without booking appointments; no system for reviews.]</span></p>
-      <blockquote class="pull">"<span class="ph">[A short quote from the client about the problem before working together.]</span>"<cite><span class="ph">[Name], [Title], Progressive Dental Care</span></cite></blockquote>
-      <h3>The goals</h3>
-      <ol class="pd-goals">
-        <li><span class="n">1</span><div><b><span class="ph">[Goal 1, e.g. Show up first when locals search for a dentist]</span></b><span class="pd-target">Target: <span class="ph">[Top 3 in the map pack]</span></span></div></li>
-        <li><span class="n">2</span><div><b><span class="ph">[Goal 2, e.g. Turn website visitors into booked new patients]</span></b><span class="pd-target">Target: <span class="ph">[XX new patients a month]</span></span></div></li>
-        <li><span class="n">3</span><div><b><span class="ph">[Goal 3, e.g. Look like the modern practice they are]</span></b><span class="pd-target">Target: <span class="ph">[New brand + website live by Month]</span></span></div></li>
-      </ol>
+<!-- 3. THE CLIENT (light)  ·  Elementor: 2 columns (story | gradient-frame "At a glance" card), then the goals as the
+     site's purple value cards (Icon tile image, Heading, Text, "Target" line) in a 3-column row. -->
+<section class="section bg-geo" aria-labelledby="ch-title">
+  <div class="e-con">
+    <div class="pd-client">
+      <div class="prose">
+        <span class="eyebrow">The client</span>
+        <h2 class="h2" id="ch-title">Meet Progressive <span class="gt">Dental Care.</span></h2>
+        <p><span class="ph">[Two or three sentences about the practice: who they are, what they're known for, the patients they want more of, how long they've served South Portland.]</span></p>
+        <h3>Where they were</h3>
+        <p><span class="ph">[The challenge in their words: e.g. great care and loyal patients, but new patients weren't finding them online; a dated brand and website; no system for reviews or follow-up.]</span></p>
+        <blockquote class="pull">"<span class="ph">[A short quote from the client about the problem before working together.]</span>"<cite><span class="ph">[Name], [Title], Progressive Dental Care</span></cite></blockquote>
+      </div>
+      <aside class="gcard glance no-gt"><div class="gcard__in">
+        <h2 class="k">At a glance</h2>
+        <dl>
+          <div><dt>Client</dt><dd>Progressive Dental Care</dd></div>
+          <div><dt>Industry</dt><dd>Dental practice</dd></div>
+          <div><dt>Location</dt><dd>South Portland, ME</dd></div>
+          <div><dt>Partnership</dt><dd><span class="ph">[Since Month Year · ongoing]</span></dd></div>
+          <div><dt>Services</dt><dd class="glance-svcs"><a href="services.html?service=branding">Branding</a><a href="services.html?service=website">Website</a><a href="services.html?service=analytics">Analytics</a><a href="services.html?service=crm">CRM</a><a href="services.html?service=seo">SEO</a><a href="services.html?service=advertising">Advertising</a><a href="services.html?service=social-media">Social Media</a><a href="services.html?service=lead-generation">Lead Generation</a><a href="services.html?service=reviews-referrals">Reviews &amp; Referrals</a></dd></div>
+        </dl>
+        <a class="btn" href="contact.html">Get results like these</a>
+      </div></aside>
+    </div>
+    <div class="sec-head pd-goals-head"><span class="eyebrow">The goals</span><h2 class="h2">Three goals, <span class="gt">each with a number.</span></h2></div>
+    <div class="vcards vcards--3">
+      <article class="vcard"><span class="vtile"><svg class="icon" aria-hidden="true"><use href="#i-search--g"/></svg></span><div><h3><span class="ph">[Get found first]</span></h3><p><span class="ph">[Show up at the top when South Portland searches for a dentist.]</span></p><p class="vip"><em>Target:</em> <span class="ph">[Top 3 in the map pack]</span></p></div></article>
+      <article class="vcard"><span class="vtile"><svg class="icon" aria-hidden="true"><use href="#i-magnet--g"/></svg></span><div><h3><span class="ph">[Book more new patients]</span></h3><p><span class="ph">[Turn searches, ads and social into booked appointments.]</span></p><p class="vip"><em>Target:</em> <span class="ph">[XX new patients a month]</span></p></div></article>
+      <article class="vcard"><span class="vtile"><svg class="icon" aria-hidden="true"><use href="#i-star--g"/></svg></span><div><h3><span class="ph">[Look like the practice they are]</span></h3><p><span class="ph">[A modern brand and website, and reviews that match the care.]</span></p><p class="vip"><em>Target:</em> <span class="ph">[New brand live and XXX reviews]</span></p></div></article>
     </div>
   </div>
 </section>
 
-<!-- 4. THE PLAN: SERVICES FROM THE FRAMEWORK  ·  Elementor: navy framework block, 4 stage cards (container per stage:
-     stage logo Heading, job Heading, Icon List of services; services in the plan use a check icon and link,
-     services not in the plan use a dash and the "is-off" class). -->
-<section class="section on-dark pd-plan-sec" aria-labelledby="plan-title">
-  <div class="e-con">
-    <div class="section-dark-head"><span class="eyebrow">The plan</span><h2 class="h2" id="plan-title">The framework, built for <span class="gt">Progressive Dental.</span></h2><p class="lead">Every service has a job in the patient journey. Here are the ones running for Progressive Dental Care, stage by stage. <span class="ph">[Confirm the services in their plan]</span></p></div>
-    <div class="pd-plan">
-      <article class="pd-stage"><p class="pd-stage-logo"><span class="plogo" role="img" aria-label="FirstBrand"><b>first</b>brand</span></p><h3>Build the foundation</h3>
-        <ul><li><a href="services.html?service=branding">Branding &amp; Content Creation</a></li><li><a href="services.html?service=website">Website</a></li><li><a href="services.html?service=analytics">Analytics</a></li><li class="is-off">CRM</li></ul></article>
-      <article class="pd-stage"><p class="pd-stage-logo"><span class="plogo" role="img" aria-label="FirstThought"><b>first</b>thought</span></p><h3>Get found first</h3>
-        <ul><li><a href="services.html?service=seo">SEO</a></li><li><a href="services.html?service=advertising">Advertising</a></li><li><a href="services.html?service=local-ties">Local Ties</a></li><li class="is-off">Social Media</li></ul></article>
-      <article class="pd-stage"><p class="pd-stage-logo"><span class="plogo" role="img" aria-label="FirstChoice"><b>first</b>choice</span></p><h3>Get chosen</h3>
-        <ul><li><a href="services.html?service=lead-generation">Lead Generation</a></li><li><a href="services.html?service=marketing-automation">Marketing Automation</a></li><li class="is-off">Advertising</li><li class="is-off">Social Media</li></ul></article>
-      <article class="pd-stage"><p class="pd-stage-logo"><span class="plogo" role="img" aria-label="FirstReferral"><b>first</b>referral</span></p><h3>Get referred</h3>
-        <ul><li><a href="services.html?service=reviews-referrals">Reviews &amp; Referrals</a></li><li class="is-off">Loyalty</li><li class="is-off">Marketing Automation</li><li class="is-off">Social Media</li></ul></article>
+<!-- 4. THE PLAN (purple block)  ·  Elementor: the framework section from Home / Why Choose Us (rounded purple block with the
+     splash, four gradient-border stage cards, overlapping button). Each card: "Stage n" chip, stage logo, job, an Icon List of
+     the stage's services (check = in the plan, dashed = not yet), "Explore FirstBrand" link. -->
+<section class="framework bg-geo pd-plan" aria-labelledby="fw-title">
+  <div class="fw-block on-dark">
+    <div class="e-con">
+      <div class="fw-head">
+        <span class="eyebrow">The plan</span>
+        <h2 class="h2" id="fw-title">The FirstSearch Framework, built for Progressive Dental.</h2>
+        <p>Nine services working together across all four stages of the patient journey.</p>
+      </div>
+      <div class="grid4">
+        <article class="gcard rel"><div class="gcard__in"><div class="chips"><span class="stage-n">Stage 1</span></div><h3 class="rel-logo"><span class="plogo" role="img" aria-label="FirstBrand"><b>first</b>brand</span></h3><p>Build the foundation.</p>
+          <ul class="pd-svcs"><li>Branding &amp; Content Creation</li><li>Website</li><li>Analytics</li><li>CRM</li></ul><a class="why" href="pillars.html?pillar=brand">Explore FirstBrand</a></div></article>
+        <article class="gcard rel"><div class="gcard__in"><div class="chips"><span class="stage-n">Stage 2</span></div><h3 class="rel-logo"><span class="plogo" role="img" aria-label="FirstThought"><b>first</b>thought</span></h3><p>Get found first.</p>
+          <ul class="pd-svcs"><li>SEO</li><li>Advertising</li><li>Social Media</li><li class="off">Local Ties</li></ul><a class="why" href="pillars.html?pillar=thought">Explore FirstThought</a></div></article>
+        <article class="gcard rel"><div class="gcard__in"><div class="chips"><span class="stage-n">Stage 3</span></div><h3 class="rel-logo"><span class="plogo" role="img" aria-label="FirstChoice"><b>first</b>choice</span></h3><p>Get chosen.</p>
+          <ul class="pd-svcs"><li>Lead Generation</li><li>Advertising</li><li>Social Media</li><li class="off">Marketing Automation</li></ul><a class="why" href="pillars.html?pillar=choice">Explore FirstChoice</a></div></article>
+        <article class="gcard rel"><div class="gcard__in"><div class="chips"><span class="stage-n">Stage 4</span></div><h3 class="rel-logo"><span class="plogo" role="img" aria-label="FirstReferral"><b>first</b>referral</span></h3><p>Get referred.</p>
+          <ul class="pd-svcs"><li>Reviews &amp; Referrals</li><li>Social Media</li><li class="off">Loyalty</li><li class="off">Marketing Automation</li></ul><a class="why" href="pillars.html?pillar=referral">Explore FirstReferral</a></div></article>
+      </div>
+      <p class="pd-legend"><span class="on">In Progressive Dental's plan</span><span class="off">Not part of this plan yet</span></p>
     </div>
-    <p class="pd-legend"><span class="on">In Progressive Dental's plan</span><span class="off">Not part of this plan yet</span></p>
   </div>
+  <div class="cta-overlap"><a class="btn btn--lg" href="contact.html">Get a plan like this</a></div>
 </section>
 
-<!-- 5. HOW WE DID IT  ·  Elementor: the homepage "How it works" steps, one step per phase (stage logo, phase, text, services) -->
-<section class="how on-dark" aria-labelledby="did-title">
+<!-- 5. HOW WE DID IT (light)  ·  Elementor: the "How it works" steps on the light background, one step per phase -->
+<section class="how pd-light bg-geo" aria-labelledby="did-title">
   <div class="e-con">
-    <span class="eyebrow" style="display:block;text-align:center;color:var(--teal)">How we did it</span>
-    <h2 class="h2" id="did-title">Three phases, one connected system.</h2>
+    <span class="eyebrow" style="display:block;text-align:center">How we did it</span>
+    <h2 class="h2" id="did-title">Three phases, <span class="gt">one connected system.</span></h2>
     <ol class="steps steps--3" id="steps" style="padding:0;margin:110px 0 0;list-style:none">
-      <li class="gcard step"><span class="step-num" aria-hidden="true">1</span><div class="gcard__in"><p class="cs-st"><span class="plogo" role="img" aria-label="FirstBrand"><b>first</b>brand</span></p><h3>Build the foundation.</h3><p class="pd-when"><span class="ph">[Months 1–2]</span></p><p><span class="ph">[What we did: e.g. refreshed the brand, rebuilt the website around the treatments they want more of, and set up tracking so every call and form is counted.]</span></p><p class="cs-svc">Branding · Website · Analytics</p></div></li>
-      <li class="gcard step"><span class="step-num" aria-hidden="true">2</span><div class="gcard__in"><p class="cs-st"><span class="plogo" role="img" aria-label="FirstThought"><b>first</b>thought</span></p><h3>Get found first.</h3><p class="pd-when"><span class="ph">[Months 2–4]</span></p><p><span class="ph">[What we did: e.g. optimized the Google Business Profile, built service and location pages, and launched Google Ads for high-value treatments.]</span></p><p class="cs-svc">SEO · Advertising · Local Ties</p></div></li>
-      <li class="gcard step step--hl"><span class="step-num" aria-hidden="true">3</span><div class="gcard__in"><p class="cs-st"><span class="plogo plogo--light" role="img" aria-label="FirstChoice and FirstReferral"><b>first</b>choice</span></p><h3>Get chosen and referred.</h3><p class="pd-when"><span class="ph">[Months 4–6]</span></p><p><span class="ph">[What we did: e.g. new-patient offer and booking flow, follow-up for unbooked inquiries, and automatic review requests after every visit.]</span></p><p class="cs-svc">Lead Generation · Automation · Reviews</p></div></li>
+      <li class="gcard step"><span class="step-num" aria-hidden="true">1</span><div class="gcard__in"><p class="cs-st"><span class="plogo" role="img" aria-label="FirstBrand"><b>first</b>brand</span></p><h3>Build the foundation.</h3><p class="pd-when"><span class="ph">[Months 1–2]</span></p><p><span class="ph">[What we did: e.g. refreshed the logo, cards and signage, rebuilt the website, and set up analytics and a CRM so every new patient is tracked.]</span></p><p class="cs-svc">Branding · Website · Analytics · CRM</p></div></li>
+      <li class="gcard step"><span class="step-num" aria-hidden="true">2</span><div class="gcard__in"><p class="cs-st"><span class="plogo" role="img" aria-label="FirstThought"><b>first</b>thought</span></p><h3>Get found first.</h3><p class="pd-when"><span class="ph">[Months 2–4]</span></p><p><span class="ph">[What we did: e.g. local SEO and the Google Business Profile, Google Ads for high-value treatments, and a consistent social presence.]</span></p><p class="cs-svc">SEO · Advertising · Social Media</p></div></li>
+      <li class="gcard step step--hl"><span class="step-num" aria-hidden="true">3</span><div class="gcard__in"><p class="cs-st"><span class="plogo plogo--light" role="img" aria-label="FirstChoice and FirstReferral"><b>first</b>choice</span></p><h3>Get chosen and referred.</h3><p class="pd-when"><span class="ph">[Months 4–6]</span></p><p><span class="ph">[What we did: e.g. new-patient offers and booking flow, and automatic review requests after every visit.]</span></p><p class="cs-svc">Lead Generation · Reviews &amp; Referrals</p></div></li>
     </ol>
   </div>
 </section>
 
-<!-- 6. THE RESULTS  ·  Elementor: chart (HTML widget fed by the leads list, with table fallback) + "Goal → result" scorecard
-     (container per goal: goal, target, result, status pill) + Before → after table (the homepage case table) -->
-<section class="section bg-geo" aria-labelledby="res-title">
+<!-- 6. THE RESULTS (purple)  ·  Elementor: goal -> result scorecard (container per goal), leads chart (HTML widget with table
+     fallback), before -> after table (the homepage case table) -->
+<section class="section on-dark pd-results" aria-labelledby="res-title">
   <div class="e-con">
-    <div class="sec-head"><span class="eyebrow">The results</span><h2 class="h2" id="res-title">Goals set. <span class="gt">Goals hit.</span></h2><p class="lead">Every number below comes from the monthly report Progressive Dental Care gets from us, in plain English. <span class="ph">[Sample figures: replace with real data]</span></p></div>
+    <div class="section-dark-head"><span class="eyebrow">The results</span><h2 class="h2" id="res-title">Goals set. <span class="gt">Goals hit.</span></h2><p class="lead">Every number comes from the monthly report Progressive Dental Care gets from us, in plain English. <span class="ph">[Sample figures: replace with real data]</span></p></div>
     <div class="pd-score">
-      <div class="pd-score-row"><span class="g">Goal 1</span><b><span class="ph">[Show up first for local dental searches]</span></b><span class="t">Target <span class="ph">[Top 3]</span></span><span class="r">Result <span class="ph">[#1 for 14 of 20 terms]</span></span><span class="pd-hit">Achieved</span></div>
-      <div class="pd-score-row"><span class="g">Goal 2</span><b><span class="ph">[More booked new patients]</span></b><span class="t">Target <span class="ph">[XX / month]</span></span><span class="r">Result <span class="ph">[XX / month]</span></span><span class="pd-hit">Achieved</span></div>
-      <div class="pd-score-row"><span class="g">Goal 3</span><b><span class="ph">[New brand and website]</span></b><span class="t">Target <span class="ph">[Live by Month]</span></span><span class="r">Result <span class="ph">[Live Month Year]</span></span><span class="pd-hit">Achieved</span></div>
+      <div class="pd-score-row"><span class="g">Goal 1</span><b><span class="ph">[Get found first]</span></b><span class="t">Target <span class="ph">[Top 3]</span></span><span class="r">Result <span class="ph">[#1 for XX of XX terms]</span></span><span class="pd-hit">Achieved</span></div>
+      <div class="pd-score-row"><span class="g">Goal 2</span><b><span class="ph">[Book more new patients]</span></b><span class="t">Target <span class="ph">[XX / month]</span></span><span class="r">Result <span class="ph">[XX / month]</span></span><span class="pd-hit">Achieved</span></div>
+      <div class="pd-score-row"><span class="g">Goal 3</span><b><span class="ph">[Look like the practice they are]</span></b><span class="t">Target <span class="ph">[XXX reviews]</span></span><span class="r">Result <span class="ph">[165 reviews, 4.9★]</span></span><span class="pd-hit">Achieved</span></div>
     </div>
     <div class="cs-res">
       <figure class="gcard cs-chart"><div class="gcard__in">
@@ -2941,7 +2982,7 @@ h1, h2, h3, h4 { color: var(--navy); }
           <tbody>
             <tr><th scope="row">New-patient leads</th><td class="b"><span class="ph">XX</span></td><td class="ar"><span aria-label="to">&rarr;</span></td><td class="a"><span class="ph">XX</span></td></tr>
             <tr><th scope="row">Map pack position</th><td class="b"><span class="ph">#X</span></td><td class="ar"><span aria-label="to">&rarr;</span></td><td class="a"><span class="ph">#X</span></td></tr>
-            <tr><th scope="row">Google reviews</th><td class="b"><span class="ph">XX</span></td><td class="ar"><span aria-label="to">&rarr;</span></td><td class="a"><span class="ph">XXX</span></td></tr>
+            <tr><th scope="row">Google reviews</th><td class="b"><span class="ph">XX</span></td><td class="ar"><span aria-label="to">&rarr;</span></td><td class="a"><span class="ph">165</span></td></tr>
             <tr><th scope="row">Website conversion</th><td class="b"><span class="ph">X.X%</span></td><td class="ar"><span aria-label="to">&rarr;</span></td><td class="a"><span class="ph">X.X%</span></td></tr>
             <tr><th scope="row">Cost per new patient</th><td class="b"><span class="ph">$XX</span></td><td class="ar"><span aria-label="to">&rarr;</span></td><td class="a"><span class="ph">$XX</span></td></tr>
           </tbody>
@@ -2951,21 +2992,37 @@ h1, h2, h3, h4 { color: var(--navy); }
   </div>
 </section>
 
-<!-- 7. SEE THE WORK  ·  Elementor: Nested Tabs (fs-ways-tabs style pills), one tab per proof type.
-     Each tab: gradient-frame card, left = Image widget(s) (exports/screenshots), right = Heading, Text Editor,
-     3 small stat containers (Headings), caption. Visuals below are layout placeholders for the real images. -->
-<section class="section" aria-labelledby="work-title" style="background:var(--white)">
+<!-- 7. SEE THE WORK (light)  ·  Elementor: Nested Tabs, one tab per proof type. Each tab: gradient-frame card, left = before
+     and after Image widgets (labelled), right = Heading, Text Editor, 3 KPI containers (Headings). -->
+<section class="section bg-geo" aria-labelledby="work-title">
   <div class="e-con">
-    <div class="sec-head center"><span class="eyebrow">See the work</span><h2 class="h2" id="work-title">The proof, <span class="gt">up close.</span></h2><p class="lead">Real screenshots from the project: rankings, the new website, the brand, the ads and the leads they produced.</p></div>
+    <div class="sec-head center"><span class="eyebrow">See the work</span><h2 class="h2" id="work-title">Before and after, <span class="gt">up close.</span></h2><p class="lead">The real work behind the numbers: the brand, rankings, reviews, leads, website and social, each with the results it produced.</p></div>
     <div class="pd-tabs" role="tablist" aria-label="Project examples">
-      <button role="tab" id="t-seo" aria-controls="p-seo" aria-selected="true">SEO heatmap</button>
-      <button role="tab" id="t-web" aria-controls="p-web" aria-selected="false" tabindex="-1">Website</button>
-      <button role="tab" id="t-brand" aria-controls="p-brand" aria-selected="false" tabindex="-1">Branding</button>
-      <button role="tab" id="t-ads" aria-controls="p-ads" aria-selected="false" tabindex="-1">Ad results</button>
+      <button role="tab" id="t-brand" aria-controls="p-brand" aria-selected="true">Branding</button>
+      <button role="tab" id="t-seo" aria-controls="p-seo" aria-selected="false" tabindex="-1">SEO heatmap</button>
+      <button role="tab" id="t-rev" aria-controls="p-rev" aria-selected="false" tabindex="-1">Reviews</button>
       <button role="tab" id="t-leads" aria-controls="p-leads" aria-selected="false" tabindex="-1">Leads</button>
+      <button role="tab" id="t-web" aria-controls="p-web" aria-selected="false" tabindex="-1">Website</button>
+      <button role="tab" id="t-social" aria-controls="p-social" aria-selected="false" tabindex="-1">Social posts</button>
     </div>
 
-    <div class="gcard pd-panel" role="tabpanel" id="p-seo" aria-labelledby="t-seo"><div class="gcard__in">
+    <!-- Branding: logo, business cards, signage, each before -> after -->
+    <div class="gcard pd-panel" role="tabpanel" id="p-brand" aria-labelledby="t-brand"><div class="gcard__in">
+      <div class="pd-vis pd-ba3">
+        <div class="pd-ba-h"><span>Before</span><span></span><span>After</span></div>
+        <div class="pd-ba-row"><div class="phbox is-before">[Old logo]</div><span class="pd-arrow" aria-hidden="true">→</span><div class="phbox">[New logo]</div><p>Logo</p></div>
+        <div class="pd-ba-row"><div class="phbox is-before">[Old business card]</div><span class="pd-arrow" aria-hidden="true">→</span><div class="phbox">[New business card]</div><p>Business cards</p></div>
+        <div class="pd-ba-row"><div class="phbox is-before">[Old signage]</div><span class="pd-arrow" aria-hidden="true">→</span><div class="phbox">[New signage]</div><p>Signage</p></div>
+      </div>
+      <div class="pd-copy">
+        <h3>A brand that looks like the practice feels.</h3>
+        <p><span class="ph">[The branding project: the new logo, colours and type, and how they carry from business cards to the sign out front.]</span></p>
+        <div class="pd-stats"><div><b class="ph">XX</b><span>brand assets refreshed</span></div><div><b class="ph">+XX%</b><span>branded searches</span></div><div><b>1</b><span>consistent look, everywhere</span></div></div>
+      </div>
+    </div></div>
+
+    <!-- SEO heatmap: before and after local-rank grids -->
+    <div class="gcard pd-panel" role="tabpanel" id="p-seo" aria-labelledby="t-seo" hidden><div class="gcard__in">
       <div class="pd-vis">
         <div class="pd-heat-pair">
           <figure><figcaption>Before <span class="ph">[Month Year]</span></figcaption><div class="pd-heat" data-heat="before" role="img" aria-label="Sample local ranking grid before: mostly ranks 10 to 20+"></div></figure>
@@ -2974,73 +3031,80 @@ h1, h2, h3, h4 { color: var(--navy); }
         <p class="pd-key"><span class="k1">1–3</span><span class="k2">4–10</span><span class="k3">11–20+</span></p>
       </div>
       <div class="pd-copy">
-        <h3>Ranking first, across town.</h3>
+        <h3>Ranking first, across South Portland.</h3>
         <p>Each dot is a spot on the map around the practice, showing where Progressive Dental Care ranks when someone there searches <b class="ph">["dentist near me"]</b>. Green means top 3.</p>
-        <div class="pd-stats"><div><b class="ph">XX%</b><span>of the grid in the top 3</span></div><div><b class="ph">#X.X</b><span>average rank, from #XX</span></div><div><b class="ph">X mi</b><span>radius covered</span></div></div>
+        <div class="pd-stats"><div><b class="ph">XX%</b><span>of the map in the top 3</span></div><div><b class="ph">#X.X</b><span>average rank, from #XX</span></div><div><b class="ph">X mi</b><span>radius covered</span></div></div>
         <p class="pd-note"><span class="ph">[Sample grid. Replace with the real before and after heatmap exports.]</span></p>
       </div>
     </div></div>
 
-    <div class="gcard pd-panel" role="tabpanel" id="p-web" aria-labelledby="t-web" hidden><div class="gcard__in">
-      <div class="pd-vis pd-browsers">
-        <figure class="pd-browser is-before"><div class="bar"><i></i><i></i><i></i><span>Before</span></div><div class="phbox">[Screenshot: old website]</div></figure>
-        <figure class="pd-browser"><div class="bar"><i></i><i></i><i></i><span>After</span></div><div class="phbox">[Screenshot: new website]</div></figure>
+    <!-- Reviews: Google rating before -> after -->
+    <div class="gcard pd-panel" role="tabpanel" id="p-rev" aria-labelledby="t-rev" hidden><div class="gcard__in">
+      <div class="pd-vis pd-revs">
+        <div class="pd-rev is-before"><p class="lbl">Before <span class="ph">[Month Year]</span></p><p class="name">Progressive Dental Care</p><p class="score"><b class="ph">X.X</b><span class="stars" aria-hidden="true">★★★★☆</span></p><p class="cnt"><span class="ph">XX</span> Google reviews</p></div>
+        <span class="pd-arrow" aria-hidden="true">→</span>
+        <div class="pd-rev"><p class="lbl">After <span class="ph">[Month Year]</span></p><p class="name">Progressive Dental Care</p><p class="score"><b class="ph">4.9</b><span class="stars" aria-hidden="true">★★★★★</span></p><p class="cnt"><span class="ph">165</span> Google reviews</p></div>
+        <div class="phbox pd-rev-shot">[Optional: screenshot of two or three recent 5-star reviews]</div>
       </div>
       <div class="pd-copy">
-        <h3>A website built to book patients.</h3>
-        <p><span class="ph">[What changed: e.g. clear treatment pages, online booking on every page, new-patient offer, fast on phones.]</span></p>
-        <div class="pd-stats"><div><b class="ph">X.X%</b><span>visitors who book or call</span></div><div><b class="ph">X.Xs</b><span>load time on mobile</span></div><div><b class="ph">XX</b><span>treatment pages</span></div></div>
-        <a class="link-u" href="#" data-ph-link="Progressive Dental website"><span class="ph">See the live site</span></a>
+        <h3>Reviews that match the care.</h3>
+        <p>An automatic, friendly review request after every visit, so happy patients say so where new patients are looking. <span class="ph">[Add detail.]</span></p>
+        <div class="pd-stats"><div><b class="ph">+XXX</b><span>new Google reviews</span></div><div><b class="ph">4.9★</b><span>average rating</span></div><div><b class="ph">XX%</b><span>of patients asked leave one</span></div></div>
       </div>
     </div></div>
 
-    <div class="gcard pd-panel" role="tabpanel" id="p-brand" aria-labelledby="t-brand" hidden><div class="gcard__in">
-      <div class="pd-vis pd-board">
-        <div class="phbox pd-logo-slot">[New logo]</div>
-        <div class="pd-swatches"><span class="phbox">[Colour 1]</span><span class="phbox">[Colour 2]</span><span class="phbox">[Colour 3]</span><span class="phbox">[Colour 4]</span></div>
-        <div class="phbox pd-apps">[Brand in use: signage, business cards, social posts]</div>
-      </div>
-      <div class="pd-copy">
-        <h3>A brand that looks like the practice feels.</h3>
-        <p><span class="ph">[The branding project: logo refresh, colours, photography, tone of voice, and where it's used.]</span></p>
-        <div class="pd-stats"><div><b class="ph">X</b><span>brand assets delivered</span></div><div><b class="ph">XX</b><span>photos from the shoot</span></div><div><b class="ph">1</b><span>consistent look everywhere</span></div></div>
-      </div>
-    </div></div>
-
-    <div class="gcard pd-panel" role="tabpanel" id="p-ads" aria-labelledby="t-ads" hidden><div class="gcard__in">
-      <div class="pd-vis pd-ads">
-        <div class="phbox">[Screenshot: top-performing Google Ad]</div>
-        <div class="phbox">[Screenshot: campaign results dashboard]</div>
-      </div>
-      <div class="pd-copy">
-        <h3>Ads that pay for themselves.</h3>
-        <p><span class="ph">[The campaigns: which treatments, which platforms, and how the budget was spent.]</span></p>
-        <div class="pd-stats"><div><b class="ph">$XX</b><span>cost per new patient</span></div><div><b class="ph">X.X%</b><span>click-through rate</span></div><div><b class="ph">X.Xx</b><span>return on ad spend</span></div></div>
-      </div>
-    </div></div>
-
+    <!-- Leads: monthly leads before -> after, plus where they come from -->
     <div class="gcard pd-panel" role="tabpanel" id="p-leads" aria-labelledby="t-leads" hidden><div class="gcard__in">
       <div class="pd-vis">
-        <p class="pd-src-h">New-patient leads by source <span class="ph">[last 90 days, sample]</span></p>
+        <div class="pd-lba"><div class="is-before"><span>Before</span><b class="ph">XX</b><small>leads a month</small></div><span class="pd-arrow" aria-hidden="true">→</span><div><span>After</span><b class="ph">XX</b><small>leads a month</small></div></div>
+        <p class="pd-src-h">Where new-patient leads come from now <span class="ph">[last 90 days, sample]</span></p>
         <ul class="pd-src">
           <li><span>Google Business Profile</span><i style="--w:86%"></i><b class="ph">XX</b></li>
           <li><span>Website forms and booking</span><i style="--w:64%"></i><b class="ph">XX</b></li>
           <li><span>Google Ads</span><i style="--w:48%"></i><b class="ph">XX</b></li>
-          <li><span>Referrals</span><i style="--w:30%"></i><b class="ph">XX</b></li>
-          <li><span>Social media</span><i style="--w:18%"></i><b class="ph">XX</b></li>
+          <li><span>Social media</span><i style="--w:30%"></i><b class="ph">XX</b></li>
+          <li><span>Referrals</span><i style="--w:18%"></i><b class="ph">XX</b></li>
         </ul>
       </div>
       <div class="pd-copy">
         <h3>Leads you can count.</h3>
-        <p>Every call, form and booking is tracked to where it came from, so Progressive Dental Care knows exactly what is working. <span class="ph">[Add a screenshot of the lead dashboard if you prefer.]</span></p>
-        <div class="pd-stats"><div><b class="ph">XXX</b><span>leads in 90 days</span></div><div><b class="ph">XX%</b><span>booked an appointment</span></div><div><b class="ph">X min</b><span>average response time</span></div></div>
+        <p>Every call, form and booking lands in the CRM with where it came from, so Progressive Dental Care knows exactly what is working.</p>
+        <div class="pd-stats"><div><b class="ph">+XX%</b><span>more leads a month</span></div><div><b class="ph">XX%</b><span>booked an appointment</span></div><div><b class="ph">$XX</b><span>cost per new patient</span></div></div>
+      </div>
+    </div></div>
+
+    <!-- Website: before -> after screenshots -->
+    <div class="gcard pd-panel" role="tabpanel" id="p-web" aria-labelledby="t-web" hidden><div class="gcard__in">
+      <div class="pd-vis pd-browsers">
+        <figure class="pd-browser is-before"><div class="pd-bbar"><i></i><i></i><i></i><span>Before</span></div><div class="phbox">[Screenshot: old website]</div></figure>
+        <figure class="pd-browser"><div class="pd-bbar"><i></i><i></i><i></i><span>After</span></div><div class="phbox">[Screenshot: new website]</div></figure>
+      </div>
+      <div class="pd-copy">
+        <h3>A website built to book patients.</h3>
+        <p><span class="ph">[What changed: clear treatment pages, online booking on every page, a new-patient offer, fast on phones.]</span></p>
+        <div class="pd-stats"><div><b class="ph">X.X%</b><span>visitors who book or call, from X.X%</span></div><div><b class="ph">X.Xs</b><span>load time on mobile</span></div><div><b class="ph">+XX%</b><span>time on site</span></div></div>
+        <a class="link-u" href="#" data-ph-link="Progressive Dental website"><span class="ph">See the live site</span></a>
+      </div>
+    </div></div>
+
+    <!-- Social: post before -> after, in phone frames -->
+    <div class="gcard pd-panel" role="tabpanel" id="p-social" aria-labelledby="t-social" hidden><div class="gcard__in">
+      <div class="pd-vis pd-phones">
+        <figure class="pd-phone is-before"><figcaption>Before</figcaption><div class="phbox">[Screenshot: an old post]</div></figure>
+        <span class="pd-arrow" aria-hidden="true">→</span>
+        <figure class="pd-phone"><figcaption>After</figcaption><div class="phbox">[Screenshot: a new post]</div></figure>
+      </div>
+      <div class="pd-copy">
+        <h3>Social that looks like the brand.</h3>
+        <p><span class="ph">[What changed: on-brand templates, real team and patient stories, a steady posting schedule.]</span></p>
+        <div class="pd-stats"><div><b class="ph">+XX%</b><span>engagement rate</span></div><div><b class="ph">+XXX</b><span>new followers</span></div><div><b class="ph">XX.Xk</b><span>monthly reach</span></div></div>
       </div>
     </div></div>
   </div>
 </section>
 
-<!-- 8. IN THEIR WORDS  ·  Elementor: video card (Video widget, gradient frame) + quote -->
-<section class="section cs-voice no-gt bg-geo" aria-labelledby="voice-title">
+<!-- 8. IN THEIR WORDS (purple)  ·  Elementor: video card (Video widget, gradient frame) + quote -->
+<section class="section on-dark pd-voice" aria-labelledby="voice-title">
   <div class="e-con hero-grid">
     <!--VIDEO:Progressive Dental Care on working with First Search|[1:20]|assets/img/design/case-dental.webp|cover--><div class="gcard vid"><div class="gcard__in"><button type="button" class="vid-btn" aria-label="Play video: Progressive Dental Care on working with First Search"><img class=cover src="assets/img/design/case-dental.webp" alt=""><span class="vid-tag"><i></i>Video</span><span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.8v14.4a1 1 0 0 0 1.5.9l11.3-7.2a1 1 0 0 0 0-1.8L8.5 3.9A1 1 0 0 0 7 4.8Z"/></svg></span><span class="vid-cap"><b>Progressive Dental Care on working with First Search</b><span class="ph">[1:20]</span></span></button></div></div><!--/VIDEO-->
     <div>
@@ -3052,23 +3116,23 @@ h1, h2, h3, h4 { color: var(--navy); }
   </div>
 </section>
 
-<!-- 9. WHAT'S NEXT  ·  Elementor: navy card, 2 columns: heading + text | Icon List of next moves, button -->
-<section class="section" aria-labelledby="next-title" style="background:var(--white)">
+<!-- 9. WHAT'S NEXT (light)  ·  Elementor: gradient-frame card, 2 columns: heading + text | Icon List of next moves + button -->
+<section class="section bg-geo" aria-labelledby="next-title">
   <div class="e-con">
-    <div class="pd-next on-dark">
+    <div class="gcard pd-next"><div class="gcard__in">
       <div><span class="eyebrow">What's next</span><h2 class="h2" id="next-title">The work doesn't stop at <span class="gt">good results.</span></h2><p class="lead">The next 90 days for Progressive Dental Care, from their plan.</p></div>
       <div>
-        <ul class="ticks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="ph">[Next move 1, e.g. launch the patient loyalty program]</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="ph">[Next move 2, e.g. location pages for neighbouring towns]</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="ph">[Next move 3, e.g. video content for social]</span></li></ul>
-        <a class="btn btn--white" href="contact.html">Let's talk about your practice</a>
+        <ul class="ticks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="ph">[Next move 1, e.g. launch a patient loyalty program]</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="ph">[Next move 2, e.g. location pages for Cape Elizabeth and Scarborough]</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="ph">[Next move 3, e.g. video content for social]</span></li></ul>
+        <a class="btn" href="contact.html">Let's talk about your practice</a>
       </div>
-    </div>
+    </div></div>
   </div>
 </section>
 
-<!-- 10. MORE CASE STUDIES  ·  Elementor: Loop Grid of the Case study CPT, excluding this one -->
-<section class="section bg-geo" aria-labelledby="more-title">
+<!-- 10. MORE CASE STUDIES (purple)  ·  Elementor: Loop Grid of the Case study CPT, excluding this one -->
+<section class="section on-dark pd-more" aria-labelledby="more-title">
   <div class="e-con">
-    <div class="sec-head"><span class="eyebrow">More results</span><h2 class="h2" id="more-title">More partner success stories.</h2></div>
+    <div class="section-dark-head"><span class="eyebrow">More results</span><h2 class="h2" id="more-title">More partner success stories.</h2></div>
     <div class="grid3" id="related"></div>
     <p class="dt-all"><a class="link-u" href="events-resources.html#resources">See all resources</a></p>
   </div>
