@@ -2598,7 +2598,7 @@ h1, h2, h3, h4 { color: var(--navy); }
 .pd-client .glance { position: sticky; top: 120px; }
 .pd-client .prose .h2 { margin-bottom: 18px; font-size: clamp(34px, 3.9vw, 56px); line-height: 1.08; }
 .pd-client .prose h3 { margin-top: 26px; }
-.pd-goals-head { margin: clamp(56px, 6vw, 80px) 0 32px; }
+.pd-goals-head { margin: clamp(56px, 6vw, 80px) auto 32px; }
 .vcards--3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
 .vcards--3 .vcard { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 28px 26px 30px; }
 .vcards--3 .vtile { width: 84px; height: 80px; border-radius: 18px; } .vcards--3 .vtile .icon { width: 46px; height: 46px; }
@@ -2739,6 +2739,21 @@ h1, h2, h3, h4 { color: var(--navy); }
 .pd-video-soon { margin: 0; font: 600 14px var(--font-ui); color: rgba(255, 255, 255, .8); }
 .pd-voice .grid2.reviews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 1024px) { .pd-voice .grid2.reviews { grid-template-columns: minmax(0, 1fr); } }
+/* results: goal cards */
+.pd-goalres { margin-bottom: 36px; }
+.pd-goalres .gcard { --bw: 6px; --r: 34px; box-shadow: 0 30px 50px -28px rgba(0, 0, 0, .6); }
+.pd-goalres .gcard__in { display: flex; flex-direction: column; gap: 12px; padding: 26px 26px 28px; }
+.pd-gr-top { display: flex; justify-content: space-between; align-items: center; margin: 0; }
+.pd-gr-n { padding: 4px 12px; border-radius: 999px; background: var(--grad); font: 700 12.5px var(--font); color: #fff; }
+.pd-goalres h3 { margin: 0; font: 700 22px/1.2 var(--font); color: var(--navy); }
+.pd-gr-t { margin: 0; font: 500 15px/1.45 var(--font-ui); color: var(--body); }
+.pd-gr-t span, .pd-gr-r span { display: block; }
+.pd-gr-t span { margin-bottom: 2px; font: 700 12px var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--blue-ink); }
+.pd-gr-r { margin: auto 0 0; padding-top: 14px; border-top: 2px solid transparent; border-image: linear-gradient(90deg, #72CCD8, #174FA2) 1; }
+.pd-gr-r b { display: block; font: 800 clamp(30px, 2.8vw, 38px)/1.05 var(--font); color: transparent; background: var(--grad); -webkit-background-clip: text; background-clip: text; }
+.pd-gr-r span { margin-top: 4px; font: 500 14px/1.4 var(--font-ui); color: var(--muted); }
+.vcards--3 .vtile img { width: 56px; height: 56px; object-fit: contain; }
+@media (max-width: 1024px) { .pd-goalres { grid-template-columns: minmax(0, 1fr) !important; } }
 @media (max-width: 1024px) {
   .pd-client, .pd-panel .gcard__in, .pd-next .gcard__in { grid-template-columns: minmax(0, 1fr); }
   .pd-client .glance { position: static; }
@@ -2939,11 +2954,11 @@ h1, h2, h3, h4 { color: var(--navy); }
         <a class="btn" href="contact.html">Get results like these</a>
       </div></aside>
     </div>
-    <div class="sec-head pd-goals-head"><span class="eyebrow">The goals</span><h2 class="h2">Three things they <span class="gt">came to us for.</span></h2></div>
+    <div class="sec-head center pd-goals-head"><span class="eyebrow">The goals</span><h2 class="h2">Three things they <span class="gt">came to us for.</span></h2></div>
     <div class="vcards vcards--3">
-      <article class="vcard"><span class="vtile"><svg class="icon" aria-hidden="true"><use href="#i-sparkle--g"/></svg></span><div><h3>A modern brand that's still them</h3><p>A rebrand that kept the core values of an already strong team, in a more modern, comfortable style that fits where the new owners are taking the practice.</p><p class="vip"><em>Target:</em> new logo, positioning and website</p></div></article>
-      <article class="vcard"><span class="vtile"><svg class="icon" aria-hidden="true"><use href="#i-magnet--g"/></svg></span><div><h3>More leads than referrals</h3><p>A digital marketing strategy (SEO, reviews and advertising) that finally brings in more new patients than word of mouth.</p><p class="vip"><em>Target:</em> digital leads outpace referrals</p></div></article>
-      <article class="vcard"><span class="vtile"><svg class="icon" aria-hidden="true"><use href="#i-heart--g"/></svg></span><div><h3>Show the experience</h3><p>A social strategy that shows the comfortable, patient-first experience and the knowledge, expertise and warmth of the team and office.</p><p class="vip"><em>Target:</em> more views, more followers, more trust</p></div></article>
+      <article class="vcard"><span class="vtile"><img src="assets/img/icons/idea.webp" alt="" width="64" height="64"></span><div><h3>A modern brand that's still them</h3><p>A rebrand that kept the core values of an already strong team, in a more modern, comfortable style that fits where the new owners are taking the practice.</p><p class="vip"><em>Target:</em> new logo, positioning and website</p></div></article>
+      <article class="vcard"><span class="vtile"><img src="assets/img/icons/lead-gen.webp" alt="" width="64" height="64"></span><div><h3>More leads than referrals</h3><p>A digital marketing strategy (SEO, reviews and advertising) that finally brings in more new patients than word of mouth.</p><p class="vip"><em>Target:</em> digital leads outpace referrals</p></div></article>
+      <article class="vcard"><span class="vtile"><img src="assets/img/icons/social.webp" alt="" width="64" height="64"></span><div><h3>Show the experience</h3><p>A social strategy that shows the comfortable, patient-first experience and the knowledge, expertise and warmth of the team and office.</p><p class="vip"><em>Target:</em> more views, more followers, more trust</p></div></article>
     </div>
   </div>
 </section>
@@ -2993,10 +3008,13 @@ h1, h2, h3, h4 { color: var(--navy); }
 <section class="section on-dark pd-results" aria-labelledby="res-title">
   <div class="e-con">
     <div class="section-dark-head"><span class="eyebrow">The results</span><h2 class="h2" id="res-title">Goals set. <span class="gt">Goals hit.</span></h2><p class="lead">Every number comes from the monthly report Progressive Dental Care gets from us, in plain English.</p></div>
-    <div class="pd-score">
-      <div class="pd-score-row"><span class="g">Goal 1</span><b>A modern brand that's still them</b><span class="t">New logo, positioning, website</span><span class="r">Launched, all three</span><span class="pd-hit">Achieved</span></div>
-      <div class="pd-score-row"><span class="g">Goal 2</span><b>More leads than referrals</b><span class="t">Digital outpaces referrals</span><span class="r">12 → 100+ leads a month</span><span class="pd-hit">Achieved</span></div>
-      <div class="pd-score-row"><span class="g">Goal 3</span><b>Show the experience</b><span class="t">Grow views and followers</span><span class="r">110 → 1K+ views, +40% followers</span><span class="pd-hit pd-hit--now">In progress</span></div>
+    <div class="grid3 pd-goalres">
+      <article class="gcard"><div class="gcard__in"><p class="pd-gr-top"><span class="pd-gr-n">Goal 1</span><span class="pd-hit">Achieved</span></p><h3>A modern brand that's still them</h3>
+        <p class="pd-gr-t"><span>Target</span>New logo, positioning and website</p><p class="pd-gr-r"><b>Launched</b><span>all three, built around the team's values</span></p></div></article>
+      <article class="gcard"><div class="gcard__in"><p class="pd-gr-top"><span class="pd-gr-n">Goal 2</span><span class="pd-hit">Achieved</span></p><h3>More leads than referrals</h3>
+        <p class="pd-gr-t"><span>Target</span>Digital leads outpace referrals</p><p class="pd-gr-r"><b>12 → 100+</b><span>digital leads a month, now ahead of referrals</span></p></div></article>
+      <article class="gcard"><div class="gcard__in"><p class="pd-gr-top"><span class="pd-gr-n">Goal 3</span><span class="pd-hit pd-hit--now">In progress</span></p><h3>Show the experience</h3>
+        <p class="pd-gr-t"><span>Target</span>More views, followers and trust</p><p class="pd-gr-r"><b>110 → 1K+</b><span>average views, and +40% followers</span></p></div></article>
     </div>
     <div class="cs-res">
       <figure class="gcard cs-chart pd-mix"><div class="gcard__in">
