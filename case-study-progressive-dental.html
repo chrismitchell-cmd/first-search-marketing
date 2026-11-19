@@ -2710,6 +2710,19 @@ h1, h2, h3, h4 { color: var(--navy); }
 .pd-next .h2 { font-size: clamp(30px, 3.2vw, 46px); } .pd-next .lead { margin-top: 14px; }
 .pd-next .ticks { margin: 0 0 26px; }
 
+/* 8. their Google reviews, under the video and quote */
+.pd-reviews { margin-top: clamp(64px, 7vw, 96px); }
+.pd-rev-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-bottom: 32px; }
+.pd-rev-head .h2 { color: #fff; font-size: clamp(30px, 3.2vw, 46px); }
+.pd-rating { display: flex; align-items: center; gap: 14px; padding: 14px 22px; border-radius: 20px; background: #fff; box-shadow: 0 20px 40px -24px rgba(0, 0, 0, .55); }
+.pd-rating .icon { width: 34px; height: 34px; }
+.pd-rating p { display: flex; align-items: center; gap: 8px; margin: 0; }
+.pd-rating b { font: 800 30px/1 var(--font); color: var(--navy); }
+.pd-rating .stars { font-size: 18px; letter-spacing: 1px; color: #F4B400; }
+.pd-rating small { display: block; margin-top: 2px; font: 500 13.5px var(--font-ui); color: var(--muted); }
+.pd-voice .reviews { gap: 24px; } .pd-voice .review { box-shadow: 0 30px 50px -28px rgba(0, 0, 0, .6); }
+.pd-rev-all { margin: 28px 0 0; text-align: center; } .pd-rev-all .link-u { color: #fff; font-size: 18px; }
+@media (max-width: 1024px) { .pd-voice .grid3.reviews { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 1024px) {
   .pd-client, .pd-panel .gcard__in, .pd-next .gcard__in { grid-template-columns: minmax(0, 1fr); }
   .pd-client .glance { position: static; }
@@ -3112,6 +3125,34 @@ h1, h2, h3, h4 { color: var(--navy); }
       <h2 class="h2" id="voice-title">"<span class="ph">[A short, specific line from the client about what changed.]</span>"</h2>
       <p class="lead"><span class="ph">[Two or three sentences from the client about working with First Search and what it means for the practice.]</span></p>
       <p class="sig"><span class="ph">[Name]</span><span class="ph">[Title], Progressive Dental Care</span></p>
+    </div>
+  </div>
+  <div class="e-con">
+    <!-- Their Google reviews  ·  Elementor: heading row with the rating badge (Image + Headings), 3 review cards
+         (Essential Addons Testimonial, the site's Google review card style, fs-testi), link to the Google profile -->
+    <div class="pd-reviews">
+      <div class="pd-rev-head">
+        <div><span class="eyebrow">Their Google reviews</span><h3 class="h2">What their patients <span class="gt">are saying.</span></h3></div>
+        <div class="pd-rating"><svg class="icon" aria-hidden="true"><use href="#i-google"/></svg><div><p><b class="ph">4.9</b><span class="stars" aria-hidden="true">★★★★★</span></p><small><span class="ph">165</span> Google reviews</small></div></div>
+      </div>
+      <div class="grid3 reviews">
+      <figure class="gcard review"><div class="gcard__in">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>"<span class="ph">[Paste a real 5-star Google review from a Progressive Dental Care patient. Two to four sentences works best.]</span>"</blockquote>
+        <figcaption class="review-by"><b class="ph">[Patient name]</b> · <svg class="icon" aria-hidden="true"><use href="#i-google"/></svg>Posted on Google</figcaption>
+      </div></figure>
+      <figure class="gcard review"><div class="gcard__in">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>"<span class="ph">[Paste a real 5-star Google review from a Progressive Dental Care patient. Two to four sentences works best.]</span>"</blockquote>
+        <figcaption class="review-by"><b class="ph">[Patient name]</b> · <svg class="icon" aria-hidden="true"><use href="#i-google"/></svg>Posted on Google</figcaption>
+      </div></figure>
+      <figure class="gcard review"><div class="gcard__in">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>"<span class="ph">[Paste a real 5-star Google review from a Progressive Dental Care patient. Two to four sentences works best.]</span>"</blockquote>
+        <figcaption class="review-by"><b class="ph">[Patient name]</b> · <svg class="icon" aria-hidden="true"><use href="#i-google"/></svg>Posted on Google</figcaption>
+      </div></figure>
+      </div>
+      <p class="pd-rev-all"><a class="link-u" href="#" data-ph-link="Progressive Dental Care Google reviews">Read all <span class="ph">165</span> reviews on Google</a></p>
     </div>
   </div>
 </section>
