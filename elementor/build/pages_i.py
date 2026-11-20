@@ -40,15 +40,29 @@ FEATURED = dict(stat='8x', label='more digital leads a month', meta='Dental prac
                 text='A new owner, a dated brand and an agency that never delivered. A rebrand, local SEO, reviews and ads later, digital leads now outnumber referrals for the first time in the practice’s history.',
                 url='/case-studies/progressive-dental-care/', img='assets/img/design/case-dental.webp')
 
-COUNTS_JS = """<script>(function(){function run(){var f=document.querySelector('.fs-tfilter--types .e-filter');if(!f)return;
+COUNTS_JS = """<script>(function(){
+/* 1. post counts on the type tabs, from WordPress */
+function counts(){var f=document.querySelector('.fs-tfilter--types .e-filter');if(!f)return;
 var add=function(b,n){if(n==null||b.querySelector('.n'))return;var s=document.createElement('span');s.className='n';s.textContent=n;b.appendChild(s);};
 var api=(window.wpApiSettings&&wpApiSettings.root)||'/wp-json/';
 fetch(api+'wp/v2/categories?per_page=100&_fields=slug,count').then(function(r){return r.json();}).then(function(cs){var m={},all=0;
 cs.forEach(function(c){m[c.slug]=c.count;if(c.slug!=='uncategorized')all+=c.count;});
 [].forEach.call(f.querySelectorAll('.e-filter-item'),function(b){var k=b.getAttribute('data-filter');add(b,k==='__all'||!k?all:m[k]);});}).catch(function(){});}
+/* 2. show only the cards that match the pressed tab and service tags (each card carries category-x and tag-y classes) */
+function pressed(sel){return [].map.call(document.querySelectorAll(sel+' .e-filter-item[aria-pressed="true"]'),function(b){return b.getAttribute('data-filter');}).filter(function(v){return v&&v!=='__all';});}
+function apply(){var cat=pressed('.fs-tfilter--types'),tags=pressed('.fs-tfilter--tags'),shown=0;
+var items=document.querySelectorAll('.fs-lgrid .e-loop-item');
+[].forEach.call(items,function(el){var ok=(!cat.length||cat.some(function(c){return el.classList.contains('category-'+c);}))&&
+(!tags.length||tags.some(function(t){return el.classList.contains('tag-'+t);}));el.style.display=ok?'':'none';if(ok)shown++;});
+var g=document.querySelector('.fs-lgrid'),m=document.querySelector('.fs-lgrid-empty');
+if(g&&!m){m=document.createElement('p');m.className='fs-lgrid-empty';m.textContent='Nothing matches that filter yet. New resources go up every week.';g.appendChild(m);}
+if(m)m.hidden=!!shown||!items.length;}
+function run(){counts();apply();
+document.addEventListener('click',function(e){if(e.target.closest('.e-filter-item')){setTimeout(apply,30);setTimeout(apply,600);}});
+var g=document.querySelector('.fs-lgrid');if(g&&window.MutationObserver)new MutationObserver(function(){clearTimeout(run.t);run.t=setTimeout(apply,30);}).observe(g,{childList:true,subtree:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();})();</script>"""
 def counts_js():
-    """Post counts on the type tabs, read from WordPress (categories endpoint), so they are always right."""
+    """Post counts on the type tabs (from WordPress) and card filtering by the pressed tab and service tags."""
     return html(COUNTS_JS, 'fs-countjs')
 
 def side_css():
@@ -75,7 +89,7 @@ def library(loop_item_id=''):
                            'nothing_found_message_text': 'Nothing matches that filter yet. New resources go up every week.'}, 'fs-lgrid')
     gid = grid['id']
     types = w('taxonomy-filter', {'selected_element': gid, 'taxonomy': 'category', 'show_first_item': 'yes', 'first_item_title': 'All',
-                                  'exclude': ['uncategorized'], 'direction': 'horizontal'}, 'fs-tfilter fs-tfilter--types')
+                                  'exclude': ['uncategorized'], 'direction': 'horizontal', 'show_empty_items': 'yes'}, 'fs-tfilter fs-tfilter--types')
     # one Taxonomy Filter per stage, each showing only that stage's service tags, all controlling the same grid
     groups = []
     for k, terms in SERVICE_GROUPS:
