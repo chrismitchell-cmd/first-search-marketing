@@ -2673,12 +2673,14 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 .fs-tfilter--types .e-filter-item { padding: 10px 22px !important; font-size: 16px !important; color: #fff !important; background: rgba(255, 255, 255, .08) !important; border: 1px solid rgba(255, 255, 255, .25) !important; }
 .fs-tfilter--types .e-filter-item:hover { border-color: var(--fs-aqua) !important; }
 .fs-tfilter--types .e-filter-item[aria-pressed="true"] { background: #fff !important; color: var(--fs-purple) !important; border-color: #fff !important; }
-/* service filter in the side card */
-.fs-rside-t2 .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 18px !important; font-weight: 700 !important; color: var(--fs-purple) !important; }
+/* service filter in the side card: a stage logo over each group of pills, as in the original design */
+.fs-rside-t2 .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 19px !important; font-weight: 700 !important; color: var(--fs-purple) !important; }
+.fs-rgrp-l .elementor-heading-title { margin: 0; line-height: 1 !important; } .fs-rgrp-l .fs-plogo { font-size: 19px; color: var(--fs-purple); }
 .fs-tfilter--tags .e-filter { display: flex; flex-wrap: wrap; gap: 8px; }
-.fs-tfilter--tags .e-filter-item { padding: 7px 14px !important; font-size: 13.5px !important; color: var(--fs-purple) !important; background: #F4F4F6 !important; border: 1.5px solid transparent !important; }
+.fs-tfilter--tags .e-filter-item { display: inline-flex !important; align-items: center; min-height: 38px; padding: 7px 13px !important; font-family: var(--fs-font-ui) !important; font-size: 13.5px !important; font-weight: 600 !important;
+  color: var(--fs-purple) !important; background: #fff !important; border: 1.5px solid var(--fs-line) !important; }
 .fs-tfilter--tags .e-filter-item:hover { border-color: var(--fs-aqua) !important; }
-.fs-tfilter--tags .e-filter-item[aria-pressed="true"] { background: var(--fs-grad) !important; color: #fff !important; }
+.fs-tfilter--tags .e-filter-item[aria-pressed="true"] { background: var(--fs-purple) !important; border-color: var(--fs-purple) !important; color: #fff !important; }
 /* the grid and load more */
 .fs-lgrid .elementor-loop-container { gap: 24px; }
 .fs-lgrid .e-loop__load-more .elementor-button { padding: 16px 32px; border-radius: 10px; background: var(--fs-purple) !important; color: #fff !important; font-family: var(--fs-font); font-weight: 600; }

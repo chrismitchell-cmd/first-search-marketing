@@ -30,6 +30,11 @@ def loop_item():
     return con(img, body, gap_=0, cls='fs-gcard fs-rcard fs-li', p=pad(0))
 
 # ---------- 2. Library section ----------
+# service tags under each stage (tag slug, label), as in the original design; the stage tags themselves aren't shown
+SERVICE_GROUPS = [('brand', [('branding-and-content', 'Branding and Content'), ('website-design', 'Website Design'), ('analytics', 'Analytics'), ('crm', 'CRM')]),
+                  ('thought', [('seo-and-aeo', 'SEO and AEO'), ('advertising', 'Advertising'), ('social-media', 'Social Media')]),
+                  ('choice', [('lead-generation', 'Lead Generation'), ('marketing-automation', 'Marketing Automation')]),
+                  ('referral', [('reviews-and-referrals', 'Reviews and Referrals')])]
 FEATURED = dict(stat='8x', label='more digital leads a month', meta='Dental practice · South Portland, ME',
                 title='Progressive Dental Care: from 12 leads a month to 100+.',
                 text='A new owner, a dated brand and an agency that never delivered. A rebrand, local SEO, reviews and ads later, digital leads now outnumber referrals for the first time in the practice’s history.',
@@ -49,12 +54,18 @@ def library(loop_item_id=''):
     gid = grid['id']
     types = w('taxonomy-filter', {'selected_element': gid, 'taxonomy': 'category', 'show_first_item': 'yes', 'first_item_title': 'All',
                                   'exclude': ['uncategorized'], 'direction': 'horizontal'}, 'fs-tfilter fs-tfilter--types')
-    tags = w('taxonomy-filter', {'selected_element': gid, 'taxonomy': 'post_tag', 'show_first_item': 'yes', 'first_item_title': 'All services',
-                                 'multiple_selection': 'yes', 'logical_combination': 'OR', 'direction': 'horizontal'}, 'fs-tfilter fs-tfilter--tags')
+    # one Taxonomy Filter per stage, each showing only that stage's service tags, all controlling the same grid
+    groups = []
+    for k, terms in SERVICE_GROUPS:
+        tf = w('taxonomy-filter', {'selected_element': gid, 'taxonomy': 'post_tag', 'show_first_item': '', 'multiple_selection': 'yes',
+                                   'logical_combination': 'OR', 'direction': 'horizontal', 'include': [t for t, _ in terms],
+                                   'include_terms': [t for t, _ in terms]}, 'fs-tfilter fs-tfilter--tags')
+        tf['settings']['_fs_preview_labels'] = [n for _, n in terms]   # preview only
+        groups.append(con(H(plogo(k), 'fs-rgrp-l'), tf, gap_=10, cls='fs-rgrp'))
     band = section(types, cls='fs-dark fs-band fs-catsband', title='Resource type tabs',
                    p={'unit': 'px', 'top': '14', 'right': '24', 'bottom': '14', 'left': '24', 'isLinked': False},
                    s={'padding_mobile': {'unit': 'px', 'top': '12', 'right': '16', 'bottom': '12', 'left': '16', 'isLinked': False}})
-    side = con(H('Filter by service', 'fs-rside-t2'), tags, cls='fs-gcard fs-rside', gap_=14, p=pad(26, 22, 26, 22))
+    side = con(H('Filter by service', 'fs-rside-t2'), *groups, cls='fs-gcard fs-rside', gap_=22, p=pad(26, 22, 26, 22))
     main = con(feat, grid, gap_=28, cls='fs-rmain')
     body = section(con(side, main, d='row', gap_=44, align='flex-start', cls='fs-rbody fs-nostyle'), cls='fs-geo', title='Resource library',
                    bg_img='assets/img/design/bg-geometric.jpg', p={'unit': 'px', 'top': '56', 'right': '24', 'bottom': '100', 'left': '24', 'isLinked': False},

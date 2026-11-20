@@ -183,7 +183,9 @@ def render(e, depth=0):
         items = (['All', 'Blog', 'Case Studies', 'Podcast', 'Videos'] if s.get('taxonomy') == 'category' else
                  ['All services', 'Advertising', 'Analytics', 'Branding and Content', 'CRM', 'FirstBrand', 'FirstChoice', 'FirstReferral', 'FirstThought', 'Lead Generation',
                   'Marketing Automation', 'Reviews and Referrals', 'SEO and AEO', 'Social Media', 'Website Design'])
-        return wrap('<search class="e-filter" role="search">' + ''.join(f'<button class="e-filter-item" aria-pressed="{"true" if n == 0 else "false"}">{t}</button>' for n, t in enumerate(items)) + '</search>')
+        if s.get('_fs_preview_labels'): items = s['_fs_preview_labels']
+        first_on = s.get('show_first_item') == 'yes'
+        return wrap('<search class="e-filter" role="search">' + ''.join(f'<button class="e-filter-item" aria-pressed="{"true" if n == 0 and first_on else "false"}">{t}</button>' for n, t in enumerate(items)) + '</search>')
     if k == 'loop-grid' and LOOP_ITEM:   # render the real card template with sample posts
         cards = ''
         for cat, label, title, date, tags in LOOP_SAMPLES:
