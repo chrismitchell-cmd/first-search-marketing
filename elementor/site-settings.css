@@ -2723,6 +2723,9 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 .fs-li-title .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 19px !important; font-weight: 600 !important; line-height: 1.3 !important; color: var(--fs-purple) !important; }
 .fs-li-title a { color: inherit !important; text-decoration: none !important; }
 .fs-li-ex, .fs-li-ex p { margin: 0; font-family: var(--fs-font) !important; font-size: 15px !important; line-height: 1.55 !important; color: var(--fs-body) !important; }
+/* excerpt: at most 3 lines (about 120-150 characters), ending in "..." at a word; title at most 3 lines */
+.fs-li-ex p, .fs-li-ex .elementor-widget-container:not(:has(p)), .elementor-widget.fs-li-ex:not(:has(p, .elementor-widget-container)) { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+.fs-li-title .elementor-heading-title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
 .fs-li-more .elementor-button { font-size: 15.5px !important; padding: 0 !important; }
 
 /* ---------- 53. Resources: match the original design (counts, toolbar, tag chips, type links, play buttons) ---------- */
@@ -2737,7 +2740,11 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 .fs-li-tags { margin-top: auto !important; }
 .fs-li-tags .elementor-icon-list-items, .fs-li-tags ul { margin: 0; padding: 0; list-style: none; }
 .fs-li-tags .elementor-post-info__terms-list { display: flex; flex-wrap: wrap; gap: 6px; font-size: 0; }
-.fs-li-tags .elementor-post-info__terms-list-item { display: inline-flex; padding: 4px 10px; border-radius: 999px; background: #F1F0F6; font-family: var(--fs-font-ui); font-size: 12px; font-weight: 500; color: var(--fs-body) !important; text-decoration: none !important; }
+.fs-li-tags .elementor-post-info__terms-list-item, .fs-li-tags .elementor-post-info__terms-list-item * { font-family: var(--fs-font-ui) !important; font-size: 12px !important; line-height: 1.4 !important; font-weight: 500 !important; }
+.fs-li-tags .elementor-post-info__terms-list-item { display: inline-flex; padding: 4px 10px; border-radius: 999px; background: #F1F0F6; color: var(--fs-body) !important; text-decoration: none !important; white-space: nowrap; }
+/* show up to 3 service tags per card; the stage tags (firstbrand ... firstreferral) stay filters only */
+.fs-li-tags .elementor-post-info__terms-list-item[href*="/tag/first"] { display: none !important; }
+.fs-li-tags .elementor-post-info__terms-list-item:nth-of-type(n+4) { display: none !important; }
 .fs-li-tags .elementor-post-info__terms-list-item:hover { background: #E6E3F3; color: var(--fs-purple) !important; }
 .fs-li-tags .elementor-icon-list-icon { display: none !important; }
 .fs-li-more .elementor-button, .fs-li-more .elementor-button * { font-size: 0 !important; }

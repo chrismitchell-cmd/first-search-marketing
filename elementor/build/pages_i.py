@@ -24,7 +24,7 @@ def loop_item():
     pill = H('Resource', 'fs-li-type'); pill['settings']['__dynamic__'] = {'title': dyn('post-terms', taxonomy='category', separator=' ', link='')}
     date = H('Date', 'fs-li-date'); date['settings']['__dynamic__'] = {'title': dyn('post-date', type='published', format='M j, Y')}
     title = H('Post title', 'fs-li-title', 'h3'); title['settings']['__dynamic__'] = {'title': dyn('post-title'), 'link': dyn('post-url')}
-    ex = w('theme-post-excerpt', {'__dynamic__': {'excerpt': dyn('post-excerpt', 'fsli1ex', max_length='22', apply_to_post_content='yes')}}, 'fs-li-ex')
+    ex = w('theme-post-excerpt', {'__dynamic__': {'excerpt': dyn('post-excerpt', 'fsli1ex', max_length='20', apply_to_post_content='yes')}}, 'fs-li-ex')
     # tags as chips: Post Info widget, Terms item (each tag is its own link; CSS makes them grey chips)
     tags = w('post-info', {'view': 'inline', 'icon_list': [{'_id': uid(), 'type': 'terms', 'taxonomy': 'post_tag', 'link': 'yes', 'show_icon': 'none'}]}, 'fs-li-tags')
     more = button('Read more', '#', 'fs-link-u fs-li-more'); more['settings']['__dynamic__'] = {'link': dyn('post-url')}
