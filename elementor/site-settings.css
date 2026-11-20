@@ -2676,7 +2676,7 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
   background: linear-gradient(90deg, #72CCD8, #3299D5) left bottom / 0 4px no-repeat !important; font-family: var(--fs-font) !important; font-size: 20px !important; font-weight: 500 !important; color: rgba(255, 255, 255, .85) !important; }
 .fs-tfilter--types .e-filter-item:hover { color: #fff !important; }
 .fs-tfilter--types .e-filter-item[aria-pressed="true"] { color: #fff !important; font-weight: 600 !important; background-size: 100% 4px !important; }
-.fs-tfilter--types .e-filter-item .n { display: inline-grid; place-items: center; min-width: 36px; height: 30px; padding: 0 10px; border-radius: 999px; background: rgba(255, 255, 255, .14);
+.fs-tfilter--types .e-filter-item .n { pointer-events: none; display: inline-grid; place-items: center; min-width: 36px; height: 30px; padding: 0 10px; border-radius: 999px; background: rgba(255, 255, 255, .14);
   font-family: var(--fs-font-ui); font-size: 15px; font-weight: 600; color: #fff; }
 .fs-tfilter--types .e-filter-item[aria-pressed="true"] .n { background: linear-gradient(135deg, #72CCD8, #2F78BA); }
 .fs-rsearch .elementor-search-form__container { display: flex !important; align-items: center; min-height: 64px; border-radius: 14px !important; background: #fff !important; border: 3px solid var(--fs-aqua) !important; box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .5); overflow: hidden; }
