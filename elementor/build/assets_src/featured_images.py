@@ -32,24 +32,38 @@ def shadow(img, box, r, blur=30, alpha=120, dy=18):
     ImageDraw.Draw(m).rounded_rectangle([x0, y0 + dy * S, x1, y1 + dy * S], r, fill=alpha)
     img.paste(Image.new('RGB', img.size, (10, 2, 35)), (0, 0), m.filter(ImageFilter.GaussianBlur(blur * S)))
 
-# One background per post category, so a card's type reads at a glance on the Resources grid.
-# base colour, top-right glow, bottom-left glow, centre-right glow
-THEMES = {
-    'case':    ((37, 7, 98),   (110, 60, 200), AQUA, (70, 20, 150)),  # brand purple
-    'blog':    ((10, 38, 112), SKY,  AQUA, (40, 110, 200)),   # deep royal blue
-    'video':   ((4, 58, 78),   AQUA, SKY,  (20, 120, 140)),   # deep teal
-    'podcast': ((10, 14, 30),  (60, 90, 140), AQUA, (30, 50, 90)),  # midnight charcoal
-}
-def base(theme='case'):
-    c, g1, g2, g3 = THEMES[theme]
-    bg = Image.new('RGB', (w, h), c)
-    glow(bg, int(w * .98), int(h * .08), 780 * S, g1, 150); glow(bg, int(w * .02), int(h * 1.05), 620 * S, g2, 70); glow(bg, int(w * .78), int(h * .62), 520 * S, g3, 120)
-    lines = Image.new('L', (w, h), 0); d = ImageDraw.Draw(lines)
-    for x in range(-h, w, 260 * S): d.line([(x, h), (x + h, 0)], fill=22, width=2 * S); d.line([(x, 0), (x + h, h)], fill=14, width=2 * S)
-    bg.paste(Image.new('RGB', (w, h), WHITE), (0, 0), lines)
+# The site's four section styles, one per post category, so a card's type reads at a glance:
+#   purple  = purple section with the blue splash (.fs-dark)        -> case studies
+#   white   = light geometric boxes (.fs-geo), gradient-bordered pills -> blog
+#   blue    = sky blue into dark blue                               -> videos
+#   grey    = brand grey (#D9D8D7)                                   -> podcast
+CATEGORY = {'case': 'purple', 'blog': 'white', 'video': 'blue', 'podcast': 'grey'}
+T = {'light': False}
+def lin(size, angle_stops, diag=True):
+    """Diagonal (top-left to bottom-right) gradient."""
+    gw, gh = size; small = hgrad((256, 1), angle_stops).load(); g = Image.new('RGB', (gw // 8, gh // 8)); px = g.load()
+    for y in range(g.height):
+        for x in range(g.width):
+            t = (x / g.width * .6 + y / g.height * .4) if diag else x / g.width; px[x, y] = small[min(255, int(t * 255)), 0]
+    return g.resize(size, Image.BICUBIC)
+def base(style):
+    T['light'] = style in ('white', 'grey'); T['style'] = style
+    if style == 'purple':   # --fs-grad-purple + --fs-glow
+        bg = lin((w, h), [(0, (43, 10, 128)), (.55, (37, 7, 98)), (1, (32, 5, 86))])
+        glow(bg, int(w * 1.0), 0, 620 * S, SKY, 115)
+    elif style == 'blue':
+        bg = lin((w, h), [(0, SKY), (.5, ROYAL), (1, (11, 36, 92))])
+        glow(bg, int(w * .02), 0, 560 * S, AQUA, 60)
+    elif style == 'grey':
+        bg = lin((w, h), [(0, (236, 235, 234)), (1, (217, 216, 215))])
+        glow(bg, int(w * .8), int(h * .45), 520 * S, WHITE, 120)
+    else:                   # white geometric
+        geo = Image.open(A + 'design/bg-geometric.jpg').convert('RGB'); sc = max(w / geo.width, h / geo.height)
+        bg = geo.resize((round(geo.width * sc), round(geo.height * sc)), Image.LANCZOS).crop((0, 0, w, h))
     return bg
+def ink(): return NAVY if T['light'] else WHITE
 def finish(bg, name):
-    logo = Image.open(A + 'logo-white.png').convert('RGBA'); lw = 220 * S
+    logo = Image.open(A + ('logo.png' if T['light'] else 'logo-white.png')).convert('RGBA'); lw = 220 * S
     logo = logo.resize((lw, round(logo.height * lw / logo.width)), Image.LANCZOS)
     bg.paste(logo, (90 * S, h - logo.height - 56 * S), logo)
     bg.paste(hgrad((w, 10 * S), GRAD), (0, h - 10 * S))
@@ -59,19 +73,20 @@ def chip(bg, x, y, label):
     """Gradient pill with spaced capitals."""
     d = ImageDraw.Draw(bg); f = INTER(22); sp = 6 * S
     tw = sum(d.textlength(c, font=f) + sp for c in label) - sp
-    m = rounded_mask((int(tw + 44 * S), 50 * S), 25 * S); bg.paste(hgrad(m.size, GRAD), (x, y), m)
+    m = rounded_mask((int(tw + 44 * S), 50 * S), 25 * S); bg.paste(hgrad(m.size, GRAD), (int(x), int(y)), m)
     cx = x + 22 * S
     for c in label: d.text((cx, y + 11 * S), c, font=f, fill=WHITE); cx += d.textlength(c, font=f) + sp
     return y + 50 * S
 def headline(bg, x, y, white_lines, grad_lines, size=78, lh=88):
     d = ImageDraw.Draw(bg); f = font('ExtraBold', size)
-    for line in white_lines: d.text((x, y), line, font=f, fill=WHITE); y += lh * S
+    for line in white_lines: d.text((x, y), line, font=f, fill=ink()); y += lh * S
+    tg = [(0, SKY), (1, ROYAL)] if T['light'] else [(0, AQUA), (1, (214, 240, 248))] if T.get('style') == 'blue' else TEXTGRAD
     for line in grad_lines:
         m = Image.new('L', (w, h), 0); ImageDraw.Draw(m).text((x, y), line, font=f, fill=255)
-        bb = m.getbbox(); full = Image.new('RGB', (w, h)); full.paste(hgrad((bb[2] - x + 10, bb[3] - y + 30 * S), TEXTGRAD), (x, y)); bg.paste(full, (0, 0), m); y += lh * S
+        bb = m.getbbox(); full = Image.new('RGB', (w, h)); full.paste(hgrad((bb[2] - x + 10, bb[3] - y + 30 * S), tg), (x, y)); bg.paste(full, (0, 0), m); y += lh * S
     return y
 def rule(bg, x, y):
-    ImageDraw.Draw(bg).rounded_rectangle([x, y, x + 120 * S, y + 6 * S], 3 * S, fill=AQUA); return y + 6 * S
+    bg.paste(hgrad((120 * S, 6 * S), GRAD), (x, y), rounded_mask((120 * S, 6 * S), 3 * S)); return y + 6 * S
 def pills(bg, x, y, items, logo=False):
     """White pills: stage logos (firstX) or plain labels."""
     d = ImageDraw.Draw(bg); f = font('ExtraBold' if logo else 'SemiBold', 22)
@@ -80,7 +95,11 @@ def pills(bg, x, y, items, logo=False):
             fw = d.textlength('first', font=f); tw = fw + d.textlength(it, font=f)
         else:
             tw = d.textlength(it, font=f)
-        d.rounded_rectangle([x, y, x + tw + 32 * S, y + 44 * S], 22 * S, fill=WHITE)
+        if T['light']:
+            m = rounded_mask((int(tw + 32 * S), 44 * S), 22 * S); bg.paste(hgrad(m.size, GRAD), (int(x), int(y)), m)
+            d.rounded_rectangle([x + 3 * S, y + 3 * S, x + tw + 29 * S, y + 41 * S], 19 * S, fill=WHITE)
+        else:
+            d.rounded_rectangle([x, y, x + tw + 32 * S, y + 44 * S], 22 * S, fill=WHITE)
         if logo:
             d.text((x + 16 * S, y + 5 * S), 'first', font=f, fill=SKY); d.text((x + 16 * S + fw, y + 5 * S), it, font=f, fill=NAVY)
         else:
@@ -91,7 +110,7 @@ X0 = 90 * S
 
 # ---------- 1. Case study: Progressive Dental Care ----------
 def case_study():
-    bg = base('case')
+    bg = base(CATEGORY['case'])
     # right: practice photo in a gradient frame, logo card and the 8x stat card overlapping it
     fw_, fh_ = 760 * S, 560 * S; fx, fy = w - fw_ - 70 * S, 120 * S
     shadow(bg, (fx, fy, fx + fw_, fy + fh_), 40 * S)
@@ -127,11 +146,11 @@ def wheel_and_chris(bg, ws=720, ch_h=720):
     glow(bg, wx + ws // 2, wy + ws // 2, int(ws * .56), AQUA, 90); bg.paste(wheel, (wx, wy), wheel)
     chris = Image.open(A + 'design/chris-cutout.webp').convert('RGBA'); chh = ch_h * S; cw = round(chris.width * chh / chris.height)
     chris = chris.resize((cw, chh), Image.LANCZOS); cx = wx - int(cw * .02); cy = h - chh + 6 * S
-    sh = Image.new('L', (w, h), 0); sh.paste(chris.split()[3].point(lambda v: v * .55), (cx - 28 * S, cy + 10 * S))
-    bg.paste(Image.new('RGB', (w, h), (12, 2, 40)), (0, 0), sh.filter(ImageFilter.GaussianBlur(26 * S)))
+    sh = Image.new('L', (w, h), 0); sh.paste(chris.split()[3].point(lambda v: v * (.25 if T['light'] else .55)), (cx - 28 * S, cy + 10 * S))
+    bg.paste(Image.new('RGB', (w, h), (12, 2, 40) if not T['light'] else (90, 90, 110)), (0, 0), sh.filter(ImageFilter.GaussianBlur(26 * S)))
     bg.paste(chris, (cx, cy), chris)
 def blog():
-    bg = base('blog'); wheel_and_chris(bg)
+    bg = base(CATEGORY['blog']); wheel_and_chris(bg)
     y = chip(bg, X0, 120 * S, '2027 MARKETING TRENDS') + 40 * S
     y = headline(bg, X0, y, ['Top 2027', 'marketing trends'], ['to scale your', 'business.'], size=76, lh=86)
     y = rule(bg, X0, y + 20 * S) + 32 * S
@@ -140,7 +159,7 @@ def blog():
 
 # ---------- 3. Video: First Search Marketing in two minutes ----------
 def video():
-    bg = base('video'); wheel_and_chris(bg)
+    bg = base(CATEGORY['video']); wheel_and_chris(bg)
     y = chip(bg, X0, 120 * S, 'VIDEO · 2 MINUTES') + 40 * S
     y = headline(bg, X0, y, ['First Search', 'Marketing'], ['in two minutes.'], size=80, lh=90)
     y = rule(bg, X0, y + 20 * S) + 32 * S
@@ -151,7 +170,7 @@ def video():
 # ---------- 4. Podcast: reusable episode image (edit the episode label and title, re-run) ----------
 def mic(bg, cx, cy, r):
     """Simple microphone mark in a glowing disc."""
-    glow(bg, cx, cy, int(r * 1.5), AQUA, 70)
+    glow(bg, cx, cy, int(r * 1.5), WHITE if T['light'] else AQUA, 160 if T['light'] else 70)
     d = ImageDraw.Draw(bg); d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=WHITE)
     mw, mh = int(r * .36), int(r * .78); top = cy - int(r * .55)
     m = Image.new('L', bg.size, 0); ImageDraw.Draw(m).rounded_rectangle([cx - mw // 2, top, cx + mw // 2, top + mh], mw // 2, fill=255)
@@ -161,10 +180,10 @@ def mic(bg, cx, cy, r):
     d.line([cx, top + mh + a - int(r * .22), cx, cy + int(r * .62)], fill=ROYAL, width=lw)
     d.line([cx - int(r * .2), cy + int(r * .62), cx + int(r * .2), cy + int(r * .62)], fill=ROYAL, width=lw)
     for i, rr in enumerate((1.25, 1.5, 1.75)):
-        d.arc([cx - int(r * rr), cy - int(r * rr), cx + int(r * rr), cy + int(r * rr)], -35, 35, fill=(150, 200, 240), width=lw // 2 + 2)
-        d.arc([cx - int(r * rr), cy - int(r * rr), cx + int(r * rr), cy + int(r * rr)], 145, 215, fill=(150, 200, 240), width=lw // 2 + 2)
+        d.arc([cx - int(r * rr), cy - int(r * rr), cx + int(r * rr), cy + int(r * rr)], -35, 35, fill=ROYAL if T['light'] else (150, 200, 240), width=lw // 2 + 2)
+        d.arc([cx - int(r * rr), cy - int(r * rr), cx + int(r * rr), cy + int(r * rr)], 145, 215, fill=ROYAL if T['light'] else (150, 200, 240), width=lw // 2 + 2)
 def podcast(label='PODCAST · EPISODE 01', white=['Episode title', 'goes here'], grad=['in two lines.'], name='featured-podcast-template.webp'):
-    bg = base('podcast'); mic(bg, int(w * .74), int(h * .46), 190 * S)
+    bg = base(CATEGORY['podcast']); mic(bg, int(w * .74), int(h * .46), 190 * S)
     y = chip(bg, X0, 120 * S, label) + 40 * S
     y = headline(bg, X0, y, white, grad, size=76, lh=86)
     y = rule(bg, X0, y + 20 * S) + 32 * S

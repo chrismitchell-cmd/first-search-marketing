@@ -1,14 +1,17 @@
 # Featured images and descriptions for posts
 
 All images are 1600 × 900 WebP, matching the Resources card shape.
-Each category has its own background so the type is clear on the grid:
+Each category uses one of the site's four section styles, so the post type is clear on the grid:
 
-| Category | Background | Base colour |
+| Category | Style | Colours |
 |---|---|---|
-| Case studies | Brand purple | `#250762` |
-| Blog | Royal blue | `#0A2670` |
-| Videos | Deep teal | `#043A4E` |
-| Podcast | Midnight | `#0A0E1E` |
+| Case studies | Purple with the blue splash (like `fs-dark` sections) | `#2B0A80` to `#250762`, sky `#3299D5` glow |
+| Blog | White geometric boxes, gradient-bordered pills | `bg-geometric.jpg`, aqua `#72CCD8` to royal `#174FA2` borders |
+| Videos | Blue into dark blue | `#3299D5` to `#174FA2` to `#0B245C` |
+| Podcast | Grey | `#ECEBEA` to `#D9D8D7` |
+
+To swap which style a category uses, edit `CATEGORY` at the top of
+`elementor/build/assets_src/featured_images.py` and re-run it.
 
 Regenerate the images or make new ones with
 `elementor/build/assets_src/featured_images.py`. For a new podcast
