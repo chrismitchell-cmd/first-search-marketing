@@ -183,12 +183,13 @@ def render(e, depth=0):
         return wrap(f'<form class="elementor-search-form" role="search"><div class="elementor-search-form__container"><div class="elementor-search-form__icon"><i aria-hidden="true">⌕</i></div><input class="elementor-search-form__input" type="search" placeholder="{s.get("placeholder", "Search")}"></div></form>')
     if k == 'taxonomy-filter':   # Elementor's markup: <search class="e-filter"><button class="e-filter-item" aria-pressed>
         items = (['All', 'Blog', 'Case Studies', 'Podcast', 'Videos'] if s.get('taxonomy') == 'category' else
-                 ['All services', 'Advertising', 'Analytics', 'Branding and Content', 'CRM', 'FirstBrand', 'FirstChoice', 'FirstReferral', 'FirstThought', 'Lead Generation',
+                 (['All services'] if s.get('show_first_item') == 'yes' else []) + ['Advertising', 'Analytics', 'Branding and Content', 'CRM', 'FirstBrand', 'FirstChoice', 'FirstReferral', 'FirstThought', 'Lead Generation',
                   'Marketing Automation', 'Reviews and Referrals', 'SEO and AEO', 'Social Media', 'Website Design'])
-        if s.get('_fs_preview_labels'): items = s['_fs_preview_labels']
+
         first_on = s.get('show_first_item') == 'yes'
+        slug = lambda t: t.lower().replace(' and ', '-and-').replace(' ', '-')
         cnt = {'All': 18, 'Blog': 6, 'Case Studies': 4, 'Podcast': 4, 'Videos': 4} if s.get('taxonomy') == 'category' else {}
-        return wrap('<search class="e-filter" role="search">' + ''.join(f'<button class="e-filter-item" aria-pressed="{"true" if n == 0 and first_on else "false"}">{t}' + (f'<span class="n">{cnt[t]}</span>' if t in cnt else '') + '</button>' for n, t in enumerate(items)) + '</search>')
+        return wrap('<search class="e-filter" role="search">' + ''.join(f'<button class="e-filter-item" data-filter="{"__all" if n == 0 and first_on else slug(t)}" aria-pressed="{"true" if n == 0 and first_on else "false"}">{t}' + (f'<span class="n">{cnt[t]}</span>' if t in cnt else '') + '</button>' for n, t in enumerate(items)) + '</search>')
     if k == 'loop-grid' and LOOP_ITEM:   # render the real card template with sample posts
         cards = ''
         for cat, label, title, date, tags in LOOP_SAMPLES:

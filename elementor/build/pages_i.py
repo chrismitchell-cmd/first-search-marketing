@@ -68,10 +68,9 @@ def library(loop_item_id=''):
     # one Taxonomy Filter per stage, each showing only that stage's service tags, all controlling the same grid
     groups = []
     for k, terms in SERVICE_GROUPS:
+        # every filter lists all tags; CSS (by tag slug, data-filter) shows only this stage's services, so nothing needs setting by hand
         tf = w('taxonomy-filter', {'selected_element': gid, 'taxonomy': 'post_tag', 'show_first_item': '', 'multiple_selection': 'yes',
-                                   'logical_combination': 'OR', 'direction': 'horizontal', 'include': [t for t, _ in terms],
-                                   'include_terms': [t for t, _ in terms]}, 'fs-tfilter fs-tfilter--tags')
-        tf['settings']['_fs_preview_labels'] = [n for _, n in terms]   # preview only
+                                   'logical_combination': 'OR', 'direction': 'horizontal'}, f'fs-tfilter fs-tfilter--tags fs-tfilter--{k}')
         groups.append(con(H(plogo(k), 'fs-rgrp-l'), tf, gap_=10, cls='fs-rgrp'))
     search = w('search-form', {'skin': 'minimal', 'placeholder': 'Search by topic, like reviews or Google'}, 'fs-rsearch')
     band = section(row(types, search, counts_js(), gap_=24, align='center', justify='space-between', cls='fs-band-row'), cls='fs-dark fs-band fs-catsband', title='Resource type tabs',
