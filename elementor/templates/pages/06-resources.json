@@ -585,7 +585,7 @@
            "left": "22",
            "isLinked": false
           },
-          "custom_css": "/* FILTER BY SERVICE: which services show under each stage.\n   Inside each :not( ) is that stage's list of tag slugs (Posts > Tags > Slug column).\n   To ADD a service: add a line  [data-filter=\"new-tag-slug\"],  to its stage (comma after every line but the last).\n   To MOVE a service: move its line to another stage. */\n\n/* firstbrand */\n.fs-tfilter--brand .e-filter-item:not(\n  [data-filter=\"branding-and-content\"],\n  [data-filter=\"website-design\"],\n  [data-filter=\"analytics\"],\n  [data-filter=\"crm\"]\n) { display: none !important; }\n\n/* firstthought */\n.fs-tfilter--thought .e-filter-item:not(\n  [data-filter=\"seo-and-aeo\"],\n  [data-filter=\"advertising\"],\n  [data-filter=\"social-media\"]\n) { display: none !important; }\n\n/* firstchoice */\n.fs-tfilter--choice .e-filter-item:not(\n  [data-filter=\"lead-generation\"],\n  [data-filter=\"marketing-automation\"]\n) { display: none !important; }\n\n/* firstreferral */\n.fs-tfilter--referral .e-filter-item:not(\n  [data-filter=\"reviews-and-referrals\"]\n) { display: none !important; }\n"
+          "custom_css": "/* FILTER BY SERVICE: which services show under each stage.\n   Inside each :not( ) is that stage's list of tag slugs (Posts > Tags > Slug column).\n   To ADD a service: add a line  [data-filter=\"new-tag-slug\"],  to its stage (comma after every line but the last).\n   To MOVE a service: move its line to another stage. */\n\n/* firstbrand */\n.fs-tfilter--brand .e-filter-item:not(\n  [data-filter=\"branding-and-content\"],\n  [data-filter=\"website-design\"],\n  [data-filter=\"analytics\"],\n  [data-filter=\"crm\"]\n) { display: none !important; }\n\n/* firstthought */\n.fs-tfilter--thought .e-filter-item:not(\n  [data-filter=\"seo-and-aeo\"],\n  [data-filter=\"advertising\"],\n  [data-filter=\"social-media\"],\n  [data-filter=\"local-ties\"]\n) { display: none !important; }\n\n/* firstchoice */\n.fs-tfilter--choice .e-filter-item:not(\n  [data-filter=\"lead-generation\"],\n  [data-filter=\"marketing-automation\"],\n  [data-filter=\"advertising\"],\n  [data-filter=\"social-media\"]\n) { display: none !important; }\n\n/* firstreferral */\n.fs-tfilter--referral .e-filter-item:not(\n  [data-filter=\"reviews-and-referrals\"],\n  [data-filter=\"loyalty-programs\"],\n  [data-filter=\"social-media\"],\n  [data-filter=\"marketing-automation\"]\n) { display: none !important; }\n"
          },
          "elements": [
           {
@@ -646,6 +646,7 @@
               "multiple_selection": "yes",
               "logical_combination": "OR",
               "direction": "horizontal",
+              "show_empty_items": "yes",
               "_css_classes": "fs-tfilter fs-tfilter--tags fs-tfilter--brand"
              },
              "elements": []
@@ -699,6 +700,7 @@
               "multiple_selection": "yes",
               "logical_combination": "OR",
               "direction": "horizontal",
+              "show_empty_items": "yes",
               "_css_classes": "fs-tfilter fs-tfilter--tags fs-tfilter--thought"
              },
              "elements": []
@@ -752,6 +754,7 @@
               "multiple_selection": "yes",
               "logical_combination": "OR",
               "direction": "horizontal",
+              "show_empty_items": "yes",
               "_css_classes": "fs-tfilter fs-tfilter--tags fs-tfilter--choice"
              },
              "elements": []
@@ -805,6 +808,7 @@
               "multiple_selection": "yes",
               "logical_combination": "OR",
               "direction": "horizontal",
+              "show_empty_items": "yes",
               "_css_classes": "fs-tfilter fs-tfilter--tags fs-tfilter--referral"
              },
              "elements": []

@@ -32,9 +32,9 @@ def loop_item():
 # ---------- 2. Library section ----------
 # service tags under each stage (tag slug, label), as in the original design; the stage tags themselves aren't shown
 SERVICE_GROUPS = [('brand', [('branding-and-content', 'Branding and Content'), ('website-design', 'Website Design'), ('analytics', 'Analytics'), ('crm', 'CRM')]),
-                  ('thought', [('seo-and-aeo', 'SEO and AEO'), ('advertising', 'Advertising'), ('social-media', 'Social Media')]),
-                  ('choice', [('lead-generation', 'Lead Generation'), ('marketing-automation', 'Marketing Automation')]),
-                  ('referral', [('reviews-and-referrals', 'Reviews and Referrals')])]
+                  ('thought', [('seo-and-aeo', 'SEO and AEO'), ('advertising', 'Advertising'), ('social-media', 'Social Media'), ('local-ties', 'Local Ties')]),
+                  ('choice', [('lead-generation', 'Lead Generation'), ('marketing-automation', 'Marketing Automation'), ('advertising', 'Advertising'), ('social-media', 'Social Media')]),
+                  ('referral', [('reviews-and-referrals', 'Reviews and Referrals'), ('loyalty-programs', 'Loyalty Programs'), ('social-media', 'Social Media'), ('marketing-automation', 'Marketing Automation')])]
 FEATURED = dict(stat='8x', label='more digital leads a month', meta='Dental practice · South Portland, ME',
                 title='Progressive Dental Care: from 12 leads a month to 100+.',
                 text='A new owner, a dated brand and an agency that never delivered. A rebrand, local SEO, reviews and ads later, digital leads now outnumber referrals for the first time in the practice’s history.',
@@ -95,7 +95,7 @@ def library(loop_item_id=''):
     for k, terms in SERVICE_GROUPS:
         # every filter lists all tags; CSS (by tag slug, data-filter) shows only this stage's services, so nothing needs setting by hand
         tf = w('taxonomy-filter', {'selected_element': gid, 'taxonomy': 'post_tag', 'show_first_item': '', 'multiple_selection': 'yes',
-                                   'logical_combination': 'OR', 'direction': 'horizontal'}, f'fs-tfilter fs-tfilter--tags fs-tfilter--{k}')
+                                   'logical_combination': 'OR', 'direction': 'horizontal', 'show_empty_items': 'yes'}, f'fs-tfilter fs-tfilter--tags fs-tfilter--{k}')
         groups.append(con(H(plogo(k), 'fs-rgrp-l'), tf, gap_=10, cls='fs-rgrp'))
     search = w('search-form', {'skin': 'minimal', 'placeholder': 'Search by topic, like reviews or Google'}, 'fs-rsearch')
     band = section(row(types, search, counts_js(), gap_=24, align='center', justify='space-between', cls='fs-band-row'), cls='fs-dark fs-band fs-catsband', title='Resource type tabs',

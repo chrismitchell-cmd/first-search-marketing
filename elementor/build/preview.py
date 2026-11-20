@@ -183,7 +183,7 @@ def render(e, depth=0):
         return wrap(f'<form class="elementor-search-form" role="search"><div class="elementor-search-form__container"><div class="elementor-search-form__icon"><i aria-hidden="true">⌕</i></div><input class="elementor-search-form__input" type="search" placeholder="{s.get("placeholder", "Search")}"></div></form>')
     if k == 'taxonomy-filter':   # Elementor's markup: <search class="e-filter"><button class="e-filter-item" aria-pressed>
         items = (['All', 'Blog', 'Case Studies', 'Podcast', 'Videos'] if s.get('taxonomy') == 'category' else
-                 (['All services'] if s.get('show_first_item') == 'yes' else []) + ['Advertising', 'Analytics', 'Branding and Content', 'CRM', 'FirstBrand', 'FirstChoice', 'FirstReferral', 'FirstThought', 'Lead Generation',
+                 (['All services'] if s.get('show_first_item') == 'yes' else []) + ['Advertising', 'Analytics', 'Branding and Content', 'CRM', 'FirstBrand', 'FirstChoice', 'FirstReferral', 'FirstThought', 'Lead Generation', 'Local Ties', 'Loyalty Programs',
                   'Marketing Automation', 'Reviews and Referrals', 'SEO and AEO', 'Social Media', 'Website Design'])
 
         first_on = s.get('show_first_item') == 'yes'
