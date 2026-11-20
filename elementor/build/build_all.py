@@ -38,9 +38,11 @@ for cs in case_studies.CASES:
 # individual videos (posts in the Videos category): page templates, built last with their own IDs
 T.append(('videos/first-search-marketing-in-two-minutes', 'Video · First Search Marketing in two minutes', 'page', pages_g.video_fsm))
 T.append(('blog/top-2027-marketing-trends', 'Blog · Top 2027 marketing trends to scale your business', 'page', pages_h.blog_2027))
+import pages_i
+T.append(('loop/resource-card', 'Loop item · Resource card', 'loop-item', lambda: [pages_i.loop_item()]))
 
 for f in glob.glob('../templates/**/*.json', recursive=True): os.remove(f)
-for d in ('pages', 'services', 'framework', 'singles', 'location', 'events', 'case-studies', 'videos', 'blog'): os.makedirs(f'../templates/{d}', exist_ok=True)
+for d in ('pages', 'services', 'framework', 'singles', 'location', 'events', 'case-studies', 'videos', 'blog', 'loop'): os.makedirs(f'../templates/{d}', exist_ok=True)
 def proto_key(path):
     if path in PROTO: return PROTO[path]
     if path.startswith('services/'): return 'service:' + {'branding-content-creation': 'branding'}.get(path.split('-', 1)[1], path.split('-', 1)[1])
@@ -48,6 +50,7 @@ def proto_key(path):
     if path.startswith('events/'): return 'event'
     if path.startswith('case-studies/'): return 'case'
     if path.startswith('blog/'): return 'blog!'
+    if path.startswith('loop/'): return 'blog!'
     if path.startswith('videos/'): return 'video!'   # '!': measured like the video page, no vote in shared styles
     return 'home'
 built = [('header', 'home', header_footer.HEADER), ('footer', 'home', header_footer.FOOTER)]
@@ -58,6 +61,7 @@ for path, title, kind, fn in T:
     if path.startswith('case-studies/'): random.seed('case:' + path)   # each case study keeps its own IDs
     if path.startswith('videos/'): random.seed('video:' + path)   # and each video
     if path.startswith('blog/'): random.seed('blog:' + path)   # and each blog post
+    if path.startswith('loop/'): random.seed('loop:' + path)
     built.append((path, proto_key(path), template('First Search · ' + title, kind, fn())))
 # the workshop pages draw element IDs from their own random sequence, and the main one is put back afterwards, so every
 # other template keeps exactly the same IDs whenever a workshop is added or changed

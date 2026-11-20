@@ -41,7 +41,7 @@ const pages = files.filter(f => !isHF(f));
 const count = {};
 // event and case study pages don't count toward "shared": adding workshops must never move rules into the
 // global CSS that is already installed in Site Settings
-for (const f of pages.filter(f => !f.includes('/events/') && !f.includes('/case-studies/') && !f.includes('/videos/') && !f.includes('/blog/'))) for (const t of tokens[f]) if (/^(fs|sn|fsx)-/.test(t)) count[t] = (count[t] || 0) + 1;
+for (const f of pages.filter(f => !f.includes('/events/') && !f.includes('/case-studies/') && !f.includes('/videos/') && !f.includes('/blog/') && !f.includes('/loop/'))) for (const t of tokens[f]) if (/^(fs|sn|fsx)-/.test(t)) count[t] = (count[t] || 0) + 1;
 const global = new Set(files.filter(isHF).flatMap(f => [...tokens[f]]));
 for (const [c, n] of Object.entries(count)) if (n >= SHARED) global.add(c);
 

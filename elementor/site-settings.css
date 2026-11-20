@@ -2665,3 +2665,49 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 .fs-bl-ct3 .elementor-heading-title { font-size: 19px !important; line-height: 1.3 !important; color: var(--fs-purple) !important; }
 @media (max-width: 1024px) { .e-con.fs-bl-side { position: static; } .e-con.fs-bl-quiz { flex-direction: column !important; align-items: flex-start !important; } }
 @media (max-width: 767px) { .e-con.fs-bl-author { flex-direction: column !important; text-align: center; } }
+
+/* ---------- 51. Resources library, post-driven (Taxonomy Filters + Loop Grid) and the featured case study ---------- */
+/* type tabs on the purple band */
+.fs-tfilter--types .e-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.fs-tfilter .e-filter-item { cursor: pointer; font-family: var(--fs-font) !important; font-weight: 600 !important; border-radius: 999px !important; transition: background .15s ease, color .15s ease, border-color .15s ease; }
+.fs-tfilter--types .e-filter-item { padding: 10px 22px !important; font-size: 16px !important; color: #fff !important; background: rgba(255, 255, 255, .08) !important; border: 1px solid rgba(255, 255, 255, .25) !important; }
+.fs-tfilter--types .e-filter-item:hover { border-color: var(--fs-aqua) !important; }
+.fs-tfilter--types .e-filter-item[aria-pressed="true"] { background: #fff !important; color: var(--fs-purple) !important; border-color: #fff !important; }
+/* service filter in the side card */
+.fs-rside-t2 .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 18px !important; font-weight: 700 !important; color: var(--fs-purple) !important; }
+.fs-tfilter--tags .e-filter { display: flex; flex-wrap: wrap; gap: 8px; }
+.fs-tfilter--tags .e-filter-item { padding: 7px 14px !important; font-size: 13.5px !important; color: var(--fs-purple) !important; background: #F4F4F6 !important; border: 1.5px solid transparent !important; }
+.fs-tfilter--tags .e-filter-item:hover { border-color: var(--fs-aqua) !important; }
+.fs-tfilter--tags .e-filter-item[aria-pressed="true"] { background: var(--fs-grad) !important; color: #fff !important; }
+/* the grid and load more */
+.fs-lgrid .elementor-loop-container { gap: 24px; }
+.fs-lgrid .e-loop__load-more .elementor-button { padding: 16px 32px; border-radius: 10px; background: var(--fs-purple) !important; color: #fff !important; font-family: var(--fs-font); font-weight: 600; }
+.fs-lgrid .e-loop-nothing-found-message { padding: 40px; border-radius: 24px; background: #fff; text-align: center; color: var(--fs-body); }
+@media (max-width: 1024px) { .fs-lgrid { --fs-cols: 2; } }
+@media (max-width: 767px) { .fs-lgrid { --fs-cols: 1; } .fs-tfilter--types .e-filter { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; } .fs-tfilter--types .e-filter-item { flex: none; } }
+/* featured case study: badge and the stat box (dark text on the white box, not inherited from the purple card) */
+.fs-rf-badge .elementor-heading-title { display: inline-flex; padding: 5px 14px; border-radius: 999px; background: var(--fs-grad); font-family: var(--fs-font) !important; font-size: 13px !important; font-weight: 700 !important; line-height: 1.4 !important; color: #fff !important; }
+.fs-rfeat-l > .e-con.fs-rf-box { position: absolute !important; left: 20px; bottom: 20px; width: auto !important; max-width: 78%; z-index: 1; border-radius: 18px; background: #fff; box-shadow: 0 16px 30px -16px rgba(0, 0, 0, .5); }
+.fs-rf-n .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 52px !important; font-weight: 800 !important; line-height: .95 !important; letter-spacing: -.03em;
+  color: transparent !important; background: var(--fs-grad-text); -webkit-background-clip: text; background-clip: text; }
+.fs-rf-l .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.35 !important; color: var(--fs-purple) !important; }
+.fs-rf-m .elementor-heading-title { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 13px !important; font-weight: 400 !important; color: var(--fs-ink) !important; }
+
+/* ---------- 52. Loop Item: resource card (templates/loop/resource-card) ---------- */
+.e-con.fs-li { height: 100%; overflow: hidden; }
+.fs-li-img img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.e-con.fs-li-body { flex: 1 1 auto; }
+.fs-li-body .fs-nostyle > .elementor-widget { width: auto !important; flex: none !important; }
+.fs-li-type .elementor-heading-title { display: inline-flex; padding: 4px 12px; border-radius: 999px; background: var(--fs-sky); font-family: var(--fs-font) !important; font-size: 12.5px !important; font-weight: 700 !important; line-height: 1.5 !important; color: #fff !important; }
+.fs-li-type a { color: inherit !important; text-decoration: none !important; pointer-events: none; }
+.category-case-studies .fs-li-type .elementor-heading-title { background: var(--fs-purple); }
+.category-podcast .fs-li-type .elementor-heading-title { background: var(--fs-grad); }
+.category-videos .fs-li-type .elementor-heading-title { background: var(--fs-royal); }
+.fs-li-date .elementor-heading-title { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 13px !important; font-weight: 500 !important; color: var(--fs-muted) !important; }
+.fs-li-title .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 19px !important; font-weight: 600 !important; line-height: 1.3 !important; color: var(--fs-purple) !important; }
+.fs-li-title a { color: inherit !important; text-decoration: none !important; }
+.fs-li-ex, .fs-li-ex p { margin: 0; font-family: var(--fs-font) !important; font-size: 15px !important; line-height: 1.55 !important; color: var(--fs-body) !important; }
+.fs-li-tags { margin-top: auto !important; }
+.fs-li-tags .elementor-heading-title { margin: 0; padding-top: 10px; border-top: 1px solid var(--fs-line); font-family: var(--fs-font-ui) !important; font-size: 12.5px !important; font-weight: 500 !important; line-height: 1.5 !important; color: var(--fs-muted) !important; }
+.fs-li-tags a { color: inherit !important; text-decoration: none !important; }
+.fs-li-more .elementor-button { font-size: 15.5px !important; padding: 0 !important; }

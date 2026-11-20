@@ -168,7 +168,7 @@ def resources():
         hero('Resources', 'Marketing you can <span class="fs-gt">actually use.</span>',
              'Articles, client stories, podcast episodes and videos from our team. Filter by format or by the part of your marketing you want to fix.',
              cta=None, media=vid(caption='How to get the most from our resources', length='[1:30]')),
-        *resources_library(),
+        *__import__('pages_i').library(),   # post-driven: Taxonomy Filters + Loop Grid (pages_i.py)
         quiz(),
         cta_banner('Want help putting this into practice?', 'Book a free 30-minute call and we’ll look at how your business shows up today.'),
     ]

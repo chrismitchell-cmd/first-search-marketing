@@ -8,6 +8,27 @@ def box(v):
     un = v.get('unit', 'px'); return ' '.join(f"{v.get(k,'0') or 0}{un}" for k in ('top', 'right', 'bottom', 'left'))
 def rule(eid, css, media=None):
     if css: CSSV.append((media, f'.elementor-9 .elementor-element.elementor-element-{eid}{{{css}}}'))
+LOOP_ITEM = []   # set by page(loop_item=...)
+LOOP_SAMPLES = [('case-studies', 'Case Studies', 'Progressive Dental Care: from 12 leads a month to 100+.', 'Nov 20, 2026', 'FirstBrand · SEO and AEO · Reviews and Referrals'),
+                ('blog', 'Blog', 'Top 2027 marketing trends to scale your business', 'Nov 20, 2026', 'FirstBrand · FirstThought · Lead Generation'),
+                ('videos', 'Videos', 'First Search Marketing in two minutes', 'Nov 19, 2026', 'FirstBrand · Branding and Content'),
+                ('podcast', 'Podcast', 'Ep. 24: Strategy beats size', 'Nov 12, 2026', 'FirstChoice · Advertising')]
+def _sample(item, label, title, date, tags):
+    import copy
+    e = copy.deepcopy(item)
+    def walk(x):
+        c = x.get('settings', {}).get('_css_classes', '')
+        if 'fs-li-type' in c: x['settings']['title'] = label
+        elif 'fs-li-date' in c: x['settings']['title'] = date
+        elif 'fs-li-title' in c: x['settings']['title'] = title
+        elif 'fs-li-tags' in c: x['settings']['title'] = tags
+        elif x.get('widgetType') == 'theme-post-featured-image':
+            x['widgetType'] = 'image'; x['settings'] = {'image': {'url': '../upload/first-search/' + ('blog/2027-marketing-trends.webp' if 'trends' in title else 'design/case-dental.webp' if 'Dental' in title else 'design/chris-cutout.webp')}, '_css_classes': c}
+        elif x.get('widgetType') == 'theme-post-excerpt':
+            x['widgetType'] = 'text-editor'; x['settings'] = {'editor': '<p>A short summary of the post, pulled from its excerpt, so readers know what they will get.</p>', '_css_classes': c}
+        for y in x.get('elements', []): walk(y)
+    walk(e); return e
+
 def render(e, depth=0):
     s, eid = e['settings'], e['id']
     if e['elType'] == 'container':
@@ -158,7 +179,17 @@ def render(e, depth=0):
     if k in ('posts',):
         c = ''.join('<div class="elementor-post__card" style="background:#fff;padding:20px;height:220px"><span class="elementor-post__badge" style="color:#fff;padding:2px 10px">Blog</span><h3 class="elementor-post__title"><a>Post title</a></h3><a class="elementor-post__read-more">Read more »</a></div>' for _ in range(3))
         return wrap(f'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">{c}</div>')
-    if k == 'taxonomy-filter': return wrap('<div style="display:flex;flex-wrap:wrap;gap:8px"><span class="fs-pill fs-pill--purple">All</span><span class="fs-pill">Blogs</span><span class="fs-pill">Case studies</span><span class="fs-pill">Podcasts</span><span class="fs-pill">Videos</span></div>')
+    if k == 'taxonomy-filter':   # Elementor's markup: <search class="e-filter"><button class="e-filter-item" aria-pressed>
+        items = (['All', 'Blog', 'Case Studies', 'Podcast', 'Videos'] if s.get('taxonomy') == 'category' else
+                 ['All services', 'Advertising', 'Analytics', 'Branding and Content', 'CRM', 'FirstBrand', 'FirstChoice', 'FirstReferral', 'FirstThought', 'Lead Generation',
+                  'Marketing Automation', 'Reviews and Referrals', 'SEO and AEO', 'Social Media', 'Website Design'])
+        return wrap('<search class="e-filter" role="search">' + ''.join(f'<button class="e-filter-item" aria-pressed="{"true" if n == 0 else "false"}">{t}</button>' for n, t in enumerate(items)) + '</search>')
+    if k == 'loop-grid' and LOOP_ITEM:   # render the real card template with sample posts
+        cards = ''
+        for cat, label, title, date, tags in LOOP_SAMPLES:
+            cards += f'<div class="e-loop-item category-{cat}">' + render(_sample(LOOP_ITEM[0], label, title, date, tags)) + '</div>'
+        return wrap(f'<div class="elementor-loop-container elementor-grid" style="display:grid;grid-template-columns:repeat(var(--fs-cols,3),minmax(0,1fr));gap:24px">{cards}</div>'
+                    '<div class="e-load-more-anchor"></div><div class="elementor-button-wrapper e-loop__load-more" style="text-align:center;margin-top:28px"><a class="elementor-button">Load more</a></div>')
     if k == 'google_maps': return wrap(f'<div style="height:{u(s.get("height")) or "300px"};background:#dfe6ef;border-radius:20px;display:grid;place-items:center">Google Map: {s["address"]}</div>')
     if k == 'social-icons': return wrap('<div style="display:flex;gap:8px">' + ''.join('<span class="elementor-social-icon" style="width:40px;height:40px;display:inline-block"></span>' for _ in s['social_icon_list']) + '</div>')
     if k == 'countdown': return wrap('<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">' + ''.join(f'<div class="elementor-countdown-item" style="padding:12px;text-align:center"><div class="elementor-countdown-digits" style="font-size:32px">0{n}</div><div class="elementor-countdown-label">{l}</div></div>' for n, l in enumerate(['days', 'hours', 'mins'])) + '</div>')
@@ -314,7 +345,8 @@ def widget_style(e):
                     decl += f"{css}:{v['size']}{v.get('unit','px')};" if isinstance(v, dict) else f'{css}:{v}' + (', sans-serif' if p == 'font_family' else '') + ';'
                 if decl: CSSV.append((mq, f'{sel}{{{decl}}}'))
 EA_CSS = ''.join(open(f).read() for f in ['/tmp/claude-0/-home-user-first-search-marketing/cbda635a-c308-5918-bc62-78d4657e8ad1/scratchpad/ea/src/assets/front-end/css/view/testimonials.css'] if os.path.exists(f))
-def page(paths, out):
+def page(paths, out, loop_item=None):
+    LOOP_ITEM[:] = [loop_item] if loop_item else []
     CSSV.clear()
     body = ''
     page_css = ''
