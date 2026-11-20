@@ -24,7 +24,8 @@ def loop_item():
     date = H('Date', 'fs-li-date'); date['settings']['__dynamic__'] = {'title': dyn('post-date', type='published', format='M j, Y')}
     title = H('Post title', 'fs-li-title', 'h3'); title['settings']['__dynamic__'] = {'title': dyn('post-title'), 'link': dyn('post-url')}
     ex = w('theme-post-excerpt', {'excerpt_length': 22}, 'fs-li-ex')
-    tags = H('Tags', 'fs-li-tags'); tags['settings']['__dynamic__'] = {'title': dyn('post-terms', taxonomy='post_tag', separator=' · ', link='')}
+    # tags as chips: Post Info widget, Terms item (each tag is its own link; CSS makes them grey chips)
+    tags = w('post-info', {'view': 'inline', 'icon_list': [{'_id': uid(), 'type': 'terms', 'taxonomy': 'post_tag', 'link': 'yes', 'show_icon': 'none'}]}, 'fs-li-tags')
     more = button('Read more', '#', 'fs-link-u fs-li-more'); more['settings']['__dynamic__'] = {'link': dyn('post-url')}
     body = con(ns(pill, date, d='row', gap_=8, align='center', mobile_col=False, wrap=True), title, ex, tags, more, gap_=10, cls='fs-li-body', p=pad(22, 22, 24, 22))
     return con(img, body, gap_=0, cls='fs-gcard fs-rcard fs-li', p=pad(0))
@@ -40,6 +41,7 @@ FEATURED = dict(stat='8x', label='more digital leads a month', meta='Dental prac
                 text='A new owner, a dated brand and an agency that never delivered. A rebrand, local SEO, reviews and ads later, digital leads now outnumber referrals for the first time in the practice’s history.',
                 url='/case-studies/progressive-dental-care/', img='assets/img/design/case-dental.webp')
 
+SORT_HTML = '<label class="fs-sortbox">Sort <select class="fs-rsort"><option value="new">Newest first</option><option value="old">Oldest first</option></select></label>'
 COUNTS_JS = """<script>(function(){
 /* 1. post counts on the type tabs, from WordPress */
 function counts(){var f=document.querySelector('.fs-tfilter--types .e-filter');if(!f)return;
@@ -48,6 +50,10 @@ var api=(window.wpApiSettings&&wpApiSettings.root)||'/wp-json/';
 fetch(api+'wp/v2/categories?per_page=100&_fields=slug,count').then(function(r){return r.json();}).then(function(cs){var m={},all=0;
 cs.forEach(function(c){m[c.slug]=c.count;if(c.slug!=='uncategorized')all+=c.count;});
 [].forEach.call(f.querySelectorAll('.e-filter-item'),function(b){var k=b.getAttribute('data-filter');add(b,k==='__all'||!k?all:m[k]);});}).catch(function(){});}
+/* 1b. post counts on the service pills, from WordPress */
+function tagCounts(){var api=(window.wpApiSettings&&wpApiSettings.root)||'/wp-json/';
+fetch(api+'wp/v2/tags?per_page=100&_fields=slug,count').then(function(r){return r.json();}).then(function(ts){var m={};ts.forEach(function(t){m[t.slug]=t.count;});
+[].forEach.call(document.querySelectorAll('.fs-tfilter--tags .e-filter-item'),function(b){var k=b.getAttribute('data-filter');if(k&&m[k]!=null&&!b.querySelector('.n')){var s=document.createElement('span');s.className='n';s.textContent=m[k];b.appendChild(s);}});}).catch(function(){});}
 /* 2. show only the cards that match the pressed tab and service tags (each card carries category-x and tag-y classes) */
 function pressed(sel){return [].map.call(document.querySelectorAll(sel+' .e-filter-item[aria-pressed="true"]'),function(b){return b.getAttribute('data-filter');}).filter(function(v){return v&&v!=='__all';});}
 function apply(){var cat=pressed('.fs-tfilter--types'),tags=pressed('.fs-tfilter--tags'),shown=0;
@@ -56,8 +62,13 @@ var items=document.querySelectorAll('.fs-lgrid .e-loop-item');
 (!tags.length||tags.some(function(t){return el.classList.contains('tag-'+t);}));el.style.display=ok?'':'none';if(ok)shown++;});
 var g=document.querySelector('.fs-lgrid'),m=document.querySelector('.fs-lgrid-empty');
 if(g&&!m){m=document.createElement('p');m.className='fs-lgrid-empty';m.textContent='Nothing matches that filter yet. New resources go up every week.';g.appendChild(m);}
-if(m)m.hidden=!!shown||!items.length;}
-function run(){counts();apply();
+if(m)m.hidden=!!shown||!items.length;
+var c=document.querySelector('.fs-rcount2 .elementor-heading-title');if(c)c.textContent='Showing '+shown+' of '+items.length+(items.length===1?' resource':' resources');}
+/* 3. sort by date (newest / oldest) */
+function sort(dir){var box=document.querySelector('.fs-lgrid .elementor-loop-container');if(!box)return;
+var els=[].slice.call(box.querySelectorAll(':scope > .e-loop-item'));var d=function(e){var t=e.querySelector('.fs-li-date');return t?Date.parse(t.textContent.trim())||0:0;};
+els.sort(function(a,b){return dir==='old'?d(a)-d(b):d(b)-d(a);}).forEach(function(e){box.appendChild(e);});}
+function run(){counts();tagCounts();apply();var st=document.querySelector('.fs-rside-t2');if(st){st.setAttribute('role','button');st.tabIndex=0;var tg=function(){st.closest('.fs-rside').classList.toggle('is-open');};st.addEventListener('click',tg);st.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tg();}});}var so=document.querySelector('.fs-rsort');if(so)so.addEventListener('change',function(){sort(so.value);});
 document.addEventListener('click',function(e){if(e.target.closest('.e-filter-item')){setTimeout(apply,30);setTimeout(apply,600);}});
 var g=document.querySelector('.fs-lgrid');if(g&&window.MutationObserver)new MutationObserver(function(){clearTimeout(run.t);run.t=setTimeout(apply,30);}).observe(g,{childList:true,subtree:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();})();</script>"""
@@ -103,7 +114,9 @@ def library(loop_item_id=''):
                    s={'padding_mobile': {'unit': 'px', 'top': '12', 'right': '16', 'bottom': '12', 'left': '16', 'isLinked': False}})
     side = con(H('Filter by service', 'fs-rside-t2'), *groups, cls='fs-gcard fs-rside', gap_=22, p=pad(26, 22, 26, 22))
     side['settings']['custom_css'] = side_css()   # editable in Elementor: this card > Advanced > Custom CSS
-    main = con(feat, grid, gap_=28, cls='fs-rmain')
+    toolbar = con(H('Showing all resources', 'fs-rcount2'), html(SORT_HTML, 'fs-rsort-w'), d='row', justify='space-between', align='center', gap_=16,
+                  mobile_col=False, cls='fs-rtools2')
+    main = con(feat, toolbar, grid, gap_=20, cls='fs-rmain')
     body = section(con(side, main, d='row', gap_=44, align='flex-start', cls='fs-rbody fs-nostyle'), cls='fs-geo', title='Resource library',
                    bg_img='assets/img/design/bg-geometric.jpg', p={'unit': 'px', 'top': '56', 'right': '24', 'bottom': '100', 'left': '24', 'isLinked': False},
                    s={'_element_id': 'library'})

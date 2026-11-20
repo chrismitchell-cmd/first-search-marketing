@@ -21,9 +21,11 @@ def _sample(item, label, title, date, tags):
         if 'fs-li-type' in c: x['settings']['title'] = label
         elif 'fs-li-date' in c: x['settings']['title'] = date
         elif 'fs-li-title' in c: x['settings']['title'] = title
-        elif 'fs-li-tags' in c: x['settings']['title'] = tags
         elif x.get('widgetType') == 'theme-post-featured-image':
             x['widgetType'] = 'image'; x['settings'] = {'image': {'url': '../upload/first-search/' + ('blog/2027-marketing-trends.webp' if 'trends' in title else 'design/case-dental.webp' if 'Dental' in title else 'design/chris-cutout.webp')}, '_css_classes': c}
+        elif x.get('widgetType') == 'post-info':
+            chips = ', '.join(f'<a class="elementor-post-info__terms-list-item">{t}</a>' for t in tags.split(' · '))
+            x['widgetType'] = 'text-editor'; x['settings'] = {'editor': f'<ul class="elementor-inline-items elementor-icon-list-items elementor-post-info"><li class="elementor-icon-list-item elementor-inline-item"><span class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-terms"><span class="elementor-post-info__terms-list">{chips}</span></span></li></ul>', '_css_classes': c}
         elif x.get('widgetType') == 'theme-post-excerpt':
             x['widgetType'] = 'text-editor'; x['settings'] = {'editor': '<p>A short summary of the post, pulled from its excerpt, so readers know what they will get.</p>', '_css_classes': c}
         for y in x.get('elements', []): walk(y)
