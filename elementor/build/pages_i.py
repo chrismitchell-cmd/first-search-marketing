@@ -40,6 +40,17 @@ FEATURED = dict(stat='8x', label='more digital leads a month', meta='Dental prac
                 text='A new owner, a dated brand and an agency that never delivered. A rebrand, local SEO, reviews and ads later, digital leads now outnumber referrals for the first time in the practice’s history.',
                 url='/case-studies/progressive-dental-care/', img='assets/img/design/case-dental.webp')
 
+COUNTS_JS = """<script>(function(){function run(){var f=document.querySelector('.fs-tfilter--types .e-filter');if(!f)return;
+var add=function(b,n){if(n==null||b.querySelector('.n'))return;var s=document.createElement('span');s.className='n';s.textContent=n;b.appendChild(s);};
+var api=(window.wpApiSettings&&wpApiSettings.root)||'/wp-json/';
+fetch(api+'wp/v2/categories?per_page=100&_fields=slug,count').then(function(r){return r.json();}).then(function(cs){var m={},all=0;
+cs.forEach(function(c){m[c.slug]=c.count;if(c.slug!=='uncategorized')all+=c.count;});
+[].forEach.call(f.querySelectorAll('.e-filter-item'),function(b){var k=b.getAttribute('data-filter');add(b,k==='__all'||!k?all:m[k]);});}).catch(function(){});}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();})();</script>"""
+def counts_js():
+    """Post counts on the type tabs, read from WordPress (categories endpoint), so they are always right."""
+    return html(COUNTS_JS, 'fs-countjs')
+
 def library(loop_item_id=''):
     f = FEATURED
     feat = con(con(image(f['img'], 'fs-rfeat-img', None, 'center', 'Progressive Dental Care'),
@@ -62,7 +73,8 @@ def library(loop_item_id=''):
                                    'include_terms': [t for t, _ in terms]}, 'fs-tfilter fs-tfilter--tags')
         tf['settings']['_fs_preview_labels'] = [n for _, n in terms]   # preview only
         groups.append(con(H(plogo(k), 'fs-rgrp-l'), tf, gap_=10, cls='fs-rgrp'))
-    band = section(types, cls='fs-dark fs-band fs-catsband', title='Resource type tabs',
+    search = w('search-form', {'skin': 'minimal', 'placeholder': 'Search by topic, like reviews or Google'}, 'fs-rsearch')
+    band = section(row(types, search, counts_js(), gap_=24, align='center', justify='space-between', cls='fs-band-row'), cls='fs-dark fs-band fs-catsband', title='Resource type tabs',
                    p={'unit': 'px', 'top': '14', 'right': '24', 'bottom': '14', 'left': '24', 'isLinked': False},
                    s={'padding_mobile': {'unit': 'px', 'top': '12', 'right': '16', 'bottom': '12', 'left': '16', 'isLinked': False}})
     side = con(H('Filter by service', 'fs-rside-t2'), *groups, cls='fs-gcard fs-rside', gap_=22, p=pad(26, 22, 26, 22))

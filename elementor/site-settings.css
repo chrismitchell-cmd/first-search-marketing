@@ -2667,12 +2667,25 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 @media (max-width: 767px) { .e-con.fs-bl-author { flex-direction: column !important; text-align: center; } }
 
 /* ---------- 51. Resources library, post-driven (Taxonomy Filters + Loop Grid) and the featured case study ---------- */
-/* type tabs on the purple band */
-.fs-tfilter--types .e-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-.fs-tfilter .e-filter-item { cursor: pointer; font-family: var(--fs-font) !important; font-weight: 600 !important; border-radius: 999px !important; transition: background .15s ease, color .15s ease, border-color .15s ease; }
-.fs-tfilter--types .e-filter-item { padding: 10px 22px !important; font-size: 16px !important; color: #fff !important; background: rgba(255, 255, 255, .08) !important; border: 1px solid rgba(255, 255, 255, .25) !important; }
-.fs-tfilter--types .e-filter-item:hover { border-color: var(--fs-aqua) !important; }
-.fs-tfilter--types .e-filter-item[aria-pressed="true"] { background: #fff !important; color: var(--fs-purple) !important; border-color: #fff !important; }
+/* type tabs on the purple band: text tabs with a count badge, aqua underline on the active one; search box on the right */
+.fs-band-row > .fs-tfilter--types { flex: 1 1 auto !important; width: auto !important; min-width: 0; }
+.fs-band-row > .fs-rsearch { flex: 0 0 min(440px, 36%) !important; width: auto !important; }
+.fs-tfilter--types .e-filter { display: flex; flex-wrap: nowrap; gap: 4px 6px; }
+.fs-tfilter .e-filter-item { cursor: pointer; transition: color .15s ease, background-size .2s ease; }
+.fs-tfilter--types .e-filter-item { display: inline-flex !important; align-items: center; gap: 10px; padding: 18px 14px 20px !important; white-space: nowrap; border: 0 !important; border-radius: 0 !important;
+  background: linear-gradient(90deg, #72CCD8, #3299D5) left bottom / 0 4px no-repeat !important; font-family: var(--fs-font) !important; font-size: 20px !important; font-weight: 500 !important; color: rgba(255, 255, 255, .85) !important; }
+.fs-tfilter--types .e-filter-item:hover { color: #fff !important; }
+.fs-tfilter--types .e-filter-item[aria-pressed="true"] { color: #fff !important; font-weight: 600 !important; background-size: 100% 4px !important; }
+.fs-tfilter--types .e-filter-item .n { display: inline-grid; place-items: center; min-width: 36px; height: 30px; padding: 0 10px; border-radius: 999px; background: rgba(255, 255, 255, .14);
+  font-family: var(--fs-font-ui); font-size: 15px; font-weight: 600; color: #fff; }
+.fs-tfilter--types .e-filter-item[aria-pressed="true"] .n { background: linear-gradient(135deg, #72CCD8, #2F78BA); }
+.fs-rsearch .elementor-search-form__container { display: flex !important; align-items: center; min-height: 64px; border-radius: 14px !important; background: #fff !important; border: 3px solid var(--fs-aqua) !important; box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .5); overflow: hidden; }
+.fs-rsearch .elementor-search-form__icon { display: flex; align-items: center; padding: 0 6px 0 22px; font-size: 22px; color: var(--fs-purple) !important; }
+.fs-rsearch .elementor-search-form__input { flex: 1 1 auto; min-width: 0; min-height: 58px; padding: 0 18px 0 10px !important; border: 0 !important; background: transparent !important; font-family: var(--fs-font) !important; font-size: 18px !important; color: var(--fs-ink) !important; }
+.fs-rsearch .elementor-search-form__input::placeholder { color: var(--fs-muted); }
+.elementor-widget.fs-countjs { position: absolute !important; width: 0 !important; height: 0 !important; overflow: hidden; margin: 0 !important; }
+@media (max-width: 1100px) { .e-con.fs-band-row { flex-direction: column !important; align-items: stretch !important; } .fs-tfilter--types .e-filter { overflow-x: auto; scrollbar-width: none; } .fs-band-row > .fs-rsearch { flex: none !important; width: 100% !important; } }
+@media (max-width: 767px) { .fs-tfilter--types .e-filter { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; } .fs-tfilter--types .e-filter-item { flex: none; font-size: 18px !important; padding: 14px 10px 16px !important; } }
 /* service filter in the side card: a stage logo over each group of pills, as in the original design */
 .fs-rside-t2 .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 19px !important; font-weight: 700 !important; color: var(--fs-purple) !important; }
 .fs-rgrp-l .elementor-heading-title { margin: 0; line-height: 1 !important; } .fs-rgrp-l .fs-plogo { font-size: 19px; color: var(--fs-purple); }
@@ -2686,7 +2699,7 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 .fs-lgrid .e-loop__load-more .elementor-button { padding: 16px 32px; border-radius: 10px; background: var(--fs-purple) !important; color: #fff !important; font-family: var(--fs-font); font-weight: 600; }
 .fs-lgrid .e-loop-nothing-found-message { padding: 40px; border-radius: 24px; background: #fff; text-align: center; color: var(--fs-body); }
 @media (max-width: 1024px) { .fs-lgrid { --fs-cols: 2; } }
-@media (max-width: 767px) { .fs-lgrid { --fs-cols: 1; } .fs-tfilter--types .e-filter { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; } .fs-tfilter--types .e-filter-item { flex: none; } }
+@media (max-width: 767px) { .fs-lgrid { --fs-cols: 1; } }
 /* featured case study: badge and the stat box (dark text on the white box, not inherited from the purple card) */
 .fs-rf-badge .elementor-heading-title { display: inline-flex; padding: 5px 14px; border-radius: 999px; background: var(--fs-grad); font-family: var(--fs-font) !important; font-size: 13px !important; font-weight: 700 !important; line-height: 1.4 !important; color: #fff !important; }
 .fs-rfeat-l > .e-con.fs-rf-box { position: absolute !important; left: 20px; bottom: 20px; width: auto !important; max-width: 78%; z-index: 1; border-radius: 18px; background: #fff; box-shadow: 0 16px 30px -16px rgba(0, 0, 0, .5); }

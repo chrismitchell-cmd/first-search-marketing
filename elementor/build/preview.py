@@ -179,13 +179,16 @@ def render(e, depth=0):
     if k in ('posts',):
         c = ''.join('<div class="elementor-post__card" style="background:#fff;padding:20px;height:220px"><span class="elementor-post__badge" style="color:#fff;padding:2px 10px">Blog</span><h3 class="elementor-post__title"><a>Post title</a></h3><a class="elementor-post__read-more">Read more »</a></div>' for _ in range(3))
         return wrap(f'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">{c}</div>')
+    if k == 'search-form':
+        return wrap(f'<form class="elementor-search-form" role="search"><div class="elementor-search-form__container"><div class="elementor-search-form__icon"><i aria-hidden="true">⌕</i></div><input class="elementor-search-form__input" type="search" placeholder="{s.get("placeholder", "Search")}"></div></form>')
     if k == 'taxonomy-filter':   # Elementor's markup: <search class="e-filter"><button class="e-filter-item" aria-pressed>
         items = (['All', 'Blog', 'Case Studies', 'Podcast', 'Videos'] if s.get('taxonomy') == 'category' else
                  ['All services', 'Advertising', 'Analytics', 'Branding and Content', 'CRM', 'FirstBrand', 'FirstChoice', 'FirstReferral', 'FirstThought', 'Lead Generation',
                   'Marketing Automation', 'Reviews and Referrals', 'SEO and AEO', 'Social Media', 'Website Design'])
         if s.get('_fs_preview_labels'): items = s['_fs_preview_labels']
         first_on = s.get('show_first_item') == 'yes'
-        return wrap('<search class="e-filter" role="search">' + ''.join(f'<button class="e-filter-item" aria-pressed="{"true" if n == 0 and first_on else "false"}">{t}</button>' for n, t in enumerate(items)) + '</search>')
+        cnt = {'All': 18, 'Blog': 6, 'Case Studies': 4, 'Podcast': 4, 'Videos': 4} if s.get('taxonomy') == 'category' else {}
+        return wrap('<search class="e-filter" role="search">' + ''.join(f'<button class="e-filter-item" aria-pressed="{"true" if n == 0 and first_on else "false"}">{t}' + (f'<span class="n">{cnt[t]}</span>' if t in cnt else '') + '</button>' for n, t in enumerate(items)) + '</search>')
     if k == 'loop-grid' and LOOP_ITEM:   # render the real card template with sample posts
         cards = ''
         for cat, label, title, date, tags in LOOP_SAMPLES:
