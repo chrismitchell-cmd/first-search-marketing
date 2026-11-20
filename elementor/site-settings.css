@@ -2579,3 +2579,25 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
   .fs-cs-tabs .e-n-tabs-heading { justify-content: flex-start !important; flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; }
   .fs-cs-tabs .e-n-tab-title { flex: none !important; }
 }
+
+/* ---------- 49. Video pages (templates/videos): native widgets ---------- */
+.fs-vp-back a, .fs-vp-back .elementor-heading-title { font-family: var(--fs-font-ui) !important; font-size: 14.5px !important; font-weight: 600 !important; color: var(--fs-sky-ink) !important; text-decoration: none !important; }
+.fs-vp-type .elementor-heading-title { display: inline-flex; padding: 4px 12px; border-radius: 999px; background: var(--fs-royal); font-family: var(--fs-font) !important; font-size: 12.5px !important; font-weight: 700 !important; line-height: 1.5 !important; color: #fff !important; }
+.fs-vp-meta .elementor-heading-title { font-family: var(--fs-font-ui) !important; font-size: 14px !important; font-weight: 500 !important; color: var(--fs-muted) !important; }
+.fs-nostyle > .fs-vp-type, .fs-nostyle > .fs-vp-meta { width: auto !important; flex: none !important; }
+.fs-vp-list .elementor-icon-list-text b { color: var(--fs-purple); font-weight: 700; }
+.e-con.fs-vp-ch { border-radius: 14px; background: #F4F4F6; border: 1px solid var(--fs-line); }
+.fs-vp-ch > .fs-vp-ct { flex: 0 0 56px !important; width: 56px !important; } .fs-vp-ch > .fs-vp-cl { flex: 1 1 auto !important; width: auto !important; }
+.fs-vp-ct .elementor-heading-title { margin: 0; font-family: var(--fs-font-ui) !important; font-size: 14px !important; font-weight: 700 !important; color: var(--fs-sky-ink) !important; }
+.fs-vp-cl .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 15.5px !important; font-weight: 600 !important; color: var(--fs-purple) !important; }
+.fs-vp-cover img { display: block; width: 100%; aspect-ratio: 16 / 8; object-fit: cover; object-position: 50% 20%; background: var(--fs-purple); }
+.fs-vp-ct3 .elementor-heading-title { font-size: 19px !important; line-height: 1.3 !important; color: var(--fs-purple) !important; }
+.e-con.fs-vp-card { overflow: hidden; }
+.fs-vp-h3 .elementor-heading-title { margin-top: 10px; font-family: var(--fs-font) !important; font-size: 22px !important; font-weight: 700 !important; line-height: 1.25 !important; color: var(--fs-purple) !important; }
+.fs-vp-ment .elementor-icon-list-item { margin: 0 !important; padding: 0 !important; border-bottom: 1px solid var(--fs-line); }
+.fs-vp-ment .elementor-icon-list-item:last-child { border-bottom: 0; }
+.fs-vp-ment .elementor-icon-list-item::after { display: none !important; }
+.fs-vp-ment .elementor-icon-list-item a { display: flex !important; flex-direction: row-reverse; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; text-decoration: none !important; }
+.fs-vp-ment .elementor-icon-list-text { padding: 0 !important; font-family: var(--fs-font) !important; font-size: 14.5px !important; font-weight: 600 !important; color: var(--fs-purple) !important; text-decoration: none !important; }
+.fs-vp-ment .elementor-icon-list-icon i, .fs-vp-ment .elementor-icon-list-icon svg { font-size: 12px !important; color: var(--fs-sky) !important; fill: var(--fs-sky) !important; }
+.fs-vp-ment a:hover .elementor-icon-list-text { color: var(--fs-royal) !important; }

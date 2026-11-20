@@ -211,7 +211,8 @@ def process(templates):
     role_styles = defaultdict(Counter); role_keep = {}
     for page, tpl in templates:
         occ = Counter()
-        def visit(e, stack, page=page, occ=occ):
+        page_voteless = page.endswith('!'); page = page.rstrip('!')
+        def visit(e, stack, page=page, occ=occ, page_voteless=page_voteless):
             if e['elType'] != 'widget': return
             # "Three ways" tabs: the whole look comes from the fs-ways CSS, so nothing is written on its widgets
             if any('fs-ways-tabs' in x or 'fs-nostyle' in x for x in stack): return
@@ -223,7 +224,7 @@ def process(templates):
                     if st and st.get('d'): break
                     st = None
                 rl = role(e, part, stack)
-                if st:
+                if st and not page_voteless:   # pages added later don't shift the shared role styles
                     k = json.dumps(st, sort_keys=True); role_styles[rl][k] += 1; role_keep[k] = st
                 assign.append((e, prefix, ckey, part, rl, st))
         walk(tpl['content'], visit)

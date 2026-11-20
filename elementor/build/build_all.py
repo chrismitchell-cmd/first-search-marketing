@@ -32,18 +32,21 @@ import pages_e
 for i, slug in ([] if os.environ.get('NO_EVENTS') else enumerate(pages_e.PAGES, 1)):
     T.append((f'events/{i:02d}-{slug}', f'Event · {pages_e.WS[slug][1]}', 'page', lambda slug=slug: pages_e.event_page(slug)))
 # case studies: one page per client in case_studies.CASES (built after the workshops, same ID-seed treatment)
-import pages_f, case_studies
+import pages_f, case_studies, pages_g
 for cs in case_studies.CASES:
     T.append((f'case-studies/{cs["slug"]}', f'Case study · {cs["client"]}', 'page', lambda cs=cs: pages_f.case_study_page(cs)))
+# individual videos (posts in the Videos category): page templates, built last with their own IDs
+T.append(('videos/first-search-marketing-in-two-minutes', 'Video · First Search Marketing in two minutes', 'page', pages_g.video_fsm))
 
 for f in glob.glob('../templates/**/*.json', recursive=True): os.remove(f)
-for d in ('pages', 'services', 'framework', 'singles', 'location', 'events', 'case-studies'): os.makedirs(f'../templates/{d}', exist_ok=True)
+for d in ('pages', 'services', 'framework', 'singles', 'location', 'events', 'case-studies', 'videos'): os.makedirs(f'../templates/{d}', exist_ok=True)
 def proto_key(path):
     if path in PROTO: return PROTO[path]
     if path.startswith('services/'): return 'service:' + {'branding-content-creation': 'branding'}.get(path.split('-', 1)[1], path.split('-', 1)[1])
     if path.startswith('framework/'): return 'stage:' + path.split('first', 1)[1]
     if path.startswith('events/'): return 'event'
     if path.startswith('case-studies/'): return 'case'
+    if path.startswith('videos/'): return 'video!'   # '!': measured like the video page, no vote in shared styles
     return 'home'
 built = [('header', 'home', header_footer.HEADER), ('footer', 'home', header_footer.FOOTER)]
 import random
@@ -51,6 +54,7 @@ _rs = None
 for path, title, kind, fn in T:
     if path.startswith('events/') and _rs is None: _rs = random.getstate(); random.seed('workshops')   # see below
     if path.startswith('case-studies/'): random.seed('case:' + path)   # each case study keeps its own IDs
+    if path.startswith('videos/'): random.seed('video:' + path)   # and each video
     built.append((path, proto_key(path), template('First Search · ' + title, kind, fn())))
 # the workshop pages draw element IDs from their own random sequence, and the main one is put back afterwards, so every
 # other template keeps exactly the same IDs whenever a workshop is added or changed
