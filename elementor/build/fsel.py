@@ -19,10 +19,14 @@ ASSET_V2 = f'https://raw.githubusercontent.com/chrismitchell-cmd/first-search-ma
 # Case study images (logos, image placeholder) load from the commit that added them.
 CASE_COMMIT = 'a79bf2b7141741f550e2c63b429228c6ce423f06'
 ASSET_CASE = f'https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/{CASE_COMMIT}/elementor/upload/first-search/'
+# Blog images (featured banners) load from the commit that added them.
+BLOG_COMMIT = '9cea73b1933e4b7daff4fdb7a48317182aa3298c'
+ASSET_BLOG = f'https://raw.githubusercontent.com/chrismitchell-cmd/first-search-marketing/{BLOG_COMMIT}/elementor/upload/first-search/'
 def asset(path):
     """Prototype asset path (assets/img/...) -> hosted URL."""
     rel = re.sub(r'^assets/img/', '', path)
     if rel.startswith('case/'): return ASSET_CASE + rel
+    if rel.startswith('blog/'): return ASSET_BLOG + rel
     return (ASSET_V2 if rel == 'framework-wheel.webp' or rel.startswith('wheels/') else ASSET) + rel
 
 def px(n): return {'unit': 'px', 'size': n, 'sizes': []}

@@ -194,6 +194,7 @@ def gradient_headings(tpl):
         if e.get('widgetType') != 'heading' or e['settings'].get('header_size', 'h2') != 'h2': return
         t = e['settings'].get('title', '')
         if '<span' in t or any(c in x for x in stack for c in DARK_CTX): return
+        if 'fs-plain' in e['settings'].get('_css_classes', ''): return   # article headings stay solid, as in the HTML
         if re.search(r'<br\s*/?>', t):
             a, b = re.split(r'<br\s*/?>', t, 1)
             if b.strip(): e['settings']['title'] = f'{a}<br><span class="fs-gt">{b.strip()}</span>'
