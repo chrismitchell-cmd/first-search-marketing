@@ -51,6 +51,17 @@ def counts_js():
     """Post counts on the type tabs, read from WordPress (categories endpoint), so they are always right."""
     return html(COUNTS_JS, 'fs-countjs')
 
+def side_css():
+    """Readable CSS on the "Filter by service" card: which service tags show under each stage, by tag slug."""
+    out = ['/* FILTER BY SERVICE: which services show under each stage.',
+           '   Inside each :not( ) is that stage\'s list of tag slugs (Posts > Tags > Slug column).',
+           '   To ADD a service: add a line  [data-filter="new-tag-slug"],  to its stage (comma after every line but the last).',
+           '   To MOVE a service: move its line to another stage. */', '']
+    for k, terms in SERVICE_GROUPS:
+        lines = ',\n'.join(f'  [data-filter="{t}"]' for t, _ in terms)
+        out += [f'/* first{k} */', f'.fs-tfilter--{k} .e-filter-item:not(\n{lines}\n) {{ display: none !important; }}', '']
+    return '\n'.join(out)
+
 def library(loop_item_id=''):
     f = FEATURED
     feat = con(con(image(f['img'], 'fs-rfeat-img', None, 'center', 'Progressive Dental Care'),
@@ -77,6 +88,7 @@ def library(loop_item_id=''):
                    p={'unit': 'px', 'top': '14', 'right': '24', 'bottom': '14', 'left': '24', 'isLinked': False},
                    s={'padding_mobile': {'unit': 'px', 'top': '12', 'right': '16', 'bottom': '12', 'left': '16', 'isLinked': False}})
     side = con(H('Filter by service', 'fs-rside-t2'), *groups, cls='fs-gcard fs-rside', gap_=22, p=pad(26, 22, 26, 22))
+    side['settings']['custom_css'] = side_css()   # editable in Elementor: this card > Advanced > Custom CSS
     main = con(feat, grid, gap_=28, cls='fs-rmain')
     body = section(con(side, main, d='row', gap_=44, align='flex-start', cls='fs-rbody fs-nostyle'), cls='fs-geo', title='Resource library',
                    bg_img='assets/img/design/bg-geometric.jpg', p={'unit': 'px', 'top': '56', 'right': '24', 'bottom': '100', 'left': '24', 'isLinked': False},

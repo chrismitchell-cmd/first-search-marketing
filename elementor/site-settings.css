@@ -2694,11 +2694,6 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
   color: var(--fs-purple) !important; background: #fff !important; border: 1.5px solid var(--fs-line) !important; }
 .fs-tfilter--tags .e-filter-item:hover { border-color: var(--fs-aqua) !important; }
 .fs-tfilter--tags .e-filter-item[aria-pressed="true"] { background: var(--fs-purple) !important; border-color: var(--fs-purple) !important; color: #fff !important; }
-/* each stage filter shows only its own service tags (matched by tag slug) */
-.fs-tfilter--brand .e-filter-item:not([data-filter="branding-and-content"]):not([data-filter="website-design"]):not([data-filter="analytics"]):not([data-filter="crm"]) { display: none !important; }
-.fs-tfilter--thought .e-filter-item:not([data-filter="seo-and-aeo"]):not([data-filter="advertising"]):not([data-filter="social-media"]) { display: none !important; }
-.fs-tfilter--choice .e-filter-item:not([data-filter="lead-generation"]):not([data-filter="marketing-automation"]) { display: none !important; }
-.fs-tfilter--referral .e-filter-item:not([data-filter="reviews-and-referrals"]) { display: none !important; }
 /* the grid and load more */
 .fs-lgrid .elementor-loop-container { gap: 24px; }
 .fs-lgrid .e-loop__load-more .elementor-button { padding: 16px 32px; border-radius: 10px; background: var(--fs-purple) !important; color: #fff !important; font-family: var(--fs-font); font-weight: 600; }
