@@ -2689,8 +2689,8 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 /* service filter in the side card: a stage logo over each group of pills, as in the original design */
 .fs-rside-t2 .elementor-heading-title { margin: 0; font-family: var(--fs-font) !important; font-size: 19px !important; font-weight: 700 !important; color: var(--fs-purple) !important; }
 .fs-rgrp-l .elementor-heading-title { margin: 0; line-height: 1 !important; } .fs-rgrp-l .fs-plogo { font-size: 19px; color: var(--fs-purple); }
-.fs-tfilter--tags .e-filter { display: flex; flex-wrap: wrap; gap: 8px; }
-.fs-tfilter--tags .e-filter-item { display: inline-flex !important; align-items: center; min-height: 38px; padding: 7px 13px !important; font-family: var(--fs-font-ui) !important; font-size: 13.5px !important; font-weight: 600 !important;
+.fs-tfilter--tags .e-filter { display: flex; flex-wrap: wrap; justify-content: flex-start !important; gap: 8px; }
+.fs-tfilter--tags .e-filter-item { display: inline-flex !important; align-items: center; min-height: 38px; padding: 7px 13px !important; border-radius: 999px !important; --e-filter-item-border-radius: 999px; margin: 0 !important; font-family: var(--fs-font-ui) !important; font-size: 13.5px !important; font-weight: 600 !important;
   color: var(--fs-purple) !important; background: #fff !important; border: 1.5px solid var(--fs-line) !important; }
 .fs-tfilter--tags .e-filter-item:hover { border-color: var(--fs-aqua) !important; }
 .fs-tfilter--tags .e-filter-item[aria-pressed="true"] { background: var(--fs-purple) !important; border-color: var(--fs-purple) !important; color: #fff !important; }
