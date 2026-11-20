@@ -88,9 +88,9 @@ def blog():
     return [
         section(con(html(back('All articles', '/resources/')), html('<p><span class="fs-type fs-type--blog">Blog</span></p>'),
                     w('theme-post-title', {'header_size': 'h1'}, 'fs-h1-rule'),
-                    w('theme-post-excerpt', {}, 'fs-hero-lead'),
+                    w('theme-post-excerpt', {'__dynamic__': {'excerpt': '[elementor-tag id="fsbp1ex" name="post-excerpt" settings="%7B%22apply_to_post_content%22%3A%22yes%22%7D"]'}}, 'fs-hero-lead'),
                     w('post-info', {'icon_list': [{'_id': uid(), 'type': 'author', 'show_avatar': 'yes'}, {'_id': uid(), 'type': 'date'}, {'_id': uid(), 'type': 'custom', 'custom_text': '7 min read'}]}, 'fs-byline'),
-                    w('theme-post-featured-image', {'image_size': 'full'}, 'fs-img-frame'), gap_=18, s={'max_width': px(1080)}),
+                    w('theme-post-featured-image', {'image_size': 'full', '__dynamic__': {'image': '[elementor-tag id="fsbp1im" name="post-featured-image" settings="%7B%7D"]'}}, 'fs-img-frame'), gap_=18, s={'max_width': px(1080)}),
                 cls='fs-geo', title='Article header', bg_img=GEO, align='center'),
         section(row(side, body, gap_=56, align='flex-start'), title='Article'),
         section(row(col(heading('One useful marketing idea a week.'), text('Real stories and practical tips like this one, straight to your inbox. No fluff, unsubscribe any time.'), wpct=50),

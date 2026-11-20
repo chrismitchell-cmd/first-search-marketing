@@ -37,6 +37,7 @@
       "image_size": "medium_large",
       "link_to": "custom",
       "__dynamic__": {
+       "image": "[elementor-tag id=\"fsli1im\" name=\"post-featured-image\" settings=\"%7B%7D\"]",
        "link": "[elementor-tag id=\"74764be\" name=\"post-url\" settings=\"%7B%7D\"]"
       },
       "_css_classes": "fs-li-img"
@@ -168,7 +169,9 @@
        "elType": "widget",
        "widgetType": "theme-post-excerpt",
        "settings": {
-        "excerpt_length": 22,
+        "__dynamic__": {
+         "excerpt": "[elementor-tag id=\"fsli1ex\" name=\"post-excerpt\" settings=\"%7B%22max_length%22%3A%2222%22%2C%22apply_to_post_content%22%3A%22yes%22%7D\"]"
+        },
         "_css_classes": "fs-li-ex"
        },
        "elements": []

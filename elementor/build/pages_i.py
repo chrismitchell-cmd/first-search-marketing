@@ -5,9 +5,9 @@ import json, urllib.parse
 from comp import *
 from pages_a import GEO
 
-def dyn(name, **settings):
-    """Elementor dynamic tag string, e.g. post-title / post-terms / post-url."""
-    return f'[elementor-tag id="{uid()}" name="{name}" settings="{urllib.parse.quote(json.dumps(settings, separators=(",", ":")))}"]'
+def dyn(name, _id=None, **settings):
+    """Elementor dynamic tag string, e.g. post-title / post-terms / post-url. Pass _id to keep other element IDs unchanged."""
+    return f'[elementor-tag id="{_id or uid()}" name="{name}" settings="{urllib.parse.quote(json.dumps(settings, separators=(",", ":")))}"]'
 def H(t, cls, tag='p', url=None, align=None):
     h = heading(t, tag, cls, align)
     if url: h['settings']['link'] = {'url': url, 'is_external': '', 'nofollow': ''}
@@ -19,11 +19,12 @@ def ns(*kids, cls='', **kw):
 def loop_item():
     """Card = featured image | type pill (category) + date | title | excerpt | tags | link, all from the post.
     The pill colour comes from the post's category class (category-blog, category-case-studies, ...)."""
-    img = w('theme-post-featured-image', {'image_size': 'medium_large', 'link_to': 'custom', '__dynamic__': {'link': dyn('post-url')}}, 'fs-li-img')
+    img = w('theme-post-featured-image', {'image_size': 'medium_large', 'link_to': 'custom',
+                                         '__dynamic__': {'image': dyn('post-featured-image', 'fsli1im'), 'link': dyn('post-url')}}, 'fs-li-img')
     pill = H('Resource', 'fs-li-type'); pill['settings']['__dynamic__'] = {'title': dyn('post-terms', taxonomy='category', separator=' ', link='')}
     date = H('Date', 'fs-li-date'); date['settings']['__dynamic__'] = {'title': dyn('post-date', type='published', format='M j, Y')}
     title = H('Post title', 'fs-li-title', 'h3'); title['settings']['__dynamic__'] = {'title': dyn('post-title'), 'link': dyn('post-url')}
-    ex = w('theme-post-excerpt', {'excerpt_length': 22}, 'fs-li-ex')
+    ex = w('theme-post-excerpt', {'__dynamic__': {'excerpt': dyn('post-excerpt', 'fsli1ex', max_length='22', apply_to_post_content='yes')}}, 'fs-li-ex')
     # tags as chips: Post Info widget, Terms item (each tag is its own link; CSS makes them grey chips)
     tags = w('post-info', {'view': 'inline', 'icon_list': [{'_id': uid(), 'type': 'terms', 'taxonomy': 'post_tag', 'link': 'yes', 'show_icon': 'none'}]}, 'fs-li-tags')
     more = button('Read more', '#', 'fs-link-u fs-li-more'); more['settings']['__dynamic__'] = {'link': dyn('post-url')}
