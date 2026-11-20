@@ -2745,7 +2745,7 @@ body .elementor-widget-heading .elementor-heading-title, body .elementor-widget-
 /* show up to 3 service tags per card; the stage tags (firstbrand ... firstreferral) stay filters only */
 .fs-li-tags .elementor-post-info__terms-list-item[href*="/tag/first"] { display: none !important; }
 .fs-li-tags .elementor-post-info__terms-list-item:nth-of-type(n+4) { display: none !important; }
-.fs-li-tags .elementor-post-info__terms-list-item:hover { background: #E6E3F3; color: var(--fs-purple) !important; }
+.fs-li-tags .elementor-post-info__terms-list-item { pointer-events: none; cursor: default; }   /* labels only: tag archive pages aren't styled */
 .fs-li-tags .elementor-icon-list-icon { display: none !important; }
 .fs-li-more .elementor-button, .fs-li-more .elementor-button * { font-size: 0 !important; }
 .fs-li-more .elementor-button::after { content: "Read the article"; font-size: 15.5px; }
