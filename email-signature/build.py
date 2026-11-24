@@ -101,7 +101,7 @@ def logo_parts():
     corner = Image.new('L', (W, H), 0); ImageDraw.Draw(corner).rounded_rectangle([0, 0, W - 1, H - 1], radius=16, fill=255)
     return dict(W=W, H=H, bg=bg, pin=pin, word=word, pin_w=pin_w, x0=x0, y0=y0, corner=corner, stripe=stripe)
 
-def logo_frame(P, hop=0, squash=0., angle=0., t=None, sweep=None, rings=(), glint=0., grow=1.):
+def logo_frame(P, hop=0, squash=0., angle=0., t=None, sweep=None, rings=(), glint=0., grow=1., reveal=1., fade=1.):
     W, H = P['W'], P['H']; f = P['bg'].copy(); pin = P['pin']; x0, y0 = P['x0'], P['y0']
     tipx, tipy = x0 + P['pin_w'] * .46, y0 + pin.height - 4
     if sweep is not None:                                       # light across the tiles: brighten and warm the texture
@@ -123,11 +123,18 @@ def logo_frame(P, hop=0, squash=0., angle=0., t=None, sweep=None, rings=(), glin
         lay.paste(big, (px - pin.width, py), big)
     else:
         lay.paste(p, (px, py), p)
-    wl = Image.new('RGBA', (W, H)); wl.paste(P['word'], (x0 + P['pin_w'], y0), P['word']); lay.alpha_composite(wl)
-    if grow != 1.:                                              # grow the whole logo from the pin tip
-        big = lay.resize((round(W * grow), round(H * grow)), Image.LANCZOS)
-        lay = Image.new('RGBA', (W, H)); lay.paste(big, (round(tipx - tipx * grow), round(tipy - tipy * grow)))
-        wl = lay
+    wd = P['word']; wx, wy = x0 + P['pin_w'], y0
+    if grow != 1.:                                              # grow the wordmark only, from its left edge (clear of the pin)
+        cy = wy + wd.height / 2
+        wd = wd.resize((round(wd.width * grow), round(wd.height * grow)), Image.LANCZOS); wy = round(cy - wd.height / 2)
+    wl = Image.new('RGBA', (W, H)); wl.paste(wd, (wx, wy), wd)
+    if reveal < 1. or fade < 1.:                                # wipe in from the left with a soft edge, or fade
+        edge = 40; xr = wx - edge + (wd.width + 2 * edge) * reveal
+        ramp = Image.new('L', (W, 1)); ramp.putdata([max(0, min(255, int(255 * (xr - x) / edge))) for x in range(W)])
+        a = ImageChops.multiply(wl.split()[3], ramp.resize((W, H)))
+        if fade < 1.: a = a.point(lambda v: int(v * fade))
+        wl.putalpha(a)
+    lay.alpha_composite(wl)
     f.paste(lay, (0, 0), lay)
     if t is not None: f = shine(f, wl.split()[3], t, width=.12, strength=.7)
     if glint:                                                   # sparkle on the magnifier lens
@@ -152,11 +159,17 @@ def logo_gifs():
         + [(dict(hop=y), 45) for y in (3, 5, 3, 0)] + [(dict(t=i / 13), 50) for i in range(14)])
     # 2. ping: location rings ripple out from the pin tip, then the lens sparkles
     st = []
+    ring = lambda k: [(6 + (k - d) * 4.2, max(0, 1 - (k - d) / 7)) for d in (0, 3, 6) if 0 <= k - d < 8]
     for k in range(12):
-        rings = [(6 + (k - d) * 4.2, max(0, 1 - (k - d) / 7)) for d in (0, 3, 6) if 0 <= k - d < 8]
-        g = 1 + .06 * math.sin(math.pi * min(1, k / 10))      # grow and settle back while the rings ripple
-        st.append((dict(rings=rings, grow=g), 70))
+        g = 1 + .07 * math.sin(math.pi * min(1, k / 10))      # the wordmark grows and settles back while the rings ripple
+        st.append((dict(rings=ring(k), grow=g), 70))
     run('ping', st)
+    # 2b. ping-reveal: the wordmark fades out, then wipes back in from left to right while the rings ripple
+    st = [(dict(fade=v), 60) for v in (.6, .25, 0)]
+    n = 22
+    for k in range(n):
+        st.append((dict(rings=ring(k) if k < 14 else (), reveal=ease_out(k / (n - 1))), 65))
+    run('ping-reveal', st, tail=400)
     # 3. sweep: a soft light passes over the tile texture and the logo, like light across the box
     run('sweep', [(dict(sweep=i / 17), 55) for i in range(18)] + [(dict(t=i / 11), 50) for i in range(12)])
     # 4. search: the pin tilts left and right like it is scanning, then the lens sparkles
@@ -307,10 +320,11 @@ def options_page():
     global LOGO_STYLE
     keep = LOGO_STYLE; blocks = []
     names = dict(hop='1 · Hop: the pin hops and lands, then a shine crosses the name',
-                 ping='2 · Ping: location rings ripple from the pin while the logo grows and settles back',
+                 ping='2 · Ping: location rings ripple from the pin while the name grows and settles back',
+                 **{'ping-reveal': '2b · Ping reveal: the rings ripple while the name appears from left to right'},
                  sweep='3 · Sweep: a soft light passes across the box texture and the name',
                  search='4 · Search: the pin tilts side to side like it is scanning, then the lens sparkles')
-    for k in ('hop', 'ping', 'sweep', 'search'):
+    for k in ('ping', 'ping-reveal', 'hop', 'sweep', 'search'):
         LOGO_STYLE = k; blocks.append(f'<section><h2>{names[k]}</h2><div class="card">{signature_html()}</div></section>')
     LOGO_STYLE = keep
     open(os.path.join(HERE, 'logo-options.html'), 'w').write(f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
