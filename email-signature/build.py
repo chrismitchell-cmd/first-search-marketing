@@ -74,35 +74,88 @@ def save_gif(frames, durations, name):
     print('saved', name, os.path.getsize(os.path.join(IMG, name)) // 1024, 'KB')
 def ease_out(t): return 1 - (1 - t) ** 3
 
-# ---------------- animated logo ----------------
-def logo_gif():
-    S = 2; W, H = 190 * S, 65 * S
+# ---------------- animated logo panel ----------------
+# The logo sits on the white box texture (bg-geometric, the brand's light section background) with the gradient
+# stripe along the bottom, like the gift box lid. Four animation styles; LOGO_STYLE picks the one in the signature.
+LOGO_STYLE = 'hop'          # 'hop', 'ping', 'sweep' or 'search'
+PW, PH = 210, 84            # shown size in the email (the file is 2x for sharp screens)
+import math
+def logo_parts():
+    S = 2; W, H = PW * S, PH * S
+    geo = Image.open(os.path.join(REPO, 'assets/img/design/bg-geometric.jpg')).convert('RGB')
+    sc = H * 2.1 / geo.height; geo = geo.resize((round(geo.width * sc), round(geo.height * sc)), Image.LANCZOS)
+    bg = geo.crop((geo.width - W - 40, 30, geo.width - 40, 30 + H))                    # the tiled part of the texture
+    from PIL import ImageOps                                    # tiles in soft cool greys: shading shows, seams stay light
+    g = ImageOps.autocontrast(bg.convert('L'), cutoff=2).filter(ImageFilter.GaussianBlur(.6))
+    lo, hi = (226, 226, 234), (255, 255, 255)
+    bg = Image.merge('RGB', [g.point(lambda v, a=a_, b=b_: int(a + (b - a) * v / 255)) for a_, b_ in zip(lo, hi)])
+    fade = Image.linear_gradient('L').rotate(90).resize((W, H))                        # whiter behind the wordmark
+    bg.paste(Image.new('RGB', (W, H), WHITE), (0, 0), fade.point(lambda v: int(v * .35)))
+    stripe = 6
+    bg.paste(grad((W, stripe), diag=False), (0, H - stripe))
     logo = Image.open(os.path.join(REPO, 'assets/img/logo.png')).convert('RGBA')
-    lw = W - 8; logo = logo.resize((lw, round(logo.height * lw / logo.width)), Image.LANCZOS)
+    lw = round(W * .8); logo = logo.resize((lw, round(logo.height * lw / logo.width)), Image.LANCZOS)
     pin_w = round(98 * lw / 533) + 4
     pin, word = logo.crop((0, 0, pin_w, logo.height)), logo.crop((pin_w, 0, logo.width, logo.height))
-    top = H - logo.height - 2
-    def frame(hop=0, squash=0., t=None):
-        f = Image.new('RGB', (W, H), WHITE)
-        # soft shadow under the pin, smaller while it is in the air
-        sh = Image.new('L', (W, H), 0); r = pin_w * (.34 - hop / 220)
-        cx, cy = 4 + pin_w * .45, top + logo.height - 3
-        ImageDraw.Draw(sh).ellipse([cx - r, cy - 3, cx + r, cy + 3], fill=int(60 - hop))
-        f.paste(Image.new('RGB', (W, H), (190, 190, 205)), (0, 0), sh.filter(ImageFilter.GaussianBlur(3)))
-        p = pin if not squash else pin.resize((pin.width + int(squash * 6), pin.height - int(squash * 6)), Image.LANCZOS)
-        f.paste(p, (4 - int(squash * 3), top - hop + int(squash * 6)), p)
-        wl = Image.new('RGBA', (W, H)); wl.paste(word, (4 + pin_w, top), word)
-        f.paste(wl, (0, 0), wl)
-        if t is not None: f = shine(f, wl.split()[3], t, width=.12, strength=.7)
-        return f
-    frames, dur = [frame()], [2600]                       # still first frame (classic Outlook shows only this)
-    hops = [7, 13, 17, 19, 17, 13, 7, 0]                  # hop up and land (stays inside the frame)
-    for y in hops: frames.append(frame(hop=y)); dur.append(45)
-    for sq in (1., .5): frames.append(frame(squash=sq)); dur.append(55)
-    for y in (4, 6, 4, 0): frames.append(frame(hop=y)); dur.append(45)    # small rebound
-    for i in range(14): frames.append(frame(t=i / 13)); dur.append(50)    # shine across the wordmark
-    frames.append(frame()); dur.append(600)
-    save_gif(frames, dur, 'logo-animated.gif')
+    x0 = (W - lw) // 2; y0 = (H - stripe - logo.height) // 2 + 2
+    corner = Image.new('L', (W, H), 0); ImageDraw.Draw(corner).rounded_rectangle([0, 0, W - 1, H - 1], radius=16, fill=255)
+    return dict(W=W, H=H, bg=bg, pin=pin, word=word, pin_w=pin_w, x0=x0, y0=y0, corner=corner, stripe=stripe)
+
+def logo_frame(P, hop=0, squash=0., angle=0., t=None, sweep=None, rings=(), glint=0.):
+    W, H = P['W'], P['H']; f = P['bg'].copy(); pin = P['pin']; x0, y0 = P['x0'], P['y0']
+    tipx, tipy = x0 + P['pin_w'] * .46, y0 + pin.height - 4
+    if sweep is not None:                                       # light across the tiles: brighten and warm the texture
+        f = shine(f, Image.new('L', (W, H), 255), sweep, width=.3, strength=.85)
+    for r, a in rings:                                          # location ping: flat rings from the pin tip
+        m = Image.new('L', (W, H), 0); d = ImageDraw.Draw(m)
+        d.ellipse([tipx - r, tipy - r * .3, tipx + r, tipy + r * .3], outline=int(255 * a), width=3)
+        f.paste(Image.new('RGB', (W, H), SKY), (0, 0), m.filter(ImageFilter.GaussianBlur(.6)))
+    sh = Image.new('L', (W, H), 0); r = P['pin_w'] * (.3 - hop / 260)                   # pin shadow
+    ImageDraw.Draw(sh).ellipse([tipx - r, tipy - 3, tipx + r, tipy + 4], fill=int(70 - hop * 1.5))
+    f.paste(Image.new('RGB', (W, H), (170, 170, 190)), (0, 0), sh.filter(ImageFilter.GaussianBlur(3)))
+    p = pin
+    if squash: p = pin.resize((pin.width + int(squash * 6), pin.height - int(squash * 6)), Image.LANCZOS)
+    px, py = x0 - int(squash * 3), y0 - hop + int(squash * 6)
+    if angle:                                                   # tilt around the tip
+        big = Image.new('RGBA', (pin.width * 3, pin.height * 2)); big.paste(p, (pin.width, 0), p)
+        big = big.rotate(angle, resample=Image.BICUBIC, center=(pin.width * 1.46, pin.height - 4))
+        f.paste(big, (px - pin.width, py), big)
+    else:
+        f.paste(p, (px, py), p)
+    wl = Image.new('RGBA', (W, H)); wl.paste(P['word'], (x0 + P['pin_w'], y0), P['word']); f.paste(wl, (0, 0), wl)
+    if t is not None: f = shine(f, wl.split()[3], t, width=.12, strength=.7)
+    if glint:                                                   # sparkle on the magnifier lens
+        gx, gy, gr = x0 + P['pin_w'] * .36, y0 + pin.height * .27, 9 * glint
+        m = Image.new('L', (W, H), 0); d = ImageDraw.Draw(m)
+        d.polygon([(gx, gy - gr * 1.6), (gx + gr * .25, gy - gr * .25), (gx + gr * 1.6, gy), (gx + gr * .25, gy + gr * .25),
+                   (gx, gy + gr * 1.6), (gx - gr * .25, gy + gr * .25), (gx - gr * 1.6, gy), (gx - gr * .25, gy - gr * .25)], fill=255)
+        f.paste(Image.new('RGB', (W, H), WHITE), (0, 0), m.filter(ImageFilter.GaussianBlur(.5)))
+    out = Image.new('RGB', (W, H), WHITE); out.paste(f, (0, 0), P['corner'])          # rounded corners on white
+    ImageDraw.Draw(out).rounded_rectangle([0, 0, W - 1, H - 1], radius=16, outline=(227, 226, 234), width=2)
+    return out
+
+def logo_gifs():
+    P = logo_parts(); F = lambda **k: logo_frame(P, **k)
+    still = F()
+    def run(name, steps, hold=2600, tail=600):
+        frames, dur = [still], [hold]                           # still first frame: classic Outlook shows only this
+        for kw, ms in steps: frames.append(F(**kw)); dur.append(ms)
+        frames.append(still); dur.append(tail); save_gif(frames, dur, f'logo-{name}.gif')
+    # 1. hop: the pin hops and lands, then a shine crosses the wordmark
+    run('hop', [(dict(hop=y), 45) for y in (6, 11, 14, 15, 14, 11, 6, 0)] + [(dict(squash=1.), 55), (dict(squash=.5), 55)]
+        + [(dict(hop=y), 45) for y in (3, 5, 3, 0)] + [(dict(t=i / 13), 50) for i in range(14)])
+    # 2. ping: location rings ripple out from the pin tip, then the lens sparkles
+    st = []
+    for k in range(16):
+        rings = [(6 + (k - d) * 3.2, max(0, 1 - (k - d) / 9)) for d in (0, 4, 8) if 0 <= k - d < 10]
+        st.append((dict(rings=rings), 55))
+    st += [(dict(glint=g), 50) for g in (.4, .8, 1, .8, .4)]
+    run('ping', st)
+    # 3. sweep: a soft light passes over the tile texture and the logo, like light across the box
+    run('sweep', [(dict(sweep=i / 17), 55) for i in range(18)] + [(dict(t=i / 11), 50) for i in range(12)])
+    # 4. search: the pin tilts left and right like it is scanning, then the lens sparkles
+    run('search', [(dict(angle=a), 55) for a in (3, 6, 7, 6, 3, 0, -3, -6, -7, -6, -3, 0, 2, 0)]
+        + [(dict(glint=g), 50) for g in (.4, .8, 1, .8, .4)])
 
 # ---------------- social icons ----------------
 def glyph(kind, n):
@@ -200,7 +253,7 @@ def signature_html():
   </table>
 </td>
 <td style="padding:0 0 0 15px;border-right:2px solid #72CCD8;font-size:1px;line-height:1px;">&nbsp;</td>
-<td valign="middle" align="center" style="padding:0 0 0 15px;">{a(ME['website'], f'<img src="{u("img/logo-animated.gif")}" width="190" height="65" alt="First Search Marketing" style="display:block;border:0;width:190px;height:65px;">')}</td>
+<td valign="middle" align="center" style="padding:0 0 0 15px;">{a(ME['website'], f'<img src="{u("img/logo-" + LOGO_STYLE + ".gif")}" width="{PW}" height="{PH}" alt="First Search Marketing" style="display:block;border:0;width:{PW}px;height:{PH}px;">')}</td>
 </tr></table>
 </td></tr></table>'''
 
@@ -244,8 +297,31 @@ document.getElementById('copy').addEventListener('click', function () {{
 ''')
     print('wrote signature.html, index.html with assets from', BASE)
 
+def options_page():
+    global LOGO_STYLE
+    keep = LOGO_STYLE; blocks = []
+    names = dict(hop='1 · Hop: the pin hops and lands, then a shine crosses the name',
+                 ping='2 · Ping: location rings ripple from the pin, then the lens sparkles',
+                 sweep='3 · Sweep: a soft light passes across the box texture and the name',
+                 search='4 · Search: the pin tilts side to side like it is scanning, then the lens sparkles')
+    for k in ('hop', 'ping', 'sweep', 'search'):
+        LOGO_STYLE = k; blocks.append(f'<section><h2>{names[k]}</h2><div class="card">{signature_html()}</div></section>')
+    LOGO_STYLE = keep
+    open(os.path.join(HERE, 'logo-options.html'), 'w').write(f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Email signature · logo animation options</title><style>
+body {{ margin: 0; background: #F4F4F6; font: 15px/1.6 Inter, Arial, sans-serif; color: #2F2E36; }}
+main {{ max-width: 760px; margin: 0 auto; padding: 36px 24px 60px; }}
+h1 {{ margin: 0 0 4px; font: 800 26px Poppins, Arial, sans-serif; color: #250762; }}
+h2 {{ margin: 28px 0 10px; font: 700 16px Poppins, Arial, sans-serif; color: #250762; }}
+.card {{ padding: 24px; border-radius: 16px; background: #fff; box-shadow: 0 18px 40px -24px rgba(37,7,98,.35); }}
+.stripe {{ height: 8px; background: linear-gradient(90deg, #72CCD8, #174FA2); }}
+</style></head><body><div class="stripe"></div><main><h1>Logo animation options</h1>
+<p>Each plays about every 4 seconds. All four start on the same still logo, which is what classic Outlook for Windows shows.</p>
+{''.join(blocks)}</main></body></html>''')
+    print('wrote logo-options.html')
+
 if __name__ == '__main__':
     if '--html-only' not in sys.argv:
-        logo_gif(); verified_gif(); button_gif()
+        logo_gifs(); verified_gif(); button_gif()
         for i, k in enumerate(('web', 'instagram', 'linkedin', 'facebook')): icon_gif(k, i)
-    pages()
+    pages(); options_page()
