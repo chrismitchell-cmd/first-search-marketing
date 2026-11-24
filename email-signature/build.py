@@ -16,7 +16,7 @@ Outputs:
 Every GIF starts on a complete still frame, so classic Outlook for Windows (which shows only the first frame)
 still shows the full design.
 """
-import os, sys, html
+import os, sys, html, json
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -73,30 +73,35 @@ def save_gif(frames, durations, name):
 def ease_out(t): return 1 - (1 - t) ** 3
 
 # ---------------- animated logo panel ----------------
-# The logo sits on the white box texture (bg-geometric, the brand's light section background) with the gradient
-# stripe along the bottom, like the gift box lid. Four animation styles; LOGO_STYLE picks the one in the signature.
+# The logo image is the whole right side of the signature: white on its left half, fading into the white box texture
+# (bg-geometric, the brand's light section background) on the right, with the gradient stripe fading in along the bottom.
+# Several animation styles; LOGO_STYLE picks the one in the signature.
 LOGO_STYLE = 'ping-reveal'  # 'hop', 'ping', 'ping-reveal', 'sweep' or 'search'
-PW, PH = 210, 84            # shown size in the email (the file is 2x for sharp screens)
+PW, PH = 270, 174           # shown size in the email: full height of the signature box (the file is 2x for sharp screens)
 import math
 def logo_parts():
     S = 2; W, H = PW * S, PH * S
     geo = Image.open(os.path.join(REPO, 'assets/img/design/bg-geometric.jpg')).convert('RGB')
-    sc = H * 2.1 / geo.height; geo = geo.resize((round(geo.width * sc), round(geo.height * sc)), Image.LANCZOS)
-    bg = geo.crop((geo.width - W - 40, 30, geo.width - 40, 30 + H))                    # the tiled part of the texture
+    sc = H * 1.35 / geo.height; geo = geo.resize((round(geo.width * sc), round(geo.height * sc)), Image.LANCZOS)
+    bg = geo.crop((geo.width - W - 20, 20, geo.width - 20, 20 + H))                    # the tiled part of the texture
     from PIL import ImageOps                                    # tiles in soft cool greys: shading shows, seams stay light
     g = ImageOps.autocontrast(bg.convert('L'), cutoff=2).filter(ImageFilter.GaussianBlur(.6))
     lo, hi = (226, 226, 234), (255, 255, 255)
     bg = Image.merge('RGB', [g.point(lambda v, a=a_, b=b_: int(a + (b - a) * v / 255)) for a_, b_ in zip(lo, hi)])
-    fade = Image.linear_gradient('L').rotate(90).resize((W, H))                        # whiter behind the wordmark
-    bg.paste(Image.new('RGB', (W, H), WHITE), (0, 0), fade.point(lambda v: int(v * .35)))
+    # left half white, easing into the texture across the middle (smoothstep from 15% to 62% of the width)
+    ramp = Image.new('L', (W, 1)); sm = lambda t: t * t * (3 - 2 * t)
+    ramp.putdata([int(255 * (1 - sm(min(1, max(0, (x / W - .15) / .47))))) for x in range(W)]); ramp = ramp.resize((W, H))
+    bg.paste(Image.new('RGB', (W, H), WHITE), (0, 0), ramp)
     stripe = 6
-    bg.paste(grad((W, stripe), diag=False), (0, H - stripe))
+    st = Image.new('RGB', (W, H), WHITE); st.paste(grad((W, stripe), diag=False), (0, H - stripe))
+    sm_ = Image.new('L', (W, H), 0); sm_.paste(ImageChops.invert(ramp).crop((0, 0, W, stripe)), (0, H - stripe))
+    bg.paste(st, (0, 0), sm_)                                                          # stripe fades in with the texture
     logo = Image.open(os.path.join(REPO, 'assets/img/logo.png')).convert('RGBA')
-    lw = round(W * .8); logo = logo.resize((lw, round(logo.height * lw / logo.width)), Image.LANCZOS)
+    lw = round(W * .7); logo = logo.resize((lw, round(logo.height * lw / logo.width)), Image.LANCZOS)
     pin_w = round(98 * lw / 533) + 4
     pin, word = logo.crop((0, 0, pin_w, logo.height)), logo.crop((pin_w, 0, logo.width, logo.height))
-    x0 = (W - lw) // 2; y0 = (H - stripe - logo.height) // 2 + 2
-    corner = Image.new('L', (W, H), 0); ImageDraw.Draw(corner).rounded_rectangle([0, 0, W - 1, H - 1], radius=16, fill=255)
+    x0 = round(W * .57 - lw / 2); y0 = (H - stripe - logo.height) // 2
+    corner = Image.new('L', (W, H), 0); ImageDraw.Draw(corner).rounded_rectangle([-40, 0, W - 1, H - 1], radius=14, fill=255)   # rounded right corners, inside the box border
     return dict(W=W, H=H, bg=bg, pin=pin, word=word, pin_w=pin_w, x0=x0, y0=y0, corner=corner, stripe=stripe)
 
 def logo_frame(P, hop=0, squash=0., angle=0., t=None, sweep=None, rings=(), glint=0., grow=1., reveal=1., fade=1.):
@@ -142,7 +147,6 @@ def logo_frame(P, hop=0, squash=0., angle=0., t=None, sweep=None, rings=(), glin
                    (gx, gy + gr * 1.6), (gx - gr * .25, gy + gr * .25), (gx - gr * 1.6, gy), (gx - gr * .25, gy - gr * .25)], fill=255)
         f.paste(Image.new('RGB', (W, H), WHITE), (0, 0), m.filter(ImageFilter.GaussianBlur(.5)))
     out = Image.new('RGB', (W, H), WHITE); out.paste(f, (0, 0), P['corner'])          # rounded corners on white
-    ImageDraw.Draw(out).rounded_rectangle([0, 0, W - 1, H - 1], radius=16, outline=(227, 226, 234), width=2)
     return out
 
 def logo_gifs():
@@ -208,6 +212,22 @@ def icon_gif(kind, i):
     frames.append(still); dur.append(1500 - i * 160)
     save_gif(frames, dur, f'icon-{kind}.gif')
 
+def hover_images():
+    """Dark purple versions shown on hover (still PNGs)."""
+    for kind in ('web', 'instagram', 'linkedin', 'facebook'):
+        n = 60; N = n * 4; im = Image.new('RGB', (N, N), WHITE)
+        m = Image.new('L', (N, N), 0); ImageDraw.Draw(m).ellipse([1, 1, N - 2, N - 2], fill=255)
+        im.paste(Image.new('RGB', (N, N), NAVY), (0, 0), m); im.paste(Image.new('RGB', (N, N), WHITE), (0, 0), glyph(kind, N))
+        im.resize((n, n), Image.LANCZOS).save(os.path.join(IMG, f'icon-{kind}-hover.png'))
+    S = 4; W, H = 102 * 2, 30 * 2; BW, BH = W * S // 2, H * S // 2
+    big = Image.new('RGB', (BW, BH), WHITE); m = Image.new('L', (BW, BH), 0)
+    ImageDraw.Draw(m).rounded_rectangle([0, 0, BW - 1, BH - 1], radius=BH // 2, fill=255)
+    big.paste(Image.new('RGB', (BW, BH), NAVY), (0, 0), m)
+    d = ImageDraw.Draw(big); f = font('Poppins-SemiBold.ttf', round(BH * .36)); label = 'Book a meeting'
+    bb = d.textbbox((0, 0), label, font=f); d.text(((BW - (bb[2] - bb[0])) / 2 - bb[0], (BH - (bb[3] - bb[1])) / 2 - bb[1]), label, font=f, fill=WHITE)
+    big.resize((W, H), Image.LANCZOS).save(os.path.join(IMG, 'book-a-meeting-hover.png'))
+    print('saved hover images')
+
 def verified_gif():
     n = 30; N = n * 4; base = Image.new('RGB', (N, N), WHITE)
     m = Image.new('L', (N, N), 0); d = ImageDraw.Draw(m)
@@ -242,14 +262,19 @@ def signature_html():
     e = html.escape; u = lambda p: f'{BASE}/{p}'
     def a(href, inner, style='text-decoration:none;'):
         return f'<a href="{e(href)}" target="_blank" style="{style}">{inner}</a>'
+    def swap(src, hover, w, h, alt):
+        # the purple image shows on hover in apps that support it; classic Outlook never shows it (mso-hide)
+        return (f'<img class="fs-d" src="{u(src)}" width="{w}" height="{h}" alt="{alt}" style="display:block;border:0;width:{w}px;height:{h}px;">'
+                f'<!--[if !mso]><!--><img class="fs-h" src="{u(hover)}" width="{w}" height="{h}" alt="{alt}" '
+                f'style="display:none;mso-hide:all;border:0;width:{w}px;height:{h}px;max-height:0;overflow:hidden;"><!--<![endif]-->')
     def icon(kind, href, alt):
-        return (f'<td style="padding:0 4px 0 0;">' + a(href, f'<img src="{u("img/icon-" + kind + ".gif")}" width="30" height="30" alt="{alt}" '
-                f'style="display:block;border:0;width:30px;height:30px;">') + '</td>')
+        return f'<td style="padding:0 4px 0 0;">' + a(href, swap(f'img/icon-{kind}.gif', f'img/icon-{kind}-hover.png', 30, 30, alt)) + '</td>'
     txt = f'font-family:{FONT};font-size:12px;line-height:18px;'
-    return f'''<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:{FONT};">
-<tr><td style="padding:15px;border:1px solid #E3E2EA;border-radius:8px;background-color:#ffffff;" bgcolor="#ffffff">
+    return f'''<style>.fsig a:hover .fs-d{{display:none!important}} .fsig a:hover .fs-h{{display:block!important;max-height:none!important}}</style>
+<table class="fsig" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:{FONT};">
+<tr><td style="padding:0;border:1px solid #E3E2EA;border-radius:8px;background-color:#ffffff;" bgcolor="#ffffff">
 <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr>
-<td valign="top" align="left" style="padding:0;">
+<td valign="top" align="left" style="padding:15px;">
   <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
     <tr><td style="padding:0 0 8px 0;">
       <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr>
@@ -264,13 +289,12 @@ def signature_html():
     <tr><td style="padding:10px 0 0 0;">
       <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr>
         {icon('web', ME['website'], 'Website')}{icon('instagram', ME['instagram'], 'Instagram')}{icon('linkedin', ME['linkedin'], 'LinkedIn')}{icon('facebook', ME['facebook'], 'Facebook')}
-        <td style="padding:0 0 0 4px;">{a(ME['book'], f'<img src="{u("img/book-a-meeting.gif")}" width="102" height="30" alt="Book a meeting" style="display:block;border:0;width:102px;height:30px;">')}</td>
+        <td style="padding:0 0 0 4px;">{a(ME['book'], swap('img/book-a-meeting.gif', 'img/book-a-meeting-hover.png', 102, 30, 'Book a meeting'))}</td>
       </tr></table>
     </td></tr>
   </table>
 </td>
-<td style="padding:0 0 0 15px;border-right:2px solid #72CCD8;font-size:1px;line-height:1px;">&nbsp;</td>
-<td valign="middle" align="center" style="padding:0 0 0 15px;">{a(ME['website'], f'<img src="{u("img/logo-" + LOGO_STYLE + ".gif")}" width="{PW}" height="{PH}" alt="First Search Marketing" style="display:block;border:0;width:{PW}px;height:{PH}px;">')}</td>
+<td valign="top" align="right" style="padding:0;font-size:0;line-height:0;">{a(ME['website'], f'<img src="{u("img/logo-" + LOGO_STYLE + ".gif")}" width="{PW}" height="{PH}" alt="First Search Marketing" style="display:block;border:0;width:{PW}px;height:{PH}px;">')}</td>
 </tr></table>
 </td></tr></table>'''
 
@@ -305,10 +329,17 @@ ol {{ margin: 0; padding-left: 20px; }} li {{ margin: 4px 0; }}
 <li>Outlook &gt; Settings &gt; Signatures &gt; +.</li><li>Paste, name it, and close the window to save.</li></ol></div>
 </main>
 <script>
-document.getElementById('copy').addEventListener('click', function () {{
+var SIG = {json.dumps(sig)};   // the exact signature HTML, including the hover styles
+function done() {{ document.getElementById('ok').hidden = false; }}
+function fallback() {{
   var r = document.createRange(); r.selectNode(document.getElementById('sig'));
-  var s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); s.removeAllRanges();
-  document.getElementById('ok').hidden = false;
+  var s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); s.removeAllRanges(); done();
+}}
+document.getElementById('copy').addEventListener('click', function () {{
+  if (navigator.clipboard && window.ClipboardItem) {{
+    navigator.clipboard.write([new ClipboardItem({{ 'text/html': new Blob([SIG], {{ type: 'text/html' }}),
+      'text/plain': new Blob([document.getElementById('sig').innerText], {{ type: 'text/plain' }}) }})]).then(done, fallback);
+  }} else fallback();
 }});
 </script></body></html>
 ''')
@@ -340,6 +371,6 @@ h2 {{ margin: 28px 0 10px; font: 700 16px Poppins, Arial, sans-serif; color: #25
 
 if __name__ == '__main__':
     if '--html-only' not in sys.argv:
-        logo_gifs(); verified_gif(); button_gif()
+        logo_gifs(); verified_gif(); button_gif(); hover_images()
         for i, k in enumerate(('web', 'instagram', 'linkedin', 'facebook')): icon_gif(k, i)
     pages(); options_page()
