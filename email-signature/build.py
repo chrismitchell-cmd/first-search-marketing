@@ -71,6 +71,7 @@ def save_gif(frames, durations, name):
     q[0].save(os.path.join(IMG, name), save_all=True, append_images=q[1:], duration=durations, loop=0, optimize=True, disposal=1)
     print('saved', name, os.path.getsize(os.path.join(IMG, name)) // 1024, 'KB')
 def ease_out(t): return 1 - (1 - t) ** 3
+def ease_io(t): return 4 * t ** 3 if t < .5 else 1 - (-2 * t + 2) ** 3 / 2
 
 # ---------------- animated logo panel ----------------
 # The logo image is the whole right side of the signature: white on its left half, fading into the white box texture
@@ -100,6 +101,10 @@ def logo_parts():
     lw = round(W * .7); logo = logo.resize((lw, round(logo.height * lw / logo.width)), Image.LANCZOS)
     pin_w = round(98 * lw / 533) + 4
     pin, word = logo.crop((0, 0, pin_w, logo.height)), logo.crop((pin_w, 0, logo.width, logo.height))
+    pa = pin.split()[3].point(lambda v: 255 if v > 110 else 0)       # the lens is transparent in logo.png: make it white
+    hole = Image.new('L', (pin.width + 2, pin.height + 2), 0); hole.paste(pa, (1, 1)); ImageDraw.floodfill(hole, (0, 0), 128)
+    inside = hole.crop((1, 1, pin.width + 1, pin.height + 1)).point(lambda v: 255 if v == 0 else 0).filter(ImageFilter.MaxFilter(3))
+    lens = Image.new('RGBA', pin.size, (255, 255, 255, 0)); lens.putalpha(inside); lens.alpha_composite(pin); pin = lens
     x0 = round(W * .57 - lw / 2); y0 = (H - stripe - logo.height) // 2
     corner = Image.new('L', (W, H), 0); ImageDraw.Draw(corner).rounded_rectangle([-40, 0, W - 1, H - 1], radius=14, fill=255)   # rounded right corners, inside the box border
     return dict(W=W, H=H, bg=bg, pin=pin, word=word, pin_w=pin_w, x0=x0, y0=y0, corner=corner, stripe=stripe)
@@ -167,8 +172,12 @@ def original_gif(P):
     l0, l1 = round(92 * k), round(106 * k)
     top = word.crop((0, 0, word.width, l0)); line = word.crop((0, l0, word.width, l1)); bot = word.crop((0, l1, word.width, word.height))
     wx = x0 + pw; cx_start = round(x0 + (word.width + pw) / 2 - pw / 2)      # pin starts in the middle of the logo
-    def fr(pin_x=None, body_s=1., mag_a=1., line_p=1., text_p=1., show_pin=True):
+    tipx, tipy = x0 + pw * .46, y0 + pin.height - 4
+    def fr(pin_x=None, body_s=1., mag_a=1., line_p=1., text_p=1., show_pin=True, rings=()):
         f = P['bg'].copy(); lay = Image.new('RGBA', (W, H))
+        for r, a_r in rings:                                    # location rings, flat, from the pin tip
+            m = Image.new('L', (W, H), 0); ImageDraw.Draw(m).ellipse([tipx - r, tipy - r * .3, tipx + r, tipy + r * .3], outline=int(255 * a_r), width=3)
+            f.paste(Image.new('RGB', (W, H), SKY), (0, 0), m.filter(ImageFilter.GaussianBlur(.6)))
         if show_pin:
             px_ = x0 if pin_x is None else pin_x
             if body_s > 0.02:
@@ -189,19 +198,23 @@ def original_gif(P):
             b3.paste((0, 0, 0, 0), (0, 0, W, y0 + l1)); lay.alpha_composite(b3)
         f.paste(lay, (0, 0), lay)
         out = Image.new('RGB', (W, H), WHITE); out.paste(f, (0, 0), P['corner']); return out
-    still = fr(); frames, dur = [still], [3200]                # still first frame: classic Outlook shows only this
-    frames.append(fr(show_pin=False, line_p=0, text_p=0)); dur.append(300)
-    for sc in (.08, .25, .5, .8, 1.08, 1.12, 1.0):             # pin pops in at the centre
-        frames.append(fr(pin_x=cx_start, body_s=sc, mag_a=0, line_p=0, text_p=0)); dur.append(55)
-    for a_ in (.35, .7, 1.):                                    # magnifier appears
-        frames.append(fr(pin_x=cx_start, mag_a=a_, line_p=0, text_p=0)); dur.append(60)
-    frames.append(fr(pin_x=cx_start, line_p=0, text_p=0)); dur.append(200)
-    n = 10
-    for i in range(1, n + 1):                                   # slide left while the line draws out
-        t = ease_out(i / n); frames.append(fr(pin_x=round(cx_start + (x0 - cx_start) * t), line_p=t, text_p=0)); dur.append(60)
-    for i in range(1, 6):                                       # text out of the line
-        frames.append(fr(text_p=ease_out(i / 5))); dur.append(70)
-    frames.append(still); dur.append(400)
+    still = fr(); frames, dur = [still], [3000]                # still first frame: classic Outlook shows only this
+    frames.append(fr(show_pin=False, line_p=0, text_p=0)); dur.append(250)
+    pop = [.06, .14, .26, .42, .6, .78, .94, 1.06, 1.12, 1.1, 1.05, 1.0]   # pin pops in and settles
+    for sc in pop: frames.append(fr(pin_x=cx_start, body_s=sc, mag_a=0, line_p=0, text_p=0)); dur.append(30)
+    for i in range(1, 7):                                       # magnifier fades in
+        frames.append(fr(pin_x=cx_start, mag_a=i / 6, line_p=0, text_p=0)); dur.append(30)
+    frames.append(fr(pin_x=cx_start, line_p=0, text_p=0)); dur.append(150)
+    n = 18
+    for i in range(1, n + 1):                                   # slide left while the line grows out of the pin
+        t = ease_io(i / n); frames.append(fr(pin_x=round(cx_start + (x0 - cx_start) * t), line_p=t, text_p=0)); dur.append(30)
+    for i in range(1, 11):                                      # text rises and drops out of the line
+        frames.append(fr(text_p=ease_out(i / 10))); dur.append(30)
+    frames.append(still); dur.append(250)
+    ring = lambda k: [(6 + (k - d) * 3.6, max(0, 1 - (k - d) / 9)) for d in (0, 4, 8) if 0 <= k - d < 10]
+    for k in range(18):                                         # location rings from the pin tip to finish
+        frames.append(fr(rings=ring(k))); dur.append(40)
+    frames.append(still); dur.append(300)
     save_gif(frames, dur, 'logo-original.gif')
 
 def logo_gifs():
