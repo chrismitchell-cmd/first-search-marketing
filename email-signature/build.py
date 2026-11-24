@@ -77,7 +77,7 @@ def ease_out(t): return 1 - (1 - t) ** 3
 # ---------------- animated logo panel ----------------
 # The logo sits on the white box texture (bg-geometric, the brand's light section background) with the gradient
 # stripe along the bottom, like the gift box lid. Four animation styles; LOGO_STYLE picks the one in the signature.
-LOGO_STYLE = 'ping'         # 'hop', 'ping', 'sweep' or 'search'
+LOGO_STYLE = 'ping-reveal'  # 'hop', 'ping', 'ping-reveal', 'sweep' or 'search'
 PW, PH = 210, 84            # shown size in the email (the file is 2x for sharp screens)
 import math
 def logo_parts():
