@@ -76,7 +76,7 @@ def ease_out(t): return 1 - (1 - t) ** 3
 # The logo image is the whole right side of the signature: white on its left half, fading into the white box texture
 # (bg-geometric, the brand's light section background) on the right, with the gradient stripe fading in along the bottom.
 # Several animation styles; LOGO_STYLE picks the one in the signature.
-LOGO_STYLE = 'ping-reveal'  # 'hop', 'ping', 'ping-reveal', 'sweep' or 'search'
+LOGO_STYLE = 'original'     # 'original', 'hop', 'ping', 'ping-reveal', 'sweep' or 'search'
 PW, PH = 270, 174           # shown size in the email: full height of the signature box (the file is 2x for sharp screens)
 import math
 def logo_parts():
@@ -149,6 +149,61 @@ def logo_frame(P, hop=0, squash=0., angle=0., t=None, sweep=None, rings=(), glin
     out = Image.new('RGB', (W, H), WHITE); out.paste(f, (0, 0), P['corner'])          # rounded corners on white
     return out
 
+def original_gif(P):
+    """The animation from the original customesignature logo, on the textured panel:
+    blank, the blue pin pops in from a dot at the centre and the magnifier appears on it, the pin slides left into place
+    while the thin line draws out to the right, then 'first search' rises out of the line and 'MARKETING' drops out of it."""
+    W, H, k = P['W'], P['H'], P['pin'].height / 152           # k: logo.png pixels -> panel pixels
+    pin, word, x0, y0, pw = P['pin'], P['word'], P['x0'], P['y0'], P['pin_w']
+    # the pin first appears as a solid blue drop (its silhouette in the logo blue); the full pin with magnifier fades in on top
+    pa = pin.split()[3].point(lambda v: 255 if v > 110 else 0)
+    hole = Image.new('L', (pin.width + 2, pin.height + 2), 0); hole.paste(pa, (1, 1)); ImageDraw.floodfill(hole, (0, 0), 128)
+    solid = hole.crop((1, 1, pin.width + 1, pin.height + 1)).point(lambda v: 0 if v == 128 else 255)   # silhouette with the lens filled
+    solid = ImageChops.lighter(solid, pin.split()[3]).filter(ImageFilter.GaussianBlur(.5))
+    body = Image.new('RGBA', pin.size, (47, 152, 213, 0)); body.putalpha(solid)
+    sh_cut = round(pin.height * .9); body.paste((0, 0, 0, 0), (0, sh_cut, pin.width, pin.height))   # no shadow on the drop
+    mag = pin
+    # split the wordmark at the thin line (logo rows 92-105)
+    l0, l1 = round(92 * k), round(106 * k)
+    top = word.crop((0, 0, word.width, l0)); line = word.crop((0, l0, word.width, l1)); bot = word.crop((0, l1, word.width, word.height))
+    wx = x0 + pw; cx_start = round(x0 + (word.width + pw) / 2 - pw / 2)      # pin starts in the middle of the logo
+    def fr(pin_x=None, body_s=1., mag_a=1., line_p=1., text_p=1., show_pin=True):
+        f = P['bg'].copy(); lay = Image.new('RGBA', (W, H))
+        if show_pin:
+            px_ = x0 if pin_x is None else pin_x
+            if body_s > 0.02:
+                bw, bh = max(1, round(pin.width * body_s)), max(1, round(pin.height * body_s))
+                b2 = body.resize((bw, bh), Image.LANCZOS); cxp, cyp = px_ + pin.width / 2, y0 + pin.height * .45
+                lay.alpha_composite(b2, (round(cxp - bw / 2), round(cyp - bh * .45)))
+            if mag_a > 0:
+                m2 = mag.copy(); m2.putalpha(m2.split()[3].point(lambda v: int(v * mag_a))); lay.alpha_composite(m2, (round(px_), y0))
+        if line_p > 0:                                          # the line grows out of the pin towards the right
+            px_ = x0 if pin_x is None else pin_x
+            a0 = max(0, round(px_ + pw - wx)); a1 = max(a0 + 1, round(line.width * line_p))
+            lay.alpha_composite(line.crop((a0, 0, min(a1, line.width), line.height)), (wx + a0, y0 + l0))
+        if text_p > 0:                                          # text rises / drops out of the line
+            dy_t = round((1 - text_p) * top.height); dy_b = round((1 - text_p) * bot.height)
+            t2 = Image.new('RGBA', (W, H)); t2.alpha_composite(top, (wx, y0 + dy_t))
+            t2.paste((0, 0, 0, 0), (0, y0 + l0, W, H)); lay.alpha_composite(t2)
+            b3 = Image.new('RGBA', (W, H)); b3.alpha_composite(bot, (wx, y0 + l1 - dy_b))
+            b3.paste((0, 0, 0, 0), (0, 0, W, y0 + l1)); lay.alpha_composite(b3)
+        f.paste(lay, (0, 0), lay)
+        out = Image.new('RGB', (W, H), WHITE); out.paste(f, (0, 0), P['corner']); return out
+    still = fr(); frames, dur = [still], [3200]                # still first frame: classic Outlook shows only this
+    frames.append(fr(show_pin=False, line_p=0, text_p=0)); dur.append(300)
+    for sc in (.08, .25, .5, .8, 1.08, 1.12, 1.0):             # pin pops in at the centre
+        frames.append(fr(pin_x=cx_start, body_s=sc, mag_a=0, line_p=0, text_p=0)); dur.append(55)
+    for a_ in (.35, .7, 1.):                                    # magnifier appears
+        frames.append(fr(pin_x=cx_start, mag_a=a_, line_p=0, text_p=0)); dur.append(60)
+    frames.append(fr(pin_x=cx_start, line_p=0, text_p=0)); dur.append(200)
+    n = 10
+    for i in range(1, n + 1):                                   # slide left while the line draws out
+        t = ease_out(i / n); frames.append(fr(pin_x=round(cx_start + (x0 - cx_start) * t), line_p=t, text_p=0)); dur.append(60)
+    for i in range(1, 6):                                       # text out of the line
+        frames.append(fr(text_p=ease_out(i / 5))); dur.append(70)
+    frames.append(still); dur.append(400)
+    save_gif(frames, dur, 'logo-original.gif')
+
 def logo_gifs():
     P = logo_parts(); F = lambda **k: logo_frame(P, **k)
     still = F()
@@ -172,6 +227,7 @@ def logo_gifs():
     for k in range(n):
         st.append((dict(rings=ring(k) if k < 14 else (), reveal=ease_out(k / (n - 1))), 65))
     run('ping-reveal', st, tail=400)
+    original_gif(P)
     # 3. sweep: a soft light passes over the tile texture and the logo, like light across the box
     run('sweep', [(dict(sweep=i / 17), 55) for i in range(18)] + [(dict(t=i / 11), 50) for i in range(12)])
     # 4. search: the pin tilts left and right like it is scanning, then the lens sparkles
@@ -294,6 +350,9 @@ def signature_html():
     </td></tr>
   </table>
 </td>
+<td valign="middle" style="padding:15px 0;">
+  <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr><td height="144" style="height:144px;width:0;border-left:2px solid #72CCD8;font-size:1px;line-height:1px;">&nbsp;</td></tr></table>
+</td>
 <td valign="top" align="right" style="padding:0;font-size:0;line-height:0;">{a(ME['website'], f'<img src="{u("img/logo-" + LOGO_STYLE + ".gif")}" width="{PW}" height="{PH}" alt="First Search Marketing" style="display:block;border:0;width:{PW}px;height:{PH}px;">')}</td>
 </tr></table>
 </td></tr></table>'''
@@ -348,12 +407,13 @@ document.getElementById('copy').addEventListener('click', function () {{
 def options_page():
     global LOGO_STYLE
     keep = LOGO_STYLE; blocks = []
-    names = dict(hop='1 · Hop: the pin hops and lands, then a shine crosses the name',
+    names = dict(original='0 · Original: the pin pops in, slides left as the line draws, and the name rises out of the line',
+                 hop='1 · Hop: the pin hops and lands, then a shine crosses the name',
                  ping='2 · Ping: location rings ripple from the pin while the name grows and settles back',
                  **{'ping-reveal': '2b · Ping reveal: the rings ripple while the name appears from left to right'},
                  sweep='3 · Sweep: a soft light passes across the box texture and the name',
                  search='4 · Search: the pin tilts side to side like it is scanning, then the lens sparkles')
-    for k in ('ping', 'ping-reveal', 'hop', 'sweep', 'search'):
+    for k in ('original', 'ping-reveal', 'ping', 'hop', 'sweep', 'search'):
         LOGO_STYLE = k; blocks.append(f'<section><h2>{names[k]}</h2><div class="card">{signature_html()}</div></section>')
     LOGO_STYLE = keep
     open(os.path.join(HERE, 'logo-options.html'), 'w').write(f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
