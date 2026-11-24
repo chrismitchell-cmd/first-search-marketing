@@ -77,7 +77,7 @@ def ease_out(t): return 1 - (1 - t) ** 3
 # ---------------- animated logo panel ----------------
 # The logo sits on the white box texture (bg-geometric, the brand's light section background) with the gradient
 # stripe along the bottom, like the gift box lid. Four animation styles; LOGO_STYLE picks the one in the signature.
-LOGO_STYLE = 'hop'          # 'hop', 'ping', 'sweep' or 'search'
+LOGO_STYLE = 'ping'         # 'hop', 'ping', 'sweep' or 'search'
 PW, PH = 210, 84            # shown size in the email (the file is 2x for sharp screens)
 import math
 def logo_parts():
@@ -101,7 +101,7 @@ def logo_parts():
     corner = Image.new('L', (W, H), 0); ImageDraw.Draw(corner).rounded_rectangle([0, 0, W - 1, H - 1], radius=16, fill=255)
     return dict(W=W, H=H, bg=bg, pin=pin, word=word, pin_w=pin_w, x0=x0, y0=y0, corner=corner, stripe=stripe)
 
-def logo_frame(P, hop=0, squash=0., angle=0., t=None, sweep=None, rings=(), glint=0.):
+def logo_frame(P, hop=0, squash=0., angle=0., t=None, sweep=None, rings=(), glint=0., grow=1.):
     W, H = P['W'], P['H']; f = P['bg'].copy(); pin = P['pin']; x0, y0 = P['x0'], P['y0']
     tipx, tipy = x0 + P['pin_w'] * .46, y0 + pin.height - 4
     if sweep is not None:                                       # light across the tiles: brighten and warm the texture
@@ -116,13 +116,19 @@ def logo_frame(P, hop=0, squash=0., angle=0., t=None, sweep=None, rings=(), glin
     p = pin
     if squash: p = pin.resize((pin.width + int(squash * 6), pin.height - int(squash * 6)), Image.LANCZOS)
     px, py = x0 - int(squash * 3), y0 - hop + int(squash * 6)
+    lay = Image.new('RGBA', (W, H))                             # pin and wordmark on one layer
     if angle:                                                   # tilt around the tip
         big = Image.new('RGBA', (pin.width * 3, pin.height * 2)); big.paste(p, (pin.width, 0), p)
         big = big.rotate(angle, resample=Image.BICUBIC, center=(pin.width * 1.46, pin.height - 4))
-        f.paste(big, (px - pin.width, py), big)
+        lay.paste(big, (px - pin.width, py), big)
     else:
-        f.paste(p, (px, py), p)
-    wl = Image.new('RGBA', (W, H)); wl.paste(P['word'], (x0 + P['pin_w'], y0), P['word']); f.paste(wl, (0, 0), wl)
+        lay.paste(p, (px, py), p)
+    wl = Image.new('RGBA', (W, H)); wl.paste(P['word'], (x0 + P['pin_w'], y0), P['word']); lay.alpha_composite(wl)
+    if grow != 1.:                                              # grow the whole logo from the pin tip
+        big = lay.resize((round(W * grow), round(H * grow)), Image.LANCZOS)
+        lay = Image.new('RGBA', (W, H)); lay.paste(big, (round(tipx - tipx * grow), round(tipy - tipy * grow)))
+        wl = lay
+    f.paste(lay, (0, 0), lay)
     if t is not None: f = shine(f, wl.split()[3], t, width=.12, strength=.7)
     if glint:                                                   # sparkle on the magnifier lens
         gx, gy, gr = x0 + P['pin_w'] * .36, y0 + pin.height * .27, 9 * glint
@@ -146,10 +152,10 @@ def logo_gifs():
         + [(dict(hop=y), 45) for y in (3, 5, 3, 0)] + [(dict(t=i / 13), 50) for i in range(14)])
     # 2. ping: location rings ripple out from the pin tip, then the lens sparkles
     st = []
-    for k in range(16):
-        rings = [(6 + (k - d) * 3.2, max(0, 1 - (k - d) / 9)) for d in (0, 4, 8) if 0 <= k - d < 10]
-        st.append((dict(rings=rings), 55))
-    st += [(dict(glint=g), 50) for g in (.4, .8, 1, .8, .4)]
+    for k in range(12):
+        rings = [(6 + (k - d) * 4.2, max(0, 1 - (k - d) / 7)) for d in (0, 3, 6) if 0 <= k - d < 8]
+        g = 1 + .06 * math.sin(math.pi * min(1, k / 10))      # grow and settle back while the rings ripple
+        st.append((dict(rings=rings, grow=g), 70))
     run('ping', st)
     # 3. sweep: a soft light passes over the tile texture and the logo, like light across the box
     run('sweep', [(dict(sweep=i / 17), 55) for i in range(18)] + [(dict(t=i / 11), 50) for i in range(12)])
@@ -301,7 +307,7 @@ def options_page():
     global LOGO_STYLE
     keep = LOGO_STYLE; blocks = []
     names = dict(hop='1 · Hop: the pin hops and lands, then a shine crosses the name',
-                 ping='2 · Ping: location rings ripple from the pin, then the lens sparkles',
+                 ping='2 · Ping: location rings ripple from the pin while the logo grows and settles back',
                  sweep='3 · Sweep: a soft light passes across the box texture and the name',
                  search='4 · Search: the pin tilts side to side like it is scanning, then the lens sparkles')
     for k in ('hop', 'ping', 'sweep', 'search'):
