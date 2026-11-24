@@ -33,12 +33,10 @@ ME = dict(
     phone='(603) 518-8090', phone_link='tel:+16035188090',
     email='chris@befirstsearch.com',
     website='https://befirstsearch.com/',
-    # Instagram, LinkedIn and Book a meeting: your current customesignature links (they redirect to the right pages).
-    # Swap in the direct addresses when you have them, then re-run this script.
-    instagram='http://track.customesignature.com/r/813005',
-    linkedin='http://track.customesignature.com/r/813006',
+    instagram='https://www.instagram.com/firstsearchmktg/',
+    linkedin='https://www.linkedin.com/company/first-search-marketing/',
     facebook='https://www.facebook.com/p/First-Search-Marketing-LLC-100063771473527/',
-    book='http://track.customesignature.com/r/813002',
+    book='https://befirstsearch.com/contact-us/',
 )
 
 NAVY = (37, 7, 98); SKY = (50, 153, 213); AQUA = (114, 204, 216); ROYAL = (23, 79, 162); WHITE = (255, 255, 255)
