@@ -38,11 +38,11 @@ ME = dict(
     facebook='https://www.facebook.com/p/First-Search-Marketing-LLC-100063771473527/',
     book='https://befirstsearch.com/contact-us/',
 )
-# Team signatures: each person's details override the ones above. Each gets a copy page (file) and a signature-only file.
+# Team signatures: each person's details override the ones above (book='' leaves out the Book a meeting button). Each gets a copy page (file) and a signature-only file.
 TEAM = [
     dict(file='index', name='Chris Mitchell', title='Owner & Digital Partner', email='chris@befirstsearch.com'),
-    dict(file='jordyn-reardon', name='Jordyn Reardon', title='Digital Operations Manager', email='jordyn@befirstsearch.com'),
-    dict(file='casey-van-zilen', name='Casey Van Zilen', title='Brand Specialist', email='casey@befirstsearch.com'),
+    dict(file='jordyn-reardon', name='Jordyn Reardon', title='Digital Operations Manager', email='jordyn@befirstsearch.com', book=''),
+    dict(file='casey-van-zilen', name='Casey Van Zilen', title='Brand Specialist', email='casey@befirstsearch.com', book=''),
 ]
 
 NAVY = (37, 7, 98); SKY = (50, 153, 213); AQUA = (114, 204, 216); ROYAL = (23, 79, 162); WHITE = (255, 255, 255)
@@ -364,7 +364,7 @@ def signature_html():
     <tr><td style="padding:10px 0 0 0;">
       <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr>
         {icon('web', ME['website'], 'Website')}{icon('instagram', ME['instagram'], 'Instagram')}{icon('linkedin', ME['linkedin'], 'LinkedIn')}{icon('facebook', ME['facebook'], 'Facebook')}
-        <td style="padding:0 0 0 4px;">{a(ME['book'], swap('img/book-a-meeting.gif', 'img/book-a-meeting-hover.png', 102, 30, 'Book a meeting'))}</td>
+        {f'<td style="padding:0 0 0 4px;">' + a(ME['book'], swap('img/book-a-meeting.gif', 'img/book-a-meeting-hover.png', 102, 30, 'Book a meeting')) + '</td>' if ME.get('book') else ''}
       </tr></table>
     </td></tr>
   </table>
