@@ -38,6 +38,12 @@ ME = dict(
     facebook='https://www.facebook.com/p/First-Search-Marketing-LLC-100063771473527/',
     book='https://befirstsearch.com/contact-us/',
 )
+# Team signatures: each person's details override the ones above. Each gets a copy page (file) and a signature-only file.
+TEAM = [
+    dict(file='index', name='Chris Mitchell', title='Owner & Digital Partner', email='chris@befirstsearch.com'),
+    dict(file='jordyn-reardon', name='Jordyn Reardon', title='Digital Operations Manager', email='jordyn@befirstsearch.com'),
+    dict(file='casey-van-zilen', name='Casey Van Zilen', title='Brand Specialist', email='casey@befirstsearch.com'),
+]
 
 NAVY = (37, 7, 98); SKY = (50, 153, 213); AQUA = (114, 204, 216); ROYAL = (23, 79, 162); WHITE = (255, 255, 255)
 
@@ -371,11 +377,20 @@ def signature_html():
 </td></tr></table>'''
 
 def pages():
+    global ME
+    base = dict(ME)
+    for person in TEAM:
+        ME = {**base, **{k: v for k, v in person.items() if k != 'file'}}
+        page(person['file'])
+    ME = base
+
+def page(name):
     sig = signature_html()
-    open(os.path.join(HERE, 'signature.html'), 'w').write(f'<!doctype html><html><head><meta charset="utf-8"><title>Email signature</title></head><body>\n{sig}\n</body></html>\n')
-    open(os.path.join(HERE, 'index.html'), 'w').write(f'''<!doctype html>
+    sig_file = 'signature.html' if name == 'index' else f'signature-{name}.html'
+    open(os.path.join(HERE, sig_file), 'w').write(f'<!doctype html><html><head><meta charset="utf-8"><title>Email signature</title></head><body>\n{sig}\n</body></html>\n')
+    open(os.path.join(HERE, name + '.html'), 'w').write(f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>First Search Marketing · Email signature</title>
+<title>Email signature · {html.escape(ME['name'])}</title>
 <style>
 body {{ margin: 0; background: #F4F4F6; font: 15px/1.6 Inter, 'Segoe UI', Arial, sans-serif; color: #2F2E36; }}
 main {{ max-width: 760px; margin: 0 auto; padding: 40px 24px 60px; }}
@@ -387,7 +402,7 @@ button {{ padding: 12px 22px; border: 0; border-radius: 999px; background: linea
 h2 {{ margin: 0 0 8px; font: 700 18px Poppins, Arial, sans-serif; color: #250762; }}
 ol {{ margin: 0; padding-left: 20px; }} li {{ margin: 4px 0; }}
 </style></head><body><div class="stripe"></div><main>
-<h1>Email signature</h1><p>Click <b>Copy signature</b>, then paste it into your email signature settings.</p>
+<h1>Email signature · {html.escape(ME['name'])}</h1><p>Click <b>Copy signature</b>, then paste it into your email signature settings.</p>
 <div class="card"><div id="sig">{sig}</div></div>
 <p><button id="copy" type="button">Copy signature</button><span id="ok" hidden>Copied. Now paste it into Outlook.</span></p>
 <div class="card"><h2>New Outlook, Outlook on the web</h2><ol>
@@ -415,7 +430,7 @@ document.getElementById('copy').addEventListener('click', function () {{
 }});
 </script></body></html>
 ''')
-    print('wrote signature.html, index.html with assets from', BASE)
+    print(f'wrote {sig_file}, {name}.html for', ME['name'], 'with assets from', BASE)
 
 def options_page():
     global LOGO_STYLE
